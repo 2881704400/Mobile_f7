@@ -1,0 +1,2 @@
+8/10 该文件是修改登陆接口替换文件
+该文件存在着问题，GWServiceAPI.Net.LibClass.EventLib.EventConfirm 6个参数
