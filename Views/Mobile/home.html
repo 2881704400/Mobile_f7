@@ -15,18 +15,19 @@
     <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
     <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css">
     <!--图标字体样式-->
-    <link rel="stylesheet" type="text/css" href="/fonts/comIndex/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="/fonts/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_9htiglhzo8b.css" />
     <!--声波动画-->
     <link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
     <!--本页样式-->
+    <link rel="stylesheet" href="/Styles/Mobile/public.css">
+    <link rel="stylesheet" href="/Styles/Mobile/style.css">
     <link rel="stylesheet" href="/Styles/Mobile/home.css">
     <link rel="stylesheet" href="/Styles/Mobile/animate.min.css">
   </head>
   <body>
     <!-- App root element -->
     <div id="app">
-        <div class="statusbar"></div>
+       <div class="statusbar"></div>
         <!-- left panel -->
        <div class="panel panel-left layout-dark panel-cover">
             <div class="list">
@@ -34,29 +35,9 @@
                     <li>
                         <a href="/UserInfor/" class="item-link item-content panel-close">
                             <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-yonghu"></i></div>
+                                <div class="item-media"><i class="iconfont icon-f7_usersName"></i></div>
                                 <div class="item-inner">
                                     <div class="item-title" id="userName"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/EventSelect/" class="item-link item-content panel-close">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-chaxun"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">事件查询</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li id="appRichScan" style="display:none;">
-                        <a href="#" class="item-link item-content panel-close" onclick="myJavaFun.RichScan();">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-saoyisao"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">扫一扫</div>
                                 </div>
                             </div>
                         </a>
@@ -64,57 +45,27 @@
                     <li id="appCacheClearLi" style="display:none;">
                         <a href="#" class="item-link item-content" onclick="onAppCacheClear()">
                             <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-huancun"></i></div>
+                                <div class="item-media"><i class="iconfont icon-f7_clear"></i></div>
                                 <div class="item-inner">
                                     <div class="item-title">清空缓存</div>
                                 </div>
                             </div>
                         </a>
-                    </li>  
-<!--                 <li >
-                    <a href="/mettingPPT/" class="item-link item-content panel-close">
-                        <div class="item-content">
-                            <div class="item-media"><i class="iconfont icon-bgy27"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">PPT演示</div>
+                    </li>      
+                    <li>
+                        <a href="/setPage/" class="item-link item-content panel-close">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_set"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">设置</div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>                       
-               <li >
-                    <a href="/welcomeWords/" class="item-link item-content panel-close">
-                        <div class="item-content">
-                            <div class="item-media"><i class="iconfont icon-shishizhuangtai"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">欢迎词</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>                        
-                 <li >
-                    <a href="/videoControl/" class="item-link item-content panel-close">
-                        <div class="item-content">
-                            <div class="item-media"><i class="iconfont icon-shishizhuangtai"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">地图视频</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>  
-                <li >
-                    <a href="/Video/" class="item-link item-content panel-close">
-                        <div class="item-content">
-                            <div class="item-media"><i class="iconfont icon-shishizhuangtai"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title">实时视频</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>   -->                                                 
+                        </a>
+                    </li>                                                              
                     <li>
                         <a href="#" class="item-link item-content" onclick="onAbout()">
                             <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-guanyu"></i></div>
+                                <div class="item-media"><i class="iconfont icon-f7_about"></i></div>
                                 <div class="item-inner">
                                     <div class="item-title">关于</div>
                                 </div>
@@ -124,7 +75,7 @@
                     <li>
                         <a href="#" class="item-link item-content" onclick="onUserLogout()">
                             <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-logout"></i></div>
+                                <div class="item-media"><i class="iconfont icon-f7_exit"></i></div>
                                 <div class="item-inner">
                                     <div class="item-title">注销</div>
                                 </div>
@@ -140,42 +91,69 @@
                 <!-- Top Navbar -->
                 <div class="navbar">
                     <div class="navbar-inner">
-                        <!-- 标题 -->                                          
+                        <!-- 标题 -->                  
+                        <div class="left hideMenu">
+                            <a href="#" class="back link">
+                                <i class="iconfont icon-back"></i>
+                            </a>
+                        </div>                         
                         <div class="center sliding title auth_name_get"></div>
                         <div class="right">
-                            <a href="#" class="link icon-only panel-open"><i class="iconfont icon-caidan"></i></a>
+                            <a href="#" class="link icon-only panel-open"><i class="iconfont icon-f7_menu"></i></a>
                         </div>
                     </div>
                 </div>  
                 <!-- Scrollable page content -->
                 <div class="page-content" id="homeContents">
-                        <div id="homepagesIDs" class="homepages flexBoxs" style="background:url(/Image/home/home_0.jpg)">
-                            <img id="home_1" src="/Image/home/home_1.jpg" style="width:50%;margin:0 auto;display:block;" />
-                        </div>
-                        <img id="home_2" src="/Image/home/home_2.jpg" style="margin:0 auto;display:block;position:absolute;bottom:50px;z-index:10;width:100%;" />
+                       home
                 </div>
         </div>
         <!-- Toolbar -->
-        <div class="toolbar tabbar tabbar-labels">
+        <div class="toolbar tabbar tabbar-labels displayNone">
             <div class="toolbar-inner">
                 <a href="/home/" class="link active animation-no" id="homeTool">
-                    <i class="iconfont icon-home_a" cls="home"></i>
+                    <i class="iconfont icon-f7_home" ></i>
                     <span >首页</span>
                 </a>
-                <a href="/Message/" class="link animation-no" id="MessageTool">
-                    <i class="iconfont icon-message_b" cls="message"></i>
+                <a href="/snapshot/" class="link animation-no" id="snapshotTool">
+                    <i class="iconfont icon-f7_snapshot" ></i>
                     <span >实时快照</span>
                 </a>
-                <a href="/RealTime/" class="link animation-no" id="RealTimeTool">
-                    <i class="iconfont icon-shebei_b" cls="shebei"></i>
-                    <span >设备数据</span>
+                <a href="#" class="" id="voiceBtn">
+                    <span><i class="iconfont icon-f7_voice"></i></span>
+                </a>                
+                <a href="/equips/" class="link animation-no" id="equipsTool">
+                    <i class="iconfont icon-f7_equipList"></i>
+                    <span>设备列表</span>
                 </a>
-                <a href="/Voice/" class="link animation-no" id="VoiceTool">
-                    <i class="iconfont icon-yuyin_b" cls="yuyin"></i>
-                    <span >语音</span>
+                <a href="#" class="link animation-no popover-open" data-popover=".popover-links" id="configTool" >
+                    <!-- onclick="systemConfig('configTool')" -->
+                    <i class="iconfont icon-f7_set" ></i>
+                    <span >配置</span>
                 </a>
             </div>
-         </div>        
+         </div>   
+         <!-- popover -->
+           <div class="popover popover-links popoverLink" style="width: 140px!important;text-align: center;">
+            <div class="popover-inner">
+              <div class="list">
+                <ul>
+                  <li><a class="list-button item-link popover-close" href="/eventQuery/">事件查询</a></li>
+                  <li><a class="list-button item-link popover-close" href="/systemConfig/">系统配置</a></li>
+                  <li><a class="list-button item-link popover-close" href="/schedule/">报警排表</a></li>
+                  <li><a class="list-button item-link popover-close" href="/equipLinkage/">设备联动</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- voice -->
+            <div class="voiceDivs displayNone">
+                <div class="">
+                    <div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
+                    <div id="waveAnim" class="waveAnim" style="display: none;"><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="voicetest"></div>
+                </div>
+            </div>          
       </div>
     </div>
     <!-- 框架js-->
@@ -192,10 +170,13 @@
     <script type="text/javascript" src="/Scripts/mobile/home.js"></script>
     <!-- 移动端入口js-->
     <script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>
+    <script type="text/javascript" src="/Scripts/mobile/PageJs.js"></script>
+    <script type="text/javascript" src="/Scripts/mobile/Voice.js"></script>
     <!-- 插件-->
     <script type="text/javascript" src="/Scripts/mobile/plugin/appPopup.js"></script>
     <!-- 二维扫描结果 -->
     <!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
     <!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
+
   </body>
 </html>

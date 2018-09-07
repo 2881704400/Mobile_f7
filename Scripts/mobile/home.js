@@ -1,8 +1,8 @@
 ﻿//首页事件
 function onHomePage() {
-
     $('html').removeClass('with-statusbar-overlay').addClass("with-statusbar");
     authorizationName();
+    switchToolbar("homeTool");
 }
 //界面尺寸变化事件
 function onResizeCustomized() {

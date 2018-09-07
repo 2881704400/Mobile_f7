@@ -1,0 +1,3 @@
+﻿function snapshot(){
+	switchToolbar("snapshotTool");
+}

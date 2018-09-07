@@ -1,0 +1,3 @@
+﻿function systemConfig(){
+	switchToolbar("configTool");
+}

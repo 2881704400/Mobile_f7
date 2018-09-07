@@ -1,0 +1,47 @@
+﻿
+
+    <div data-page="setPage" class="page" id="setPage">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <!-- 标题 -->                  
+                <div class="left">
+                    <a href="#" class="back link">
+                        <i class="iconfont icon-back"></i>
+                    </a>
+                </div>                    
+                <div class="center sliding title">设置</div>
+                <div class="right hideMenu">
+                    <a href="#" class="link icon-only panel-open"><i class="iconfont icon-f7_menu"></i></a>
+                </div>
+            </div>
+        </div>        
+        <!--"pull-to-refresh-content"类表示下拉刷新 -->
+        <div  class="page-content setPageContainer">
+
+            <div class="list simple-list">
+            <ul>
+                <li>
+                    <a href="#" class="item-link smart-select smart-select-init" id="voiceList" onchange="onVoiceList()" data-page-back-link-text="">
+                        <select name="voiceTop">
+                            <option value="0">百度</option>
+                            <option value="1" selected="selected">讯飞</option>
+                        </select>
+                        <div class="item-content" style="padding-left: 0;">
+                            <div class="item-inner" id="voiceListName">
+                                <div class="item-title">语音服务</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>             
+                  <li style="padding-right: 25px;">
+                    <span>夜间模式</span>
+                    <label class="toggle toggle-init  color-green">
+                      <input type="checkbox" checked="">
+                      <span class="toggle-icon"></span>
+                    </label>
+                  </li>
+            </ul>
+          </div>
+
+        </div>
+    </div>

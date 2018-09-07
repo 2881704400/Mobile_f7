@@ -1,0 +1,3 @@
+﻿function equipLinkage(){
+	switchToolbar("configTool");
+}

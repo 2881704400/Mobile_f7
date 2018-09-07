@@ -9,6 +9,7 @@ var myApp = new Framework7({
     // Enable swipe panel
     panel: {
         swipe: 'left',
+        swipeOnlyClose: true,
     },
     statusbar: {
         iosOverlaysWebView: true,
@@ -18,47 +19,40 @@ var myApp = new Framework7({
         path: '/home/',
         url: 'home.html',
     }, {
-        path: '/Message/',
-        url: 'Message.html',
+        path: '/snapshot/',
+        url: 'snapshot.html',
     }, {
-        path: '/RealTime/',
-        url: 'RealTime.html',
+        path: '/equips/',
+        url: 'equips.html',
     }, {
-        path: '/Voice/',
-        url: 'Voice.html',
+        path: '/systemConfig/',
+        url: 'systemConfig.html',
     }, {
-        path: '/MessageList/',
-        url: 'plug/MessageList.html',
-    }, {
+        path: '/eventQuery/',
+        url: 'eventQuery.html',
+    }, 
+    {
+        path: '/schedule/',
+        url: 'schedule.html',
+    }, 
+    {
+        path: '/equipLinkage/',
+        url: 'equipLinkage.html',
+    }, 
+    {
         path: '/UserInfor/',
         url: 'UserInfor.html',
-    }, {
-        path: '/EventSelect/',
-        url: 'left/EventSelect.html',
-    }, {
-        path: '/Screening/',
-        url: 'plug/Screening.html',
-    }, {
-        path: '/welcomeWords/',
-        url: 'welcomeWords.html',
-    }, {
-        path: '/Video/',
-        url: 'Video.html',
-    }, {
-        path: '/videoControl/',
-        url: 'videoControl.html',
-    }, {
+    }, 
+    {
+        path: '/setPage/',
+        url: 'setPage.html',
+    },     
+    {
         path: '/RealTimeList/',
         content: '123',
     }, {
         path: '/resultEvent/',
         content: '123',
-    }, {
-        path: '/mettingPPT/',
-        url: 'mettingPPT.html',
-    }, {
-        path: '/mettingDetails/',
-        url: 'mettingDetails.html',
     }],
     on: {
         // each object key means same name event handler
@@ -82,9 +76,14 @@ initLoads();
 function initLoads() {
     loadNameMobile();
     setTimeout(function() {
-        $("#homeContents").show();
+        $("#app").show();
+
     }, 3000);
-    $(".toolbar-inner").removeClass("disabled");
+    // $(".toolbar-inner").removeClass("disabled");
+    //语音记录选择
+    if (!window.localStorage.voiceList) {
+        window.localStorage.voiceList = "1";
+    }   
     try {
         //myJavaFun.GetAppVersion(); //获取App版本信息
         //myJavaFun.GetSystemInfor(); //获取系统信息
@@ -185,7 +184,7 @@ function InitEnsure() {
         success: function(dt) {
             var analyze = $(dt).children("string").text();
             if (analyze != "" || analyze != "false") {
-                $("#homeContents").show();
+                $("#app").show();
                 console.log("连接成功！");
                 $.ajax({
                     type: "post",
@@ -289,25 +288,6 @@ function authPage(dt){
             isAddinModule_List("VideoTool");
         }
     });
-    // $.ajax({
-    //     type: "post",
-    //     url: service + "/QueryTableData",
-    //     async: false,
-    //     data: "tableName=GWEquipPages",
-    //     success: function(dtGWEquipPages) {
-    //         GWEquipPages = new Array();
-    //         var datadtGWEquipPages = $(dtGWEquipPages).children("string").text();
-    //         var usera = JSON.parse(datadtGWEquipPages);
-    //         for (var i = 0, j = 0; i < usera.length; i++) {
-    //             var userb = usera[i];
-    //             if (userb.WebPage == "1" && userb.Pages.split('.').length > 2) {
-    //                 var userc = new Array(userb.ID, userb.Name, userb.Pages, userb.HelpPath, userb.MultiScreens, userb.WebPage);
-    //                 GWEquipPages[j++] = userc;
-    //             }
-    //         }
-    //         pageLists();
-    //     }
-    // });
 }
 //判断当前设备是否可查看
 function Browse_Equip_List(equips) {
@@ -467,6 +447,7 @@ function loadNameMobile() {
                 InitEnsure();
                 AppShows();
                 onHomePage();
+                $(".voiceDivs,.toolbar").removeClass("displayNone");
             } else {
                 myJavaFuntion.OpenLocalUrl("login");
             }
@@ -696,185 +677,185 @@ function formatMoney(s, type) {
     return s;
 }
 //首页
-$$(document).on("page:beforein", ".page[data-page='home']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == 'home') {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        onHomePage();
-        $("#homeContents").show();
-        toolbarActive('homeTool');
-    }
-});
-$$(document).on("pageBeforeAnimation", function(e) {
-    if (e.target.id == "home") {
-        onHomePage();
-        $("#homeContents").show();
-    }
-});
-//设置
-$$(document).on("page:beforein", ".page[data-page='SetUp']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('SetUp', '');
-    }
-});
-//实时快照
-$$(document).on("page:beforein", ".page[data-page='message']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('Message', '');
-    }
-});
-//实时数据
-$$(document).on("page:beforein", ".page[data-page='RealTime']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('RealTime', '');
-    }
-});
-//语音控制
-$$(document).on("page:beforein", ".page[data-page='Voice']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('Voice', '');
-    }
-});
-//实时视频
-$$(document).on("page:beforein", ".page[data-page='Video']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('Video', '');
-    }
-});
-//扫一扫
-$$(document).on("page:beforein", ".page[data-page='RichScan']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('RichScan', '');
-    }
-});
-//PPT
-$$(document).on("page:beforein", ".page[data-page='mettingPPT']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('mettingPPT', '');
-    }
-});
-//PPT详情
-$$(document).on("page:beforein", ".page[data-page='mettingDetails']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('mettingDetails', '');
-    }
-});
-//欢迎词
-$$(document).on("page:beforein", ".page[data-page='welcomeWords']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('welcomeWords', '');
-    }
-});
-//视频监控
-$$(document).on("page:beforein", ".page[data-page='videoControl']", function(e) {
+// $$(document).on("page:beforein", ".page[data-page='home']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == 'home') {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         onHomePage();
+//         $("#homeContents").show();
+//         toolbarActive('homeTool');
+//     }
+// });
+// $$(document).on("pageBeforeAnimation", function(e) {
+//     if (e.target.id == "home") {
+//         onHomePage();
+//         $("#homeContents").show();
+//     }
+// });
+// //设置
+// $$(document).on("page:beforein", ".page[data-page='SetUp']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('SetUp', '');
+//     }
+// });
+// //实时快照
+// $$(document).on("page:beforein", ".page[data-page='message']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('Message', '');
+//     }
+// });
+// //实时数据
+// $$(document).on("page:beforein", ".page[data-page='RealTime']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('RealTime', '');
+//     }
+// });
+// //语音控制
+// $$(document).on("page:beforein", ".page[data-page='Voice']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('Voice', '');
+//     }
+// });
+// //实时视频
+// $$(document).on("page:beforein", ".page[data-page='Video']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('Video', '');
+//     }
+// });
+// //扫一扫
+// $$(document).on("page:beforein", ".page[data-page='RichScan']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('RichScan', '');
+//     }
+// });
+// //PPT
+// $$(document).on("page:beforein", ".page[data-page='mettingPPT']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('mettingPPT', '');
+//     }
+// });
+// //PPT详情
+// $$(document).on("page:beforein", ".page[data-page='mettingDetails']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('mettingDetails', '');
+//     }
+// });
+// //欢迎词
+// $$(document).on("page:beforein", ".page[data-page='welcomeWords']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('welcomeWords', '');
+//     }
+// });
+// //视频监控
+// $$(document).on("page:beforein", ".page[data-page='videoControl']", function(e) {
 
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
 
-        initPageJS('videoControl', ''); 
-    }
+//         initPageJS('videoControl', ''); 
+//     }
 
-});
-//个人信息
-$$(document).on("page:beforein", ".page[data-page='UserInfor']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('UserInfor', '');
-    }
-});
-//实时视频
-$$(document).on("page:beforein", ".page[data-page='EventSelect']", function(e) {
-    if ($(this).hasClass("page-on-left")) {
-        var ids = $(this).next().attr("id");
-        if (ids == "home") {
-            toolbarActive('homeTool');
-        } else {
-            initPageJS(ids, '');
-        }
-    } else {
-        initPageJS('EventSelect', '/Scripts/mobile/left/');
-    }
-});
+// });
+// //个人信息
+// $$(document).on("page:beforein", ".page[data-page='UserInfor']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('UserInfor', '');
+//     }
+// });
+// //实时视频
+// $$(document).on("page:beforein", ".page[data-page='EventSelect']", function(e) {
+//     if ($(this).hasClass("page-on-left")) {
+//         var ids = $(this).next().attr("id");
+//         if (ids == "home") {
+//             toolbarActive('homeTool');
+//         } else {
+//             initPageJS(ids, '');
+//         }
+//     } else {
+//         initPageJS('EventSelect', '/Scripts/mobile/left/');
+//     }
+// });
 window.onresize = function() {
     onResizeCustomized();
 }
@@ -897,22 +878,13 @@ function initPageJS(dt, ext) { //ext扩展界面地址
     }
 }
 //微信分享id
-//var wxShareStr = "wx7a6d8624593a51e3";
 var wxShareStr = "wxd2a573967e43f6c6";
 //div分享到微信
 function divShareToWX(byID) {
-    //html2canvas(document.getElementById(byID), {
-    //    onrendered: function (canvas) {
-    //        var url = canvas.toDataURL("image/png").split(',')[1];
-    //        myJavaFun.AppShare(url, wxShareStr);
-    //    }
-    //});
     myJavaFun.AppShare('', wxShareStr);
 }
 //图表分享到微信
 function chartShareToWX(myChart) {
-    //var url = myChart.getDataURL().split(',')[1];
-    //myJavaFun.AppShare(url, wxShareStr);
     myJavaFun.AppShare('', wxShareStr);
 }
 var classObj = {
@@ -1142,4 +1114,24 @@ function exitLogin(){
             else
                 myApp.dialog.alert("退出登陆异常");
         }
+}
+
+//切换底部工具栏
+function switchToolbar(id){
+    //$(".toolbar .animation-no").removeClass("active");
+    $("#"+id).addClass("active").siblings().removeClass("active");
+}
+
+//系统配置
+function systemConfig(id){
+  //switchToolbar(id);
+}
+
+//语音信息提示
+function voiceTooip(txt){
+    return myApp.toast.create({
+      text: txt,
+      position: 'center',
+      closeTimeout: 3000,
+    });
 }

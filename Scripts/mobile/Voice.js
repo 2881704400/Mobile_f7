@@ -1,58 +1,22 @@
 ﻿
-function Voice() {
-    // 底部按住说话样式
-    var heightWindow = $(".page-content").height();
-    if (heightWindow < 500) {
-        $(".voiceDivs").css("height", "100%");
-        $(".voiceDivs").css("bottom", "40px");
-        $(".voiceDivs").css("position", "relative");
-    }
-    else {
-        $(".voiceDivs").css("height", "300px");
-        $(".voiceDivs").css("bottom", "60px");
-        $(".voiceDivs").css("position", "absolute");
-    }
-    //监听
-    document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
-    document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
-    toolbarActive('VoiceTool');
-    //记录选择
-    if (!window.localStorage.voiceList) {
-        window.localStorage.voiceList = "1";
-    }
-    //选择
-    $("#voiceList").find("option").each(function () {
-        if ($(this).attr("value") == window.localStorage.voiceList) {
-            $(this).attr("selected", true);
-             $("#voiceListName>.item-after").html($(this).html());
-        } 
-        else if(window.localStorage.voiceList == undefined)
-        {
-             $("#voiceList").find("option:eq(0)").attr("selected", true);
-              $("#voiceListName>.item-after").html($(this).html());
-        }
-    });
-   
-    try {
-        myJavaFun.VoiceOpen();
-    }
-    catch (ex) {
-
-    }
+//监听
+document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
+document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
+try {
+    myJavaFun.VoiceOpen();
 }
+catch (ex) {
 
-function onVoiceList() {
-    window.localStorage.voiceList = $("#voiceList").find("option:selected").attr("value");
 }
-
 var isVoices = false;
 
 //按住开始说话
 function onTouchStart() {
+    myApp.toast.close();
+    $(".voiceDivs").addClass("voicePanel");
     $(this).addClass("voiceActive");
     $("#voiceMessage").hide();
     $("#waveAnim").show();
-    //$(".voicetest").html("已按下");
     try {
         isVoices = true;
         if (window.localStorage.voiceList == "0") {
@@ -62,19 +26,22 @@ function onTouchStart() {
             myJavaFun.StartVoice(window.localStorage.voiceList);
         }
     } catch (ex) {
-        $("#voiceMessage").html("无法使用此功能，请下载最新app！");
+        // $("#voiceMessage").html("无法使用此功能，请下载最新app！");
+        //voiceTooip("无法使用此功能，请下载最新app！").open();
     }
 }
 
 //释放手指并识别语音
 function onTouchEnd() {
+    $(".voiceDivs").removeClass("voicePanel");
     if (!isVoices) {
         return;
     }
     if ($(this).hasClass("voiceActive")) {
         $(this).removeClass("voiceActive");
         $("#voiceMessage").show();
-        $("#voiceMessage").html("正在识别…");
+        // $("#voiceMessage").html("正在识别…");
+        voiceTooip("正在识别…").open();
         $("#waveAnim").hide();
     }
 
@@ -90,12 +57,14 @@ function onTouchEnd() {
             }
         } catch (ex) {
             isVoices = false;
-            $("#voiceMessage").html("无法使用此功能，请下载最新app！");
+            // $("#voiceMessage").html("无法使用此功能，请下载最新app！");
+            voiceTooip("无法使用此功能，请下载最新app！").open();
             document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
             document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
             setTimeout(function () {
                 if (isVoices == false) {
-                    $("#voiceMessage").html("按住说话");
+                    // $("#voiceMessage").html("按住说话");
+                    //voiceTooip("按住说话").open();
                     document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
                     document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
                 }
@@ -112,23 +81,27 @@ function callbackVoiceBuffer(dt) {
     function _successf(data) {
         var rets = $(data).children("string").text();
         if (rets == "") {
-            $("#voiceMessage").html("未识别！");
+            // $("#voiceMessage").html("未识别！");
+            voiceTooip("未识别！").open();
         }
         else {
-            $("#voiceMessage").html(rets);
+            // $("#voiceMessage").html(rets);
+            voiceTooip(rets).open();
         }
         isVoices = false;
         document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
         document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
     }
     function _error(qXHR, textStatus, errorThrown) {
-        $("#voiceMessage").html("服务器出错！");
+        // $("#voiceMessage").html("服务器出错！");
+        voiceTooip("服务器出错！").open();
         isVoices = false;
         document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
         document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
         setTimeout(function () {
             if (isVoices == false) {
-                $("#voiceMessage").html("按住说话");
+                // $("#voiceMessage").html("按住说话");
+                voiceTooip("按住说话").open();
             }
         }, 3000);
     }
@@ -153,7 +126,8 @@ function StartVoiceXF() {
     }
 }
 function callbackVoiceXFMessage(dt) {
-    $("#voiceMessage").html(dt);
+    // $("#voiceMessage").html(dt);
+    voiceTooip(dt).open();
     $("#voiceMessage").show();
     $("#waveAnim").hide();
     isVoices = false;
@@ -167,23 +141,27 @@ function callbackVoiceXFData(dt) {
     function _successf(data) {
         var rets = $(data).children("string").text();
         if (rets == "") {
-            $("#voiceMessage").html("处理：未识别！");
+            // $("#voiceMessage").html("处理：未识别！");
+            voiceTooip("处理：未识别！").open();
         }
         else {
-            $("#voiceMessage").html("处理：" + rets);
+            // $("#voiceMessage").html("处理：" + rets);
+            voiceTooip("处理：" + rets).open();
         }
         isVoices = false;
         document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
         document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
     }
     function _error(qXHR, textStatus, errorThrown) {
-        $("#voiceMessage").html("服务器出错！");
+        // $("#voiceMessage").html("服务器出错！");
+        voiceTooip("服务器出错！").open();
         isVoices = false;
         document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
         document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
         setTimeout(function () {
             if (isVoices == false) {
-                $("#voiceMessage").html("按住说话");
+                // $("#voiceMessage").html("按住说话");
+                voiceTooip("按住说话").open();
             }
         }, 3000);
     }
