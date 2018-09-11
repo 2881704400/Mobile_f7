@@ -49349,3 +49349,11 @@ Exception rethrown at [0]:
    在 GWService.Net.ClassLib.VoiceControl(String audioData, String userName, String dataType)
 -------------------------------------
 
+----------2018/9/11 17:59:09----------
+System.ArgumentException: 已添加了具有相同键的项。
+   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
+   在 GWService.Net.ClassLib.UserPermissions(String userName)
+-------------------------------------
+
