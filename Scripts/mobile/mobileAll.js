@@ -12,6 +12,8 @@ var myApp = new Framework7({
         swipeOnlyClose: true,
     },
     statusbar: {
+            enabled: true,
+    overlay: true,
         iosOverlaysWebView: true,
     },
     // Add default routes
@@ -78,6 +80,7 @@ function initLoads() {
     setTimeout(function() {
         $("#app").show();
     }, 3000);
+    
     //语音记录选择
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";

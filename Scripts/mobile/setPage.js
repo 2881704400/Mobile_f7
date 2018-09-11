@@ -12,6 +12,9 @@
               $("#voiceListName>.item-after").html($(this).html());
         }
     });
+
+    //用户
+    $(".userClassName p").html(window.localStorage.userName);
 }
 
 

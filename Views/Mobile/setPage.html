@@ -9,7 +9,7 @@
                         <i class="iconfont icon-back"></i>
                     </a>
                 </div>                    
-                <div class="center sliding title">设置</div>
+                <div class="center sliding title"></div>
                 <div class="right hideMenu">
                     <a href="#" class="link icon-only panel-open"><i class="iconfont icon-f7_menu"></i></a>
                 </div>
@@ -17,7 +17,10 @@
         </div>        
         <!--"pull-to-refresh-content"类表示下拉刷新 -->
         <div  class="page-content setPageContainer">
-
+              <div class="userClassName">
+                  <i class="iconfont icon-f7_right_user"></i>
+                  <p ></p>
+              </div>
             <div class="list simple-list">
             <ul>
                 <li>
@@ -26,22 +29,54 @@
                             <option value="0">百度</option>
                             <option value="1" selected="selected">讯飞</option>
                         </select>
-                        <div class="item-content" style="padding-left: 0;">
+                        <div class="item-content">
+                            <div class="item-media"><i class="iconfont icon-f7_voice"></i></div>
                             <div class="item-inner" id="voiceListName">
                                 <div class="item-title">语音服务</div>
                             </div>
                         </div>
                     </a>
                 </li>             
-                  <li style="padding-right: 25px;">
-                    <span>夜间模式</span>
-                    <label class="toggle toggle-init  color-green">
-                      <input type="checkbox" checked="">
-                      <span class="toggle-icon"></span>
-                    </label>
+                  <li >
+                    <a href="#" class=" item-content">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_modul"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">夜间模式</div>
+                                    <div class="item-content">
+                                        <label class="toggle toggle-init  color-green">
+                                          <input type="checkbox" checked="">
+                                          <span class="toggle-icon"></span>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </a>
                   </li>
+                    <li>
+                        <a href="#" class="item-link item-content" onclick="onAppCacheClear()">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_clear"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">清空缓存</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="#" class="item-link item-content" onclick="onAbout()">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_about"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">关于</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
             </ul>
           </div>
 
+          <button class="col button button-fill color-pink exitLogin" onclick="onUserLogout()">退出登陆</button>
         </div>
     </div>
