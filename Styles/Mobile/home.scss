@@ -11,6 +11,10 @@ html.with-statusbar.device-android .framework7-root {
 html.with-statusbar.device-android .panel {
     height: 100%;top: 0;
 }
+.active-state:active {
+    opacity: 1!important;
+
+}   
 .ios .statusbar,.md .statusbar,.statusbar {
     background: #{$headerBgc};
 }
@@ -28,7 +32,7 @@ html.with-statusbar.device-android .panel {
             &:after,&:before{height: 0px;}
             div.item-content{width: 100%;border-bottom: 1px solid #{$asideBorderColor};}
             .item-inner:after{height: 0px;}
-            a{color: #{$situationFontColor} !important;}
+            a{color: #{$allFontColor} !important;}
             a i{font-size: 1.5rem;}
         }
     }
@@ -37,6 +41,7 @@ html.with-statusbar.device-android .panel {
 
 .view{
     /*内容区*/ 
+    .ios .page,.md .page,.page{background: #{$situationBgc};}
     .page-content{padding-bottom: 50px;}
     /*顶部导航栏*/
     .navbar{
@@ -44,12 +49,12 @@ html.with-statusbar.device-android .panel {
         &:after{height: 0px}
         &>.navbar-inner{ 
             .left{
-                .back i{font-size: 2rem;color: #{$situationFontColor};}
+                .back i{font-size: 2rem;color: #{$allFontColor};}
                 .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
                 .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
              }
-            .title{color: #{$situationFontColor};}
-            .right i{font-size: 1.3rem;color: #{$situationFontColor};}
+            .title{color: #{$allFontColor};}
+            .right i{font-size: 1.3rem;color: #{$allFontColor};}
         }
     }
     /*底部菜单*/
@@ -57,15 +62,15 @@ html.with-statusbar.device-android .panel {
         &:before{height: 0px;}
         a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
         .toolbar-inner{ 
-            &>a.active{color: #{$situationFontColor};}
-            &>a{ i{font-size: 1.5rem;}}
+            &>a.active{color: #{$selectedColor};}
+            &>a{color: #{$allFontColor}; i{font-size: 1.5rem;}}
             #voiceBtn{ &>span{ 
-                width: 4rem;height: 4rem;line-height: 4rem;position: relative;top: -2rem;background: #{$headerBgc};
+                width: 2.5rem;height: 2.5rem;line-height: 2.5rem;position: relative;top: 0rem;background: #{$headerBgc};
                 text-align: center;border-radius: 50%;outline: none;
-                display: inline-block;    box-shadow: 0px 0px 1px;
-                i{font-size: 2.5rem;}
+                display: inline-block;    border: 1px solid #{$allFontColor};
+                i{font-size: 2rem;}
                 }}
-            #voiceBtn:active span i{ color: #{$situationFontColor}; }
+            #voiceBtn:active span i{ color: #{$selectedColor}; }
         }
         background-color: #{$headerBgc};     
         // box-shadow: -1px 0px 1px #{$toolbarBoxShadow};
@@ -87,7 +92,7 @@ html.with-statusbar.device-android .panel {
 
 .ios .popoverLink,.md .popoverLink,.popoverLink{
     border-radius: 13px;background-color: #{$headerBgc}; 
-    a{color: #{$situationFontColor} !important;}
+    a{color: #{$allFontColor} !important;}
     .popover-angle {width: 26px; height: 26px; position: absolute;  top: 100%; z-index: 100; overflow: hidden; }
     .popover-angle:after {content: ''; background: #{$headerBgc}; width: 26px; height: 26px; position: absolute; left: 0; top: 0; border-radius: 3px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
     .popover-angle.on-bottom:after {left: 0;top: -19px;background: #{$headerBgc}; }
@@ -114,5 +119,5 @@ html.with-statusbar.device-android .panel {
     .simple-list li{.item-inner{padding-bottom: 0;padding-top: 0;}}
     .simple-list li:after{height: 0px;}
 }
-.toast {width: 250px!important;text-align: center;}
+.toast {text-align: center;}
 

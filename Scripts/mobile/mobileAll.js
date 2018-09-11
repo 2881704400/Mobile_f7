@@ -77,9 +77,7 @@ function initLoads() {
     loadNameMobile();
     setTimeout(function() {
         $("#app").show();
-
     }, 3000);
-    // $(".toolbar-inner").removeClass("disabled");
     //语音记录选择
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";
