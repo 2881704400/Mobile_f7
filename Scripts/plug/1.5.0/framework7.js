@@ -11241,7 +11241,6 @@
           $angleEl.css({ top: (angleTop + "px") });
         }
       }
-
       // Apply Styles
       $el.css({ top: (top + "px"), left: (left + "px") });
     };
