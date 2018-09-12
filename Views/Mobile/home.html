@@ -1,38 +1,5 @@
 ﻿<!DOCTYPE html>
-<<<<<<< HEAD
 <html >
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Cache" content="no-cache">
-    <title>AlarmCenter | 首页</title>
-    <link rel="icon" href="/Image/logo.png" type="image/x-icon">
-    <!--框架样式-->
-    <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
-    <!-- <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css"> -->
-    <!--图标字体样式-->
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_n3s6p51wpy.css" />
-    <!--声波动画-->
-    <link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
-    <!--本页样式-->
-    <link rel="stylesheet" href="/Styles/Mobile/public.css">
-    <link rel="stylesheet" href="/Styles/Mobile/style.css">
-    <link rel="stylesheet" href="/Styles/Mobile/home.css">
-    <link rel="stylesheet" href="/Styles/Mobile/animate.min.css">
-  </head>
-  <body>
-    <!-- App root element -->
-    <div id="app" style="display: none;">
-       <div class="statusbar"></div>
-        <!-- left panel -->
-<!--        <div class="panel panel-left layout-dark panel-cover">
-=======
-<html class="with-statusbar">
 
 	<head>
 		<meta charset="utf-8">
@@ -66,7 +33,6 @@
 			<div class="statusbar" style="background: #06D0F6;"></div>
 			<!-- left panel -->
 			<!--        <div class="panel panel-left layout-dark panel-cover">
->>>>>>> djf
             <div class="list">
                 <ul>
                     <li>
@@ -122,101 +88,6 @@
                 </ul>
             </div>
         </div> -->
-<<<<<<< HEAD
-      
-      <div class="view view-main">
-        <div data-page="home" class="page" id="home" >     
-                <!-- Top Navbar -->
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <!-- 标题 -->                  
-                        <div class="left hideMenu">
-                            <a href="#" class="back link">
-                                <i class="iconfont icon-back"></i>
-                            </a>
-                        </div>                         
-                        <div class="center sliding title auth_name_get"></div>
-                        <div class="right hideMenu">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
-                    </div>
-                </div>  
-                <!-- Scrollable page content -->
-                <div class="page-content" id="homeContents">
-                       home
-                </div>
-        </div>
-        <!-- Toolbar -->
-        <div class="toolbar tabbar tabbar-labels displayNone">
-            <div class="toolbar-inner">
-                <a href="/home/" class="link active animation-no" id="homeTool">
-                    <i class="iconfont icon-f7_home" ></i>
-                    <span >首页</span>
-                </a>
-<!--                 <a href="/snapshot/" class="link animation-no" id="snapshotTool">
-                    <i class="iconfont icon-f7_snapshot" ></i>
-                    <span >实时快照</span>
-                </a> -->
-                <a href="#" class="link animation-no" id="voiceBtn">
-                    <i class="iconfont icon-f7_voice"></i>
-                    <span>语音</span>
-                </a>                
-<!--                 <a href="/equips/" class="link animation-no" id="equipsTool">
-                    <i class="iconfont icon-f7_equipList"></i>
-                    <span>设备列表</span>
-                </a> -->
-                <a href="/setPage/" class="link animation-no" data-popover=".popover-links" id="configTool" >
-                    <i class="iconfont icon-f7_usersName" ></i>
-                    <span >我的</span>
-                </a>
-            </div>
-         </div>   
-         <!-- popover -->
-           <div class="popover popover-links popoverLink" style="width: 140px!important;text-align: center;">
-            <div class="popover-inner">
-              <div class="list">
-                <ul>
-                  <li><a class="list-button item-link popover-close" href="/eventQuery/">事件查询</a></li>
-                  <li><a class="list-button item-link popover-close" href="/systemConfig/">系统配置</a></li>
-                  <li><a class="list-button item-link popover-close" href="/schedule/">报警排表</a></li>
-                  <li><a class="list-button item-link popover-close" href="/equipLinkage/">设备联动</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- voice -->
-            <div class="voiceDivs displayNone">
-                <div class="">
-                    <div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
-                    <div id="waveAnim" class="waveAnim" style="display: none;"><i></i><i></i><i></i><i></i><i></i></div>
-                    <div class="voicetest"></div>
-                </div>
-            </div>          
-      </div>
-    </div>
-    <!-- 框架js-->
-    <script src="/Scripts/plug/jquery-1.10.1.min.js"></script>
-    <script src="/Scripts/plug/jq.ajax.js"></script>
-    <script src="/Scripts/plug/highcharts.js"></script>
-    <script type="text/javascript" src="/Scripts/plug/1.5.0/framework7.js"></script>
-    <!-- 配置js -->
-    <script type="text/javascript" src="/Scripts/mobile/Config.js"></script>
-    <!-- <script type="text/javascript" src="/Scripts/mobile/dataConfig.js"></script> -->
-    <!-- map -->
-    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=rfoFCQF6wWFKVgnW7M9dihXscceje5cs" ></script> -->
-    <!-- 首页js-->
-    <script type="text/javascript" src="/Scripts/mobile/home.js"></script>
-    <!-- 移动端入口js-->
-    <script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>
-    <script type="text/javascript" src="/Scripts/mobile/PageJs.js"></script>
-    <script type="text/javascript" src="/Scripts/mobile/Voice.js"></script>
-    <!-- 插件-->
-    <script type="text/javascript" src="/Scripts/mobile/plugin/appPopup.js"></script>
-    <!-- 二维扫描结果 -->
-    <!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
-    <!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
-=======
->>>>>>> djf
 
 	<head>
 		<meta charset="utf-8">
@@ -395,13 +266,8 @@
 		<!-- 二维扫描结果 -->
 		<!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
 		<!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
-        <script>
-	    window.onresize = function(){
 
-<<<<<<< HEAD
-	    }
-        </script>
-=======
+
 		<script type="text/javascript">
 			var windowWidth = window.screen.width;
 			var windowHeight = window.screen.height;
@@ -426,7 +292,6 @@
 				$("body").height(screenType);
 			}
 		</script>
->>>>>>> djf
 	</body>
 
 </html>
