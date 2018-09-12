@@ -30,7 +30,7 @@
 	<body>
 		<!-- App root element -->
 		<div id="app" style="display: none;">
-			<div class="statusbar"></div>
+			<div class="statusbar" style="background: #06D0F6;"></div>
 			<!-- left panel -->
 			<!--        <div class="panel panel-left layout-dark panel-cover">
             <div class="list">
@@ -117,9 +117,9 @@
 							<li><i class="iconfont icon-f7_menu"></i><span>统计</span></li>
 						</ul>
 						<ul class="small-stats-panel">
-							<li><label>31</label><span>故障</span></li>
-							<li><label>102</label><span>警告</span></li>
-							<li><label>96</label><span>信息</span></li>
+							<li><label id="scrrenH">31</label><span>故障</span></li>
+							<li><label id="scrrenW">102</label><span>警告</span></li>
+							<li><label id="screenType"></label><span>信息</span></li>
 							<li><label>58</label><span>设置</span></li>
 							<li><label>14</label><span>资产</span></li>
 							<li><i class="iconfont icon-f7_set"></i><span>统计</span></li>
@@ -208,6 +208,150 @@
 		</div>
 		<!-- 框架js-->
 		<script src="/Scripts/plug/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript">
+			var bodyHeight = $('body').height();
+			var screenHeight = window.screen.height;
+			$("#scrrenH").html(bodyHeight);
+			$("#scrrenW").html(screenHeight);
+			if(bodyHeight != screenHeight) {
+				$('body').height(screenHeight);
+			}
+		</script>
+
+		<!--<script type="text/javascript">
+			(function() {
+    "use strict";
+
+    function Utils() {
+    }
+
+    Utils.isWeiXin = function(){
+        return navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/);
+    };
+    Utils.isQQ = function(){
+        return navigator.userAgent.ua.match(/QQ\/([\d\.]+)/);
+    };
+    Utils.isQZone = function(){
+        return navigator.userAgent.ua.indexOf("Qzone/") !== -1;
+    };
+
+    Utils.isIos = function() {
+        return !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    };
+    Utils.isIPhone = function() {
+        return navigator.userAgent.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1;
+    };
+    Utils.isIpad = function() {
+        return navigator.userAgent.indexOf('iPad') > -1;
+    };
+    Utils.isAndroid = function() {
+        var u = navigator.userAgent;
+        return navigator.userAgent.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    };
+    Utils.isMobile = function() {
+        // var u = navigator.userAgent;
+        return navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i) != null;
+    };
+
+    // ## 屏幕方向
+    Utils.isPortrait = function() {
+        if (!Utils.isMobile()) {
+            //alert(111);
+            return true;
+
+        }
+        // 安卓版 微信里面 只用判断 width 和 height
+        if (Utils.isAndroid() && Utils.isWeiXin()) {
+            if (Utils.windowW() < Utils.windowH()) {
+                //alert(22);
+                return true;
+
+            } else {
+                //alert(331);
+                return false;
+
+            }
+        }
+        var orientation = window['orientation'];
+        if (orientation||orientation==0) {
+            if (orientation == 90 || orientation == -90) {
+                //alert(4442);
+                return false;
+
+            }else{
+                //alert(555111);
+                return true;
+
+            }
+        } else {
+            if (Utils.windowW() < Utils.windowH()) {
+                //alert(666111);
+                return true;
+
+            } else {
+                //alert(777111);
+                return false;
+
+            }
+        }
+    };
+    // ## jquery 获取 window 的宽度
+    Utils.windowW = function() {
+        // var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        return $(window).width();
+    };
+    // ## jquery 获取 window 的高度
+    Utils.windowH = function() {
+        return $(window).height();
+    };
+    window.Utils = Utils;
+}());
+			var screenType="";
+			$(function() { //监听横竖屏旋转，ios 和 Android 写法不一样  
+				onResize();
+				if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+					window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", onResize, false);
+				} else {
+					window.addEventListener("resize", onResize, false);
+				}
+			});
+
+			function onResize() {
+				if(Utils.isPortrait()) {
+					if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+
+					screenType="竖屏";
+						var timer = setTimeout(function() {
+							portrait(); //竖屏时执行的函数  
+
+							clearTimeout(timer);
+						}, 100);
+					} else {
+						portrait();
+					}
+				} else {
+					if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+						screenType="竖屏";
+						var timer = setTimeout(function() {
+							landscape(); //横屏时执行的函数  
+							clearTimeout(timer);
+						}, 100);
+					} else {
+						landscape();
+						screenType="横屏";
+					}
+				}
+				$("#screenType").html(screenType)
+				console.log(screenType)
+			}
+			
+			//竖屏
+function portrait(){
+    var w = window.Utils.windowW();
+    var h = window.Utils.windowH();
+    $("body").css({"width":w});
+}
+		</script>-->
 		<script src="/Scripts/plug/jq.ajax.js"></script>
 		<script src="/Scripts/plug/highcharts.js"></script>
 		<script type="text/javascript" src="/Scripts/plug/1.5.0/framework7.js"></script>
@@ -228,6 +372,48 @@
 		<!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
 		<!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
 
+		<script type="text/javascript">
+			var windowWidth = window.screen.width;
+			var windowHeight = window.screen.height;
+			window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+				if(window.orientation == 180 || window.orientation == 0) {
+					var timer = setTimeout(function() {
+						updateBodyLandscope(windowHeight); //竖屏时执行的函数  
+
+						clearTimeout(timer);
+					}, 100);
+				}
+				if(window.orientation == 90 || window.orientation == 90) {
+					var timer = setTimeout(function() {
+						updateBodyLandscope(windowWidth); //竖屏时执行的函数  
+
+						clearTimeout(timer);
+					}, 100);
+				}
+			}, false)
+
+			function updateBodyLandscope(screenType) {
+				$("html").height(screenType);
+				myApp.dialog.alert(screenType);
+//				var bodyWidth = $('body').width();
+//				var bodyHeight = $('body').height();
+//				myApp.dialog.alert(windowHeight + "," + windowWidth);
+//				myApp.dialog.alert(bodyHeight + "," + bodyWidth);
+//				if(screenType == 0) {
+//					if(bodyWidth != windowWidth) {
+//						$('body').height(windowWidth);
+//					}
+//				} else if(screenType == 1) {
+//					if(bodyHeight != windowHeight) {
+//						$('body').height(windowHeight);
+//					}
+//				}
+				/*
+				if(bodyHeight != windowHeight) {
+					$('body').height(windowHeight);
+				}*/
+			}
+		</script>
 	</body>
 
 </html>

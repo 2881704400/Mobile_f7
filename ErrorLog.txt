@@ -49374,3 +49374,17 @@ Exception rethrown at [0]:
    在 GWService.Net.ClassLib.VoiceControl(String audioData, String userName, String dataType)
 -------------------------------------
 
+----------2018/9/12 13:30:59----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String ip, String Name, String pwd)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name)
+-------------------------------------
+
+----------2018/9/12 13:31:13----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String ip, String Name, String pwd)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name)
+-------------------------------------
+
