@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="with-statusbar">
 
 	<head>
@@ -12,89 +12,101 @@
 		<meta http-equiv="Cache" content="no-cache">
 		<title>AlarmCenter | 首页</title>
 		<link rel="icon" href="/Image/logo.png" type="image/x-icon">
+		<!--框架样式-->
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
-		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css">
+		<!-- <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css"> -->
+		<!--图标字体样式-->
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_s7q3c9y4n1b.css" />
+		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
+		<!--本页样式-->
 		<link rel="stylesheet" href="/Styles/Mobile/public.css">
 		<link rel="stylesheet" href="/Styles/Mobile/style.css">
 		<link rel="stylesheet" href="/Styles/Mobile/home.css">
 		<link rel="stylesheet" href="/Styles/Mobile/animate.min.css">
-		<link rel="stylesheet" type="text/css" href="/Styles/Mobile/layout.css"/>
+		<link rel="stylesheet" href="/Styles/Mobile/layout.css" />
 	</head>
 
 	<body>
-		<div id="app">
+		<!-- App root element -->
+		<div id="app" style="display: none;">
 			<div class="statusbar"></div>
-			<div class="panel panel-left layout-dark panel-cover">
-				<div class="list">
-					<ul>
-						<li>
-							<a href="/UserInfor/" class="item-link item-content panel-close">
-								<div class="item-content">
-									<div class="item-media"><i class="iconfont icon-f7_usersName"></i></div>
-									<div class="item-inner">
-										<div class="item-title" id="userName"></div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li id="appCacheClearLi" style="display:none;">
-							<a href="#" class="item-link item-content" onclick="onAppCacheClear()">
-								<div class="item-content">
-									<div class="item-media"><i class="iconfont icon-f7_clear"></i></div>
-									<div class="item-inner">
-										<div class="item-title">清空缓存</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="/setPage/" class="item-link item-content panel-close">
-								<div class="item-content">
-									<div class="item-media"><i class="iconfont icon-f7_set"></i></div>
-									<div class="item-inner">
-										<div class="item-title">设置</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="item-link item-content" onclick="onAbout()">
-								<div class="item-content">
-									<div class="item-media"><i class="iconfont icon-f7_about"></i></div>
-									<div class="item-inner">
-										<div class="item-title">关于</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#" class="item-link item-content" onclick="onUserLogout()">
-								<div class="item-content">
-									<div class="item-media"><i class="iconfont icon-f7_exit"></i></div>
-									<div class="item-inner">
-										<div class="item-title">注销</div>
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			<!-- left panel -->
+			<!--        <div class="panel panel-left layout-dark panel-cover">
+            <div class="list">
+                <ul>
+                    <li>
+                        <a href="/UserInfor/" class="item-link item-content panel-close">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_usersName"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title" id="userName"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li id="appCacheClearLi" style="display:none;">
+                        <a href="#" class="item-link item-content" onclick="onAppCacheClear()">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_clear"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">清空缓存</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>      
+                    <li>
+                        <a href="/setPage/" class="item-link item-content panel-close">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_set"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">设置</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>                                                              
+                    <li>
+                        <a href="#" class="item-link item-content" onclick="onAbout()">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_about"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">关于</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item-link item-content" onclick="onUserLogout()">
+                            <div class="item-content">
+                                <div class="item-media"><i class="iconfont icon-f7_exit"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">注销</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+
 			<div class="view view-main">
 				<div data-page="home" class="page" id="home">
+					<!-- Top Navbar -->
 					<div class="navbar">
 						<div class="navbar-inner">
+							<!-- 标题 -->
 							<div class="left hideMenu">
-								<a href="#" class="back link"> <i class="iconfont icon-back"></i> </a>
+								<a href="#" class="back link">
+									<i class="iconfont icon-back"></i>
+								</a>
 							</div>
 							<div class="center sliding title auth_name_get"></div>
 							<div class="right">
-								<a href="#" class="link icon-only panel-open"><i class="iconfont icon-f7_menu"></i></a>
+								<a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
 							</div>
 						</div>
 					</div>
+					<!-- Scrollable page content -->
 					<div class="page-content mainDiv" id="homeContents">
 						<ul class="small-stats-panel">
 							<li><i class="iconfont icon-web-cuowu"></i><span>故障</span></li>
@@ -138,15 +150,32 @@
 						</ul>
 					</div>
 				</div>
+				<!-- Toolbar -->
 				<div class="toolbar tabbar tabbar-labels displayNone">
 					<div class="toolbar-inner">
-						<a href="/home/" class="link active animation-no" id="homeTool"> <i class="iconfont icon-f7_home"></i> <span>首页</span> </a>
-						<a href="/snapshot/" class="link animation-no" id="snapshotTool"> <i class="iconfont icon-f7_snapshot"></i> <span>实时快照</span> </a>
-						<a href="#" class="link" id="voiceBtn"> <span><i class="iconfont icon-f7_voice"></i></span> </a>
-						<a href="/equips/" class="link animation-no" id="equipsTool"> <i class="iconfont icon-f7_equipList"></i> <span>设备列表</span> </a>
-						<a href="#" class="link animation-no popover-open" data-popover=".popover-links" id="configTool"> <i class="iconfont icon-f7_set"></i> <span>配置</span> </a>
+						<a href="/home/" class="link active animation-no" id="homeTool">
+							<i class="iconfont icon-f7_home"></i>
+							<span>首页</span>
+						</a>
+						<a href="/snapshot/" class="link animation-no" id="snapshotTool">
+							<i class="iconfont icon-f7_snapshot"></i>
+							<span>实时快照</span>
+						</a>
+						<a href="#" class="link" id="voiceBtn">
+							<span><i class="iconfont icon-f7_voice"></i></span>
+						</a>
+						<a href="/equips/" class="link animation-no" id="equipsTool">
+							<i class="iconfont icon-f7_equipList"></i>
+							<span>设备列表</span>
+						</a>
+						<a href="#" class="link animation-no popover-open" data-popover=".popover-links" id="configTool">
+							<!-- onclick="systemConfig('configTool')" -->
+							<i class="iconfont icon-f7_set"></i>
+							<span>配置</span>
+						</a>
 					</div>
 				</div>
+				<!-- popover -->
 				<div class="popover popover-links popoverLink" style="width: 140px!important;text-align: center;">
 					<div class="popover-inner">
 						<div class="list">
@@ -167,6 +196,7 @@
 						</div>
 					</div>
 				</div>
+				<!-- voice -->
 				<div class="voiceDivs displayNone">
 					<div class="">
 						<div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
@@ -176,16 +206,28 @@
 				</div>
 			</div>
 		</div>
+		<!-- 框架js-->
 		<script src="/Scripts/plug/jquery-1.10.1.min.js"></script>
 		<script src="/Scripts/plug/jq.ajax.js"></script>
 		<script src="/Scripts/plug/highcharts.js"></script>
 		<script type="text/javascript" src="/Scripts/plug/1.5.0/framework7.js"></script>
+		<!-- 配置js -->
 		<script type="text/javascript" src="/Scripts/mobile/Config.js"></script>
+		<!-- <script type="text/javascript" src="/Scripts/mobile/dataConfig.js"></script> -->
+		<!-- map -->
+		<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=rfoFCQF6wWFKVgnW7M9dihXscceje5cs" ></script> -->
+		<!-- 首页js-->
 		<script type="text/javascript" src="/Scripts/mobile/home.js"></script>
+		<!-- 移动端入口js-->
 		<script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>
 		<script type="text/javascript" src="/Scripts/mobile/PageJs.js"></script>
 		<script type="text/javascript" src="/Scripts/mobile/Voice.js"></script>
+		<!-- 插件-->
 		<script type="text/javascript" src="/Scripts/mobile/plugin/appPopup.js"></script>
+		<!-- 二维扫描结果 -->
+		<!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
+		<!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
+
 	</body>
 
 </html>

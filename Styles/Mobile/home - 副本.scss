@@ -16,7 +16,7 @@ html.with-statusbar.device-android .panel {
 
 }   
 .ios .statusbar,.md .statusbar,.statusbar {
-    background: transparent;
+    background: #{$headerBgc};
 }
 .md .statusbar {
     display: none!important;
@@ -46,20 +46,13 @@ html.with-statusbar.device-android .panel {
         padding-bottom: 50px;
         // 设置界面
         &.setPageContainer{
-            overflow-y: auto;
             a{  
                 color: #{$asideBorderColor};width: 100%;display: block;
                 &.item-content,&>div.item-content{height: 44px;padding-left: 0!important;}
                 i{font-size: 1.5rem;}
             }
-            &>div.userClassName{
-                text-align: center;background: white;
-                i{font-size: 7rem;}
-                p{font-size: 1.2rem;margin: 0;    padding-bottom: 20px;text-align: center;}
-            }
-            &>div.simple-list{margin: 0;background: white;}
         }
-        .exitLogin {font-size: #{$btnFontSize}; width: 90%; height: 50px;  left: 5%; top: 10%; }
+        .exitLogin {font-size: #{$btnFontSize}; width: 90%; height: 50px; position: absolute; left: 5%; bottom: 10%; }
 
     }
     /*顶部导航栏*/
@@ -97,7 +90,6 @@ html.with-statusbar.device-android .panel {
 
 }
 .md .navbar{
-    height: 44px;
     .title{margin: auto;}
     .right{margin-left: 0;}
 }
@@ -107,12 +99,11 @@ html.with-statusbar.device-android .panel {
     a.link span{margin-left: 0!important;}
     .toolbar-inner{overflow: visible;}
 } 
-.md .page-content{padding-top: 44px!important;}
+
 //弹出菜单
 
 .ios .popoverLink,.md .popoverLink,.popoverLink{
-    border-radius: 13px;background-color: #{$headerBgc};
-    right:0;left: auto !important;
+    border-radius: 13px;background-color: #{$headerBgc}; 
     a{color: #{$allFontColor} !important;}
     .popover-angle {width: 26px; height: 26px; position: absolute;  top: 100%; z-index: 100; overflow: hidden; }
     .popover-angle:after {content: ''; background: #{$headerBgc}; width: 26px; height: 26px; position: absolute; left: 0; top: 0; border-radius: 3px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }

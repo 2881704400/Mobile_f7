@@ -4,21 +4,22 @@ mixin：sass宏mixin
 @import '_mixin.scss';
 
 //全局字体颜色
-$allFontColor: #333;
+$allFontColor: #919191;
 // header头部属性
 $headerFontSize: 1.4rem;
 $headerBgc: #fff;
 // 全局背景色,字体颜色
-$situationBgc: #f7f7f7;
-$situationFontColor: #333;
+$situationBgc: #f6f6f6;
+$situationFontColor: #919191;
 //工具栏背景色
 $toolbarBgc: #fff;
-$toolbarFontColor: #333;
+$toolbarFontColor: #414141;
 $selectedColor: #FD971F;
 // aside侧边栏属性
 $asideBgc: #272727;
-$asideBorderColor: #333;
+$asideBorderColor: #414141;
 // 统一按钮属性
+$btnFontSize: 1.2rem;
 $btnBackground: #2d8cf0;
 $btnFontColor: #DEF0F9;
 

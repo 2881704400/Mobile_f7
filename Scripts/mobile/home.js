@@ -1,6 +1,6 @@
 ﻿//首页事件
 function onHomePage() {
-    $('html').removeClass('with-statusbar-overlay').addClass("with-statusbar");
+    // $('html').removeClass('with-statusbar-overlay').addClass("with-statusbar");
     authorizationName();
     switchToolbar("homeTool");
 }
