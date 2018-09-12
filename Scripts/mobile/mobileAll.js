@@ -77,10 +77,12 @@ initLoads();
 
 function initLoads() {
     loadNameMobile();
+    
     setTimeout(function() {
+        //$("html").height(window.screen.height);
         $("#app").show();
     }, 3000);
-    
+
     //语音记录选择
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";
@@ -1136,3 +1138,4 @@ function voiceTooip(txt){
       closeTimeout: 3000,
     });
 }
+

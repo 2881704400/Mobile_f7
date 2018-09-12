@@ -31,64 +31,6 @@
 		<!-- App root element -->
 		<div id="app" style="display: none;">
 			<div class="statusbar"></div>
-			<!-- left panel -->
-			<!--        <div class="panel panel-left layout-dark panel-cover">
-            <div class="list">
-                <ul>
-                    <li>
-                        <a href="/UserInfor/" class="item-link item-content panel-close">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-f7_usersName"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title" id="userName"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li id="appCacheClearLi" style="display:none;">
-                        <a href="#" class="item-link item-content" onclick="onAppCacheClear()">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-f7_clear"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">清空缓存</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>      
-                    <li>
-                        <a href="/setPage/" class="item-link item-content panel-close">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-f7_set"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">设置</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>                                                              
-                    <li>
-                        <a href="#" class="item-link item-content" onclick="onAbout()">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-f7_about"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">关于</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="item-link item-content" onclick="onUserLogout()">
-                            <div class="item-content">
-                                <div class="item-media"><i class="iconfont icon-f7_exit"></i></div>
-                                <div class="item-inner">
-                                    <div class="item-title">注销</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-
 			<div class="view view-main">
 				<div data-page="home" class="page" id="home">
 					<!-- Top Navbar -->
@@ -227,7 +169,13 @@
 		<!-- 二维扫描结果 -->
 		<!-- <script type="text/javascript" src="/Scripts/mobile/RichScanCallback.js"></script> -->
 		<!-- <script type="text/javascript" src="/Scripts/mobile/plugin/html5media.min.js"></script> -->
-
+        <script>
+	    window.onresize = function(){
+            var clientHeightValue = document.documentElement.clientHeight;
+	        $("html").height(clientHeightValue);
+	         //myApp.dialog.alert(clientHeightValue);
+	    }
+        </script>
 	</body>
 
 </html>
