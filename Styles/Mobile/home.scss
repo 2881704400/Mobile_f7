@@ -16,11 +16,12 @@ html.with-statusbar.device-android .panel {
 
 }   
 .ios .statusbar,.md .statusbar,.statusbar {
-    background: transparent;
+    background: white;
 }
 .md .statusbar {
     display: none!important;
 }
+
 .hideMenu{visibility: hidden; opacity: 0;}
 /*左侧panel*/
 
@@ -80,16 +81,18 @@ html.with-statusbar.device-android .panel {
     .toolbar{
         &:before{height: 0px;}
         a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
-        .toolbar-inner{ 
+        .toolbar-inner{ padding: 0px 10%;
             &>a.active{color: #{$selectedColor};}
-            &>a{color: #{$allFontColor}; i{font-size: 1.5rem;}}
-            #voiceBtn{ &>span{ 
-                width: 2.5rem;height: 2.5rem;line-height: 2.5rem;position: relative;top: 0rem;background: #{$headerBgc};
-                text-align: center;border-radius: 50%;outline: none;
-                display: inline-block;    border: 1px solid #{$allFontColor};
-                i{font-size: 2rem;}
-                }}
-            #voiceBtn:active span i{ color: #{$selectedColor}; }
+            &>a{color: #{$allFontColor}; i{font-size: 2rem;}}
+            #voiceBtn{ 
+                // &>span{ 
+                // width: 2.5rem;height: 2.5rem;line-height: 2.5rem;position: relative;top: 0rem;background: #{$headerBgc};
+                // text-align: center;border-radius: 50%;outline: none;
+                // display: inline-block; 
+                // i{font-size: 2rem;}
+                // }
+            }
+            #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
         }
         background-color: #{$headerBgc};     
         // box-shadow: -1px 0px 1px #{$toolbarBoxShadow};
@@ -132,8 +135,8 @@ html.with-statusbar.device-android .panel {
     border-radius: 20px;outline: none;display: inline-block;padding-top: 70%;    z-index: 1;
     #voiceMessage{font-size: 1.2rem;text-align: center;}
 }
-
-
+.md .ripple-wave{display: none!important;}
+.md .voicePanel{border-radius: 0!important;}
 //设置
 .setPageContainer{
     #voiceList{width: 100%;}
@@ -141,4 +144,7 @@ html.with-statusbar.device-android .panel {
     .simple-list li:after{height: 0px;}
 }
 .toast {text-align: center;}
+
+
+
 
