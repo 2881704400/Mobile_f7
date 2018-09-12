@@ -1,3 +1,4 @@
 ﻿function equips(){
 switchToolbar("equipsTool");
+
 }
