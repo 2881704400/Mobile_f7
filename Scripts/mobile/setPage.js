@@ -1,5 +1,5 @@
 ﻿function setPage(){
-
+    switchToolbar("configTool");
     //选择
     $("#voiceList").find("option").each(function () {
         if ($(this).attr("value") == window.localStorage.voiceList) {
