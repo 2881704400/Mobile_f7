@@ -1,6 +1,7 @@
 ﻿//首页事件
 function onHomePage() {
     authorizationName();
+    
     switchToolbar("homeTool");
 }
 //界面尺寸变化事件

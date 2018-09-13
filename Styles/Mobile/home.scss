@@ -69,28 +69,29 @@ html.with-statusbar.device-android .panel {
         &:after{height: 0px}
         &>.navbar-inner{ 
             .left{
-                .back i{font-size: 2rem;color: #{$allFontColor};}
+                .back i{font-size: 2rem;color: #{$toolbarFontColor};;}
                 .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
                 .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
              }
-            .title{color: #{$allFontColor};}
-            .right i{font-size: 2rem;color: #{$allFontColor};}
+            .title{color: #{$toolbarFontColor};;}
+            .right i{font-size: 2rem;color: #{$toolbarFontColor};;}
         }
     }
     /*底部菜单*/
     .toolbar{
         &:before{height: 0px;}
         a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
-        .toolbar-inner{ padding: 0px 10%;
+        .toolbar-inner{ 
             &>a.active{color: #{$selectedColor};}
-            &>a{color: #{$allFontColor}; i{font-size: 2rem;}}
+            &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
             #voiceBtn{ 
-                // &>span{ 
-                // width: 2.5rem;height: 2.5rem;line-height: 2.5rem;position: relative;top: 0rem;background: #{$headerBgc};
-                // text-align: center;border-radius: 50%;outline: none;
-                // display: inline-block; 
-                // i{font-size: 2rem;}
-                // }
+              &>p{widht: 100%;margin: 0;position: absolute;top: -50%;left: 0;border-radius: 50%;
+                text-align: center;background: #{$situationBgc};
+                  span{    width: 90%; height: 90%; position: relative; 
+                    display: inline-block; border-radius: 50%; background: #ddd; margin: 5%;}
+                  i{font-size: 2.5rem;position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%);}
+              }
+   
             }
             #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
         }
@@ -107,7 +108,7 @@ html.with-statusbar.device-android .panel {
 .md .toolbar{
     height: 50px;top: 100%;transform: translateY(-100%);
     a{color: #{$toolbarFontColor};}
-    a.link span{margin-left: 0!important;}
+    a.link i+i,a.link i+span,a.link span+i,a.link span+span{margin-left: 0;}
     .toolbar-inner{overflow: visible;}
 } 
 .md .page-content{padding-top: 44px!important;}
