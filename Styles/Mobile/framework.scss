@@ -43,26 +43,7 @@ html.with-statusbar.device-android .panel {
 .view{
     /*内容区*/ 
     .ios .page,.md .page,.page{background: #{$situationBgc};}
-    .page-content{
-        padding-bottom: 50px;
-        // 设置界面
-        &.setPageContainer{
-            overflow-y: auto;
-            a{  
-                color: #{$asideBorderColor};width: 100%;display: block;
-                &.item-content,&>div.item-content{height: 44px;padding-left: 0!important;}
-                i{font-size: 1.5rem;}
-            }
-            &>div.userClassName{
-                text-align: center;background: white;
-                i{font-size: 7rem;}
-                p{font-size: 1.2rem;margin: 0;    padding-bottom: 20px;text-align: center;}
-            }
-            &>div.simple-list{margin: 0;background: white;}
-        }
-        .exitLogin {font-size: #{$btnFontSize}; width: 90%; height: 50px;  left: 5%; top: 10%; }
-
-    }
+    .page-content{padding-bottom: 50px;}
     /*顶部导航栏*/
     .navbar{
         background-color: #{$headerBgc};
@@ -82,16 +63,16 @@ html.with-statusbar.device-android .panel {
         &:before{height: 0px;}
         a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
         .toolbar-inner{ 
+            box-shadow: 0px -2px 5px #{$situationBgc};
             &>a.active{color: #{$selectedColor};}
             &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
             #voiceBtn{ 
               &>p{widht: 100%;margin: 0;position: absolute;top: -50%;left: 0;border-radius: 50%;
                 text-align: center;background: #{$situationBgc};
                   span{    width: 90%; height: 90%; position: relative; 
-                    display: inline-block; border-radius: 50%; background: #ddd; margin: 5%;}
+                    display: inline-block; border-radius: 50%; background: #{$toolbarBgc}; margin: 5%;}
                   i{font-size: 2.5rem;position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%);}
               }
-   
             }
             #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
             a.link.active-state:before{opacity: 0!important;}
@@ -137,13 +118,7 @@ html.with-statusbar.device-android .panel {
 }
 .md .ripple-wave{display: none!important;}
 .md .voicePanel{border-radius: 0!important;}
-//设置
-.setPageContainer{
-    #voiceList{width: 100%;}
-    .simple-list li{.item-inner{padding-bottom: 0;padding-top: 0;}}
-    .simple-list li:after{height: 0px;}
-}
-.toast {text-align: center;}
+
 
 
 

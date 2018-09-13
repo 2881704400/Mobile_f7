@@ -49404,3 +49404,11 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
 -------------------------------------
 
 >>>>>>> dc7573b7d70f67dd711ab18ae345fa490d585204
+----------2018/9/13 15:21:25----------
+System.ArgumentException: 已添加了具有相同键的项。
+   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
+   在 GWService.Net.ClassLib.UserPermissions(String userName)
+-------------------------------------
+
