@@ -1,8 +1,10 @@
 ﻿//首页事件
 function onHomePage() {
+	
     authorizationName();
     
     switchToolbar("homeTool");
+<<<<<<< HEAD
     //图表
     $("#purchase_Bar").width(window.screen.width);
 
@@ -14,6 +16,11 @@ function onHomePage() {
     VideoBaner("KOvm_container","swiper-paginationTrailer-KOvm",KOvm);//场景
     commonlyUsedFun("pptPattern_container ol","50",pptPattern);//PPT
     commonlyUsedFun("jjPattern_container ol","50",jjPattern);//讲解
+=======
+    
+//  myApp.router.navigate("/equips/")
+//   myApp.router.navigate("/ycAndyx/")
+>>>>>>> 8eb2bb0a3458eb001012512caec35f0fc0ccd6e6
 }
 //界面尺寸变化事件
 function onResizeCustomized() {

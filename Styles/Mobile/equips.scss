@@ -1,0 +1,165 @@
+.ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~.page-content, .ios .page-with-subnavbar .navbar~.page-content{
+        padding-top: 0 !important;
+        .tabs-animated-wrap{
+            padding-top: 44px;
+        }
+    }
+.ios .toolbar.toolCon{
+        top: 44px !important;
+}
+.ios .tabbar-labels~* .page-content, .ios .tabbar-labels~.page-content{
+    padding-bottom:44px;
+}
+
+.popover-angle.on-bottom{
+    display: none;
+}
+#equips{
+    .equip-list{
+        background: #fff;
+        li{
+//          padding: 5px 0;
+            i{
+                color: #7D828F;
+                &.noCom{
+                    color: #7D828F;
+                }
+                &.alarm{
+                    color: #FE4445;
+                }
+                &.comOk{
+                    color: #54BB5C;
+                }
+            }
+        }
+       
+    }  
+}
+#ycAndyx{
+   
+    .toolbar{
+        top: 50px;
+        border-bottom: 1px solid #eee;
+        &:after{
+             height: 0;
+        }
+        .toolbar-inner{
+            overflow: hidden;
+            &>a{
+                &.tab-link.tab-link-active{
+                    color: #FD971F;
+                    border-bottom: 2px solid  #FD971F;
+                }
+            }
+        }
+    }
+    #tabsWrap{
+        height: calc(100% - 50px);
+        .tab{
+//          padding: 0 10px;
+//          .tabTitle{
+//              text-align: center;
+//              height: 40px;
+//              line-height: 50px;
+//              
+//          }
+//          .tabContent{
+//              text-align: center;
+//              overflow: auto;
+//              height: 100%;
+//              padding-bottom: 40px;
+//              .row{
+//                  height: 40px;
+//                  line-height: 40px;
+//                  .chart{
+//                      i{
+//                          font-size: 20px; 
+//                      }
+//                     
+//                  }
+//                  .state{
+//                       i{
+//                          
+//                          &.alarm{
+//                              color: #FE4445;
+//                          }
+//                          &.comOk{
+//                              color: #54BB5C;
+//                          }
+//                      }
+//                  }
+//                 
+//                  .name{
+//                      text-overflow: ellipsis;
+//                      white-space: nowrap;
+//                      overflow: hidden;
+//                  }
+//              }
+//             
+//          }
+          
+            overflow:auto;
+            .itemOne{
+                width: 100%;
+                background: #fff;
+                overflow: hidden;
+                padding-left:15px ;
+                box-sizing: border-box;
+//              margin-bottom: 10px;
+                border-bottom: 1px solid #eee;
+                .name{
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                }
+                ul{
+                    width: 100%;
+                    overflow: hidden;
+                    margin: 0em 0 1em 0;
+                    display: flex;
+
+                    align-items: center;
+                    li{
+                        color: #666;
+                        padding-right: 10px;
+                        text-align: center;
+                        i{
+                            color: #7D828F;
+                            &.noCom{
+                                color: #7D828F;
+                            }
+                            &.alarm{
+                                color: #FE4445;
+                            }
+                            &.comOk{
+                                color: #54BB5C;
+                            }
+                        }
+//                      &.sta:after{
+//                          position: absolute;
+//                          content:"" ;
+//                          height: 100%;
+//                          width: ;
+//                      }
+                    }
+                    
+                }
+            }
+              &#set{
+                .itemOne{
+                    text-align: left;
+                   
+//                  color: #3498db;
+                    .name{
+                        font-weight: normal ;
+                    }
+                    p{
+                        margin: 1.5em 0;
+//                      width: 100%;
+                    }
+                }
+            }
+        }
+       
+    }
+}
+

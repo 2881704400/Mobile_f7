@@ -49404,6 +49404,7 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
 -------------------------------------
 
 >>>>>>> dc7573b7d70f67dd711ab18ae345fa490d585204
+<<<<<<< HEAD
 ----------2018/9/13 15:21:25----------
 System.ArgumentException: 已添加了具有相同键的项。
    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
@@ -49412,3 +49413,12 @@ System.ArgumentException: 已添加了具有相同键的项。
    在 GWService.Net.ClassLib.UserPermissions(String userName)
 -------------------------------------
 
+=======
+----------2018/9/17 13:16:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String ip, String Name, String pwd)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name)
+-------------------------------------
+
+>>>>>>> 8eb2bb0a3458eb001012512caec35f0fc0ccd6e6

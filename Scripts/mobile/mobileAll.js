@@ -55,7 +55,11 @@ var myApp = new Framework7({
     }, {
         path: '/resultEvent/',
         content: '123',
-    }],
+    }, {
+        path: '/ycAndyx/',
+        url: 'ycAndyx.html',
+    }
+    ],
     on: {
         // each object key means same name event handler
         pageInit: function(page) {
