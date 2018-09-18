@@ -5,9 +5,12 @@ function onHomePage() {
     
     switchToolbar("homeTool");
 
+
     
 //  myApp.router.navigate("/equips/")
 //   myApp.router.navigate("/ycAndyx/")
+
+
 
     //图表
     $("#purchase_Bar").width(window.screen.width);
