@@ -48,7 +48,11 @@ var myApp = new Framework7({
     {
         path: '/setPage/',
         url: 'setPage.html',
-    },     
+    },
+    {
+        path: '/snapShotDetail/',
+        url: 'snapShotDetail.html',
+    },
     {
         path: '/RealTimeList/',
         content: '123',

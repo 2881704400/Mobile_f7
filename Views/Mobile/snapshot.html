@@ -1,29 +1,72 @@
-﻿
-
-    <div data-page="snapshot" class="page" id="snapshot">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <!-- 标题 -->                  
-                <div class="left hideMenu">
-                    <a href="#" class="back link">
-                        <i class="iconfont icon-back"></i>
-                    </a>
-                </div>                         
-                <div class="center sliding title">实时快照</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
-            </div>
-        </div>        
-        <!--"pull-to-refresh-content"类表示下拉刷新 -->
-        <div  class="page-content ptr-content" data-ptr-distance="55">
-            <!-- 默认的下拉刷新层 -->
-<!--             <div class="ptr-preloader">
-              <div class="preloader"></div>
-              <div class="ptr-arrow"></div>
-            </div>   -->          
-            <div class="list-block list-page list" style="margin:0;">
-                实时快照
-            </div>
-        </div>
-    </div>
+﻿<div data-page="snapshot" class="page" id="snapshot">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<!-- 标题 -->
+			<div class="left hideMenu">
+				<a href="#" class="back link">
+					<i class="iconfont icon-back"></i>
+				</a>
+			</div>
+			<div class="center sliding title">实时快照</div>
+			<div class="right">
+				<a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
+			</div>
+		</div>
+	</div>
+	<!--"pull-to-refresh-content"类表示下拉刷新 -->
+	<div class="page-content ptr-content snapashot-page-content" data-ptr-distance="55">
+		<div class="ptr-preloader">
+			<div class="preloader"></div>
+			<div class="ptr-arrow"></div>
+		</div>
+		<div class="list-block list-page list snapshot-main" style="margin:0;">
+			<ul class="snapshot-ul" id="snapshotMenuListId"><!--
+				<li>
+					<a href="/snapShotDetail/?0" class="item-link item-content">
+						<div class="item-media"><i class="iconfont icon-web-cuowu"></i></div>
+						<div class="item-inner" id="snapShotDetail_0">
+							<div class="item-title">故障</div>
+							<div class="item-after"><span class="badge" id="bgSnapshot_1">0</span></div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/snapShotDetail/?1" class="item-link item-content">
+						<div class="item-media"><i class="iconfont icon-web-jingshimian"></i></div>
+						<div class="item-inner" id="snapShotDetail_1">
+							<div class="item-title">警告</div>
+							<div class="item-after"><span class="badge" id="bgSnapshot_2">0</span></div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/snapShotDetail/?2" class="item-link item-content">
+						<div class="item-media"><i class="iconfont icon-web-xinxiinfo21"></i></div>
+						<div class="item-inner" id="snapShotDetail_2">
+							<div class="item-title">信息</div>
+							<div class="item-after"><span class="badge" id="bgSnapshot_3">0</span></div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/snapShotDetail/?3" class="item-link item-content">
+						<div class="item-media"><i class="iconfont icon-web-shezhi"></i></div>
+						<div class="item-inner" id="snapShotDetail_3">
+							<div class="item-title">设置</div>
+							<div class="item-after"><span class="badge" id="bgSnapshot_4">0</span></div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/snapShotDetail/?4" class="item-link item-content">
+						<div class="item-media"><i class="iconfont icon-web-assets"></i></div>
+						<div class="item-inner" id="snapShotDetail_4">
+							<div class="item-title">资产</div>
+							<div class="item-after"><span class="badge" id="bgSnapshot_5">0</span></div>
+						</div>
+					</a>
+				</li>-->
+			</ul>
+		</div>
+	</div>
+</div>

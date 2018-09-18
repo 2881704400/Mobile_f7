@@ -5,6 +5,66 @@ mixin：sass宏mixin
 /*
 mixin：sass宏mixin
 */
+/*实时快照样式*/
+.snapshot-main {
+  width: 100%;
+  height: 100%; }
+  .snapshot-main .snapshot-ul li {
+    background: white; }
+    .snapshot-main .snapshot-ul li .item-media {
+      min-width: 0; }
+    .snapshot-main .snapshot-ul li i {
+      font-size: 24px; }
+    .snapshot-main .snapshot-ul li .badge {
+      border-radius: 50%; }
+    .snapshot-main .snapshot-ul li:nth-child(1) i {
+      color: #F22434; }
+    .snapshot-main .snapshot-ul li:nth-child(1) .badge {
+      background: #F22434; }
+    .snapshot-main .snapshot-ul li:nth-child(2) i {
+      color: #F88C10; }
+    .snapshot-main .snapshot-ul li:nth-child(2) .badge {
+      background: #F88C10; }
+    .snapshot-main .snapshot-ul li:nth-child(3) i {
+      color: #06D0F6; }
+    .snapshot-main .snapshot-ul li:nth-child(3) .badge {
+      background: #06D0F6; }
+    .snapshot-main .snapshot-ul li:nth-child(4) i {
+      color: #FDDA55; }
+    .snapshot-main .snapshot-ul li:nth-child(4) .badge {
+      background: #FDDA55; }
+    .snapshot-main .snapshot-ul li:nth-child(5) i {
+      color: #3FAA20; }
+    .snapshot-main .snapshot-ul li:nth-child(5) .badge {
+      background: #3FAA20; }
+  .snapshot-main .snapshotMessage-ul li {
+    font-size: 15px;
+    background: white; }
+    .snapshot-main .snapshotMessage-ul li i.small-bdage {
+      color: #F43530;
+      font-size: 12px; }
+    .snapshot-main .snapshotMessage-ul li .content-container {
+      position: relative;
+      overflow: hidden;
+      height: 0px;
+      font-size: 14px;
+      -webkit-transition-duration: .3s;
+      transition-duration: .3s;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
+    .snapshot-main .snapshotMessage-ul li .span-color-sure {
+      color: #54BB5C; }
+    .snapshot-main .snapshotMessage-ul li .span-color-notsure {
+      color: #FE4445; }
+    .snapshot-main .snapshotMessage-ul li .content-container-block {
+      padding: 0 15px;
+      color: #6d6d72;
+      box-sizing: border-box; }
+      .snapshot-main .snapshotMessage-ul li .content-container-block p textarea {
+        font-size: 15px;
+        color: #8e8e93; }
+
+/*首页样式*/
 .mainDiv {
   width: 100%;
   height: 100%; }
