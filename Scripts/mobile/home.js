@@ -1,5 +1,6 @@
 ﻿//首页事件
 function onHomePage() {
+	
     authorizationName();
     
     switchToolbar("homeTool");
