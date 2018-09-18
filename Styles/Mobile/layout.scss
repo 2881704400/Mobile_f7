@@ -5,6 +5,124 @@ mixin：sass宏mixin
 @charset "utf-8";
 @import 'public.scss';
 
+/*实时快照样式*/
+
+.snapshot-main {
+    width: 100%;
+    height: 100%;
+    .snapshot-ul {
+        li {
+            background: white;
+            .item-media {
+                min-width: 0;
+            }
+            i {
+                font-size: 24px;
+            }
+            .badge {
+                border-radius: 50%;
+            }
+            &:nth-child(1) {
+                i {
+                    color: #F22434;
+                }
+                .badge {
+                    background: #F22434;
+                }
+            }
+            &:nth-child(2) {
+                i {
+                    color: #F88C10;
+                }
+                .badge {
+                    background: #F88C10;
+                }
+            }
+            &:nth-child(3) {
+                i {
+                    color: #06D0F6;
+                }
+                .badge {
+                    background: #06D0F6;
+                }
+            }
+            &:nth-child(4) {
+                i {
+                    color: #FDDA55;
+                }
+                .badge {
+                    background: #FDDA55;
+                }
+            }
+            &:nth-child(5) {
+                i {
+                    color: #3FAA20;
+                }
+                .badge {
+                    background: #3FAA20;
+                }
+            }
+        }
+    }
+    .snapshotMessage-ul {
+        li {
+            font-size: 15px;
+            background: white;
+            i.small-bdage {
+                color: #F43530;
+                font-size: 12px;
+            }
+            .content-container {
+                position: relative;
+                overflow: hidden;
+                height: 0px;
+                font-size: 14px;
+                -webkit-transition-duration: .3s;
+                transition-duration: .3s;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            .span-color-sure{
+                color: #54BB5C;
+            }
+            .span-color-notsure{
+                color: #FE4445;
+            }
+            .content-container-block {
+                padding: 0 15px;
+                color: #6d6d72;
+                box-sizing: border-box;
+                p{
+                    textarea{
+                        font-size: 15px;
+                        color: #8e8e93;
+                    }
+                }
+//              p {
+//                  &:last-child:after {
+//                      content: '';
+//                      position: absolute;
+//                      background-color: #c8c7cc;
+//                      display: block;
+//                      z-index: 15;
+//                      top: auto;
+//                      right: 15px;
+//                      bottom: 0;
+//                      left: 15px;
+//                      height: 1px;
+//                      width: 100%;
+//                      -webkit-transform-origin: 50% 100%;
+//                      transform-origin: 50% 100%;
+//                  }
+//              }
+            }
+        }
+    }
+}
+
+
+/*首页样式*/
+
 .mainDiv {
     width: 100%;
     height: 100%;
