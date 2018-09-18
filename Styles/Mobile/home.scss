@@ -21,7 +21,7 @@ mixin：sass宏mixin
                 #purchase_ring,#purchase_circular{width: 150px;height: 150px;margin: 0 auto;}
                 #purchase_Bar{margin: 0 auto;}
                }
-               .p-ellipsis1{font-size: 0.8rem;overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;}            
+               .p-ellipsis1{font-size: 0.9rem;overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;}            
             }            
           }
           .functionMenu{
@@ -32,7 +32,11 @@ mixin：sass宏mixin
             &>dd{
               li{
                 margin-bottom: 15px;
-                .homeBtn{color: #{$situationFontColor};i{font-size: 2.5rem;}p{margin: 0.2rem 0;}}
+                .homeBtn{
+                  width: 100%;height: 100%;display: inline-block;color: #{$situationFontColor};
+                  i{font-size: 2.5rem;}p{margin: 0.2rem 0;}
+                  img{width: 40%;}
+                }
               }
             }
           }

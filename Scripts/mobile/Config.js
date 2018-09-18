@@ -197,6 +197,7 @@ var option = {
             inside: false,
             color: 'white',
             textStyle: {
+                fontSize: 14,
                 color: '#414141'
             }
         },
@@ -262,9 +263,9 @@ var option = {
                 color: new echarts.graphic.LinearGradient(
                     0, 0, 0, 1,
                     [
-                        {offset: 0, color: '#2CDFFB'},
-                        {offset: 0.8, color: '#497DFA'},
-                        {offset: 1, color: '#8C5EFB'}
+                        {offset: 0, color: '#C2D3FF'},
+                        {offset: 0.8, color: '#85a3f3'},
+                        {offset: 1, color: '#648EFF'}
                     ]
                 )
             },
@@ -322,7 +323,7 @@ function equipsChart(id) {
                     formatter: "{b} \n {c}个",
                     textStyle: {
                         color: 'rgb(102,102,102)',
-                        fontSize: 10,
+                        fontSize: 11,
                     }
                 }
             },
@@ -339,7 +340,7 @@ function equipsChart(id) {
                     length2: 0,
                 }
             },
-            color: ['#F40909', '#A0A0A0', '#2D9846'],
+            color: ['#F8827D', '#A0A0A0', '#98F8AF'],
             data: [{
                     value: 12,
                     name: '报警'
@@ -403,7 +404,7 @@ function ycpChart(id, sumnum) {
                     },*/
                     textStyle: {
                         color: 'rgb(102,102,102)',
-                        fontSize: 10,
+                        fontSize: 12,
                     }
                 }
             },
@@ -451,7 +452,7 @@ function ycpChart(id, sumnum) {
                     },*/
                     textStyle: {
                         color: 'rgb(102,102,102)',
-                        fontSize: 10,
+                        fontSize: 11,
                     }
                 }
             },
@@ -476,7 +477,7 @@ function ycpChart(id, sumnum) {
             },
             z: 1
         }],
-        color: ['#F40909', '#2D9846'],
+        color: ['#F8827D', '#98F8AF'],
     };
     myChart.setOption(option);
 }
@@ -486,28 +487,28 @@ function ycpChart(id, sumnum) {
 var commonlyUsed =[
     {
         name: '返回软件',
-        icon: '/Image/ic_launcher.png',
+        icon: '/Image/infor/SetParm.png',
         equipNo: '300',
         setNo: '10',
         value: null,
     },
     {
         name: '欢迎模式',
-        icon: '/Image/infor/Fatal.png',
-        equipNo: '300',
-        setNo: '10',
-        value: null,
-    },
-    {
-        name: '合影模式',
         icon: '/Image/infor/Info.png',
         equipNo: '300',
         setNo: '10',
         value: null,
     },
     {
+        name: '合影模式',
+        icon: '/Image/infor/Warn.png',
+        equipNo: '300',
+        setNo: '10',
+        value: null,
+    },
+    {
         name: '离开模式',
-        icon: '/Image/infor/SetParm.png',
+        icon: '/Image/infor/Fatal.png',
         equipNo: '300',
         setNo: '10',
         value: null,
@@ -757,28 +758,28 @@ var KOvm =[
 var pptPattern =[
     {
         name: '打开PPT',
-        icon: '/Image/infor/Fatal.png',
+        icon: '/Image/home/ppt.png',
         equipNo: '300',
         setNo: '7',
         value: null,
     },
     {
-        name: 'PPT首页',
-        icon: '/Image/infor/Fatal.png',
+        name: '首页',
+        icon: '/Image/home/ppt_home.png',
         equipNo: '300',
         setNo: '8',
         value: null,
     },
     {
-        name: 'PPT上一页',
-        icon: '/Image/infor/Fatal.png',
+        name: '上一页',
+        icon: '/Image/home/ppt_prev.png',
         equipNo: '1005',
         setNo: '7001',
         value: null,
     },
     {
-        name: 'PPT下一页',
-        icon: '/Image/infor/Fatal.png',
+        name: '下一页',
+        icon: '/Image/home/ppt_next.png',
         equipNo: '1005',
         setNo: '7002',
         value: null,
@@ -790,28 +791,28 @@ var pptPattern =[
 var jjPattern =[
     {
         name: '开始讲解',
-        icon: '/Image/infor/Fatal.png',
+        icon: '/Image/home/jj.png',
         equipNo: '1007',
         setNo: '1',
         value: null,
     },
     {
         name: '停止讲解',
-        icon: '/Image/infor/Fatal.png',
+        icon: '/Image/home/stop_1.png',
         equipNo: '1007',
         setNo: '2',
         value: null,
     },
     {
             name: '暂停讲解',
-            icon: '/Image/infor/Fatal.png',
+            icon: '/Image/home/stop_0.png',
             equipNo: '1007',
             setNo: '3',
             value: null,
     },
     {
         name: '继续讲解',
-        icon: '/Image/infor/Fatal.png',
+        icon: '/Image/home/jx.png',
         equipNo: '300',
         setNo: '10116',
         value: null,
