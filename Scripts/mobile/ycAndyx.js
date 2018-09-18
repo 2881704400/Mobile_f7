@@ -355,7 +355,7 @@ function jsonTobtn(data, confarr) {
         var set_nos2 = Control_SetItem_List(confarr, userb.set_no);
         if (set_nos1 || set_nos2) {
         	 var newRow =`<div class="itemOne link" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
-			        		<p class="name">PC大屏-安诺地图首页</p>
+			        		<p class="name">${userc[0]}</p>
 			        	</div>`
 //      	 var newRow =`
 //      	 		<p class="row" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
