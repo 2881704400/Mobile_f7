@@ -1,0 +1,127 @@
+﻿/*
+mixin：sass宏mixin
+*/
+@import  'public.scss';
+
+
+/*顶部状态栏颜色*/
+html.with-statusbar.device-android .framework7-root {
+    padding-top: 0;
+}
+html.with-statusbar.device-android .panel {
+    height: 100%;top: 0;
+}
+.active-state:active {
+    opacity: 1!important;
+
+}   
+.ios .statusbar,.md .statusbar,.statusbar {
+    background: white;
+}
+.md .statusbar {
+    display: none!important;
+}
+html.with-statusbar.device-iphone-x .framework7-root{padding-top: 20px;}
+html.device-ios.device-iphone-x .statusbar{height: 20px;}
+.hideMenu{visibility: hidden; opacity: 0;}
+.displayNone{display: none;}
+/*左侧panel*/
+
+// .panel{
+//     &.layout-dark{background-color: #{$headerBgc};}
+//     &>div.list{
+//         &>ul{
+//             background: #{$asideBgc};
+//             &:after,&:before{height: 0px;}
+//             div.item-content{width: 100%;border-bottom: 1px solid #{$asideBorderColor};}
+//             .item-inner:after{height: 0px;}
+//             a{color: #{$allFontColor} !important;}
+//             a i{font-size: 1.5rem;}
+//         }
+//     }
+// }
+// .md .panel .list .item-media+.item-inner{margin-left: 0;}
+
+.view{
+    /*内容区*/ 
+    .ios .page,.md .page,.page{background: #{$situationBgc};}
+    .page-content{padding-bottom: 50px;}
+    /*顶部导航栏*/
+    .navbar{
+        background-color: #{$headerBgc};
+        &:after{height: 0px}
+        &>.navbar-inner{ 
+            .left{
+                .back i{font-size: 2rem;color: #{$toolbarFontColor};;}
+                .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
+                .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+             }
+            .title{color: #{$toolbarFontColor};;}
+            .right i{font-size: 2rem;color: #{$toolbarFontColor};;}
+        }
+    }
+    /*底部菜单*/
+    .toolbar{
+        &:before{height: 0px;}
+        a.link{font-size: 12px;line-height: 22px!important;cursor: pointer;}
+        .toolbar-inner{ 
+            box-shadow: 0px -2px 5px #{$situationBgc};
+            &>a.active{color: #{$selectedColor};}
+            &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
+            #voiceBtn{ 
+              &>p{widht: 100%;margin: 0;position: absolute;top: -50%;left: 0;border-radius: 50%;
+                text-align: center;background: #{$situationBgc};
+                  span{    width: 90%; height: 90%; position: relative; 
+                    display: inline-block; border-radius: 50%; background: #{$toolbarBgc}; margin: 5%;}
+                  i{font-size: 2.5rem;position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%);}
+              }
+            }
+            #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
+            a.link.active-state:before{opacity: 0!important;}
+        }
+        background-color: #{$headerBgc};     
+    }
+
+}
+.md .navbar{
+    height: 44px;
+    .title{margin: auto;}
+    .right{margin-left: 0;}
+}
+.md .toolbar{
+    height: 50px;top: 100%;transform: translateY(-100%);
+    a{color: #{$toolbarFontColor};}
+    a.link i+i,a.link i+span,a.link span+i,a.link span+span{margin-left: 0;}
+    .toolbar-inner{overflow: visible;}
+} 
+.md .page-content{padding-top: 44px!important;}
+
+//弹出菜单
+
+.ios .popoverLink,.md .popoverLink,.popoverLink{
+    border-radius: 13px;background-color: #{$headerBgc};
+    right:0;left: auto !important;
+    a{color: #{$allFontColor} !important;}
+    .popover-angle {width: 26px; height: 26px; position: absolute;  top: 100%; z-index: 100; overflow: hidden; }
+    .popover-angle:after {content: ''; background: #{$headerBgc}; width: 26px; height: 26px; position: absolute; left: 0; top: 0; border-radius: 3px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+    .popover-angle.on-bottom:after {left: 0;top: -19px;background: #{$headerBgc}; }
+}
+.md .popoverLink{top: auto!important;bottom: 65px!important;
+    .popover-angle{right: 13%;}
+    .popover-angle:after{top: -20px!important;}
+    .list .list-button:after {content: ''; position: absolute; background-color: #c8c7cc; display: block; z-index: 15; top: auto; right: auto; bottom: 0; left: 0; height: 1px; width: 100%; -webkit-transform-origin: 50% 100%; transform-origin: 50% 100%; }
+}
+
+// 语音
+.voicePanel{
+    width: 100%;height: 100%;position: absolute; left: 0%;top: 0%;background: rgba(0,0,0,0.3);
+    border-radius: 20px;outline: none;display: inline-block;padding-top: 70%;    z-index: 1;
+    #voiceMessage{font-size: 1.2rem;text-align: center;}
+}
+.md .ripple-wave{display: none!important;}
+.md .voicePanel{border-radius: 0!important;}
+
+
+
+
+

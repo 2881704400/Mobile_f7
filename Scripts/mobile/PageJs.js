@@ -55,3 +55,8 @@ $(document).on("page:beforein", ".page[data-page='UserInfor']", function (e) {
 $(document).on("page:beforein", ".page[data-page='setPage']", function (e) {
     initPageJS('setPage', '/Scripts/mobile/');
 });
+// 遥测和遥信
+$(document).on("page:beforein", ".page[data-page='ycAndyx']", function (e) {
+    initPageJS('ycAndyx', '/Scripts/mobile/');
+});
+

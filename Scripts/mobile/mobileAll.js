@@ -59,7 +59,11 @@ var myApp = new Framework7({
     }, {
         path: '/resultEvent/',
         content: '123',
-    }],
+    }, {
+        path: '/ycAndyx/',
+        url: 'ycAndyx.html',
+    }
+    ],
     on: {
         // each object key means same name event handler
         pageInit: function(page) {
@@ -81,10 +85,12 @@ initLoads();
 
 function initLoads() {
     loadNameMobile();
+    
     setTimeout(function() {
+        //$("html").height(window.screen.height);
         $("#app").show();
     }, 3000);
-    
+
     //语音记录选择
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";
@@ -1140,3 +1146,4 @@ function voiceTooip(txt){
       closeTimeout: 3000,
     });
 }
+
