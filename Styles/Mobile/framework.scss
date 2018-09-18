@@ -21,8 +21,10 @@ html.with-statusbar.device-android .panel {
 .md .statusbar {
     display: none!important;
 }
-
+html.with-statusbar.device-iphone-x .framework7-root{padding-top: 20px;}
+html.device-ios.device-iphone-x .statusbar{height: 20px;}
 .hideMenu{visibility: hidden; opacity: 0;}
+.displayNone{display: none;}
 /*左侧panel*/
 
 // .panel{
@@ -61,7 +63,7 @@ html.with-statusbar.device-android .panel {
     /*底部菜单*/
     .toolbar{
         &:before{height: 0px;}
-        a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
+        a.link{font-size: 12px;line-height: 22px!important;cursor: pointer;}
         .toolbar-inner{ 
             box-shadow: 0px -2px 5px #{$situationBgc};
             &>a.active{color: #{$selectedColor};}
