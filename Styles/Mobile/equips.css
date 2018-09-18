@@ -33,43 +33,43 @@
     #ycAndyx .toolbar .toolbar-inner > a.tab-link.tab-link-active {
       color: #FD971F;
       border-bottom: 2px solid  #FD971F; }
-#ycAndyx .tabs-animated-wrap {
+#ycAndyx #tabsWrap {
   height: calc(100% - 50px); }
-  #ycAndyx .tabs-animated-wrap .tab {
+  #ycAndyx #tabsWrap .tab {
     overflow: auto; }
-    #ycAndyx .tabs-animated-wrap .tab .itemOne {
+    #ycAndyx #tabsWrap .tab .itemOne {
       width: 100%;
       background: #fff;
       overflow: hidden;
       padding-left: 15px;
       box-sizing: border-box;
       border-bottom: 1px solid #eee; }
-      #ycAndyx .tabs-animated-wrap .tab .itemOne .name {
+      #ycAndyx #tabsWrap .tab .itemOne .name {
         font-weight: 600;
         letter-spacing: 2px; }
-      #ycAndyx .tabs-animated-wrap .tab .itemOne ul {
+      #ycAndyx #tabsWrap .tab .itemOne ul {
         width: 100%;
         overflow: hidden;
         margin: 0em 0 1em 0;
         display: flex;
         align-items: center; }
-        #ycAndyx .tabs-animated-wrap .tab .itemOne ul li {
+        #ycAndyx #tabsWrap .tab .itemOne ul li {
           color: #666;
           padding-right: 10px;
           text-align: center; }
-          #ycAndyx .tabs-animated-wrap .tab .itemOne ul li i {
+          #ycAndyx #tabsWrap .tab .itemOne ul li i {
             color: #7D828F; }
-            #ycAndyx .tabs-animated-wrap .tab .itemOne ul li i.noCom {
+            #ycAndyx #tabsWrap .tab .itemOne ul li i.noCom {
               color: #7D828F; }
-            #ycAndyx .tabs-animated-wrap .tab .itemOne ul li i.alarm {
+            #ycAndyx #tabsWrap .tab .itemOne ul li i.alarm {
               color: #FE4445; }
-            #ycAndyx .tabs-animated-wrap .tab .itemOne ul li i.comOk {
+            #ycAndyx #tabsWrap .tab .itemOne ul li i.comOk {
               color: #54BB5C; }
-    #ycAndyx .tabs-animated-wrap .tab#set .itemOne {
+    #ycAndyx #tabsWrap .tab#set .itemOne {
       text-align: left; }
-      #ycAndyx .tabs-animated-wrap .tab#set .itemOne .name {
+      #ycAndyx #tabsWrap .tab#set .itemOne .name {
         font-weight: normal; }
-      #ycAndyx .tabs-animated-wrap .tab#set .itemOne p {
+      #ycAndyx #tabsWrap .tab#set .itemOne p {
         margin: 1.5em 0; }
 
 /*# sourceMappingURL=equips.css.map */

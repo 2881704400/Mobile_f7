@@ -16,7 +16,7 @@ $(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
 //		realShows(1005, "界面控制")
 		$("#titleStats").text(name)
 		realShows(equip_no, name)
-	
+//		refresh("txt")
 	
 	
 
@@ -48,7 +48,8 @@ function refresh(txt){
 		});
 		$("#set").unbind("scroll");
 		$("#yxp").unbind("scroll");
-	}else if(txt=="#yxp"){
+	}
+	else if(txt=="#yxp"){
 		$("#yxp").bind("scroll",function(){
 			var hei=$(this).scrollTop();
 			allowScroll(hei)
@@ -84,7 +85,7 @@ function allowScroll(hei){
 		  }, 2000);
 		});
 	}else{
-		console.log(33)
+//		console.log(33)
 		if(myApp.ptr.get('#ycAndyx .ptr-content')){
 			
 			myApp.ptr.get('#ycAndyx .ptr-content').destroy();
