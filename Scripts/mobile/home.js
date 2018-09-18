@@ -1,7 +1,11 @@
 ﻿//首页事件
 function onHomePage() {
+	
     authorizationName();
     switchToolbar("homeTool");
+    
+//  myApp.router.navigate("/equips/")
+//   myApp.router.navigate("/ycAndyx/")
 }
 //界面尺寸变化事件
 function onResizeCustomized() {
