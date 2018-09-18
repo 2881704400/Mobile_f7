@@ -4,13 +4,13 @@ mixin：sass宏mixin
 @import '_mixin.scss';
 
 //全局字体颜色
-$allFontColor: #919191;
+$allFontColor: #666;
 // header头部属性
 $headerFontSize: 1.4rem;
 $headerBgc: #fff;
 // 全局背景色,字体颜色
 $situationBgc: #f6f6f6;
-$situationFontColor: #919191;
+$situationFontColor: #666;
 //工具栏背景色
 $toolbarBgc: #fff;
 $toolbarFontColor: #414141;
@@ -26,5 +26,9 @@ $btnFontColor: #DEF0F9;
 //统计栏属性
 $statsBgc: #fff;
 $statsFontColor: #333;
-$statsBorderColor: #c1c4c6;
+$statsBorderColor: #f0f4f7;
 $selectedColor: #FD971F;
+
+
+//未点击按钮颜色
+$unclickedColor: #648EFF;

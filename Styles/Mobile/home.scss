@@ -1,150 +1,62 @@
 ﻿/*
 mixin：sass宏mixin
 */
-@import  'public.scss';
 
+@charset "utf-8";
+@import 'public.scss';
 
-/*顶部状态栏颜色*/
-html.with-statusbar.device-android .framework7-root {
-    padding-top: 0;
-}
-html.with-statusbar.device-android .panel {
-    height: 100%;top: 0;
-}
-.active-state:active {
-    opacity: 1!important;
-
-}   
-.ios .statusbar,.md .statusbar,.statusbar {
-    background: white;
-}
-.md .statusbar {
-    display: none!important;
-}
-
-.hideMenu{visibility: hidden; opacity: 0;}
-/*左侧panel*/
-
-.panel{
-    &.layout-dark{background-color: #{$headerBgc};}
-    &>div.list{
-        &>ul{
-            background: #{$asideBgc};
-            &:after,&:before{height: 0px;}
-            div.item-content{width: 100%;border-bottom: 1px solid #{$asideBorderColor};}
-            .item-inner:after{height: 0px;}
-            a{color: #{$allFontColor} !important;}
-            a i{font-size: 1.5rem;}
-        }
-    }
-}
-.md .panel .list .item-media+.item-inner{margin-left: 0;}
-
-.view{
-    /*内容区*/ 
-    .ios .page,.md .page,.page{background: #{$situationBgc};}
-    .page-content{
-        padding-bottom: 50px;
-        // 设置界面
-        &.setPageContainer{
-            overflow-y: auto;
-            a{  
-                color: #{$asideBorderColor};width: 100%;display: block;
-                &.item-content,&>div.item-content{height: 44px;padding-left: 0!important;}
-                i{font-size: 1.5rem;}
+#homeContents{
+    width: 100%;height: 100%;overflow-y: auto;padding-bottom: 50px;
+    &>ul.charts-block{width: 100%;
+        &>li{
+          width: 96%;margin: 10px auto 0;
+          dl{
+            width: 100%;display: inline-block;
+            dt{}
+            dd{
+               width: 100%;text-align: center;padding: 10px 0;border-radius: 5px;overflow: hidden; background: #{$statsBgc};  
+              .charts_bar{
+                width: 100%;#purchase_Bar{height: 90px;}
+                .barRightBorder{border-right: 1px solid #{$statsBorderColor};}
+                #purchase_ring,#purchase_circular{width: 150px;height: 150px;margin: 0 auto;}
+                #purchase_Bar{margin: 0 auto;}
+               }
+               .p-ellipsis1{font-size: 0.9rem;overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;}            
+            }            
+          }
+          .functionMenu{
+            &>dt{
+              width: 100%;height: 30px;display: inline-block;
+              background: url(/Image/1.jpg) no-repeat center/ auto 100%;
             }
-            &>div.userClassName{
-                text-align: center;background: white;
-                i{font-size: 7rem;}
-                p{font-size: 1.2rem;margin: 0;    padding-bottom: 20px;text-align: center;}
+            &>dd{
+              li{
+                margin-bottom: 15px;
+                .homeBtn{
+                  width: 100%;height: 100%;display: inline-block;color: #{$situationFontColor};
+                  i{font-size: 2.5rem;}p{margin: 0.2rem 0;}
+                  img{width: 40%;}
+                }
+              }
             }
-            &>div.simple-list{margin: 0;background: white;}
-        }
-        .exitLogin {font-size: #{$btnFontSize}; width: 90%; height: 50px;  left: 5%; top: 10%; }
-
-    }
-    /*顶部导航栏*/
-    .navbar{
-        background-color: #{$headerBgc};
-        &:after{height: 0px}
-        &>.navbar-inner{ 
-            .left{
-                .back i{font-size: 2rem;color: #{$allFontColor};}
-                .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
-                .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+          }
+          .commonlyUsed{
+            li{
+              a{
+                width: 100%;height: 100%;display: inline-block;
+                img{width: 60%;margin: 0 auto;}
+                p{color: #{$situationFontColor};margin: 0.2rem 0;}
+              }
+            }
+          }
+          .pptPattern_container,.jjPattern_container{
+            h3{
+              font-size: 1rem;color: #{$situationFontColor};font-weight: 100;padding-bottom: 20px;text-align: center;
+              label{font-size: 12px;color: #{$unclickedColor};display: block;text-align: center;}
              }
-            .title{color: #{$allFontColor};}
-            .right i{font-size: 2rem;color: #{$allFontColor};}
+            ul>li>a{display: block;}
+           }
+           .pptPattern_container{ ol{border-right: 1px solid #{$statsBorderColor};}}
         }
     }
-    /*底部菜单*/
-    .toolbar{
-        &:before{height: 0px;}
-        a.link{font-size: 0.75rem;line-height: 22px!important;cursor: pointer;}
-        .toolbar-inner{ padding: 0px 10%;
-            &>a.active{color: #{$selectedColor};}
-            &>a{color: #{$allFontColor}; i{font-size: 2rem;}}
-            #voiceBtn{ 
-                // &>span{ 
-                // width: 2.5rem;height: 2.5rem;line-height: 2.5rem;position: relative;top: 0rem;background: #{$headerBgc};
-                // text-align: center;border-radius: 50%;outline: none;
-                // display: inline-block; 
-                // i{font-size: 2rem;}
-                // }
-            }
-            #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
-        }
-        background-color: #{$headerBgc};     
-        // box-shadow: -1px 0px 1px #{$toolbarBoxShadow};
-    }
-
 }
-.md .navbar{
-    height: 44px;
-    .title{margin: auto;}
-    .right{margin-left: 0;}
-}
-.md .toolbar{
-    height: 50px;top: 100%;transform: translateY(-100%);
-    a{color: #{$toolbarFontColor};}
-    a.link span{margin-left: 0!important;}
-    .toolbar-inner{overflow: visible;}
-} 
-.md .page-content{padding-top: 44px!important;}
-//弹出菜单
-
-.ios .popoverLink,.md .popoverLink,.popoverLink{
-    border-radius: 13px;background-color: #{$headerBgc};
-    right:0;left: auto !important;
-    a{color: #{$allFontColor} !important;}
-    .popover-angle {width: 26px; height: 26px; position: absolute;  top: 100%; z-index: 100; overflow: hidden; }
-    .popover-angle:after {content: ''; background: #{$headerBgc}; width: 26px; height: 26px; position: absolute; left: 0; top: 0; border-radius: 3px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-    .popover-angle.on-bottom:after {left: 0;top: -19px;background: #{$headerBgc}; }
-}
-.md .popoverLink{top: auto!important;bottom: 65px!important;
-    .popover-angle{right: 13%;}
-    .popover-angle:after{top: -20px!important;}
-    .list .list-button:after {content: ''; position: absolute; background-color: #c8c7cc; display: block; z-index: 15; top: auto; right: auto; bottom: 0; left: 0; height: 1px; width: 100%; -webkit-transform-origin: 50% 100%; transform-origin: 50% 100%; }
-}
-
-// 语音
-
-// .voiceDivs{display: none;}
-.voicePanel{
-    width: 100%;height: 100%;position: absolute; left: 0%;top: 0%;background: rgba(0,0,0,0.3);
-    border-radius: 20px;outline: none;display: inline-block;padding-top: 70%;    z-index: 1;
-    #voiceMessage{font-size: 1.2rem;text-align: center;}
-}
-.md .ripple-wave{display: none!important;}
-.md .voicePanel{border-radius: 0!important;}
-//设置
-.setPageContainer{
-    #voiceList{width: 100%;}
-    .simple-list li{.item-inner{padding-bottom: 0;padding-top: 0;}}
-    .simple-list li:after{height: 0px;}
-}
-.toast {text-align: center;}
-
-
-
-

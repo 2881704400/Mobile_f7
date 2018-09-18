@@ -1,47 +1,52 @@
-var flag=false;
+
 function ycAndyx(){
+	
 	var urlstr=myApp.views.main.history,leng=urlstr.length;
 	var url=urlstr[leng-1].split("#")[1]
 	var equip_no=url.split("&")[0];
 	var name=url.split("&")[1];
+		$("#titleStats").text(name)
+		realShows(equip_no, name)
+//		$("#titleStats").text('测试2');
+//		realShows(2, "测试2");
 $(".ios .ptr-preloader").css({zIndex:"99"})
 $(".ios .ptr-preloader .preloader").css({top:"66px"})
 $(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
 
+	var searchbar = myApp.searchbar.create({
+		  el: '.searchbar2',
+		  searchContainer:".tab",
+		  searchIn: '.item-title',
+		  
+		});
+aa()
 
-//	$("#titleStats").text('测试2');
-//	realShows(2, "测试2");
+
 	
 //		$("#ycAndyx .title").text('界面控制')
 //		realShows(1005, "界面控制")
-		$("#titleStats").text(name)
-		realShows(equip_no, name)
+
 //		refresh("txt")
-	
+//	setTimeout(function(){
+		
+//	},3000)
 	
 
 	
 	
-//	$("#yxp").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//		
-//	})
-//	$("#ycp").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//	})
-//	$("#set").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//	})
+
 	
 }
-
+function aa(){
+	
+}
 function refresh(txt){
 //	myApp.ptr.create('.ptr-content');
 	$("#titleStats").attr("noTab",txt);
+//	searCon=txt;
+	$(txt).addClass("searchbar-found").siblings().removeClass("searchbar-found")
 	if(txt=="#ycp"){
+
 		$("#ycp").bind("scroll",function(){
 			var hei=$(this).scrollTop();
 			allowScroll(hei)
@@ -134,9 +139,10 @@ function realHtmls(countAll,equip_no,name){
 	}
 	
 	$(".tabCon a").eq(0).addClass("tab-link-active");
-	$("#tabs .tab").eq(0).addClass("tab-active");
+//	$("#tabs .tab").eq(0).addClass("tab-active searchbar-found");
 	$("#titleStats").attr("noTab",$(".tabCon a").eq(0).attr("href"));
 	refresh($(".tabCon a").eq(0).attr("href"))
+	
 }
 var titleStatID;
 function loadYc(equip_no){
@@ -226,26 +232,26 @@ function jsonTodata(data, tableName, alarm) {
             else {
                 alarmImg = 'alarm';
             }
-			var newRow=`<div class="itemOne" id="m_alarmycps_${i}">
-			        		<p class="name">${usera[i].m_YCNm}</p>
-			        		<ul>
-			        			<li class="sta">
+			var newRow=`<li class="itemOne " id="m_alarmycps_${i}">
+			        		<p class="name item-title">${usera[i].m_YCNm}</p>
+			        		<div>
+			        			<p class="sta">
 			        				<i class="iconfont icon-dian ${alarmImg}"></i>
-			        			</li>
-			        			<li class="sta">
+			        			</p>
+			        			<p class="sta">
 			        				丨
-			        			</li>
-			        			<li id="valueycps_${i}">
+			        			</p>
+			        			<p id="valueycps_${i}">
 			        				实时值 &nbsp;<span>${usera[i].m_YCValue}${usera[i].m_Unit}</span>
-			        			</li>
-			        			<li class="sta">
+			        			</p>
+			        			<p class="sta">
 			        				丨
-			        			</li>
-			        			<li class="link" style="color:#3498db;" onclick="curveBox(${i},'${usera[i].m_YCNm}',this)">
+			        			</p>
+			        			<p class="link" style="color:#3498db;" onclick="curveBox(${i},'${usera[i].m_YCNm}',this)">
 			        				实时曲线
-			        			</li>
-			        		</ul>
-			        	</div>`
+			        			</p>
+			        		</div>
+			        	</li>`
 //			 var newRow = `<div class="row">
 //			        			<div class="col-15 state">
 //				        			<i class="iconfont icon-dian ${alarmImg}"></i>
@@ -286,20 +292,20 @@ function jsonTodata(data, tableName, alarm) {
             else {
                 alarmImg = 'alarm';
             }
-            var newRow =`<div class="itemOne" id="m_alarmyxps_${j}">
-			        		<p class="name">${usera[j].m_YXNm}</p>
-			        		<ul>
-			        			<li class="sta">
+            var newRow =`<li class="itemOne" id="m_alarmyxps_${j}">
+			        		<p class="name item-title">${usera[j].m_YXNm}</p>
+			        		<div>
+			        			<p class="sta">
 			        				<i class="iconfont icon-dian ${alarmImg}"></i>
-			        			</li>
-			        			<li class="sta">
+			        			</p>
+			        			<p class="sta">
 			        				丨
-			        			</li>
-			        			<li id="valueyxps_${j}">
+			        			</p>
+			        			<p id="valueyxps_${j}">
 			        				实时状态 &nbsp;<span>${usera[j].m_YXState}</span>
-			        			</li>
-			        		</ul>
-			        	</div>`;
+			        			</p>
+			        		</div>
+			        	</li>`;
 //			var newRow =`
 //					<div class="row">
 //	        			<div class="col-15 state">
@@ -354,9 +360,9 @@ function jsonTobtn(data, confarr) {
         var set_nos1 = Control_Equip_List(confarr);
         var set_nos2 = Control_SetItem_List(confarr, userb.set_no);
         if (set_nos1 || set_nos2) {
-        	 var newRow =`<div class="itemOne link" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
-			        		<p class="name">${userc[0]}</p>
-			        	</div>`
+        	 var newRow =`<li class="itemOne link " onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
+			        		<p class="name item-title">${userc[0]}</p>
+			        	</li>`
 //      	 var newRow =`
 //      	 		<p class="row" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
 //						<button class="col button button-big">${userc[0]}</button>

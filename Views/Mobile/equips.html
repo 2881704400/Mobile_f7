@@ -10,21 +10,35 @@
                     </a>
                 </div>                           
                 <div class="center sliding title">设备列表</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
+                <div class="right">
+                    <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
+                </div>
             </div>
-        </div>        
+        </div> 
+        <form class="searchbar">
+	          <div class="searchbar-inner">
+	            <div class="searchbar-input-wrap">
+	              <input type="search" placeholder="设备名称搜索">
+	              <i class="searchbar-icon"></i>
+	              <span class="input-clear-button"></span>
+	            </div>
+	            <span class="searchbar-disable-button">取消</span>
+	          </div>
+		</form>
         <!--"pull-to-refresh-content"类表示下拉刷新 -->
         <div  class="page-content ptr-content" data-ptr-distance="55">
             <!-- 默认的下拉刷新层 -->
+            
             <div class="ptr-preloader">
               <div class="preloader"></div>
               <div class="ptr-arrow"></div>
             </div>
-           
+            
+           	
+		    <div class="searchbar-backdrop"></div>
             <div class="list-block list-page list " style="margin:0;">
-               <ul class="equip-list">
+            	
+               <ul class="equip-list searchbar-found">
 				  
 				    
 				</ul>

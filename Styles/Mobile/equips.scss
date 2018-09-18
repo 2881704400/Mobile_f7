@@ -1,11 +1,11 @@
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~.page-content, .ios .page-with-subnavbar .navbar~.page-content{
         padding-top: 0 !important;
         .tabs-animated-wrap{
-            padding-top: 44px;
+            padding-top: 88px;
         }
     }
 .ios .toolbar.toolCon{
-        top: 44px !important;
+        top: 89px !important;
 }
 .ios .tabbar-labels~* .page-content, .ios .tabbar-labels~.page-content{
     padding-bottom:44px;
@@ -14,7 +14,45 @@
 .popover-angle.on-bottom{
     display: none;
 }
+
+.md .page>.navbar~.searchbar{
+    top: 45px;
+}
+.md .page>.searchbar~* .page-content, .md .page>.searchbar~.page-content{
+    padding-top: 94px !important;
+}
+.md .searchbar input[type=search], .md .searchbar input[type=text]{
+    font-size: 16px;
+}
+.md .page>.searchbar:after{
+    background: none;
+}
+.ios .navbar~.page:not(.no-navbar)>.searchbar, .ios .page>.navbar~.searchbar{
+    top: 44px;
+}
 #equips{
+    .searchbar{
+         z-index: 99;
+            
+            background: #fff;
+            &:after{
+                height: 0;
+            }
+            .search{
+                background: #f6f6f6;
+            }
+            .searchbar-disable-button{
+                color: #FD971F;
+            }
+    }
+    .ios{
+        .searchbar{
+            &:after{
+                height: 0;
+            }
+        }
+    }
+    
     .equip-list{
         background: #fff;
         li{
@@ -34,9 +72,30 @@
         }
        
     }  
+    
 }
 #ycAndyx{
-   
+   .searchbar{
+         z-index: 99;
+            
+            background: #fff;
+            &:after{
+                height: 0;
+            }
+            .search{
+                background: #f6f6f6;
+            }
+            .searchbar-disable-button{
+                color: #FD971F;
+            }
+    }
+    .ios{
+        .searchbar{
+            &:after{
+                height: 0;
+            }
+        }
+    }
     .toolbar{
         top: 50px;
         border-bottom: 1px solid #eee;
@@ -111,14 +170,14 @@
                     font-weight: 600;
                     letter-spacing: 2px;
                 }
-                ul{
+                div{
                     width: 100%;
                     overflow: hidden;
                     margin: 0em 0 1em 0;
                     display: flex;
 
                     align-items: center;
-                    li{
+                    p{
                         color: #666;
                         padding-right: 10px;
                         text-align: center;

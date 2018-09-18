@@ -29,7 +29,7 @@
     display: -webkit-flex;
     display: flex;
 }
-@mixin flexGrow ($grow: 0) {
+@mixin flexGrow ($grow: 0) { 
     -webkit-box-flex: $grow;
     flex-grow: $grow;
 }

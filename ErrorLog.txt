@@ -49411,3 +49411,10 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
    在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name)
 -------------------------------------
 
+----------2018/9/18 14:42:42----------
+System.ArgumentOutOfRangeException: 长度不能小于 0。
+参数名: length
+   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 GWService.Net.ClassLib.GetEquipAllState()
+-------------------------------------
+

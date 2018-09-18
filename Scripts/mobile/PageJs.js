@@ -9,6 +9,11 @@ $(document).on("page:beforein", ".page[data-page='snapshot']", function (e) {
     initPageJS('snapshot', '/Scripts/mobile/');
 });
 
+//实时快照详情页
+$(document).on("page:beforein", ".page[data-page='snapShotDetail']", function (e) {
+    initPageJS('snapShotDetail', '/Scripts/mobile/');
+});
+
 //语音
 $(document).on("page:beforein", ".page[data-page='voice']", function (e) {
     initPageJS('voice', '/Scripts/mobile/');
