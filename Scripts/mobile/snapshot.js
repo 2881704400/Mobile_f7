@@ -65,7 +65,7 @@ function getRealTimeEventCount() {
 				if(dt.HttpStatus == 200 && dt.HttpData.data) {
 					var resultData = dt.HttpData.data;
 					var resultDataArr = resultData.toString().split(",");
-					console.log(resultData);
+					//console.log(resultData);
 					var strData = "";
 					for(var i = 0; i < resultDataArr.length; i++) {
 						strData += '<li>' +

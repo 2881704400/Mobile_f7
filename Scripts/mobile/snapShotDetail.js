@@ -52,7 +52,7 @@ function loadMessage() {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var result = dt.HttpData.data;
-				console.log(result);
+				//console.log(result);
 				let tableListData = [];
 				var strSureData = "";
 				var strData = "";
@@ -125,11 +125,11 @@ function loadMessage() {
 }
 
 //选择是否发送短信
-function onProcsCheckBox(countNum) {console.log(countNum)
+function onProcsCheckBox(countNum) {//console.log(countNum)
 	if(!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
 		if(!$("#snapShotDetailListId li").eq(countNum).find(".procsContent ul").find("li").length) {
 			var newRow = "<ul>";
-			console.log(userAdmin)
+			//console.log(userAdmin)
 			for(var i = 0; i < userAdmin.length; i++) {
 				/*newRow += '<li>' +
 					'  <label class="item-radio item-content">' +
@@ -149,7 +149,7 @@ function onProcsCheckBox(countNum) {console.log(countNum)
 					'  </label></li>';
 			}
 			newRow += "</ul>";
-			console.log(newRow)
+			//console.log(newRow)
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").html(newRow);
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").show();
 		}
@@ -170,7 +170,7 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 		});
 		isShortMsg = true;
 	}
-	console.log(checkValArr, strAdviceMsg)
+	//console.log(checkValArr, strAdviceMsg)
 	$.ajax({
 		type: 'post',
 		url: '/api/event/confirm_evt',
@@ -188,7 +188,7 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
-				console.log(resultData)
+				//console.log(resultData)
 				myApp.toast.create({
 					text: '操作成功!',
 					position: 'center',
@@ -212,7 +212,7 @@ function formatDate(time) {
 }
 
 function refreshpg(e) {
-	console.log(e)
+	//console.log(e)
 	setTimeout(function() {
 		loadMessage();
 		// 加载完毕需要重置
