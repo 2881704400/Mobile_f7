@@ -115,105 +115,47 @@
     #tabsWrap{
         height: calc(100% - 50px);
         .tab{
-//          padding: 0 10px;
-//          .tabTitle{
-//              text-align: center;
-//              height: 40px;
-//              line-height: 50px;
-//              
-//          }
-//          .tabContent{
-//              text-align: center;
-//              overflow: auto;
-//              height: 100%;
-//              padding-bottom: 40px;
-//              .row{
-//                  height: 40px;
-//                  line-height: 40px;
-//                  .chart{
-//                      i{
-//                          font-size: 20px; 
-//                      }
-//                     
-//                  }
-//                  .state{
-//                       i{
-//                          
-//                          &.alarm{
-//                              color: #FE4445;
-//                          }
-//                          &.comOk{
-//                              color: #54BB5C;
-//                          }
-//                      }
-//                  }
-//                 
-//                  .name{
-//                      text-overflow: ellipsis;
-//                      white-space: nowrap;
-//                      overflow: hidden;
-//                  }
-//              }
-//             
-//          }
-          
+    
             overflow:auto;
-            .itemOne{
-                width: 100%;
-                background: #fff;
-                overflow: hidden;
-                padding-left:15px ;
-                box-sizing: border-box;
-//              margin-bottom: 10px;
-                border-bottom: 1px solid #eee;
-                .name{
-                    font-weight: 600;
-                    letter-spacing: 2px;
-                }
-                div{
-                    width: 100%;
-                    overflow: hidden;
-                    margin: 0em 0 1em 0;
-                    display: flex;
 
-                    align-items: center;
-                    p{
-                        color: #666;
-                        padding-right: 10px;
-                        text-align: center;
-                        i{
-                            color: #7D828F;
-                            &.noCom{
-                                color: #7D828F;
-                            }
-                            &.alarm{
-                                color: #FE4445;
-                            }
-                            &.comOk{
-                                color: #54BB5C;
-                            }
+            .oneLine{
+                padding: 1.5em 0;
+                background: #fff;
+                border-bottom: 1px solid #eee;
+                align-items: center;
+                .name{
+                    padding-right: 5px;
+                }
+                .val{
+                    font-weight: 600;
+                }
+                .iconWrap{
+                    text-align: center;
+                    i{
+                        color: #7D828F;
+                        &.icon-tubiaofenxi{
+                            font-size: 18px;
+                            color: #3498db;
                         }
-//                      &.sta:after{
-//                          position: absolute;
-//                          content:"" ;
-//                          height: 100%;
-//                          width: ;
+                        &.noCom{
+                            color: #7D828F;
+                        }
+                        &.alarm{
+                            color: #FE4445;
+                        }
+                        &.comOk{
+                            color: #54BB5C;
+                        }
 //                      }
                     }
-                    
                 }
             }
-              &#set{
-                .itemOne{
-                    text-align: left;
-                   
-//                  color: #3498db;
-                    .name{
-                        font-weight: normal ;
-                    }
-                    p{
+            &#set{
+                li{
+                    width: 100%;
+                    background: #fff;
+                    P{
                         margin: 1.5em 0;
-//                      width: 100%;
                     }
                 }
             }

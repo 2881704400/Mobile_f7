@@ -74,39 +74,32 @@
   height: calc(100% - 50px); }
   #ycAndyx #tabsWrap .tab {
     overflow: auto; }
-    #ycAndyx #tabsWrap .tab .itemOne {
-      width: 100%;
+    #ycAndyx #tabsWrap .tab .oneLine {
+      padding: 1.5em 0;
       background: #fff;
-      overflow: hidden;
-      padding-left: 15px;
-      box-sizing: border-box;
-      border-bottom: 1px solid #eee; }
-      #ycAndyx #tabsWrap .tab .itemOne .name {
-        font-weight: 600;
-        letter-spacing: 2px; }
-      #ycAndyx #tabsWrap .tab .itemOne div {
-        width: 100%;
-        overflow: hidden;
-        margin: 0em 0 1em 0;
-        display: flex;
-        align-items: center; }
-        #ycAndyx #tabsWrap .tab .itemOne div p {
-          color: #666;
-          padding-right: 10px;
-          text-align: center; }
-          #ycAndyx #tabsWrap .tab .itemOne div p i {
+      border-bottom: 1px solid #eee;
+      align-items: center; }
+      #ycAndyx #tabsWrap .tab .oneLine .name {
+        padding-right: 5px; }
+      #ycAndyx #tabsWrap .tab .oneLine .val {
+        font-weight: 600; }
+      #ycAndyx #tabsWrap .tab .oneLine .iconWrap {
+        text-align: center; }
+        #ycAndyx #tabsWrap .tab .oneLine .iconWrap i {
+          color: #7D828F; }
+          #ycAndyx #tabsWrap .tab .oneLine .iconWrap i.icon-tubiaofenxi {
+            font-size: 18px;
+            color: #3498db; }
+          #ycAndyx #tabsWrap .tab .oneLine .iconWrap i.noCom {
             color: #7D828F; }
-            #ycAndyx #tabsWrap .tab .itemOne div p i.noCom {
-              color: #7D828F; }
-            #ycAndyx #tabsWrap .tab .itemOne div p i.alarm {
-              color: #FE4445; }
-            #ycAndyx #tabsWrap .tab .itemOne div p i.comOk {
-              color: #54BB5C; }
-    #ycAndyx #tabsWrap .tab#set .itemOne {
-      text-align: left; }
-      #ycAndyx #tabsWrap .tab#set .itemOne .name {
-        font-weight: normal; }
-      #ycAndyx #tabsWrap .tab#set .itemOne p {
+          #ycAndyx #tabsWrap .tab .oneLine .iconWrap i.alarm {
+            color: #FE4445; }
+          #ycAndyx #tabsWrap .tab .oneLine .iconWrap i.comOk {
+            color: #54BB5C; }
+    #ycAndyx #tabsWrap .tab#set li {
+      width: 100%;
+      background: #fff; }
+      #ycAndyx #tabsWrap .tab#set li P {
         margin: 1.5em 0; }
 
 /*# sourceMappingURL=equips.css.map */
