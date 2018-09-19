@@ -9,14 +9,13 @@ function snapShotDetail() {
 	var chatTitleName = chatValue[0];
 	chatList = chatValue[1];
 	$("#snapShotDetailTitleId").html(chatTitleName)
-	
-	var snapashot_ptr = $$('.snapashot-page-content');
+
+	var snapashot_ptr = $$('.snapashotMessage-page-content');
 	snapashot_ptr.on("ptr:refresh", refreshpg);
-	loadMessage(chatList);
+	loadMessage();
 }
 
-function loadMessage(chatList) {
-	console.log(chatList)
+function loadMessage() {
 	$.ajax({
 		type: 'post',
 		url: '/api/GWServiceWebAPI/get_DataByTableName',
@@ -29,6 +28,7 @@ function loadMessage(chatList) {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
+				userAdmin=[];
 				for(var i = 0; i < resultData.length; i++) {
 					userAdmin.push({
 						Administrator: resultData[i].Administrator,
@@ -74,7 +74,7 @@ function loadMessage(chatList) {
 
 					var isSureSpan = "";
 					if(result[i].bConfirmed == false) {
-						isSureSpan = "<span class='span-color-notsure'>未确认</span>";
+						isSureSpan = "<span class='span-color-notsure sure-flag'>未确认</span>";
 						strData += '<li class="accordion-item">' +
 							'<a href="#" class="item-link item-content">' +
 							'	<div class="item-inner">' +
@@ -92,12 +92,12 @@ function loadMessage(chatList) {
 							'<p>处理意见：<textarea class="advice-textarea" placeholder="请输入处理意见"></textarea></p>' +
 							'<p>是否发送短信：&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' +
 							'<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="height:auto;display:block"></div></p>' +
-							"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\""+textareaEventMsg+"\",\""+result[i].Time+"\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
+							"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + textareaEventMsg + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
 							'</div></div>' +
 							'</li>';
 						countNum++;
 					} else {
-						isSureSpan = "<span class='span-color-sure'>已确认</span>";
+						isSureSpan = "<span class='span-color-sure sure-flag'>已确认</span>";
 						strSureData += '<li class="accordion-item">' +
 							'<a href="#" class="item-link item-content">' +
 							'	<div class="item-inner">' +
@@ -125,12 +125,11 @@ function loadMessage(chatList) {
 }
 
 //选择是否发送短信
-function onProcsCheckBox(countNum) {
-	console.log(countNum, $("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked'))
+function onProcsCheckBox(countNum) {console.log(countNum)
 	if(!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
-		console.log(!$("#snapShotDetailListId li").eq(countNum).find(".procsContent ul").find("li").length)
 		if(!$("#snapShotDetailListId li").eq(countNum).find(".procsContent ul").find("li").length) {
 			var newRow = "<ul>";
+			console.log(userAdmin)
 			for(var i = 0; i < userAdmin.length; i++) {
 				/*newRow += '<li>' +
 					'  <label class="item-radio item-content">' +
@@ -154,20 +153,22 @@ function onProcsCheckBox(countNum) {
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").html(newRow);
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").show();
 		}
+	}else{
+		$("#snapShotDetailListId li").eq(countNum).find(".procsContent").html("");
 	}
 }
 
-function OnSureMessage(countNum,strEventMsg,strTime) {
+function OnSureMessage(countNum, strEventMsg, strTime) {
 	/*阻止事件冒泡*/
 	event.stopPropagation();
 	var checkValArr = []; //短信联系人选中值
 	var strAdviceMsg = $("#snapShotDetailListId li").eq(countNum).find('.advice-textarea').val(); //处理意见值
-	var isShortMsg="";
+	var isShortMsg = "";
 	if(!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
 		$("#snapShotDetailListId li").eq(countNum).find('input[name="my-checkbox"]:checked').each(function() {
 			checkValArr.push($(this).val());
 		});
-		isShortMsg=true;
+		isShortMsg = true;
 	}
 	console.log(checkValArr, strAdviceMsg)
 	$.ajax({
@@ -187,12 +188,19 @@ function OnSureMessage(countNum,strEventMsg,strTime) {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
+				console.log(resultData)
 				myApp.toast.create({
 					text: '操作成功!',
-		  			position: 'center',
+					position: 'center',
 					closeTimeout: 500,
 				}).open();
-				loadMessage(chatList);
+				$("#snapShotDetailListId li").eq(countNum).find(".content-container").css({
+					height: "0"
+				});
+				$("#snapShotDetailListId li").eq(countNum).find('.sure-flag').html("已确认");
+				$("#snapShotDetailListId li").eq(countNum).find('.sure-flag').removeClass("span-color-notsure").addClass("span-color-sure");
+				$("#snapShotDetailListId li").eq(countNum).removeClass("accordion-item-opened");
+				setTimeout(loadMessage, 2000)
 			}
 		}
 	});
@@ -204,14 +212,14 @@ function formatDate(time) {
 }
 
 function refreshpg(e) {
+	console.log(e)
 	setTimeout(function() {
-		loadMessage(chatList);
-
+		loadMessage();
 		// 加载完毕需要重置
-		myApp.ptr.done();
+		e.detail();
 		myApp.toast.create({
 			text: '数据加载成功!',
-  			position: 'center',
+			position: 'center',
 			closeTimeout: 500,
 		}).open();
 	}, 2000);

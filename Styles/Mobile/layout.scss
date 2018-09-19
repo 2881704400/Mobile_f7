@@ -65,6 +65,7 @@ mixin：sass宏mixin
         }
     }
     .snapshotMessage-ul {
+        margin-bottom: 66px;
         li {
             font-size: 15px;
             background: white;
@@ -81,6 +82,7 @@ mixin：sass宏mixin
                 transition-duration: .3s;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
+                border-bottom: 0px solid #c8c7cc;
             }
             textarea.advice-textarea {
                 background: #F9F9F9;

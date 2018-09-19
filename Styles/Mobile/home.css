@@ -1,2 +1,89 @@
-#homeContents{width:100%;height:100%;overflow-y:auto;padding-bottom:50px}#homeContents>ul.charts-block{width:100%}#homeContents>ul.charts-block>li{width:96%;margin:10px auto 0}#homeContents>ul.charts-block>li dl{width:100%;display:inline-block}#homeContents>ul.charts-block>li dl dd{width:100%;text-align:center;padding:10px 0;border-radius:5px;overflow:hidden;background:#fff}#homeContents>ul.charts-block>li dl dd .charts_bar{width:100%}#homeContents>ul.charts-block>li dl dd .charts_bar #purchase_Bar{height:90px}#homeContents>ul.charts-block>li dl dd .charts_bar .barRightBorder{border-right:1px solid #f0f4f7}#homeContents>ul.charts-block>li dl dd .charts_bar #purchase_ring,#homeContents>ul.charts-block>li dl dd .charts_bar #purchase_circular{width:150px;height:150px;margin:0 auto}#homeContents>ul.charts-block>li dl dd .charts_bar #purchase_Bar{margin:0 auto}#homeContents>ul.charts-block>li dl dd .p-ellipsis1{font-size:0.9rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}#homeContents>ul.charts-block>li .functionMenu>dt{width:100%;height:30px;display:inline-block;background:url(/Image/1.jpg) no-repeat center/auto 100%}#homeContents>ul.charts-block>li .functionMenu>dd li{margin-bottom:15px}#homeContents>ul.charts-block>li .functionMenu>dd li .homeBtn{width:100%;height:100%;display:inline-block;color:#666}#homeContents>ul.charts-block>li .functionMenu>dd li .homeBtn i{font-size:2.5rem}#homeContents>ul.charts-block>li .functionMenu>dd li .homeBtn p{margin:0.2rem 0}#homeContents>ul.charts-block>li .functionMenu>dd li .homeBtn img{width:40%}#homeContents>ul.charts-block>li .commonlyUsed li a{width:100%;height:100%;display:inline-block}#homeContents>ul.charts-block>li .commonlyUsed li a img{width:60%;margin:0 auto}#homeContents>ul.charts-block>li .commonlyUsed li a p{color:#666;margin:0.2rem 0}#homeContents>ul.charts-block>li .pptPattern_container h3,#homeContents>ul.charts-block>li .jjPattern_container h3{font-size:1rem;color:#666;font-weight:100;padding-bottom:20px;text-align:center}#homeContents>ul.charts-block>li .pptPattern_container h3 label,#homeContents>ul.charts-block>li .jjPattern_container h3 label{font-size:12px;color:#648EFF;display:block;text-align:center}#homeContents>ul.charts-block>li .pptPattern_container ul>li>a,#homeContents>ul.charts-block>li .jjPattern_container ul>li>a{display:block}#homeContents>ul.charts-block>li .pptPattern_container ol{border-right:1px solid #f0f4f7}
+@charset "UTF-8";
+/*
+mixin：sass宏mixin
+*/
+/*
+mixin：sass宏mixin
+*/
+#homeContents {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 50px; }
+  #homeContents > ul.charts-block {
+    width: 100%; }
+    #homeContents > ul.charts-block > li {
+      width: 96%;
+      margin: 10px auto 0; }
+      #homeContents > ul.charts-block > li dl {
+        width: 100%;
+        display: inline-block; }
+        #homeContents > ul.charts-block > li dl dd {
+          width: 100%;
+          text-align: center;
+          padding: 10px 0;
+          border-radius: 5px;
+          overflow: hidden;
+          background: #fff; }
+          #homeContents > ul.charts-block > li dl dd .charts_bar {
+            width: 100%; }
+            #homeContents > ul.charts-block > li dl dd .charts_bar #purchase_Bar {
+              height: 90px; }
+            #homeContents > ul.charts-block > li dl dd .charts_bar .barRightBorder {
+              border-right: 1px solid #f0f4f7; }
+            #homeContents > ul.charts-block > li dl dd .charts_bar #purchase_ring, #homeContents > ul.charts-block > li dl dd .charts_bar #purchase_circular {
+              width: 150px;
+              height: 150px;
+              margin: 0 auto; }
+            #homeContents > ul.charts-block > li dl dd .charts_bar #purchase_Bar {
+              margin: 0 auto; }
+          #homeContents > ul.charts-block > li dl dd .p-ellipsis1 {
+            font-size: 0.9rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; }
+      #homeContents > ul.charts-block > li .functionMenu > dt {
+        width: 100%;
+        height: 30px;
+        display: inline-block;
+        background: url(/Image/1.jpg) no-repeat center/auto 100%; }
+      #homeContents > ul.charts-block > li .functionMenu > dd li {
+        margin-bottom: 15px; }
+        #homeContents > ul.charts-block > li .functionMenu > dd li .homeBtn {
+          width: 100%;
+          height: 100%;
+          display: inline-block;
+          color: #666; }
+          #homeContents > ul.charts-block > li .functionMenu > dd li .homeBtn i {
+            font-size: 2.5rem; }
+          #homeContents > ul.charts-block > li .functionMenu > dd li .homeBtn p {
+            margin: 0.2rem 0; }
+          #homeContents > ul.charts-block > li .functionMenu > dd li .homeBtn img {
+            width: 40%; }
+      #homeContents > ul.charts-block > li .commonlyUsed li a {
+        width: 100%;
+        height: 100%;
+        display: inline-block; }
+        #homeContents > ul.charts-block > li .commonlyUsed li a img {
+          width: 60%;
+          margin: 0 auto; }
+        #homeContents > ul.charts-block > li .commonlyUsed li a p {
+          color: #666;
+          margin: 0.2rem 0; }
+      #homeContents > ul.charts-block > li .pptPattern_container h3, #homeContents > ul.charts-block > li .jjPattern_container h3 {
+        font-size: 1rem;
+        color: #666;
+        font-weight: 100;
+        padding-bottom: 20px;
+        text-align: center; }
+        #homeContents > ul.charts-block > li .pptPattern_container h3 label, #homeContents > ul.charts-block > li .jjPattern_container h3 label {
+          font-size: 12px;
+          color: #648EFF;
+          display: block;
+          text-align: center; }
+      #homeContents > ul.charts-block > li .pptPattern_container ul > li > a, #homeContents > ul.charts-block > li .jjPattern_container ul > li > a {
+        display: block; }
+      #homeContents > ul.charts-block > li .pptPattern_container ol {
+        border-right: 1px solid #f0f4f7; }
+
 /*# sourceMappingURL=home.css.map */

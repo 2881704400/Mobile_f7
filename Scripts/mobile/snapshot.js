@@ -7,24 +7,21 @@ function snapshot() {
 	switchToolbar("snapshotTool");
 	var snapashot_ptr = $$('.snapashot-page-content');
 	snapashot_ptr.on("ptr:refresh", refreshpg);
-	initData();
+	initSnapshotData();
 }
 
 //获取事件的报警配置
-function initData() {
+function initSnapshotData() {
 	$.ajax({
 		type: 'post',
 		url: '/api/event/alarm_config',
 		headers: {
 			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
 		},
-		data: {
-
-		},
+		data: {},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
-				console.log(resultData);
 				var strData = "";
 				for(var i = 0; i < resultData.length; i++) {
 					if(resultData[i].IsShow == 1) {
@@ -93,12 +90,11 @@ function refreshpg(e) {
 		getRealTimeEventCount();
 
 		// 加载完毕需要重置
-		myApp.ptr.done();
+		e.detail();
 		myApp.toast.create({
 			text: '数据加载成功!',
   			position: 'center',
 			closeTimeout: 500,
 		}).open();
-		//dt == 1?alertMsgSuccess.open():alertMsgError.open();
 	}, 2000);
 }
