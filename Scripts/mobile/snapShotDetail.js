@@ -1,4 +1,5 @@
 var userAdmin = [];
+var chatList;
 
 function snapShotDetail() {
 	//获取父页面参数
@@ -6,9 +7,11 @@ function snapShotDetail() {
 		urlLength = chatObject.length - 1;
 	var chatValue = chatObject[urlLength].split("?")[1].split("&");
 	var chatTitleName = chatValue[0];
-	var chatList = chatValue[1];
+	chatList = chatValue[1];
 	$("#snapShotDetailTitleId").html(chatTitleName)
-
+	
+	var snapashot_ptr = $$('.snapashot-page-content');
+	snapashot_ptr.on("ptr:refresh", refreshpg);
 	loadMessage(chatList);
 }
 
@@ -89,7 +92,7 @@ function loadMessage(chatList) {
 							'<p>处理意见：<textarea class="advice-textarea" placeholder="请输入处理意见"></textarea></p>' +
 							'<p>是否发送短信：&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' +
 							'<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="height:auto;display:block"></div></p>' +
-							"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(this)' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">请确认</a></p>" +
+							"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\""+textareaEventMsg+"\",\""+result[i].Time+"\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
 							'</div></div>' +
 							'</li>';
 						countNum++;
@@ -139,10 +142,10 @@ function onProcsCheckBox(countNum) {
 						'  </label>' +
 						'</li>'; */
 				newRow += '<li><label class="item-checkbox item-content">' +
-					'    <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>' +
+					'    <input type="checkbox" name="my-checkbox"  value="' + userAdmin[i].MobileTel + '"/>' +
 					'    <i class="icon icon-checkbox"></i>' +
 					'    <div class="item-inner">' +
-					'      <div class="item-title">' + userAdmin[i].Administrator + (userAdmin[i].MobileTel == null ? "" : "("+userAdmin[i].MobileTel+")") + '</div>' +
+					'      <div class="item-title">' + userAdmin[i].Administrator + (userAdmin[i].MobileTel == null ? "" : "(" + userAdmin[i].MobileTel + ")") + '</div>' +
 					'    </div>' +
 					'  </label></li>';
 			}
@@ -152,58 +155,45 @@ function onProcsCheckBox(countNum) {
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").show();
 		}
 	}
-//	$("#snapShotDetailListId li").eq(countNum).find(".procsContent").toggle();
-	/*if(!document.getElementById('isProcsInput').checked) {
-		console.log(1)
-		if(!$(".procsContent ul").find("li").length) {
-			console.log(2)
-			var newRow = $('<ul></ul>');
-			for(var i = 0; i < userAdmin.length; i++) {
-				var labels = '<label class="item-checkbox item-content">' +
-					'    <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>' +
-					'    <i class="icon icon-checkbox"></i>' +
-					'    <div class="item-inner">' +
-					'      <div class="item-title">' + userAdmin[i].Administrator + '(' + userAdmin[i].MobileTel + ')</div>' +
-					'    </div>' +
-					'  </label>';
-				newRow.append(lables);
-			}
-			$("#procsContent").html(newRow);
-			console.log($("#procsContent").html())
-		}
-	}
-	$("#procsContent").toggle();*/
 }
 
-function OnSureMessage(dt) {
-	console.log(dt)
+function OnSureMessage(countNum,strEventMsg,strTime) {
 	/*阻止事件冒泡*/
 	event.stopPropagation();
-	var dynamicSheet = app.sheet.create({
-		content: '<div class="sheet-modal">' +
-			'<div class="toolbar">' +
-			'<div class="toolbar-inner">' +
-			'<div class="left"></div>' +
-			'<div class="right">' +
-			'<a class="link sheet-close">Done</a>' +
-			'</div>' +
-			'</div>' +
-			'</div>' +
-			'<div class="sheet-modal-inner">' +
-			'<div class="block">' +
-			'<p>Sheet created dynamically.</p>' +
-			'<p><a href="#" class="link sheet-close">Close me</a></p>' +
-			'</div>' +
-			'</div>' +
-			'</div>',
-		// Events
-		on: {
-			open: function(sheet) {
-				console.log('Sheet open');
-			},
-			opened: function(sheet) {
-				console.log('Sheet opened');
-			},
+	var checkValArr = []; //短信联系人选中值
+	var strAdviceMsg = $("#snapShotDetailListId li").eq(countNum).find('.advice-textarea').val(); //处理意见值
+	var isShortMsg="";
+	if(!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
+		$("#snapShotDetailListId li").eq(countNum).find('input[name="my-checkbox"]:checked').each(function() {
+			checkValArr.push($(this).val());
+		});
+		isShortMsg=true;
+	}
+	console.log(checkValArr, strAdviceMsg)
+	$.ajax({
+		type: 'post',
+		url: '/api/event/confirm_evt',
+		headers: {
+			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
+		},
+		data: {
+			msg: strAdviceMsg, //处理意见
+			shortmsg: isShortMsg, //是否发送短信
+			tel: checkValArr.toString(), //发送人的电话
+			evtname: strEventMsg, //事件名
+			time: strTime, //事件时间
+			userName: window.localStorage.userName //是否发送短信
+		},
+		success: function(dt) {
+			if(dt.HttpStatus == 200 && dt.HttpData.data) {
+				var resultData = dt.HttpData.data;
+				myApp.toast.create({
+					text: '操作成功!',
+		  			position: 'center',
+					closeTimeout: 500,
+				}).open();
+				loadMessage(chatList);
+			}
 		}
 	});
 }
@@ -211,4 +201,18 @@ function OnSureMessage(dt) {
 function formatDate(time) {
 	var newTime = time.replace("T", " ")
 	return newTime.substring(0, 19);
+}
+
+function refreshpg(e) {
+	setTimeout(function() {
+		loadMessage(chatList);
+
+		// 加载完毕需要重置
+		myApp.ptr.done();
+		myApp.toast.create({
+			text: '数据加载成功!',
+  			position: 'center',
+			closeTimeout: 500,
+		}).open();
+	}, 2000);
 }

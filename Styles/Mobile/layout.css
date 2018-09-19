@@ -59,7 +59,7 @@ mixin：sass宏mixin
     .snapshot-main .snapshotMessage-ul li .span-color-notsure {
       color: #FE4445; }
     .snapshot-main .snapshotMessage-ul li .content-container-block {
-      padding: 0 15px 56px;
+      padding: 0 15px;
       color: #6d6d72;
       box-sizing: border-box; }
       .snapshot-main .snapshotMessage-ul li .content-container-block p textarea {
@@ -143,7 +143,7 @@ mixin：sass宏mixin
         position: absolute;
         right: -10%;
         top: 20%;
-        border-right: 1px solid #c1c4c6; }
+        border-right: 1px solid #f0f4f7; }
       .mainDiv ul.small-stats-panel li:nth-child(6) {
         width: 20%; }
         .mainDiv ul.small-stats-panel li:nth-child(6) i {
