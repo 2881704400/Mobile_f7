@@ -5,45 +5,22 @@ function ycAndyx(){
 	var url=urlstr[leng-1].split("#")[1]
 	var equip_no=url.split("&")[0];
 	var name=url.split("&")[1];
-		$("#titleStats").text(name)
-		realShows(equip_no, name)
+	$("#titleStats").text(name)
+	realShows(equip_no, name)
 //		$("#titleStats").text('测试2');
 //		realShows(2, "测试2");
-$(".ios .ptr-preloader").css({zIndex:"99"})
-$(".ios .ptr-preloader .preloader").css({top:"66px"})
-$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
-
-	var searchbar = myApp.searchbar.create({
-		  el: '.searchbar2',
-		  searchContainer:".tab",
-		  searchIn: '.item-title',
-		  
-		});
-
-
-
-	
 //		$("#ycAndyx .title").text('界面控制')
 //		realShows(1005, "界面控制")
+	$(".ios .ptr-preloader").css({zIndex:"99"})
+	$(".ios .ptr-preloader .preloader").css({top:"66px"})
+	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
 
-//		refresh("txt")
-//	setTimeout(function(){
-		
-//	},3000)
-	
-//setInterval(function(){
-//	refreshDatas()
-//},2000)
-//	refresData();
-//	function refresData(){
-//		refreshDatas();
-//		console.log(2)
-//		var timer=setTimeout(function(){
-//			refresData();
-//			clearTimeout(timer)
-//		},2000)
-//	}
-	
+	var searchbar = myApp.searchbar.create({
+		el: '.searchbar2',
+		searchContainer:".tab",
+		searchIn: '.item-title',
+		  
+	});
 }
 
 function refresh(txt){
@@ -145,7 +122,7 @@ function realHtmls(countAll,equip_no,name){
 	}
 	
 	$(".tabCon a").eq(0).addClass("tab-link-active");
-//	$("#tabs .tab").eq(0).addClass("tab-active searchbar-found");
+	$("#tabs .tab").eq(0).addClass("tab-active");
 	$("#titleStats").attr("noTab",$(".tabCon a").eq(0).attr("href"));
 	refresh($(".tabCon a").eq(0).attr("href"))
 	

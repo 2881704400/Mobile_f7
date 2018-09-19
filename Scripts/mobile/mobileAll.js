@@ -1,4 +1,5 @@
 ﻿//移动端js主入口
+
 var myApp = new Framework7({
     // App root element
     root: '#app',
@@ -76,7 +77,9 @@ var myApp = new Framework7({
         },
         init: function() {}
     },
+    
 });
+
 var mainView = myApp.views.create('.view-main');
 //web接口地址
 var service = "/GWService.asmx";
