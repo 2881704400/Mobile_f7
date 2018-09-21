@@ -9,8 +9,8 @@ function ycAndyx(){
 	realShows(equip_no, name)
 //		$("#titleStats").text('测试2');
 //		realShows(2, "测试2");
-//		$("#ycAndyx .title").text('界面控制')
-//		realShows(1005, "界面控制")
+//		$("#ycAndyx .title").text('界面控制');
+//		realShows(1005, "界面控制");
 	$(".ios .ptr-preloader").css({zIndex:"99"})
 	$(".ios .ptr-preloader .preloader").css({top:"66px"})
 	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
@@ -59,18 +59,18 @@ function allowScroll(hei){
 		myApp.ptr.create('.ptr-content');
 		var $ptrContent = $$('.ptr-content');
 		$ptrContent.on('ptr:refresh', function (e) {
-		  setTimeout(function () {
-		  	var id=$("#titleStats").attr("noTab");
-		  	var eqiup_no=$("#titleStats").attr("equip_no")
-		  	if(id=="#ycp"){
-		  		serviceDatas("yc",eqiup_no)
-			}else if(id=="#yxp"){
-				serviceDatas("yx",eqiup_no)
-			}else {
-				tableFills(equip_no, "", "set");
-			}
-		    myApp.ptr.done();
-		  }, 2000);
+		    setTimeout(function () {
+			  	var id=$("#titleStats").attr("noTab");
+			  	var eqiup_no=$("#titleStats").attr("equip_no")
+			  	if(id=="#ycp"){
+			  		serviceDatas("yc",eqiup_no)
+				}else if(id=="#yxp"){
+					serviceDatas("yx",eqiup_no)
+				}else {
+					tableFills(equip_no, "", "set");
+				}
+		    	myApp.ptr.done();
+		  	}, 2000);
 		});
 	}else{
 //		console.log(33)
