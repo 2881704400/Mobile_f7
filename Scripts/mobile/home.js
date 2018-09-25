@@ -5,11 +5,10 @@ function onHomePage() {
     
     switchToolbar("homeTool");
     //图表
-    $("#purchase_Bar").width(window.screen.width);
-
+    // $("#purchase_Bar").width(window.screen.width*0.96-20);
     snapshotChart("purchase_Bar");
     equipsChart("purchase_ring");
-    ycpChart("purchase_circular");
+    ycpChart("purchase_circular");  
     //场景按钮
     commonlyUsedFun("commonlyUsed","25",commonlyUsed);//常用
     VideoBaner("KOvm_container","swiper-paginationTrailer-KOvm",KOvm);//场景
@@ -103,7 +102,7 @@ function commonlyUsedFun(className,classListName,jsonString) {
     var countTrailer = jsonString.length;
     var htmlTrailerChild="",xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-"+classListName+"\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\""+jsonString[i].equipNo+"\" set_no=\""+jsonString[i].setNo+"\" onclick=\"setCommand_1(this,"+jsonString[i].value+")\">" + "<img src=\""+jsonString[i].icon+"\" />" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<img src=\""+jsonString[i].icon+"\" />" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>"+"</li>";
+        htmlTrailerChild += "<li class=\"col-"+classListName+"\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\""+jsonString[i].equipNo+"\" set_no=\""+jsonString[i].setNo+"\" onclick=\"setCommand_1(this,"+jsonString[i].value+")\">" + "<i class=\""+jsonString[i].icon+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\""+jsonString[i].icon+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>"+"</li>";
     }
     $("."+className).append(htmlTrailerChild);
 }

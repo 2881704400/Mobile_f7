@@ -49422,3 +49422,10 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
 -------------------------------------
 
 >>>>>>> 8eb2bb0a3458eb001012512caec35f0fc0ccd6e6
+----------2018/9/21 15:16:40----------
+System.ArgumentOutOfRangeException: 长度不能小于 0。
+参数名: length
+   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 GWService.Net.ClassLib.GetEquipAllState()
+-------------------------------------
+

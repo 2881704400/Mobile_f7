@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
 		<!-- <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css"> -->
 		<!--图标字体样式-->
-		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_fb4z0zy9is9.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_5t8xqpzgvfb.css" />
 
 		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
@@ -32,7 +32,7 @@
 
 	<body>
 		<!-- App root element -->
-		<div id="app" style="display: none;">
+		<div id="app" style="visibility: hidden;">
 			<div class="statusbar"></div>
 			<div class="view view-main">
 				<div data-page="home" class="page" id="home">
@@ -43,7 +43,7 @@
 							<div class="left hideMenu">
 								<a href="#" class="back link">
 									<i class="iconfont icon-back"></i>
-								</a>
+								</a>  
 							</div>
 							<div class="center sliding title auth_name_get"></div>
 							<div class="right">
@@ -54,20 +54,20 @@
 					<!-- Scrollable page content -->
 					<div class="page-content mainDiv" >
 					  <div id="homeContents">
-						<ul class="charts-block">	
+						<ul class="charts-block">		
+							<li class="row statisticsTable">
+								<!-- <h3 class="col-100"><i class="iconfont icon-f7_snapshot"></i>实时快照信息</h3> -->
+								<span class="col-20"><p>11</p>故障</span>
+								<span class="col-20"><p>22</p>警告</span>
+								<span class="col-20"><p>33</p>信息</span>
+								<span class="col-20"><p>0</p>设置</span>
+								<span class="col-20"><p>1</p>资产</span>
+							</li>																		
 							<li>
 								<dl>
                                	  <dt></dt>
                                	  <dd>
-									<ol class="row commonlyUsed">									
-									</ol>
-                               	  </dd>
-                               </dl>
-							</li>													
-							<li>
-								<dl>
-                               	  <dt></dt>
-                               	  <dd>
+                               	  	<!-- <h3><i class="iconfont icon-f7_equipList"></i>设备故障率</h3> -->
 									<div class="charts_bar">
 										<div id="purchase_Bar" ></div>
 									</div>
@@ -78,6 +78,7 @@
 								<dl >
                                	  <dt></dt>
                                	  <dd>
+                               	  	<!-- <h3><i class="iconfont icon-f7_equipList"></i>测点数</h3> -->
 	                                <div class="charts_bar row no-gap">
 										<div class="col-50 barRightBorder">									
 											<div id="purchase_ring"></div>
@@ -89,7 +90,15 @@
                                	  </dd>
                                </dl>
 							</li>
-						
+							<li>
+								<dl class="">
+                               	  <dt></dt>
+                               	  <dd>
+									<ol class="row commonlyUsed">									
+									</ol>
+                               	  </dd>
+                               </dl>
+							</li>							
 							<li class="row">
                                <dl class="functionMenu">
                                	  <dt></dt>
@@ -174,11 +183,14 @@
 					</div>
 				</div>
 				<!-- voice -->
-				<div class="voiceDivs displayNone">
-					<div class="">
-						<div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
-						<div id="waveAnim" class="waveAnim" style="display: none;"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="voicetest"></div>
+				<div class="voiceContainer" id="voiceContainer">
+					<div class="voiceDivs voicePanel">
+						<a href="#">X</a>
+						<div class="">
+							<div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
+							<div id="waveAnim" class="waveAnim" style="display: none;"><i></i><i></i><i></i><i></i><i></i></div>
+							<div class="voicetest"></div>
+						</div>
 					</div>
 				</div>
 			</div>

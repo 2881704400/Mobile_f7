@@ -161,120 +161,176 @@ myJavaFuntion.OpenApp = function(url) {
 
 //柱形表
 function snapshotChart(id) {
+    var myChart = echarts.init(document.getElementById(id));
+    function randomData() {
 
-var myChart = echarts.init(document.getElementById(id));
-var Purchase_Bar_dataAxis = ['故障', '警告', '信息', '设置', '资产'];
-var Purchase_Bar_data = [11, 22, 33, 0, 1];
-var Purchase_Bar_yMax = Math.max.apply(null,Purchase_Bar_data)*1.2;
-var Purchase_Bar_dataShadow = [];
+        var now = new Date();//获取当前时间
+        xdata.push([now.getHours(),now.getMinutes(),now.getSeconds()].join(":"));
+        value =Math.round(50+Math.random()*10-25);
+        return {
+            name: now.toString(),
+            value: value,
 
-for (var i = 0; i < Purchase_Bar_data.length; i++) {
-    Purchase_Bar_dataShadow.push(Purchase_Bar_yMax);
-}
+        }
+    }
 
-var option = {
-    title : {
-        text: '',
-        subtext: '',
-        x:'center',
-        textStyle:{
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: 200,
+    var data = [],xdata =[];
+    var now = new Date();
+    var oldTime = now.getTime();
 
-        }, top: '8%'
-    },
-    grid: {
-            top: '5%',
-            left: '-5%',
-            right: '5%',
-            bottom: '5%',
+    for(var i=0;i<5;i++){
+        var newTime = new Date(oldTime+5000*i);
+        xdata.push([newTime.getHours(),newTime.getMinutes(),newTime.getSeconds()].join(":")); 
+        data.push({name: newTime.toString(),value: 0});
+    }
+
+    var option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            
+            trigger: 'axis',
+            formatter: function (params) {
+                var params = params[0];
+                return  params.value+"%";
+            },
+            axisPointer: {
+                animation: false
+            },
+           label: {
+               backgroundColor: '#6a7985'
+           }        
+        },
+        legend: {
+            data:['设备故障率'],
+            right: 0,
+        },
+        grid: {
+            top: '15%',
+            left: '2%',
+            right: '2%',
+            bottom: '3%',
             containLabel: true
-        },          
-    xAxis: {
-        data: Purchase_Bar_dataAxis,
-        axisLabel: {
-            inside: false,
-            color: 'white',
-            textStyle: {
-                fontSize: 14,
-                color: '#414141'
-            }
-        },
-        axisTick: {
-            show: false
-        },
-        axisLine: {
-            show: false, 
-            lineStyle:{color: '#fff',width: 1,}    
-        },
-
-        z: 10
-    },
-    yAxis: {
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            color: 'white',
-            textStyle: {
-                color: '#fff'
-            }
-        },
-        splitLine: {show: false,}
-           
-    },
-    dataZoom: [
-        {
-            type: 'inside',
-            disabled: true,
-        }
-    ],
-    series: [
-        { // For shadow
-            type: 'bar',
-            itemStyle: {
-                normal: {color: 'rgba(0,0,0,0.15)'}
-            },
-            barGap:'-100%',
-            barCategoryGap:'40%',
-            barWidth:"40%",
-            data: Purchase_Bar_dataShadow,
-            animation: false
-        },
-        {
-            type: 'bar',
-            barWidth:"40%",
-            label: {
-                normal: {
-                    show: true,
-                    position: 'top',
-                    textStyle:{
-                     color: "#414141"
-                    }
+        },    
+        xAxis:  [
+                {
+                    //设置类别
+                    type: 'category',
+                    //数值起始和结束两端空白策略
+                    boundaryGap: false,
+                    axisLine: {
+                        lineStyle: {
+                            type: 'solid',
+                            color: '#000',//左边线的颜色
+                            width: '1'//坐标线的宽度
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#000'//x轴刻度数值颜色
+                        }
+                    },
+                    data: xdata
                 }
-
-        },
-        itemStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(
-                    0, 0, 0, 1,
-                    [
-                        {offset: 0, color: '#C2D3FF'},
-                        {offset: 0.8, color: '#85a3f3'},
-                        {offset: 1, color: '#648EFF'}
-                    ]
-                )
+        ],
+        yAxis: {
+            name: '百分比(%)',
+            type: 'value',
+            // max: 100,
+            boundaryGap: [0, '100%'],
+            axisLine:{
+                show: false,onZero: false
+            }, 
+            axisTick:{
+            show: false,
             },
+            // splitLine: {
+            //     show: false
+            // },
+            // axisLabel: {
+            //     formatter: '{value}'+'%'
+            // }
         },
-        data: Purchase_Bar_data
+        series: [{
+            name: '设备故障率',
+            type: 'line',
+            showSymbol: true,
+            hoverAnimation: false,
+            barWidth : '50%',
+            itemStyle : {
+                normal : {
+                    label: {
+                      show: true,
+                      position: 'top',
+                      textStyle: {
+                        color: '#666'
+                      }
+                   },
+                    lineStyle:{
+                        width: 1,
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: 'red' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: 'red' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        }
+                    }, 
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: '#F90A0A' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: '#F3DEDE' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        }
+                    },                    
+                 },
+            },
+            symbolSize: 7,      
+            data: data
+        }]
+    };
+
+    setInterval(function () {
+        data.push(randomData());
+       if(xdata.length>6)
+        {
+            xdata.shift();
+            data.shift();
         }
-    ]
-};
-myChart.setOption(option);
+        
+        myChart.setOption({
+             xAxis: [
+                {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: xdata
+                }
+                ],
+            series: [{
+
+                data: data
+            }]
+        });
+    }, 5000);    
+    myChart.setOption(option);
+    $(window).resize(function() {
+        myChart.resize();
+    });
 }
 
 
@@ -298,15 +354,15 @@ function equipsChart(id) {
                 color: '#414141' // 主标题文字颜色
             },
         },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['正常测点','报警测点']
+        },        
         tooltip: {
             show: false,
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
-        },
-        legend: {
-            show: false,
-            orient: 'vertical',
-            x: 'left',
         },
         series: [{
             name: '',
@@ -320,7 +376,7 @@ function equipsChart(id) {
                 normal: {
                     show: true,
                     position: 'outside',
-                    formatter: "{b} \n {c}个",
+                    formatter: "{c}",
                     textStyle: {
                         color: 'rgb(102,102,102)',
                         fontSize: 11,
@@ -340,23 +396,22 @@ function equipsChart(id) {
                     length2: 0,
                 }
             },
-            color: ['#F8827D', '#A0A0A0', '#98F8AF'],
+            color: ['#F5221C', '#91C7AE'],
             data: [{
                     value: 12,
-                    name: '报警'
-                },
-                {
-                    value: 11,
-                    name: '关闭'
+                    name: '报警测点'
                 },
                 {
                     value: 107,
-                    name: '正常'
+                    name: '正常测点'
                 }
             ]
         }]
     };
     myChart.setOption(option);
+        $(window).resize(function() {
+        myChart.resize();
+    });
 }
 
 
@@ -375,11 +430,16 @@ function ycpChart(id, sumnum) {
             },
 
         },
-        tooltip: {
-            show: false,
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['连接成功设备','连接失败设备']
+        },         
+        // tooltip: {
+        //     show: false,
+        //     trigger: 'item',
+        //     formatter: "{a} <br/>{b} : {c} ({d}%)"
+        // },
         series: [{
             type: 'pie',
             radius: '58%',
@@ -388,22 +448,22 @@ function ycpChart(id, sumnum) {
             legendHoverLink: false,
             silent: true,
             data: [{
-                value: 18,
-                name: '故障设备'
+                value: 111,
+                name: '连接成功设备'
             }, {
-                value: 10,
-                name: '正常设备'
+                value: 40,
+                name: '连接失败设备'
             }],
             label: {
                 normal: {
                     show: true,
                     position: 'inside',
-                    formatter: "{c}个",
+                    formatter: "{c}",
                     /*formatter: function(params) {
                         return params.name+"\n"+params.value
                     },*/
                     textStyle: {
-                        color: 'rgb(102,102,102)',
+                        color: 'white',
                         fontSize: 12,
                     }
                 }
@@ -417,8 +477,8 @@ function ycpChart(id, sumnum) {
             },
             itemStyle: {
                 normal: {
-                    borderWidth: 4,
-                    borderColor: '#ffffff',
+                    // borderWidth: 4,
+                    // borderColor: '#ffffff',
                 },
                 emphasis: {
                     borderWidth: 0,
@@ -428,87 +488,42 @@ function ycpChart(id, sumnum) {
                 }
             },
             z: 2
-        }, {
-            type: 'pie',
-            radius: '58%',
-            center: ['50%', '55%'],
-            clockwise: true,
-            legendHoverLink: false,
-            silent: true,
-            data: [{
-                value: 6,
-                name: '故障设备'
-            }, {
-                value: 22,
-                name: '正常设备'
-            }],
-            label: {
-                normal: {
-                    show: true,
-                    position: 'outside',
-                    formatter: "{b}",
-                    /*formatter: function(params) {
-                        return params.name+"\n"+params.value
-                    },*/
-                    textStyle: {
-                        color: 'rgb(102,102,102)',
-                        fontSize: 11,
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false,
-                    length: 4,
-                    length2: 2,
-                }
-            },
-            itemStyle: {
-                normal: {
-                    borderWidth: 4,
-                    borderColor: '#ffffff',
-                },
-                emphasis: {
-                    borderWidth: 0,
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            },
-            z: 1
         }],
-        color: ['#F8827D', '#98F8AF'],
+        color: ['#91C7AE', '#dddddd'],
     };
     myChart.setOption(option);
+        $(window).resize(function() {
+        myChart.resize();
+    });
 }
 
 
 // 常用
 var commonlyUsed =[
     {
-        name: '返回软件',
-        icon: '/Image/infor/SetParm.png',
+        name: '列表视频',
+        icon: 'iconfont icon-f7_video',
         equipNo: '300',
         setNo: '10',
         value: null,
     },
     {
-        name: '欢迎模式',
-        icon: '/Image/infor/Info.png',
+        name: '地图监控',
+        icon: 'iconfont icon-f7_control',
         equipNo: '300',
         setNo: '10',
         value: null,
     },
     {
-        name: '合影模式',
-        icon: '/Image/infor/Warn.png',
+        name: 'PPT',
+        icon: 'iconfont icon-f7_ppt',
         equipNo: '300',
         setNo: '10',
         value: null,
     },
     {
-        name: '离开模式',
-        icon: '/Image/infor/Fatal.png',
+        name: '欢迎词',
+        icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
         setNo: '10',
         value: null,
@@ -758,28 +773,28 @@ var KOvm =[
 var pptPattern =[
     {
         name: '打开PPT',
-        icon: '/Image/home/ppt.png',
+        icon: 'iconfont icon-f7_ppt',
         equipNo: '300',
         setNo: '7',
         value: null,
     },
     {
-        name: '首页',
-        icon: '/Image/home/ppt_home.png',
+        name: '关闭',
+        icon: 'iconfont icon-f7_c_l',
         equipNo: '300',
         setNo: '8',
         value: null,
     },
     {
         name: '上一页',
-        icon: '/Image/home/ppt_prev.png',
+        icon: 'iconfont icon-f7_prev',
         equipNo: '1005',
         setNo: '7001',
         value: null,
     },
     {
         name: '下一页',
-        icon: '/Image/home/ppt_next.png',
+        icon: 'iconfont icon-f7_next',
         equipNo: '1005',
         setNo: '7002',
         value: null,
@@ -791,28 +806,28 @@ var pptPattern =[
 var jjPattern =[
     {
         name: '开始讲解',
-        icon: '/Image/home/jj.png',
+        icon: 'iconfont icon-f7_jj',
         equipNo: '1007',
         setNo: '1',
         value: null,
     },
     {
         name: '停止讲解',
-        icon: '/Image/home/stop_1.png',
+        icon: 'iconfont icon-f7_s_t',
         equipNo: '1007',
         setNo: '2',
         value: null,
     },
     {
             name: '暂停讲解',
-            icon: '/Image/home/stop_0.png',
+            icon: 'iconfont icon-f7_stop_0',
             equipNo: '1007',
             setNo: '3',
             value: null,
     },
     {
         name: '继续讲解',
-        icon: '/Image/home/jx.png',
+        icon: 'iconfont icon-f7_j_x',
         equipNo: '300',
         setNo: '10116',
         value: null,
