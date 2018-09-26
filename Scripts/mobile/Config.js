@@ -222,13 +222,13 @@ function snapshotChart(id) {
                     axisLine: {
                         lineStyle: {
                             type: 'solid',
-                            color: '#000',//左边线的颜色
+                            color: '#666',//左边线的颜色
                             width: '1'//坐标线的宽度
                         }
                     },
                     axisLabel: {
                         textStyle: {
-                            color: '#000'//x轴刻度数值颜色
+                            color: '#666'//x轴刻度数值颜色
                         }
                     },
                     data: xdata
@@ -396,7 +396,7 @@ function equipsChart(id) {
                     length2: 0,
                 }
             },
-            color: ['#F5221C', '#91C7AE'],
+            color: ['#FB7C8A', '#91C7AE'],
             data: [{
                     value: 12,
                     name: '报警测点'
@@ -433,7 +433,7 @@ function ycpChart(id, sumnum) {
         legend: {
             orient: 'vertical',
             x: 'left',
-            data:['连接成功设备','连接失败设备']
+            data:['连接设备','未连设备']
         },         
         // tooltip: {
         //     show: false,
@@ -449,10 +449,10 @@ function ycpChart(id, sumnum) {
             silent: true,
             data: [{
                 value: 111,
-                name: '连接成功设备'
+                name: '连接设备'
             }, {
                 value: 40,
-                name: '连接失败设备'
+                name: '未连设备'
             }],
             label: {
                 normal: {
@@ -477,8 +477,8 @@ function ycpChart(id, sumnum) {
             },
             itemStyle: {
                 normal: {
-                    // borderWidth: 4,
-                    // borderColor: '#ffffff',
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
                 },
                 emphasis: {
                     borderWidth: 0,
@@ -489,7 +489,7 @@ function ycpChart(id, sumnum) {
             },
             z: 2
         }],
-        color: ['#91C7AE', '#dddddd'],
+        color: ['#91C7AE', '#ccc'],
     };
     myChart.setOption(option);
         $(window).resize(function() {
@@ -535,133 +535,133 @@ var KOvm =[
 
     {
         name: '智能建筑',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jz',
         equipNo: '300',
         setNo: '2',
         value: null,
     },
     {
         name: '乐从环保首页',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_hb',
         equipNo: '300',
         setNo: '31',
         value: null,
     },
     {
         name: '乐从河流监测',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_hl',
         equipNo: '300',
         setNo: '32',
         value: null,
     },
     {
         name: '乐从河流报警',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_bj',
         equipNo: '300',
         setNo: '33',
         value: null,
     },
     {
         name: '开闸排污',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_pw',
         equipNo: '300',
         setNo: '34',
         value: null,
     },
     {
         name: '数据中心',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '3',
         value: null,
     },
     {
         name: '智能交通',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jt',
         equipNo: '300',
         setNo: '4',
         value: null,
     },
     {
         name: '智能电网',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_dw',
         equipNo: '300',
         setNo: '11',
         value: null,
     },
     {
         name: '能源系统',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_dsj1',
         equipNo: '300',
         setNo: '17',
         value: null,
     },
     {
         name: '智慧监狱',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jy',
         equipNo: '300',
         setNo: '18',
         value: null,
     },
     {
         name: '戒毒所模式',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jd',
         equipNo: '300',
         setNo: '25',
         value: null,
     },
     {
         name: '智慧城管',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_cg',
         equipNo: '300',
         setNo: '81',
         value: null,
     },
     {
         name: '智慧公交',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_gj',
         equipNo: '300',
         setNo: '82',
         value: null,
     },
     {
         name: '城市3D',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_3d3d',
         equipNo: '300',
         setNo: '83',
         value: null,
     },
     {
         name: '智慧环保',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_hbxx',
         equipNo: '300',
         setNo: '84',
         value: null,
     },
     {
         name: '智慧影院',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_3d',
         equipNo: '300',
         setNo: '85',
         value: null,
     },
     {
         name: '大数据',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '86',
         value: null,
     },
     {
         name: '智慧电梯',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_dt',
         equipNo: '300',
         setNo: '92',
         value: null,
     },
     {
         name: '智慧工厂',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '100',
         value: null,
@@ -675,84 +675,84 @@ var KOvm =[
     },  
     {
         name: '智慧城市',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '99',
         value: null,
     },  
     {
         name: '城市管控',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_gk',
         equipNo: '300',
         setNo: '2000',
         value: null,
     },
      {
         name: '智慧照明',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_zm',
         equipNo: '300',
         setNo: '101',
         value: null,
     },                      
     {
         name: '欢迎词',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
         setNo: '10112',
         value: null,
     },
     {
         name: '消防报警',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10107',
         value: null,
     },
     {
         name: '消防恢复正常',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_hf',
         equipNo: '300',
         setNo: '6',
         value: null,
     },
     {
         name: '防区报警',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_fq',
         equipNo: '300',
         setNo: '10106',
         value: null,
     },
     {
         name: '空调报警',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_kt',
         equipNo: '300',
         setNo: '10105',
         value: null,
     },
     {
         name: '总部前台监控',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jk',
         equipNo: '1005',
         setNo: '1500',
         value: null,
     },
     {
         name: '总部会议室监控',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_hys',
         equipNo: '1005',
         setNo: '1000',
         value: null,
     },
     {
         name: '展厅监控',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_jk',
         equipNo: '300',
         setNo: '10096',
         value: null,
     },
     {
         name: '欢迎模式',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10112',
         value: null,
@@ -760,7 +760,7 @@ var KOvm =[
 
     {
         name: '小镇现场演示',
-        icon: 'iconfont icon-f7_equipList',
+        icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '10093',
         value: null,

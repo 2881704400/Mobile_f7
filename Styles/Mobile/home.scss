@@ -11,8 +11,8 @@ mixin：sass宏mixin
       width: 100%;
         &>li{
           width: 96%;margin: 10px auto 0;
-          h3{text-align: left;font-size: 0.9rem;font-weight: 300;    margin-bottom: 1rem;
-                  i{font-size: 1.5rem;margin-right: 10px;vertical-align: middle;position: relative;top: -2px;}
+          h3{text-align: left;font-size: 0.9rem;font-weight: 300;margin-bottom: 1rem;
+          i{font-size: 1.5rem;margin-right: 10px;vertical-align: middle;position: relative;top: -2px;}
                 }  
           dl{
             width: 100%;display: inline-block;
@@ -54,15 +54,17 @@ mixin：sass宏mixin
           }
           .pptPattern_container,.jjPattern_container{
             h3{
-              font-size: 1.3rem;color: #{$situationFontColor};font-weight: 100;text-align: center;
+              font-size: 1.3rem;color: #{$situationFontColor};font-weight: 100;text-align: center;position: relative;
               label{font-size: 12px;color: #{$unclickedColor};display: block;text-align: center;}
+              span{display: inline-block;background: white;padding: 0px 5px;position: relative;z-index: 1;}
+              &:after{content: "";width: 80%;height: 1px;border-top: 1px solid #{$statsBorderColor};position: absolute;left: 10%;top: 25%;right: 10%;}
              }
             ul>li>a{display: block;}
            }
            .pptPattern_container{ ol{border-right: 1px solid #{$statsBorderColor};}}
         }
         .statisticsTable{padding: 10px;box-shadow: 0px -1px 1px #{$situationBoxShadow};
-          span{border: 1px dashed #eee;p{font-family: serif;font-size: 1.5rem;margin: 0.2rem 0;}}
+          span{border-right: 1px dashed #eee;p{font-family: serif;font-size: 1.5rem;margin: 0.2rem 0;}}
           span:nth-of-type(1) p{color: red;}
           span:nth-of-type(2) p{color: #F18E2E;}
           span:nth-of-type(3) p{color: #4BCAF1;}
