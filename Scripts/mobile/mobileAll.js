@@ -69,7 +69,7 @@ var myApp = new Framework7({
         pageInit: function(page) {
             // do something on page init
             // console.log(page)
-
+            $("#voiceContainer").addClass("voiceContainer");
         },
         popupOpen: function(popup) {
             // do something on popup open
@@ -88,7 +88,7 @@ function initLoads() {
     
     setTimeout(function() {
         //$("html").height(window.screen.height);
-        $("#app").show();
+        $("#app").css("visibility","visible");
     }, 3000);
 
     //语音记录选择
@@ -195,7 +195,7 @@ function InitEnsure() {
         success: function(dt) {
             var analyze = $(dt).children("string").text();
             if (analyze != "" || analyze != "false") {
-                $("#app").show();
+                $("#app").css("visibility","visible");
                 console.log("连接成功！");
                 $.ajax({
                     type: "post",
