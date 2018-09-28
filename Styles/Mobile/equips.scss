@@ -56,7 +56,6 @@
     .equip-list{
         background: #fff;
         li{
-//          padding: 5px 0;
             i{
                 color: #7D828F;
                 &.noCom{
@@ -163,4 +162,179 @@
        
     }
 }
+#eventQuery,#systemConfig{
+    .condition{
+        overflow: hidden;
+        border-bottom: 1px solid #eee;
+        height: 40px;
+        .hideShow{
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #FD971F;
+            height: 40px;
+            line-height: 40px;
+            margin: 0;
+        }
+        background: #FFF;
+        .timeWrap{
+            height: 30px;
+            line-height: 30px;
+            width: 96%;
+            margin: 20px auto;
+            .inpWrap{
+                height: 100%;
+                border: 1px solid #666;
+                input{
+                    width: 95%;
+                    height: 30px !important;
+                    padding-left: 5%;
+                    border: none;
+                }
+            }
+        }
+        .sureBtn{
+            background:#FD971F ;
+            color: #fff;
+            width: 70%;
+            margin: 10px auto;
+        }
+    }
+    .equipCon{
+        height:calc(100% - 40px) ;
+        .col-25{
+            height: 100%;
+        }
+        .col-75{
+             height: 100%;
+            .eventWrap{
+               height: calc(100% - 36px);
+                overflow-y: auto;
+            }
+            
+        }
+    }
+    .equipList{
+        overflow: auto;
+        height: 100%;
+        border-right: 1px solid #eee;
+        box-sizing: border-box;
+        li{
+            padding: 10px 5px;
+            background: #fff;
+            word-break: break-all;
+            &.check{
+                 color:#FD971F ;
+            }
+        }
+    }
+    .tabList{
+        margin: 0;
+        background: #fff;
+        height:36px;
+        a{
+            height: 100%;
+        }
+        .tab-link-active{
+            background: #fff;
+            border-bottom: 2px solid #FD971F !important;
+        }
+        .button{
+            transition-duration:0s;
+            -webkit-transition-duration:0;
+            color: #212121;
+            border: none;
+            &:last-child{
+                border-radius: 0;
+            }
+            &:first-child{
+                border-radius: 0;
+            }
+        }
+    }
+    .eventWrap{
+        li{
+            background: #fff;
+            .eventList{
+                padding: 5px 0;
+                align-items: center;
+                .name{
+                   color: #757575; 
+                }
+            }
+        }
+    }
+}
+#systemConfig{
+    
+    .equipCon{
+        height: 100%;
+        .col-25{
+            height: 100%;
+        }
+        .col-75{
+             height: 100%;
+//          .eventWrap{
+//             height: 100%;
+//              overflow-y: auto;
+//          }
+            
+        }
+    }
+}
 
+.ios .startTime{
+    .toolbar{
+        top: 0px;
+    }
+    .calendar-selected-date{
+        color: #fff;
+    }
+}
+.startTime{
+    .calendar-header{
+        background: #FD971F;
+    }
+    .toolbar{
+        top: 50px;
+    }
+    .calendar-footer{
+        a{
+            color:#FD971F ;
+        }
+    }
+   .calendar-day.calendar-day-today span{
+       color:#FD971F ;
+   }
+    .calendar-day.calendar-day-selected span{
+        background: #FD971F;
+        color: #fff;
+    }
+}
+.md{
+    #systemConfig{
+       .progressbar-infinite{
+           background: #fff;
+           display: none;
+           &:after{
+               background: #FD971F;
+           }
+           &:before{
+                background: #FD971F;
+           }
+       }
+    }
+}
+.ios{
+    #systemConfig{
+       .progressbar-infinite{
+           background: #fff;
+           display: none;
+           &:after{
+               background: #FD971F;
+           }
+           &:before{
+                background: #FD971F;
+           }
+       }
+    }
+}

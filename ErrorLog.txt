@@ -49519,3 +49519,223 @@ System.ArgumentOutOfRangeException: 长度不能小于 0。
 
 =======
 >>>>>>> master
+----------2018/9/26 16:48:07----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:48:07----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:48:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:48:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:48:49----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:48:49----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:49:33----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:49:33----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:55:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/26 16:55:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 9:16:05----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:46----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:48----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:50----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:53----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:56----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:57----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:57----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:11:58----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:12:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:20:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:20:29----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:26:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:26:20----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:26:22----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:27:34----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:27:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:27:36----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:27:38----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 10:35:09----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:09:48----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:09:50----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:11:31----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:53----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:55----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:55----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:56----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:13:56----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:14:51----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:14:52----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:14:52----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+
+----------2018/9/28 11:14:53----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list)
+-------------------------------------
+

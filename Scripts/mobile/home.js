@@ -9,6 +9,8 @@ function onHomePage() {
     
 //  myApp.router.navigate("/equips/")
 //   myApp.router.navigate("/ycAndyx/")
+//   myApp.router.navigate("/systemConfig/")
+
 
 
 

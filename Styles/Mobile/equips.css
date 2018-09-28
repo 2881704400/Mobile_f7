@@ -102,4 +102,120 @@
       #ycAndyx #tabsWrap .tab#set li P {
         margin: 1.5em 0; }
 
+#eventQuery .condition, #systemConfig .condition {
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  height: 40px;
+  background: #FFF; }
+  #eventQuery .condition .hideShow, #systemConfig .condition .hideShow {
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: #FD971F;
+    height: 40px;
+    line-height: 40px;
+    margin: 0; }
+  #eventQuery .condition .timeWrap, #systemConfig .condition .timeWrap {
+    height: 30px;
+    line-height: 30px;
+    width: 96%;
+    margin: 20px auto; }
+    #eventQuery .condition .timeWrap .inpWrap, #systemConfig .condition .timeWrap .inpWrap {
+      height: 100%;
+      border: 1px solid #666; }
+      #eventQuery .condition .timeWrap .inpWrap input, #systemConfig .condition .timeWrap .inpWrap input {
+        width: 95%;
+        height: 30px !important;
+        padding-left: 5%;
+        border: none; }
+  #eventQuery .condition .sureBtn, #systemConfig .condition .sureBtn {
+    background: #FD971F;
+    color: #fff;
+    width: 70%;
+    margin: 10px auto; }
+#eventQuery .equipCon, #systemConfig .equipCon {
+  height: calc(100% - 40px); }
+  #eventQuery .equipCon .col-25, #systemConfig .equipCon .col-25 {
+    height: 100%; }
+  #eventQuery .equipCon .col-75, #systemConfig .equipCon .col-75 {
+    height: 100%; }
+    #eventQuery .equipCon .col-75 .eventWrap, #systemConfig .equipCon .col-75 .eventWrap {
+      height: calc(100% - 36px);
+      overflow-y: auto; }
+#eventQuery .equipList, #systemConfig .equipList {
+  overflow: auto;
+  height: 100%;
+  border-right: 1px solid #eee;
+  box-sizing: border-box; }
+  #eventQuery .equipList li, #systemConfig .equipList li {
+    padding: 10px 5px;
+    background: #fff;
+    word-break: break-all; }
+    #eventQuery .equipList li.check, #systemConfig .equipList li.check {
+      color: #FD971F; }
+#eventQuery .tabList, #systemConfig .tabList {
+  margin: 0;
+  background: #fff;
+  height: 36px; }
+  #eventQuery .tabList a, #systemConfig .tabList a {
+    height: 100%; }
+  #eventQuery .tabList .tab-link-active, #systemConfig .tabList .tab-link-active {
+    background: #fff;
+    border-bottom: 2px solid #FD971F !important; }
+  #eventQuery .tabList .button, #systemConfig .tabList .button {
+    transition-duration: 0s;
+    -webkit-transition-duration: 0;
+    color: #212121;
+    border: none; }
+    #eventQuery .tabList .button:last-child, #systemConfig .tabList .button:last-child {
+      border-radius: 0; }
+    #eventQuery .tabList .button:first-child, #systemConfig .tabList .button:first-child {
+      border-radius: 0; }
+#eventQuery .eventWrap li, #systemConfig .eventWrap li {
+  background: #fff; }
+  #eventQuery .eventWrap li .eventList, #systemConfig .eventWrap li .eventList {
+    padding: 5px 0;
+    align-items: center; }
+    #eventQuery .eventWrap li .eventList .name, #systemConfig .eventWrap li .eventList .name {
+      color: #757575; }
+
+#systemConfig .equipCon {
+  height: 100%; }
+  #systemConfig .equipCon .col-25 {
+    height: 100%; }
+  #systemConfig .equipCon .col-75 {
+    height: 100%; }
+
+.ios .startTime .toolbar {
+  top: 0px; }
+.ios .startTime .calendar-selected-date {
+  color: #fff; }
+
+.startTime .calendar-header {
+  background: #FD971F; }
+.startTime .toolbar {
+  top: 50px; }
+.startTime .calendar-footer a {
+  color: #FD971F; }
+.startTime .calendar-day.calendar-day-today span {
+  color: #FD971F; }
+.startTime .calendar-day.calendar-day-selected span {
+  background: #FD971F;
+  color: #fff; }
+
+.md #systemConfig .progressbar-infinite {
+  background: #fff;
+  display: none; }
+  .md #systemConfig .progressbar-infinite:after {
+    background: #FD971F; }
+  .md #systemConfig .progressbar-infinite:before {
+    background: #FD971F; }
+
+.ios #systemConfig .progressbar-infinite {
+  background: #fff;
+  display: none; }
+  .ios #systemConfig .progressbar-infinite:after {
+    background: #FD971F; }
+  .ios #systemConfig .progressbar-infinite:before {
+    background: #FD971F; }
+
 /*# sourceMappingURL=equips.css.map */
