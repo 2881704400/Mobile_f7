@@ -48,7 +48,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     .page-content{padding-bottom: 50px;}
     /*顶部导航栏*/
     .navbar{
-        background-color: #{$headerBgc};
+        background-color: #{$headerBgc};box-shadow: 0px  1px 1px #{$headerBoxShadow};
         &:after{height: 0px}
         &>.navbar-inner{ 
             .left{
@@ -65,7 +65,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
         &:before{height: 0px;}
         a.link{font-size: 12px;line-height: 22px!important;cursor: pointer;}
         .toolbar-inner{ 
-            box-shadow: 0px -2px 5px #{$situationBgc};
+            box-shadow: 0px -1px 1px #{$toolbarBoxShadow};
             &>a.active{color: #{$selectedColor};}
             &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
             #voiceBtn{ 
@@ -113,11 +113,20 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
 }
 
 // 语音
-.voicePanel{
-    width: 100%;height: 100%;position: absolute; left: 0%;top: 0%;background: rgba(0,0,0,0.3);
-    border-radius: 20px;outline: none;display: inline-block;padding-top: 70%;    z-index: 1;
-    #voiceMessage{font-size: 1.2rem;text-align: center;}
+#voiceContainer{
+     width: 100%;height: 100%;position: fixed; left: 0%;top: 0%;background: #{$voiceAllBgc};    z-index: 99;
+    .voicePanel{
+        width: 80%;height: 40%;position: absolute; left: 50%;top: 50%;background: #{$voiceBgc};
+        display: inline-block;transform: translate(-50%,-50%);position: relative;z-index: 1;
+        &>a{
+            width: 32px;height: 32px;line-height: 32px;display: inline-block;text-align: center;background: #{$situationContainerBgc};
+            color: #{$situationFontColor};position: absolute;right: 1px;top: 1px;
+        }
+        &>div{color: #{$situationContainerBgc};position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+        #voiceMessage{font-size: 1.2rem;text-align: center;}
+    }
 }
+.voiceContainer{display: none;}
 .md .ripple-wave{display: none!important;}
 .md .voicePanel{border-radius: 0!important;}
 

@@ -8,7 +8,7 @@
     .waveAnim i {
         height: 5px;
         width: 5px;
-        background:#40494F;
+        background:#fff;
         display: block;
         -webkit-animation: waveAnimKey 2s infinite ease-in-out;
         -moz-animation: waveAnimKey 2s infinite ease-in-out;
