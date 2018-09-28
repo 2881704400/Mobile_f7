@@ -63,6 +63,28 @@ var myApp = new Framework7({
         path: '/ycAndyx/',
         url: 'ycAndyx.html',
     }
+    , {
+        path: '/ycAndyx/',
+        url: 'ycAndyx.html',
+    }
+    , {
+        path: '/Video/',
+        url: 'Video.html',
+    }
+    , {
+        path: '/videoControl/',
+        url: 'videoControl.html',
+    }
+    , {
+        path: '/welcomeWords/',
+        url: 'welcomeWords.html',
+    }, {
+        path: '/mettingPPT/',
+        url: 'mettingPPT.html',
+    }, {
+        path: '/mettingDetails/',
+        url: 'mettingDetails.html',
+    }
     ],
     on: {
         // each object key means same name event handler
