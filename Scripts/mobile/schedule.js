@@ -1,3 +1,4 @@
 ﻿function schedule(){
 	switchToolbar("configTool");
+	
 }
