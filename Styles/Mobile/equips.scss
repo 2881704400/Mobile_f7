@@ -11,7 +11,7 @@
     padding-bottom:44px;
 }
 
-.popover-angle.on-bottom{
+.poverCurve .popover-angle.on-bottom{
     display: none;
 }
 
@@ -312,6 +312,12 @@
 }
 .md{
     #systemConfig{
+        .searchbar{
+            margin:0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            box-shadow: none;
+        }
        .progressbar-infinite{
            background: #fff;
            display: none;
@@ -323,9 +329,13 @@
            }
        }
     }
+    
 }
 .ios{
     #systemConfig{
+        .searchbar{
+            background: #fff;
+        }
        .progressbar-infinite{
            background: #fff;
            display: none;

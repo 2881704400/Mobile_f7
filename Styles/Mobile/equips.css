@@ -9,7 +9,7 @@
 .ios .tabbar-labels ~ * .page-content, .ios .tabbar-labels ~ .page-content {
   padding-bottom: 44px; }
 
-.popover-angle.on-bottom {
+.poverCurve .popover-angle.on-bottom {
   display: none; }
 
 .md .page > .navbar ~ .searchbar {
@@ -202,6 +202,11 @@
   background: #FD971F;
   color: #fff; }
 
+.md #systemConfig .searchbar {
+  margin: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  box-shadow: none; }
 .md #systemConfig .progressbar-infinite {
   background: #fff;
   display: none; }
@@ -210,6 +215,8 @@
   .md #systemConfig .progressbar-infinite:before {
     background: #FD971F; }
 
+.ios #systemConfig .searchbar {
+  background: #fff; }
 .ios #systemConfig .progressbar-infinite {
   background: #fff;
   display: none; }

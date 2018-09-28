@@ -1,9 +1,18 @@
 ﻿function systemConfig(){
 	switchToolbar("configTool");
+	
+	var searchbar = myApp.searchbar.create({
+	  el: '.searchbar',
+	  searchContainer: '.list',
+	  searchIn: 'li',
+	  
+	});
+
 	getDataSet()
 }
-var equips=[],equipArr=[],equipData,ycpData,yxpData,setData;
+var equipsCon=[],equipArrCon=[],equipData,ycpData,yxpData,setData;
 function getDataSet(){
+	
 	$.ajax({
 		type:"post",
 		url:"/GWService.asmx/EquipItemList",
@@ -13,23 +22,23 @@ function getDataSet(){
 	        	var dat=JSON.parse($(this).text())
 	        	for(var i=0;i<dat.length;i++){
 	        		if(dat[i].value!=""){
-	        			equips.push(dat[i].value);
+	        			equipsCon.push(dat[i].value);
 	        			var html=`<li equip="${dat[i].value}" onclick="addEquip('${dat[i].value}',this)">${dat[i].name}</li>`;
 	        			$(".equipList").append(html);
 	        		}
 	        	}
 //	        	$(".equipList").prepend(`<li id="all" onclick="addallEquip(this)">全选</li>`);
-	            console.log(equips);
+//	            console.log(equips);
 	        });
  
     	}
 	});
 }
 function addEquip(equip,dom){
-	if(equipArr.indexOf(equip)!=-1){
-		equipArr.remove(equip);
+	if(equipArrCon.indexOf(equip)!=-1){
+		equipArrCon.remove(equip);
 	}else{
-		equipArr.push(equip);
+		equipArrCon.push(equip);
 	}
 	addCla();
 	removeClass()
@@ -47,27 +56,25 @@ function addallEquip(dom){
 	var hasCla=$(dom).hasClass("check");
 	if(hasCla){
 		$(dom).removeClass("check");
-		equipArr=[];
+		equipArrCon=[];
 	}else{
 		$(dom).addClass("check");
-		equipArr=[];
-		for(var i=0;i<equips.length;i++){
-			equipArr.push(equips[i])
+		equipArrCon=[];
+		for(var i=0;i<equipsCon.length;i++){
+			equipArrCon.push(equipsCon[i])
 		}
 	}
 	addCla()
 }
 function addCla(){
-	console.log(equipArr)
-	console.log(equips)
-	if(equipArr.length==equips.length){
+	if(equipArrCon.length==equipsCon.length){
 		$("#all").addClass("check")
 	}else{
 		$("#all").removeClass("check")
 	}
 	$(".equipList li").not("#all").each(function(){
 		var equip=$(this).attr("equip");
-		if(equipArr.indexOf(equip)!=-1){
+		if(equipArrCon.indexOf(equip)!=-1){
 			$(this).addClass("check")
 		}else{
 			$(this).removeClass("check")
@@ -75,14 +82,14 @@ function addCla(){
 	})
 	
 //	getEvent()
-	var equip=equipArr.toString();
+//	var equip=equipArrCon.toString();
 // 	getEquip(equip);
 // 	getYc(equip);
 // 	getYx(equip);
 // 	getSet(equip);
 }
 function getEquip(){
-	var equip=equipArr.toString()
+	var equip=equipArrCon.toString()
 	$("#equipTable").html("");
 	$("#tab-1 .progressbar-infinite").css({display:"block"});
 	$.ajax({
@@ -141,7 +148,7 @@ function getEquip(){
 }
 function getYc(){
 	$("#tab-2 .progressbar-infinite").css({display:"block"});
-	var equip=equipArr.toString()
+	var equip=equipArrCon.toString()
 	$("#ycp").html("");
 	$.ajax({
 		type:"post",
@@ -201,7 +208,7 @@ function getYc(){
 function getYx(){
 	$("#tab-3 .progressbar-infinite").css({display:"block"});
 	
-	var equip=equipArr.toString()
+	var equip=equipArrCon.toString()
 	$("#yxp").html("");
 	$.ajax({
 		type:"post",
@@ -259,7 +266,7 @@ function getYx(){
 }
 function getSet(){
 	$("#tab-4 .progressbar-infinite").css({display:"block"});
-	var equip=equipArr.toString()
+	var equip=equipArrCon.toString()
 	$("#set").html("");
 	$.ajax({
 		type:"post",
