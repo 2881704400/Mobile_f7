@@ -5,6 +5,10 @@ mixin：sass宏mixin
 /*
 mixin：sass宏mixin
 */
+#container {
+  height: 100%;
+}
+
 #homeContents {
   width: 100%;
   height: 100%;

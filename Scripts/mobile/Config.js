@@ -502,6 +502,7 @@ function ycpChart(id, sumnum) {
 var commonlyUsed =[
     {
         name: '列表视频',
+        href: '/Video/',
         icon: 'iconfont icon-f7_video',
         equipNo: '300',
         setNo: '10',
@@ -509,6 +510,7 @@ var commonlyUsed =[
     },
     {
         name: '地图监控',
+        href: '/videoControl/',
         icon: 'iconfont icon-f7_control',
         equipNo: '300',
         setNo: '10',
@@ -516,6 +518,7 @@ var commonlyUsed =[
     },
     {
         name: 'PPT',
+        href: '/mettingPPT/',
         icon: 'iconfont icon-f7_ppt',
         equipNo: '300',
         setNo: '10',
@@ -523,6 +526,7 @@ var commonlyUsed =[
     },
     {
         name: '欢迎词',
+        href: '/welcomeWords/',
         icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
         setNo: '10',
@@ -833,4 +837,55 @@ var jjPattern =[
         value: null,
     },                   
     ];
-    //
+
+//*********************************************
+// ***************  欢迎词配置   ***************
+//*********************************************
+var WORDcommand ={
+    "backgroundImage":{  
+        name: '背景图片',
+        url: 'D:\\AlarmCenter\\Web\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
+     },
+     "Priviewwel":{
+        name: '预览欢迎词',
+        equipNo: '1005',
+        setNo: '4022'        
+     },
+     "closewel":{
+        name:"关闭欢迎词",
+        equipNo: '1005',
+        setNo: '4021'        
+     },     
+};
+
+//*********************************************
+// ***************  PPT配置   *****************
+// 1、盘符读取路径为D:\PPT，在Web.config中
+// 2、
+//*********************************************
+var PPTcommand ={
+    "returnSoft":{  
+        name: '返回软件',
+        equipNo: '300',
+        setNo: '10'
+     },
+     "openPPT":{
+        name: '打开PPT',
+        equipNo: '4001',
+        setNo: '1'        
+     },
+     "closePPT":{
+        name:"关闭PPT",
+        equipNo: '4001',
+        setNo: '7'        
+     },     
+     "setIp":{
+        name: '设置插件IP',
+        set_ip: window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
+     },
+     "setPage":{
+        name:"设置跳页",
+        equipNo: '4001',
+        setNo: '4'        
+     },
+};

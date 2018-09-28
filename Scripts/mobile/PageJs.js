@@ -60,3 +60,22 @@ $(document).on("page:beforein", ".page[data-page='ycAndyx']", function (e) {
     initPageJS('ycAndyx', '/Scripts/mobile/');
 });
 
+// 视频列表
+$(document).on("page:beforein", ".page[data-page='Video']", function (e) {
+    initPageJS('Video', '/Scripts/mobile/');
+});
+//地图视频
+$(document).on("page:beforein", ".page[data-page='videoControl']", function (e) {
+    initPageJS('videoControl', '/Scripts/mobile/');
+});
+// PPT
+$(document).on("page:beforein", ".page[data-page='mettingPPT']", function (e) {
+    initPageJS('mettingPPT', '/Scripts/mobile/');
+});
+$(document).on("page:beforein", ".page[data-page='mettingDetails']", function (e) {
+    initPageJS('mettingDetails', '/Scripts/mobile/');
+});
+// 欢迎词
+$(document).on("page:beforein", ".page[data-page='welcomeWords']", function (e) {
+    initPageJS('welcomeWords', '/Scripts/mobile/');
+});

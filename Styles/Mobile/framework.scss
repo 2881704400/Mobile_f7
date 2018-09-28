@@ -100,7 +100,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
 
 .ios .popoverLink,.md .popoverLink,.popoverLink{
     border-radius: 13px;background-color: #{$headerBgc};
-    right:0;left: auto !important;
+    // right:0;left: auto !important;
     a{color: #{$allFontColor} !important;}
     .popover-angle {width: 26px; height: 26px; position: absolute;  top: 100%; z-index: 100; overflow: hidden; }
     .popover-angle:after {content: ''; background: #{$headerBgc}; width: 26px; height: 26px; position: absolute; left: 0; top: 0; border-radius: 3px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
