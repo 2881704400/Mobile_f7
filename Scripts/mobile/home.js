@@ -1,6 +1,7 @@
 ﻿//首页事件
 function onHomePage() {
-	
+	myApp.router.navigate('/schedule/'); 
+
     authorizationName();
     
     switchToolbar("homeTool");

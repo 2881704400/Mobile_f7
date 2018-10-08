@@ -1,11 +1,12 @@
 ﻿<div class="page " data-page="schedule" id="schedule">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="left hideMenu">
-                <a class="back link" href="#">
-                    <i class="iconfont icon-back">
-                    </i>
-                </a>
+            <div class="left">
+                <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildUser(" "," "," "," "," ",2,"");'>添加</a>
+                <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='equipAlert("",2);'>添加</a>
+                <a class="link displayNone" href="#" id="schedule_administartor_nav" onclick='newlyBuildAlmReport("",2);'>添加</a>
+                <a class="link displayNone" href="#" id="schedule_specificDate_nav" onclick='newlyBuildSpeci(" "," "," "," "," ",2,"");'>添加</a>
+                <a class="link displayNone" href="#" id="schedule_weeklytable_nav" onclick='newlyBuildWeekly(" "," "," "," "," ",2,"");'>添加</a>
             </div>
             <div class="center sliding title">
                 报警排表
@@ -18,54 +19,87 @@
             </div>                    
         </div>
     </div>
-    <div class="page-content ptr-content hide-bars-on-scroll" data-ptr-distance="55">
+    <div class="page-content">
       <div class="scheduleContainer">
-        <div class="subnavbarTabel">
-            <a class="button tab-link" href="#schedule_user">
+        <div class="subnavbarTabel row">
+            <a class="col-20 selectScheduleMenu" href="#schedule_user">
                 人员
             </a>
-            <a class="button tab-link" href="#schedule_equip">
-                设备分组范围
+            <a class="col-20" href="#schedule_equip">
+                设备分组
             </a>
-            <a class="button tab-link" href="#schedule_administartor">
+            <a class="col-20" href="#schedule_administartor">
                 管理范围
             </a>
-            <a class="button tab-link" href="#schedule_specificDate">
+            <a class="col-20" href="#schedule_specificDate">
                 周排表
             </a>
-            <a class="button tab-link" href="#schedule_weeklytable">
-                特定日期排表
+            <a class="col-20" href="#schedule_weeklytable">
+                特定排表
             </a>
         </div>
 
         <div class="scheduleContent">
-            <div class="tab active" id="schedule_user">
-                <div class="content-block">
-                    1111111111
-                </div>
+            <div class="row" id="schedule_user">
+                <table class="publicTable">
+                     <thead><tr>
+                        <td>人员姓名</td>
+                        <td>电话</td>
+                        <td>短信</td>
+                        <td>电子邮箱</td>
+                        <td>报警级别</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            <div class="tab" id="schedule_equip">
-                <div class="content-block">
-                    22222222222
-                </div>
+            <div class="displayNone" id="schedule_equip">
+                 <table class="publicTable">
+                     <thead><tr>
+                        <td>设备分组</td>
+                        <td>操作</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                 </table>
             </div>
-            <div class="tab" id="schedule_administartor">
-                <div class="content-block">
-                    333333333
-                </div>
+            <div class="displayNone" id="schedule_administartor">
+                 <table class="publicTable">
+                     <thead><tr>
+                        <td>人员姓名</td>
+                        <td>设备分组名称</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                 </table>
             </div>
-            <div class="tab" id="schedule_specificDate">
-                <div class="content-block">
-                    4444444444
-                </div>
+            <div class="displayNone" id="schedule_specificDate">
+                 <table class="publicTable">
+                     <thead><tr>
+                        <td>人员姓名</td>
+                        <td>星期</td>
+                        <td>开始时间</td>
+                        <td>结束时间</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                 </table>
             </div>
-            <div class="tab" id="schedule_weeklytable">
-                <div class="content-block">
-                   555555555
-                </div>
+            <div class="displayNone" id="schedule_weeklytable">
+                <table class="publicTable">
+                     <thead><tr>
+                        <td>人员姓名</td>
+                        <td>开始时间</td>
+                        <td>结束时间</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                 </table>
             </div>                        
         </div>
         </div>
     </div>
+        
+
 </div>
 

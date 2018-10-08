@@ -11,12 +11,18 @@ var myApp = new Framework7({
         swipe: 'left',
         swipeOnlyClose: true,
     },
+    dialog:{
+        buttonOk:'确认',
+        buttonCancel: '取消'
+    },
     statusbar: {
             enabled: true,
     overlay: true,
         iosOverlaysWebView: true,
     },
-    // Add default routes
+      picker: {
+     toolbarCloseText: '确认',
+      },
     routes: [{
         path: '/home/',
         url: 'home.html',
@@ -454,69 +460,71 @@ function loadNameMobile() {
         myJavaFuntion.GetCookie();
     }
     setTimeout(function() {
-        var jsonData = {
-            "url": "/api/GWServiceWebAPI/getClientTypeInfo",
-            "success": _success,
-            "error": _error,
-            "complete": _complete
-        };
-        jQuery.axpost(jsonData);
-        function _success(dt) {
-            var codeString = dt.HttpData;
-            if (codeString.code == 200) {
-                window.localStorage.userName = codeString.data.userName;
-            } else {
-                window.localStorage.userName = '';
-            }
-        }
-        function _error(e) {
-            window.localStorage.userName = '';
-            myJavaFuntion.OpenLocalUrl("login");
-            console.log(e);
-        }
-        function _complete(XMLHttpRequest, status) {
-            if (window.localStorage.userName != "" && window.localStorage.userName != null) {
-                $("#userName").html("我(" + window.localStorage.userName + ")");
-                InitEnsure();
-                AppShows();
-                onHomePage();
-                $(".voiceDivs,.toolbar").removeClass("displayNone");
-            } else {
-                myJavaFuntion.OpenLocalUrl("login");
-            }
-        }
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/api/server/getClientTypeInfo",
-        //     timeout: 5000,
-        //     dataType: "json",
-        //     headers: {
-        //         Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
-        //     },
-        //     success: function(dt) {
-        //         var codeString = dt.HttpData;
-        //         if (codeString.code == 200) {
-        //             window.localStorage.userName = codeString.data.userName;
-        //         } else {
-        //             window.localStorage.userName = '';
-        //         }
-        //     },
-        //     error:function(e){
+        // var jsonData = {
+        //     "url": "/api/GWServiceWebAPI/getClientTypeInfo",
+        //     "success": _success,
+        //     "error": _error,
+        //     "complete": _complete
+        // };
+        // $.fn.axpost(jsonData);
+        // function _success(dt) {
+        //     var codeString = dt.HttpData;
+        //     if (codeString.code == 200) {
+        //         window.localStorage.userName = codeString.data.userName;
+        //     } else {
         //         window.localStorage.userName = '';
-        //         console.log(e);
-        //     },
-        //     complete: function(XMLHttpRequest, status) {
-        //         if (window.localStorage.userName !="" && window.localStorage.userName != null) {
-        //             $("#userName").html("我(" + window.localStorage.userName + ")");
-        //             InitEnsure();
-        //             AppShows();
-        //             onHomePage();
-        //         }
-        //         else{
-        //             myJavaFun.OpenLocalUrl("login");
-        //         }
         //     }
-        // });
+        // }
+        // function _error(e) {
+        //     window.localStorage.userName = '';
+        //     myJavaFuntion.OpenLocalUrl("login");
+        //     console.log(e);
+        // }
+        // function _complete(XMLHttpRequest, status) {
+        //     if (window.localStorage.userName != "" && window.localStorage.userName != null) {
+        //         $("#userName").html("我(" + window.localStorage.userName + ")");
+        //         InitEnsure();
+        //         AppShows();
+        //         onHomePage();
+        //         $(".voiceDivs,.toolbar").removeClass("displayNone");
+        //     } else {
+        //         myJavaFuntion.OpenLocalUrl("login");
+        //     }
+        // }
+        $.ajax({
+            type: "POST",
+            url: "/api/GWServiceWebAPI/getClientTypeInfo",
+            timeout: 5000,
+            dataType: "json",
+            headers: {
+                Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
+            },
+            success: function(dt) {
+                var codeString = dt.HttpData;
+                if (codeString.code == 200) {
+                    window.localStorage.userName = codeString.data.userName;
+                } else {
+                    window.localStorage.userName = '';
+                }
+            },
+            error:function(e){
+                window.localStorage.userName = '';
+                 myJavaFuntion.OpenLocalUrl("login");
+                console.log(e);
+            },
+            complete: function(XMLHttpRequest, status) {
+                if (window.localStorage.userName !="" && window.localStorage.userName != null) {
+                    $("#userName").html("我(" + window.localStorage.userName + ")");
+                    InitEnsure();
+                    AppShows();
+                    onHomePage();
+                     $(".voiceDivs,.toolbar").removeClass("displayNone");
+                }
+                else{
+                    myJavaFuntion.OpenLocalUrl("login");
+                }
+            }
+        });
     }, 100);
 }
 
