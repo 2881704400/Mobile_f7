@@ -1,29 +1,49 @@
-﻿
-
-    <div data-page="equipLinkage" class="page" id="equipLinkage">
+﻿  <div data-page="equipLinkage" class="page" id="equipLinkage">
         <div class="navbar">
             <div class="navbar-inner">
                 <!-- 标题 -->                  
-                <div class="left hideMenu">
-                    <a href="#" class="back link">
-                        <i class="iconfont icon-back"></i>
-                    </a>
+                <div class="left">
+                  <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildLinkage(" ",2);'>添加</a>
+                  <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='newlyBuildLinkage("",2);'>添加</a>
                 </div>                         
                 <div class="center sliding title">设备联动</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
+                  <div class="right">
+                    <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
+                  </div>
             </div>
         </div>        
-        <!--"pull-to-refresh-content"类表示下拉刷新 -->
-        <div  class="page-content ptr-content" data-ptr-distance="55">
-            <!-- 默认的下拉刷新层 -->
-<!--             <div class="ptr-preloader">
-              <div class="preloader"></div>
-              <div class="ptr-arrow"></div>
-            </div>  -->           
-            <div class="list-block list-page list" style="margin:0;">
-                设备联动
+        <div  class="page-content">
+            <div class="equipLinkageContainer">
+                <div class="subnavbarTabel row">
+                    <a class="col-50 selectScheduleMenu" href="#equipLinkage_set">
+                     联动设置
+                    </a>
+                    <a class="col-50" href="#equipLinkage_edit">
+                     场景编辑
+                    </a>
+                </div>
+                <div class="equipLinkageContent">
+                    <div class="row" id="equipLinkage_set">
+                        <table class="publicTable">
+                             <thead><tr>
+                                <td>触发设备</td>
+                                <td>触发类型</td>
+                                <td>触发点</td>
+                                <td>延时(ms)</td>
+                                <td>设备联动</td>
+                                <td>联动命令</td>
+                                <td>命令参数</td>
+                                <td>备注信息</td>
+                             </tr></thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="displayNone" id="equipLinkage_edit">
+                         
+                    </div>
             </div>
         </div>
     </div>

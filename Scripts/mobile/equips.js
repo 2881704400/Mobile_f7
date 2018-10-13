@@ -14,6 +14,13 @@
 	$(".ios .ptr-preloader").css({zIndex:"99"})
 	$(".ios .ptr-preloader .preloader").css({top:"50%"})
 	$(".ios .ptr-preloader .ptr-arrow").css({top:"50%"})
+	
+	var searchbar = myApp.searchbar.create({
+	  el: '.searchbar',
+	  searchContainer: '.equip-list',
+	  searchIn: '.item-title',
+	  
+	});
 }
 var AllEquipStat;
 function allEquipSatatus() {

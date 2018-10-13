@@ -36,8 +36,8 @@ input, select {vertical-align:middle; }
         padding-right: constant(safe-area-inset-right);
         padding-bottom: constant(safe-area-inset-bottom); 
     }
-    .toolbar {height: 70px !important;}
-    .toolbar .toolbar-inner {padding-bottom: 20px;}
+    .tabbar-labels {height: 70px !important;}
+    .tabbar-labels .toolbar-inner {padding-bottom: 20px;}
     .page>div.page-content { padding-bottom: 70px !important; }
     .panel>.list-page>ul {padding-top: 60px; }
     .toolbar-inner{height: 100%!important;}

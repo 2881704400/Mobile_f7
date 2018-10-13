@@ -1,4 +1,5 @@
 ﻿//移动端js主入口
+
 var myApp = new Framework7({
     // App root element
     root: '#app',
@@ -104,7 +105,9 @@ var myApp = new Framework7({
         },
         init: function() {}
     },
+    
 });
+
 var mainView = myApp.views.create('.view-main');
 //web接口地址
 var service = "/GWService.asmx";
@@ -161,7 +164,7 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
             if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
-                console.log("超时");
+//              console.log("超时");
                 // myApp.hideIndicator();
                 myApp.dialog.create({
                     title: "系统提示",
@@ -198,7 +201,7 @@ function ajaxService(_type, _url, _asycn, _data, _success, _error) {
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
             if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
-                console.log("超时");
+//              console.log("超时");
                 // myApp.hideIndicator();
                 myApp.dialog.create({
                     title: "系统提示",
@@ -240,7 +243,7 @@ function InitEnsure() {
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
             if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
-                console.log("超时");
+//              console.log("超时");
                 // myApp.hideIndicator();
                 myApp.dialog.create({
                     title: "系统提示",
@@ -261,7 +264,7 @@ function initEnsureChonglian(fun) {
     function _success(data) {
         var analyze = $(data).children("string").text();
         if (analyze != "" || analyze != "false") {
-            console.log("重连成功！");
+//          console.log("重连成功！");
             if (fun != null) {
                 fun();
             }
@@ -576,7 +579,7 @@ function BackPushID(data) {
         },
         success: function(dt) {
             if (dt.HttpStatus == 200 && dt.HttpData.code == 200) {
-                console.log('添加推送成功');
+//              console.log('添加推送成功');
             } else {
                 alert('错误码：' + dt.HttpData.code + '\n错误信息：' + dt.HttpData.message);
             }
@@ -688,7 +691,7 @@ function backss() {
         pages[i] = $(this).attr("data-page");
     });
     if (pages.length == 2) {
-        console.log(pages[0])
+//      console.log(pages[0])
         //mainView.router.loadPage(pages[0] + ".html");
         mainView.router.back()
     }
@@ -1045,7 +1048,7 @@ function get_no(dt, set_equip, set_no, values) {
             },
             success: function(data) {
                 var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-                console.log(dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
+//              console.log(dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
                 if (dt.find("equip_no").html() != "") {
                     if (values == "") onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
                     else onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
@@ -1058,7 +1061,7 @@ function get_no(dt, set_equip, set_no, values) {
 }
 
 function onSetCommand11(dt, equip_no, main_instr, mino_instr, valueset) {
-    console.log(equip_no + "," + main_instr + "," + mino_instr + "," + valueset);
+//  console.log(equip_no + "," + main_instr + "," + mino_instr + "," + valueset);
     var ajaxVar = $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
@@ -1072,7 +1075,7 @@ function onSetCommand11(dt, equip_no, main_instr, mino_instr, valueset) {
         },
         success: function(data) {
             alertMsgSuccess.open();
-            console.log("success");
+//          console.log("success");
         }
     });
 }
@@ -1177,3 +1180,30 @@ function voiceTooip(txt){
     });
 }
 
+
+
+//下拉列表初始化
+function listInit(id,value){
+    myApp.picker.create({
+      inputEl: '#'+id,
+      cols: [
+        {
+          textAlign: 'center',
+          values: value 
+        }
+      ]
+    }); 
+}
+    //动态创建弹窗
+    function popupAlert(html){
+        var popup = myApp.popup.create({
+          content: html,
+          on: {
+            opened: function (e) {
+           //     console.log($(e.params.content).find("a.popupOpenBtn").prop("disabled",true));
+              // // if(index == 2)
+              // //     $(html).find("a.popupOpenBtn").prop("disabled",true);
+                }
+          }
+        }).open();
+    }

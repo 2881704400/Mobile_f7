@@ -12,7 +12,7 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
         success: _success,
         error: function (qXHR, textStatus, errorThrown) {
             if (textStatus == "timeout") {
-                console.log("加载超时，请重试");
+//              console.log("加载超时，请重试");
             } else {
                 error_callback();
             }
@@ -41,9 +41,9 @@ function JQajaxo2(_type, _url, _asycn, _data, _success) {
         success: _success,
         error: function (qXHR, textStatus, errorThrown) {
             if (textStatus == "timeout") {
-                console.log("加载超时，请重试");
+//              console.log("加载超时，请重试");
             } else {
-                console.log(textStatus);
+//              console.log(textStatus);
             }
         },
         complete: function (XHR, TS) {

@@ -18,7 +18,7 @@
     			tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
     	    }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 50px;line-height: 50px;flex: 1;    white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;    white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
     	}
     	#schedule_user>table{min-width: auto;}
     	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;    padding: 0px 10px;}
@@ -26,8 +26,33 @@
    .selectScheduleMenu{color: #{$voiceFontColor}!important;background: #{$btnBackground};}
 
 }
+
+.equipLinkageContainer{
+       height: 100%;position: relative;
+    &>.subnavbarTabel{
+        height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
+        &>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
+    }
+    &>.equipLinkageContent{position: absolute;top: 3rem;left: 0;right: 0;bottom: 0;
+        &>div{height: 100%;overflow: auto;}
+        .publicTable{
+            thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
+            tbody{
+                font-size: #{$tableTbodyFontSize};color: #{$tableTbodyFontColor};
+                tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
+            }
+            tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;    white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+        }
+        #schedule_user>table{min-width: auto;}
+        .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;    padding: 0px 10px;}
+    }
+   .selectScheduleMenu{color: #{$voiceFontColor}!important;background: #{$btnBackground};} 
+}
+
 .popup-aboutuser {
-	position: absolute;background: #{$situationBgc};
+	position: absolute;
+	// background: #{$situationBgc};
 	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$tableHeaderFontColor};text-align: center;}
 	.popupContent{height: 60%;overflow-y: auto;}
     .popupBtb{padding: 0px 20px;a{color: #{$btnFontColor};font-size: #{$btnFontSize};height: 2.5rem;line-height: 2.5rem;background: #{$btnBackground}}}

@@ -1,10 +1,12 @@
 ﻿//首页事件
 function onHomePage() {
-	myApp.router.navigate('/schedule/'); 
+	//实时快照
+    snashotData();
 
     authorizationName();
     
     switchToolbar("homeTool");
+     myApp.router.navigate("/equipLinkage/")
     //图表
     // $("#purchase_Bar").width(window.screen.width*0.96-20);
     snapshotChart("purchase_Bar");
@@ -15,6 +17,7 @@ function onHomePage() {
     VideoBaner("KOvm_container","swiper-paginationTrailer-KOvm",KOvm);//场景
     commonlyUsedFun("pptPattern_container ol","50",pptPattern);//PPT
     commonlyUsedFun("jjPattern_container ol","50",jjPattern);//讲解
+
 }
 //界面尺寸变化事件
 function onResizeCustomized() {
@@ -108,7 +111,64 @@ function commonlyUsedFun(className,classListName,jsonString) {
     $("."+className).append(htmlTrailerChild);
 }
 
+//实时快照
 
-function setCommand_1(){
-    
+function snashotData() {
+    var event_Level_list_home,btnInfoNames_home=[],btnInfoLevels_home=[];
+    $.ajax({
+        type: 'post', 
+        url: '/api/event/alarm_config',
+        headers: {
+                Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
+            },
+        data: {},
+        success: function(dt) {
+            if(dt.HttpStatus == 200 && dt.HttpData.data) {
+                var resultData = dt.HttpData.data;
+                var strData = "";
+                for(var i = 0; i < resultData.length; i++) {
+                    if(resultData[i].IsShow == 1) {
+                        var btnStatus = resultData[i].IsShow == 1 ? true : false;
+                        var btnValue = [];
+                        for(var j = resultData[i].SnapshotLevelMin; j <= resultData[i].SnapshotLevelMax; j++) {
+                            btnValue += j + ",";
+                        }
+                        event_Level_list_home += btnValue;
+                        btnValue = btnValue.substring(0, btnValue.length - 1);
+                        btnInfoNames_home.push(resultData[i].SnapshotName)
+                        btnInfoLevels_home.push(btnValue);
+                    }
+                }snashotCount(btnInfoLevels_home);
+                // event_Level_list_home = event_Level_list_home.substring(0, event_Level_list_home.length - 1);
+                // getRealTimeEventCount();
+            }
+        }
+    });
+}
+function snashotCount(btnInfoLevels_home){
+    var strBtnInfoLevels = "";
+    for(var i = 0; i < btnInfoLevels_home.length; i++) {
+        strBtnInfoLevels += btnInfoLevels_home[i] + ";";
+    }
+    if(strBtnInfoLevels.length > 0) {
+        strBtnInfoLevels = strBtnInfoLevels.substring(0, strBtnInfoLevels.length - 1);
+        $.ajax({
+            type: 'post',
+            url: '/api/event/real_evt_count',
+             headers: {
+                Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
+            },
+            data: {
+                levels: strBtnInfoLevels
+            },
+            success: function(dt) {
+                if(dt.HttpStatus == 200 && dt.HttpData.data) {
+                    var resultData = dt.HttpData.data;
+                    var resultDataArr = resultData.toString().split(",");
+                    for(var i = 0;i<resultDataArr.length;i++)
+                     $(".statisticsTable span:eq("+i+")").find("p").text(resultDataArr[i]);
+                }
+            }
+        });
+    }
 }

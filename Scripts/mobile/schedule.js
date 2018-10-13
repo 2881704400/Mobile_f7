@@ -10,14 +10,13 @@ function schedule() {
         //顶部添加
         $($(this).attr("href")+"_nav").removeClass("displayNone").siblings().addClass("displayNone");
     });
-    //table行列单机显示
-
     //人员数据请求
     requestUser();
 }
 
 // ********************************************************************************
 // 人员
+var schedule_public_username = [];
 function requestUser() {
 	var disabled = "'disabled'";
     var jsonData = {
@@ -44,6 +43,7 @@ function requestUser() {
                         '<td>'+arrayLike[i].EMail+'</td>'+
                         '<td>'+arrayLike[i].AckLevel+'</td>'+
                         '</tr>';
+             schedule_public_username.push(arrayLike[i].Administrator); 
             }
         } else {
             requestUser();
@@ -134,6 +134,7 @@ function requestUser() {
           popupAlert(html);
     }
 //人员数据库表更新
+
 function updateUser(that,index){
     var dt = $(that).parent().parent();
 	let AdministratorUpdate = {
@@ -178,7 +179,7 @@ function publicAjax(jsonString,url,index){
         		case 1: requestUser();break;
         		case 2: requestEquipGroup();break;
         		case 3: requestAlmReport(requestEGAReport);break;
-        		case 4: requestUser();break;
+        		case 4: requestWeekAlmReport();break;
         		case 5: requestUser();break;
         	}
            
@@ -514,26 +515,8 @@ function newlyBuildAlmReport(that,index){
             groupName.forEach(function(item,index){
             	arrayGroup.push(item.group_name);
             })   
-            //if(arrayUser.length != 0)
-				myApp.picker.create({
-				  inputEl: '#userInput',
-				  cols: [
-				    {
-				      textAlign: 'center',
-				      values: arrayUser 
-				    }
-				  ]
-				});	
-           //if(arrayGroup.length != 0)
-			myApp.picker.create({
-			  inputEl: '#groupInput',
-			  cols: [
-			    {
-			      textAlign: 'center',
-			      values: arrayGroup 
-			    }
-			  ]
-			});		  		          
+            listInit("userInput",arrayUser);
+			      listInit("groupInput",arrayGroup);  		          
     }
 }	     
 
@@ -671,14 +654,14 @@ function requestWeekAlmReport(){
     function _success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code,html="";
+        jsondate.length = 0;
         $("#schedule_specificDate table tbody").html("");
         if (code == 200) {
             let AlarmTabulateLenth = arrayLike.length;
             for (var i = 0; i < AlarmTabulateLenth; i++) {
               var sTime = formatDate(new Date(arrayLike[i].begin_time),"hh:mm"),eTime = formatDate(new Date(arrayLike[i].end_time),"hh:mm");
-
-              jsondate = [arrayLike[i].Administrator,weekReturn(arrayLike[i].week_day),sTime.toString(),eTime.toString()];
-                html += '<tr onclick="newlyBuildWeekAlmReport(1)">'+
+              jsondate = [arrayLike[i].Administrator,weekReturn(arrayLike[i].week_day),arrayLike[i].week_day,sTime.toString(),eTime.toString()];
+                html += '<tr onclick="newlyBuildWeekAlmReport(this,1)" dataid = "'+arrayLike[i].id+'" dataday="'+arrayLike[i].week_day+'">'+
                         '<td>'+arrayLike[i].Administrator+'</td>'+
                         '<td>'+weekReturn(arrayLike[i].week_day)+'</td>'+
                         '<td>'+formatDate(new Date(arrayLike[i].begin_time),"hh:mm")+'</td>'+
@@ -690,16 +673,16 @@ function requestWeekAlmReport(){
             return false;
         }
         $("#schedule_specificDate table tbody").append(html);
-
     }
+
     function _error(e) {
         console.log(e);
     }
 }
  //周排表html
-    function newlyBuildWeekAlmReport(index){
-         
-      var html = '<div class="popup popup-aboutuser">'+
+    function newlyBuildWeekAlmReport(tThatParent,index){
+
+      var html = '<div class="popup popup-aboutuser week_WeekAlmReportUl">'+
             '<h1>周排表修改</h1>'+
             '<div class="popupContent list inline-labels no-hairlines-md">'+
                   '<ul>'+
@@ -710,7 +693,7 @@ function requestWeekAlmReport(){
                       '<div class="item-inner">'+
                         '<div class="item-title item-label">人员姓名</div>'+
                         '<div class="item-input-wrap">'+
-                          '<input type="text" placeholder="选择人员" value = "'+jsondate[0]+'"  class="week_userName" >'+
+                          '<input type="text" placeholder="选择人员" value = "'+getVal($(tThatParent).find("td:eq(0)").text(),index)+'"  class="week_userName" id="week_userName">'+
                           '<span class="input-clear-button"></span>'+
                         '</div>'+
                       '</div>'+
@@ -720,9 +703,9 @@ function requestWeekAlmReport(){
                         '<i class="icon demo-list-icon"></i>'+
                       '</div>'+
                       '<div class="item-inner">'+
-                        '<div class="item-title item-label">星期</div>'+
+                        '<div class="item-title item-label" >星期</div>'+
                         '<div class="item-input-wrap">'+
-                          '<input type="text" placeholder="选择星期" value = "'+jsondate[1]+'" class="week_week">'+
+                          '<input type="text" placeholder="选择星期" value = "'+getVal($(tThatParent).attr("dataday"),index)+'" class="week_week" id="week_week">'+
                           '<span class="input-clear-button"></span>'+
                         '</div>'+
                       '</div>'+
@@ -734,7 +717,7 @@ function requestWeekAlmReport(){
                       '<div class="item-inner">'+
                         '<div class="item-title item-label">开始时间</div>'+
                         '<div class="item-input-wrap">'+
-                          '<input type="text" placeholder="输入开始时间" value = "'+jsondate[2]+'" class="week_stime">'+
+                          '<input type="text" placeholder="选择开始时间" value = "'+getVal($(tThatParent).find("td:eq(2)").text(),index)+'" class="week_stime">'+
                           '<span class="input-clear-button"></span>'+
                         '</div>'+
                       '</div>'+
@@ -746,7 +729,7 @@ function requestWeekAlmReport(){
                       '<div class="item-inner">'+
                         '<div class="item-title item-label">结束时间</div>'+
                         '<div class="item-input-wrap">'+
-                          '<input type="text" placeholder="输入结束时间" value = "'+jsondate[3]+'" class="week_etime">'+
+                          '<input type="text" placeholder="选择结束时间" value = "'+getVal($(tThatParent).find("td:eq(3)").text(),index)+'" class="week_etime">'+
                           '<span class="input-clear-button"></span>'+
                         '</div>'+
                       '</div>'+
@@ -755,45 +738,58 @@ function requestWeekAlmReport(){
             '</div>'+
              '<div class="popupBtb row">'+
               '<a class="link popup-close col-33 button" href="#">退出</a>'+
-              '<a class="link popup-close popupOpenBtn col-33 button" href="#" onclick="updateWeekAlmReport(this,'+index+')">确认</a>'+
-              '<a class="link popup-close col-33 button" href="#" onclick="delWeekAlmReport(this)">删除</a>'+
+              '<a class="link popup-close popupOpenBtn col-33 button" href="#" onclick="updateWeekAlmReport(this,'+index+')" dataWeek='+jsondate[2]+' dataid = '+$(tThatParent).attr("dataid")+'>确认</a>'+
+              '<a class="link popup-close col-33 button" href="#" onclick="delWeekAlmReport(this)" dataid = '+$(tThatParent).attr("dataid")+'>删除</a>'+
             '</div>'+
           '</div>';
-
           popupAlert(html);
+          let arrayWeek = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日","每天"];
+          listInit("week_userName",schedule_public_username); 
+          listInit("week_week",arrayWeek); 
     }
-//人员数据库表更新
+//返回值
+function getVal(value,index){
+  if(index == 1)
+    return value;
+  else
+    return "";
+}
+//周排表更新
 function updateWeekAlmReport(that,index){
-    var dt = $(that).parent().parent();
-  let AdministratorUpdate = {
-        tableName: "Administrator",
-        Administrator: dt.find("input.userName").val(),
-        Telphone: dt.find("input.telphone").val(),
-        MobileTel: dt.find("input.telmobile").val(),
-        EMail: dt.find("input.emailValue").val(),
-        AckLevel: parseInt(dt.find("input.ackLevel").val()),
-        ifName: "Administrator",
-        ifValue: dt.find("input.userName").val()
+      var weekID,dt,week_day;
+       
+      if(index==1)
+        {weekID = $(that).attr("dataid");dt= $(that).parent().parent();week_day=$(that).attr("dataWeek");}
+      else
+        {weekID = getMaxId("schedule_specificDate");dt= $(".week_WeekAlmReportUl");week_day=weekReturn(dt.find("input.week_week").val()); }//获取新建id主键
+      let WeekAlmReportInsert = {
+        tableName: "WeekAlmReport",
+        Administrator: dt.find("input.week_userName").val(),
+        week_day: week_day,
+        begin_time: dt.find("input.week_stime").val(),
+        end_time: dt.find("input.week_etime").val(),
+        ifValue: weekID
       };
       if(index == 1)
-        publicAjax(AdministratorUpdate,"/api/GWServiceWebAPI/updateEquipGroup",4);
+        publicAjax(WeekAlmReportInsert,"/api/GWServiceWebAPI/updateEquipGroup",4);
       else
-      publicAjax(AdministratorUpdate,"/api/GWServiceWebAPI/insertEquipGroup",4);
+        publicAjax(WeekAlmReportInsert,"/api/GWServiceWebAPI/insertEquipGroup",4);
 }
-//人员表删除
+//周排表删除
 function delWeekAlmReport(that){
   var dt = $(that).parent().parent();
   var deleteJson = {
-          tableName: "Administrator",
-          ifName: "Administrator",
-          ifValue: dt.find("input.userName").val(),
-          type: "string"
-     };
-     publicAjax(deleteJson,"/api/GWServiceWebAPI/deleteEquipGroup",1);
+          tableName: "WeekAlmReport",
+          ifName: "id",
+          ifValue: $(that).attr("dataid"),
+          type: "number"
+        };
+     publicAjax(deleteJson,"/api/GWServiceWebAPI/deleteEquipGroup",4);
 }
 
 // ********************************************************************************
 //特定排表
+var spe_array = [];
 function requestSpeAlmReport(){
     var jsonData = {
         "url": "/api/GWServiceWebAPI/SelectData?tableName=SpeAlmReport",
@@ -808,10 +804,13 @@ function requestSpeAlmReport(){
         if (code == 200) {
             let AlarmTabulateLenth = arrayLike.length;
             for (var i = 0; i < AlarmTabulateLenth; i++) {
-                html += '<tr>'+
+                let sTime = formatDate(new Date(arrayLike[i].begin_time),"yyyy/MM/dd hh:mm:ss");
+                let eTime = formatDate(new Date(arrayLike[i].end_time),"yyyy/MM/dd hh:mm:ss");
+                spe_array = [arrayLike[i].Administrator,sTime.toString(),eTime.toString()];
+                html += '<tr onclick="newlyBuildSpeAlmReport(this,1)" dataid='+arrayLike[i].id+'>'+
                         '<td >'+arrayLike[i].Administrator+'</td>'+
-                        '<td>'+formatDate(new Date(arrayLike[i].begin_time),"yyyy/MM/dd hh:mm:ss")+'</td>'+
-                        '<td>'+formatDate(new Date(arrayLike[i].end_time),"yyyy/MM/dd hh:mm:ss")+'</td>'+
+                        '<td>'+sTime+'</td>'+
+                        '<td>'+eTime+'</td>'+
                         '</tr>';
             }
         } else {
@@ -824,6 +823,90 @@ function requestSpeAlmReport(){
         console.log(e);
     }
 }
+//特定排表更新
+function updateSpeAlmReport(that,index){
+      var weekID,dt,week_day;
+      if(index==1)
+        {weekID = $(that).attr("dataid");dt= $(that).parent().parent();week_day=$(that).attr("dataWeek");}
+      else
+        {weekID = getMaxId("schedule_weeklytable");dt= $(".Spe_WeekAlmReportUl"); }//获取新建id主键
+
+      let WeekAlmReportInsert = {
+        tableName: "SpeAlmReport",
+        Administrator: dt.find("input.Spe_userName").val(),
+        begin_time: dt.find("input.Spe_stime").val(),
+        end_time: dt.find("input.Spe_etime").val(),
+        ifValue: weekID
+      };
+      if(index == 1)
+        publicAjax(WeekAlmReportInsert,"/api/GWServiceWebAPI/updateEquipGroup",5);
+      else
+        publicAjax(WeekAlmReportInsert,"/api/GWServiceWebAPI/insertEquipGroup",5);
+}
+//特定排表删除
+function delSpeAlmReport(that){
+  var WeekAlmReport = this.SpeAlmReport,
+        deleteJson = {
+          tableName: "SpeAlmReport",
+          ifName: "id",
+          ifValue: $(that).attr("dataid"),
+          type: "number"
+        };
+     publicAjax(WeekAlmReport,"/api/GWServiceWebAPI/deleteEquipGroup",5);
+}
+ function newlyBuildSpeAlmReport(tThatParent,index){
+      var html = '<div class="popup popup-aboutuser Spe_WeekAlmReportUl">'+
+            '<h1>周排表修改</h1>'+
+            '<div class="popupContent list inline-labels no-hairlines-md">'+
+                  '<ul>'+
+                    '<li class="item-content item-input">'+
+                      '<div class="item-media">'+
+                        '<i class="icon demo-list-icon"></i>'+
+                      '</div>'+
+                      '<div class="item-inner">'+
+                        '<div class="item-title item-label">人员姓名</div>'+
+                        '<div class="item-input-wrap">'+
+                          '<input type="text" placeholder="选择人员" value = "'+getVal($(tThatParent).find("td:eq(0)").text(),index)+'"  class="Spe_userName" id="Spe_userName">'+
+                          '<span class="input-clear-button"></span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</li>'+
+                    '<li class="item-content item-input">'+
+                      '<div class="item-media">'+
+                        '<i class="icon demo-list-icon"></i>'+
+                      '</div>'+
+                      '<div class="item-inner">'+
+                        '<div class="item-title item-label">开始时间</div>'+
+                        '<div class="item-input-wrap">'+
+                          '<input type="text" placeholder="输入开始时间" value = "'+getVal($(tThatParent).find("td:eq(1)").text(),index)+'" class="Spe_stime">'+
+                          '<span class="input-clear-button"></span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</li>'+
+                    '<li class="item-content item-input">'+
+                      '<div class="item-media">'+
+                        '<i class="icon demo-list-icon"></i>'+
+                      '</div>'+
+                      '<div class="item-inner">'+
+                        '<div class="item-title item-label">结束时间</div>'+
+                        '<div class="item-input-wrap">'+
+                          '<input type="text" placeholder="输入结束时间" value = "'+getVal($(tThatParent).find("td:eq(2)").text(),index)+'" class="Spe_etime">'+
+                          '<span class="input-clear-button"></span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</li>'+                                       
+                  '</ul>'+            
+            '</div>'+
+             '<div class="popupBtb row">'+
+              '<a class="link popup-close col-33 button" href="#">退出</a>'+
+              '<a class="link popup-close popupOpenBtn col-33 button" href="#" onclick="updateWeekAlmReport(this,'+index+')" dataid = '+$(tThatParent).attr("dataid")+'>确认</a>'+
+              '<a class="link popup-close col-33 button" href="#" onclick="delSpeAlmReport(this)" dataid = '+$(tThatParent).attr("dataid")+'>删除</a>'+
+            '</div>'+
+          '</div>';
+          popupAlert(html);
+          listInit("Spe_userName",schedule_public_username); 
+    }
+
 
 
 //switchMenu
@@ -866,6 +949,14 @@ function weekReturn(week) {
         case 1:
           weekString = "星期日";
           break;
+        case "每天": weekString = 0;break;
+        case "星期一": weekString = 2;break;
+        case "星期二": weekString = 3;break;
+        case "星期三": weekString = 4;break;
+        case "星期四": weekString = 5;break;
+        case "星期五": weekString = 6;break;
+        case "星期六": weekString = 7;break;
+        case "星期日": weekString = 1;break;
         default:
           break;
       }
@@ -899,18 +990,6 @@ function weekReturn(week) {
     };
 
 
-    //动态创建弹窗
-    function popupAlert(html){
-    	var popup = myApp.popup.create({
-		  content: html,
-		  on: {
-		    opened: function (e) {
-           //     console.log($(e.params.content).find("a.popupOpenBtn").prop("disabled",true));
-	          // // if(index == 2)
-	          // // 	$(html).find("a.popupOpenBtn").prop("disabled",true);
-			    }
-		  }
-		}).open();
-    }
+
 
    

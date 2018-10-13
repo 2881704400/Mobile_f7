@@ -11,7 +11,7 @@ function snapShotDetail() {
 }
 
 function loadMessage(chatList) {
-	console.log(chatList)
+//	console.log(chatList)
 	$.ajax({
 		type: 'post',
 		url: '/api/event/real_evt',
@@ -24,7 +24,7 @@ function loadMessage(chatList) {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var result = dt.HttpData.data;
-				console.log(result);
+//				console.log(result);
 				let tableListData = [];
 				var strSureData = "";
 				var strData = "";
@@ -93,7 +93,7 @@ function loadMessage(chatList) {
 }
 
 function OnSureMessage(dt) {
-	console.log(dt)
+//	console.log(dt)
 	/*阻止事件冒泡*/
 	event.stopPropagation();
 	myApp.pickerModal('.picker-snapshotMessage');

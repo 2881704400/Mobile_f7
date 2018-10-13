@@ -191,7 +191,7 @@
 							this.timeInterval=setInterval(this.getRealTimeEventCount, 5000);
 						}
 					}).catch(err => {
-						console.log(err)
+//						console.log(err)
 					})
 			},
 			//获取当前实时报警事件的总数
@@ -219,7 +219,7 @@
 						this.btnInfo[0].btnCount = this.btnInfo[0].spanName + " " + sumValue;
 					}
 				}).catch(err => {
-					console.log(err)
+//					console.log(err)
 				})
 			},
 			//获取当前系统报警的实时事件
@@ -265,7 +265,7 @@
 						this.atorMsgDataFun();
 					}
 				}).catch(err => {
-					console.log(err)
+//					console.log(err)
 				})
 			},
 			atorMsgDataFun() {
@@ -286,7 +286,7 @@
 						this.atorMsgInfo = atorMsgInfoData;
 					}
 				}).catch(err => {
-					console.log(err)
+//					console.log(err)
 				})
 			},
 			showModalFun(EventMsg, Time) {
@@ -337,7 +337,7 @@
 						this.$Message.error("操作失败");
 					}
 				}).catch(err => {
-					console.log(err)
+//					console.log(err)
 				})
 			},
 			formatDate(time) {

@@ -5,7 +5,7 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
 	if(window.orientation == 180 || window.orientation == 0) {
 		var timer = setTimeout(function() {
 			updateBodyLandscope(windowHeight); //竖屏时执行的函数  
-
+            
 			clearTimeout(timer);
 		}, 100);
 	}

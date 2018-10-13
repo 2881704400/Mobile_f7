@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
-<html >
+
+<html class="with-statusbar">
 	<head>
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,8 +17,9 @@
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
 		<!-- <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css"> -->
 		<!--图标字体样式-->
-		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_j5wqoht3myg.css" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_655sp9ndo5u.css" />
 
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_fb4z0zy9is9.css" />
 		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
 		<!--本页样式-->
@@ -26,13 +29,11 @@
         <link rel="stylesheet" href="/Styles/Mobile/home.css">
         <link rel="stylesheet" href="/Styles/Mobile/welcomeWords.css">  
         <link rel="stylesheet" href="/Styles/Mobile/ppt.css">     
-         <link rel="stylesheet" href="/Styles/Mobile/schedule.css">          
+        <link rel="stylesheet" href="/Styles/Mobile/schedule.css">          
 		<link rel="stylesheet" href="/Styles/Mobile/animate.min.css">
 		<link rel="stylesheet" href="/Styles/Mobile/layout.css" />	
 		<link rel="stylesheet" href="/Styles/Mobile/equips.css" />
 	</head>
-
-
 	<body>
 		<!-- App root element -->
 		<div id="app" style="visibility: hidden;">
@@ -78,7 +79,7 @@
                                </dl>
 							</li>
 							<li>
-								<dl >
+								<dl>
                                	  <dt></dt>
                                	  <dd>
                                	  	<!-- <h3><i class="iconfont icon-f7_equipList"></i>测点数</h3> -->
@@ -141,23 +142,23 @@
 				</div>
 				<!-- Toolbar -->
 				<div class="toolbar tabbar tabbar-labels displayNone">
-					<div class="toolbar-inner">
-						<a href="/home/" class="link active animation-no" id="homeTool">
+					<div class="toolbar-inner row no-gap">
+						<a href="/home/" class="link active animation-no col-20" id="homeTool">
 							<i class="iconfont icon-f7_home"></i>
 							<span>首页</span>
 						</a>
-						<a href="/snapshot/" class="link animation-no" id="snapshotTool">
+						<a href="/snapshot/" class="link animation-no col-20" id="snapshotTool">
 							<i class="iconfont icon-f7_snapshot"></i>
 							<span>实时快照</span>
 						</a>
-						<a href="#" class="link" id="voiceBtn">
-							<p><span><i class="iconfont icon-f7_voice"></i></span></p>
+						<a href="#" class="link col-20" id="voiceBtn" >
+							<span><i class="iconfont icon-f7_voice"></i></span>
 						</a>
-						<a href="/equips/" class="link animation-no" id="equipsTool">
+						<a href="/equips/" class="link animation-no col-20" id="equipsTool">
 							<i class="iconfont icon-f7_equipList"></i>
 							<span>设备列表</span>
 						</a>
-						<a href="#" class="link animation-no popover-open" data-popover=".popover-links" id="configTool">
+						<a href="#" class="link animation-no popover-open col-20" data-popover=".popover-links" id="configTool">
 							<!-- onclick="systemConfig('configTool')" -->
 							<i class="iconfont icon-f7_set"></i>
 							<span>系统</span>
@@ -188,7 +189,7 @@
 				<!-- voice -->
 				<div class="voiceContainer" id="voiceContainer">
 					<div class="voiceDivs voicePanel">
-						<a href="#">X</a>
+						<a href="#" class="iconfont icon-f7_voice_close"></a>
 						<div class="">
 							<div id="voiceMessage" class="voiceTitle" style="display: block;">按住说话</div>
 							<div id="waveAnim" class="waveAnim" style="display: none;"><i></i><i></i><i></i><i></i><i></i></div>

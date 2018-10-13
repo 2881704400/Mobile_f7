@@ -18,9 +18,9 @@ catch (ex) {
 
 }
 var isVoices = false;
-
 //按住开始说话
 function onTouchStart() {
+
     //myApp.toast.close();
     $("#voiceContainer").removeClass("voiceContainer");
     $(this).addClass("voiceActive");

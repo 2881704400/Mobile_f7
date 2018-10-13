@@ -13,18 +13,15 @@ function snapshot() {
 //获取事件的报警配置
 function initData() {
 	$.ajax({
-		type: 'post',
+		type: 'post', 
 		url: '/api/event/alarm_config',
 		headers: {
 			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
 		},
-		data: {
-
-		},
+		data: {},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
-				console.log(resultData);
 				var strData = "";
 				for(var i = 0; i < resultData.length; i++) {
 					if(resultData[i].IsShow == 1) {
@@ -41,7 +38,6 @@ function initData() {
 				}
 				event_Level_list = event_Level_list.substring(0, event_Level_list.length - 1);
 				getRealTimeEventCount();
-				//				timeInterval = setInterval(getRealTimeEventCount, 5000);
 			}
 		}
 	});
@@ -68,9 +64,10 @@ function getRealTimeEventCount() {
 				if(dt.HttpStatus == 200 && dt.HttpData.data) {
 					var resultData = dt.HttpData.data;
 					var resultDataArr = resultData.toString().split(",");
-					console.log(resultData);
 					var strData = "";
+					// console.log(dt);
 					for(var i = 0; i < resultDataArr.length; i++) {
+
 						strData += '<li>' +
 							'<a href="/snapShotDetail/?' + btnInfoNames[i] + '&'+btnInfoLevels[i]+'" class="item-link item-content">' +
 							'	<div class="item-media"><i class="iconfont icon-web-cuowu"></i></div>' +
@@ -91,7 +88,6 @@ function getRealTimeEventCount() {
 function refreshpg(e) {
 	setTimeout(function() {
 		getRealTimeEventCount();
-
 		// 加载完毕需要重置
 		myApp.ptr.done();
 		myApp.toast.create({
@@ -99,6 +95,5 @@ function refreshpg(e) {
   			position: 'center',
 			closeTimeout: 500,
 		}).open();
-		//dt == 1?alertMsgSuccess.open():alertMsgError.open();
 	}, 2000);
 }

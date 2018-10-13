@@ -16,14 +16,83 @@
             </div>
         </div>        
         <!--"pull-to-refresh-content"类表示下拉刷新 -->
-        <div  class="page-content ptr-content" data-ptr-distance="55">
-            <!-- 默认的下拉刷新层 -->
-<!--             <div class="ptr-preloader">
-              <div class="preloader"></div>
-              <div class="ptr-arrow"></div>
-            </div>   -->          
-            <div class="list-block list-page list" style="margin:0;">
-                事件查询
+        <div  class="page-content">
+            <div class="condition">
+            	<p class=" hideShow">
+            		点击进行时间选择
+            	</p>
+            	<div class="row timeWrap no-gap">
+            		<div class="col-25">
+            			开始日期:
+            		</div>
+            		<div class="col-75">
+            			<div class="inpWrap">
+            				<input type="" name="" id="timePicker" value="" readonly="readonly" placeholder="开始时间" style="width: 100%;height: 100%;"/>
+            			</div>
+
+            		</div>
+            	</div>
+            	<div class="row timeWrap  no-gap">
+            		<div class="col-25">
+            			结束日期:
+            		</div>
+            		<div class="col-75">
+            			<div  class="inpWrap">
+            				<input type="" name="" id="timePicker2" value="" readonly="readonly" placeholder="开始时间" style="width: 100%;height: 100%;"/>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="sureBtn button button-fill">
+            		确定
+            	</div>
+            </div>
+            
+           
+            
+            <div class="row no-gap equipCon" >
+            	<div class="col-25" >
+            		<!--设备列表-->
+	            	<ul class="equipList">
+	            		
+	            	</ul>
+            	</div>
+            	<div class="col-75">
+					<p class="segmented tabList" >
+            			<a href="#tab1" class="tab-link tab-link-active button">设备事件</a>
+      					<a href="#tab2" class="tab-link button">设置事件</a>
+     					<a href="#tab3" class="tab-link button">系统事件</a>
+					</p>
+            		<div class="tabs-animated-wrap eventWrap">
+					    <div class="tabs">
+					      <div id="tab1" class=" tab tab-active">
+					       <div class="list accordion-list" style="margin: 0;">
+							  <ul>
+							   
+							   
+							  </ul>
+							</div>
+					      </div>
+					      <div id="tab2" class=" tab">
+					      	<div class="list accordion-list" style="margin: 0;">
+							  <ul>
+					        
+							    
+							   
+							  </ul>
+							</div>
+					      </div>
+					      <div id="tab3" class=" tab">
+					      	<div class="list accordion-list" style="margin: 0;">
+							  <ul>
+					        		
+							    
+							    
+							  </ul>
+					        </div>
+					    </div>
+					</div>
+            		
+            	</div>
             </div>
         </div>
     </div>

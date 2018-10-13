@@ -1,47 +1,35 @@
-var flag=false;
+
 function ycAndyx(){
+	
 	var urlstr=myApp.views.main.history,leng=urlstr.length;
 	var url=urlstr[leng-1].split("#")[1]
 	var equip_no=url.split("&")[0];
 	var name=url.split("&")[1];
-$(".ios .ptr-preloader").css({zIndex:"99"})
-$(".ios .ptr-preloader .preloader").css({top:"66px"})
-$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
+	$("#titleStats").text(name)
+	realShows(equip_no, name)
+//		$("#titleStats").text('测试2');
+//		realShows(2, "测试2");
+//		$("#ycAndyx .title").text('界面控制');
+//		realShows(1005, "界面控制");
+	$(".ios .ptr-preloader").css({zIndex:"99"})
+	$(".ios .ptr-preloader .preloader").css({top:"66px"})
+	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
 
-
-//	$("#titleStats").text('测试2');
-//	realShows(2, "测试2");
-	
-//		$("#ycAndyx .title").text('界面控制')
-//		realShows(1005, "界面控制")
-		$("#titleStats").text(name)
-		realShows(equip_no, name)
-//		refresh("txt")
-	
-	
-
-	
-	
-//	$("#yxp").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//		
-//	})
-//	$("#ycp").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//	})
-//	$("#set").scroll(function(){
-//		var hei=$(this).scrollTop();
-//		scroll(hei)
-//	})
-	
+	var searchbar = myApp.searchbar.create({
+		el: '.searchbar2',
+		searchContainer:".tab",
+		searchIn: '.item-title',
+		  
+	});
 }
 
 function refresh(txt){
 //	myApp.ptr.create('.ptr-content');
 	$("#titleStats").attr("noTab",txt);
+//	searCon=txt;
+	$(txt).addClass("searchbar-found").siblings().removeClass("searchbar-found")
 	if(txt=="#ycp"){
+
 		$("#ycp").bind("scroll",function(){
 			var hei=$(this).scrollTop();
 			allowScroll(hei)
@@ -71,18 +59,18 @@ function allowScroll(hei){
 		myApp.ptr.create('.ptr-content');
 		var $ptrContent = $$('.ptr-content');
 		$ptrContent.on('ptr:refresh', function (e) {
-		  setTimeout(function () {
-		  	var id=$("#titleStats").attr("noTab");
-		  	var eqiup_no=$("#titleStats").attr("equip_no")
-		  	if(id=="#ycp"){
-		  		serviceDatas("yc",eqiup_no)
-			}else if(id=="#yxp"){
-				serviceDatas("yx",eqiup_no)
-			}else {
-				tableFills(equip_no, "", "set");
-			}
-		    myApp.ptr.done();
-		  }, 2000);
+		    setTimeout(function () {
+			  	var id=$("#titleStats").attr("noTab");
+			  	var eqiup_no=$("#titleStats").attr("equip_no")
+			  	if(id=="#ycp"){
+			  		serviceDatas("yc",eqiup_no)
+				}else if(id=="#yxp"){
+					serviceDatas("yx",eqiup_no)
+				}else {
+					tableFills(equip_no, "", "set");
+				}
+		    	myApp.ptr.done();
+		  	}, 2000);
 		});
 	}else{
 //		console.log(33)
@@ -111,7 +99,7 @@ function realShows(equip_no, name) {
 }
 function realHtmls(countAll,equip_no,name){
 	if(countAll[0]>0){
-		var html='<a href="#ycp" class="tab-link " onclick="refresh(\'#ycp\')">模拟量</a>';
+		var html='<a href="#ycp" class="tab-link " onclick="refresh(\'#ycp\')">遥测点</a>';
 		
 		$("#ycAndyx .tabCon").append(html);
 		loadYc(equip_no)
@@ -119,7 +107,7 @@ function realHtmls(countAll,equip_no,name){
 		$("#ycp").remove();
 	}
 	if(countAll[1]>0){
-		var html='<a href="#yxp" class="tab-link"  onclick="refresh(\'#yxp\')">状态量</a>';
+		var html='<a href="#yxp" class="tab-link"  onclick="refresh(\'#yxp\')">遥信点</a>';
 		$("#ycAndyx .tabCon").append(html);
 		loadYx(equip_no)
 	}else{
@@ -137,6 +125,7 @@ function realHtmls(countAll,equip_no,name){
 	$("#tabs .tab").eq(0).addClass("tab-active");
 	$("#titleStats").attr("noTab",$(".tabCon a").eq(0).attr("href"));
 	refresh($(".tabCon a").eq(0).attr("href"))
+	
 }
 var titleStatID;
 function loadYc(equip_no){
@@ -226,40 +215,18 @@ function jsonTodata(data, tableName, alarm) {
             else {
                 alarmImg = 'alarm';
             }
-			var newRow=`<div class="itemOne" id="m_alarmycps_${i}">
-			        		<p class="name">${usera[i].m_YCNm}</p>
-			        		<ul>
-			        			<li class="sta">
-			        				<i class="iconfont icon-dian ${alarmImg}"></i>
-			        			</li>
-			        			<li class="sta">
-			        				丨
-			        			</li>
-			        			<li id="valueycps_${i}">
-			        				实时值 &nbsp;<span>${usera[i].m_YCValue}${usera[i].m_Unit}</span>
-			        			</li>
-			        			<li class="sta">
-			        				丨
-			        			</li>
-			        			<li class="link" style="color:#3498db;" onclick="curveBox(${i},'${usera[i].m_YCNm}',this)">
-			        				实时曲线
-			        			</li>
-			        		</ul>
-			        	</div>`
-//			 var newRow = `<div class="row">
-//			        			<div class="col-15 state">
-//				        			<i class="iconfont icon-dian ${alarmImg}"></i>
-//				        		</div>
-//				        		<div class="col-35 name">
-//				        			${usera[i].m_YCNm}
-//				        		</div>
-//				        		<div class="col-25">
-//				        			${usera[i].m_YCValue}${usera[i].m_Unit}
-//				        		</div>
-//				        		<div class="col-25 chart">
-//				        			<i class="iconfont icon-tubiaofenxi"></i>
-//				        		</div>
-//			        		</div>`;
+           var newRow=`<li class="row oneLine no-gap" id="m_alarmycps_${i}">
+			      			<div class="col-15 iconWrap">
+			      				<i class="iconfont icon-dian ${alarmImg}"></i>
+			      			</div>
+			      			<div class="item-title col-70 " id="valueycps_${i}">
+			      				<span class="name">${usera[i].m_YCNm}</span>
+			      				<span class="val">${usera[i].m_YCValue}${usera[i].m_Unit}</spn>
+			      			</div>
+			      			<div class="col-15 iconWrap" onclick="curveBox(${i},'${usera[i].m_YCNm}',this)">
+			      				<i class="iconfont icon-tubiaofenxi"></i>
+			      			</div>
+			      		</li>`;
             if (alarmImg == 'alarm') {
 //              $("#" + tableName + " .tabContent").prepend(newRow);
                  $("#" + tableName ).prepend(newRow);
@@ -286,33 +253,16 @@ function jsonTodata(data, tableName, alarm) {
             else {
                 alarmImg = 'alarm';
             }
-            var newRow =`<div class="itemOne" id="m_alarmyxps_${j}">
-			        		<p class="name">${usera[j].m_YXNm}</p>
-			        		<ul>
-			        			<li class="sta">
-			        				<i class="iconfont icon-dian ${alarmImg}"></i>
-			        			</li>
-			        			<li class="sta">
-			        				丨
-			        			</li>
-			        			<li id="valueyxps_${j}">
-			        				实时状态 &nbsp;<span>${usera[j].m_YXState}</span>
-			        			</li>
-			        		</ul>
-			        	</div>`;
-//			var newRow =`
-//					<div class="row">
-//	        			<div class="col-15 state">
-//		        			<i class="iconfont icon-dian ${alarmImg}"></i>
-//		        		</div>
-//		        		<div class="col-45 name">
-//		        			${usera[j].m_YXNm}
-//		        		</div>
-//		        		<div class="col-40">
-//		        			${usera[j].m_YXState}
-//		        		</div>
-//			        </div>
-//			` ;
+
+			var newRow =`<li class="row oneLine no-gap" id="m_alarmyxps_${j}">
+			      			<div class="col-15 iconWrap">
+			      				<i class="iconfont icon-dian ${alarmImg}"></i>
+			      			</div>
+			      			<div class="item-title col-85" id="valueyxps_${j}">
+			      				<span class="name">${usera[j].m_YXNm}</span>
+			      				<span class="val">${usera[j].m_YXState}</spn>
+			      			</div>
+			      		</li>`;
 
             if (alarmImg == 'alarm') {
 //              $("#" + tableName + " .tabContent").prepend(newRow);
@@ -354,9 +304,9 @@ function jsonTobtn(data, confarr) {
         var set_nos1 = Control_Equip_List(confarr);
         var set_nos2 = Control_SetItem_List(confarr, userb.set_no);
         if (set_nos1 || set_nos2) {
-        	 var newRow =`<div class="itemOne link" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
-			        		<p class="name">${userc[0]}</p>
-			        	</div>`
+        	 var newRow =`<li class="link" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
+			        		<p class="name item-title">${userc[0]}</p>
+			        	</li>`
 //      	 var newRow =`
 //      	 		<p class="row" onclick="onSetClickBtn(${confarr},'${userc[1]}','${userc[2]}','${userc[3]}','${userc[0]}','${userc[4]}')">
 //						<button class="col button button-big">${userc[0]}</button>
@@ -491,7 +441,7 @@ function curveBox(number,nameCurve,dts){
                                // y = parseInt(10 * Math.random());//Math.random()*10;
                                 y = yVals;
                             series.addPoint([x, y], true, true);
-                        }, 3000);
+                        }, 1000);
                     }
                 },
                 backgroundColor: 'none'
@@ -607,11 +557,11 @@ function refreshDatas() {
                 alarmImg = 'alarm';
             }
             
-            $('#m_alarmycps_' + i).find("i").addClass(alarmImg);
-            $("#valueycps_" + i).find("span").html(userc[1] + userc[4]);
+            $('#m_alarmycps_' + i).find("i.icon-dian").addClass(alarmImg);
+            $("#valueycps_" + i).find(".val").html(userc[1] + userc[4]);
             
             if (alarmImg == 'alarm') {//有报警置顶
-                var dom = $("#valueycps_" + i).parents(".itemOne");
+                var dom = $("#valueycps_" + i).parent();
                 var doms = dom.parent();
                 dom.remove();
                 doms.prepend(dom);
@@ -636,10 +586,10 @@ function refreshDatas() {
             else {
                 alarmImg = 'alarm';
             }
-            $('#m_alarmyxps_' + i).find('i').addClass(alarmImg);
-            $("#valueyxps_" + i).find("span").html(userc[1]);
+            $('#m_alarmyxps_' + i).find('i.icon-dian').addClass(alarmImg);
+            $("#valueyxps_" + i).find(".val").html(userc[1]);
             if (alarmImg == 'HaveAlarm') {
-                var dom = $("#valueyxps_" + i).parents(".itemOne");
+                var dom = $("#valueyxps_" + i).parent();
                 var doms = dom.parent();
                 dom.remove();
                 doms.prepend(dom);
