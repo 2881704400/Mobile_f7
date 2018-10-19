@@ -240,4 +240,55 @@ $(function () {
 	        }
 	    });
 	};
+
+	/*
+     * ajax封装并发请求
+     *新接口使用
+     *$.when并发请求，参数必须为deferred对象
+     */
+   $.fn.XmlRequset = {
+    httpPost: function(url,n){
+        var i = $.Deferred();
+        return $.ajax({
+            url: url,
+            data: n.data,
+            type: "POST",
+            dataType:"JSON",
+            headers: {
+	            Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey,
+	        },            
+            async: !1 !== n.async,
+            timeout: n.timeout || 5000,
+            success: function(e) {
+                i.resolveWith(this, [e])
+            },
+            error: function(e, n) {
+                i.rejectWith(this, ["网络异常，请稍候重试"])
+            }
+        }),
+        i.promise()
+     },
+     httpGet:function(url,n){
+        var i = $.Deferred();
+        $.ajax({
+            url: url,
+            data: $.param(n.data),
+            type: "GET",
+            dataType:"JSON",
+            headers: {
+	            Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey,
+	        },                
+            async: !1 !== n.async,
+            timeout: n.timeout || 5000,
+            success: function(e) {
+                i.resolveWith(this, [e])
+            },
+            error: function(e, n) {
+                i.rejectWith(this, ["网络异常，请稍候重试"])
+            }
+        });
+        return i.promise()
+     }
+   }
+
 });

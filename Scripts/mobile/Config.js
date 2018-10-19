@@ -170,7 +170,6 @@ function snapshotChart(id) {
         return {
             name: now.toString(),
             value: value,
-
         }
     }
 
