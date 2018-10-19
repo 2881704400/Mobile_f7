@@ -38,6 +38,7 @@ function initData() {
 				}
 				event_Level_list = event_Level_list.substring(0, event_Level_list.length - 1);
 				getRealTimeEventCount();
+				//timeInterval = setInterval(getRealTimeEventCount, 5000);
 			}
 		}
 	});
@@ -65,7 +66,6 @@ function getRealTimeEventCount() {
 					var resultData = dt.HttpData.data;
 					var resultDataArr = resultData.toString().split(",");
 					var strData = "";
-					// console.log(dt);
 					for(var i = 0; i < resultDataArr.length; i++) {
 
 						strData += '<li>' +
