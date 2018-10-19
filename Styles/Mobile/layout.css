@@ -37,51 +37,49 @@ mixin：sass宏mixin
       color: #3FAA20; }
     .snapshot-main .snapshot-ul li:nth-child(5) .badge {
       background: #3FAA20; }
-  .snapshot-main .snapshotMessage-ul {
-    margin-bottom: 66px; }
-    .snapshot-main .snapshotMessage-ul li {
-      font-size: 15px;
-      background: white; }
-      .snapshot-main .snapshotMessage-ul li i.small-bdage {
-        color: #F43530;
-        font-size: 12px; }
-      .snapshot-main .snapshotMessage-ul li .content-container {
-        position: relative;
-        overflow: hidden;
-        height: 0px;
+  .snapshot-main .snapshotMessage-ul li {
+    font-size: 15px;
+    background: white; }
+    .snapshot-main .snapshotMessage-ul li i.small-bdage {
+      color: #F43530;
+      font-size: 12px; }
+    .snapshot-main .snapshotMessage-ul li .content-container {
+      position: relative;
+      overflow: hidden;
+      height: 0px;
+      font-size: 14px;
+      -webkit-transition-duration: .3s;
+      transition-duration: .3s;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      border-bottom: 0px solid #c8c7cc; }
+    .snapshot-main .snapshotMessage-ul li textarea.advice-textarea {
+      background: #F9F9F9; }
+    .snapshot-main .snapshotMessage-ul li .span-color-sure {
+      color: #54BB5C; }
+    .snapshot-main .snapshotMessage-ul li .span-color-notsure {
+      color: #FE4445; }
+    .snapshot-main .snapshotMessage-ul li .fontweight-normal {
+      font-weight: 500; }
+    .snapshot-main .snapshotMessage-ul li .content-container-block {
+      padding: 0 15px;
+      color: #6d6d72;
+      box-sizing: border-box; }
+      .snapshot-main .snapshotMessage-ul li .content-container-block p textarea {
         font-size: 14px;
-        -webkit-transition-duration: .3s;
-        transition-duration: .3s;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        border-bottom: 0px solid #c8c7cc; }
-      .snapshot-main .snapshotMessage-ul li textarea.advice-textarea {
-        background: #F9F9F9; }
-      .snapshot-main .snapshotMessage-ul li .span-color-sure {
-        color: #54BB5C; }
-      .snapshot-main .snapshotMessage-ul li .span-color-notsure {
-        color: #FE4445; }
-      .snapshot-main .snapshotMessage-ul li .fontweight-normal {
-        font-weight: 500; }
-      .snapshot-main .snapshotMessage-ul li .content-container-block {
-        padding: 0 15px;
-        color: #6d6d72;
+        color: #8e8e93;
+        width: 100%;
+        min-height: 90px;
+        height: 90px;
+        border: none;
+        padding: 5px;
         box-sizing: border-box; }
-        .snapshot-main .snapshotMessage-ul li .content-container-block p textarea {
-          font-size: 14px;
-          color: #8e8e93;
-          width: 100%;
-          min-height: 90px;
-          height: 90px;
-          border: none;
-          padding: 5px;
-          box-sizing: border-box; }
-        .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li {
-          border-bottom: 1px solid #c8c7cc; }
-          .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li:first-child {
-            border-top: 1px solid #c8c7cc; }
-          .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li .item-inner:after {
-            height: 0px !important; }
+      .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li {
+        border-bottom: 1px solid #c8c7cc; }
+        .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li:first-child {
+          border-top: 1px solid #c8c7cc; }
+        .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li .item-inner:after {
+          height: 0px !important; }
 
 /*首页样式*/
 .mainDiv {
