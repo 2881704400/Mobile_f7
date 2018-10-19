@@ -81,6 +81,10 @@ mixin：sass宏mixin
                 transition-duration: .3s;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
+                border-bottom: 0px solid #c8c7cc;
+            }
+            textarea.advice-textarea {
+                background: #F9F9F9;
             }
             .span-color-sure{
                 color: #54BB5C;
@@ -88,33 +92,36 @@ mixin：sass宏mixin
             .span-color-notsure{
                 color: #FE4445;
             }
+            .fontweight-normal{
+                font-weight: 500; 
+            }
             .content-container-block {
                 padding: 0 15px;
                 color: #6d6d72;
                 box-sizing: border-box;
-                p{
-                    textarea{
-                        font-size: 15px;
+                p {
+                    textarea {
+                        font-size: 14px;
                         color: #8e8e93;
+                        width: 100%;
+                        min-height: 90px;
+                        height: 90px;
+                        border: none;
+                        padding: 5px;
+                        box-sizing: border-box;
                     }
                 }
-//              p {
-//                  &:last-child:after {
-//                      content: '';
-//                      position: absolute;
-//                      background-color: #c8c7cc;
-//                      display: block;
-//                      z-index: 15;
-//                      top: auto;
-//                      right: 15px;
-//                      bottom: 0;
-//                      left: 15px;
-//                      height: 1px;
-//                      width: 100%;
-//                      -webkit-transform-origin: 50% 100%;
-//                      transform-origin: 50% 100%;
-//                  }
-//              }
+                .procsContent{
+                    li{
+                        border-bottom: 1px solid #c8c7cc;
+                        &:first-child{
+                            border-top: 1px solid #c8c7cc;
+                        }
+                        .item-inner:after{
+                            height: 0px !important;
+                        }
+                    }
+                }
             }
         }
     }

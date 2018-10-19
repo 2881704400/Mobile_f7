@@ -4,7 +4,7 @@ System.ArgumentException: 已添加了具有相同键的项。
    在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
    在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
    在 GWService.Net.ClassLib.UserPermissions(String userName)
--------------------------------------
+------------------------------------
 
 ----------2018/10/13 10:39:32----------
 System.ArgumentException: 已添加了具有相同键的项。
@@ -419,6 +419,7 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
    在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
 -------------------------------------
 
+<<<<<<< HEAD
 ----------2018/10/15 9:45:00----------
 System.NullReferenceException: 未将对象引用设置到对象的实例。
    在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
@@ -1629,5 +1630,45 @@ System.ArgumentException: 已添加了具有相同键的项。
    在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
    在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
    在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth)
+=======
+----------2018/10/18 18:03:13----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType)
+-------------------------------------
+
+----------2018/10/18 18:03:17----------
+路径错误
+-------------------------------------
+
+----------2018/10/18 18:03:22----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\AlarmCenter\Web\BGImages”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType)
+-------------------------------------
+
+----------2018/10/18 18:03:28----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType)
+-------------------------------------
+
+----------2018/10/18 18:03:34----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\AlarmCenter\Web\BGImages”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType)
+>>>>>>> 07b17cd4adef2402be28fdeb2765c488829ea7a4
 -------------------------------------
 

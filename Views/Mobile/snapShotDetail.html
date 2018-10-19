@@ -13,15 +13,29 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="page-content ptr-content" data-ptr-distance="55">
+	<form class="searchbar">
+		<div class="searchbar-inner">
+			<div class="searchbar-input-wrap">
+				<input type="search" placeholder="时间/事件搜索">
+				<i class="searchbar-icon"></i>
+				<span class="input-clear-button"></span>
+			</div>
+			<span class="searchbar-disable-button">取消</span>
+		</div>
+	</form>
+	<div class="page-content ptr-content snapashotMessage-page-content" data-ptr-distance="55">
 		<div class="ptr-preloader">
 			<div class="preloader"></div>
 			<div class="ptr-arrow"></div>
 		</div>
+		<div class="searchbar-backdrop"></div>
+		<!-- Nothing found message -->
+		<div class="block searchbar-not-found">
+			<div class="block-inner">Nothing found</div>
+		</div>
 		<div class="list media-list snapshot-main" style="margin:0;">
-			<ul class="snapshotMessage-ul" id="snapShotDetailListId">
-
+			<ul class="snapshotMessage-ul searchbar-found" id="snapShotDetailListId">
+				
 			</ul>
 		</div>
 	</div>

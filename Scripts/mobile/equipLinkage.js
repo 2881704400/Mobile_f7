@@ -219,7 +219,6 @@ function notEqualToYXP() {
     }
 }
 
-
 var equipLinkage_public_list = [];
 function publicFun(ycpData, yxpData) {
     let html = "";
