@@ -720,186 +720,6 @@ function formatMoney(s, type) {
     }
     return s;
 }
-//首页
-// $$(document).on("page:beforein", ".page[data-page='home']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == 'home') {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         onHomePage();
-//         $("#homeContents").show();
-//         toolbarActive('homeTool');
-//     }
-// });
-// $$(document).on("pageBeforeAnimation", function(e) {
-//     if (e.target.id == "home") {
-//         onHomePage();
-//         $("#homeContents").show();
-//     }
-// });
-// //设置
-// $$(document).on("page:beforein", ".page[data-page='SetUp']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('SetUp', '');
-//     }
-// });
-// //实时快照
-// $$(document).on("page:beforein", ".page[data-page='message']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('Message', '');
-//     }
-// });
-// //实时数据
-// $$(document).on("page:beforein", ".page[data-page='RealTime']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('RealTime', '');
-//     }
-// });
-// //语音控制
-// $$(document).on("page:beforein", ".page[data-page='Voice']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('Voice', '');
-//     }
-// });
-// //实时视频
-// $$(document).on("page:beforein", ".page[data-page='Video']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('Video', '');
-//     }
-// });
-// //扫一扫
-// $$(document).on("page:beforein", ".page[data-page='RichScan']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('RichScan', '');
-//     }
-// });
-// //PPT
-// $$(document).on("page:beforein", ".page[data-page='mettingPPT']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('mettingPPT', '');
-//     }
-// });
-// //PPT详情
-// $$(document).on("page:beforein", ".page[data-page='mettingDetails']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('mettingDetails', '');
-//     }
-// });
-// //欢迎词
-// $$(document).on("page:beforein", ".page[data-page='welcomeWords']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('welcomeWords', '');
-//     }
-// });
-// //视频监控
-// $$(document).on("page:beforein", ".page[data-page='videoControl']", function(e) {
-
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-
-//         initPageJS('videoControl', ''); 
-//     }
-
-// });
-// //个人信息
-// $$(document).on("page:beforein", ".page[data-page='UserInfor']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('UserInfor', '');
-//     }
-// });
-// //实时视频
-// $$(document).on("page:beforein", ".page[data-page='EventSelect']", function(e) {
-//     if ($(this).hasClass("page-on-left")) {
-//         var ids = $(this).next().attr("id");
-//         if (ids == "home") {
-//             toolbarActive('homeTool');
-//         } else {
-//             initPageJS(ids, '');
-//         }
-//     } else {
-//         initPageJS('EventSelect', '/Scripts/mobile/left/');
-//     }
-// });
 window.onresize = function() {
     onResizeCustomized();
 }
@@ -1030,7 +850,7 @@ function dateCost(data1, data2) {
 //发送命令
 function get_no(dt, set_equip, set_no, values) {
     if (!$(dt).hasClass("Conference_selectedBG") && !$(dt).hasClass("Conference_selectedCO")) {
-        var set_equipOld, set_noOld, valuesOld, main_instrOld, mino_instrOld;
+        var set_equipOld,set_noOld,valuesOld,main_instrOld,mino_instrOld;
         if (set_equip == "") {
             set_equipOld = $(dt).attr("set_equip");
             set_noOld = $(dt).attr("set_no");
@@ -1048,7 +868,6 @@ function get_no(dt, set_equip, set_no, values) {
             },
             success: function(data) {
                 var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-//              console.log(dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
                 if (dt.find("equip_no").html() != "") {
                     if (values == "") onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
                     else onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
@@ -1061,7 +880,6 @@ function get_no(dt, set_equip, set_no, values) {
 }
 
 function onSetCommand11(dt, equip_no, main_instr, mino_instr, valueset) {
-//  console.log(equip_no + "," + main_instr + "," + mino_instr + "," + valueset);
     var ajaxVar = $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
@@ -1073,10 +891,7 @@ function onSetCommand11(dt, equip_no, main_instr, mino_instr, valueset) {
             value: valueset,
             user_name: window.localStorage.userName
         },
-        success: function(data) {
-            alertMsgSuccess.open();
-//          console.log("success");
-        }
+        success: function(data) {alertMsgSuccess.open();}
     });
 }
 var alertMsgSuccess = myApp.notification.create({
@@ -1107,7 +922,6 @@ $.fn.isOnScreen = function() {
     bounds.bottom = bounds.top + this.outerHeight();
     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
 };
-
 function _errorfSet(that) {
     if ($(that).hasClass("volumebtn1") || $(that).hasClass("volumebtn2") || $(that).hasClass("volumebtn3") || $(that).hasClass("volumebtn4")) {} else if ($(that).attr("id") == "viewsSave") //照相
         $(that).attr("disabled", false);
@@ -1121,8 +935,6 @@ function _errorfSet(that) {
 function getNmae(name) {
     return name.split("\\")[name.split("\\").length - 1];
 }
-
-
 //引入javascript
 function loadJs(url,callback,id){
         var script=document.createElement('script');
@@ -1130,7 +942,6 @@ function loadJs(url,callback,id){
         script.src = url;
         script.id = id+"_1";
         document.body.appendChild(script);
-        
         if(typeof(callback)!="undefined"){
             if(script.readyState){
                 script.onreadystatechange=function(){
@@ -1144,7 +955,7 @@ function loadJs(url,callback,id){
                   callback();
                 }
             }
-        }
+    }
 }
 
 //退出登陆
@@ -1165,12 +976,10 @@ function switchToolbar(id){
     //$(".toolbar .animation-no").removeClass("active");
     $("#"+id).addClass("active").siblings().removeClass("active");
 }
-
 //系统配置
 function systemConfig(id){
   //switchToolbar(id);
 }
-
 //语音信息提示
 function voiceTooip(txt){
     return myApp.toast.create({
@@ -1179,9 +988,6 @@ function voiceTooip(txt){
       closeTimeout: 3000,
     });
 }
-
-
-
 //下拉列表初始化
 function listInit(id,value){
     myApp.picker.create({
@@ -1194,16 +1000,13 @@ function listInit(id,value){
       ]
     }); 
 }
-    //动态创建弹窗
-    function popupAlert(html){
-        var popup = myApp.popup.create({
-          content: html,
-          on: {
-            opened: function (e) {
-           //     console.log($(e.params.content).find("a.popupOpenBtn").prop("disabled",true));
-              // // if(index == 2)
-              // //     $(html).find("a.popupOpenBtn").prop("disabled",true);
-                }
-          }
-        }).open();
-    }
+//动态创建弹窗
+function popupAlert(html){
+    var popup = myApp.popup.create({
+      content: html,
+      on: {
+        opened: function (e) {}
+      }
+    }).open();
+}
+

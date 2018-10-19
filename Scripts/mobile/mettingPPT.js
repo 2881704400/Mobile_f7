@@ -1,5 +1,4 @@
 ﻿function mettingPPT() {
-   
    if($("#Filelist>ul>li").html()==" " || $("#Filelist>ul>li").html()==undefined)
      {fileStuctureChild("","");}
   //文件选择
@@ -58,7 +57,7 @@ function fileStuctureChild(url,objectList)
       $(".modalDiv").addClass("displayNone");
       var result = $$(data).children("string").text();
       if (result != "false" && result !="null") {
-          stringFile =JSON.parse(result); //console.log($.trim(stringFile[0]).split("\\")[2]);
+          stringFile =JSON.parse(result);
           //继续查询每项列表下的子目录
           for(var i=0;i<stringFile.length;i++)
           { 
@@ -75,9 +74,9 @@ function fileStuctureChild(url,objectList)
               if(objectList == "")
                 $("#Filelist>ul").append(contentHtml);
               else
-                 {$(objectList).next().append(contentHtml);}
+                { $(objectList).next().append(contentHtml); }
            }
-          }
+        }
       }
     }
 }
@@ -85,14 +84,14 @@ function fileStuctureChild(url,objectList)
 function isStucture(stringFile){
    if(stringFile.length>4)
    {
-        if(stringFile.substr(-4) == ".pdf" || stringFile.substr(-4) == ".ppt" || stringFile.substr(-5) == ".pptx" || stringFile.substr(-4) == ".xls" || stringFile.substr(-4) == ".xslx" )
-          {return false;}
-        else
-          {return true;}
+      if(stringFile.substr(-4) == ".pdf" || stringFile.substr(-4) == ".ppt" || stringFile.substr(-5) == ".pptx" || stringFile.substr(-4) == ".xls" || stringFile.substr(-4) == ".xslx" )
+        {return false;}
+      else
+        {return true;}
    }
    else
    {
-    return true;
+      return true;
    }
 }
 // ===============================================
@@ -126,7 +125,7 @@ function setMenu(that){
 // ===============================================
 function writeResh(){$("#Filelist>ul").html("");}
 // ===============================================
-// ==============初始化历史记录=================
+// ================初始化历史记录=================
 // ===============================================
 function isFilePPT(){
      if(window.localStorage.storageI != undefined && window.localStorage.storageI != "")

@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
-
 <html class="with-statusbar">
 	<head>
-
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,10 +13,8 @@
 		<link rel="icon" href="/Image/logo.png" type="image/x-icon">
 		<!--框架样式-->
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
-		<!-- <link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.ios.colors.min.css"> -->
 		<!--图标字体样式-->
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_655sp9ndo5u.css" />
-
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_fb4z0zy9is9.css" />
 		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
@@ -35,15 +31,12 @@
 		<link rel="stylesheet" href="/Styles/Mobile/equips.css" />
 	</head>
 	<body>
-		<!-- App root element -->
 		<div id="app" style="visibility: hidden;">
 			<div class="statusbar"></div>
 			<div class="view view-main">
 				<div data-page="home" class="page" id="home">
-					<!-- Top Navbar -->
 					<div class="navbar">
 						<div class="navbar-inner">
-							<!-- 标题 -->
 							<div class="left hideMenu">
 								<a href="#" class="back link">
 									<i class="iconfont icon-back"></i>
@@ -55,12 +48,10 @@
 							</div>
 						</div>
 					</div>
-					<!-- Scrollable page content -->
 					<div class="page-content mainDiv" >
 					  <div id="homeContents">
 						<ul class="charts-block">		
 							<li class="row statisticsTable no-gap">
-								<!-- <h3 class="col-100"><i class="iconfont icon-f7_snapshot"></i>实时快照信息</h3> -->
 								<span class="col-20"><p>11</p>故障</span>
 								<span class="col-20"><p>22</p>警告</span>
 								<span class="col-20"><p>33</p>信息</span>
@@ -71,7 +62,6 @@
 								<dl>
                                	  <dt></dt>
                                	  <dd>
-                               	  	<!-- <h3><i class="iconfont icon-f7_equipList"></i>设备故障率</h3> -->
 									<div class="charts_bar">
 										<div id="purchase_Bar" ></div>
 									</div>
@@ -82,7 +72,6 @@
 								<dl>
                                	  <dt></dt>
                                	  <dd>
-                               	  	<!-- <h3><i class="iconfont icon-f7_equipList"></i>测点数</h3> -->
 	                                <div class="charts_bar row no-gap">
 										<div class="col-50 barRightBorder">									
 											<div id="purchase_ring"></div>
@@ -105,7 +94,6 @@
 							</li>							
 							<li class="row">
                                <dl class="functionMenu">
-                               	  <!-- <dt></dt> -->
                                	  <dd class="row no-gap">
 					                  <div class="pptPattern_container col-50">
 	                                        <h3>
@@ -126,7 +114,6 @@
 							</li>								
 							<li class="row">
                                <dl class="functionMenu">
-                               	  <!-- <dt></dt> -->
                                	  <dd>
 					                  <div class="swiper-containerTrailer KOvm_container">
 					                    <div class="swiper-wrapper">
@@ -140,7 +127,6 @@
 					  </div>
 					</div>
 				</div>
-				<!-- Toolbar -->
 				<div class="toolbar tabbar tabbar-labels displayNone">
 					<div class="toolbar-inner row no-gap">
 						<a href="/home/" class="link active animation-no col-20" id="homeTool">
@@ -159,14 +145,12 @@
 							<span>设备列表</span>
 						</a>
 						<a href="#" class="link animation-no popover-open col-20" data-popover=".popover-links" id="configTool">
-							<!-- onclick="systemConfig('configTool')" -->
 							<i class="iconfont icon-f7_set"></i>
 							<span>系统</span>
 						</a>
 					</div>
 				</div>
-				<!-- popover -->
-				<div class="popover popover-links popoverLink" style="width: 140px!important;text-align: center;">
+			   <div class="popover popover-links popoverLink" style="width: 140px!important;text-align: center;">
 					<div class="popover-inner">
 						<div class="list">
 							<ul>
@@ -186,7 +170,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- voice -->
 				<div class="voiceContainer" id="voiceContainer">
 					<div class="voiceDivs voicePanel">
 						<a href="#" class="iconfont icon-f7_voice_close"></a>
