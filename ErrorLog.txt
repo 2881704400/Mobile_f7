@@ -43,3 +43,8 @@ System.IO.DirectoryNotFoundException: 未能找到路径“D:\AlarmCenter\Web\BG
    在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType)
 -------------------------------------
 
+----------2018/10/19 10:23:23----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list)
+-------------------------------------
+

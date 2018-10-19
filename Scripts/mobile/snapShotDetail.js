@@ -129,6 +129,11 @@ function loadMessage() {
 					$("#snapShotDetailListId").css({
 						"margin-bottom": "66px"
 					})
+				}else{
+					$("#snapShotDetailListId").html(strData + strSureData);
+					$("#snapShotDetailListId").css({
+						"margin-bottom": "0px"
+					})
 				}
 			}
 		}
