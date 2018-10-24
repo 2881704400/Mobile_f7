@@ -18,23 +18,22 @@
     			tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
     	    }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;    white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
     	}
     	#schedule_user>table{min-width: auto;}
-    	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;    padding: 0px 10px;}
+    	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
     }
    .selectScheduleMenu{color: #{$voiceFontColor}!important;background: #{$btnBackground};}
-
 }
 
 .equipLinkageContainer{
-       height: 100%;position: relative;
+    height: 100%;position: relative;
     &>.subnavbarTabel{
         height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
         &>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{position: absolute;top: 3rem;left: 0;right: 0;bottom: 0;
-        &>div{height: 100%;overflow: auto;}
+        &>div{height: 100%;margin: 0;overflow: auto;}
         .publicTable{
             thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
             tbody{
@@ -42,19 +41,53 @@
                 tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
             }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;    white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
         }
         #schedule_user>table{min-width: auto;}
-        .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;    padding: 0px 10px;}
+        .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
+        #equipLinkage_edit{
+            &>ul{ &>li{
+                .item-title{font-size: 1rem;}
+                .sceneBtn{padding: 20px;text-align: center;
+                    &>a{font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 10px;background: #{$btnBackground};}
+                 }
+                }
+            }
+           .sceneList{ 
+            &>li{padding: 5% 0;
+              &>div.sceneHeader{
+                width: 100%;height: 40px;
+                &>span{height: 100%;display: inline-block;line-height: 40px;
+                    &>input{font-size: 0.9rem;text-indent: 1rem;width: 100%;height: 80%;border: 1px solid #{$inputBorderColor};}
+                }
+             }
+              &>div.sceneContent{
+                width: 100%;position: relative;    min-height: 40px;
+                &>span:nth-child(1){
+                    &>label{white-spance: nowrap;position: absolute;top: 50%;transform: translateY(-50%);}
+                }
+                .leftTaskName{
+                    font-size: 0.8rem;font-weight: 200;line-height: 40px;white-space: nowrap;overflow-x: auto;
+                }
+                .rightBtnModul{
+                    line-height: 40px;text-align: center;
+                    &>a{i{color: #{$situationFontColor};font-size:  1.5rem;padding: 0;}}
+                }
+              }
+            }
+           }
+        }
     }
-   .selectScheduleMenu{color: #{$voiceFontColor}!important;background: #{$btnBackground};} 
+   .selectScheduleMenu{color: #{$headerBgc}!important;background: #{$btnBackground};} 
 }
 
 .popup-aboutuser {
 	position: absolute;
-	// background: #{$situationBgc};
 	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$tableHeaderFontColor};text-align: center;}
 	.popupContent{height: 60%;overflow-y: auto;}
     .popupBtb{padding: 0px 20px;a{color: #{$btnFontColor};font-size: #{$btnFontSize};height: 2.5rem;line-height: 2.5rem;background: #{$btnBackground}}}
 
 }
+
+.equipAlertHeader{padding: 10px;&>label{margin: 0px 5px;}}
+.equipAlertContent{&>div{line-height: 40px;padding: 10px;} select,input{font-size: 0.8rem;height: 40px;line-height: 40px;text-indent: 10px;border: 1px solid #{$inputBorderColor};}}

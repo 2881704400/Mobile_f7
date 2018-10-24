@@ -14,7 +14,7 @@ var myApp = new Framework7({
     },
     dialog:{
         buttonOk:'确认',
-        buttonCancel: '取消'
+        buttonCancel: '取消',
     },
     statusbar: {
             enabled: true,

@@ -16,6 +16,7 @@ function equipLlinkswitchMenu(dt) {
         case "#equipLinkage_set":
             break;
         case "#equipLinkage_edit":
+              initSceneList();
             break;
     }
 }
@@ -192,7 +193,6 @@ function equipLinkList() {
         }
     }
 }
-
 // 不等于ycp yxp
 function notEqualToYCPYXP() {
     let ycpRt = ycpData_table_5,
@@ -218,7 +218,6 @@ function notEqualToYXP() {
         publicFun(ycpData, yxpData);
     }
 }
-
 var equipLinkage_public_list = [];
 function publicFun(ycpData, yxpData) {
     let html = "";
@@ -269,7 +268,6 @@ function publicFun(ycpData, yxpData) {
     })
     $("#equipLinkage_set tbody").append(html);
 }
-
 //联动设置添加
 var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[];
 function newlyBuildLinkage(equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index){
@@ -482,7 +480,6 @@ function link_popupAlert(html){
 }
 //触发设备
 function link_listInit_equip(id,equipArray){
-
    myApp.picker.create({
       inputEl: '#'+id,
       cols: [{textAlign: 'center',values: equipArray,
@@ -554,109 +551,267 @@ function getObject(arrayObject,className,index){
     else if(index == 3)
       return arrayObject.filter((item,index) => {if(item.set_nm == $("."+className).val()) return item;}); 
 }
+
 //初始化场景设置
+var sceneData = [],controlEquipList,setList,equipList;
 function initSceneList() {
-    this.sceneLoading = true
-    this.Axios.all([this.Axios.post('/api/GWServiceWebAPI/getSetparmList', {
-        findEquip: false
-    }), this.Axios.post('/api/GWServiceWebAPI/getEquipList')]).then(this.Axios.spread((res, equipRes) => {
-        let rt = res.data.HttpData,
-            equipRt = equipRes.data.HttpData
-        if (rt.code === 200 && equipRt.code === 200) {
-            this.setList = rt.data
-            this.equipList = equipRt.data
-            this.sceneData = this.setList.filter(item => {
-                return item.set_type === "J"
-            }).map(item => {
-                let keyArr = []
-                if (item.value !== null) {
-                    keyArr = item.value.split('+').map(key => {
-                        return key.split(',')
-                    })
-                } else {
-                    keyArr = [
-                        ['']
-                    ]
-                }
-                this.$set(item, 'childKey', keyArr)
-                this.$set(item, 'children', [])
-                item.childKey.forEach(k => {
-                    if (k.length < 2) {
-                        if (k[0] !== '') {
-                            let time = parseInt(k[0])
-                            item.children.push({
-                                isDelay: true,
-                                time: time,
-                                set_nm: '延时间隔' + time + '毫秒'
-                            })
-                        }
-                    } else {
-                        this.setList.forEach(equip => {
-                            let equipNo = parseInt(k[0]),
-                                setNo = parseInt(k[1])
-                            if (equip.equip_no === equipNo && equip.set_no === setNo) {
-                                item.children.push(equip)
-                            }
-                        })
-                    }
+    $("#equipLinkage_edit ul").html("");
+        $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
+                data:{findEquip: false},
+                async:false
+            }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
+                data:{},
+                async:false
+        })).done(function(n,l){
+            let rt = n.HttpData,equipRt = l.HttpData;
+            if (n.HttpData.code ==200 && l.HttpData.code ==200) {
+                setList = rt.data, equipList = equipRt.data; 
+                //可控设备
+                controlEquipList = setList.filter(item => {
+                  return item.set_type != "J" 
+                }).map(item => {return item});
+                //过滤出场景
+                sceneData = setList.filter(item => {
+                  return item.set_type === "J"
+                }).map(item => { 
+              var valueString = item.value,eqset_no=[],setParm_no=[],html=htmlHeader=htmlContent=htmlFooter="";
+              if(valueString)
+               valueString.indexOf("+") !=-1?eqset_no = valueString.split("+"):eqset_no.push(valueString);
+              if(eqset_no.length>0)
+              {
+                for(var i=0;i<eqset_no.length;i++)
+                { 
+                  var equip_no_flg = true;
+                  if(eqset_no[i].indexOf(",") != -1)
+                    { equip_no_flg = true;}
+                  else
+                    {equip_no_flg = false;}
+
+                  htmlContent += '<div class="row childrenEquipControl" combination="'+eqset_no[i]+'">'+
+                        '<div class="leftTaskName col-60">'+
+                          '<b>'+(i+1)+'.</b>'+
+                          '<a href="#">'+(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))+'</a>:<strong>'+(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))+'</strong>'+
+                        '</div>'+
+                        '<div class="rightBtnModul col-40 row no-gap">'+
+                            '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
+                            '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
+                            '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
+                        '</div>'+
+                  '</div>';                 
+                  }
+              }
+
+                htmlHeader = '<li class="accordion-item"><a href="#" class="item-content item-link">'+
+                    '<div class="item-inner">'+
+                      '<div class="item-title">'+item.set_nm+'</div>'+
+                    '</div></a>'+
+                  '<div class="accordion-item-content">'+
+                    '<div class="block">'+
+                       '<ul class="sceneList">'+
+                        '<li class="row">'+
+                           '<div class="sceneHeader row">'+
+                            '<span class="col-25">场景名称</span>'+
+                            '<span class="col-75"><input type="text" value="'+item.set_nm+'"/></span>'+
+                           '</div>'+
+                           '<div class="sceneContent row">'+
+                            '<span class="col-25">'+
+                                '<label>场景控制项</label>'+
+                            '</span>'+
+                            '<span class="col-75">';
+                htmlFooter = '</span>'+
+                           '</div>'+
+                        '</li>'+
+                      '</ul>'+
+                    '</div>'+
+                    '<div class="sceneBtn"><a href="#" class="addSceneControl" onclick="sceneAlert(this,\'增加控制项\',\'append\')" dataArgs='+JSON.stringify(controlEquipList)+'>新增控制</a><a href="#" class="saveScene" onclick="submitScene(this,'+item.equip_no+','+item.set_no+')" >保存场景</a><a href="#" class="delScene" onclick="deleteScene('+item.equip_no+','+item.set_no+')">删除场景</a></div>'+
+                  '</div>'+
+                '</li>';
+                html = htmlHeader+htmlContent+htmlFooter;
+                $("#equipLinkage_edit>ul").append(html);
+                return item;
                 })
-                item.children.map(child => {
-                    if (child.isDelay) {
-                        child.parentEquip = {
-                            equip_nm: '间隔操作'
-                        }
-                    } else {
-                        this.equipList.forEach(equip => {
-                            if (equip.equip_no === child.equip_no) {
-                                child.parentEquip = equip
-                            }
-                        })
-                    }
-                    return child
-                })
-                return item
-            })
-            this.insertForm.insertList = this.setList.map(equip => {
-                equip.value = equip.equip_no + '-' + equip.set_no + '-' + equip.set_type
-                this.$set(equip, 'label', equip.set_nm)
-                if (!equip.parentEquip) {
-                    equip.parentEquip = this.equipList.filter(item => {
-                        return equip.equip_no === item.equip_no
-                    })[0]
-                }
-                return equip
-            })
-            // 过滤目前不可操作设备
-            this.insertForm.insertList = this.insertForm.insertList.filter(equip => {
-                if (this.equipList.some(eqp => {
-                        return equip.equip_no === eqp.equip_no
-                    })) {
-                    return equip
-                }
-            })
-        } else {
-            this.$Message.warning('初始化数据失败，请重试！')
-            console.log(rt, equipRt)
-        }
-        this.sceneLoading = false
-    })).catch(err => {
-        console.log(err)
-    })
+              //   this.insertForm.insertList = this.setList.map(equip => {
+              //     equip.value = equip.equip_no + '-' + equip.set_no + '-' + equip.set_type
+              //     this.$set(equip, 'label', equip.set_nm)
+              //     if (!equip.parentEquip) {
+              //       equip.parentEquip = this.equipList.filter(item => {
+              //         return equip.equip_no === item.equip_no
+              //       })[0]
+              //     }
+              //     return equip
+              //   })
+              //   // 过滤目前不可操作设备
+              //   this.insertForm.insertList = this.insertForm.insertList.filter(equip => {
+              //     if (this.equipList.some(eqp => {
+              //       return equip.equip_no === eqp.equip_no
+              //     })) {
+              //       return equip
+              //     }
+              //   })
+              // } else {
+              //   this.$Message.warning('初始化数据失败，请重试！')
+              //   console.log(rt, equipRt)
+              // }
+         }
+        }).fail(function(e){
+    });
 }
 
-// function test(){
-//     $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
-//             data:{},
-//             async:false
-//         }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
-//             data:{findEquip: false},
-//             async:false
-//     })).done(function(n,l){
-//         if(n.HttpData.code ==200 && l.HttpData.code ==200){
-//                 console.log(n);
-//        console.log(l);   
-//    }
-//     }).fail(function(e){
+//添加场景
+function addScene(titleName) {
+    if (sceneData.some(item => {
+    return item.set_nm === titleName
+    })) {
+      tooitp("不能有相同的场景名称");
+     return false;}
+    let setNo = 1,
+      equipNo = 0
+    if (sceneData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll').length > 0) {
+      equipNo = sceneData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll')[0].equip_no
+    }
+    sceneData.forEach(item => {
+      setNo += (sceneData.some(scene => {
+        return scene.set_no === setNo
+      })) ? 1 : 0
+    })
+    let reqData = {
+      title: titleName,
+      equipNo: equipNo,
+      setNo: setNo
+    }
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/addScene",{
+    data:reqData,
+    async:false
+        })).done(function(n){
+     initSceneList();
+    }).fail(function(e){});
+}
+//提示
+function tooitp(txt){
+ try{myApp.notification.destroy(toast); } catch(e){}
+ var toast = myApp.notification.create({
+    title: '系统提示',
+    titleRightText: '',
+    subtitle: '<br />',
+    text: txt,
+    closeTimeout: 1000,
+ }).open();
+}
+//保存场景
+function submitScene(dt,equipNo,setNo) {
+  let sceneName = $(dt).parent().prev().find("input").val(),dataStr="";
+  $(dt).parent().prev().find("div.childrenEquipControl").each(function(item){
+    dataStr += ($(this).attr("combination")+"+");
+  });
+  try{dataStr = dataStr.substr(0,dataStr.length-1);}
+  catch(e){}
+  let reqData = {equipNo: equipNo, setNo: setNo, sceneName: sceneName, dataStr: dataStr }
+  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/updateScene",{
+            data:reqData,
+            async:false
+        })).done(function(n){
+     initSceneList();
+    }).fail(function(e){});
+}
+//删除场景
+function deleteScene(equipNo,setNo) {
+  let reqData = {equipNo: equipNo, setNo: setNo}
+  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/deleteScene",{
+            data:reqData,
+            async:false
+        })).done(function(n){
+     initSceneList();
+    }).fail(function(e){});
+}
+//新增场景控制
+function sceneControl(dt,txtTitle){
+ myApp.dialog.prompt(txtTitle,"提示", function (name) {
+       addScene(name);
+    });   
+}
+//弹窗
+var html_ul_li;
+function sceneAlert(dt,txtTitle,positionargs){
+    var  html ="";
+    try{
+        controlEquipList.forEach(function(item,index){
+           equipList.forEach(function(itemchild,indexchild){
+            if(item.equip_no == itemchild.equip_no)
+               html += "<option combination='"+item.equip_no+","+item.set_no+"' combinationVal='"+item.value+"'  value="+item.set_nm+">"+item.set_nm+"</option>";
+           });
+        });        
+    }
+    catch(e){}
+    myApp.dialog.confirm('<div>'+
+             '<div class="equipAlertHeader">'+
+                '<label class="ivu-radio-wrapper ivu-radio-wrapper-checked" ><span class="ivu-radio ivu-radio-checked"><span class="ivu-checkbox-inner"></span> <input type="radio" name="equipCon" class="ivu-radio-input" id="checkEquip_1" checked></span> 设备控制</label>'+
+                '<label class="ivu-radio-wrapper ivu-radio-wrapper-checked" ><span class="ivu-radio ivu-radio-checked"><span class="ivu-radio-inner"></span> <input type="radio" name="equipCon" class="ivu-radio-input" id="checkEquip_2"></span> 延迟设置</label>'+                     
+            '</div>'+    
+            '<div class="equipAlertContent">'+
+                '<div class="row"><label class="col-40">选择设备</label><select class="equipOption col-60" autofocus>'+
+                html+
+                '</select></div>'+
+                '<div class="row displayNone"><label class="col-40">时长(ms)</label><input type="number" value="0" class="equipIntervalTime col-60"/></div>'+                 
+            '</div>'+ 
+          '</div>'
 
-//     });
-// }
+        ,txtTitle, function (name) {
+            let equipName_time,equipName_Value;
+            if($("#checkEquip_1").is(":checked"))
+            {
+                equipName_time =$(".equipOption").find("option:selected").attr("combination");
+            }
+            else
+            {
+                equipName_time = $(".equipIntervalTime").val();
+            }
+          var childrenEl="",index=0; 
+          if(positionargs == 'append'){
+            childrenEl= $(dt).parent().prev().find("div.sceneContent span.col-75");
+            index = childrenEl.find("div.childrenEquipControl").length+1;
+          }else{
+            childrenEl= $(dt).parent().parent();
+            index = $(dt).parents("span.col-75").find("div.childrenEquipControl").length+1;
+          }
+          html_ul_li = '<div class="row childrenEquipControl" combination="'+equipName_time+'">'+
+                '<div class="leftTaskName col-60">'+
+                  '<b>'+index+'.</b>'+
+                  '<a href="#">'+($("#checkEquip_1").is(":checked")?filterFun(equipList,equipName_time.split(",")[0],null):"间隔操作")+'</a>:<strong>'+($("#checkEquip_1").is(":checked")?filterFun(setList,equipName_time.split(",")[0],equipName_time.split(",")[1]):"延时间隔"+equipName_time+"毫秒")+'</strong>'+
+                '</div>'+
+                '<div class="rightBtnModul col-40 row no-gap">'+
+                    '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
+                    '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
+                    '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
+                '</div>'+
+          '</div>'; 
+         positionargs == 'append'?childrenEl.append(html_ul_li):(positionargs == 'before'?childrenEl.before(html_ul_li):childrenEl.after(html_ul_li));
+    });
+    $("#checkEquip_1,#checkEquip_2").unbind();
+    $("#checkEquip_1,#checkEquip_2").bind("change",function(){
+       $(this).attr("id") == "checkEquip_1"?$(".equipAlertContent>div:eq(0)").removeClass("displayNone").siblings().addClass("displayNone"):$(".equipAlertContent>div:eq(1)").removeClass("displayNone").siblings().addClass("displayNone");
+    });
+}
+//删除当前控制项
+function currentControl(dt){
+
+    myApp.dialog.confirm("是否删除当前控制项","提示",function(){
+         $(dt).parent().parent().remove();
+    });
+  
+}
+
+//过滤函数
+function filterFun(obj,selecet_equip_no,selecet_set_no){
+  if(selecet_set_no == null)
+      return  obj.filter(item => {
+                      return item.equip_no == selecet_equip_no;
+                    }).map(item => { 
+                          return "" || item.equip_nm;
+                    });
+  else
+      return  obj.filter(item => {
+                      return item.equip_no == selecet_equip_no && item.set_no == selecet_set_no;
+                    }).map(item => {
+                          return "" || item.set_nm;
+                    });    
+}

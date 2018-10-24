@@ -3,8 +3,8 @@
             <div class="navbar-inner">
                 <!-- 标题 -->                  
                 <div class="left">
-                  <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildLinkage(" "," "," "," "," "," "," "," "," ",getMaxID(),2);'>添加</a>
-                  <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='newlyBuildLinkage("",2);'>添加</a>
+                  <a class="link" href="#" id="equipLinkage_set_nav" onclick='newlyBuildLinkage(" "," "," "," "," "," "," "," "," ",getMaxID(),2);'>添加</a>
+                  <a class="link displayNone" href="#" id="equipLinkage_edit_nav" onclick='sceneControl("","输入场景名称");'>添加</a>
                 </div>                         
                 <div class="center sliding title">设备联动</div>
                   <div class="right">
@@ -38,9 +38,11 @@
                             <tbody></tbody>
                         </table>
                     </div>
-                    <div class="displayNone" id="equipLinkage_edit">
-                         
-                    </div>
+                    <div class="displayNone list accordion-list" id="equipLinkage_edit">
+                      <ul>
+
+                      </ul>
+                </div>
             </div>
         </div>
     </div>
