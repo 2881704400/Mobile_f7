@@ -1,18 +1,18 @@
 ﻿var isVoices = false;
 var cancelFlag = false;
+var cancelVoiceFlag = false;
 var startX, //触摸时的坐标   
 	startY,
 	x, //滑动的距离   
 	y,
 	aboveY = 0; //设一个全局变量记录上一次内部块滑动的位置    
 $(function() {
-
 	$$('.popup-voices').on('popup:open', function(e, popup) {
 		$(".view-main").css({
 			filter: 'blur(8px)'
 		})
 		$(".voice-container").html('<div class="pannel-chat-info">' +
-			'	<div class="chart-content chart-content-old">' +
+			'	<div class="chart-content">' +
 			'		<span>请告诉我，您想要进行的操作</span>' +
 			'	</div>' +
 			'</div>');
@@ -39,12 +39,25 @@ $(function() {
 	}
 });
 
+function changeContentBoxBg(){
+	
+	$(".voice-container .pannel-chat-info").each(function(i){
+		var len=$(".voice-container .pannel-chat-info").length;
+		if(!$(this).find(".chart-content").hasClass("stay-right")&&i<len-1){
+			$(this).addClass("chart-content-old");
+		}
+	})
+}
+
 function onTouchStart(e) {
 	e.preventDefault();
 	var touch = e.touches[0];
 	startY = touch.pageY; //刚触摸时的坐标
+	
+	cancelVoiceFlag = cancelFlag = false;
+	
 	$(".voice-container").html('<div class="pannel-chat-info">' +
-		'	<div class="chart-content chart-content-old">' +
+		'	<div class="chart-content">' +
 		'		<span>请告诉我，您想要进行的操作</span>' +
 		'	</div>' +
 		'</div>');
@@ -65,6 +78,7 @@ function onTouchStart(e) {
 		'	</div>' +
 		'</div>');
 	$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+	changeContentBoxBg();
 }
 
 function onTouchMove(e) {
@@ -72,13 +86,7 @@ function onTouchMove(e) {
 	var touch = e.touches[0];
 	y = touch.pageY - startY; //滑动的距离
 	var distance = aboveY + y;
-	console.log(distance, y)
 	if(distance < -10 && distance > -200) {
-		/*$(".voice-arrow-box").css({
-			bottom: 70 + Math.abs(distance) + "px",
-			opacity: 1 - Math.abs(distance) * 0.01
-		});*/
-
 		if(distance < -70 && !cancelFlag) {
 			$(".voice-arrow-cancel").css({
 				background: "rgba(255,255,255,1)",
@@ -90,13 +98,13 @@ function onTouchMove(e) {
 					opacity: 1
 				});
 			});
-			cancelFlag = true;
+			cancelVoiceFlag = cancelFlag = true;
 		}
 	}
 }
 
 function onTouchEnd(e) {
-	if(cancelFlag) {
+	if(cancelVoiceFlag||cancelFlag) {
 		$(".voice-arrow-cancel").hide();
 		$(".voice-arrow-box").hide();
 		$(".voice-arrow-dialog").show();
@@ -111,9 +119,9 @@ function onTouchEnd(e) {
 		$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>指令已取消</span>");
 
 		$(".voice-arrow-box .voice-arrow-ani").each(function() {
-			var index=$(this).index();
-			index=3-index;
-			$(this).removeClass().addClass("voice-arrow-ani IndexIconAnimation"+index+"");
+			var index = $(this).index();
+			index = 3 - index;
+			$(this).removeClass().addClass("voice-arrow-ani IndexIconAnimation" + index + "");
 		});
 		try {
 			if(window.localStorage.voiceList == "0") {
@@ -133,6 +141,7 @@ function onTouchEnd(e) {
 				}
 			}, 3000);
 		}
+		cancelFlag = false;
 		return;
 	} else {
 		$(".voice-arrow-cancel").hide();
@@ -165,6 +174,7 @@ function onTouchEnd(e) {
 			isVoices = false;
 			$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>无法使用此功能，请下载最新app！</span>");
 			$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+			changeContentBoxBg();
 			document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
 			document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
 			setTimeout(function() {
@@ -187,8 +197,7 @@ function StartVoiceXF() {
 }
 
 function callbackVoiceXFMessage(dt) {
-	if(cancelFlag) {
-		cancelFlag = false;
+	if(cancelVoiceFlag) {
 		return;
 	}
 	$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + dt + "</span>");
@@ -200,7 +209,9 @@ function callbackVoiceXFMessage(dt) {
 }
 
 function callbackVoiceXFData(dt) {
-	//	 myApp.dialog.alert(dt);
+	if(cancelVoiceFlag) {
+		return;
+	}
 	var _url = service + "/VoiceControlString";
 	var _data = "audioData=" + dt + "&&userName=" + window.localStorage.userName;
 	ajaxService("post", _url, true, _data, _successf, _error);
@@ -226,6 +237,7 @@ function callbackVoiceXFData(dt) {
 					'	</div>' +
 					'</div>');
 				$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+				changeContentBoxBg();
 			}, 500);
 		}
 		isVoices = false;
@@ -259,8 +271,6 @@ function ajaxServiceSend(_type, _url, _asycn, _data, _beforeSend, _success, _err
 		complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
 			if(status == 'timeout') { //超时,status还有success,error等值的情况
 				ajaxs.abort();
-				console.log("超时");
-				// myApp.hideIndicator();
 				myApp.dialog.create({
 					title: "系统提示",
 					text: '请求超时，请查看网络是否已连接！',
@@ -276,6 +286,9 @@ function ajaxServiceSend(_type, _url, _asycn, _data, _beforeSend, _success, _err
 
 //接收回调数据并上传至服务器
 function callbackVoiceBuffer(dt) {
+	if(!isVoices) {
+		return;
+	}
 	var _url = service + "/VoiceControlByte";
 	var _data = "audioData=" + dt + "&&userName=" + window.localStorage.userName;
 	ajaxService("post", _url, true, _data, _successf, _error);
@@ -300,6 +313,7 @@ function callbackVoiceBuffer(dt) {
 					'	</div>' +
 					'</div>');
 				$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+				changeContentBoxBg();
 			}, 500);
 		}
 		isVoices = false;
