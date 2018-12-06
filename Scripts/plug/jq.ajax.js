@@ -257,7 +257,7 @@ $(function () {
             headers: {
 	            Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey,
 	        },            
-            async: !1 !== n.async,
+            async: !1 !== n.async, 
             timeout: n.timeout || 5000,
             success: function(e) {
                 i.resolveWith(this, [e])

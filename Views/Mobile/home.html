@@ -14,8 +14,7 @@
 		<!--框架样式-->
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
 		<!--图标字体样式-->
-		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_o4yamr1e3e.css" />
-		<!-- <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_fb4z0zy9is9.css" /> -->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_m4upjxnmyqr.css" />
 		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
 		<!--本页样式-->
@@ -52,13 +51,13 @@
 					  <div id="homeContents">
 						<ul class="charts-block">		
 							<li class="row statisticsTable no-gap">
-								<span class="col-20"><p>11</p>故障</span>
-								<span class="col-20"><p>22</p>警告</span>
-								<span class="col-20"><p>33</p>信息</span>
-								<span class="col-20"><p>0</p>设置</span>
-								<span class="col-20" style="border-right: 0;"><p>1</p>资产</span>
+								<a class="col-20"><p>11</p>故障</a>
+								<a class="col-20"><p>22</p>警告</a>
+								<a class="col-20"><p>33</p>信息</a>
+								<a class="col-20"><p>0</p>设置</a>
+								<a class="col-20" style="border-right: 0;"><p>1</p>资产</a>
 							</li>																		
-							<li>
+							<!-- <li>
 								<dl>
                                	  <dt></dt>
                                	  <dd>
@@ -94,7 +93,7 @@
 							</li>							
 							<li class="row">
                                <dl class="functionMenu">
-                               	  <dd class="row no-gap">
+                               	  <dd class="row">
 					                  <div class="pptPattern_container col-50">
 	                                        <h3>
 	                                        	<span>PPT</span>
@@ -122,7 +121,7 @@
 					                  </div>
                                	  </dd>
                                </dl>
-							</li>														
+							</li>		 -->												
 						</ul>
 					  </div>
 					</div>
@@ -183,14 +182,21 @@
 			</div>
 		</div>
 		<!-- 框架js-->
-		<script src="/Scripts/plug/jquery-1.10.1.min.js"></script>
+		<script src="/Scripts/plug/jquery-3.3.1.min.js"></script>
 		<script src="/Scripts/plug/jq.ajax.js"></script>
 		<script src="/Scripts/plug/highcharts.js"></script>
 		<script type="text/javascript" src="/Scripts/plug/1.5.0/framework7.js"></script>
+		<script type="text/javascript" src="/Scripts/plug/1.5.0/onorientationchange.js"></script>
 		<script src="/Scripts/plug/echarts.min.js"></script>
 		<!-- 配置js -->
 		<script type="text/javascript" src="/Scripts/mobile/Config.js"></script>
-        <!-- 快捷菜单 -->
+		<script type="text/javascript" src="/Scripts/mobile/dataConfig.js"></script>
+		<script type="text/javascript" src="/Scripts/mobile/echartsCode.js"></script>
+		<!-- 移动端入口js-->
+		<script type="text/javascript" src="/Scripts/mobile/home.js"></script>
+		<script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>
+		<script type="text/javascript" src="/Scripts/mobile/PageJs.js"></script>
+		<script type="text/javascript" src="/Scripts/mobile/pageJavascript/Voice.js"></script>
         <script src="/Scripts/plug/jquery.wheelmenu.js" type="text/javascript" charset="utf-8"></script> 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -209,17 +215,6 @@
                     animationSpeed: "medium"
                 });
             }
-        </script>			
-		<!-- 首页js-->
-		<script type="text/javascript" src="/Scripts/mobile/home.js"></script>
-		<!-- 移动端入口js-->
-		<script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>
-		<script type="text/javascript" src="/Scripts/mobile/PageJs.js"></script>
-		<script type="text/javascript" src="/Scripts/mobile/Voice.js"></script>
-        <!-- 全屏设置 -->
-		<script type="text/javascript" src="/Scripts/plug/1.5.0/onorientationchange.js"></script>
-		<!-- map -->
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=rfoFCQF6wWFKVgnW7M9dihXscceje5cs"></script>
+        </script>
 	</body>
-
 </html>

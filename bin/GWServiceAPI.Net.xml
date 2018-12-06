@@ -501,10 +501,39 @@
             </summary>
             <param name="obj">obj.times:时间，起始时间,结束时间;(当只有一个时间的时候，为起始时间)</param>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_secon_class(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            根据id获取下一级地域
+            </summary>
+            <param name="obj">
+             areaId 省id
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.set_drug_data(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            添加药监局数据
+            </summary>
+            <param name="obj">
+             name 药监局名字
+             jwd 经纬度
+             areaCode 地域id 
+             addStr 地址
+            </param>
+        </member>
         <member name="T:GWServiceAPI.Net.Controllers.ServerController">
             <summary>
             服务
             </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey_pc(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取key
+            </summary>
+            <param name="obj">
+            obj.username:用户名
+            obj.userpwd:密码
+            obj.verificationCode:验证码
+            </param>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey(Newtonsoft.Json.Linq.JObject)">
             <summary>
@@ -616,6 +645,11 @@
             AlarmCenter服务未启动或服务运行出错
             </summary>
         </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1015(GWServiceAPI.Net.Models.DataResult)">
+            <summary>
+            验证码输入错误
+            </summary>
+        </member>
         <member name="M:GWServiceAPI.Net.LibClass.DatatableAndJson.ToJson(System.Data.DataTable)">
             <summary>
             DataTable 对象 转换为Json 字符串
@@ -694,6 +728,78 @@
             获取资产图片
             </summary>
             <param name="zcid">资产ID</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.#ctor(System.Web.HttpRequest,System.Web.HttpResponse)">
+            <summary>
+            由此构造函数创建的对象,在验证Sql注入之后将停留在原来页面上
+            </summary>
+            <param name="_request">当前请求的 Request 对象</param>
+            <param name="_response">当前请求的 Response 对象</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.#ctor(System.Web.HttpRequest,System.Web.HttpResponse,System.String)">
+            <summary>
+            由此构造函数创建的对象,在验证Sql注入之后将请求将导向由 _safeUrl 指定的安全url页面上
+            </summary>
+            <param name="_request">当前请求的 Request 对象</param>
+            <param name="_response">当前请求的 Response 对象</param>
+            <param name="_safeUrl">验证Sql注入之后将导向的安全 url</param>
+        </member>
+        <member name="P:GWServiceAPI.Net.LibClass.SqlChecker.KeyWord">
+            <summary>
+            只读属性 SQL关键字
+            </summary>
+        </member>
+        <member name="P:GWServiceAPI.Net.LibClass.SqlChecker.RegexString">
+            <summary>
+            只读属性过滤特殊字符
+            </summary>
+        </member>
+        <member name="P:GWServiceAPI.Net.LibClass.SqlChecker.Msg">
+            <summary>
+            当出现Sql注入时需要提示的错误信息(主要是运行一些客户端的脚本)
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.CheckRequestQuery">
+            <summary>
+            检查URL参数中是否带有SQL注入的可能关键字。
+            </summary>
+            <returns>存在SQL注入关键字时返回 true，否则返回 false</returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.CheckRequestForm">
+            <summary>
+            检查提交表单中是否存在SQL注入的可能关键字
+            </summary>
+            <returns>存在SQL注入关键字时返回 true，否则返回 false</returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.CheckKeyWord(System.String)">
+            <summary>
+            检查_sword是否包涵SQL关键字
+            </summary>
+            <param name="_sWord">需要检查的字符串</param>
+            <returns>存在SQL注入关键字时返回 true，否则返回 false</returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.SqlChecker.Check">
+            <summary>
+            执行Sql注入验证
+            </summary>
+        </member>
+        <member name="T:GWServiceAPI.Net.LibClass.UpdateLib">
+            <summary>
+            在线更新
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.UpdateLib.CheckUpdate">
+            <summary>
+            检查更新
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.UpdateLib.OnlineUpdate(System.String)">
+            <summary>
+            在线更新
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
         </member>
         <member name="T:GWServiceAPI.Net.LibClass.JPushLib">
             <summary>
@@ -1080,7 +1186,7 @@
             <param name="event_Level_list">报警分类，多个分类请用';'符号隔开，多个值请用逗号隔开</param>
             <param name="auth">认证参数</param>
         </member>
-        <member name="M:GWServiceAPI.Net.LibClass.EventLib.EventConfirm(System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:GWServiceAPI.Net.LibClass.EventLib.EventConfirm(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             请确定接口
             </summary>
@@ -1089,6 +1195,7 @@
             <param name="telStr">发送人的电话</param>
             <param name="procName">事件名</param>
             <param name="procTime">事件时间</param>
+            <param name="userName">确认人</param>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.EventLib.EventQueryHistory(System.String,System.String,System.String,System.String)">
             <summary>
@@ -1099,13 +1206,14 @@
             <param name="equip_no_list">设备号，多个数据时请用“,”号隔开</param>
             <param name="auth">认证参数</param>
         </member>
-        <member name="M:GWServiceAPI.Net.LibClass.Methods.RunProxy(System.String,System.String,System.String)">
+        <member name="M:GWServiceAPI.Net.LibClass.Methods.RunProxy(System.String,System.String,System.String,System.String)">
             <summary>
-            连接AlarmCenter服务
+            连接AlarmCenter服务 新版
             </summary>
-            <param name="ip">服务IP</param>
+            <param name="csIP">服务IP</param>
+            <param name="csPort">服务端口号</param>
             <param name="Name">用户名</param>
-            <param name="pwd">密码</param>
+            <param name="PWD">密码</param>
             <returns></returns>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.Methods.XmlSerializer``1(``0)">
@@ -1141,6 +1249,12 @@
             <summary>
             获取本机ip地址
             </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.Methods.WriteLog(System.String)">
+            <summary>
+            写入日志，默认c盘
+            </summary>
+            <param name="strLog"></param>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.Methods.ConditionEquipNo(System.String)">
             <summary>
@@ -1268,6 +1382,19 @@
             连接服务器
             </summary>
             <param name="user_name">用户名</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.WriteLog(System.String)">
+            <summary>
+            写入日志，默认c盘
+            </summary>
+            <param name="strLog"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.LoginService_pc(System.String,System.String)">
+            <summary>
+            登录服务
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="userPwd">密码</param>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.ServerLib.LoginService(System.String,System.String)">
             <summary>

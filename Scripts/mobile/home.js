@@ -4,33 +4,18 @@ function onHomePage() {
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-    myApp.router.navigate("/equipLinkage/")
+    // myApp.router.navigate("/equipLinkage/")
     //图表
-    // $("#purchase_Bar").width(window.screen.width*0.96-20);
-    snapshotChart("purchase_Bar");
-    equipsChart("purchase_ring");
-    ycpChart("purchase_circular");
+    // snapshotChart("purchase_Bar");
+    // equipsChart("purchase_ring");
+    // ycpChart("purchase_circular");
     //场景按钮
-    commonlyUsedFun("commonlyUsed", "25", commonlyUsed); //常用
-    VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm); //场景
-    commonlyUsedFun("pptPattern_container ol", "50", pptPattern); //PPT
-    commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
+    // commonlyUsedFun("commonlyUsed", "25", commonlyUsed); //常用
+    // VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm); //场景
+    // commonlyUsedFun("pptPattern_container ol", "50", pptPattern); //PPT
+    // commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
 }
-//界面尺寸变化事件
-function onResizeCustomized() {
-    if ($(".view-main").attr("data-page") == "Voice") {
-        var heightWindow = $(".page-content").height();
-        if (heightWindow < 500) {
-            $(".voiceDivs").css("height", "100%");
-            $(".voiceDivs").css("bottom", "40px");
-            $(".voiceDivs").css("position", "relative");
-        } else {
-            $(".voiceDivs").css("height", "300px");
-            $(".voiceDivs").css("bottom", "60px");
-            $(".voiceDivs").css("position", "absolute");
-        }
-    }
-}
+
 //授权名称
 function authorizationName() {
     var ajaxVar = $.ajax({
@@ -71,6 +56,7 @@ function tipsInformtion(tipsStr, tipsEvent) {
 }
 //轮播
 function VideoBaner(className, slistName, jsonString) {
+    $(".KOvm_container>div,.wiper-paginationTrailer-KOvm").html("");
     var countTrailer = jsonString.length;
     var xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
@@ -100,10 +86,9 @@ function commonlyUsedFun(className, classListName, jsonString) {
     }
     $("." + className).append(htmlTrailerChild);
 }
-//实时快照
+//实时快照 
+var event_Level_list_home, btnInfoNames_home = [], btnInfoLevels_home = [];
 function snashotData() {
-    var event_Level_list_home, btnInfoNames_home = [],
-        btnInfoLevels_home = [];
     $.ajax({
         type: 'post',
         url: '/api/event/alarm_config',
@@ -137,7 +122,7 @@ function snashotData() {
 function snashotCount(btnInfoLevels_home) {
     var strBtnInfoLevels = "";
     for (var i = 0; i < btnInfoLevels_home.length; i++) {
-        strBtnInfoLevels += btnInfoLevels_home[i] + ";";
+        strBtnInfoLevels += btnInfoLevels_home[i] + "/";
     }
     if (strBtnInfoLevels.length > 0) {
         strBtnInfoLevels = strBtnInfoLevels.substring(0, strBtnInfoLevels.length - 1);
@@ -154,7 +139,11 @@ function snashotCount(btnInfoLevels_home) {
                 if (dt.HttpStatus == 200 && dt.HttpData.data) {
                     var resultData = dt.HttpData.data;
                     var resultDataArr = resultData.toString().split(",");
-                    for (var i = 0; i < resultDataArr.length; i++) $(".statisticsTable span:eq(" + i + ")").find("p").text(resultDataArr[i]);
+                    for (var i = 0; i < resultDataArr.length; i++) 
+                     {
+                        $(".statisticsTable a:eq(" + i + ")").attr("href","/snapShotDetail/?"+ btnInfoNames_home[i] + '&' + btnInfoLevels_home[i]).find("p").text(resultDataArr[i]);
+                        
+                     }
                 }
             }
         });

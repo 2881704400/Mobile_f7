@@ -1,3 +1,5 @@
+@charset "utf-8";
+@import 'public.scss';
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~.page-content, .ios .page-with-subnavbar .navbar~.page-content{
         padding-top: 0 !important;
         .tabs-animated-wrap{
@@ -11,11 +13,6 @@
     padding-bottom:44px;
 }
 
-<<<<<<< HEAD
-// .popover-angle.on-bottom{
-//     display: none;
-// }
-=======
 .poverCurve .popover-angle.on-bottom{
     display: none;
 }
@@ -35,7 +32,6 @@
 .ios .navbar~.page:not(.no-navbar)>.searchbar, .ios .page>.navbar~.searchbar{
     top: 44px;
 }
->>>>>>> zf
 #equips{
     .searchbar{
          z-index: 99;
@@ -227,10 +223,11 @@
         li{
             padding: 10px 5px;
             background: #fff;
-            word-break: break-all;
+            word-break: break-all;border-bottom: 1px solid #{$asideBorderColor};
             &.check{
                  color:#FD971F ;
             }
+            label{white-space: nowrap;&>span{vertical-align: text-bottom;margin-right: 5px;}}
         }
     }
     .tabList{

@@ -25,9 +25,9 @@ $toolbarBoxShadow: #eee;
 
 //语音属性
 $voiceAllBgc: rgba(0,0,0,0);
-$voiceBgc: rgba(202, 199, 199, 0.8);
-$voiceFontColor: #666;
-$voiceBoxShadow: #ddd;
+$voiceBgc: rgba(246,246,246,0.9);
+$voiceFontColor: rgb(102, 102, 102);
+$voiceBoxShadow: #777;
 
 // aside侧边栏属性
 $asideBgc: #272727;
@@ -47,8 +47,9 @@ $selectedColor: #FD971F;
 
 //未点击按钮颜色
 $unclickedColor: #648EFF;
+$unclickedColor_a: #f6f6f6;
 $bzColor: #0ed1e6;
-
+$unclickBorderRadius: 6px;
 // 统一table样式
 $tableHeaderFontSize: 1rem;
 $tableHeaderFontColor: #666;
@@ -61,3 +62,7 @@ $tableBorderBottom: #fff;
 
 //input样式
 $inputBorderColor: #eee; 
+
+// tab切换属性
+$tabBackground: #9a9590;
+$tabFontColor: white;

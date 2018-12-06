@@ -1,223 +1,374 @@
-//*********************************************
-// ***************首页列表配置******************
-//*********************************************
-var KOvm =[
+//*************************************************
+//------------------视频配置 start---------------
+//*************************************************
+var map, infoPoint = [ //经纬度+设备号+通道号
+    [113.960046, 22.535688, 2003, 1],
+    [113.922468, 22.497125, 2003, 2]
+];
+
+
+
+
+// 常用
+var commonlyUsed =[
     {
-        name: '返回软件',
+        name: '列表视频',
+        href: '/Video/',
+        icon: 'iconfont icon-f7_video',
         equipNo: '300',
-        setNo: '10'
+        setNo: '10',
+        value: null,
     },
     {
-        name: '智能建筑',
+        name: '地图监控',
+        href: '/videoControl/',
+        icon: 'iconfont icon-f7_control',
         equipNo: '300',
-        setNo: '2'
+        setNo: '10',
+        value: null,
     },
     {
-        name: '数据中心',
+        name: 'PPT',
+        href: '/mettingPPT/',
+        icon: 'iconfont icon-f7_ppt',
         equipNo: '300',
-        setNo: '3'
-    },
-    {
-        name: '智能交通',
-        equipNo: '300',
-        setNo: '4'
-    },
-    {
-        name: '打开PPT',
-        equipNo: '300',
-        setNo: '7'
-    },
-    {
-        name: 'PPT首页',
-        equipNo: '1005',
-        setNo: '6008'
-    },
-    {
-        name: 'PPT上一页',
-        equipNo: '1005',
-        setNo: '7001'
-    },
-    {
-        name: 'PPT下一页',
-        equipNo: '1005',
-        setNo: '7002'
-    },
-    {
-        name: '智能电网',
-        equipNo: '300',
-        setNo: '11'
-    },
-    {
-        name: '能源系统',
-        equipNo: '300',
-        setNo: '17'
-    },
-    {
-        name: '智慧监狱',
-        equipNo: '300',
-        setNo: '18'
-    },
-    {
-        name: '戒毒所模式',
-        equipNo: '300',
-        setNo: '25'
-    },
-    {
-        name: '智慧城管',
-        equipNo: '300',
-        setNo: '81'
-    },
-    {
-        name: '智慧公交',
-        equipNo: '300',
-        setNo: '82'
-    },
-    {
-        name: '城市3D',
-        equipNo: '1005',
-        setNo: '1412'
-    },
-    {
-        name: '智慧环保',
-        equipNo: '300',
-        setNo: '84'
-    },
-    {
-        name: '智慧影院',
-        equipNo: '300',
-        setNo: '85'
-    },
-    {
-        name: '大数据',
-        equipNo: '300',
-        setNo: '86'
-    },
-    {
-        name: '智慧电梯',
-        equipNo: '300',
-        setNo: '92'
-    },
-    {
-        name: '智慧小镇',
-        equipNo: '300',
-        setNo: '98'
-    },  
-    {
-        name: '智慧城市',
-        equipNo: '300',
-        setNo: '99'
-    },
-    {
-        name: '智慧工厂',
-        equipNo: '300',
-        setNo: '100'
-    },                                         
-    {
-        name: '停车场',
-        equipNo: '300',
-        setNo: '87'
-    },
-    {
-        name: '定位找车',
-        equipNo: '300',
-        setNo: '10078'
-    },
-    {
-        name: '定位36990',
-        equipNo: '300',
-        setNo: '90'
-    },
-    {
-        name: '定位58019',
-        equipNo: '300',
-        setNo: '89'
-    },
-    {
-        name: '灯光全开',
-        equipNo: '300',
-        setNo: '15'
-    },
-    {
-        name: '灯光全关',
-        equipNo: '300',
-        setNo: '14'
+        setNo: '10',
+        value: null,
     },
     {
         name: '欢迎词',
+        href: '/welcomeWords/',
+        icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
-        setNo: '10112'
+        setNo: '10',
+        value: null,
+    },                    
+    ];
+
+// 列表数据模型
+var KOvm =[
+
+    {
+        name: '智能建筑',
+        icon: 'iconfont icon-f7_icon_jz',
+        equipNo: '300',
+        setNo: '2',
+        value: null,
+    },
+    {
+        name: '乐从环保首页',
+        icon: 'iconfont icon-f7_icon_hb',
+        equipNo: '300',
+        setNo: '31',
+        value: null,
+    },
+    {
+        name: '乐从河流监测',
+        icon: 'iconfont icon-f7_icon_hl',
+        equipNo: '300',
+        setNo: '32',
+        value: null,
+    },
+    {
+        name: '乐从河流报警',
+        icon: 'iconfont icon-f7_icon_bj',
+        equipNo: '300',
+        setNo: '33',
+        value: null,
+    },
+    {
+        name: '开闸排污',
+        icon: 'iconfont icon-f7_icon_pw',
+        equipNo: '300',
+        setNo: '34',
+        value: null,
+    },
+    {
+        name: '数据中心',
+        icon: 'iconfont icon-f7_icon_dj',
+        equipNo: '300',
+        setNo: '3',
+        value: null,
+    },
+    {
+        name: '智能交通',
+        icon: 'iconfont icon-f7_icon_jt',
+        equipNo: '300',
+        setNo: '4',
+        value: null,
+    },
+    {
+        name: '智能电网',
+        icon: 'iconfont icon-f7_icon_dw',
+        equipNo: '300',
+        setNo: '11',
+        value: null,
+    },
+    {
+        name: '能源系统',
+        icon: 'iconfont icon-f7_icon_dsj1',
+        equipNo: '300',
+        setNo: '17',
+        value: null,
+    },
+    {
+        name: '智慧监狱',
+        icon: 'iconfont icon-f7_icon_jy',
+        equipNo: '300',
+        setNo: '18',
+        value: null,
+    },
+    {
+        name: '戒毒所模式',
+        icon: 'iconfont icon-f7_icon_jd',
+        equipNo: '300',
+        setNo: '25',
+        value: null,
+    },
+    {
+        name: '智慧城管',
+        icon: 'iconfont icon-f7_icon_cg',
+        equipNo: '300',
+        setNo: '81',
+        value: null,
+    },
+    {
+        name: '智慧公交',
+        icon: 'iconfont icon-f7_icon_gj',
+        equipNo: '300',
+        setNo: '82',
+        value: null,
+    },
+    {
+        name: '城市3D',
+        icon: 'iconfont icon-f7_icon_3d3d',
+        equipNo: '300',
+        setNo: '83',
+        value: null,
+    },
+    {
+        name: '智慧环保',
+        icon: 'iconfont icon-f7_icon_hbxx',
+        equipNo: '300',
+        setNo: '84',
+        value: null,
+    },
+    {
+        name: '智慧影院',
+        icon: 'iconfont icon-f7_icon_3d',
+        equipNo: '300',
+        setNo: '85',
+        value: null,
+    },
+    {
+        name: '大数据',
+        icon: 'iconfont icon-f7_icon_dj',
+        equipNo: '300',
+        setNo: '86',
+        value: null,
+    },
+    {
+        name: '智慧电梯',
+        icon: 'iconfont icon-f7_icon_dt',
+        equipNo: '300',
+        setNo: '92',
+        value: null,
+    },
+    {
+        name: '智慧工厂',
+        icon: 'iconfont icon-f7_icon_xz',
+        equipNo: '300',
+        setNo: '100',
+        value: null,
+    },
+    {
+        name: '智慧小镇',
+        icon: 'iconfont icon-f7_equipList',
+        equipNo: '300',
+        setNo: '98',
+        value: null,
+    },  
+    {
+        name: '智慧城市',
+        icon: 'iconfont icon-f7_icon_xz',
+        equipNo: '300',
+        setNo: '99',
+        value: null,
+    },  
+    {
+        name: '城市管控',
+        icon: 'iconfont icon-f7_icon_gk',
+        equipNo: '300',
+        setNo: '2000',
+        value: null,
+    },
+     {
+        name: '智慧照明',
+        icon: 'iconfont icon-f7_icon_zm',
+        equipNo: '300',
+        setNo: '101',
+        value: null,
+    },                      
+    {
+        name: '欢迎词',
+        icon: 'iconfont icon-f7_welcome',
+        equipNo: '300',
+        setNo: '10112',
+        value: null,
     },
     {
         name: '消防报警',
+        icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
-        setNo: '10107'
+        setNo: '10107',
+        value: null,
     },
     {
         name: '消防恢复正常',
+        icon: 'iconfont icon-f7_icon_hf',
         equipNo: '300',
-        setNo: '6'
+        setNo: '6',
+        value: null,
     },
     {
         name: '防区报警',
+        icon: 'iconfont icon-f7_icon_fq',
         equipNo: '300',
-        setNo: '10106'
+        setNo: '10106',
+        value: null,
     },
     {
         name: '空调报警',
+        icon: 'iconfont icon-f7_icon_kt',
         equipNo: '300',
-        setNo: '10105'
+        setNo: '10105',
+        value: null,
     },
     {
         name: '总部前台监控',
+        icon: 'iconfont icon-f7_icon_jk',
         equipNo: '1005',
-        setNo: '1500'
+        setNo: '1500',
+        value: null,
     },
     {
         name: '总部会议室监控',
+        icon: 'iconfont icon-f7_icon_hys',
         equipNo: '1005',
-        setNo: '1000'
+        setNo: '1000',
+        value: null,
     },
     {
         name: '展厅监控',
+        icon: 'iconfont icon-f7_icon_jk',
         equipNo: '300',
-        setNo: '10096'
+        setNo: '10096',
+        value: null,
     },
     {
         name: '欢迎模式',
+        icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
-        setNo: '10112'
+        setNo: '10112',
+        value: null,
+    },
+
+    {
+        name: '小镇现场演示',
+        icon: 'iconfont icon-f7_icon_xz',
+        equipNo: '300',
+        setNo: '10093',
+        value: null,
+    }
+];
+
+
+
+//PPT
+var pptPattern =[
+    {
+        name: '打开PPT',
+        icon: 'iconfont icon-f7_ppt',
+        equipNo: '300',
+        setNo: '7',
+        value: null,
     },
     {
+        name: '关闭',
+        icon: 'iconfont icon-f7_c_l',
+        equipNo: '300',
+        setNo: '8',
+        value: null,
+    },
+    {
+        name: '上一页',
+        icon: 'iconfont icon-f7_prev',
+        equipNo: '1005',
+        setNo: '7001',
+        value: null,
+    },
+    {
+        name: '下一页',
+        icon: 'iconfont icon-f7_next',
+        equipNo: '1005',
+        setNo: '7002',
+        value: null,
+    },                    
+    ];
+
+//讲解模式
+
+var jjPattern =[
+    {
         name: '开始讲解',
+        icon: 'iconfont icon-f7_jj',
         equipNo: '1007',
-        setNo: '1'
+        setNo: '1',
+        value: null,
     },
     {
         name: '停止讲解',
+        icon: 'iconfont icon-f7_s_t',
         equipNo: '1007',
-        setNo: '2'
+        setNo: '2',
+        value: null,
     },
-{
-        name: '暂停讲解',
-        equipNo: '1007',
-        setNo: '3'
+    {
+            name: '暂停讲解',
+            icon: 'iconfont icon-f7_stop_0',
+            equipNo: '1007',
+            setNo: '3',
+            value: null,
     },
-{
+    {
         name: '继续讲解',
+        icon: 'iconfont icon-f7_j_x',
         equipNo: '300',
-        setNo: '10115'
-    },
-    {
-        name: '小镇现场演示',
-        equipNo: '300',
-        setNo: '10093'
-    },
-    {
-        name: '小镇宣传片',
-        equipNo: '300',
-        setNo: '10094'
-    }
-];
+        setNo: '10116',
+        value: null,
+    },                   
+    ];
+
+//*********************************************
+// ***************  欢迎词配置   ***************
+//*********************************************
+var WORDcommand ={
+    "backgroundImage":{  
+        name: '背景图片',
+        url: 'D:\\AlarmCenter\\Web\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
+     },
+     "Priviewwel":{
+        name: '预览欢迎词',
+        equipNo: '1005',
+        setNo: '4022'        
+     },
+     "closewel":{
+        name:"关闭欢迎词",
+        equipNo: '1005',
+        setNo: '4021'        
+     },     
+};
+
 //*********************************************
 // ***************  PPT配置   *****************
 // 1、盘符读取路径为D:\PPT，在Web.config中
@@ -250,22 +401,4 @@ var PPTcommand ={
      },
 };
 
-//*********************************************
-// ***************  欢迎词配置   ***************
-//*********************************************
-var WORDcommand ={
-    "backgroundImage":{  
-        name: '背景图片',
-        url: 'D:\\AlarmCenter\\Web\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
-     },
-     "Priviewwel":{
-        name: '预览欢迎词',
-        equipNo: '1005',
-        setNo: '4022'        
-     },
-     "closewel":{
-        name:"关闭欢迎词",
-        equipNo: '1005',
-        setNo: '4021'        
-     },     
-};
+

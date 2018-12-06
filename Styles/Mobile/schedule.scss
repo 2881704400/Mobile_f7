@@ -3,12 +3,12 @@
 @import 'public.scss';
 
 .scheduleContainer{
-    height: 100%;position: relative;
+    height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
     	height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
     	&>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
     }
-    &>.scheduleContent{position: absolute;top: 3rem;left: 0;right: 0;bottom: 0;
+    &>.scheduleContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
     	&>div{height: 100%;overflow: auto;}
     	.publicTable{
     		min-width: 100%;
@@ -23,18 +23,17 @@
     	#schedule_user>table{min-width: auto;}
     	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
     }
-   .selectScheduleMenu{color: #{$voiceFontColor}!important;background: #{$btnBackground};}
+   .selectScheduleMenu{font-size: 12px;color: #{$tabFontColor}!important;background: #{$tabBackground};}
 }
 
 .equipLinkageContainer{
-    height: 100%;position: relative;
+    height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
         height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
         &>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
     }
-    &>.equipLinkageContent{position: absolute;top: 3rem;left: 0;right: 0;bottom: 0;
+    &>.equipLinkageContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
         &>div{height: 100%;margin: 0;overflow: auto;}
-        .publicTable{
             thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
             tbody{
                 font-size: #{$tableTbodyFontSize};color: #{$tableTbodyFontColor};
@@ -75,10 +74,9 @@
                 }
               }
             }
-           }
+          }
         }
-    }
-   .selectScheduleMenu{color: #{$headerBgc}!important;background: #{$btnBackground};} 
+   .selectScheduleMenu{color: #{$headerBgc}!important;background: #{$tabBackground};} 
 }
 
 .popup-aboutuser {

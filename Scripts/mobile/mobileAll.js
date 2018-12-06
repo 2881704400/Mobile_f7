@@ -1,29 +1,24 @@
 ﻿//移动端js主入口
-
 var myApp = new Framework7({
-    // App root element
     root: '#app',
-    // App Name
     name: 'My App',
-    // App id
-    id: 'com.myapp.test',
-    // Enable swipe panel
+    id: 'com.myapp.gw',
     panel: {
         swipe: 'left',
         swipeOnlyClose: true,
     },
-    dialog:{
-        buttonOk:'确认',
+    dialog: {
+        buttonOk: '确认',
         buttonCancel: '取消',
     },
     statusbar: {
-            enabled: true,
-    overlay: true,
+        enabled: true,
+        overlay: true,
         iosOverlaysWebView: true,
     },
-      picker: {
-     toolbarCloseText: '确认',
-      },
+    picker: {
+        toolbarCloseText: '确认',
+    },
     routes: [{
         path: '/home/',
         url: 'home.html',
@@ -39,28 +34,22 @@ var myApp = new Framework7({
     }, {
         path: '/eventQuery/',
         url: 'eventQuery.html',
-    }, 
-    {
+    }, {
         path: '/schedule/',
         url: 'schedule.html',
-    }, 
-    {
+    }, {
         path: '/equipLinkage/',
         url: 'equipLinkage.html',
-    }, 
-    {
+    }, {
         path: '/UserInfor/',
         url: 'UserInfor.html',
-    }, 
-    {
+    }, {
         path: '/setPage/',
         url: 'setPage.html',
-    },
-    {
+    }, {
         path: '/snapShotDetail/',
         url: 'snapShotDetail.html',
-    },
-    {
+    }, {
         path: '/RealTimeList/',
         content: '123',
     }, {
@@ -69,20 +58,16 @@ var myApp = new Framework7({
     }, {
         path: '/ycAndyx/',
         url: 'ycAndyx.html',
-    }
-    , {
+    }, {
         path: '/ycAndyx/',
         url: 'ycAndyx.html',
-    }
-    , {
+    }, {
         path: '/Video/',
         url: 'Video.html',
-    }
-    , {
+    }, {
         path: '/videoControl/',
         url: 'videoControl.html',
-    }
-    , {
+    }, {
         path: '/welcomeWords/',
         url: 'welcomeWords.html',
     }, {
@@ -91,129 +76,33 @@ var myApp = new Framework7({
     }, {
         path: '/mettingDetails/',
         url: 'mettingDetails.html',
-    }
-    ],
+    }],
     on: {
-        // each object key means same name event handler
         pageInit: function(page) {
-            // do something on page init
-            // console.log(page)
             $("#voiceContainer").addClass("voiceContainer");
         },
-        popupOpen: function(popup) {
-            // do something on popup open
-        },
+        popupOpen: function(popup) {},
         init: function() {}
     },
-    
 });
-
-var mainView = myApp.views.create('.view-main');
-//web接口地址
-var service = "/GWService.asmx";
-var $$ = Framework7.$;
+var mainView = myApp.views.create('.view-main'); //web接口地址
+var service = "/GWService.asmx",
+    $$ = Framework7.$;
 initLoads();
 
 function initLoads() {
     loadNameMobile();
-    
     setTimeout(function() {
-        //$("html").height(window.screen.height);
-        $("#app").css("visibility","visible");
-    }, 3000);
-
+        $("#app").css("visibility", "visible");
+    }, 1500);
     //语音记录选择
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";
-    }   
+    }
     try {
         //myJavaFun.GetAppVersion(); //获取App版本信息
         //myJavaFun.GetSystemInfor(); //获取系统信息
-    } catch (ex) {
-
-    }
-}
-$$(document).on('ajaxError', function() {
-    myApp.dialog.create({
-        title: "",
-        text: '请求出错，请查看网络是否已连接！',
-        buttons: [{
-            text: '确定'
-        }]
-    }).open();
-});
-
-function onPages() {
-    if (!$(".navbar").hasClass("navbar-hidden")) {
-        $(".navbar").addClass("navbar-hidden");
-        $(".toolbar").addClass("toolbar-hidden");
-    } else {
-        $(".navbar").removeClass("navbar-hidden");
-        $(".toolbar").removeClass("toolbar-hidden");
-    }
-}
-
-function JQajaxo(_type, _url, _asycn, _data, _success) {
-    var ajaxs = $.ajax({
-        type: _type,
-        url: _url,
-        timeout: 5000,
-        async: _asycn,
-        data: _data,
-        success: _success,
-        complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
-            if (status == 'timeout') { //超时,status还有success,error等值的情况
-                ajaxs.abort();
-//              console.log("超时");
-                // myApp.hideIndicator();
-                myApp.dialog.create({
-                    title: "系统提示",
-                    text: '请求超时，请查看网络是否已连接！',
-                    buttons: [{
-                        text: '确定'
-                    }]
-                }).open();
-            }
-            XMLHttpRequest = null;
-        },
-        error: function() {
-            // myApp.hideIndicator();
-            myApp.dialog.create({
-                title: "系统提示",
-                text: '请求错误，请查看网络是否已连接！',
-                buttons: [{
-                    text: '确定'
-                }]
-            }).open();
-        }
-    });
-}
-
-function ajaxService(_type, _url, _asycn, _data, _success, _error) {
-    var ajaxs = $.ajax({
-        type: _type,
-        url: _url,
-        timeout: 5000,
-        async: _asycn,
-        data: _data,
-        success: _success,
-        error: _error,
-        complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
-            if (status == 'timeout') { //超时,status还有success,error等值的情况
-                ajaxs.abort();
-//              console.log("超时");
-                // myApp.hideIndicator();
-                myApp.dialog.create({
-                    title: "系统提示",
-                    text: '请求超时，请查看网络是否已连接！',
-                    buttons: [{
-                        text: '确定'
-                    }]
-                }).open();
-            }
-            XMLHttpRequest = null;
-        }
-    });
+    } catch (ex) {}
 }
 var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages;
 //连接服务器
@@ -227,15 +116,13 @@ function InitEnsure() {
             var analyze = $(dt).children("string").text();
             if (analyze != "" || analyze != "false") {
                 $("#app").css("visibility","visible");
-                console.log("连接成功！");
                 $.ajax({
                     type: "post",
                     url: service + "/UserPermissions",
                     data: "userName=" + window.localStorage.userName,
                     success: function(usersDt) {
                         getWebUser = $(usersDt).children("UserItem");
-
-                        authPage(dt);
+                         // authPage(dt);//权限设置
                     }
                 });
             }
@@ -243,8 +130,6 @@ function InitEnsure() {
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
             if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
-//              console.log("超时");
-                // myApp.hideIndicator();
                 myApp.dialog.create({
                     title: "系统提示",
                     text: '请求超时，请查看网络是否已连接！',
@@ -264,7 +149,6 @@ function initEnsureChonglian(fun) {
     function _success(data) {
         var analyze = $(data).children("string").text();
         if (analyze != "" || analyze != "false") {
-//          console.log("重连成功！");
             if (fun != null) {
                 fun();
             }
@@ -272,157 +156,7 @@ function initEnsureChonglian(fun) {
     }
     JQajaxo("post", _url, true, _data, _success);
 }
-//页面访问权限
-function isAddinModule_List(hr) {
-    var shows = false;
-    getWebUser.find("HomePage_List").find("string").each(function() {
-        for (var i = 0; i < GWAddinModule.length; i++) {
-            if (GWAddinModule[i][0] == $(this).text().trim().substring(2) && hr == GWAddinModule[i][2].split('.')[2]) {
-               shows = true;
-            }
-        }
-    });
-    shows?$("#" + hr).show():$("#" + hr).hide();
-
-}
-//定制页面访问权限
-function isEquipPages_List(hr) {
-    var shows = false;
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Browse_Pages_List").find("int").each(function() {
-                for (var i = 0; i < GWEquipPages.length; i++) {
-                    if (GWEquipPages[i][0] == $(this).text()) {
-                        if (hr == GWEquipPages[i][2].split('.')[2]) {
-                            shows = true;
-                        }
-                    }
-                }
-            });
-        });
-    } else {
-        shows = true;
-    }
-    return shows;
-}
-//权限设置
-function authPage(dt){
-        $.ajax({
-        type: "post",
-        url: service + "/QueryTableData",
-        async: false,
-        data: "tableName=GWAddinModule",
-        success: function(dtGWAddinModule) {
-            GWAddinModule = new Array();
-            var datas = $(dtGWAddinModule).children("string").text();
-            var usera = JSON.parse(datas);
-            for (var i = 0, j = 0; i < usera.length; i++) {
-                var userb = usera[i];
-                if (userb.WebPage == "1" && userb.ClassName.split('.').length > 2) {
-                    var userc = new Array(userb.ID, userb.Name, userb.ClassName, userb.HelpPath, userb.MultiScreens, userb.WebPage);
-                    GWAddinModule[j++] = userc;
-                }
-            }
-            IsAdministrator = $(dt).children("UserItem").find("IsAdministrator").text();
-            isAddinModule_List("MessageTool");
-            isAddinModule_List("RealTimeTool");
-            isAddinModule_List("VoiceTool");
-            isAddinModule_List("VideoTool");
-        }
-    });
-}
-//判断当前设备是否可查看
-function Browse_Equip_List(equips) {
-    var equipBool = false;
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Browse_Equip_List").find("int").each(function() {
-                if (equips == $(this).text()) {
-                    equipBool = true;
-                }
-            });
-        });
-    } else {
-        equipBool = true;
-    }
-    return equipBool;
-}
-//判断当前设备是否可查看(子集)
-function Browse_SpecialEquip_List(equips, num) {
-    var equipBool = false;
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Browse_SpecialEquip_List").find("string").each(function() {
-                if (equips == $(this).text().split('.')[0]) {
-                    if (num != false) {
-                        if ($(this).text().split('.')[1] == num) {
-                            equipBool = true;
-                        }
-                    } else {
-                        equipBool = true;
-                    }
-                }
-            });
-        });
-    } else {
-        equipBool = true;
-    }
-    return equipBool;
-}
-//查询用户可查看设备
-function Browse_Equip_List_Get() {
-    var equipList = '';
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Browse_Equip_List").find("int").each(function() {
-                equipList += $(this).text() + ',';
-            });
-        });
-        equipList = equipList.substring(0, equipList.length - 1);
-    } else {
-        equipList = '';
-    }
-    return equipList;
-}
-//判断当前设备是否可控制
-function Control_Equip_List(equips) {
-    var equipBool = false;
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Control_Equip_List").find("int").each(function() {
-                if (equips == $(this).text()) {
-                    equipBool = true;
-                }
-            });
-        });
-    } else {
-        equipBool = true;
-    }
-    return equipBool;
-}
-//判断当前设备是否可控制（子集）
-function Control_SetItem_List(equips, num) {
-    var equipBool = false;
-    if (getWebUser.find("IsAdministrator").text() != "true") {
-        getWebUser.find("RoleItem").each(function() {
-            $(this).find("Control_SetItem_List").find("string").each(function() {
-                if (equips == $(this).text().split('.')[0]) {
-                    if (num != false) {
-                        if ($(this).text().split('.')[1] == num) {
-                            equipBool = true;
-                        }
-                    } else {
-                        equipBool = true;
-                    }
-                }
-            });
-        });
-    } else {
-        equipBool = true;
-    }
-    return equipBool;
-}
-
+//解析
 function getValueByKey(str, key) {
     var urlSearchSplit = str.split('&');
     for (var i = 0; i < urlSearchSplit.length; i++) {
@@ -437,63 +171,26 @@ function getValueByKey(str, key) {
 function loadNameMobile() {
     if (location.search) {
         try {
-            var urlSearch = location.search.split('?')[1];
-            var terminal = getValueByKey(urlSearch, "terminal");
-            var ac_appkey = getValueByKey(urlSearch, "appkey");
-            var ac_infokey = getValueByKey(urlSearch, "infokey");
-            var service_url = getValueByKey(urlSearch, "service_url");
-            var jsonString = {
-                "terminalString": terminal,
-                "ac_appkeyString": ac_appkey,
-                "ac_infokeyString": ac_infokey,
-                "service_urlString": service_url
-            };
-            window.localStorage.ac_appkey = ac_appkey;
-            window.localStorage.terminal = terminal;
-            window.localStorage.ac_infokey = ac_infokey;
-            window.localStorage.service_url = service_url;
+            var urlSearch = location.search.split('?')[1],
+                terminal = getValueByKey(urlSearch, "terminal"),
+                ac_appkey = getValueByKey(urlSearch, "appkey"),
+                ac_infokey = getValueByKey(urlSearch, "infokey"),
+                service_url = getValueByKey(urlSearch, "service_url"),
+                jsonString = {
+                    "terminalString": terminal,
+                    "ac_appkeyString": ac_appkey,
+                    "ac_infokeyString": ac_infokey,
+                    "service_urlString": service_url
+                };
+            window.localStorage.ac_appkey = ac_appkey, window.localStorage.terminal = terminal, window.localStorage.ac_infokey = ac_infokey, window.localStorage.service_url = service_url;
             myJavaFuntion.SetCookie(JSON.stringify(jsonString));
         } catch (ex) {
-            window.localStorage.terminal = '';
-            window.localStorage.ac_appkey = '';
-            window.localStorage.ac_infokey = '';
-            window.localStorage.service_url = '';
+            window.localStorage.terminal = '', window.localStorage.ac_appkey = '', window.localStorage.ac_infokey = '', window.localStorage.service_url = '';
         }
     } else {
         myJavaFuntion.GetCookie();
     }
     setTimeout(function() {
-        // var jsonData = {
-        //     "url": "/api/GWServiceWebAPI/getClientTypeInfo",
-        //     "success": _success,
-        //     "error": _error,
-        //     "complete": _complete
-        // };
-        // $.fn.axpost(jsonData);
-        // function _success(dt) {
-        //     var codeString = dt.HttpData;
-        //     if (codeString.code == 200) {
-        //         window.localStorage.userName = codeString.data.userName;
-        //     } else {
-        //         window.localStorage.userName = '';
-        //     }
-        // }
-        // function _error(e) {
-        //     window.localStorage.userName = '';
-        //     myJavaFuntion.OpenLocalUrl("login");
-        //     console.log(e);
-        // }
-        // function _complete(XMLHttpRequest, status) {
-        //     if (window.localStorage.userName != "" && window.localStorage.userName != null) {
-        //         $("#userName").html("我(" + window.localStorage.userName + ")");
-        //         InitEnsure();
-        //         AppShows();
-        //         onHomePage();
-        //         $(".voiceDivs,.toolbar").removeClass("displayNone");
-        //     } else {
-        //         myJavaFuntion.OpenLocalUrl("login");
-        //     }
-        // }
         $.ajax({
             type: "POST",
             url: "/api/GWServiceWebAPI/getClientTypeInfo",
@@ -510,85 +207,29 @@ function loadNameMobile() {
                     window.localStorage.userName = '';
                 }
             },
-            error:function(e){
+            error: function(e) {
                 window.localStorage.userName = '';
-                 myJavaFuntion.OpenLocalUrl("login");
+                myJavaFuntion.OpenLocalUrl("login");
                 console.log(e);
             },
             complete: function(XMLHttpRequest, status) {
-                if (window.localStorage.userName !="" && window.localStorage.userName != null) {
+                if (window.localStorage.userName != "" && window.localStorage.userName != null) {
                     $("#userName").html("我(" + window.localStorage.userName + ")");
                     InitEnsure();
                     AppShows();
                     onHomePage();
-                     $(".voiceDivs,.toolbar").removeClass("displayNone");
-                }
-                else{
+                    $(".voiceDivs,.toolbar").removeClass("displayNone");
+                } else {
                     myJavaFuntion.OpenLocalUrl("login");
                 }
             }
         });
     }, 100);
 }
-
-function pageLists() {
-    $(".page_list").find("a").each(function() {
-        if ($(this).attr("href") != "#") {
-            var listName;
-            try {
-                listName = $(this).attr("href").split('/')[1].split('.')[0];
-            } catch (ex) {
-                listName = $(this).attr("pageName").split('.')[0];
-            }
-            var isep = isEquipPages_List(listName);
-            if (!isep) {
-                $(this).addClass("disabled");
-            }
-        }
-    });
-}
 //app显示
 function AppShows() {
     $("#appCacheClearLi").show();
     $("#appRichScan").show();
-}
-//获取App版本信息
-function BackAppVersion(versionCode, versionName) {
-    window.localStorage.versionCode = versionCode;
-    window.localStorage.versionName = versionName;
-}
-//获取系统信息
-function BackSystemInfor(phoneName, phoneModel, phoneVersion) {
-    window.localStorage.phoneName = phoneName;
-    window.localStorage.phoneModel = phoneModel;
-    window.localStorage.phoneVersion = phoneVersion;
-    try {
-        myJavaFun.GetPushID(); //获取推送ID
-    } catch (ex) {}
-}
-//获取推送ID
-function BackPushID(data) {
-    $.ax({
-        type: 'post',
-        url: '/api/jpush/add_push_id',
-        data: {
-            id: data,
-            phoneName: window.localStorage.phoneName,
-            phoneModel: window.localStorage.phoneModel,
-            phoneVersion: window.localStorage.phoneVersion
-        },
-        success: function(dt) {
-            if (dt.HttpStatus == 200 && dt.HttpData.code == 200) {
-//              console.log('添加推送成功');
-            } else {
-                alert('错误码：' + dt.HttpData.code + '\n错误信息：' + dt.HttpData.message);
-            }
-        }
-    });
-}
-//百度SDK位置信息回调
-function locationDBData(dt) {
-    window.testIframe.gpsBack(dt);
 }
 //清空缓存
 function onAppCacheClear() {
@@ -626,23 +267,6 @@ function AppCacheClearCallback(dt) {
                 text: '确定'
             }]
         }).open();
-    }
-}
-
-function toolbarActive(ids) {
-    $(".toolbar-inner").find("a").each(function() {
-        if ($(this).hasClass("active")) {
-            var cls = $(this).find("i").attr("cls");
-            $(this).find("i").removeClass("icon-" + cls + "_a");
-            $(this).find("i").addClass("icon-" + cls + "_b");
-            $(this).removeClass("active");
-        }
-    });
-    if (ids != '') {
-        $("#" + ids).addClass("active");
-        var cls = $("#" + ids).find("i").attr("cls");
-        $("#" + ids).find("i").removeClass("icon-" + cls + "_b");
-        $("#" + ids).find("i").addClass("icon-" + cls + "_a");
     }
 }
 //注销事件
@@ -691,37 +315,8 @@ function backss() {
         pages[i] = $(this).attr("data-page");
     });
     if (pages.length == 2) {
-//      console.log(pages[0])
-        //mainView.router.loadPage(pages[0] + ".html");
         mainView.router.back()
     }
-}
-/* 
- * formatMoney(s,type) 
- * 功能：金额按千位逗号分割 
- * 参数：s，需要格式化的金额数值. 
- * 参数：type,判断格式化后的金额是否需要小数位. 
- * 返回：返回格式化后的数值字符串. 
- */
-function formatMoney(s, type) {
-    if (/[^0-9\.]/.test(s)) return "0";
-    if (s == null || s == "") return "0";
-    s = s.toString().replace(/^(\d*)$/, "$1.");
-    s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
-    s = s.replace(".", ",");
-    var re = /(\d)(\d{3},)/;
-    while (re.test(s)) s = s.replace(re, "$1,$2");
-    s = s.replace(/,(\d\d)$/, ".$1");
-    if (type == 0) { // 不带小数位(默认是有小数位)  
-        var a = s.split(".");
-        if (a[1] == "00") {
-            s = a[0];
-        }
-    }
-    return s;
-}
-window.onresize = function() {
-    onResizeCustomized();
 }
 //执行子界面方法
 function initPageJS(dt, ext) { //ext扩展界面地址
@@ -741,272 +336,133 @@ function initPageJS(dt, ext) { //ext扩展界面地址
         evil(dt + "()");
     }
 }
-//微信分享id
-var wxShareStr = "wxd2a573967e43f6c6";
-//div分享到微信
-function divShareToWX(byID) {
-    myJavaFun.AppShare('', wxShareStr);
-}
-//图表分享到微信
-function chartShareToWX(myChart) {
-    myJavaFun.AppShare('', wxShareStr);
-}
-var classObj = {
-    ToUnicode: function(str) {
-        return escape(str).replace(/%/g, "\\").toLowerCase();
-    },
-    UnUnicode: function(str) {
-        return unescape(str.replace(/\\/g, "%"));
-    }
-}
-//扫一扫返回结果
-function onRichScanCallback(dt) {
-    var _url = service + "/ExecuteRichScan";
-    var _data = "userName=" + window.localStorage.userName + "&&data=" + dt;
-
-    function _success(data) {
-        var str = $(data).children("string").text();
-        if (str != "false") {
-            realShow(str);
-        }
-    }
-    JQajaxo("post", _url, true, _data, _success);
-}
-/**
- * JS获取n至m随机整数
- */
-function rd(n, m) {
-    var c = m - n + 1;
-    return Math.floor(Math.random() * c + n);
-}
-
-function TimeJSONToString2(dt) {
-    var timeDate = new Date(dt * 1000).format("yyyy-MM-dd hh:mm:ss");
-    return timeDate.toLocaleString();
-}
-//日期格式化
-Date.prototype.format = function(fmt) { //author: meizz   
-    var o = {
-        "M+": this.getMonth() + 1, //月份   
-        "d+": this.getDate(), //日   
-        "h+": this.getHours(), //小时   
-        "m+": this.getMinutes(), //分   
-        "s+": this.getSeconds(), //秒   
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
-        "S": this.getMilliseconds() //毫秒   
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
 
 function evil(fn) {
     var Fn = Function; //一个变量指向Function，防止有些前端编译工具报错
     return new Fn('return ' + fn)();
 }
-//获取几天之后的日期
-function GetDateStr(AddDayCount) {
-    var dd = new Date();
-    dd.setDate(dd.getDate() + AddDayCount); //获取AddDayCount天后的日期 
-    var y = dd.getFullYear();
-    var m = dd.getMonth() + 1; //获取当前月份的日期 
-    var d = dd.getDate();
-    if (m < 10) {
-        m = '0' + m;
-    }
-    if (d < 10) {
-        d = '0' + d;
-    }
-    return y + "-" + m + "-" + d;
-}
-//时间格式化
-function newDate(date) {
-    var s = date;
-    var ps = s.split(" ");
-    var pd;
-    if (ps[0].indexOf('-') > 0) {
-        pd = ps[0].split("-");
-    } else {
-        pd = ps[0].split("/");
-    }
-    var pt = ps.length > 1 ? ps[1].split(":") : [0, 0, 0];
-    var st = new Date(pd[0], pd[1] - 1, pd[2], pt[0], pt[1], pt[2]);
-    return st;
-}
-//计算时间差
-function dateCost(data1, data2) {
-    var s1 = data1.getTime(),
-        s2 = data2.getTime();
-    var total = (s2 - s1) / 1000;
-    var day = parseInt(total / (24 * 60 * 60)); //计算整数天数
-    var afterDay = total - day * 24 * 60 * 60; //取得算出天数后剩余的秒数
-    var hour = parseInt(afterDay / (60 * 60)); //计算整数小时数
-    var afterHour = total - day * 24 * 60 * 60 - hour * 60 * 60; //取得算出小时数后剩余的秒数
-    var min = parseInt(afterHour / 60); //计算整数分
-    var afterMin = total - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60; //取得算出分后剩余的秒数
-    return day + "," + hour + "," + min + "," + afterMin;
-}
-//发送命令
-function get_no(dt, set_equip, set_no, values) {
-    if (!$(dt).hasClass("Conference_selectedBG") && !$(dt).hasClass("Conference_selectedCO")) {
-        var set_equipOld,set_noOld,valuesOld,main_instrOld,mino_instrOld;
-        if (set_equip == "") {
-            set_equipOld = $(dt).attr("set_equip");
-            set_noOld = $(dt).attr("set_no");
-        } else {
-            set_equipOld = set_equip;
-            set_noOld = set_no;
-        }
-        var ajaxVar = $.ajax({
-            type: "POST",
-            url: "/GWService.asmx/GetDataTableFromSQL",
-            timeout: 5000,
-            data: {
-                sql: "select * from setParm where equip_no =" + set_equipOld + " and set_no=" + set_noOld,
-                userName: window.localStorage.userName,
-            },
-            success: function(data) {
-                var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-                if (dt.find("equip_no").html() != "") {
-                    if (values == "") onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-                    else onSetCommand11(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-                } else {
-                    alertMsgError.open();
-                }
-            }
-        });
-    }
-}
-
-function onSetCommand11(dt, equip_no, main_instr, mino_instr, valueset) {
-    var ajaxVar = $.ajax({
-        type: "POST",
-        url: "/GWService.asmx/SetupsCommand",
-        timeout: 5000,
-        data: {
-            equip_no: equip_no,
-            main_instruction: main_instr,
-            minor_instruction: mino_instr,
-            value: valueset,
-            user_name: window.localStorage.userName
-        },
-        success: function(data) {alertMsgSuccess.open();}
-    });
-}
 var alertMsgSuccess = myApp.notification.create({
-    title: '系统提示',
-    titleRightText: '',
-    subtitle: '<br />',
-    text: '操作成功',
-    closeTimeout: 2000,
-});
-var alertMsgError = myApp.notification.create({
-    title: '系统提示',
-    titleRightText: '',
-    subtitle: '<br />',
-    text: '操作失败或没有该命令配置',
-    closeTimeout: 1000,
-});
-//判断是否在视口内部
-$.fn.isOnScreen = function() {
-    var win = $(window);
-    var viewport = {
-        top: win.scrollTop(),
-        left: win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height(); //375
-    var bounds = this.offset();
-    bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-};
-function _errorfSet(that) {
-    if ($(that).hasClass("volumebtn1") || $(that).hasClass("volumebtn2") || $(that).hasClass("volumebtn3") || $(that).hasClass("volumebtn4")) {} else if ($(that).attr("id") == "viewsSave") //照相
-        $(that).attr("disabled", false);
-    else {
-        $(that).removeClass("displayNone").siblings("a").addClass("displayNone");
+        title: '系统提示',
+        titleRightText: '',
+        subtitle: '<br />',
+        text: '操作成功',
+        closeTimeout: 2000,
+    }),
+    alertMsgError = myApp.notification.create({
+        title: '系统提示',
+        titleRightText: '',
+        subtitle: '<br />',
+        text: '操作失败或没有该命令配置',
+        closeTimeout: 1000,
+    });
+//判断当前设备是否可查看
+function Browse_Equip_List(equips) {
+    var equipBool = false;
+    if (getWebUser.find("IsAdministrator").text() != "true") {
+        getWebUser.find("RoleItem").each(function() {
+            $(this).find("Browse_Equip_List").find("int").each(function() {
+                if (equips == $(this).text()) {
+                    equipBool = true;
+                }
+            });
+        });
+    } else {
+        equipBool = true;
     }
-    $(".tooipSpan").addClass("displayNone");
-    alertMsgError.open();
+    return equipBool;
 }
-//提取名称
-function getNmae(name) {
-    return name.split("\\")[name.split("\\").length - 1];
-}
-//引入javascript
-function loadJs(url,callback,id){
-        var script=document.createElement('script');
-        script.type="text/javascript";
-        script.src = url;
-        script.id = id+"_1";
-        document.body.appendChild(script);
-        if(typeof(callback)!="undefined"){
-            if(script.readyState){
-                script.onreadystatechange=function(){
-                    if(script.readyState == "loaded" || script.readyState == "complete"){
-                        script.onreadystatechange=null;
-                        callback();
+//判断当前设备是否可查看(子集)
+function Browse_SpecialEquip_List(equips, num) {
+    var equipBool = false;
+    if (getWebUser.find("IsAdministrator").text() != "true") {
+        getWebUser.find("RoleItem").each(function() {
+            $(this).find("Browse_SpecialEquip_List").find("string").each(function() {
+                if (equips == $(this).text().split('.')[0]) {
+                    if (num != false) {
+                        if ($(this).text().split('.')[1] == num) {
+                            equipBool = true;
+                        }
+                    } else {
+                        equipBool = true;
                     }
                 }
-            }else{
-                script.onload=function(){
-                  callback();
-                }
-            }
+            });
+        });
+    } else {
+        equipBool = true;
+    }
+    return equipBool;
+}
+//退出登陆
+function exitLogin() {
+    try {
+        myJavaFun.OpenLocalUrl("login");
+    } catch (e) {
+        if (window.localStorage.terminal != "Mobile.App") window.location.href = "/Views/login.html";
+        else myApp.dialog.alert("退出登陆异常");
     }
 }
-
-//退出登陆
-function exitLogin(){ 
-    try {
-          myJavaFun.OpenLocalUrl("login");
-        }
-        catch(e){
-            if(window.localStorage.terminal != "Mobile.App")
-               window.location.href = "/Views/login.html";
-            else
-                myApp.dialog.alert("退出登陆异常");
-        }
-}
-
 //切换底部工具栏
-function switchToolbar(id){
-    //$(".toolbar .animation-no").removeClass("active");
-    $("#"+id).addClass("active").siblings().removeClass("active");
-}
-//系统配置
-function systemConfig(id){
-  //switchToolbar(id);
+function switchToolbar(id) {
+    $("#" + id).addClass("active").siblings().removeClass("active");
 }
 //语音信息提示
-function voiceTooip(txt){
+function voiceTooip(txt) {
     return myApp.toast.create({
-      text: txt,
-      position: 'center',
-      closeTimeout: 3000,
+        text: txt,
+        position: 'center',
+        closeTimeout: 3000,
     });
 }
 //下拉列表初始化
-function listInit(id,value){
+function listInit(id, value) {
     myApp.picker.create({
-      inputEl: '#'+id,
-      cols: [
-        {
-          textAlign: 'center',
-          values: value 
-        }
-      ]
-    }); 
+        inputEl: '#' + id,
+        cols: [{
+            textAlign: 'center',
+            values: value
+        }]
+    });
 }
 //动态创建弹窗
-function popupAlert(html){
+function popupAlert(html) {
     var popup = myApp.popup.create({
-      content: html,
-      on: {
-        opened: function (e) {}
-      }
+        content: html,
+        on: {
+            opened: function(e) {}
+        }
     }).open();
 }
-
+//封装ajax
+function JQajaxo(_type, _url, _asycn, _data, _success) {
+    var ajaxs = $.ajax({
+        type: _type,
+        url: _url,
+        timeout: 5000,
+        async: _asycn,
+        data: _data,
+        success: _success,
+        complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
+            if (status == 'timeout') { //超时,status还有success,error等值的情况
+                ajaxs.abort();
+                myApp.dialog.create({
+                    title: "系统提示",
+                    text: '请求超时，请查看网络是否已连接！',
+                    buttons: [{
+                        text: '确定'
+                    }]
+                }).open();
+            }
+            XMLHttpRequest = null;
+        },
+        error: function() {
+            myApp.dialog.create({
+                title: "系统提示",
+                text: '请求错误，请查看网络是否已连接！',
+                buttons: [{
+                    text: '确定'
+                }]
+            }).open();
+        }
+    });
+}

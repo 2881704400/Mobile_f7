@@ -1,98 +1,96 @@
-﻿
-
-    <div data-page="eventQuery" class="page" id="eventQuery">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <!-- 标题 -->                  
-                <div class="left hideMenu">
-                    <a href="#" class="back link">
-                        <i class="iconfont icon-back"></i>
-                    </a>
-                </div>                        
-                <div class="center sliding title">事件查询</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
+﻿<div class="page" data-page="eventQuery" id="eventQuery">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <!-- 标题 -->
+            <div class="left hideMenu">
+                <a class="back link" href="#">
+                    <i class="iconfont icon-back">
+                    </i>
+                </a>
             </div>
-        </div>        
-        <!--"pull-to-refresh-content"类表示下拉刷新 -->
-        <div  class="page-content">
-            <div class="condition">
-            	<p class=" hideShow">
-            		点击进行时间选择
-            	</p>
-            	<div class="row timeWrap no-gap">
-            		<div class="col-25">
-            			开始日期:
-            		</div>
-            		<div class="col-75">
-            			<div class="inpWrap">
-            				<input type="" name="" id="timePicker" value="" readonly="readonly" placeholder="开始时间" style="width: 100%;height: 100%;"/>
-            			</div>
-
-            		</div>
-            	</div>
-            	<div class="row timeWrap  no-gap">
-            		<div class="col-25">
-            			结束日期:
-            		</div>
-            		<div class="col-75">
-            			<div  class="inpWrap">
-            				<input type="" name="" id="timePicker2" value="" readonly="readonly" placeholder="开始时间" style="width: 100%;height: 100%;"/>
-            			</div>
-            		</div>
-            	</div>
-            	<div class="sureBtn button button-fill">
-            		确定
-            	</div>
+            <div class="center sliding title">
+                事件查询
             </div>
-            
-           
-            
-            <div class="row no-gap equipCon" >
-            	<div class="col-25" >
-            		<!--设备列表-->
-	            	<ul class="equipList">
-	            		
-	            	</ul>
-            	</div>
-            	<div class="col-75">
-					<p class="segmented tabList" >
-            			<a href="#tab1" class="tab-link tab-link-active button">设备事件</a>
-      					<a href="#tab2" class="tab-link button">设置事件</a>
-     					<a href="#tab3" class="tab-link button">系统事件</a>
-					</p>
-            		<div class="tabs-animated-wrap eventWrap">
-					    <div class="tabs">
-					      <div id="tab1" class=" tab tab-active">
-					       <div class="list accordion-list" style="margin: 0;">
-							  <ul>
-							   
-							   
-							  </ul>
-							</div>
-					      </div>
-					      <div id="tab2" class=" tab">
-					      	<div class="list accordion-list" style="margin: 0;">
-							  <ul>
-					        
-							    
-							   
-							  </ul>
-							</div>
-					      </div>
-					      <div id="tab3" class=" tab">
-					      	<div class="list accordion-list" style="margin: 0;">
-							  <ul>
-					        		
-							    
-							    
-							  </ul>
-					        </div>
-					    </div>
-					</div>
-            		
-            	</div>
+            <div class="right">
+                <a class="link icon-only panel-open" href="/setPage/">
+                    <i class="iconfont icon-f7_right_user">
+                    </i>
+                </a>
             </div>
         </div>
     </div>
+    <div class="page-content">
+        <div style="padding: 1rem;">
+            <div class="condition">
+                <p class=" hideShow">
+                    点击进行时间选择
+                </p>
+                <div class="row timeWrap no-gap">
+                    <div class="col-25">
+                        开始日期:
+                    </div>
+                    <div class="col-75">
+                        <div class="inpWrap">
+                            <input id="timePicker" name="" placeholder="开始时间" readonly="readonly" style="width: 100%;height: 100%;" type="" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row timeWrap no-gap">
+                    <div class="col-25">
+                        结束日期:
+                    </div>
+                    <div class="col-75">
+                        <div class="inpWrap">
+                            <input id="timePicker2" name="" placeholder="结束时间" readonly="readonly" style="width: 100%;height: 100%;" type="" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="sureBtn button button-fill">
+                    确定
+                </div>
+            </div>
+            <div class="row no-gap equipCon">
+                <div class="col-25">
+                    <!--设备列表-->
+                    <ul class="equipList">
+                    </ul>
+                </div>
+                <div class="col-75">
+                    <p class="segmented tabList">
+                        <a class="tab-link tab-link-active button" href="#tab1">
+                            设备事件
+                        </a>
+                        <a class="tab-link button" href="#tab2">
+                            设置事件
+                        </a>
+                        <a class="tab-link button" href="#tab3">
+                            系统事件
+                        </a>
+                    </p>
+                    <div class="tabs-animated-wrap eventWrap">
+                        <div class="tabs">
+                            <div class=" tab tab-active" id="tab1">
+                                <div class="list accordion-list" style="margin: 0;">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class=" tab" id="tab2">
+                                <div class="list accordion-list" style="margin: 0;">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class=" tab" id="tab3">
+                                <div class="list accordion-list" style="margin: 0;">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
