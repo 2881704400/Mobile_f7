@@ -28,6 +28,7 @@
 		<link rel="stylesheet" href="/Styles/Mobile/animate.min.css">
 		<link rel="stylesheet" href="/Styles/Mobile/layout.css" />	
 		<link rel="stylesheet" href="/Styles/Mobile/equips.css" />
+		<link rel="stylesheet" type="text/css" href="/Styles/Mobile/voice.css"/>
 	</head>
 	<body>
 		<div id="app" style="visibility: hidden;">
@@ -136,8 +137,10 @@
 							<i class="iconfont icon-f7_snapshot"></i>
 							<span>实时快照</span>
 						</a>
-						<a href="#" class="link col-20" id="voiceBtn" >
-							<span><i class="iconfont icon-f7_voice"></i></span>
+						<a href="#" class="link col-20 popup-open" data-popup=".popup-voices" id="voiceBtn" >
+							<div class="video-content-btn">
+								<div><img src="/Image/video.png" /></div>
+							</div>
 						</a>
 						<a href="/equips/" class="link animation-no col-20" id="equipsTool">
 							<i class="iconfont icon-f7_equipList"></i>
@@ -179,6 +182,35 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="popup popup-voices">
+					<div class="voice-header">
+						<div class="voice-header-back popup-close"><i class="iconfont icon-back"></i></div>
+						<span>语音控制</span>
+					</div>
+					<div class="voice-container">
+						<div class="pannel-chat-info">
+							<div class="chart-content chart-content-old">
+								<span>请告诉我，您想要进行的操作</span>
+							</div>
+						</div>
+					</div>
+					<div class="voice-arrow-cancel">
+						取消指令
+					</div>
+					<div class="voice-arrow-box">
+						<div class="voice-arrow-ani IndexIconAnimation3"></div>
+						<div class="voice-arrow-ani IndexIconAnimation2"></div>
+						<div class="voice-arrow-ani IndexIconAnimation1"></div>
+					</div>
+					<div class="voice-arrow-dialog">
+						长按说话..
+					</div>
+					<div class="video-content-btn" id="videoContentBtnId" style="background-color: transparent;">
+						<div class="homeHuanAnimation"><img src="/Image/video.png" style="height: 50%;" /></div>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 		<!-- 框架js-->
