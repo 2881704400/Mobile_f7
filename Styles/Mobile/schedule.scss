@@ -5,8 +5,8 @@
 .scheduleContainer{
     height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
-    	height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
-    	&>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
+    	height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tableTitle};
+    	&>a{font-size: #{$tableHeaderFontSize*0.8};color: #{$situationFontColor};white-space: nowrap;text-align: center;}
     }
     &>.scheduleContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
     	&>div{height: 100%;overflow: auto;}
@@ -18,7 +18,7 @@
     			tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
     	    }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;text-overflow: ellipsis;overflow: hidden;}
     	}
     	#schedule_user>table{min-width: auto;}
     	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
@@ -29,7 +29,7 @@
 .equipLinkageContainer{
     height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
-        height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};
+        height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tableTitle};
         &>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
@@ -40,7 +40,7 @@
                 tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
             }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;border-right: 1px solid #{$tableBorderBottom};}
+            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;overflow: hidden;    text-overflow: ellipsis;}
         }
         #schedule_user>table{min-width: auto;}
         .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
@@ -48,7 +48,7 @@
             &>ul{ &>li{
                 .item-title{font-size: 1rem;}
                 .sceneBtn{padding: 20px;text-align: center;
-                    &>a{font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 10px;background: #{$btnBackground};}
+                    &>a{font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 5px;background: #{$btnBackground};}
                  }
                 }
             }

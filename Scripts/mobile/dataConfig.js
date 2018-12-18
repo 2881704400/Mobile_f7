@@ -1,3 +1,49 @@
+function getJurisdictionData(id){
+    // 权限管理
+    var JurisdictionArray = [];
+  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
+    let result = n.HttpData;
+    if(result.code == 200)
+    {
+       $.ajax({
+            type: "post",
+            url: service + "/UserPermissions",
+            data: "userName=" + window.localStorage.userName,
+            success: function(usersDt) {
+                let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
+                resultControl.forEach(function(item_p,index_p) {
+                    if(item_p.trim())
+                    result.data.forEach(function(item,index){
+                     if(item.ClassName && item.ClassName.indexOf("larmCenter.APP") == 1 && item.HelpPath == item_p.trim())
+                     {
+                       JurisdictionArray.push(item);
+                     }
+                   });     
+                });
+                var html ="";
+                JurisdictionArray.forEach(function(item,index){
+                    html +=item.MultiScreens;
+                });
+                $("#homeContents").append(html);
+                switch(id)
+                {
+                    case "home_fsk_btn": configPage();break;
+                    case "": break;
+                    case "": break;
+                    case "": break;
+                    case "": break;
+                    default: break;
+                }
+            }
+        });
+
+    }
+  }).fail(function(e){
+   console.log(e);
+  });
+
+}
+
 //*************************************************
 //------------------视频配置 start---------------
 //*************************************************
@@ -5,8 +51,6 @@ var map, infoPoint = [ //经纬度+设备号+通道号
     [113.960046, 22.535688, 2003, 1],
     [113.922468, 22.497125, 2003, 2]
 ];
-
-
 
 
 // 常用
@@ -401,4 +445,269 @@ var PPTcommand ={
      },
 };
 
+//*********************************************
+// *************  富士康选择配置   ************
+// 1、
+// 2、
+//*********************************************
+var equipCommand =[
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01001',
+        className: "equipG01",
+        equipNo: '400',
+        setNo: '5',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01002',
+        className: "equipG02",
+        equipNo: '400',
+        setNo: '6',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01003',
+        className: "equipG03",
+        equipNo: '400',
+        setNo: '7',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01004',
+        className: "equipG04",
+        equipNo: '400',
+        setNo: '8',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01005',
+        className: "equipG05",
+        equipNo: '400',
+        setNo: '9',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01006',
+        className: "equipG06",
+        equipNo: '400',
+        setNo: '10',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01007',
+        className: "equipG07",
+        equipNo: '400',
+        setNo: '11',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01008',
+        className: "equipG08",
+        equipNo: '400',
+        setNo: '12',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01009',
+        className: "equipG09",
+        equipNo: '400',
+        setNo: '13',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01010',
+        className: "equipG10",
+        equipNo: '400',
+        setNo: '14',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01011',
+        className: "equipG11",
+        equipNo: '400',
+        setNo: '15',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01012',
+        className: "equipG12",
+        equipNo: '400',
+        setNo: '16',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01013',
+        className: "equipG13",
+        equipNo: '400',
+        setNo: '17',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01014',
+        className: "equipG14",
+        equipNo: '400',
+        setNo: '18',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01015',
+        className: "equipG15",
+        equipNo: '400',
+        setNo: '19',
+        value_0: ''
+     },
+    {  
+        title:"设备管理",
+        name: '日钢成型机 M_G01016',
+        className: "equipG16",
+        equipNo: '400',
+        setNo: '20',
+        value_0: ''
+     },                                                                      
+];
 
+var equipCommandPHM =[
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01001',
+        className: "equipG01",
+        equipNo: '400',
+        setNo: '21',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01002',
+        className: "equipG02",
+        equipNo: '400',
+        setNo: '22',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01003',
+        className: "equipG03",
+        equipNo: '400',
+        setNo: '23',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01004',
+        className: "equipG04",
+        equipNo: '400',
+        setNo: '24',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01005',
+        className: "equipG05",
+        equipNo: '400',
+        setNo: '25',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01006',
+        className: "equipG06",
+        equipNo: '400',
+        setNo: '26',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01007',
+        className: "equipG07",
+        equipNo: '400',
+        setNo: '27',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01008',
+        className: "equipG08",
+        equipNo: '400',
+        setNo: '28',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01009',
+        className: "equipG09",
+        equipNo: '400',
+        setNo: '29',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01010',
+        className: "equipG10",
+        equipNo: '400',
+        setNo: '30',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01011',
+        className: "equipG11",
+        equipNo: '400',
+        setNo: '31',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01012',
+        className: "equipG12",
+        equipNo: '400',
+        setNo: '32',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01013',
+        className: "equipG13",
+        equipNo: '400',
+        setNo: '33',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01014',
+        className: "equipG14",
+        equipNo: '400',
+        setNo: '34',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01015',
+        className: "equipG15",
+        equipNo: '400',
+        setNo: '35',
+        value_0: ''
+     },
+    { 
+        title: "PHM管理", 
+        name: '日钢成型机 M_G01016',
+        className: "equipG16",
+        equipNo: '400',
+        setNo: '36',
+        value_0: ''
+     },                                                                      
+];

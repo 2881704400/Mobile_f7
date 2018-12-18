@@ -288,7 +288,24 @@ $(function () {
             }
         });
         return i.promise()
-     }
+     },
+    httpPost1: function(url,n){
+        var i = $.Deferred();
+        return $.ajax({
+            url: url,
+            data: n.data,
+            type: "POST",
+            dataType:"JSON",          
+            async: !1 !== n.async, 
+            timeout: n.timeout || 5000,
+            success: function(e) {
+                i.resolveWith(this, [e])
+            },
+            error: function(e, n) {
+                i.rejectWith(this, ["网络异常，请稍候重试"])
+            }
+        }),
+        i.promise()
+     },
    }
-
 });

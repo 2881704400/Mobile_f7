@@ -29,7 +29,7 @@ function loadMessage() {
 			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
 		},
 		data: {
-			TableName: "Administrator"
+			"getDataTable":0,
 		},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
@@ -58,11 +58,8 @@ function loadMessage() {
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var result = dt.HttpData.data;
-				//console.log(result);
 				let tableListData = [];
-				var strSureData = "";
-				var strData = "";
-				var countNum = 0;
+				var strSureData = "",strData = "",countNum = 0;
 				if(result.length > 0) {
 					for(var i = 0; i < result.length; i++) {
 						var textareaEventMsg = "";
@@ -73,7 +70,8 @@ function loadMessage() {
 						}
 
 						var textareaAdviceMsg = "";
-						if(result[i].Proc_advice_Msg.length > 200) {
+						// console.log(result[i].Proc_advice_Msg);
+						if(result[i].Proc_advice_Msg && result[i].Proc_advice_Msg.length > 200) {
 							textareaAdviceMsg = "<textarea>" + result[i].Proc_advice_Msg + "</textarea>";
 						} else {
 							textareaAdviceMsg = result[i].Proc_advice_Msg;
@@ -127,7 +125,7 @@ function loadMessage() {
 					}
 					$("#snapShotDetailListId").html(strData + strSureData);
 					$("#snapShotDetailListId").css({
-						"margin-bottom": "66px"
+						"margin-bottom": "100px"
 					})
 				}else{
 					$("#snapShotDetailListId").html(strData + strSureData);
@@ -196,15 +194,14 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 		data: {
 			msg: strAdviceMsg, //处理意见
 			shortmsg: isShortMsg, //是否发送短信
-			tel: checkValArr.toString(), //发送人的电话
+			telUser: checkValArr.toString(), //发送人的电话
 			evtname: strEventMsg, //事件名
-			time: strTime, //事件时间
+			time: strTime.replace("T"," "), //事件时间
 			userName: window.localStorage.userName //是否发送短信
 		},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var resultData = dt.HttpData.data;
-				//console.log(resultData)
 				myApp.toast.create({
 					text: '操作成功!',
 					position: 'center',

@@ -270,7 +270,7 @@
 			},
 			atorMsgDataFun() {
 				this.Axios.post('/api/GWServiceWebAPI/get_AdministratorData', {
-					TableName: "Administrator"
+					"getDataTable":0,
 				}).then(res => {
 					let data = res.data.HttpData;
 					if(data.code == 200) {

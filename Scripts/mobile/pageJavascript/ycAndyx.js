@@ -7,10 +7,6 @@ function ycAndyx(){
 	var name=url.split("&")[1];
 	$("#titleStats").text(name)
 	realShows(equip_no, name)
-//		$("#titleStats").text('测试2');
-//		realShows(2, "测试2");
-//		$("#ycAndyx .title").text('界面控制');
-//		realShows(1005, "界面控制");
 	$(".ios .ptr-preloader").css({zIndex:"99"})
 	$(".ios .ptr-preloader .preloader").css({top:"66px"})
 	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})

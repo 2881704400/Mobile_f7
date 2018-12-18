@@ -1,21 +1,36 @@
-﻿function equipLinkage() {
+﻿var toastCenterLinkage;
+function equipLinkage() {
     switchToolbar("configTool");
     $(".subnavbarTabel>a").unbind();
     $(".subnavbarTabel>a").bind("click", function() {
         $(this).addClass("selectScheduleMenu").siblings().removeClass("selectScheduleMenu");
         $($(this).attr("href")).removeClass("displayNone").siblings().addClass("displayNone");
         $($(this).attr("href") + "_nav").removeClass("displayNone").siblings().addClass("displayNone");
+        if($(this).attr("href") == "#equipLinkage_set")
+            {
+                setTimeout(function(){initAddList();},1000);
+                myApp.dialog.progress();
+            }
+        else
+            {
+                myApp.dialog.progress();
+                setTimeout(function(){initSceneList();},1500);
+            }
     });
     // 初始化设备
     myApp.dialog.progress();
     initAddList();//联动设置
-    initSceneList(); //场景编辑
+    toastCenterLinkage = myApp.toast.create({
+      text: "操作失败",
+      position: 'center',
+      closeTimeout: 2000,
+     });
 }
 //初始化列表
 var linkage_init, setparm_init;
 function initTableList() {equipLinkPublicAjax("", "/api/GWServiceWebAPI/getLinkageList", 3);}
 var listAdd = [],linkageEquips = [];
-function initAddList() {equipLinkPublicAjax("", "/api/GWServiceWebAPI/getEquipList", 1);}
+function initAddList() {$("#equipLinkage_set tbody").html("");equipLinkPublicAjax("", "/api/GWServiceWebAPI/getEquipList", 1);}
 //公共请求
 var publicFirstData;
 function equipLinkPublicAjax(jsonString, url, index) {
@@ -28,7 +43,7 @@ function equipLinkPublicAjax(jsonString, url, index) {
     $.fn.axpost(jsonData);
     function _success(data) {
         let arrayLike = data.HttpStatus;
-        if (arrayLike == 200) {
+        if (arrayLike == 200 && data.HttpData.data) {
             switch (index) {
                 case 1:
                     publicFirstData = data.HttpData.data;
@@ -49,9 +64,6 @@ function equipLinkPublicAjax(jsonString, url, index) {
                     break;
                 case 5:
                     ycpData_table_5 = data.HttpData;
-                    equipLinkPublicAjax({
-                        "TableName": tableNameNoYxp
-                    }, "/api/GWServiceWebAPI/get_AdministratorData", 6);
                     break;
                 case 6:
                     yxpData_table_6 = data.HttpData;
@@ -80,6 +92,9 @@ function equipLinkPublicAjax(jsonString, url, index) {
                 case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
                 case 14: $("#equipLinkage_set tbody").html("");initTableList();break;
             }
+        }
+        else{
+            toastCenterLinkage.open();
         }
     }
     function _error(e) {}
@@ -155,33 +170,68 @@ function equipLinkList() {
     let rt = linkage_init,
         parmRt = setparm_init;
     if (rt.code === 200 && parmRt.code === 200) {
-        var data = rt.data,
-            parmData = parmRt.data
-        var ycpData_table = 'ycp',
-            yxpData_table = 'yxp';
-        data.forEach(function(item, index) {
-            if (item.iycyx_type === "c" || item.iycyx_type === "C") {
-                ycpData_table == 'ycp' ? ycpData_table += (' where (equip_no =' + item.iequip_no + ' and yc_no =' + item.iycyx_no + ')') : ycpData_table += (' or (equip_no =' + item.iequip_no + ' and yc_no =' + item.iycyx_no + ')');
+        var data = rt.data,parmData = parmRt.data
+        var ycpData_table = 'ycp',yxpData_table = 'yxp';
+        var ycpData_table_type = 'ycp',yxpData_table_type = 'yxp';
+        var equip_ycp_nos="";
+        var yc_ycp_nos="";
+        var equip_yxp_nos="";
+        var yc_yxp_nos="";
+        data.forEach(function(item,index){
+            if (item.iycyx_type === "c" || item.iycyx_type === "C"){
+              ycpData_table == 'ycp'?ycpData_table += (' where (equip_no ='+ item.iequip_no+' and yc_no ='+ item.iycyx_no+')'):ycpData_table += (' or (equip_no ='+ item.iequip_no+' and yc_no ='+ item.iycyx_no+')');
+                                    equip_ycp_nos+=item.iequip_no+",";
+                                    yc_ycp_nos+=item.iequip_no+",";
             } else if (item.iycyx_type === "x" || item.iycyx_type === "X") {
-                yxpData_table == 'yxp' ? yxpData_table += (' where (equip_no =' + item.iequip_no + ' and yx_no =' + item.iycyx_no + ')') : yxpData_table += (' or (equip_no =' + item.iequip_no + ' and yx_no =' + item.iycyx_no + ')');
+
+              yxpData_table == 'yxp'?yxpData_table += (' where (equip_no ='+ item.iequip_no+' and yx_no ='+ item.iycyx_no+')'):yxpData_table += (' or (equip_no ='+ item.iequip_no+' and yx_no ='+ item.iycyx_no+')');
+              equip_yxp_nos+=item.iequip_no+",";
+                                    yc_yxp_nos+=item.iequip_no+",";
             }
         });
-        if (ycpData_table != "ycp" && yxpData_table != "yxp") {
-            tableNameNoYcp = ycpData_table, tableNameNoYxp = yxpData_table;
-            equipLinkPublicAjax({
-                "TableName": ycpData_table
-            }, "/api/GWServiceWebAPI/get_AdministratorData", 5);
-        } else if (ycpData_table != "ycp") {
-            equipLinkPublicAjax({
-                "TableName": ycpData_table
-            }, "/api/GWServiceWebAPI/get_AdministratorData", 7);
-        } else if (yxpData_table != "yxp") {
-            equipLinkPublicAjax({
-                "TableName": yxpData_table
-            }, "/api/GWServiceWebAPI/get_AdministratorData", 8);
-        } else { 
-            publicFun(null, null);
+        if(equip_ycp_nos.length>0){
+        equip_ycp_nos=equip_ycp_nos.substring(0,equip_ycp_nos.length-1);
+        yc_ycp_nos=yc_ycp_nos.substring(0,yc_ycp_nos.length-1);
         }
+        if(equip_yxp_nos.length>0){
+        equip_yxp_nos=equip_yxp_nos.substring(0,equip_yxp_nos.length-1);
+        yc_yxp_nos=yc_yxp_nos.substring(0,yc_yxp_nos.length-1);
+        }
+        if(ycpData_table != "ycp" && yxpData_table != "yxp")
+        {
+         $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
+         data:{"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos},
+        async:false
+         }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
+        data:{"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos},
+        async:false
+         })).done(function(n,l){
+             if(n.HttpData.code == 200 && n.HttpData.code == 200)
+             {
+                ycpData_table_5 = n.HttpData;
+                yxpData_table_6 = l.HttpData;
+                notEqualToYCPYXP();
+             }
+             else
+             {
+
+             }
+         }).fail(function(e){
+
+         });
+        }
+        else if(ycpData_table != "ycp")
+        {
+            equipLinkPublicAjax({"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 7);              
+        }  
+        else if(yxpData_table != "yxp")
+        {
+             equipLinkPublicAjax({"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 8);              
+        }                             
+        else
+        {
+           publicFun(null,null);
+        } 
     }
 }
 // 不等于ycp yxp
@@ -356,21 +406,21 @@ var html = '<div class="popup popup-aboutuser">'+
        '<div class="popupBtb row">'+
         '<a class="link popup-close col-33 button" href="#">退出</a>'+
         '<a class="link popup-close popupOpenBtn col-33 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+ID+'>确认</a>'+
-        '<a class="link popup-close col-33 button" href="#" onclick="deleteLinkage(this)" dataID='+ID+'>删除</a>'+
+        '<a class="link col-33 button" href="#" onclick="deleteLinkage(this)" dataID='+ID+'>删除</a>'+
       '</div>'+
     '</div>';
     link_popupAlert(html);
     link_listInit_equip("equipTiggerName",listAdd.map(item => {return item.label;})); //触发设备
     link_listInit_equip("equipTigger_Link",linkageEquips.map(item => {return item.label;})); //联动设备
-
-   link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === $("#equipTiggerName").val()) {return equip;}})[0].value;
+   try{link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === $("#equipTiggerName").val()) {return equip;}})[0].value;}
+   catch(e){link_listInit_no ="";}
    link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
-   equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item;})[0].value}, "/api/real/get_setparm", 11);
+   equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value}, "/api/real/get_setparm", 11);
 
 }
 //确认
 function updateEquipLink(dt){
-   alert($("#equipTiggerName").val());
+   // alert($("#equipTiggerName").val());
 }
 //列表联动
 function writeContent(){
@@ -423,8 +473,9 @@ function loadLinkageEquips(data) {
     try{link_listInit_com.destroy();}catch(e){}
     try{Init_com_fun("equipTiggerCom",data.map(item=>{return item.set_nm}));}catch(e){}
 }
-// 插入或者更新记录
-function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
+// 插入或者更新记录 
+function addLinkage(dt,index) { //index = 1 更新，index = 2 插入  
+      
       let equipLink_cType = getObject(equipTiggerType,"equipTiggerType",2);
       let equipLink_spot = getObject(equipTiggerType,"equipTiggerType",1);
       let equipLink_linkEquipNo = getObject(linkageEquips,"equipTigger_Link",2);
@@ -433,17 +484,17 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
       try{
         equipLink_cNo = equipLink_spot[0].children.filter((item,index) =>{if(item.label == $(".equipTiggerSpot").val()) return item;})[0].value;
       }catch(e){}
-      
+      if(!link_listInit_no) {toastCenterLinkage.open();return false;}
       let reqData = {
-        id: $(dt).attr("dataID"),
+        id: $(dt).attr("dataID") || 1,
         equipNo: link_listInit_no,
-        cType: equipLink_cType[0].value,
+        cType: equipLink_cType.length>0?equipLink_cType[0].value:"",
         cNo: equipLink_cNo?equipLink_cNo:0,
         delay: $(".equipTiggerTime").val(),
-        linkEquipNo: equipLink_linkEquipNo[0].value,
-        linkNo: equipLink_linkNo[0].set_no,
+        linkEquipNo: equipLink_linkEquipNo.length>0?equipLink_linkEquipNo[0].value:"",
+        linkNo: equipLink_linkNo.length>0?equipLink_linkNo[0].set_no:"",
         optCode: '""',
-        remarks: $(".equipTiggerInfo").val()
+        remarks: $(".equipTiggerInfo").val() || ""
       } 
       if(index == 1) 
       {
@@ -453,16 +504,19 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
       {
          equipLinkPublicAjax(reqData, "/api/GWServiceWebAPI/addLinkage", 13);
       }
-    }
+
+}
 //删除
 function deleteLinkage(dt) {
-    equipLinkPublicAjax({
-            id: $(dt).attr("dataID")
-          }, "/api/GWServiceWebAPI/deleteLinkage", 14);
-    }
+     myApp.dialog.confirm("是否删除该项","提示",function(){
+       myApp.popup.close();
+       equipLinkPublicAjax({id: $(dt).attr("dataID")}, "/api/GWServiceWebAPI/deleteLinkage", 14);
+   });
+}
 //动态创建弹窗
+var popupLinkage;
 function link_popupAlert(html){
-  var popup = myApp.popup.create({
+  popupLinkage = myApp.popup.create({
   content: html,
   on: {
     opened: function (e) {
@@ -534,8 +588,6 @@ function getMaxID(){
 }
 //获取存在条件对象
 function getObject(arrayObject,className,index){
-    if(index == 3)
-    console.log(arrayObject);
     if(index == 1)
       return arrayObject.filter((item,index) => {if(item.children.length>0 && item.label == $("."+className).val()) return item;});
     else if(index == 2)
@@ -557,10 +609,11 @@ function initSceneList() {
         })).done(function(n,l){
             let rt = n.HttpData,equipRt = l.HttpData;
             if (n.HttpData.code ==200 && l.HttpData.code ==200) {
+                myApp.dialog.close();
                 setList = rt.data, equipList = equipRt.data; 
                 //可控设备
                 controlEquipList = setList.filter(item => {
-                  return item.set_type != "J" 
+                  return item.set_type
                 }).map(item => {return item});
                 //过滤出场景
                 sceneData = setList.filter(item => {
@@ -592,7 +645,6 @@ function initSceneList() {
                   '</div>';                 
                   }
               }
-
                 htmlHeader = '<li class="accordion-item"><a href="#" class="item-content item-link">'+
                     '<div class="item-inner">'+
                       '<div class="item-title">'+item.set_nm+'</div>'+
@@ -619,14 +671,13 @@ function initSceneList() {
                   '</div>'+
                 '</li>';
                 html = htmlHeader+htmlContent+htmlFooter;
-               // myApp.dialog.close();
                 $("#equipLinkage_edit>ul").append(html);
                 return item;
                 })
-
          }
         }).fail(function(e){
-    });
+             myApp.dialog.close();
+        });
 }
 
 //添加场景
@@ -687,13 +738,15 @@ function submitScene(dt,equipNo,setNo) {
 }
 //删除场景
 function deleteScene(equipNo,setNo) {
-  let reqData = {equipNo: equipNo, setNo: setNo}
-  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/deleteScene",{
-            data:reqData,
-            async:false
-        })).done(function(n){
-     initSceneList();
-    }).fail(function(e){});
+    myApp.dialog.confirm("是否删除当前场景","提示",function(){
+      let reqData = {equipNo: equipNo, setNo: setNo}
+      $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/deleteScene",{
+                data:reqData,
+                async:false
+            })).done(function(n){
+         initSceneList();
+        }).fail(function(e){});
+    });
 }
 //新增场景控制
 function sceneControl(dt,txtTitle){
@@ -765,7 +818,6 @@ function sceneAlert(dt,txtTitle,positionargs){
 }
 //删除当前控制项
 function currentControl(dt){
-
     myApp.dialog.confirm("是否删除当前控制项","提示",function(){
          $(dt).parent().parent().remove();
     });

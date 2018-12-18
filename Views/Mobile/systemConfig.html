@@ -1,6 +1,4 @@
-﻿
-
-    <div data-page="systemConfig" class="page" id="systemConfig">
+﻿  <div data-page="systemConfig" class="page" id="systemConfig">
         <div class="navbar">
             <div class="navbar-inner">
                 <!-- 标题 -->                  
@@ -17,7 +15,7 @@
         </div>        
         <!--"pull-to-refresh-content"类表示下拉刷新 -->
         <div  class="page-content" >
-         	<form class="searchbar">
+<!--          	<form class="searchbar">
 			  <div class="searchbar-inner">
 			    <div class="searchbar-input-wrap">
 			      <input type="search" placeholder="关键字">
@@ -26,25 +24,25 @@
 			    </div>
 			    <span class="searchbar-disable-button">取消</span>
 			  </div>
-			</form>
+			</form> -->
             <div class="row no-gap equipCon" >
             	<div class="col-25" >
             		<!--设备列表-->
-	            	<ul class="equipList">
+	            	<ul class="equipList equipListConfig">
 	            	</ul>
             	</div>
             	<div class="col-75">
-					<p class="segmented tabList" >
-            			<a href="#tab-1" class="tab-link  button" onclick="getEquip()">设备</a>
-      					<a href="#tab-2" class="tab-link  button"  onclick="getYc()">遥测</a>
-     					<a href="#tab-3" class="tab-link button"  onclick="getYx()">遥信</a>
-     					<a href="#tab-4" class="tab-link button"  onclick="getSet()">设置</a>
+					<p class="segmented tabList tabListConfig" >
+            			<a href="#tab-1" class="tab-link button tab-link-active" >设备</a>
+      					<a href="#tab-2" class="tab-link button"  >遥测</a>
+     					<a href="#tab-3" class="tab-link button"  >遥信</a>
+     					<a href="#tab-4" class="tab-link button"  >设置</a>
 					</p>
             		<!--<div class="tabs-animated-wrap eventWrap">-->
 					    <div class="tabs eventWrap">
 					    	<div class="searchbar-backdrop"></div>
-					      <div id="tab-1" class="tab">
-					      	<span class="progressbar-infinite"></span>
+					      <div id="tab-1" class="tab tab-active">
+					      	<!-- <span class="progressbar-infinite"></span> -->
 					       	<div class="list accordion-list" style="margin: 0;">
 							  <ul id="equipTable" >
 							    
@@ -53,7 +51,7 @@
 							</div>
 					      </div>
 					      <div id="tab-2" class="tab">
-					      	<span class="progressbar-infinite"></span>
+					      	<!-- <span class="progressbar-infinite"></span> -->
 					      	<div class="list accordion-list" style="margin: 0;">
 							  <ul id="ycp">
 					       		
@@ -62,7 +60,7 @@
 							</div>
 					      </div>
 					      <div id="tab-3" class="tab">
-					      	<span class="progressbar-infinite"></span>
+					      	<!-- <span class="progressbar-infinite"></span> -->
 					      	<div class="list accordion-list" style="margin: 0;">
 							  <ul id="yxp">
 					        	
@@ -71,7 +69,7 @@
 					        </div>
 					      </div>
 					      <div id="tab-4" class="tab">
-					      	<span class="progressbar-infinite"></span>
+					      	<!-- <span class="progressbar-infinite"></span> -->
 					      	<div class="list accordion-list" style="margin: 0;">
 							  <ul id="set">
 					        	

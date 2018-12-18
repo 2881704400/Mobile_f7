@@ -34,18 +34,17 @@
 }
 #equips{
     .searchbar{
-         z-index: 99;
-            
-            background: #fff;
-            &:after{
-                height: 0;
-            }
-            .search{
-                background: #f6f6f6;
-            }
-            .searchbar-disable-button{
-                color: #FD971F;
-            }
+        z-index: 99;
+        background: #fff;
+        &:after{
+            height: 0;
+        }
+        .search{
+            background: #f6f6f6;
+        }
+        .searchbar-disable-button{
+            color: #FD971F;
+        }
     }
     .ios{
         .searchbar{
@@ -56,7 +55,7 @@
     }
     
     .equip-list{
-        background: #fff;
+        margin-bottom: 30px;background: #fff;
         li{
             i{
                 color: #7D828F;
@@ -116,9 +115,7 @@
     #tabsWrap{
         height: calc(100% - 50px);
         .tab{
-    
-            overflow:auto;
-
+            padding: 1rem;overflow:auto;
             .oneLine{
                 padding: 1.5em 0;
                 background: #fff;
@@ -153,10 +150,9 @@
             }
             &#set{
                 li{
-                    width: 100%;
-                    background: #fff;
+                    width: 100%;font-size: #{$btnFontSize};color: #{$btnFontColor};background: #{$btnBackground};border-radius: #{$unclickBorderRadius};    margin-bottom: 10px;
                     P{
-                        margin: 1.5em 0;
+                        // margin: 1.5em 0;
                     }
                 }
             }
@@ -165,12 +161,12 @@
     }
 }
 #eventQuery,#systemConfig{
+    .eventQueryContent{height: 100%;overflow: hidden;padding: 1rem;}
     .condition{
         overflow: hidden;
         border-bottom: 1px solid #eee;
         height: 40px;
         .hideShow{
-            border-top: 1px solid #eee;
             text-align: center;
             color: #FD971F;
             height: 40px;
@@ -212,7 +208,8 @@
                height: calc(100% - 36px);
                 overflow-y: auto;
             }
-            
+            .item-title{font-size: 14px;}
+            #tab-1,#tab-2,#tab-3,#tab-4,#equipEventContent ul,#setEventContent ul,#stsEventContent ul{margin-bottom: 100px;}
         }
     }
     .equipList{
@@ -221,21 +218,21 @@
         border-right: 1px solid #eee;
         box-sizing: border-box;
         li{
-            padding: 10px 5px;
-            background: #fff;
-            word-break: break-all;border-bottom: 1px solid #{$asideBorderColor};
+            background: #fff;overflow: hidden;text-overflow: ellipsis;padding: 0px 5px;
+            word-break: break-all;border-bottom: 1px solid #{$headerBoxShadow};
             &.check{
-                 color:#FD971F ;
+                 color:#FD971F;
             }
-            label{white-space: nowrap;&>span{vertical-align: text-bottom;margin-right: 5px;}}
+            label{font-size: 0.8rem;width: 100%;height: 100%;
+                pointer-events: none;display: inline-block;padding: 10px 5px;white-space: nowrap;&>span{vertical-align: text-bottom;margin-right: 5px;}}
         }
     }
     .tabList{
         margin: 0;
         background: #fff;
-        height:36px;
+        height:36px; 
         a{
-            height: 100%;
+            height: 100%;line-height: 36px;
         }
         .tab-link-active{
             background: #fff;
@@ -270,21 +267,15 @@
 #systemConfig{
     
     .equipCon{
-        height: 100%;
+        height: 100%;padding: 1rem;
         .col-25{
             height: 100%;
         }
         .col-75{
              height: 100%;
-//          .eventWrap{
-//             height: 100%;
-//              overflow-y: auto;
-//          }
-            
         }
     }
 }
-
 .ios .startTime{
     .toolbar{
         top: 0px;
@@ -332,7 +323,6 @@
            }
        }
     }
-    
 }
 .ios{
     #systemConfig{

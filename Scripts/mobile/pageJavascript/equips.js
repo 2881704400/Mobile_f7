@@ -30,7 +30,7 @@ function allEquipSatatus() {
             myApp.dialog.close();
             AllEquipStat = resultStr.split(';');
 			treeConfList();
-//	获取设备的树状图
+//	获取设备的树状图 
         }
     }
 }

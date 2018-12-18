@@ -4,11 +4,11 @@ mixin：sass宏mixin
 @import '_mixin.scss';
 
 //全局字体颜色
-$allFontColor: white;
+$allFontColor: #666;
 
 // header头部属性
 $headerFontSize: 1.4rem;
-$headerBgc: #000;
+$headerBgc: #fff;
 $headerBoxShadow: #eee;
 
 // 全局背景色,字体颜色,内容背景颜色
@@ -18,8 +18,8 @@ $situationContainerBgc: #fff;
 $situationBoxShadow: #eee;
 
 //工具栏背景色
-$toolbarBgc: #000;
-$toolbarFontColor: white;
+$toolbarBgc: #fff;
+$toolbarFontColor: #414141;
 $selectedColor: #FD971F;
 $toolbarBoxShadow: #eee;
 
@@ -59,7 +59,7 @@ $tableHeaderBgc: #ffffff;
 $tableTbodyFontSize: 0.8rem;
 $tableTbodyFontColor: #999;
 $tableTbodySingleLineColor: #fff;
-$tableBorderBottom: #eee;
+$tableBorderBottom: #e7e7e7;
 
 //input样式
 $inputBorderColor: #eee; 
@@ -70,6 +70,3 @@ $tabFontColor: white;
 
 // popup弹框
 $popupBackground: rgba(255,255,255,0.5);
-
-
-

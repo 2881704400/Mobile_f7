@@ -20,7 +20,7 @@ function loadMessage(chatList) {
 			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
 		},
 		data: {
-			TableName: "Administrator"
+			"getDataTable":0,
 		},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {

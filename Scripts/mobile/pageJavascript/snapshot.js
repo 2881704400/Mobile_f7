@@ -3,6 +3,7 @@ function snapshot() {
     switchToolbar("snapshotTool");
     var snapashot_ptr = $$('.snapashot-page-content');
     snapashot_ptr.on("ptr:refresh", refreshpg);
+    myApp.dialog.progress();
     initData();
 }
 //获取事件的报警配置
@@ -33,7 +34,6 @@ function initData() {
                 }
                 event_Level_list = event_Level_list.substring(0, event_Level_list.length - 1);
                 getRealTimeEventCount();
-                //timeInterval = setInterval(getRealTimeEventCount, 5000);
             }
         }
     });
@@ -64,6 +64,7 @@ function getRealTimeEventCount() {
                         strData += '<li>' + '<a href="/snapShotDetail/?' + btnInfoNames[i] + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont icon-web-cuowu"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + btnInfoNames[i] + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
                     }
                     $("#snapshotMenuListId").html(strData);
+                    myApp.dialog.close();
                 }
             }
         });

@@ -4,7 +4,7 @@ function onHomePage() {
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-    // myApp.router.navigate("/equipLinkage/")
+    // myApp.router.navigate("/schedule/")
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");
@@ -14,8 +14,14 @@ function onHomePage() {
     // VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm); //场景
     // commonlyUsedFun("pptPattern_container ol", "50", pptPattern); //PPT
     // commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
-}
+    // 配置
+     getJurisdictionData("home_fsk_btn");
 
+
+   
+
+
+}
 //授权名称
 function authorizationName() {
     var ajaxVar = $.ajax({
@@ -87,7 +93,9 @@ function commonlyUsedFun(className, classListName, jsonString) {
     $("." + className).append(htmlTrailerChild);
 }
 //实时快照 
-var event_Level_list_home, btnInfoNames_home = [], btnInfoLevels_home = [];
+var event_Level_list_home, btnInfoNames_home = [],
+    btnInfoLevels_home = [];
+
 function snashotData() {
     $.ajax({
         type: 'post',
@@ -139,13 +147,43 @@ function snashotCount(btnInfoLevels_home) {
                 if (dt.HttpStatus == 200 && dt.HttpData.data) {
                     var resultData = dt.HttpData.data;
                     var resultDataArr = resultData.toString().split(",");
-                    for (var i = 0; i < resultDataArr.length; i++) 
-                     {
-                        $(".statisticsTable a:eq(" + i + ")").attr("href","/snapShotDetail/?"+ btnInfoNames_home[i] + '&' + btnInfoLevels_home[i]).find("p").text(resultDataArr[i]);
-                        
-                     }
+                    for (var i = 0; i < resultDataArr.length; i++) {
+                        $(".statisticsTable a:eq(" + i + ")").attr("href", "/snapShotDetail/?" + btnInfoNames_home[i] + '&' + btnInfoLevels_home[i]).find("p").text(resultDataArr[i]);
+                    }
                 }
             }
         });
     }
 }
+//配置界面
+function configPage(){
+    $.fn.home_fsk_btn(equipCommand);
+    $(".home_fsk_btn_title a:eq(0)").html(equipCommand[0].title);
+    $(".home_fsk_btn_title a:eq(1)").html(equipCommandPHM[0].title);
+    $(".home_fsk_btn_title a").unbind();
+    $(".home_fsk_btn_title a").bind("click", function() {
+    $(".home_fsk_btn ul").html("");
+    $(this).addClass("selectTab").siblings().removeClass("selectTab");
+    let dataid = $(this).attr("data-id");
+    if (dataid == 1) {
+        $.fn.home_fsk_btn(equipCommand);
+    } else {
+        $.fn.home_fsk_btn(equipCommandPHM);
+    }
+    });
+}
+$.fn.extend({
+    home_fsk_btn: function(stringJson) {
+        var html = '';
+        stringJson.forEach(function(item, index) {
+            html += `<li class="col-33"><a class="btn btn-border-o ${item.className}" set_equip="${item.equipNo}" set_no="${item.setNo}" ><p>${item.name}</p></a></li>`;
+        });
+        $(".home_fsk_btn ul").append(html);
+        $(".home_fsk_btn li a").unbind();
+        $(".home_fsk_btn li a").bind("click", function() {
+            $(this).addClass("selectBtb").parent().siblings().find("a").removeClass("selectBtb");
+            // 发送命令
+            get_no(this, "", "", "");
+        });
+    },
+});

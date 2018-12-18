@@ -160,7 +160,7 @@
             </param>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AdministratorDataAndID(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_DataByTableNameAndID(Newtonsoft.Json.Linq.JObject)">
             <summary>
             根据表名、ID查询数据
             </summary>
@@ -415,7 +415,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_HOME_MenuData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getJurisdictionData">
             -----------------------------------------------------------------------------------------------------------------------------------------------
              首页及报警排表接口
             -----------------------------------------------------------------------------------------------------------------------------------------------
