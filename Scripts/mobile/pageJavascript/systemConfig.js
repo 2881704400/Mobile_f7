@@ -1,32 +1,118 @@
 ﻿var systemToastCenter;
 function systemConfig(){
 	switchToolbar("configTool");
-	systemToastCenter = myApp.toast.create({
-      text: "没有数据",
-      position: 'center',
-      closeTimeout: 1000,
-     });
-	var searchbar = myApp.searchbar.create({
-	  el: '.searchbar',
-	  searchContainer: '.list',
-	  searchIn: 'li',
-	  
+	var calendarRange = myApp.calendar.create({
+	  inputEl: '#condition-timepiker',
+	  dateFormat: 'yyyy/mm/dd',
+	  monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+	  dayNamesShort:["日","一","二","三","四","五","六"],
+//	  weekendDays:[0,6],
+	  rangePicker: true
 	});
-     $(".tabListConfig a").unbind();
-     $(".tabListConfig a").bind("click",function(){
-         $(this).addClass("tab-link-active").siblings().removeClass("tab-link-active");
-         if(equipArrCon.length>0)
-		 {
-		 	var hrefConfig = $(".tabListConfig .tab-link-active").attr("href");
-		 	if(hrefConfig == "#tab-1"){getEquip();}
-		 	 else if(hrefConfig == "#tab-2"){getYc();}
-		 		else if(hrefConfig == "#tab-3"){getYx();}
-		 			else if(hrefConfig == "#tab-4"){getSet();}
-		 }
-     });
-    equipsCon.length = equipArrCon.length = 0;
-	getDataSet();
+//	calendarRange.open()
+//	myApp.sheet.open('.sheet-config')
+//	myApp.popup.open(".popup-config")
+//	myApp.sheet.open('.sheet-alarm')
+	var searchbar=myApp.searchbar.create({
+		el:'.searchbar',
+		searchContainer:'.eq-list',
+		searchIn:'.item-title'
+	})
+//	systemToastCenter = myApp.toast.create({
+//    text: "没有数据",
+//    position: 'center',
+//    closeTimeout: 1000,
+//   });
+//	var searchbar = myApp.searchbar.create({
+//	  el: '.searchbar',
+//	  searchContainer: '.list',
+//	  searchIn: 'li',
+//	  
+//	});
+//   $(".tabListConfig a").unbind();
+//   $(".tabListConfig a").bind("click",function(){
+//       $(this).addClass("tab-link-active").siblings().removeClass("tab-link-active");
+//       if(equipArrCon.length>0)
+//		 {
+//		 	var hrefConfig = $(".tabListConfig .tab-link-active").attr("href");
+//		 	if(hrefConfig == "#tab-1"){getEquip();}
+//		 	 else if(hrefConfig == "#tab-2"){getYc();}
+//		 		else if(hrefConfig == "#tab-3"){getYx();}
+//		 			else if(hrefConfig == "#tab-4"){getSet();}
+//		 }
+//   });
+//  equipsCon.length = equipArrCon.length = 0;
+//	getDataSet();
+	
 }
+//设置
+//	设备号,设置号,设置名称,值,设置类型,动作,操作命令,操作参数,是否记录,是否可执行
+//遥信
+//  设备号 模拟量编号 状态量名称 0-1事件 1-0事件 关联页面 处理意见0-1 处理意见1-0 0-1级别 1-0级别
+//  初始状态 属性值 操作命令 操作参数 越线滞纳时间（秒） 恢复滞纳时间（秒） 重复报警时间（分钟）
+//  声音文件 报警屏蔽 报警升级周期（分钟） 安全时段 关联视频 资产编号 预案号 是否显示报警  是否记录报警
+//  是否取反
+//遥测
+//	设备号 模拟量编号 模拟量名称 单位 属性值  下限值 上限值 最小值 最大值 操作命令
+//  操作参数 关联页面 处理意见 报警级别 声音文件 报警屏蔽 安全时段  回复下限值  回复上限值  
+//  实测最小值 实测最大值 越下限事件 越上限事件 曲线记录阈值 报警升级周期  起始安全时段 结束安全时段 
+//  越线滞纳时间（秒） 恢复滞纳时间（秒） 重复报警时间（分钟）关联界面 关联视频 资产编号 预案号  是否报警
+//  是否记录报警 是否曲线记录 是否比例变换 
+//设备
+//  设备号 场景名称 关联界面 设备属性 通讯刷新周期 故障处理意见 故障提示 故障恢复提示 报警声音文件 通讯端口
+//  设备地址 通讯参数 通讯时间参数 报警升级周期（分钟） 模板设备号 附表名称 属性 安全时段 关联视频 资产编号 
+//  预案号 是否显示报警 是否记录报警
+
+//是否曲线记录，是否显示报警，是否记录报警 ，是否比例变换，关联视频，资产编号，预案号，是否记录，是否可执行
+//var equipData=[
+//	{label:"",key:"",data:"",type:""},
+//	
+//]
+var list=[
+	{
+		
+	}
+]
+function lookOtherInfor(type){
+	myApp.popup.open(".popup-config")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var equipsCon=[],equipArrCon=[],equipData,ycpData,yxpData,setData;
 function getDataSet(){
 	$.ajax({

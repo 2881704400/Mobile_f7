@@ -1,5 +1,82 @@
 @charset "utf-8";
-@import 'public.scss';
+//@import 'public';
+//全局字体颜色
+//全局字体颜色
+$allFontColor: white;
+
+// header头部属性
+$headerFontSize: 1.4rem;
+$headerBgc: #000;
+$headerBoxShadow: #eee;
+
+// 全局背景色,字体颜色,内容背景颜色
+$situationBgc: #f6f6f6;
+$situationFontColor: #666;
+$situationContainerBgc: #fff;
+$situationBoxShadow: #eee;
+
+//工具栏背景色
+$toolbarBgc: #000;
+$toolbarFontColor: white;
+$selectedColor: #FD971F;
+$toolbarBoxShadow: #eee;
+
+//语音属性
+$voiceAllBgc: rgba(0,0,0,0);
+$voiceBgc: rgba(246,246,246,0.9);
+$voiceFontColor: rgb(102, 102, 102);
+$voiceBoxShadow: #777;
+
+// aside侧边栏属性
+$asideBgc: #272727;
+$asideBorderColor: #414141;
+
+// 统一按钮属性
+$btnFontSize: 1rem;
+$btnBackground: #2d8cf0;
+$btnFontColor: #DEF0F9;
+
+//统计栏属性
+$statsBgc: #fff;
+$statsFontColor: #333;
+$statsBorderColor: #f0f4f7;
+$selectedColor: #FD971F;
+
+
+//未点击按钮颜色
+$unclickedColor: #648EFF;
+$unclickedColor_a: #f6f6f6;
+$bzColor: #0ed1e6;
+$unclickBorderRadius: 6px;
+// 统一table样式
+$tableHeaderFontSize: 1rem;
+$tableHeaderFontColor: #666;
+$tableTitle: antiquewhite;
+$tableHeaderBgc: #ffffff;
+
+$tableTbodyFontSize: 0.8rem;
+$tableTbodyFontColor: #999;
+$tableTbodySingleLineColor: #fff;
+$tableBorderBottom: #eee;
+
+//input样式
+$inputBorderColor: #eee; 
+
+// tab切换属性
+$tabBackground: #cea16c;
+$tabFontColor: white;
+
+// popup弹框
+$popupBackground: rgba(255,255,255,0.5);
+
+$preBg:rgb(255,255,255);
+$bg:rgb(242,243,245);
+$titColor:rgb(173,173,173);
+$valueColor:rgb(69,158,241);
+$lineBg:rgb(234,234,234);
+$activeBg:rgb(62,124,251);
+
+
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content, .ios .navbar~:not(.no-navbar) .subnavbar~.page-content, .ios .page-with-subnavbar .navbar~.page-content{
         padding-top: 0 !important;
         .tabs-animated-wrap{
@@ -14,6 +91,7 @@
 }
 
 .poverCurve .popover-angle.on-bottom{
+    
     display: none;
 }
 
@@ -162,75 +240,30 @@
 }
 #eventQuery,#systemConfig{
     .eventQueryContent{height: 100%;overflow: hidden;padding: 1rem;}
-    .condition{
-        overflow: hidden;
-        border-bottom: 1px solid #eee;
-        height: 40px;
-        .hideShow{
-            text-align: center;
-            color: #FD971F;
-            height: 40px;
-            line-height: 40px;
-            margin: 0;
+    .fab{
+        a{
+           background: $activeBg; 
+           i{
+               font-size: 1.5rem;
+           }
         }
-        background: #FFF;
-        .timeWrap{
-            height: 30px;
-            line-height: 30px;
-            width: 96%;
-            margin: 20px auto;
-            .inpWrap{
-                height: 100%;
-                border: 1px solid #666;
-                input{
-                    width: 95%;
-                    height: 30px !important;
-                    padding-left: 5%;
-                    border: none;
-                }
-            }
-        }
-        .sureBtn{
-            background:#FD971F ;
-            color: #fff;
-            width: 70%;
-            margin: 10px auto;
-        }
+        
     }
     .equipCon{
         height:calc(100% - 40px) ;
-        .col-25{
-            height: 100%;
+        .eventWrap{
+            height: calc(100% - 36px);
+            overflow-y: auto;
         }
-        .col-75{
-             height: 100%;
-            .eventWrap{
-               height: calc(100% - 36px);
-                overflow-y: auto;
-            }
-            .item-title{font-size: 14px;}
-            #tab-1,#tab-2,#tab-3,#tab-4,#equipEventContent ul,#setEventContent ul,#stsEventContent ul{margin-bottom: 100px;}
-        }
-    }
-    .equipList{
-        overflow: auto;
-        height: 100%;
-        border-right: 1px solid #eee;
-        box-sizing: border-box;
-        li{
-            background: #fff;overflow: hidden;text-overflow: ellipsis;padding: 0px 5px;
-            word-break: break-all;border-bottom: 1px solid #{$headerBoxShadow};
-            &.check{
-                 color:#FD971F;
-            }
-            label{font-size: 0.8rem;width: 100%;height: 100%;
-                pointer-events: none;display: inline-block;padding: 10px 5px;white-space: nowrap;&>span{vertical-align: text-bottom;margin-right: 5px;}}
-        }
+        .item-title{font-size: 14px;}
+//      #tab-1,#tab-2,#tab-3,#tab-4,#equipEventContent ul,#setEventContent ul,#stsEventContent ul{margin-bottom: 100px;}
+        
     }
     .tabList{
         margin: 0;
         background: #fff;
         height:36px; 
+        width: 100%;
         a{
             height: 100%;line-height: 36px;
         }
@@ -252,6 +285,11 @@
         }
     }
     .eventWrap{
+        width: 100%;
+        .tab{
+            border: 1px solid red;
+            width: 100%;
+        }
         li{
             background: #fff;
             .eventList{
@@ -264,80 +302,110 @@
         }
     }
 }
-#systemConfig{
+.sheet-alarm{
+    .block{
+        overflow: auto;
+        margin: 0 !important; 
+        .list{
+            ul:before{
+                height: 0;
+            }
+        }
+    }
     
-    .equipCon{
-        height: 100%;padding: 1rem;
-        .col-25{
+}
+.sheet-condition{
+    height:320px;
+    .toolbar-inner{
+        background: $preBg;
+        border-bottom: 1px solid $lineBg;
+    }
+    .sheet-modal-inner{
+        background: $preBg;
+        .block{
+            margin: 10px 0 0 0;
             height: 100%;
+           .list{
+               margin: 10px 0 0 0;
+               &.eq-list{
+                   height: calc(100% - 135px);
+                   overflow: auto;
+               }
+           }
         }
-        .col-75{
-             height: 100%;
+    }
+    
+    &.sheet-config{
+        .sheet-modal-inner{
+           
+            .block{
+               
+               .list{
+                   
+                   &.eq-list{
+                       height: calc(100% - 55px);
+                      
+                   }
+               }
+            }
         }
     }
 }
-.ios .startTime{
-    .toolbar{
-        top: 0px;
-    }
-    .calendar-selected-date{
-        color: #fff;
+
+.ios{
+    .sheet-condition{
+       .toolbar:before{
+           background-color:$lineBg !important;
+           height: 2px;
+           
+       }
+       a{
+            color: $valueColor;
+        }
+        .eq-list {
+            ul:before{
+                height: 0;
+            }
+            i.icon-checkbox{
+                border-radius: 0;
+            }
+        }
+
     }
 }
-.startTime{
-    .calendar-header{
-        background: #FD971F;
-    }
-    .toolbar{
-        top: 50px;
-    }
-    .calendar-footer{
-        a{
-            color:#FD971F ;
+.popup-config{
+    .page-content{
+        
+        .list{
+            margin: 0 0;
+            ul{
+                overflow: hidden;
+                .item-title{
+                    color:$titColor ;
+                }
+                .item-after{
+                    color: $valueColor;
+                }
+                .btn{
+                    margin: 35px 0;
+                    div{
+                        width: 60%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+            
         }
-    }
-   .calendar-day.calendar-day-today span{
-       color:#FD971F ;
-   }
-    .calendar-day.calendar-day-selected span{
-        background: #FD971F;
-        color: #fff;
+       
     }
 }
 .md{
-    #systemConfig{
-        .searchbar{
-            margin:0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            box-shadow: none;
+    .sheet-condition{
+        .toolbar{
+            transform:none;
         }
-       .progressbar-infinite{
-           background: #fff;
-           display: none;
-           &:after{
-               background: #FD971F;
-           }
-           &:before{
-                background: #FD971F;
-           }
-       }
-    }
-}
-.ios{
-    #systemConfig{
-        .searchbar{
-            background: #fff;
+        a{
+            color: $valueColor;
         }
-       .progressbar-infinite{
-           background: #fff;
-           display: none;
-           &:after{
-               background: #FD971F;
-           }
-           &:before{
-                background: #FD971F;
-           }
-       }
     }
 }

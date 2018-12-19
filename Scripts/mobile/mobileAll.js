@@ -91,6 +91,7 @@ var service = "/GWService.asmx",
 initLoads();
 
 function initLoads() {
+	
     loadNameMobile();
     setTimeout(function() {
         $("#app").css("visibility", "visible");

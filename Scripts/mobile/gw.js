@@ -21,7 +21,56 @@ var AlarmCenterContext = {
      //调用设置命令
     setCommandValue: function (equipno,set_no,value) {
         return this.post("/api/DataCenter/SetParmControl",{data:{equipno: equipno,set_no: set_no,value:value}});
-    },        
+    }, 
+    /*获取设备列表*/
+    getEquipList:function (){
+//  	return this.post("/api/")
+    },
+    /*获取设备事件*/
+    getEquipEvent:function(equipno,start,end){
+    	
+    },
+    /*获取设置事件*/
+    getSetEvent:function(equipno,start,end){
+    	
+    },
+    /*获取系统事件*/
+    getSysEvent:function(start,end){
+    	
+    },
+    /*获取系统配置*/
+    getSysSet:function(tabType,equipno){
+   	
+    },
+    /*获取资产列表*/
+    getAccess:function(){
+    	
+    },
+    /*获取预案号列表*/
+    getPlan:function(){
+    	
+    },
+    /*获取关联视频列表*/
+    getLinkVideo:function(){
+    	
+    },
+    /*设备配置*/
+    setEquipConfig:function(data){
+    	
+    },
+    /*遥测配置*/
+    setYcConfig:function(data){
+    	
+    },
+    /*遥信配置*/
+    setYxConfig:function(data){
+    	
+    },
+ 	/*设置配置*/
+ 	setSetConfig:function(data){
+    	
+    },
+    
     get: function (url, data, headers) {
         var i = $.Deferred();
         $.ajax({

@@ -1,77 +1,93 @@
 ﻿var toastCenter;
+
 function eventQuery() {
     switchToolbar("configTool");
-    toastCenter = myApp.toast.create({
-      text: "没有数据",
-      position: 'center',
-      closeTimeout: 2000,
-     });
-    var startTimeModal = myApp.calendar.create({
-            inputEl: '#timePicker',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy-mm-dd ',
-            cssClass: "startTime",
-            headerPlaceholder: "开始日期",
-            toolbarCloseText: "确定",
-            value: [new Date()],
-        }),
-        endTimeModal = myApp.calendar.create({
-            inputEl: '#timePicker2',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy-mm-dd ',
-            cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
-            value: [new Date()],
-        })
-    $(".sureBtn,.hideShow").unbind();
-    $(".hideShow").click(function() {
-        $(".condition").css({
-            height: "auto"
-        })
-        $(this).hide();
-    })
-    $(".sureBtn").click(function() {
-        if ($("#timePicker").val() == "") {
-            myApp.dialog.alert('请选择开始日期', "温馨提示");
-            return;
-        } else if ($("#timePicker2").val() == "") {
-            myApp.dialog.alert('请选择结束日期', "温馨提示");
-            return;
-        } else {
-            $(".condition").animate({
-                height: "40px"
-            }, 300, function() {
-                $(".hideShow").show().text($("#timePicker").val() + "至  " + $("#timePicker2").val())
-            })
-            // getSetEvent();
-        }
-    })
-    $(".sureBtn").click();
-
-     $(".tabListQuery a").unbind();
-     $(".tabListQuery a").bind("click",function(){
-         $(this).addClass("tab-link-active").siblings().removeClass("tab-link-active");
-	     var data = {
-	        equip_no_list: equipArr.toString(),
-	        times: $("#timePicker").val() + "00:00:00," + $("#timePicker2").val() + "23:59:59"
-	     }
-	     if(equipArr.length>0)
-		 {
-			var hrefConfig = $(".tabListQuery .tab-link-active").attr("href");
-			if(hrefConfig == "#equipEventContent"){QueryEquipEvt(data);}
-			else if(hrefConfig == "#setEventContent"){QuerySetupsEvt(data);}
-			else if(hrefConfig == "#stsEventContent"){ getSetEvent();}
-		 }
-     });
-    equipsArray.length = equipArr.length = 0;
-    getData();
+    var calendarRange = myApp.calendar.create({
+	  inputEl: '#condition-timepiker',
+	  dateFormat: 'yyyy/mm/dd',
+	  monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+	  dayNamesShort:["日","一","二","三","四","五","六"],
+//	  weekendDays:[0,6],
+	  rangePicker: true
+	});
+//	myApp.sheet.open('.sheet-eventQu');
+	var searchbar=myApp.searchbar.create({
+		el:'.eventQu',
+		searchContainer:'.eq-list',
+		searchIn:'.item-title'
+	})
+//  toastCenter = myApp.toast.create({
+//    text: "没有数据",
+//    position: 'center',
+//    closeTimeout: 2000,
+//   });
+    
+//  var startTimeModal = myApp.calendar.create({
+//          inputEl: '#timePicker',
+//          openIn: 'customModal',
+//          header: false,
+//          footer: true,
+//          monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+//          dateFormat: 'yyyy-mm-dd ',
+//          cssClass: "startTime",
+//          headerPlaceholder: "开始日期",
+//          toolbarCloseText: "确定",
+//          value: [new Date()],
+//      }),
+//      endTimeModal = myApp.calendar.create({
+//          inputEl: '#timePicker2',
+//          openIn: 'customModal',
+//          header: false,
+//          footer: true,
+//          monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+//          dateFormat: 'yyyy-mm-dd ',
+//          cssClass: "startTime",
+//          headerPlaceholder: "结束日期",
+//          toolbarCloseText: "确定",
+//          value: [new Date()],
+//      })
+//  $(".sureBtn,.hideShow").unbind();
+//  $(".hideShow").click(function() {
+//      $(".condition").css({
+//          height: "auto"
+//      })
+//      $(this).hide();
+//  })
+//  $(".sureBtn").click(function() {
+//      if ($("#timePicker").val() == "") {
+//          myApp.dialog.alert('请选择开始日期', "温馨提示");
+//          return;
+//      } else if ($("#timePicker2").val() == "") {
+//          myApp.dialog.alert('请选择结束日期', "温馨提示");
+//          return;
+//      } else {
+//          $(".condition").animate({
+//              height: "40px"
+//          }, 300, function() {
+//              $(".hideShow").show().text($("#timePicker").val() + "至  " + $("#timePicker2").val())
+//          })
+//          // getSetEvent();
+//      }
+//  })
+//  $(".sureBtn").click();
+//
+//   $(".tabListQuery a").unbind();
+//   $(".tabListQuery a").bind("click",function(){
+//       $(this).addClass("tab-link-active").siblings().removeClass("tab-link-active");
+//	     var data = {
+//	        equip_no_list: equipArr.toString(),
+//	        times: $("#timePicker").val() + "00:00:00," + $("#timePicker2").val() + "23:59:59"
+//	     }
+//	     if(equipArr.length>0)
+//		 {
+//			var hrefConfig = $(".tabListQuery .tab-link-active").attr("href");
+//			if(hrefConfig == "#equipEventContent"){QueryEquipEvt(data);}
+//			else if(hrefConfig == "#setEventContent"){QuerySetupsEvt(data);}
+//			else if(hrefConfig == "#stsEventContent"){ getSetEvent();}
+//		 }
+//   });
+//  equipsArray.length = equipArr.length = 0;
+//  getData();
 }
 var equipsArray = [],
     equipArr = [];

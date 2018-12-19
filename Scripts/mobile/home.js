@@ -1,10 +1,12 @@
 ﻿//首页事件
 function onHomePage() {
     //实时快照
+    
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-    // myApp.router.navigate("/schedule/")
+       myApp.router.navigate("/eventQuery/")
+//	 myApp.router.navigate("/systemConfig/")
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");
@@ -15,7 +17,7 @@ function onHomePage() {
     // commonlyUsedFun("pptPattern_container ol", "50", pptPattern); //PPT
     // commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
     // 配置
-     getJurisdictionData("home_fsk_btn");
+//   getJurisdictionData("home_fsk_btn");
 
 
    

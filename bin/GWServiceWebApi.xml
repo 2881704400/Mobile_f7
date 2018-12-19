@@ -415,7 +415,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getJurisdictionData">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_HOME_MenuData(Newtonsoft.Json.Linq.JObject)">
             -----------------------------------------------------------------------------------------------------------------------------------------------
              首页及报警排表接口
             -----------------------------------------------------------------------------------------------------------------------------------------------
