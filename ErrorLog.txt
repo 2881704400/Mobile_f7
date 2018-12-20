@@ -62,3 +62,15 @@ System.ArgumentException: 已添加了具有相同键的项。
    在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
 -------------------------------------
 
+----------2018/12/20 19:31:25----------
+System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
+----------2018/12/20 19:31:35----------
+System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
