@@ -20,43 +20,60 @@ function ycAndyx(){
 }
 
 function refresh(txt){
+	$(txt).scrollTop(1);
 	$("#titleStats").attr("noTab",txt);
-//	searCon=txt;
+	var myScrollTop=$(txt).scrollTop();
 	$(txt).addClass("searchbar-found").siblings().removeClass("searchbar-found")
 	if(txt=="#ycp"){
-		$("#ycp").bind("scroll",function(){
-			var hei=$(this).scrollTop();
-			allowScroll(hei)
-		});
+		if(myScrollTop>0){
+			$("#ycp").bind("scroll",function(){
+				var hei=$(this).scrollTop();
+				allowScroll(hei);
+			});
+		}else{
+			allowScroll(0);
+			myApp.ptr.get('#ycAndyx .ycAndyxPageContent').destroy();
+		}
+		
 		$("#set").unbind("scroll");
 		$("#yxp").unbind("scroll");
 	}
 	else if(txt=="#yxp"){
-		$("#yxp").bind("scroll",function(){
-			var hei=$(this).scrollTop();
-			allowScroll(hei)
-		});
+		if(myScrollTop>0){
+			$("#yxp").bind("scroll",function(){
+				var hei=$(this).scrollTop();
+				allowScroll(hei);
+			});
+		}else{
+			allowScroll(0);
+			myApp.ptr.get('#ycAndyx .ycAndyxPageContent').destroy();
+			
+		}
 		$("#ycp").unbind("scroll");
 		$("#set").unbind("scroll");
 	}else {
-		$("#set").bind("scroll",function(){
-			var hei=$(this).scrollTop();
-			allowScroll(hei)
-		});
+		if(myScrollTop>0){
+			$("#set").bind("scroll",function(){
+				var hei=$(this).scrollTop();
+				allowScroll(hei);
+			});
+		}else{
+			allowScroll(0);
+			myApp.ptr.get('#ycAndyx .ycAndyxPageContent').destroy();
+		}
 		$("#ycp").unbind("scroll");
 		$("#yxp").unbind("scroll");
 	}
 }
 
-function allowScroll(hei){console.log(hei)
+function allowScroll(hei){
 	if(hei==0){
 		myApp.ptr.create('.ycAndyxPageContent');
 		var $ptrContent = $$('.ycAndyxPageContent');
-		$ptrContent.on('ptr:refresh', function (e) {console.log(e)
+		$ptrContent.on('ptr:refresh', function (e) {
 		    setTimeout(function () {
 			  	var id=$("#titleStats").attr("noTab");
 			  	var equip_no=$("#titleStats").attr("equip_no");
-			  	console.log(equip_no)
 			  	if(id=="#ycp"){
 			  		serviceDatas("yc",equip_no)
 				}else if(id=="#yxp"){
@@ -123,7 +140,10 @@ function realHtmls(countAll,equip_no,name){
 	$(".tabCon a").eq(0).addClass("tab-link-active");
 	$("#tabs .tab").eq(0).addClass("tab-active");
 	$("#titleStats").attr("noTab",$(".tabCon a").eq(0).attr("href"));
-	refresh($(".tabCon a").eq(0).attr("href"))
+	setTimeout(function(){
+		refresh($(".tabCon a").eq(0).attr("href"))
+	},500)
+	
 	
 }
 var titleStatID;
