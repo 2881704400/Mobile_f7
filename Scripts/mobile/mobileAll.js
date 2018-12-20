@@ -91,6 +91,7 @@ var service = "/GWService.asmx",
 initLoads();
 
 function initLoads() {
+	myApp.dialog.progress();
     loadNameMobile();
     setTimeout(function() {
         $("#app").css("visibility", "visible");
@@ -116,7 +117,7 @@ function InitEnsure() {
             var analyze = $(dt).children("string").text();
             if (analyze != "" || analyze != "false") {
                 $("#app").css("visibility", "visible");
-                $.ajax({
+                /*$.ajax({
                     type: "post",
                     url: service + "/UserPermissions",
                     data: "userName=" + window.localStorage.userName,
@@ -124,11 +125,12 @@ function InitEnsure() {
                         getWebUser = $(usersDt).children("UserItem");
                         // authPage(dt);//权限设置
                     }
-                });
+                });*/
             }
         },
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
-            if (status == 'timeout') { //超时,status还有success,error等值的情况
+        	myApp.dialog.close();
+        	if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
                 myApp.dialog.create({
                     title: "系统提示",

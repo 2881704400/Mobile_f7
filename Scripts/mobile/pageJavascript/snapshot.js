@@ -60,8 +60,20 @@ function getRealTimeEventCount() {
                     var resultData = dt.HttpData.data;
                     var resultDataArr = resultData.toString().split(",");
                     var strData = "";
+                    var iconData="";
                     for (var i = 0; i < resultDataArr.length; i++) {
-                        strData += '<li>' + '<a href="/snapShotDetail/?' + btnInfoNames[i] + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont icon-web-cuowu"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + btnInfoNames[i] + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
+                    	if(i==0){
+                    		iconData="icon-web-cuowu";
+                    	}else if(i==1){
+                    		iconData="icon-web-jingshimian";
+                    	}else if(i==2){
+                    		iconData="icon-web-xinxiinfo21";
+                    	}else if(i==3){
+                    		iconData="icon-web-shezhi";
+                    	}else if(i==4){
+                    		iconData="icon-web-assets";
+                    	}
+                        strData += '<li>' + '<a href="/snapShotDetail/?' + btnInfoNames[i] + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont ' + iconData + '"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + btnInfoNames[i] + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
                     }
                     $("#snapshotMenuListId").html(strData);
                     myApp.dialog.close();

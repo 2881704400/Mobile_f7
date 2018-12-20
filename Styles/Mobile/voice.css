@@ -31,7 +31,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
 .video-content-btn div {
 	width: 60px;
 	height: 60px;
-	background: #3E7CFB;
+	background: #2d8cf0;
 	border-radius: 50%;
 	margin-bottom: 5px;
 	display: flex;
@@ -134,7 +134,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
 
 .stay-right {
 	color: #FFFFFF !important;
-	background: #3E7CFB !important;
+	background: #2d8cf0 !important;
 	float: right !important;
 	border-bottom-right-radius: 2px !important;
 	border-top-right-radius: 15px !important;
@@ -280,18 +280,18 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
 
 @-webkit-keyframes pulsate {
 	0% {
-		-webkit-box-shadow: 0px 0px 0px #3E7CFB;
+		-webkit-box-shadow: 0px 0px 0px #2d8cf0;
 	}
 	25% {
-		-webkit-box-shadow: 0px 0px 35px #3E7CFB;
+		-webkit-box-shadow: 0px 0px 35px #2d8cf0;
 	}
 	50% {
-		-webkit-box-shadow: 0px 0px 0px #3E7CFB;
+		-webkit-box-shadow: 0px 0px 0px #2d8cf0;
 	}
 	75% {
-		-webkit-box-shadow: 0px 0px 35px #3E7CFB;
+		-webkit-box-shadow: 0px 0px 35px #2d8cf0;
 	}
 	100% {
-		-webkit-box-shadow: 0px 0px 0px #3E7CFB;
+		-webkit-box-shadow: 0px 0px 0px #2d8cf0;
 	}
 }

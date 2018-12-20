@@ -7,9 +7,9 @@ function ycAndyx(){
 	var name=url.split("&")[1];
 	$("#titleStats").text(name)
 	realShows(equip_no, name)
-	$(".ios .ptr-preloader").css({zIndex:"99"})
+	/*$(".ios .ptr-preloader").css({zIndex:"99"})
 	$(".ios .ptr-preloader .preloader").css({top:"66px"})
-	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})
+	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})*/
 
 	var searchbar = myApp.searchbar.create({
 		el: '.searchbar2',
@@ -20,12 +20,10 @@ function ycAndyx(){
 }
 
 function refresh(txt){
-//	myApp.ptr.create('.ptr-content');
 	$("#titleStats").attr("noTab",txt);
 //	searCon=txt;
 	$(txt).addClass("searchbar-found").siblings().removeClass("searchbar-found")
 	if(txt=="#ycp"){
-
 		$("#ycp").bind("scroll",function(){
 			var hei=$(this).scrollTop();
 			allowScroll(hei)
@@ -50,29 +48,34 @@ function refresh(txt){
 	}
 }
 
-function allowScroll(hei){
+function allowScroll(hei){console.log(hei)
 	if(hei==0){
-		myApp.ptr.create('.ptr-content');
-		var $ptrContent = $$('.ptr-content');
-		$ptrContent.on('ptr:refresh', function (e) {
+		myApp.ptr.create('.ycAndyxPageContent');
+		var $ptrContent = $$('.ycAndyxPageContent');
+		$ptrContent.on('ptr:refresh', function (e) {console.log(e)
 		    setTimeout(function () {
 			  	var id=$("#titleStats").attr("noTab");
-			  	var eqiup_no=$("#titleStats").attr("equip_no")
+			  	var equip_no=$("#titleStats").attr("equip_no");
+			  	console.log(equip_no)
 			  	if(id=="#ycp"){
-			  		serviceDatas("yc",eqiup_no)
+			  		serviceDatas("yc",equip_no)
 				}else if(id=="#yxp"){
-					serviceDatas("yx",eqiup_no)
+					serviceDatas("yx",equip_no)
 				}else {
 					tableFills(equip_no, "", "set");
 				}
-		    	myApp.ptr.done();
+		    	// 加载完毕需要重置
+				e.detail();
+				myApp.toast.create({
+					text: '数据加载成功!',
+					position: 'center',
+					closeTimeout: 500,
+				}).open();
 		  	}, 2000);
 		});
 	}else{
-//		console.log(33)
-		if(myApp.ptr.get('#ycAndyx .ptr-content')){
-			
-			myApp.ptr.get('#ycAndyx .ptr-content').destroy();
+		if(myApp.ptr.get('#ycAndyx .ycAndyxPageContent')){
+			myApp.ptr.get('#ycAndyx .ycAndyxPageContent').destroy();
 		}
 	}
 }
