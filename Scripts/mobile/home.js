@@ -16,11 +16,6 @@ function onHomePage() {
     // commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
     // 配置
      getJurisdictionData("home_fsk_btn");
-
-
-   
-
-
 }
 //授权名称
 function authorizationName() {

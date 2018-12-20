@@ -64,73 +64,75 @@ function initAddList() {
 }
 //公共请求
 var publicFirstData;
-function equipLinkPublicAjax(jsonString, url, index) {
-    var jsonData = {
-        "url": url,
-        "data": jsonString,
-        "success": _success,
-        "error": _error,
-    };
-    $.fn.axpost(jsonData);
-    function _success(data) {
-        let arrayLike = data.HttpStatus;
-        if (arrayLike == 200 && data.HttpData.data) {
-            switch (index) {
-                case 1:
-                    // publicFirstData = data.HttpData.data;
-                    // tiggerEquip(data.HttpData.data);
-                    break;
-                case 2:
-                    // linkEquip(data.HttpData.data);
-                    break;
-                case 3:
-                    // linkage_init = data.HttpData;
-                    // equipLinkList();
-                    // equipLinkPublicAjax({
-                    //     findEquip: false
-                    // }, "/api/GWServiceWebAPI/getSetparmList", 4);
-                    break;
-                case 4:
-                    // setparm_init = data.HttpData;
-                    // equipLinkList();
-                    break;
-                case 5:
-                    ycpData_table_5 = data.HttpData;
-                    break;
-                case 6:
-                    yxpData_table_6 = data.HttpData;
-                    notEqualToYCPYXP();
-                    break;
-                case 7:
-                    ycpData_table_7 = data.HttpData;
-                    notEqualToYCP();
-                    break;
-                case 8:
-                    yxpData_table_8 = data.HttpData;
-                    notEqualToYXP();
-                    break;
-                case 9:
-                    ycpData_table_9=data.HttpData;
-                    equipLinkPublicAjax({
-                         equip_nos: link_listInit_no
-                    }, "/api/GWServiceWebAPI/getYxp", 10);
-                    break;
-                case 10: 
-                   yxpData_table_10 = data.HttpData;
-                   writeContent();
-                    break;
-                case 11: loadLinkageEquips(data.HttpData.data);break;
-                // case 12: $("#equipLinkage_set tbody").html("");initTableList();break;
-                // case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
-                // case 14:  $("#equipLinkage_set tbody").html("");initTableList();break;
-            }
-        }
-        else{
-            toastCenterLinkage.open();
-        }
-    }
-    function _error(e) {}
-}
+// function equipLinkPublicAjax(jsonString, url, index) {
+//     var jsonData = {
+//         "url": url,
+//         "data": jsonString,
+//         "success": _success,
+//         "error": _error,
+//     };
+//     $.fn.axpost(jsonData);
+//     function _success(data) {
+//         let arrayLike = data.HttpStatus;
+//         if (arrayLike == 200 && data.HttpData.data) {
+//             switch (index) {
+//                 case 1:
+//                     // publicFirstData = data.HttpData.data;
+//                     // tiggerEquip(data.HttpData.data);
+//                     break;
+//                 case 2:
+//                     // linkEquip(data.HttpData.data);
+//                     break;
+//                 case 3:
+//                     // linkage_init = data.HttpData;
+//                     // equipLinkList();
+//                     // equipLinkPublicAjax({
+//                     //     findEquip: false
+//                     // }, "/api/GWServiceWebAPI/getSetparmList", 4);
+//                     break;
+//                 case 4:
+//                     // setparm_init = data.HttpData;
+//                     // equipLinkList();
+//                     break;
+//                 case 5:
+//                     ycpData_table_5 = data.HttpData;
+//                     break;
+//                 case 6:
+//                     yxpData_table_6 = data.HttpData;
+//                     notEqualToYCPYXP();
+//                     break;
+//                 case 7:
+//                     // ycpData_table_7 = data.HttpData;
+//                     // notEqualToYCP();
+//                     break;
+//                 case 8:
+//                     // yxpData_table_8 = data.HttpData;
+//                     // notEqualToYXP();
+//                     break;
+//                 case 9:
+//                     // ycpData_table_9=data.HttpData;
+//                     // equipLinkPublicAjax({
+//                     //      equip_nos: link_listInit_no
+//                     // }, "/api/GWServiceWebAPI/getYxp", 10);
+//                     break;
+//                 case 10: 
+//                    // yxpData_table_10 = data.HttpData;
+//                    // writeContent();
+//                     break;
+//                 case 11: 
+//                   // loadLinkageEquips(data.HttpData.data);
+//                 break;
+//                 // case 12: $("#equipLinkage_set tbody").html("");initTableList();break;
+//                 // case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
+//                 // case 14:  $("#equipLinkage_set tbody").html("");initTableList();break;
+//             }
+//         }
+//         else{
+//             toastCenterLinkage.open();
+//         }
+//     }
+//     function _error(e) {}
+// }
 //触发设备
 // function tiggerEquip(data) {
 //     listAdd = data.map(item => {
@@ -254,11 +256,28 @@ function equipLinkList() {
         }
         else if(ycpData_table != "ycp")
         {
-            equipLinkPublicAjax({"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 7);              
+            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_DataForListStr",{"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos})).done(function(n){
+              if(n.HttpData.code == 200)
+              {
+                 ycpData_table_7 = data.HttpData;notEqualToYCP();
+              }
+            }).fail(function(e){
+
+            });
+
+            // equipLinkPublicAjax({"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 7);              
         }  
         else if(yxpData_table != "yxp")
         {
-             equipLinkPublicAjax({"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 8);              
+            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_DataForListStr",{"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos})).done(function(n){
+              if(n.HttpData.code == 200)
+              {
+                    yxpData_table_8 = data.HttpData;notEqualToYXP();
+              }
+            }).fail(function(e){
+
+            });
+             // equipLinkPublicAjax({"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 8);              
         }                             
         else
         {
@@ -438,8 +457,25 @@ var html = '<div class="popup popup-aboutuser">'+
     link_listInit_equip("equipTigger_Link",linkageEquips.map(item => {return item.label;})); //联动设备
    try{link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === $("#equipTiggerName").val()) {return equip;}})[0].value;}
    catch(e){link_listInit_no ="";}
-   link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
-   equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value}, "/api/real/get_setparm", 11);
+   // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
+   // equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value}, "/api/real/get_setparm", 11);
+   if(link_listInit_no)
+        $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
+          if(n.HttpData.code == 200 && l.HttpData.code == 200)
+          {
+                ycpData_table_9=n.HttpData;yxpData_table_10 = l.HttpData;writeContent();
+          }
+        }).fail(function(e){});
+
+
+    $.when(AlarmCenterContext.post("/api/real/get_setparm",{equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value})).done(function(n,l){
+      if(n.HttpData.code == 200)
+      {
+           loadLinkageEquips(n.HttpData.data);
+      }
+    }).fail(function(e){});
+
+
 
 }
 //确认
@@ -588,12 +624,25 @@ function link_listInit_equip(id,equipArray){
             switch(id){
                 case "equipTiggerName": 
                     link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === country) {return equip;}})[0].value;
-                    link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
+                    // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
+                       if(link_listInit_no)
+                            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
+                              if(n.HttpData.code == 200 && l.HttpData.code == 200)
+                              {
+                                    ycpData_table_9=n.HttpData;yxpData_table_10 = l.HttpData;writeContent();
+                              }
+                            }).fail(function(e){});
                     $(".equipTiggerType,.equipTiggerSpot").val("");
                 break;
                 case "equipTigger_Link": 
                     $(".equipTiggerCom").val("");
-                    equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value}, "/api/real/get_setparm", 11);
+                    // equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value}, "/api/real/get_setparm", 11);
+                    $.when(AlarmCenterContext.post("/api/real/get_setparm",{equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value})).done(function(n,l){
+                      if(n.HttpData.code == 200)
+                      {
+                           loadLinkageEquips(n.HttpData.data);
+                      }
+                    }).fail(function(e){});                    
                 break;
                 case "": break;
             }
