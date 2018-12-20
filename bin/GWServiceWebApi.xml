@@ -236,15 +236,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_DataForTName(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            根据表名查询数据
-            </summary>
-            <param name="jb">
-            tType 表类型
-            </param>
-            <returns></returns>
-        </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_DataForListStr(Newtonsoft.Json.Linq.JObject)">
             <summary>
             根据表名查询数据
@@ -377,13 +368,6 @@
             <param name="req"></param>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getYcpList(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            获取ycp表数据
-            </summary>
-            <param name="req"></param>
-            <returns></returns>
-        </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getYcp(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取ycp表数据
@@ -391,22 +375,10 @@
             <param name="req">req.equip_nos:设备号</param>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getYxpList(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            获取ycp表数据
-            </summary>
-            <param name="req"></param>
-            <returns></returns>
-        </member>
         <!-- Badly formed XML comment ignored for member "M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getYxp(Newtonsoft.Json.Linq.JObject)" -->
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getSetparmList(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取setParm数据
-            </summary>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getEquipList(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            获取Equip所有设备数据
             </summary>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getEquipState">
@@ -427,6 +399,12 @@
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_EquipGroupData(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取设备组数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getEquipList(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取设备表数据
             </summary>
             <returns></returns>
         </member>

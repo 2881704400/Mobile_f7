@@ -5,35 +5,63 @@
 .scheduleContainer{
     height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
-    	height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tableTitle};
-    	&>a{font-size: #{$tableHeaderFontSize*0.8};color: #{$situationFontColor};white-space: nowrap;text-align: center;}
+    	height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tabBackground};
+    	&>a{font-size: #{$tableHeaderFontSize*0.8};color: #{$tabFontColor};height: 100%;white-space: nowrap;text-align: center;}
     }
-    &>.scheduleContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
-    	&>div{height: 100%;overflow: auto;}
-    	.publicTable{
-    		min-width: 100%;
-    		thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
-    		tbody{
-    			font-size: #{$tableTbodyFontSize};color: #{$tableTbodyFontColor};
-    			tr:nth-child(2n){background: #{$tableTbodySingleLineColor};}
-    	    }
-            tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
-            td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;text-overflow: ellipsis;overflow: hidden;}
-    	}
-    	#schedule_user>table{min-width: auto;}
+    &>.scheduleContent{
+        position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;overflow-y:auto; 
+        //人员
+    	#schedule_user{
+             li{width: 100%;height: 50px;position: relative;padding: 5px 0;
+                &>.schedule-content{ 
+                    
+                    &>img{position: absolute;left: 3px;top: 3px;}
+                    &>div:nth-of-type(1){height: 40px;text-align: left;padding-left: 50px;
+                        &>p{margin: 0;line-height: 20px;}
+                        &>p:nth-child(1){font-size: 12px;}
+                        &>p:nth-child(2){font-size: 14px;margin: 0;line-height: 20px;&>label{font-size: 1rem;color: #FF3B30;}}
+                    }
+                    &>div:nth-of-type(2){height: 100%;line-height: 40px;text-align: center;}
+                }
+                .modifeBtn{}
+                .delBtn{background: #FF3B30;}
+             }
+        }
+        // 分组
+        #schedule_equip{
+            .schedule-content{height: 100%;
+               &>div:nth-child(1){height: 100%;
+                &>span{width: 100%;height: 100%;line-height: 40px;display: inline-block;}
+                &>div{height: 100%;&>input{width: 100%;height: 100%;border: 0;border-bottom: 1px solid #{$inputBorderColor};}}
+               }
+               &>div:nth-child(2){height: 100%;&>span{&>a{margin: 0 5%;}}}
+            }
+        }
+        // 公共
+        .equipGroupPublic{
+            text-align: center;
+            &>span{width: 100%;height: 44px;line-height: 44px;position: relative;}
+            &>ul{
+                position: absolute;left: 0;top: 44px;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
+                &>li{
+                    font-size: 12px;height: 35px;line-height: 35px;position: relative;
+                    .delBtn{background: #FF3B30;}
+                }
+            }
+        }
     	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
     }
-   .selectScheduleMenu{font-size: 12px;color: #{$tabFontColor}!important;background: #{$tabBackground};}
 }
 
 .equipLinkageContainer{
     height: 100%;position: relative;padding: 1rem;
     &>.subnavbarTabel{
-        height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tableTitle};
-        &>a{color: #{$situationFontColor};white-space: nowrap;text-align: center;}
+        height: 3rem;line-height: 3rem;border-bottom: 1px solid #{$statsBorderColor};background: #{$tabBackground};overflow: hidden;
+        &>a{font-size: #{$tableHeaderFontSize*0.8};color: #{$tabFontColor};white-space: nowrap;text-align: center;}
     }
-    &>.equipLinkageContent{position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
-        &>div{height: 100%;margin: 0;overflow: auto;}
+    &>.equipLinkageContent{
+        position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
+        &>div.equipGroupPublic{height: 100%;margin: 0;overflow: auto;}
             thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
             tbody{
                 font-size: #{$tableTbodyFontSize};color: #{$tableTbodyFontColor};
@@ -41,17 +69,35 @@
             }
             tr{display: flex;border-bottom: 1px solid #{$tableBorderBottom};}
             td{min-width: 120px;height: 35px;line-height: 35px;flex: 1;white-space: nowrap;text-align: center;overflow: hidden;    text-overflow: ellipsis;}
+         // 公共
+        .equipGroupPublic{
+            height: 100%;text-align: center;
+            &>span{width: 100%;height: 44px;line-height: 44px;position: relative;}
+            &>ul{
+                position: absolute;left: 0;top: 44px;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
+                &>li{
+                    font-size: 12px;height: 35px;line-height: 35px;position: relative;
+                    .delBtn{background: #FF3B30;}
+                }
+            }
         }
+        #equipLinkage_edit{height: 100%;margin: 0;overflow: hidden;&>ul{height: 100%;overflow-y: auto;padding-bottom: 50px;}}
+    }
         #schedule_user>table{min-width: auto;}
         .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
         #equipLinkage_edit{
-            &>ul{ &>li{
+            &>ul{ &>li{position: relative;
                 .item-title{font-size: 1rem;}
                 .sceneBtn{padding: 20px;text-align: center;
-                    &>a{font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 5px;background: #{$btnBackground};}
+                    &>a{
+                        font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 5px;background: #{$btnBackground}; 
+                   }
                  }
+                 &>a{.item-inner:after{height: 0px!important;}}
                 }
+
             }
+            &>ul:after,&>ul:before{height: 0px!important;}
            .sceneList{ 
             &>li{padding: 5% 0;
               &>div.sceneHeader{
@@ -76,16 +122,37 @@
             }
           }
         }
-   .selectScheduleMenu{color: #{$headerBgc}!important;background: #{$tabBackground};} 
 }
 
-.popup-aboutuser {
-	position: absolute;
-	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$tableHeaderFontColor};text-align: center;}
-	.popupContent{height: 60%;overflow-y: auto;}
+.popup-aboutuser { 
+	position: absolute;    background: #{$popupBackground};padding: 5%;
+	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$popupBackTitle};text-align: center;}
+	.popupContent{
+         height: 60%;position: relative;
+        .item-title,input{color: #{$popupBackTitle} !important;}
+        .item-title{text-indent: 5%;}
+        input{  text-indent: 10%; }
+        i.icon-checkbox{border-radius: 0!important;}
+        &>ul{height: 100%;overflow-y: auto;background: transparent; &>li{margin-bottom: 10px;}}
+        &>ul:after,&>ul:before,.item-inner:after{transform: scaleY(0)!important;}
+        &>.allSelect{width: 100%;position: absolute;left: 0;top: 0px;height: 44px;line-height: 44px;}
+     }
     .popupBtb{padding: 0px 20px;a{color: #{$btnFontColor};font-size: #{$btnFontSize};height: 2.5rem;line-height: 2.5rem;background: #{$btnBackground}}}
 
 }
 
 .equipAlertHeader{padding: 10px;&>label{margin: 0px 5px;}}
 .equipAlertContent{&>div{line-height: 40px;padding: 10px;} select,input{font-size: 0.8rem;height: 40px;line-height: 40px;text-indent: 10px;border: 1px solid #{$inputBorderColor};}}
+
+.bottomBorderLine:after{content:"";width: 100%;height: 1px;display: inline-block; position: absolute;bottom: 0;left: 0;border-bottom: 1px solid #{$inputBorderColor};transform: scaleY(0.5);}
+.linkColor{color: #{$tabSelected}!important;}
+//选中菜单颜色
+.selectScheduleMenu{font-size: 12px;background: #{$tabSelected};}
+//添加按钮
+.scheduleRightBottomBtn{position: absolute;right: 5%;bottom: 10%;&>a{&>i{font-size: 3rem;color: #{$tabSelected};}}}
+.item-input-wrap{border-bottom: 1px solid #{$tabSelected};}
+.item-input-wrap input{border: 0;}
+.dialog-input-field .item-input-wrap input{border-bottom: 1px solid #{$tabSelected}!important;}
+    
+
+ // border-bottom: 1px solid #{$btnBackground};

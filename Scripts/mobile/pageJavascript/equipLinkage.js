@@ -1,11 +1,11 @@
-﻿var toastCenterLinkage;
+﻿var toastCenterLinkage,toastCenterLinkageSuccess;
 function equipLinkage() {
     switchToolbar("configTool");
     $(".subnavbarTabel>a").unbind();
     $(".subnavbarTabel>a").bind("click", function() {
         $(this).addClass("selectScheduleMenu").siblings().removeClass("selectScheduleMenu");
-        $($(this).attr("href")).removeClass("displayNone").siblings().addClass("displayNone");
-        $($(this).attr("href") + "_nav").removeClass("displayNone").siblings().addClass("displayNone");
+        $($(this).attr("href")).removeClass("displayNone").siblings("section").addClass("displayNone");
+        $($(this).attr("href") + "_nav").removeClass("displayNone").siblings().addClass("displayNone"); //切换添加
         if($(this).attr("href") == "#equipLinkage_set")
             {
                 setTimeout(function(){initAddList();},1000);
@@ -20,17 +20,48 @@ function equipLinkage() {
     // 初始化设备
     myApp.dialog.progress();
     initAddList();//联动设置
-    toastCenterLinkage = myApp.toast.create({
-      text: "操作失败",
-      position: 'center',
-      closeTimeout: 2000,
-     });
+    toastCenterLinkage = myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
+    toastCenterLinkageSuccess = myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
 }
 //初始化列表
 var linkage_init, setparm_init;
-function initTableList() {equipLinkPublicAjax("", "/api/GWServiceWebAPI/getLinkageList", 3);}
 var listAdd = [],linkageEquips = [];
-function initAddList() {$("#equipLinkage_set tbody").html("");equipLinkPublicAjax("", "/api/GWServiceWebAPI/getEquipList", 1);}
+function initAddList() {
+    $("#equipLinkage_set ul").html("");
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getEquipList"),AlarmCenterContext.post("/api/GWServiceWebAPI/getSetparmList",{findEquip: false}),AlarmCenterContext.post("/api/GWServiceWebAPI/getLinkageList")).done(function(n,l,h){
+        let nObject = n.HttpData,lObject = l.HttpData,hObject = h.HttpData;
+        if(nObject.code == 200 && lObject.code == 200 && hObject.code == 200)
+        {
+                linkageEquips = nObject.data.filter((equip, index) => {
+                if (lObject.data.some(parm => {
+                            return equip.equip_no === parm.equip_no
+                        })) {
+                        return equip
+                    }
+                }).map(equip => {
+                    return {
+                        value: equip.equip_no,
+                        label: equip.equip_nm,
+                        loading: false,
+                        children: []
+                    }
+                });
+                listAdd = nObject.data.map(item => {
+                    return {
+                        value: item.equip_no,
+                        label: item.equip_nm,
+                        loading: false,
+                        children: []
+                    }
+                })
+                setparm_init = lObject; linkage_init = hObject;
+                equipLinkList();
+        }
+    }).fail(function(e){
+      toastCenterLinkage.open();
+    });
+
+}
 //公共请求
 var publicFirstData;
 function equipLinkPublicAjax(jsonString, url, index) {
@@ -46,21 +77,22 @@ function equipLinkPublicAjax(jsonString, url, index) {
         if (arrayLike == 200 && data.HttpData.data) {
             switch (index) {
                 case 1:
-                    publicFirstData = data.HttpData.data;
-                    tiggerEquip(data.HttpData.data);
+                    // publicFirstData = data.HttpData.data;
+                    // tiggerEquip(data.HttpData.data);
                     break;
                 case 2:
-                    linkEquip(data.HttpData.data);
+                    // linkEquip(data.HttpData.data);
                     break;
                 case 3:
-                    linkage_init = data.HttpData;
-                    equipLinkPublicAjax({
-                        findEquip: false
-                    }, "/api/GWServiceWebAPI/getSetparmList", 4);
+                    // linkage_init = data.HttpData;
+                    // equipLinkList();
+                    // equipLinkPublicAjax({
+                    //     findEquip: false
+                    // }, "/api/GWServiceWebAPI/getSetparmList", 4);
                     break;
                 case 4:
-                    setparm_init = data.HttpData;
-                    equipLinkList();
+                    // setparm_init = data.HttpData;
+                    // equipLinkList();
                     break;
                 case 5:
                     ycpData_table_5 = data.HttpData;
@@ -88,9 +120,9 @@ function equipLinkPublicAjax(jsonString, url, index) {
                    writeContent();
                     break;
                 case 11: loadLinkageEquips(data.HttpData.data);break;
-                case 12: $("#equipLinkage_set tbody").html("");initTableList();break;
-                case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
-                case 14: $("#equipLinkage_set tbody").html("");initTableList();break;
+                // case 12: $("#equipLinkage_set tbody").html("");initTableList();break;
+                // case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
+                // case 14:  $("#equipLinkage_set tbody").html("");initTableList();break;
             }
         }
         else{
@@ -100,35 +132,35 @@ function equipLinkPublicAjax(jsonString, url, index) {
     function _error(e) {}
 }
 //触发设备
-function tiggerEquip(data) {
-    listAdd = data.map(item => {
-        return {
-            value: item.equip_no,
-            label: item.equip_nm,
-            loading: false,
-            children: []
-        }
-    })
-    equipLinkPublicAjax({findEquip: false}, "/api/GWServiceWebAPI/getSetparmList", 2);
-}
+// function tiggerEquip(data) {
+//     listAdd = data.map(item => {
+//         return {
+//             value: item.equip_no,
+//             label: item.equip_nm,
+//             loading: false,
+//             children: []
+//         }
+//     })
+//     equipLinkPublicAjax({findEquip: false}, "/api/GWServiceWebAPI/getSetparmList", 2);
+// }
 //联动设备
-function linkEquip(data) {    
-    linkageEquips = publicFirstData.filter((equip, index) => {
-        if (data.some(parm => {
-                return equip.equip_no === parm.equip_no
-            })) {
-            return equip
-        }
-    }).map(equip => {
-        return {
-            value: equip.equip_no,
-            label: equip.equip_nm,
-            loading: false,
-            children: []
-        }
-    })
-    initTableList();
-}
+// function linkEquip(data) {    
+//     linkageEquips = publicFirstData.filter((equip, index) => {
+//         if (data.some(parm => {
+//                 return equip.equip_no === parm.equip_no
+//             })) {
+//             return equip
+//         }
+//     }).map(equip => {
+//         return {
+//             value: equip.equip_no,
+//             label: equip.equip_nm,
+//             loading: false,
+//             children: []
+//         }
+//     })
+//     initTableList();
+// }
 //列表处理
 var tableNameNoYcp, tableNameNoYxp, ycpData_table_5, yxpData_table_6, ycpData_table_7, yxpData_table_8, ycpData_table_9,yxpData_table_10,
     typeList = [{
@@ -199,26 +231,26 @@ function equipLinkList() {
         }
         if(ycpData_table != "ycp" && yxpData_table != "yxp")
         {
-         $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
-         data:{"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos},
-        async:false
-         }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
-        data:{"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos},
-        async:false
-         })).done(function(n,l){
-             if(n.HttpData.code == 200 && n.HttpData.code == 200)
-             {
-                ycpData_table_5 = n.HttpData;
-                yxpData_table_6 = l.HttpData;
-                notEqualToYCPYXP();
-             }
-             else
-             {
+             $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
+             data:{"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos},
+            async:false
+             }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
+            data:{"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos},
+            async:false
+             })).done(function(n,l){
+                 if(n.HttpData.code == 200 && n.HttpData.code == 200)
+                 {
+                    ycpData_table_5 = n.HttpData;
+                    yxpData_table_6 = l.HttpData;
+                    notEqualToYCPYXP();
+                 }
+                 else
+                 {
 
-             }
-         }).fail(function(e){
+                 }
+             }).fail(function(e){
 
-         });
+             });
         }
         else if(ycpData_table != "ycp")
         {
@@ -261,7 +293,7 @@ function notEqualToYXP() {
 }
 var equipLinkage_public_list = [];
 function publicFun(ycpData, yxpData) {
-    let html = "";
+    var html = "";
     equipLinkage_public_list = linkage_init.data.map(row => {
         let result = {}
         result.id = row.ID
@@ -304,23 +336,33 @@ function publicFun(ycpData, yxpData) {
         } else {
             result.cCurren = "无"
         }
-        html += '<tr onclick=\'newlyBuildLinkage("'+result.equipName+'","'+result.cType+'","'+result.cCurren+'",'+result.delayTime+',"'+result.linkageEquip+'","'+result.linkageOpt+'","'+result.optCode+'","'+result.remarks+'",'+result.id+',1)\' TrID='+result.id+'>' + '<td>' + result.equipName + '</td>' + '<td>' + result.cType + '</td>' + '<td>' + result.cCurren + '</td>' + '<td>' + result.delayTime + '</td>' + '<td>' + result.linkageEquip + '</td>' + '<td>' + (result.linkageOpt ? result.linkageOpt : '空') + '</td>' + '<td>' + (result.optCode ? result.optCode : '空') + '</td>' + '<td>' + result.remarks + '</td>' + '</tr>';
+        // html += '<tr onclick=\'newlyBuildLinkage("'+result.equipName+'","'+result.cType+'","'+result.cCurren+'",'+result.delayTime+',"'+result.linkageEquip+'","'+result.linkageOpt+'","'+result.optCode+'","'+result.remarks+'",'+result.id+',1)\' TrID='+result.id+'>' + '<td>' + result.equipName + '</td>' + '<td>' + result.cType + '</td>' + '<td>' + result.cCurren + '</td>' + '<td>' + result.delayTime + '</td>' + '<td>' + result.linkageEquip + '</td>' + '<td>' + (result.linkageOpt ? result.linkageOpt : '空') + '</td>' + '<td>' + (result.optCode ? result.optCode : '空') + '</td>' + '<td>' + result.remarks + '</td>' + '</tr>';
+
+        html += `<li class="swipeout bottomBorderLine">
+          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage(this,'${result.equipName}','${result.cType}','${result.cCurren}','${result.delayTime}','${result.linkageEquip}','${result.linkageOpt}','${result.optCode}','${result.remarks}',${result.id},1)" TrID="${result.id}">
+            <div class="col-33">${result.equipName}</div>
+            <div class="col-33">${result.linkageEquip}</div> 
+            <div class="col-33">${result.remarks}</div> 
+          </div>
+          <div class="swipeout-actions-right">
+            <a href="#" class="delBtn" onclick="deleteLinkage(this)">删除</a>
+          </div>
+        </li>`;
+
         return result;
     })
     myApp.dialog.close();
-    $("#equipLinkage_set tbody").append(html);
+    $("#equipLinkage_set ul").append(html);
 }
 //联动设置添加
-var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[];
-function newlyBuildLinkage(equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index){
+var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[],dtParent;
+function newlyBuildLinkage(dt,equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index){
+    dtParent = dt;
 var html = '<div class="popup popup-aboutuser">'+
       '<h1>设备联动</h1>'+
       '<div class="popupContent list inline-labels no-hairlines-md">'+
             '<ul>'+
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发设备</div>'+
                   '<div class="item-input-wrap">'+
@@ -329,10 +371,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发类型</div>'+
                   '<div class="item-input-wrap">'+
@@ -341,10 +380,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发点</div>'+
                   '<div class="item-input-wrap">'+
@@ -353,10 +389,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+                                       
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">延时(ms)</div>'+
                   '<div class="item-input-wrap">'+
@@ -365,10 +398,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">联动设备</div>'+
                   '<div class="item-input-wrap">'+
@@ -377,10 +407,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">联动命令</div>'+
                   '<div class="item-input-wrap">'+
@@ -389,10 +416,7 @@ var html = '<div class="popup popup-aboutuser">'+
                   '</div>'+
                 '</div>'+
               '</li>'+              
-              '<li class="item-content item-input">'+
-                '<div class="item-media">'+
-                  '<i class="icon demo-list-icon"></i>'+
-                '</div>'+
+              '<li class="item-content item-input" style="padding-left: 0;">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">备注信息</div>'+
                   '<div class="item-input-wrap">'+
@@ -404,9 +428,9 @@ var html = '<div class="popup popup-aboutuser">'+
             '</ul>'+            
       '</div>'+
        '<div class="popupBtb row">'+
-        '<a class="link popup-close col-33 button" href="#">退出</a>'+
-        '<a class="link popup-close popupOpenBtn col-33 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+ID+'>确认</a>'+
-        '<a class="link col-33 button" href="#" onclick="deleteLinkage(this)" dataID='+ID+'>删除</a>'+
+        '<a class="link popup-close col-50 button" href="#">返回</a>'+
+        '<a class="link popupOpenBtn col-50 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+ID+'>确认</a>'+
+        // '<a class="link col-33 button" href="#" onclick="deleteLinkage(this)" dataID='+ID+'>删除</a>'+
       '</div>'+
     '</div>';
     link_popupAlert(html);
@@ -485,7 +509,7 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
         equipLink_cNo = equipLink_spot[0].children.filter((item,index) =>{if(item.label == $(".equipTiggerSpot").val()) return item;})[0].value;
       }catch(e){}
       if(!link_listInit_no) {toastCenterLinkage.open();return false;}
-      let reqData = {
+      var reqData = {
         id: $(dt).attr("dataID") || 1,
         equipNo: link_listInit_no,
         cType: equipLink_cType.length>0?equipLink_cType[0].value:"",
@@ -498,19 +522,50 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
       } 
       if(index == 1) 
       {
-        equipLinkPublicAjax(reqData, "/api/GWServiceWebAPI/updateLinkage", 12);
+        $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/updateLinkage",reqData)).done(function(n){
+            if(n.HttpData.code == 200)
+              { 
+                 // $(dtParent).parents("li").remove();
+                 initAddList();
+                  toastCenterLinkageSuccess.open();              
+              }
+        }).fail(function(e){
+            toastCenterLinkage.open();
+        });
       }
       else
       {
-         equipLinkPublicAjax(reqData, "/api/GWServiceWebAPI/addLinkage", 13);
+        $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/addLinkage",reqData)).done(function(n){
+            if(n.HttpData.code == 200)
+              {
+                // console.log($("#equipLinkage_set ul")[0].scrollHeight);
+                 initAddList();
+                 $("#equipLinkage_set ul").animate({scrollTop: $("#equipLinkage_set ul")[0].scrollHeight+'px'}, 50);
+                 toastCenterLinkageSuccess.open();       
+              }
+        }).fail(function(e){
+            toastCenterLinkage.open();
+        });
       }
 
 }
 //删除
 function deleteLinkage(dt) {
+    let val = parseInt($(dt).parent().siblings().attr("trid"));
      myApp.dialog.confirm("是否删除该项","提示",function(){
        myApp.popup.close();
-       equipLinkPublicAjax({id: $(dt).attr("dataID")}, "/api/GWServiceWebAPI/deleteLinkage", 14);
+       // equipLinkPublicAjax({id: $(dt).parent().siblings().attr("trid")}, "/api/GWServiceWebAPI/deleteLinkage", 14);
+
+        $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/deleteLinkage",{id: val})).done(function(n){
+            if(n.HttpData.code == 200)
+              {
+                $(dt).parents("li").remove();
+              }
+        }).fail(function(e){
+            toastCenterLinkage.open();
+        });
+
+
    });
 }
 //动态创建弹窗
@@ -645,7 +700,7 @@ function initSceneList() {
                   '</div>';                 
                   }
               }
-                htmlHeader = '<li class="accordion-item"><a href="#" class="item-content item-link">'+
+                htmlHeader = '<li class="accordion-item bottomBorderLine"><a href="#" class="item-content item-link">'+
                     '<div class="item-inner">'+
                       '<div class="item-title">'+item.set_nm+'</div>'+
                     '</div></a>'+
@@ -672,6 +727,7 @@ function initSceneList() {
                 '</li>';
                 html = htmlHeader+htmlContent+htmlFooter;
                 $("#equipLinkage_edit>ul").append(html);
+                // $("#equipLinkage_edit>ul").animate({scrollTop: $("#equipLinkage_edit>ul")[0].scrollHeight+'px'}, 50);
                 return item;
                 })
          }

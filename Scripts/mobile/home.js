@@ -4,7 +4,7 @@ function onHomePage() {
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-    // myApp.router.navigate("/schedule/")
+    myApp.router.navigate("/equipLinkage/")
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");
