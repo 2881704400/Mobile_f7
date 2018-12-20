@@ -126,6 +126,9 @@ mixin：sass宏mixin
                 }
             }
         }
+        &:before{
+            height: 0px !important;
+        }
     }
 }
 

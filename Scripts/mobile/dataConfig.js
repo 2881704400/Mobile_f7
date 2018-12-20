@@ -10,6 +10,7 @@ function getJurisdictionData(id){
             url: service + "/UserPermissions",
             data: "userName=" + window.localStorage.userName,
             success: function(usersDt) {
+            	getWebUser = $(usersDt).children("UserItem");
                 let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
                 resultControl.forEach(function(item_p,index_p) {
                     if(item_p.trim())

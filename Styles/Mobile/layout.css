@@ -83,6 +83,8 @@ mixin：sass宏mixin
           border-top: 1px solid #c8c7cc; }
         .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li .item-inner:after {
           height: 0px !important; }
+  .snapshot-main .snapshotMessage-ul:before {
+    height: 0px !important; }
 
 /*首页样式*/
 .mainDiv {

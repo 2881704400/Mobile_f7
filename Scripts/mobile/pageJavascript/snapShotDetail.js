@@ -15,7 +15,7 @@ function snapShotDetail() {
 	loadMessage();
 
 	var searchbar = myApp.searchbar.create({
-		el: '.searchbar',
+		el: '.searchbarSnapDetail',
 		searchContainer: '.snapshotMessage-ul',
 		searchIn: '.item-title,.item-subtitle',
 	});
