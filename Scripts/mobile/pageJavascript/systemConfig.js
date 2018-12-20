@@ -11,7 +11,7 @@ function systemConfig(){
 	});
 //	calendarRange.open()
 //	myApp.sheet.open('.sheet-config')
-//	myApp.popup.open(".popup-config")
+	myApp.popup.open(".popup-config")
 //	myApp.sheet.open('.sheet-alarm')
 	var searchbar=myApp.searchbar.create({
 		el:'.searchbar',
@@ -43,8 +43,32 @@ function systemConfig(){
 //   });
 //  equipsCon.length = equipArrCon.length = 0;
 //	getDataSet();
-	
+//	getAccessList();
+//	getlinkVideoList();
+//	getPlanList();
+//	getAlarmWayList();
 }
+function getAccessList(){
+	$.when(AlarmCenterContext.getAccess()).done(function(e){
+//		console.log(e)
+	})
+}
+function getlinkVideoList(){
+	$.when(AlarmCenterContext.getLinkVideo()).done(function(e){
+//		console.log(e)
+	})
+}
+function getPlanList(){
+	$.when(AlarmCenterContext.getPlan()).done(function(e){
+//		console.log(e)
+	})
+}
+function getAlarmWayList(){
+	$.when(AlarmCenterContext.getAlarmWay()).done(function(e){
+//		console.log(e)
+	})
+}
+
 //设置
 //	设备号,设置号,设置名称,值,设置类型,动作,操作命令,操作参数,是否记录,是否可执行
 //遥信
@@ -68,6 +92,36 @@ function systemConfig(){
 //	{label:"",key:"",data:"",type:""},
 //	
 //]
+//获取资产选择
+//获取关联视频
+//获取预案号
+//获取报警方式
+
+
+//查询所有设备列表value！=""EquipItemList
+//获取系统配置，关联表资产表,关联视频表,预案号表，能进行关联查询最好
+//	设备配置 get_equip,update_equip
+//	遥信配置get_yxp update_ycp
+//	遥测配置get_ycp update_yxp
+//	设置配置get_setparm update_setparm
+//获取资产表
+//获取视频表
+//获取预案号表
+//获取报警表
+//查询,修改
+//事件查询
+//设备事件,设备号+时间(yyyy/mm/dd);起,终get_equip_evt
+//设置事件,设备号+时间(yyyy/mm/dd);起,终get_set_evt
+//系统事件时间(yyyy/mm/dd);起,终get_sys_evt
+
+	
+
+
+
+
+
+
+
 var list=[
 	{
 		

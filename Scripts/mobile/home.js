@@ -5,8 +5,8 @@ function onHomePage() {
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-       myApp.router.navigate("/eventQuery/")
-//	 myApp.router.navigate("/systemConfig/")
+//     myApp.router.navigate("/eventQuery/")
+	 myApp.router.navigate("/systemConfig/")
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");

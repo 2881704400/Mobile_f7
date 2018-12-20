@@ -24,7 +24,7 @@ var AlarmCenterContext = {
     }, 
     /*获取设备列表*/
     getEquipList:function (){
-//  	return this.post("/api/")
+  		return this.post("/GWService.asmx/EquipItemList",{},null);
     },
     /*获取设备事件*/
     getEquipEvent:function(equipno,start,end){
@@ -44,15 +44,19 @@ var AlarmCenterContext = {
     },
     /*获取资产列表*/
     getAccess:function(){
-    	
+    	return this.post("/GWService.asmx/QueryTableDatae",{getDataTable:"GWZiChanTable"});
     },
     /*获取预案号列表*/
     getPlan:function(){
-    	
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"GWPlan"});
+    },
+    /*获取报警方式列表*/
+    getAlarmWay:function(){
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"AlarmProc"});
     },
     /*获取关联视频列表*/
     getLinkVideo:function(){
-    	
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"GW_VideoInfo"});
     },
     /*设备配置*/
     setEquipConfig:function(data){

@@ -144,7 +144,6 @@
 #eventQuery .eventWrap, #systemConfig .eventWrap {
   width: 100%; }
   #eventQuery .eventWrap .tab, #systemConfig .eventWrap .tab {
-    border: 1px solid red;
     width: 100%; }
   #eventQuery .eventWrap li, #systemConfig .eventWrap li {
     background: #fff; }
