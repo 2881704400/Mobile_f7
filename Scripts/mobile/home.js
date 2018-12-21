@@ -1,22 +1,15 @@
 ﻿//首页事件
 function onHomePage() {
-    //实时快照
-    
-    snashotData();
     authorizationName();
     switchToolbar("homeTool");
-
+   // myApp.router.navigate("/equipLinkage/"); 
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");
     // ycpChart("purchase_circular");
-    //场景按钮
-    // commonlyUsedFun("commonlyUsed", "25", commonlyUsed); //常用
-    // VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm); //场景
-    // commonlyUsedFun("pptPattern_container ol", "50", pptPattern); //PPT
-    // commonlyUsedFun("jjPattern_container ol", "50", jjPattern); //讲解
     // 配置
-    getJurisdictionData("home_fsk_btn");
+    getJurisdictionData();
+
 }
 //授权名称
 function authorizationName() {
@@ -62,7 +55,7 @@ function VideoBaner(className, slistName, jsonString) {
     var countTrailer = jsonString.length;
     var xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        var htmlTrailerChild = "<li class=\"col-25\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"setCommand_1(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
+        var htmlTrailerChild = "<li class=\"col-25\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
         if (i % 8 == 0 || i == 0) {
             xhTrailer++;
             var htmlTrailer = "<div class=\"swiper-slide\" dataID='" + xhTrailer + "'>" + "<ul class=\"row\" >" + htmlTrailerChild + "</ul></div>";
@@ -84,7 +77,7 @@ function commonlyUsedFun(className, classListName, jsonString) {
     var htmlTrailerChild = "",
         xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"setCommand_1(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
+        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
     }
     $("." + className).append(htmlTrailerChild);
 }

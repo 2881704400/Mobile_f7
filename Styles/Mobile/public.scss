@@ -50,6 +50,11 @@ $unclickedColor: #648EFF;
 $unclickedColor_a: #f6f6f6;
 $bzColor: #0ed1e6;
 $unclickBorderRadius: 6px;
+// 首页配置按钮
+$homeConfigBtnBg: #2d8cf0;
+$homeConfigBtnColor: #ffffff;
+
+
 // 统一table样式
 $tableHeaderFontSize: 1rem;
 $tableHeaderFontColor: #666;
@@ -65,12 +70,12 @@ $tableBorderBottom: #eee;
 $inputBorderColor: #eee; 
 
 // tab切换属性
-$tabSelected: #3E7CFB;
-$tabBackground: #6193FA;
+$tabSelected: #4177e6;
+$tabBackground: #5087f9;
 $tabFontColor: white;
 
 // popup弹框
-$popupBackground: rgba(51, 51, 51, 0.70);
+$popupBackground: rgba(51, 51, 51, 0.95);
 $popupBackTitle: white;
 
 $preBg:rgb(255,255,255);
