@@ -92,6 +92,7 @@ initLoads();
 
 function initLoads() {
 	myApp.dialog.progress();
+
     loadNameMobile();
     setTimeout(function() {
         $("#app").css("visibility", "visible");

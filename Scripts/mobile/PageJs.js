@@ -31,6 +31,7 @@ $(document).on("page:beforein", ".page[data-page='systemConfig']", function (e) 
 
 //事件查询
 $(document).on("page:beforein", ".page[data-page='eventQuery']", function (e) {
+	
     initPageJS('eventQuery', '/Scripts/mobile/pageJavascript/');
 });
 

@@ -20,9 +20,62 @@ var AlarmCenterContext = {
     }, 
      //设置命令-需要传值
     setCommandValue: function (equipno,set_no,value) {
-        return this.post("/api/DataCenter/SetParmControl",{equipno: equipno,set_no: set_no,value:value});
-    },        
-    get: function (url, data) {
+        return this.post("/api/DataCenter/SetParmControl",{data:{equipno: equipno,set_no: set_no,value:value}});
+    }, 
+    /*获取设备列表*/
+    getEquipList:function (){
+  		return this.post("/GWService.asmx/EquipItemList",{},null);
+    },
+    /*获取设备事件*/
+    getEquipEvent:function(equipno,start,end){
+    	
+    },
+    /*获取设置事件*/
+    getSetEvent:function(equipno,start,end){
+    	
+    },
+    /*获取系统事件*/
+    getSysEvent:function(start,end){
+    	
+    },
+    /*获取系统配置*/
+    getSysSet:function(tabType,equipno){
+   	
+    },
+    /*获取资产列表*/
+    getAccess:function(){
+    	return this.post("/GWService.asmx/QueryTableDatae",{getDataTable:"GWZiChanTable"});
+    },
+    /*获取预案号列表*/
+    getPlan:function(){
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"GWPlan"});
+    },
+    /*获取报警方式列表*/
+    getAlarmWay:function(){
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"AlarmProc"});
+    },
+    /*获取关联视频列表*/
+    getLinkVideo:function(){
+    	return this.post("/GWService.asmx/QueryTableData",{getDataTable:"GW_VideoInfo"});
+    },
+    /*设备配置*/
+    setEquipConfig:function(data){
+    	
+    },
+    /*遥测配置*/
+    setYcConfig:function(data){
+    	
+    },
+    /*遥信配置*/
+    setYxConfig:function(data){
+    	
+    },
+ 	/*设置配置*/
+ 	setSetConfig:function(data){
+    	
+    },
+    
+    get: function (url, data, headers) {
         var i = $.Deferred();
         $.ajax({
             url: url,
