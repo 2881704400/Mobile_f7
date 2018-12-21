@@ -11,7 +11,7 @@ function systemConfig(){
 	});
 //	calendarRange.open()
 //	myApp.sheet.open('.sheet-config')
-	myApp.popup.open(".popup-config")
+//	myApp.popup.open(".popup-config")
 //	myApp.sheet.open('.sheet-alarm')
 	var searchbar=myApp.searchbar.create({
 		el:'.searchbar',

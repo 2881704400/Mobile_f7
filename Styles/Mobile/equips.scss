@@ -189,6 +189,7 @@
 }
 
 #eventQuery,#systemConfig{
+   
     .eventQueryContent{height: 100%;overflow: hidden;padding: 1rem;}
     .fab{
         a{
@@ -265,8 +266,16 @@
     }
     
 }
+.popup-config{
+    .item-input-wrap{
+        border-bottom: none;
+    }
+}
 .sheet-condition{
     height:320px;
+     .item-input-wrap{
+        border-bottom: none;
+    }
     .toolbar-inner{
         background: $preBg;
         border-bottom: 1px solid $lineBg;

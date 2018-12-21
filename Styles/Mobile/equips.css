@@ -172,8 +172,13 @@ mixin：sass宏mixin
   .sheet-alarm .block .list ul:before {
     height: 0; }
 
+.popup-config .item-input-wrap {
+  border-bottom: none; }
+
 .sheet-condition {
   height: 320px; }
+  .sheet-condition .item-input-wrap {
+    border-bottom: none; }
   .sheet-condition .toolbar-inner {
     background: white;
     border-bottom: 1px solid #eaeaea; }
