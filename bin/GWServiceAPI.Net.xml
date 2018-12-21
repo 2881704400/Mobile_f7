@@ -163,6 +163,12 @@
             </summary>
             <remarks>address:服务器文件地址</remarks>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.OtherController.upload2">
+            <summary>
+            文件上传
+            </summary>
+            <remarks>address:服务器文件地址</remarks>
+        </member>
         <member name="M:GWServiceAPI.Net.Controllers.OtherController.debug_run_sql(Newtonsoft.Json.Linq.JObject)">
             <summary>
             动态生成SQL查询接口
