@@ -159,11 +159,12 @@ mixin：sass宏mixin
     background: #fff; }
     #homeContents .home_fsk_btn > div.home_fsk_btn_title {
       margin-bottom: 20px;
-      border-bottom: 1px solid #FD971F; }
+      border-bottom: 1px solid #2d8cf0; }
       #homeContents .home_fsk_btn > div.home_fsk_btn_title > a {
         height: 100%;
         padding: 1rem 0;
-        display: inline-block; }
+        display: inline-block;
+        color: #414141; }
     #homeContents .home_fsk_btn > ul > li {
       overflow: hidden;
       margin-bottom: 10px; }
@@ -176,6 +177,7 @@ mixin：sass宏mixin
         border: 1px solid #f0f4f7;
         position: relative; }
         #homeContents .home_fsk_btn > ul > li > a > p {
-          margin: 0.5rem 0; }
+          margin: 0.5rem 0;
+          color: #414141; }
 
 /*# sourceMappingURL=home.css.map */

@@ -1,5 +1,5 @@
 /*title*/
-.selectTab{color: rgb(253, 151, 31)!important;}
+.selectTab{color: #2d8cf0 !important;}
 .home_fsk_btn_title a{position: relative;}
 .home_fsk_btn_title a:nth-child(1):after{content: "";width: 1px;height: 50%;position: absolute;right: 0;top: 25%;border-right: 1px solid rgb(224, 203, 178);}
 
