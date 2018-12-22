@@ -501,44 +501,44 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
     });
 }
 //发送命令
-function get_no(dt, set_equip, set_no, values) {
-    var set_equipOld, set_noOld, valuesOld, main_instrOld, mino_instrOld;
-    if (set_equip == "") {
-        set_equipOld = $(dt).attr("set_equip");
-        set_noOld = $(dt).attr("set_no");
-    } else {
-        set_equipOld = set_equip;
-        set_noOld = set_no;
-    }
-    var ajaxVar = $.ajax({
-        type: "POST",
-        url: "/GWService.asmx/GetDataTableFromSQL",
-        timeout: 5000,
-        data: {
-            sql: "select * from setParm where equip_no =" + set_equipOld + " and set_no=" + set_noOld,
-            userName: window.localStorage.userName,
-        },
-        success: function(data) {
-            var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-            if (dt.find("equip_no").html() != "") {
-                if (values == "") onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-                else onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-            } else {
-                alertMsgError.open();
-            }
-        }
-    });
-}
+// function get_no(dt, set_equip, set_no, values) {
+//     var set_equipOld, set_noOld, valuesOld, main_instrOld, mino_instrOld;
+//     if (set_equip == "") {
+//         set_equipOld = $(dt).attr("set_equip");
+//         set_noOld = $(dt).attr("set_no");
+//     } else {
+//         set_equipOld = set_equip;
+//         set_noOld = set_no;
+//     }
+//     var ajaxVar = $.ajax({
+//         type: "POST",
+//         url: "/GWService.asmx/GetDataTableFromSQL",
+//         timeout: 5000,
+//         data: {
+//             sql: "select * from setParm where equip_no =" + set_equipOld + " and set_no=" + set_noOld,
+//             userName: window.localStorage.userName,
+//         },
+//         success: function(data) {
+//             var dt = $(data).find('DataTable'); //返回XML格式的DataTable
+//             if (dt.find("equip_no").html() != "") {
+//                 if (values == "") onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
+//                 else onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
+//             } else {
+//                 alertMsgError.open();
+//             }
+//         }
+//     });
+// }
 function get_no_set(dt,values) {
-    var set_equipOld, set_noOld;
+    var set_equipOld="", set_noOld="";
     try{
         set_equipOld = $(dt).attr("set_equip");
         set_noOld = $(dt).attr("set_no");
     }
     catch(e){
-        myApp.dialog.alert("请先绑定功能设备号");
-        return;
+        // myApp.dialog.alert("请先绑定功能设备号");
     }
+    if(set_equipOld.trim() || set_equipOld.trim() =="") return false;
     var ajaxVar = $.ajax({
         type: "POST",
         url: "/GWService.asmx/GetDataTableFromSQL",
@@ -565,8 +565,8 @@ function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
         timeout: 5000,
         data: {
             equip_no: equip_no,
-            main_instruction: main_instr,
-            minor_instruction: mino_instr,
+            main_instruction: main_instr || "-",
+            minor_instruction: mino_instr || "-",
             value: valueset,
             user_name: window.localStorage.userName
         },

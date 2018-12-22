@@ -33,9 +33,7 @@
 }
 //刷新隐藏
 $(".modalDiv").addClass("displayNone");
-// ===============================================
-// ===========判断pdf或者ppt更换图标==============
-// ===============================================
+//点击的是文件,则保存点击记录
 $.extend({
   // 点击进入
   setFounction:function(that){
@@ -43,9 +41,7 @@ $.extend({
      window.localStorage.dataURL = $(that).attr("data-url");
   }
 })
-// ===============================================
-// =====================文件结构==================
-// ===============================================
+// 文件结构处理
 var stringFile;
 function fileStuctureChild(url,objectList)
 {
@@ -55,7 +51,7 @@ function fileStuctureChild(url,objectList)
     JQajaxo("post", _urlChild, true, _dataSetChild, _sccessChild);
     function _sccessChild(data) {  
       $(".modalDiv").addClass("displayNone");
-      var result = $$(data).children("string").text();
+      var result = $$(data).children("string").text(),contentHtml="";
       if (result != "false" && result !="null") {
           stringFile =JSON.parse(result);
           //继续查询每项列表下的子目录
@@ -65,11 +61,11 @@ function fileStuctureChild(url,objectList)
            {
              if(isStucture(stringFile[i]) && stringFile[i] !="" ) //如果为文件夹
               {
-                  var contentHtml = '<li><a href="#" class="item-content item-link fileListActive"  data-url="'+stringFile[i]+'" onclick="opeChildFile(this)"><i class="iconfont icon-file"></i>'+getNmae(stringFile[i])+'<b class="iconfont icon-rightDire"></b></a><ul></ul></li>';   
+                   contentHtml = '<li class="bottomBorderLine"><a href="#" class="item-content item-link fileListActive"  data-url="'+stringFile[i]+'" onclick="opeChildFile(this)"><i class="iconfont icon-file"></i>'+getSubstrNmae(stringFile[i])+'<b class="iconfont icon-rightDire"></b></a><ul></ul></li>';   
               }
               else if(stringFile[i] !="")
               {
-                 var contentHtml = '<li><a href="#" class="item-content item-link fileListActive"  data-url='+stringFile[i]+' set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick="setMenu(this)"><i class="iconfont icon-word"></i>'+getNmae(stringFile[i])+'</a></li>';
+                  contentHtml = '<li class="bottomBorderLine"><a href="#" class="item-content item-link fileListActive"  data-url='+stringFile[i]+' set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,"","")\"><i class="iconfont icon-word"></i>'+getSubstrNmae(stringFile[i])+'</a></li>';
               }
               if(objectList == "")
                 $("#Filelist>ul").append(contentHtml);
@@ -94,9 +90,11 @@ function isStucture(stringFile){
       return true;
    }
 }
-// ===============================================
-// ===================菜单控制====================
-// ===============================================
+//提取名称
+function getSubstrNmae(name) {
+    return name.split("\\")[name.split("\\").length - 1];
+}
+// 菜单
 function opeChildFile(that){
   $(that).next().html("");
   // 右边图标
@@ -115,34 +113,23 @@ function opeChildFile(that){
         fileStuctureChild(urlAc,that);$(".modalDiv").removeClass("displayNone");
      }
   }
-  
 }
-function setMenu(that){
-   GetSetParmItem_mettingppt(that,PPTcommand.returnSoft.equipNo, PPTcommand.returnSoft.setNo,"","");
-}
-// ===============================================
-// ===================清除重写====================
-// ===============================================
+// 清除重写
 function writeResh(){$("#Filelist>ul").html("");}
-// ===============================================
-// ================初始化历史记录=================
-// ===============================================
+//历史记录
 function isFilePPT(){
      if(window.localStorage.storageI != undefined && window.localStorage.storageI != "")
      {
         $(".pptActive").find("a").remove();
-        $(".pptActive").append('<a href="#" class="item-content item-link historyPPT" data-url=""  set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick="setMenu(this)"></i><i class="iconfont icon-word"></i>'+window.localStorage.storageI+"</a>");
+        $(".pptActive").append('<a href="#" class="item-content item-link historyPPT" data-url=""  set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,"","")\"></i><i class="iconfont icon-word"></i>'+window.localStorage.storageI+"</a>");
         $(".pptActive a").attr("data-url",window.localStorage.dataURL);
-        
      }
 }
 
-
-//获取结果集合
-function GetSetParmItem_mettingppt(a,equip_no,set_no,values,slideIndex) {
-    if (Control_Equip_List(equip_no) || Control_SetItem_List(equip_no, false)) {
+function setMenu(that,value,slideIndex){
+    if (Control_Equip_List(PPTcommand.returnSoft.equipNo) || Control_SetItem_List(PPTcommand.returnSoft.equipNo, false)) {
         var _url = "/GWServices.asmx/GetSetParmItem";
-        var _dataSet = "equip_no=" + equip_no + "&&set_no=" + set_no;
+        var _dataSet = "equip_no=" + PPTcommand.returnSoft.equipNo + "&&set_no=" + PPTcommand.returnSoft.setNo;
         JQajaxo("post", _url, true, _dataSet, _successfSet);
         function _successfSet(data) {
             var resultJs = $(data).children("string").text();
@@ -150,44 +137,74 @@ function GetSetParmItem_mettingppt(a,equip_no,set_no,values,slideIndex) {
                {   
                   var userResultJs =JSON.parse(resultJs);
                   if(values =="")
-                     onSetCommand_mettingppt(a,equip_no, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, userResultJs[0].value, userResultJs[0].set_nm,slideIndex);
+                     openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, userResultJs[0].value, userResultJs[0].set_nm,slideIndex);
                   else
-                     onSetCommand_mettingppt(a,equip_no, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, values, userResultJs[0].set_nm,slideIndex); 
+                     openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, values, userResultJs[0].set_nm,slideIndex); 
               }
               else
               {
-                _errorfSet(a);
+               alertMsgError.open();
               }
         }
-
     }
 }
 //设置命令-确定
-function onSetCommand_mettingppt(a,str_1, str_2, str_3, str_4, text,slideIndex) { //equip_no,main_instruction,minor_instruction,value,set_nm
-    var vals = str_4;
+function openFileCommand(dt,equip_no, main_instruction, minor_instruction, value, set_nm,slideIndex) { //equip_no,main_instruction,minor_instruction,value,set_nm
     var userName = window.localStorage.userName;
     if (userName == null || userName == "") {userName = window.sessionStorage.userName;}
     var _url = "/GWService.asmx/SetupsCommand";
-    var _dataSet = "equip_no=" + encodeURIComponent(str_1) + "&&main_instruction=" + encodeURIComponent(str_2) + "&&minor_instruction=" + encodeURIComponent(str_3) + "&&value=" + encodeURIComponent(vals) + "&&user_name=" + encodeURIComponent(userName);
+    var _dataSet = "equip_no=" + encodeURIComponent(equip_no) + "&&main_instruction=" + encodeURIComponent(main_instruction) + "&&minor_instruction=" + encodeURIComponent(minor_instruction) + "&&value=" + encodeURIComponent(value) + "&&user_name=" + encodeURIComponent(userName);
     JQajaxo("post", _url, true, _dataSet, _successfSet);
     function _successfSet(data) {
-      setTimeout(function(){
-         $(".modalDiv").removeClass("displayNone");
-         //辨别点击历史记录或者普通记录
-         if($(a).hasClass("historyPPT"))
-         {
-           window.localStorage.historyis = 1;
-         }
-         else
-         {
-           window.localStorage.historyis = 0;
-         }
-        //点击的是文件,则保存点击记录
-         if(!isStucture($(a).text()) && $(a).text() !=""){
-            $.setFounction(a);
-         }
-         get_no_ppt(a,$(a).attr("data-url"),""); //传入url生成缩略图
-         window.localStorage.pptUsername = $(a).attr("data-url").split("\\")[$(a).attr("data-url").split("\\").length-1].split(".")[0];  //ppt名称
-      },1000);
+        var resultJs = $(data).children("string").text();
+        if (resultJs != "false") {  
+          if(!value)
+            setTimeout(function(){
+               $(".modalDiv").removeClass("displayNone");
+               //辨别点击历史记录或者普通记录
+               $(dt).hasClass("historyPPT")?window.localStorage.historyis = 1:window.localStorage.historyis = 0;
+              //点击的是文件,则保存点击记录
+               if(!isStucture($(dt).text()) && $(dt).text() !=""){
+                  $.setFounction(dt);
+               }
+               setMenu(dt,$(dt).attr("data-url"),""); //传入url生成缩略图
+               window.localStorage.pptUsername = $(dt).attr("data-url").split("\\")[$(dt).attr("data-url").split("\\").length-1].split(".")[0];  //ppt名称
+            },1000);
+           else
+            {
+                 if($(dt).parents("div.page-content").hasClass("mettingPPTContent")) //ppt列表
+                 {
+                  if(window.localStorage.historyis == 1)
+                    {
+                        setMenu($(".selectBorder"),window.localStorage.savePage,window.localStorage.savePage);
+                    }
+                   var setTimeout = setInterval(function(){
+                       $.ajax({                  
+                        type: "get",                 
+                        url: "http://"+PPTcommand.setIp.set_ip+":3333/api/data",                
+                        timeout: 5000,                  
+                        data:"",                  
+                        success: function (data) {  
+                            if(data[1] != -1)
+                            {  
+                              window.localStorage.sessionFilename = data[0];//data[1];
+                              window.localStorage.sessionValue = data[1];//data[1];
+                              $(".modalDiv").addClass("displayNone");
+                              clearInterval(setTimeout);   
+                               myApp.router.navigate('/mettingDetails/'); 
+                            }
+                          },
+                          error: function(error){console.log(error)}             
+                         });
+                    },500);
+                  }
+                  if($(dt).parents("div.page-content").hasClass("mettingDetailsContent")){ //ppt详情
+                      $(".mettingDetails_index").find("div:eq("+(slideIndex-1)+")").addClass("selectBorder").siblings().removeClass("selectBorder");
+                      var src= $(".mettingDetails_index>div:eq("+(slideIndex-1)+")").find("img").attr("src");
+                      $(".setviewPng").attr('src',src); 
+                  }              
+            }
+        }
     }
 }
+

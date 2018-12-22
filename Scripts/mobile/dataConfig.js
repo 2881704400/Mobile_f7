@@ -1,7 +1,7 @@
 function getJurisdictionData(){
     // 权限管理
     var JurisdictionArray = [];
-  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
+  $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
     let result = n.HttpData;
     if(result.code == 200)
     {
@@ -137,32 +137,32 @@ var commonlyUsed =[
         name: '列表视频',
         href: '/Video/',
         icon: 'iconfont icon-f7_video',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: '地图监控',
         href: '/videoControl/',
         icon: 'iconfont icon-f7_control',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: 'PPT',
         href: '/mettingPPT/',
         icon: 'iconfont icon-f7_ppt',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: '欢迎词',
         href: '/welcomeWords/',
         icon: 'iconfont icon-f7_welcome',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },                    
     ];
