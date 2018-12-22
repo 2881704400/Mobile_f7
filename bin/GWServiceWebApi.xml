@@ -89,10 +89,47 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_JMdata(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_UserListData">
             -----------------------------------------------------------------------------------------------------------------------------------------------
              实时快照及定时任务接口
             -----------------------------------------------------------------------------------------------------------------------------------------------
+            <summary>
+            解析用户信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.DeleteUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            删除用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.AddUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            password 用户密码
+            remark 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.UpdateUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            password 用户密码
+            remark 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_JMdata(Newtonsoft.Json.Linq.JObject)">
             <summary>
             解析用户名称
             </summary>
