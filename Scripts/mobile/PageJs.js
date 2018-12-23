@@ -35,6 +35,12 @@ $(document).on("page:beforein", ".page[data-page='eventQuery']", function (e) {
     initPageJS('eventQuery', '/Scripts/mobile/pageJavascript/');
 });
 
+//事件查询-新
+$(document).on("page:beforein", ".page[data-page='eventSearch']", function (e) {
+	
+    initPageJS('eventSearch', '/Scripts/mobile/pageJavascript/');
+});
+
 //报警排表
 $(document).on("page:beforein", ".page[data-page='schedule']", function (e) {
     initPageJS('schedule', '/Scripts/mobile/pageJavascript/');

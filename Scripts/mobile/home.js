@@ -5,7 +5,7 @@ function onHomePage() {
     snashotData();
     authorizationName();
     switchToolbar("homeTool");
-
+	myApp.router.navigate("/eventSearch/"); 
     //图表
     // snapshotChart("purchase_Bar");
     // equipsChart("purchase_ring");

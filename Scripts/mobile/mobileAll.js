@@ -35,6 +35,9 @@ var myApp = new Framework7({
         path: '/eventQuery/',
         url: 'eventQuery.html',
     }, {
+        path: '/eventSearch/',
+        url: 'eventSearch.html',
+    }, {
         path: '/schedule/',
         url: 'schedule.html',
     }, {

@@ -101,6 +101,12 @@ select {
 }
 
 .md .toolbar {
+	/*height: 50px;
+	top: 100%;
+	transform: translateY(-100%);*/
+}
+
+.md .view-menu-toolbar{
 	height: 50px;
 	top: 100%;
 	transform: translateY(-100%);
