@@ -32,11 +32,75 @@
 		<div class="eventSearchContent">
 			<div class="event-search-box">
 				<div class="half-select-box">
+					<label>时间跨度：</label>
 					<input type="text" placeholder="时间段选择" readonly="readonly" id="eventSearchTimeId" />
 				</div>
 				<div class="half-select-box-bottom">
+					<label>设备选择：</label>
 					<input type="text" placeholder="请选择设备" readonly="readonly" id="eventSearchEquipId" />
-					<input type="text" placeholder="请选择事件类型" readonly="readonly" id="eventSearchTypeId" />
+					<button class="col button button-fill color-blue" onclick="searchEquipItems()">查询</button>
+				</div>
+			</div>
+			<div class="content-block event-search-tabs">
+				<!-- Buttons row as tabs controller -->
+				<div class="buttons-row">
+					<!-- Link to 1st tab, active -->
+					<a href="#tab1" class="tab-link button tab-link-active">设备事件</a>
+					<!-- Link to 2nd tab -->
+					<a href="#tab2" class="tab-link button">设置事件</a>
+					<!-- Link to 3rd tab -->
+					<a href="#tab3" class="tab-link button">系统事件</a>
+				</div>
+			</div>
+			<!-- Tabs, tabs wrapper -->
+			<div class="tabs">
+				<!-- Tab 1, active by default -->
+				<div id="tab1" class="tab tab-active">
+					<div class="content-block">
+						<div class="tab-table-header">
+							<span>时间</span>
+							<span>设备名称</span>
+							<span>设备事件</span>
+						</div>
+						<ul id="eventSearchEquipsId">
+							<!--<li>
+								<span>2018/12/23 18:30:47</span>
+								<span>登录信息:用户“ admin ”在服务端登录成功!"</span>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+				<!-- Tab 2 -->
+				<div id="tab2" class="tab">
+					<div class="content-block">
+						<div class="tab-table-header">
+							<span>时间</span>
+							<span>设备名称</span>
+							<span>设置事件</span>
+							<span>操作人</span>
+						</div>
+						<ul id="eventSearchSetId">
+							<!--<li>
+								<span>2018/12/23 18:30:47</span>
+								<span>登录信息:用户“ admin ”在服务端登录成功!"</span>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+				<!-- Tab 3 -->
+				<div id="tab3" class="tab">
+					<div class="content-block">
+						<div class="tab-table-header">
+							<span>时间</span>
+							<span>系统事件</span>
+						</div>
+						<ul id="eventSearchSystemId">
+							<!--<li>
+								<span>2018/12/23 18:30:47</span>
+								<span>登录信息:用户“ admin ”在服务端登录成功!"</span>
+							</li>-->
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

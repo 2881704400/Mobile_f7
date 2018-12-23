@@ -6,20 +6,27 @@
     width: 100%;
     height: 100%;
     background: #F2F3F5;
-    border: 1px solid red;
     padding: 0.5rem;
     .event-search-box {
         width: 100%;
         height: 78px;
         background: #FFFFFF;
-        border: 1px solid red;
         padding: 0 1rem;
         .half-select-box {
             width: 100%;
             height: 50%;
-            input {
-                width: 100%;
+            label {
+                width: 25%;
                 height: 100%;
+                line-height: 39px;
+                font-size: 1rem;
+                color: #333333;
+                float: left;
+            }
+            input {
+                width: 75%;
+                height: 100%;
+                float: right;
                 line-height: 39px;
                 font-size: 1rem;
                 color: #333333;
@@ -31,8 +38,16 @@
         .half-select-box-bottom {
             width: 100%;
             height: 50%;
+            label {
+                width: 25%;
+                height: 100%;
+                line-height: 39px;
+                font-size: 1rem;
+                color: #333333;
+                float: left;
+            }
             input {
-                width: 37%;
+                width: 49%;
                 height: 80%;
                 position: relative;
                 top: 10%;
@@ -44,8 +59,214 @@
                     margin: 0 3%;
                 }
             }
+            button {
+                width: 20%;
+                height: 27px;
+                line-height: 27px;
+                float: right;
+                position: relative;
+                top: 6px;
+            }
             &:first-child {
                 border-bottom: 1px solid rgba(51, 51, 51, 0.10);
+            }
+        }
+    }
+    .event-search-tabs {
+        width: 100%;
+        height: 36px;
+        margin-top: 10px;
+        border: 1px solid #2d8cf0;
+        border-right: 0px solid #2d8cf0;
+        .buttons-row {
+            width: 100%;
+            height: 100%;
+            .button {
+                width: calc(100% / 3);
+                height: 100%;
+                float: left;
+                border-radius: 0px;
+                border-right: 1px solid #2d8cf0;
+                ;
+            }
+            .tab-link-active {
+                background-color: #2d8cf0;
+            }
+        }
+    }
+    .tabs {
+        width: 100%;
+        height: calc(100% - 122px);
+        .tab#tab1 {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            .tab-table-header {
+                width: 100%;
+                height: 36px;
+                background-color: #F2F3F5;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                span {
+                    width: 30%;
+                    height: 100%;
+                    line-height: 36px;
+                    display: inline-block;
+                    float: left;
+                    text-align: center;
+                    color: #333333;
+                    font-size: 0.875rem;
+                    font-weight: bold;
+                    &:nth-child(2) {
+                        text-align: left;
+                    }
+                    &:last-child {
+                        width: 40%;
+                        text-align: left;
+                    }
+                }
+            }
+            ul {
+                width: 100%;
+                height: calc(100% - 36px);
+                list-style: none;
+                li {
+                    height: 38px;
+                    width: 100%;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                    span {
+                        width: 30%;
+                        height: 100%;
+                        color: #333333;
+                        font-size: 0.875rem;
+                        text-align: center;
+                        float: left;
+                        &:nth-child(2) {
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                        &:last-child {
+                            width: 40%;
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .tab#tab2 {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            .tab-table-header {
+                width: 100%;
+                height: 36px;
+                background-color: #F2F3F5;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                span {
+                    width: 30%;
+                    height: 100%;
+                    line-height: 36px;
+                    display: inline-block;
+                    float: left;
+                    text-align: center;
+                    color: #333333;
+                    font-size: 0.875rem;
+                    font-weight: bold;
+                    &:nth-child(2) {
+                        width: 20%;
+                        text-align: left;
+                    }
+                    &:nth-child(3) {
+                        width: 20%;
+                        text-align: left;
+                    }
+                    &:last-child {
+                        text-align: left;
+                    }
+                }
+            }
+            ul {
+                width: 100%;
+                height: calc(100% - 36px);
+                list-style: none;
+                li {
+                    height: 38px;
+                    width: 100%;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                    span {
+                        width: 30%;
+                        height: 100%;
+                        color: #333333;
+                        font-size: 0.875rem;
+                        text-align: center;
+                        float: left;
+                        &:nth-child(2) {
+                            width: 20%;
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                        &:nth-child(3) {
+                            width: 20%;
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                        &:last-child {
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .tab#tab3 {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            .tab-table-header {
+                width: 100%;
+                height: 36px;
+                background-color: #F2F3F5;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                span {
+                    width: 30%;
+                    height: 100%;
+                    line-height: 36px;
+                    display: inline-block;
+                    float: left;
+                    text-align: center;
+                    color: #333333;
+                    font-size: 0.875rem;
+                    font-weight: bold;
+                    &:last-child {
+                        width: 70%;
+                        text-align: left;
+                    }
+                }
+            }
+            ul {
+                width: 100%;
+                height: calc(100% - 36px);
+                list-style: none;
+                li {
+                    height: 38px;
+                    width: 100%;
+                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                    span {
+                        width: 30%;
+                        height: 100%;
+                        color: #333333;
+                        font-size: 0.875rem;
+                        text-align: center;
+                        float: left;
+                        &:last-child {
+                            width: 70%;
+                            text-align: left;
+                            line-height: 38px;
+                        }
+                    }
+                }
             }
         }
     }
