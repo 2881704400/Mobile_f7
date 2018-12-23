@@ -75,13 +75,13 @@ var AlarmCenterContext = {
     	
     },
     
-    get: function (url, data, headers) {
+    get: function (url, data) {
         var i = $.Deferred();
         $.ajax({
             url: url,
             data: data,
             type: "GET",
-            headers: headers,
+            // headers: headers,
             // contentType: "application/json; charset=UTF-8",
             dataType: "JSON",
             headers: {

@@ -15,14 +15,14 @@ mixin：sass宏mixin
     &>ul.charts-block{
       width: 100%;padding: 0.5rem 0;
         &>li{
-          width: 100%;margin: 10px auto 0;
+          width: 100%;margin: 10px auto 5% auto;    box-shadow: 1px 1px 1px #eee, -1px 0px 1px #eee;
           h3{text-align: left;font-size: 0.9rem;font-weight: 300;margin-bottom: 1rem;
           i{font-size: 1.5rem;margin-right: 10px;vertical-align: middle;position: relative;top: -2px;}
                 }  
           dl{
             width: 100%;display: inline-block;
             dt{}
-            dd{box-shadow: 0px -1px 1px #{$situationBoxShadow};
+            dd{
                width: 100%;text-align: center;padding: 10px;overflow: hidden; background: #{$statsBgc};  
               .charts_bar{
                 width: 100%;#purchase_Bar{width: 100%;height: 190px;}
@@ -31,7 +31,7 @@ mixin：sass宏mixin
                 #purchase_Bar{margin: 0 auto;}
                }
                &>div{overflow: hidden;}       
-               .p-ellipsis1{font-size: 12px;color: #{$allFontColor};overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;}            
+               .p-ellipsis1{font-size: 12px;overflow: hidden; white-space: nowrap;   text-overflow: ellipsis;}            
             }            
           }
           .functionMenu{
@@ -42,9 +42,10 @@ mixin：sass宏mixin
             &>dd{
               li{margin-bottom: 10px;
                 .homeBtn{
-                  width: 100%;height: 100%;display: inline-block;color: #{$situationFontColor};
-                  background: #{$unclickedColor_a};padding: 5px;border-radius: #{$unclickBorderRadius};
-                  i{font-size: 2rem;}p{margin: 0.2rem 0;}
+                  width: 100%;height: 100%;display: inline-block;color: #{$homeConfigBtnColor};
+                  background: #{$homeConfigBtnBg};padding: 5px;border-radius: #{$unclickBorderRadius};
+                  i{font-size: 2rem;}
+                  p{margin: 0.2rem 0;}
                   img{width: 40%;}
                 }
               }
@@ -53,17 +54,17 @@ mixin：sass宏mixin
           .commonlyUsed{
             li{
               a{
-                width: 100%;height: 100%;display: inline-block; background: #{$unclickedColor_a};padding: 10px;
+                width: 100%;height: 100%;display: inline-block; background: #{$homeConfigBtnBg};padding: 10px;
                 border-radius: #{$unclickBorderRadius};
-                i{font-size: 2rem;color: #{$situationFontColor};}
-                p{color: #{$situationFontColor};margin: 0;}
+                i{font-size: 2rem;color: #{$homeConfigBtnColor};}
+                p{color: #{$homeConfigBtnColor};margin: 0;}
               }
             }
           }
           .pptPattern_container,.jjPattern_container{
             h3{
               font-size: 1.3rem;color: #{$situationFontColor};font-weight: 100;text-align: center;position: relative;
-              label{font-size: 12px;color: #{$unclickedColor};display: block;text-align: center;}
+              label{font-size: 12px;color: #414154;display: block;text-align: center;}
               span{display: inline-block;background: white;padding: 0px 5px;position: relative;z-index: 1;}
               &:after{content: "";width: 80%;height: 1px;border-top: 1px solid #{$statsBorderColor};position: absolute;left: 10%;top: 25%;right: 10%;}
              }
@@ -79,7 +80,7 @@ mixin：sass宏mixin
           a:nth-of-type(5) p{color: #5DA337;}
           text-align: center;background: #{$situationContainerBgc};}
     }
-    // 配置项目
+    // 配置项目---富士康
     &>div{margin-top: 10px;}
    .home_fsk_btn{
        box-shadow: 1px 1px 1px #{$situationBoxShadow},-1px 0px 1px #{$situationBoxShadow}; width: 100%;text-align: center;padding: 10px;overflow: hidden; background: #{$statsBgc}; 
