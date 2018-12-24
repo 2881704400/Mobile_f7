@@ -2,6 +2,75 @@
     padding-bottom: 50px !important;
 }
 
+.ios .eventDetailPopup {
+    margin-top: 20px;
+    .page-content {
+        padding-top: 0px !important;
+        background-color: #F2F3F5;
+        .eventDetailList {
+            margin: 0.5rem;
+            background-color: #FFFFFF;
+            .item-input-wrap {
+                border-bottom: 0px solid #4177e6;
+            }
+        }
+    }
+}
+
+.md .eventSearchSubNavBar .button:not(.button-fill):not(.button-fill-md) {
+    color: #000;
+}
+
+.md .eventSearchSubNavBar .button.tab-link-active {
+    background-color: #2d8cf0;
+    color: #fff !important;
+}
+
+.md .eventSearchSubNavBar .segmented.segmented-raised {
+    box-shadow: none;
+    border: 1px solid #2d8cf0;
+}
+
+.md .eventSearchSubNavBar .segmented .button {
+    border-radius: 0;
+    border-left: 1px solid #2d8cf0;
+    &:first-child{
+        border-left: none;
+    }
+}
+
+.subnavbar.eventSearchSubNavBar{
+    background: white !important;
+    .subnavbar-inner{
+        width: 100%;
+        padding: 0 0.5rem;
+        margin: auto;
+        .segmented{
+            width: 100%;
+            a.button{
+                border-radius: 3px 0 0 3px;
+                height: 33px;
+                line-height: 33px;
+                color: #333333;
+                &:nth-child(2){
+                    border-radius: 0;
+                }
+                &:nth-child(3){
+                    border-radius: 0 3px 3px 0;
+                }
+            }
+            a.button.tab-link-active{
+                background-color: #2d8cf0;
+                color: #fff !important;
+                font-weight: bold;
+            }
+        }
+    }
+    &:after{
+        height: 0px;
+    }
+}
+
 .eventSearchContent {
     width: 100%;
     height: 100%;
@@ -11,73 +80,79 @@
         width: 100%;
         height: 78px;
         background: #FFFFFF;
-        padding: 0 1rem;
+        padding-left: 1rem;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.20);
         .half-select-box {
-            width: 100%;
+            width: 80%;
             height: 50%;
+            float: left;
             label {
-                width: 25%;
+                width: 30%;
                 height: 100%;
                 line-height: 39px;
                 font-size: 1rem;
                 color: #333333;
                 float: left;
+                opacity: 0.6;
             }
             input {
-                width: 75%;
-                height: 100%;
-                float: right;
+                width: 65%;
+                height: 75%;
+                position: relative;
+                top: 12.5%;
+                float: left;
                 line-height: 39px;
+                border-bottom: 1px solid rgba(51, 51, 51, 0.10);
                 font-size: 1rem;
                 color: #333333;
-            }
-            &:first-child {
-                border-bottom: 1px solid rgba(51, 51, 51, 0.10);
+                font-weight: bold;
             }
         }
         .half-select-box-bottom {
-            width: 100%;
+            width: 80%;
             height: 50%;
+            float: left;
             label {
-                width: 25%;
+                width: 30%;
                 height: 100%;
                 line-height: 39px;
                 font-size: 1rem;
                 color: #333333;
                 float: left;
+                opacity: 0.6;
             }
             input {
-                width: 49%;
-                height: 80%;
+                width: 65%;
+                height: 75%;
                 position: relative;
-                top: 10%;
+                top: 12.5%;
                 border-bottom: 1px solid rgba(51, 51, 51, 0.10);
                 float: left;
                 font-size: 1rem;
                 color: #333333;
-                &:last-child {
-                    margin: 0 3%;
-                }
+                font-weight: bold;
             }
-            button {
-                width: 20%;
-                height: 27px;
-                line-height: 27px;
-                float: right;
-                position: relative;
-                top: 6px;
-            }
-            &:first-child {
-                border-bottom: 1px solid rgba(51, 51, 51, 0.10);
-            }
+        }
+        button {
+            width: 18%;
+            height: 100%;
+            line-height: 27px;
+            border-radius: 0;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            float: right;
+            background-color: #2d8cf0 !important;
         }
     }
     .event-search-tabs {
         width: 100%;
         height: 36px;
-        margin-top: 10px;
+        margin-bottom: 10px;
         border: 1px solid #2d8cf0;
         border-right: 0px solid #2d8cf0;
+        background: white;
         .buttons-row {
             width: 100%;
             height: 100%;
@@ -86,42 +161,55 @@
                 height: 100%;
                 float: left;
                 border-radius: 0px;
+                border: none;
                 border-right: 1px solid #2d8cf0;
-                ;
+                color: #2d8cf0;
+                line-height: 34px;
             }
             .tab-link-active {
+                color: white;
                 background-color: #2d8cf0;
             }
         }
     }
     .tabs {
         width: 100%;
-        height: calc(100% - 122px);
+        height: calc(100% - 88px);
+        background: white;
         .tab#tab1 {
             width: 100%;
             height: 100%;
             overflow-y: auto;
+            .tab-content-box {
+                width: 100%;
+                height: 100%;
+            }
             .tab-table-header {
                 width: 100%;
                 height: 36px;
-                background-color: #F2F3F5;
-                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                background-color: white;
+                border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                 span {
-                    width: 30%;
+                    width: 25%;
                     height: 100%;
                     line-height: 36px;
                     display: inline-block;
                     float: left;
                     text-align: center;
-                    color: #333333;
+                    color: #2d8cf0;
                     font-size: 0.875rem;
-                    font-weight: bold;
                     &:nth-child(2) {
-                        text-align: left;
+                        width: 20%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     &:last-child {
-                        width: 40%;
+                        width: 55%;
                         text-align: left;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
@@ -134,55 +222,67 @@
                     width: 100%;
                     border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                     span {
-                        width: 30%;
+                        width: 25%;
                         height: 100%;
                         color: #333333;
                         font-size: 0.875rem;
+                        display: inline-block;
                         text-align: center;
                         float: left;
                         &:nth-child(2) {
-                            text-align: left;
+                            width: 20%;
                             line-height: 38px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                         &:last-child {
-                            width: 40%;
+                            width: 55%;
                             text-align: left;
                             line-height: 38px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }
             }
         }
-        
         .tab#tab2 {
             width: 100%;
             height: 100%;
             overflow-y: auto;
+            .tab-content-box {
+                width: 100%;
+                height: 100%;
+            }
             .tab-table-header {
                 width: 100%;
                 height: 36px;
-                background-color: #F2F3F5;
-                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                background-color: white;
+                border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                 span {
-                    width: 30%;
+                    width: 25%;
                     height: 100%;
                     line-height: 36px;
                     display: inline-block;
                     float: left;
                     text-align: center;
-                    color: #333333;
+                    color: #2d8cf0;
                     font-size: 0.875rem;
-                    font-weight: bold;
                     &:nth-child(2) {
                         width: 20%;
-                        text-align: left;
-                    }
-                    &:nth-child(3) {
-                        width: 20%;
-                        text-align: left;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     &:last-child {
+                        width: 55%;
                         text-align: left;
+                        display: inline-block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
@@ -195,53 +295,60 @@
                     width: 100%;
                     border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                     span {
-                        width: 30%;
+                        width: 25%;
                         height: 100%;
                         color: #333333;
                         font-size: 0.875rem;
+                        display: inline-block;
                         text-align: center;
                         float: left;
                         &:nth-child(2) {
                             width: 20%;
-                            text-align: left;
                             line-height: 38px;
-                        }
-                        &:nth-child(3) {
-                            width: 20%;
-                            text-align: left;
-                            line-height: 38px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                         &:last-child {
+                            width: 55%;
                             text-align: left;
                             line-height: 38px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }
             }
         }
-        
         .tab#tab3 {
             width: 100%;
             height: 100%;
             overflow-y: auto;
+            .tab-content-box {
+                width: 100%;
+                height: 100%;
+            }
             .tab-table-header {
                 width: 100%;
                 height: 36px;
-                background-color: #F2F3F5;
-                    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+                background-color: white;
+                border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                 span {
-                    width: 30%;
+                    width: 25%;
                     height: 100%;
                     line-height: 36px;
                     display: inline-block;
                     float: left;
                     text-align: center;
-                    color: #333333;
+                    color: #2d8cf0;
                     font-size: 0.875rem;
-                    font-weight: bold;
                     &:last-child {
-                        width: 70%;
+                        width: 75%;
                         text-align: left;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
@@ -254,16 +361,20 @@
                     width: 100%;
                     border-bottom: 1px solid rgba(51, 51, 51, 0.1);
                     span {
-                        width: 30%;
+                        width: 25%;
                         height: 100%;
                         color: #333333;
                         font-size: 0.875rem;
+                        display: inline-block;
                         text-align: center;
                         float: left;
                         &:last-child {
-                            width: 70%;
+                            width: 75%;
                             text-align: left;
                             line-height: 38px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
                     }
                 }
