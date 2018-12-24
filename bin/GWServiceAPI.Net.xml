@@ -501,25 +501,6 @@
             </summary>
             <param name="obj">obj.times:时间，起始时间,结束时间;(当只有一个时间的时候，为起始时间)</param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_secon_class(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            根据id获取下一级地域
-            </summary>
-            <param name="obj">
-             areaId 省id
-            </param>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.set_drug_data(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            添加药监局数据
-            </summary>
-            <param name="obj">
-             name 药监局名字
-             jwd 经纬度
-             areaCode 地域id 
-             addStr 地址
-            </param>
-        </member>
         <member name="T:GWServiceAPI.Net.Controllers.ServerController">
             <summary>
             服务

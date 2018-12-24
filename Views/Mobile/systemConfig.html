@@ -8,9 +8,11 @@
                     </a>
                 </div>                         
                 <div class="center sliding title">系统配置</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
+                <div class="right">
+                    <a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
+                    	<i class="iconfont icon-sousuo"></i>
+                    </a>
+                </div>
             </div>
         </div>        
         <div  class="page-content" >
@@ -19,10 +21,10 @@
         <div class="row no-gap equipCon" >
 					
 					<p class="segmented tabList tabListConfig" >
-            	<a href="#tab-1" class="tab-link button tab-link-active">设备</a>
-      				<a href="#tab-2" class="tab-link button">遥测</a>
-     					<a href="#tab-3" class="tab-link button">遥信</a>
-     					<a href="#tab-4" class="tab-link button">设置</a>
+            	<a href="#tab-1" class="tab-link button tab-link-active" onclick="loadData(0)">设备</a>
+      				<a href="#tab-2" class="tab-link button"   onclick="loadData(1)">遥测</a>
+     					<a href="#tab-3" class="tab-link button"  onclick="loadData(2)">遥信</a>
+     					<a href="#tab-4" class="tab-link button"  onclick="loadData(3)">设置</a>
 					</p>
 					<div class="tabs-animated-wrap eventWrap">
 							<!--<div class="fab fab-right-top">
@@ -148,6 +150,46 @@
 				    	</div>
 				    </div>
         </div>
+        <div class="popup popup-condition">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center sliding title ">
+									设备选择
+								</div>
+								<div class="right">
+									<a href="#" class="link popup-close">
+										关闭
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="searchbar-backdrop"></div>
+						<div class="block content-wrap">
+							<form class="searchbar">
+							  <div class="searchbar-inner">
+							    <div class="searchbar-input-wrap">
+							      <input type="search" placeholder="设备名称">
+							      <i class="searchbar-icon"></i>
+							      <span class="input-clear-button"></span>
+							    </div>
+							    <span class="searchbar-disable-button">取消</span>
+							  </div>
+							</form>
+							<p class="sele-tile">设备列表</p>
+						
+				      		
+	  						<div class="eq-list list">
+	  							<ul></ul>
+	  							<div class="btn" onclick="loadConfig()">
+						      		<div class="button button-big button-fill">
+						      			确定
+						      		</div>
+						      	</div>
+	  						</div>
+						      	
+						
+						</div>
+					</div>
 				<div class="popup popup-config">
 						<div class="navbar">
 							<div class="navbar-inner">

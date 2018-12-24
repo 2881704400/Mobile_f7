@@ -47,7 +47,7 @@ function systemConfig(){
 
 //	calendarRange.open()
 //	myApp.sheet.open('.sheet-config')
-//	myApp.popup.open(".popup-condition")
+	myApp.popup.open(".popup-condition")
 //	myApp.sheet.open('.sheet-alarm')
 //	myApp.sheet.open('.sheet-zichan')
 //	myApp.sheet.open('.sheet-video')
@@ -59,58 +59,36 @@ function systemConfig(){
 		searchIn:'.item-title'
 	})
 
-	selectEquiId=[9,10,21];
+//	selectEquiId=[9,10,21];
 	getEquipList();
 	getAccessList();
 	getlinkVideoList();
 	getPlanList();
 	getAlarmWayList();
-	getEquipSelect(selectEquiId);
-	getYcSelect(selectEquiId);
-	getYxSelect(selectEquiId);
-	getSetSelect(selectEquiId);
-	
-//	$(".sheet-alarm .eq-list ul li").each(function(){
-//		$(this).click(function(){
-//			var val= $(this).find("input").val();
-//			var check=$(this).find("input").prop("checked");
-//			
-//			if(val==0&&val!=canEdict){
-//				alarmCode-=edictAlarmCode;
-//				canEdict=val;
-//				$("#"+edictDom).val("否");
-//			}
-//			if(val==1&&val!=canEdict){
-//				alarmCode-=edictAlarmCode;
-//				canEdict=val;
-//				$("#"+edictDom).val("是");
-//			}
-//			
-//			console.log(alarmCode);
-//		})
-//		
-//		
-//	})
+//	getEquipSelect(selectEquiId);
+//	getYcSelect(selectEquiId);
+//	getYxSelect(selectEquiId);
+//	getSetSelect(selectEquiId);
+
 }
 
 function getSetSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setSetConfig(str)).done(function(e){
 		console.log(e);
+		$("#set").html("")
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
-				var html='<li class="swipeout" onclick="loadInfor(3,'+valueStr+')">'+
+				var html='<li  onclick="loadInfor(3,'+valueStr+',\''+value.set_nm+'\')">'+
 					        '<div class="item-content  swipeout-content">'+
 						        '<div class="item-inner">'+
 						          '<div class="item-title">'+value.set_nm+'</div>'+
 						        '</div>'+
 						      '</div>'+
-						      '<div class="swipeout-actions-right">'+
-						        '<a href="#"  class="swipeout-delete">编辑</a>'+
-						      '</div>'+							    	
+						      					    	
 						'</li>';
 				$("#set").append(html)
 			}
@@ -121,20 +99,19 @@ function getYxSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setYxConfig(str)).done(function(e){
 		console.log(e);
+		$("#yxp").html("")
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
-				var html='<li class="swipeout" onclick="loadInfor(2,'+valueStr+')">'+
+				var html='<li  onclick="loadInfor(2,'+valueStr+',\''+value.yx_nm+'\')">'+
 					        '<div class="item-content  swipeout-content">'+
 						        '<div class="item-inner">'+
 						          '<div class="item-title">'+value.yx_nm+'</div>'+
 						        '</div>'+
 						      '</div>'+
-						      '<div class="swipeout-actions-right">'+
-						        '<a href="#"  class="swipeout-delete">编辑</a>'+
-						      '</div>'+							    	
+						      						    	
 						'</li>';
 				$("#yxp").append(html)
 			}
@@ -145,20 +122,19 @@ function getYcSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setYcConfig(str)).done(function(e){
 		console.log(e);
+		$("#ycp").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
-				var html='<li class="swipeout" onclick="loadInfor(1,'+valueStr+')">'+
+				var html='<li  onclick="loadInfor(1,'+valueStr+',\''+value.yc_nm+'\')">'+
 					        '<div class="item-content  swipeout-content">'+
 						        '<div class="item-inner">'+
 						          '<div class="item-title">'+value.yc_nm+'</div>'+
 						        '</div>'+
 						      '</div>'+
-						      '<div class="swipeout-actions-right">'+
-						        '<a href="#"  class="swipeout-delete">编辑</a>'+
-						      '</div>'	+									    	
+						      									    	
 						'</li>';
 				$("#ycp").append(html);
 			}
@@ -170,20 +146,19 @@ function getEquipSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setEquipConfig(str)).done(function(e){
 		console.log(e);
+		$("#equipTable").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
-				var html='<li class="swipeout" onclick="loadInfor(0,'+valueStr+')">'+
+				var html='<li  onclick="loadInfor(0,'+valueStr+',\''+value.equip_nm+'\')">'+
 					        '<div class="item-content  swipeout-content">'+
 						        '<div class="item-inner">'+
 						          '<div class="item-title">'+value.equip_nm+'</div>'+
 						        '</div>'+
 						      '</div>'+
-						      '<div class="swipeout-actions-right">'+
-						        '<a href="#"  class="swipeout-delete">编辑</a>'+
-						      '</div>'	+									    	
+						      								    	
 						'</li>';
 				$("#equipTable").append(html);
 			}
@@ -192,13 +167,13 @@ function getEquipSelect(arr){
 }
 var alarmCode=0,updateAlarmCode=0,canEdict,edictDom,edictType;
 var canexecution,record,inversion,mapping,curve_rcd;
-function loadInfor(deal,str){
+function loadInfor(deal,str,name){
 	console.log(str);
 	alarmCode=str.alarm_scheme;
 	edictType=deal;
 //	updateAlarmCode=str.alarm_scheme;
 //	$(".popup-config .inforList").html("");
-	
+	$(".popup-config .title").text(name+"详情")
 	myApp.popup.open(".popup-config");
 	$(".popup-config .inforList ul").html("");
 	$(".popup-config .edictList ul").html("");
@@ -240,6 +215,9 @@ function loadInforHtml(label,key,boolStr,id,value,dom){
 //	$(dom).html("")
 	if(boolStr){
 		boolArr=boolStr.split(",");
+	}
+	if(key==""||key=="null"){
+		key="无"
 	}
 //	console.log(value);
 //	videoList={},acessList={}
@@ -432,6 +410,9 @@ function loadEdictHtml(label,key,id,value,type,dom){
 	var html="",alrmId;
 	if(type){
 		alrmId=type.split(",")[0];
+	}
+	if(!key||key=="null"){
+		key="无"
 	}
 	if(id=="equip_no"||id=="yc_no"||id=="yx_no"||id=="set_no"){
 		html='<li class="item-content item-input">'+
@@ -720,7 +701,11 @@ function edictAlarmCode(dom,code){
 	console.log(check)
 	if(check){
 		/*减*/
+		
 		alarmCode-=code;
+		if(alarmCode<0){
+			alarmCode=0
+		}
 	}else{
 		/*加*/
 		alarmCode+=code;
@@ -767,10 +752,14 @@ function showPlanSheet(dom,plan){
 }
 
 function loadInforEdict(dom){
+	var str=$(".popup-config .title").text();
+	$(".popup-config .title").text(str.replace("详情","编辑"))
 	$(dom).parents(".inforList").hide();
 	$(dom).parents(".inforList").siblings(".edictList").show();
 }
 function cancelInforEdict(dom){
+	var str=$(".popup-config .title").text();
+	$(".popup-config .title").text(str.replace("编辑","详情"))
 	$(dom).parents(".edictList").hide();
 	$(dom).parents(".edictList").siblings(".inforList").show();
 }
@@ -781,8 +770,7 @@ function loadPopupInfor(){
 }
 function getEquipList(){
 	$.when(AlarmCenterContext.getEquipList()).done(function(e) {
-
-		var dat=JSON.parse(e.d),lg=dat.length;
+		var dat=JSON.parse($(e).find("string").text()),lg=dat.length;
 		if(lg&&lg>0){
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
@@ -917,10 +905,24 @@ function getAlarmWayList(){
 		}
 	})
 }
-
+function loadData(type){
+	console.log(type)
+	if(type==0){
+		getEquipSelect(selectEquiId);
+	}else if(type==1){
+		getYcSelect(selectEquiId);
+	}else if(type==2){
+		getYxSelect(selectEquiId);
+	}else{
+		getSetSelect(selectEquiId);
+	}
+	
+	
+	
+	
+}
 function selectEquip(value,dom){
 	var check=$(dom).find("input").prop("checked");
-	console.log(check)
 	if(check){
 		/*删除*/
 		selectEquiId.remove(value);
@@ -934,6 +936,12 @@ function loadConfig(){
 	if(selectEquiId.length==0){
 		myApp.dialog.alert('请选择设备', "温馨提示");
 		return;
+	}else{
+		myApp.popup.close(".popup-condition")
+		getEquipSelect(selectEquiId);
+//			getYcSelect(selectEquiId);
+//			getYxSelect(selectEquiId);
+//			getSetSelect(selectEquiId);
 	}
 	
 }
@@ -944,78 +952,7 @@ function lookOtherInfor(type){
 
 function upInforEdict(){
 	var updateObj={},val,uploadJson=[];
-//	$(".edictList ul li").each(function(){
-//			var idStr=$(this).find("input").attr("id");
-//			if(idStr){
-//			    val=$(this).find("input").val();
-//				if(idStr=="equip_no"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+val+"'"
-//					}
-//				}
-//				else if(idStr=="canexecution"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+canexecution+"'"
-//					}
-//				}else if(idStr=="record"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+record+"'"
-//					}
-//				}else if(idStr=="inversion"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+inversion+"'"
-//					}
-//				}else if(idStr=="mapping"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+mapping+"'"
-//					}
-//				}else if(idStr=="curve_rcd"){
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+curve_rcd+"'"
-//					}
-//				}
-//				else if(idStr=="ZiChanID"){
-//					var upval=$(this).find("input").attr("upval");
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+upval+"'"
-//					}
-//				}
-//				else if(idStr=="related_video"){
-//					var upval=$(this).find("input").attr("upval");
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+upval+"'"
-//					}
-//				}else if(idStr=="alarm"){
-//					return
-//				}
-//				else{
-//					updateObj={
-//						id:"'"+$("#equip_no").val()+"'",
-//						"listName":idStr,
-//						"vlaue":"'"+val+"'"
-//					}
-//				}
-//				uploadJson.push(updateObj);
-//
-//			}
-//
-//		})
+
 		if(edictType==0){
 			$(".edictList ul li").each(function(){
 			var idStr=$(this).find("input").attr("id");
@@ -1096,9 +1033,14 @@ function upInforEdict(){
 				
 			})
 
-			console.log(JSON.stringify(uploadJson))
 			$.when(AlarmCenterContext.updEquipConfig(JSON.stringify(uploadJson))).done(function(e){
-				console.log(e)
+				if(e.HttpData.code==200&&e.HttpData.data){
+					myApp.dialog.alert('提交成功', "温馨提示");
+					getEquipSelect(selectEquiId);
+					loadPopupInfor()
+				}else{
+					myApp.dialog.alert('提交失败', "温馨提示");
+				}
 			})
 			
 		}else if(edictType==1){
@@ -1113,6 +1055,8 @@ function upInforEdict(){
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
+				}else if(idStr=="yc_no"){
+					return;
 				}
 				else if(idStr=="canexecution"){
 					updateObj={
@@ -1192,7 +1136,13 @@ function upInforEdict(){
 				
 			})
 			$.when(AlarmCenterContext.updYcConfig(JSON.stringify(uploadJson))).done(function(e){
-				console.log(e)
+				if(e.HttpData.code==200&&e.HttpData.data){
+					myApp.dialog.alert('提交成功', "温馨提示");
+					getYcSelect(selectEquiId);
+					loadPopupInfor()
+				}else{
+					myApp.dialog.alert('提交失败', "温馨提示");
+				}
 			})
 			
 		}else if(edictType==2){
@@ -1207,6 +1157,8 @@ function upInforEdict(){
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
+				}else if(idStr=="yx_no"){
+					return;
 				}
 				else if(idStr=="canexecution"){
 					updateObj={
@@ -1285,13 +1237,112 @@ function upInforEdict(){
 				vlaue:"'"+alarmCode+"'"
 				
 			})
+			
 			$.when(AlarmCenterContext.updYxConfig(JSON.stringify(uploadJson))).done(function(e){
-				console.log(e)
+				if(e.HttpData.code==200&&e.HttpData.data){
+					myApp.dialog.alert('提交成功', "温馨提示");
+					getYxSelect(selectEquiId);
+					loadPopupInfor()
+				}else{
+					myApp.dialog.alert('提交失败', "温馨提示");
+				}
 			})
 			
 		}else{
+			$(".edictList ul li").each(function(){
+				var idStr=$(this).find("input").attr("id");
+				if(idStr){
+				    val=$(this).find("input").val();
+					if(idStr=="equip_no"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+val+"'"
+						}
+					}else if(idStr=="set_no"){
+						return;
+					}
+					else if(idStr=="canexecution"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+canexecution+"'"
+						}
+					}else if(idStr=="record"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+record+"'"
+						}
+					}else if(idStr=="inversion"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+inversion+"'"
+						}
+					}else if(idStr=="mapping"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+mapping+"'"
+						}
+					}else if(idStr=="curve_rcd"){
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+curve_rcd+"'"
+						}
+					}
+					else if(idStr=="ZiChanID"){
+						var upval=$(this).find("input").attr("upval");
+						
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+upval+"'"
+						}
+					}
+					else if(idStr=="related_video"){
+						var upval=$(this).find("input").attr("upval");
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+upval+"'"
+						}
+					}else if(idStr=="alarm"){
+						return
+					}
+					else{
+						updateObj={
+							id:"'"+$("#equip_no").val()+"'",
+							set_no:$("#set_no").val(),
+							"listName":idStr,
+							"vlaue":"'"+val+"'"
+						}
+					}
+					uploadJson.push(updateObj);
+	
+				}
+	
+			})
+			
 			$.when(AlarmCenterContext.updSetConfig(JSON.stringify(uploadJson))).done(function(e){
 				console.log(e)
+				if(e.HttpData.code==200&&e.HttpData.data){
+					myApp.dialog.alert('提交成功', "温馨提示");
+					getSetSelect(selectEquiId);
+					loadPopupInfor()					
+				}else{
+					myApp.dialog.alert('提交失败', "温馨提示");
+				}
 			})
 			
 		}	
