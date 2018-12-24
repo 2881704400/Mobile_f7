@@ -101,6 +101,12 @@ select {
 }
 
 .md .toolbar {
+	/*height: 50px;
+	top: 100%;
+	transform: translateY(-100%);*/
+}
+
+.md .view-menu-toolbar{
 	height: 50px;
 	top: 100%;
 	transform: translateY(-100%);
@@ -109,6 +115,8 @@ select {
 .md .page-content {
 	padding-top: 44px!important;
 }
+
+.md .ptr-preloader{top:0!important;}
 
 html.with-statusbar.device-ios .framework7-root,
 html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {

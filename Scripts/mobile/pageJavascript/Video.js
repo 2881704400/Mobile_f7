@@ -2,22 +2,25 @@ function Video() {
 	if ($("#Video_tree").find("li").length == 0) {
 		equipVideo();
 	}
-	$$('#Video_content_ref').on("refresh", refresh_Video);
+	$$('#Video_content_ref').on("ptr:refresh", refresh_Video);
 
-	toolbarActive('VideoTool');
 }
 
 function refresh_Video(e) {
-	setTimeout(function () {
-		initEnsureChonglian(function () {
-			//allEquipSatatus();
-		});
-
+    
+	setTimeout(function() {
+		$("#Video_tree").html("");
+		equipVideo();
 		// 加载完毕需要重置
-		myApp.pullToRefreshDone(e);
+		e.detail();
+		myApp.toast.create({
+			text: '数据加载成功!',
+			position: 'center',
+			closeTimeout: 500,
+		}).open();
 	}, 2000);
-}
 
+}
 var tableVideoConfig;
 function equipVideo() {
 	var _url = service + "/VideoConfigs";
@@ -36,9 +39,7 @@ function equipVideo() {
 				newRow += "<li class=\"accordion-item\"><a dll='" + userb.communication_drv + "' href=\"#\" onclick='onVideoShow(this,\"" + userc[0] + "\",\"" + userb.communication_param + "\",\"" + userb.Reserve1 + "\")' class=\"item-link item-content\">";
 				newRow += "<div class=\"item-media\"><i class=\"iconfont icon-xiayiye rt_listIcon\"></i></div>";
 				newRow += "<div class=\"item-inner\"><div class=\"item-title\">" + userc[1] + "</div></div></a>";
-
 				if (userb.communication_drv == 'HikYun.NET.dll') {
-					//AccessToken(userb.communication_param,'videoList_'+i);
 					newRow += "<div class=\"accordion-item-content rt_tree_1\"><div class=\"list-block\"><ul id='videoList_" + i + "' dll='" + userb.communication_drv + "'></ul></div></div>";
 				}
 				else {
@@ -65,29 +66,6 @@ function onVideoShow(dt, equip_no, key, accessToken) {
 			ul.attr('appSecret', appSecret);
 			ul.attr('accessToken', accessToken);
 			videoListLi(dll, equip_no, dt);
-			//$.ajax({
-			//		url: '/GWServices.asmx/PostData',
-			//		data: {
-			//			url: 'https://open.ys7.com/api/lapp/token/get',
-			//			value: 'appKey=' + appKey + '&appSecret=' + appSecret
-			//		},
-			//		type: 'post',
-			//		success: function (data) {
-			//			var str = $(data).find('string').text();
-			//			var usera = JSON.parse(str);
-			//			var accessToken='';
-			//			if(usera.code=='200'){
-			//				accessToken = usera.data.accessToken;
-			//				window.localStorage.accessToken=accessToken;
-			//			}
-			//			else{
-			//				accessToken=window.localStorage.accessToken;
-			//			}
-			//			ul.attr('accessToken', accessToken);
-			//			videoListLi(dll, equip_no, dt);
-			//		}
-			//	});
-
 		}
 		else {
 		    var sUserAgent = navigator.userAgent.toLowerCase();
@@ -102,7 +80,6 @@ function onVideoShow(dt, equip_no, key, accessToken) {
 		}
 	}
 }
-
 //添加节点
 function videoListLi(dll, equip_no, dt) {
 	var ul = $(dt).next().children('div').children('ul');
@@ -135,7 +112,6 @@ function videoListLi(dll, equip_no, dt) {
 	}
 	JQajaxo("post", _url, true, _data, _sccess);
 }
-
 //节点事件
 function videoListClick(dt) {
 	var titleName = $(dt).find('.item-title').text();
@@ -179,7 +155,6 @@ function videoListClick(dt) {
 		}
 	}
 }
-
 function onVideoClick() {
 	var video = document.getElementById("videoPlay");
 	if (video.controls) {
@@ -189,26 +164,25 @@ function onVideoClick() {
 		video.controls = true;
 	}
 }
-
 //控制按钮
 function controlsBtn(equip_no, Video_id) {
 	if (Control_Equip_List(equip_no) || Control_SetItem_List(equip_no, false)) {
 		$('.videoControls').find('a').each(function () {
 			var values = $(this).attr('values');
-			$(this).attr('ontouchstart', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '")');
-			$(this).attr('ontouchend', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '")');
+			$(this).attr('ontouchstart', 'onSetCommandVideo(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '")');
+			$(this).attr('ontouchend', 'onSetCommandVideo(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '")');
 		});
 
 		$('.videoControls2').find('img').each(function () {
 			var values = $(this).attr('values');
-			$(this).attr('ontouchstart', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '",this)');
-			$(this).attr('ontouchend', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '",this)');
+			$(this).attr('ontouchstart', 'onSetCommandVideo(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '",this)');
+			$(this).attr('ontouchend', 'onSetCommandVideo(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '",this)');
 		});
 	}
 }
-
 //设置命令-确定
-function onSetCommand(str_1, str_2, str_3, str_4, dt, thisDom) {
+function onSetCommandVideo(str_1, str_2, str_3, str_4, dt, thisDom) {
+
 	if (thisDom) {
 		var act = $(thisDom).attr('actives').split('_');
 		if (act[1] == "j") {
@@ -227,6 +201,7 @@ function onSetCommand(str_1, str_2, str_3, str_4, dt, thisDom) {
 		userName = window.sessionStorage.userName;
 	}
 	var _url = service + "/SetupsCommand";
+
 	var _dataSet = "equip_no=" + encodeURIComponent(str_1) + "&&main_instruction=" + encodeURIComponent(str_2) + "&&minor_instruction=" + encodeURIComponent(str_3) + "&&value=" + encodeURIComponent(str_4) + "&&user_name=" + encodeURIComponent(userName);
 	JQajaxo("post", _url, true, _dataSet, _successfSet);
 	function _successfSet(data) {
@@ -236,7 +211,6 @@ function onSetCommand(str_1, str_2, str_3, str_4, dt, thisDom) {
 		}
 	}
 }
-
 var nowDom;
 //节点2（海康视频）
 function videoListLi2(dt) {
@@ -246,9 +220,8 @@ function videoListLi2(dt) {
 	var urls = json.local_addr.split(':')[0];
 	var userName = json.communication_param.split('-')[0];
 	var pwd = json.communication_param.split('-')[1];
-	myJavaFun2.VideoShowAll(urls, userName, pwd);
+	try{myJavaFun2.VideoShowAll(urls, userName, pwd);}catch(e){}
 }
-
 function listFromSDK(dt, a) {
 	var dataObj = JSON.parse(dt);
 	if (a == 0) {
@@ -258,7 +231,6 @@ function listFromSDK(dt, a) {
 			newRow += "<li class=\"accordion-item\"><a href=\"#\" type='" + dataObj[i][0] + "' nodeid='" + dataObj[i][1] + "' onclick='openNode(this)' class=\"item-link item-content\">";
 			newRow += "<div class=\"item-media\"><i class=\"iconfont icon-xiayiye rt_listIcon\"></i></div>";
 			newRow += "<div class=\"item-inner\"><div class=\"item-title\">" + dataObj[i][2] + "</div></div></a>";
-
 			newRow += "<div class=\"accordion-item-content rt_tree_1\"><div class=\"list-block\"><ul></ul></div></div>";
 			newRow += "</li>";
 			nowDom.append(newRow);
@@ -272,7 +244,6 @@ function listFromSDK(dt, a) {
 				th = $(this).children('div').children('div').children('ul');
 			}
 		});
-
 		var newRow = "";
 		for (var i = 1; i < dataObj.length; i++) {
 			newRow += "<li><a href=\"#\" type='" + dataObj[i][0] + "' nodeid='" + dataObj[i][1] + "' onclick='listNode(this)' class=\"item-link item-content\">";
@@ -296,6 +267,6 @@ function openNode(dt) {
 function listNode(dt) {
 	event.stopPropagation();
 	var type = $(dt).attr('type');
-	var nodeid = $(dt).attr('nodeid'); //alert(type+','+nodeid)
+	var nodeid = $(dt).attr('nodeid');
 	myJavaFun2.VideoShowPlay(type, nodeid);
 }

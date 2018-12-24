@@ -1,65 +1,96 @@
-<<<<<<< HEAD
-----------2018/12/20 17:26:10----------
-=======
-----------2018/12/20 17:27:38----------
->>>>>>> 44842ee4d98a2b0aeaa0e7f5cacbcda7024e80bc
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWService.Net.ClassLib.UserPermissions(String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1339
+----------2018/12/23 22:28:57----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-<<<<<<< HEAD
-----------2018/12/20 17:34:31----------
-=======
-----------2018/12/20 17:42:09----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:29:52----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-----------2018/12/20 17:43:33----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:30:12----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-----------2018/12/20 17:46:08----------
->>>>>>> 44842ee4d98a2b0aeaa0e7f5cacbcda7024e80bc
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:33:10----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-----------2018/12/20 19:16:14----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:33:43----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-----------2018/12/20 19:18:03----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:33:47----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
-----------2018/12/20 19:21:42----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
+----------2018/12/23 22:34:22----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:39:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:37:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:40:07----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:50:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:52:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:53:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:56:21----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:57:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:59:59----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:01:39----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:04:31----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:05:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
 -------------------------------------
 
 ----------2018/12/20 19:31:25----------
