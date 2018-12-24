@@ -289,6 +289,10 @@ $activeBg:rgb(62,124,251);
         .tab{
 //          border: 1px solid red;
             width: 100%;
+            .list{
+                height: 100%;
+                overflow: auto;
+            }
         }
         li{
             background: #fff;
@@ -302,6 +306,7 @@ $activeBg:rgb(62,124,251);
         }
     }
 }
+
 .sheet-alarm{
     .block{
         overflow: auto;
@@ -314,7 +319,8 @@ $activeBg:rgb(62,124,251);
     }
     
 }
-.sheet-condition{
+
+.sheet-condition-config{
     height:320px;
     .toolbar-inner{
         background: $preBg;
@@ -323,37 +329,28 @@ $activeBg:rgb(62,124,251);
     .sheet-modal-inner{
         background: $preBg;
         .block{
-            margin: 10px 0 0 0;
+            margin:  0;
             height: 100%;
+            overflow: hidden;
            .list{
                margin: 10px 0 0 0;
-               &.eq-list{
-                   height: calc(100% - 135px);
+               height: calc(100% - 15px);
+               .eq-list{
+                   height:100%  ;
                    overflow: auto;
+                   &:after{
+                       height: 0px;
+                   }
                }
            }
         }
     }
     
-    &.sheet-config{
-        .sheet-modal-inner{
-           
-            .block{
-               
-               .list{
-                   
-                   &.eq-list{
-                       height: calc(100% - 55px);
-                      
-                   }
-               }
-            }
-        }
-    }
+
 }
 
 .ios{
-    .sheet-condition{
+    .sheet-condition-config{
        .toolbar:before{
            background-color:$lineBg !important;
            height: 2px;
@@ -372,35 +369,15 @@ $activeBg:rgb(62,124,251);
         }
 
     }
-}
-.popup-config{
-    .page-content{
-        
-        .list{
-            margin: 0 0;
-            ul{
-                overflow: hidden;
-                .item-title{
-                    color:$titColor ;
-                }
-                .item-after{
-                    color: $valueColor;
-                }
-                .btn{
-                    margin: 35px 0;
-                    div{
-                        width: 60%;
-                        margin: 0 auto;
-                    }
-                }
-            }
-            
+    .popup-condition-config{
+        .searchbar{
+            background: #fff;
         }
-       
+        
     }
 }
 .md{
-    .sheet-condition{
+    .sheet-condition-config{
         .toolbar{
             transform:none;
         }
@@ -409,3 +386,79 @@ $activeBg:rgb(62,124,251);
         }
     }
 }
+.popup-config{
+    .page-content{
+        .list{
+            margin: 0 0;
+//          border: 1px solid red;
+            height: 100%;
+            background: #fff;
+            &.edictList{
+                .btn{
+                    width: 95%;
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    .button{
+                        width: 45%;
+                        float: left;
+                        &.button-fill{
+                            float: right;
+                        }
+                    }
+                }
+            }
+            ul{
+                height: calc(100% - 80px);
+                overflow: auto;
+                &:after{
+                    height: 0px;
+                }
+                .item-title{
+                    color:$titColor ;
+                }
+                .item-after{
+                    color: $valueColor;
+                    max-width: 60%;
+                    white-space: normal;
+                }
+            }
+            .btn{
+                margin: 15px 0;
+                div{
+                    width: 60%;
+                    margin: 0 auto;
+                }
+            }
+            
+        }
+       
+    }
+}
+.popup-condition{
+// .sele-tile{
+//     margin-bottom: 0;
+// }
+    .content-wrap{
+        height: calc(100% - 44px);
+        margin: 0 0;
+    }
+   .list{
+       margin-top: 0;
+       height: calc(100% - 100px);
+       ul{
+           height: calc(100% - 75px);
+           margin-bottom: 15px;
+//          border:1px solid red;
+            overflow: auto;
+            li{
+               .icon-checkbox{
+                    border-radius: 0;
+                }
+           }
+       }
+      
+       
+   }
+   
+}
+
