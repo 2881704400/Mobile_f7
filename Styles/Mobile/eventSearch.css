@@ -111,7 +111,9 @@
         border-bottom: 1px solid rgba(51, 51, 51, 0.1);
         font-size: 0.875rem;
         color: #333333;
-        font-weight: bold; }
+        font-weight: bold;
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33); }
     .eventSearchContent .event-search-box .half-select-box-bottom {
       width: 80%;
       height: 50%;
