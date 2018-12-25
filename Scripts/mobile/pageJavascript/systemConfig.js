@@ -19,8 +19,8 @@ var ychtml=[
 	{lable:"报警升级周期",key:"AlarmRiseCycle"},{lable:"起始安全时段",key:"safe_bgn"},{lable:"结束安全时段",key:"safe_end"},{lable:"越线滞纳时间（秒）",key:"alarm_acceptable_time"},
 	{lable:"恢复滞纳时间（秒）",key:"alarm_repeat_time"},{lable:"重复报警时间（分钟）",key:"restore_acceptable_time"},{lable:"关联界面",key:"related_pic"},{lable:"关联视频",key:"related_video"},
 	{lable:"资产编号",key:"ZiChanID"},{lable:"预案号",key:"PlanNo"},{lable:"是否曲线记录",key:"curve_rcd",type:"curve_rcd,sheet-alarm"},{lable:"是否比例变换",key:"mapping",type:"mapping,sheet-alarm"},
-	{lable:"是否显示报警",key:"alarm",type:"showAlarm,sheet-alarm",value:0},
-	 {lable:"是否记录报警",key:"alarm",type:"markAlarm,sheet-alarm",value:1}
+	{lable:"是否显示报警",key:"alarm",type:"showAlarm,sheet-alarm",value:1},
+	 {lable:"是否记录报警",key:"alarm",type:"markAlarm,sheet-alarm",value:2}
 	
 ]
 var yxhtml=[
@@ -31,8 +31,8 @@ var yxhtml=[
 	{lable:"声音文件",key:"wave_file"},{lable:"报警屏蔽",key:"alarm_shield"},{lable:"报警升级周期（分钟）",key:"AlarmRiseCycle"},{lable:"安全时段",key:"SafeTime"},
 	{lable:"关联页面",key:"related_pic"},{lable:"关联视频",key:"related_video"},{lable:"资产编号",key:"ZiChanID"},{lable:"预案号",key:"PlanNo"},
 	{lable:"是否取反",key:"inversion",type:"inversion,sheet-alarm"},
-	{lable:"是否显示报警",key:"alarm",type:"showAlarm,sheet-alarm",value:0},
-	 {lable:"是否记录报警",key:"alarm",type:"markAlarm,sheet-alarm",value:1}
+	{lable:"是否显示报警",key:"alarm",type:"showAlarm,sheet-alarm",value:1},
+	 {lable:"是否记录报警",key:"alarm",type:"markAlarm,sheet-alarm",value:2}
 ]
 var sethtml=[
 	{lable:"设备号",key:"equip_no"},{lable:"设置号",key:"set_no"},{lable:"设置名称",key:"set_nm"},{lable:"值",key:"value"},
@@ -42,9 +42,15 @@ var sethtml=[
 
 var systemToastCenter;
 var selectEquiId=[],videoList={},acessList={};
+
 function systemConfig(){
 	switchToolbar("configTool");
-
+	$$(".sheet-modal").on('sheet:open',function(e,sheet){
+		$(".popup-config .page-content .list ul").css({overflow:"hidden"})
+	})
+	$$(".sheet-modal").on('sheet:close',function(e,sheet){
+		$(".popup-config .page-content .list ul").css({overflow:"auto"})
+	})
 //	calendarRange.open()
 //	myApp.sheet.open('.sheet-config')
 	myApp.popup.open(".popup-condition")
@@ -53,29 +59,26 @@ function systemConfig(){
 //	myApp.sheet.open('.sheet-video')
 //	myApp.sheet.open('.sheet-paln')
 //myApp.popup.open(".popup-config");
-	var searchbar=myApp.searchbar.create({
-		el:'.searchbar',
+	myApp.searchbar.create({
+		el:'#search',
 		searchContainer:'.eq-list',
-		searchIn:'.item-title'
+		searchIn:'.eq-list .item-title'
 	})
-
+//	myApp.searchbar.destroy('.searchbar')
 //	selectEquiId=[9,10,21];
 	getEquipList();
 	getAccessList();
 	getlinkVideoList();
 	getPlanList();
 	getAlarmWayList();
-//	getEquipSelect(selectEquiId);
-//	getYcSelect(selectEquiId);
-//	getYxSelect(selectEquiId);
-//	getSetSelect(selectEquiId);
+
 
 }
 
 function getSetSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setSetConfig(str)).done(function(e){
-		console.log(e);
+//		console.log(e);
 		$("#set").html("")
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
@@ -93,12 +96,13 @@ function getSetSelect(arr){
 				$("#set").append(html)
 			}
 		}
+		myApp.dialog.close()
 	})
 }
 function getYxSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setYxConfig(str)).done(function(e){
-		console.log(e);
+//		console.log(e);
 		$("#yxp").html("")
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
@@ -116,12 +120,13 @@ function getYxSelect(arr){
 				$("#yxp").append(html)
 			}
 		}
+		myApp.dialog.close()
 	})
 }
 function getYcSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setYcConfig(str)).done(function(e){
-		console.log(e);
+//		console.log(e);
 		$("#ycp").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
@@ -139,13 +144,14 @@ function getYcSelect(arr){
 				$("#ycp").append(html);
 			}
 		}
+		myApp.dialog.close()
 	})
 }
 //var edictData;
 function getEquipSelect(arr){
 	var str=arr.toString();
 	$.when(AlarmCenterContext.setEquipConfig(str)).done(function(e){
-		console.log(e);
+//		console.log(e);
 		$("#equipTable").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
@@ -163,12 +169,13 @@ function getEquipSelect(arr){
 				$("#equipTable").append(html);
 			}
 		}
+		myApp.dialog.close()
 	})
 }
 var alarmCode=0,updateAlarmCode=0,canEdict,edictDom,edictType;
 var canexecution,record,inversion,mapping,curve_rcd;
 function loadInfor(deal,str,name){
-	console.log(str);
+//	console.log(str);
 	alarmCode=str.alarm_scheme;
 	edictType=deal;
 //	updateAlarmCode=str.alarm_scheme;
@@ -240,7 +247,7 @@ function loadInforHtml(label,key,boolStr,id,value,dom){
 		      '</div>'+
 		    '</li>';
 	}
-	else if(id=="curve_rcd"){
+	else if(id=="curve_rcd"||id=="mapping"||id=="inversion"||id=="record"||id=="canexecution"){
 		if(key){
 			html='<li>'+
 		      '<div class="item-content">'+
@@ -260,91 +267,7 @@ function loadInforHtml(label,key,boolStr,id,value,dom){
 		      '</div>'+
 		    '</li>';
 		}
-	}
-	else if(id=="mapping"){
-		if(key){
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">是</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}else{
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">否</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}
-	}
-	else if(id=="inversion"){
-		if(key){
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">是</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}else{
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">否</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}
-	}
-	else if(id=="record"){
-		if(key){
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">是</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}else{
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">否</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}
-	}
-	else if(id=="canexecution"){
-		if(key){
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">是</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}else{
-			html='<li>'+
-		      '<div class="item-content">'+
-		        '<div class="item-inner">'+
-		          '<div class="item-title">'+label+'</div>'+
-		          '<div class="item-after">否</div>'+
-		        '</div>'+
-		      '</div>'+
-		    '</li>';
-		}
-	}
+	}	
 	else if(id=="alarm"){
 
 		if((alarmCode & value) > 0){
@@ -458,8 +381,9 @@ function loadEdictHtml(label,key,id,value,type,dom){
 				'</li>';
 	}
 	else if(id=="curve_rcd"){
+		
 		if(key){
-			html='<li onclick="edictCur(dom)>'+
+			html='<li onclick="edictCur(this)">'+
 			      '<label class="item-checkbox item-content">'+
 			        '<input id="'+id+'" type="checkbox" name="demo-checkbox" value="1" ckecked />'+
 			       ' <i class="icon icon-checkbox"></i>'+
@@ -469,7 +393,7 @@ function loadEdictHtml(label,key,id,value,type,dom){
 			      '</label>'+
 			    '</li>';
 		}else{
-			html='<li  onclick="edictCur(dom)>'+
+			html='<li  onclick="edictCur(this)">'+
 			      '<label class="item-checkbox item-content">'+
 			        '<input id="'+id+'" type="checkbox" name="demo-checkbox" value="0"  />'+
 			       ' <i class="icon icon-checkbox"></i>'+
@@ -482,7 +406,7 @@ function loadEdictHtml(label,key,id,value,type,dom){
 		curve_rcd=key;
 	}else if(id=="mapping"){
 		if(key){
-			html='<li onclick="edictMap(this)>'+
+			html='<li onclick="edictMap(this)">'+
 			      '<label class="item-checkbox item-content">'+
 			        '<input id="'+id+'" type="checkbox" name="demo-checkbox" value="1" ckecked />'+
 			       ' <i class="icon icon-checkbox"></i>'+
@@ -491,9 +415,10 @@ function loadEdictHtml(label,key,id,value,type,dom){
 			        '</div>'+
 			      '</label>'+
 			    '</li>';
+			
 
 		}else{
-			html='<li  onclick="edictMap(this)>'+
+			html='<li  onclick="edictMap(this)">'+
 			      '<label class="item-checkbox item-content">'+
 			        '<input id="'+id+'"  type="checkbox" name="demo-checkbox" value="0"  />'+
 			       ' <i class="icon icon-checkbox"></i>'+
@@ -560,8 +485,8 @@ function loadEdictHtml(label,key,id,value,type,dom){
 	}
 	else if(id=="canexecution"){
 		if(key){
-			html='<li>'+
-			      '<label class="item-checkbox item-content" onclick="edictCanexe(this,1)">'+
+			html='<li  onclick="edictCanexe(this,1)">'+
+			      '<label class="item-checkbox item-content">'+
 			        '<input id="'+id+'" type="checkbox" name="demo-checkbox" value="1"  checked />'+
 			       ' <i class="icon icon-checkbox"></i>'+
 			        '<div class="item-inner">'+
@@ -571,8 +496,8 @@ function loadEdictHtml(label,key,id,value,type,dom){
 			    '</li>';
 
 		}else{
-			html='<li>'+
-			      '<label class="item-checkbox item-content"  onclick="edictCanexe(this,0)">'+
+			html='<li  onclick="edictCanexe(this,0)">'+
+			      '<label class="item-checkbox item-content" >'+
 			        '<input id="'+id+'" type="checkbox" name="demo-checkbox" value="0"  />'+
 			       ' <i class="icon icon-checkbox"></i>'+
 			        '<div class="item-inner">'+
@@ -698,7 +623,7 @@ function edictCanexe(dom,deal){
 }
 function edictAlarmCode(dom,code){
 	var check=$(dom).find("input").prop("checked");
-	console.log(check)
+//	console.log(check)
 	if(check){
 		/*减*/
 		
@@ -710,7 +635,7 @@ function edictAlarmCode(dom,code){
 		/*加*/
 		alarmCode+=code;
 	}
-	console.log(alarmCode);
+//	console.log(alarmCode);
 }
 function showVideoSheet(dom,videoid){
 	$(".sheet-video .eq-list li").each(function(){
@@ -738,7 +663,7 @@ function showZiChanSheet(dom,zichanid){
 	myApp.sheet.open('.sheet-zichan')
 }
 function showPlanSheet(dom,plan){
-	console.log(plan)
+//	console.log(plan)
 	$(".sheet-paln .eq-list li").each(function(){
 		var id=$(this).find("input").val();
 		if(id==plan){
@@ -769,6 +694,7 @@ function loadPopupInfor(){
 	$(".edictList").hide();
 }
 function getEquipList(){
+	myApp.dialog.progress()
 	$.when(AlarmCenterContext.getEquipList()).done(function(e) {
 		var dat=JSON.parse($(e).find("string").text()),lg=dat.length;
 		if(lg&&lg>0){
@@ -798,13 +724,13 @@ function getEquipList(){
 						'</li>';
 			$(".popup-condition .eq-list ul").append(html)
 		}
-
+		myApp.dialog.close()
 	});
 
 }
 function getAccessList(){
 	$.when(AlarmCenterContext.getAccess()).done(function(e){
-		console.log(e)
+//		console.log(e)
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
@@ -821,7 +747,7 @@ function getAccessList(){
 	    				'</li>';
 	    		$(".sheet-zichan ul").append(html);
 			}
-			console.log(acessList);
+//			console.log(acessList);
 		}
 		
 		
@@ -852,7 +778,7 @@ function getlinkVideoList(){
 	    				'</li>';
 	    		$(".sheet-video ul").append(html);
 			}
-			console.log(videoList)
+//			console.log(videoList)
 		}
 	})
 }
@@ -862,7 +788,7 @@ function selectVideo(video,name){
 }
 function getPlanList(){
 	$.when(AlarmCenterContext.getPlan()).done(function(e){
-		console.log(e)
+//		console.log(e)
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
@@ -887,7 +813,7 @@ function selectPlan(plan){
 }
 function getAlarmWayList(){
 	$.when(AlarmCenterContext.getAlarmWay()).done(function(e){
-		console.log(e);
+//		console.log(e);
 		if(e.HttpData.code=200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
@@ -906,7 +832,7 @@ function getAlarmWayList(){
 	})
 }
 function loadData(type){
-	console.log(type)
+//	console.log(type)
 	if(type==0){
 		getEquipSelect(selectEquiId);
 	}else if(type==1){
@@ -916,7 +842,7 @@ function loadData(type){
 	}else{
 		getSetSelect(selectEquiId);
 	}
-	
+	myApp.dialog.progress()
 	
 	
 	
@@ -930,15 +856,16 @@ function selectEquip(value,dom){
 		/*添加*/
 		selectEquiId.push(value);
 	}
-	console.log(selectEquiId)
+//	console.log(selectEquiId)
 }
 function loadConfig(){
 	if(selectEquiId.length==0){
 		myApp.dialog.alert('请选择设备', "温馨提示");
 		return;
 	}else{
-		myApp.popup.close(".popup-condition")
 		getEquipSelect(selectEquiId);
+		myApp.popup.close(".popup-condition")
+		
 //			getYcSelect(selectEquiId);
 //			getYxSelect(selectEquiId);
 //			getSetSelect(selectEquiId);
@@ -1035,9 +962,10 @@ function upInforEdict(){
 
 			$.when(AlarmCenterContext.updEquipConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
+					loadPopupInfor()
 					myApp.dialog.alert('提交成功', "温馨提示");
 					getEquipSelect(selectEquiId);
-					loadPopupInfor()
+					
 				}else{
 					myApp.dialog.alert('提交失败', "温馨提示");
 				}
@@ -1137,9 +1065,10 @@ function upInforEdict(){
 			})
 			$.when(AlarmCenterContext.updYcConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
+					loadPopupInfor()
 					myApp.dialog.alert('提交成功', "温馨提示");
 					getYcSelect(selectEquiId);
-					loadPopupInfor()
+					
 				}else{
 					myApp.dialog.alert('提交失败', "温馨提示");
 				}
@@ -1240,9 +1169,10 @@ function upInforEdict(){
 			
 			$.when(AlarmCenterContext.updYxConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
+					loadPopupInfor()
 					myApp.dialog.alert('提交成功', "温馨提示");
 					getYxSelect(selectEquiId);
-					loadPopupInfor()
+					
 				}else{
 					myApp.dialog.alert('提交失败', "温馨提示");
 				}
@@ -1335,11 +1265,12 @@ function upInforEdict(){
 			})
 			
 			$.when(AlarmCenterContext.updSetConfig(JSON.stringify(uploadJson))).done(function(e){
-				console.log(e)
+//				console.log(e)
 				if(e.HttpData.code==200&&e.HttpData.data){
+					loadPopupInfor()		
 					myApp.dialog.alert('提交成功', "温馨提示");
 					getSetSelect(selectEquiId);
-					loadPopupInfor()					
+								
 				}else{
 					myApp.dialog.alert('提交失败', "温馨提示");
 				}
