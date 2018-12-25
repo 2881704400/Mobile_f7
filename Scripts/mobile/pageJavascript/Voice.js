@@ -278,8 +278,6 @@ function ajaxServiceSend(_type, _url, _asycn, _data, _success, _error) {
 		complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
 			if(status == 'timeout') { //超时,status还有success,error等值的情况
 				ajaxs.abort();
-				console.log("超时");
-				// myApp.hideIndicator();
 				myApp.dialog.create({
 					title: "系统提示",
 					text: '请求超时，请查看网络是否已连接！',

@@ -187,16 +187,12 @@ function requestAjax(j,k){
 function historyInit(){
   if(window.localStorage.pptUsername == window.localStorage.HistorypptUsername)
   {
-      console.log("当前页数"+window.localStorage.savePage+","+$(".mettingDetails_index>div").length);
-    //跳转
-   $(".mettingDetails_index").css('transform',"translate3d("+(getWidth()*(1-window.localStorage.savePage)+getWidth())+"px, 0px, 0px)");
-   $(".mettingDetails_index>div:eq('"+(window.localStorage.savePage-1)+"')").addClass("selectBorder").siblings().removeClass("selectBorder");
-   setTimeout(function(){$(".setviewPng").attr("src",$(".selectBorder img").attr("src"));},1000);
-   // bannerActive(that);  
+      //跳转
+     $(".mettingDetails_index").css('transform',"translate3d("+(getWidth()*(1-window.localStorage.savePage)+getWidth())+"px, 0px, 0px)");
+     $(".mettingDetails_index>div:eq('"+(window.localStorage.savePage-1)+"')").addClass("selectBorder").siblings().removeClass("selectBorder");
+     setTimeout(function(){$(".setviewPng").attr("src",$(".selectBorder img").attr("src"));},1000);
   }
-    //跳页
-   // setTimeout(function(){bannerActive($(".selectBorder"));},0);
-    //保存名字
-    window.localStorage.HistorypptUsername=window.localStorage.pptUsername;
+  //保存名字
+  window.localStorage.HistorypptUsername=window.localStorage.pptUsername;
   
 }

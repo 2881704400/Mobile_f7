@@ -15,10 +15,10 @@ function auth_name(linkULR) {
             },
             success: function (dt) {
                 if (dt.HttpStatus == 200 && dt.HttpData.code == 200) {
-                    console.log("成功连接");
+                    // console.log("成功连接");
                 }
                 else {
-                    console.log(dt);
+                    // console.log(dt);
                     alert("错误代码：" + dt.HttpData.code + '\n' + dt.HttpData.message);
                     window.location.href = '/Views/login.html?' + linkULR;
                 }

@@ -106,7 +106,7 @@ var AlarmCenterContext = {
             },
             error: function (e, n) {
                 i.rejectWith(this, ["网络异常，请稍候重试"]),
-                    console.log(JSON.stringify(e), n)
+                    // console.log(JSON.stringify(e), n)
             }
         });
         return i.promise()
@@ -127,7 +127,7 @@ var AlarmCenterContext = {
             },
             error: function (e, n) {
                 i.rejectWith(this, ["网络异常，请稍候重试"]),
-                    console.log(JSON.stringify(e), n)
+                    // console.log(JSON.stringify(e), n)
             }
         }), i.promise();
     }

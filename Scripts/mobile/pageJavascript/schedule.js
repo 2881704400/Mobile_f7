@@ -79,7 +79,7 @@ function requestUser() {
         $("#schedule_user ul").append(html);
     }
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 //人员html
@@ -212,7 +212,7 @@ function requestEquipGroup() {
     }
 
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 // 设备html
@@ -258,7 +258,7 @@ function newlyBuildEquip(that) {
     }
 
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 function actionString(dt) {
@@ -409,7 +409,7 @@ function requestAlmReport(almGroupObject) {
     }
 
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 // 设备html
@@ -508,7 +508,7 @@ function getMaxId(id) {
 }
 //返回对应设备号的设备名称
 function getEquipName(equipObject, equipno) {
-    console.log(equipObject);
+    // console.log(equipObject);
     var equipName = "";
     equipObject.forEach(function(ele, index) {
         if (ele.group_no == equipno) {
@@ -636,7 +636,7 @@ function requestWeekAlmReport() {
         $("#schedule_specificDate ul").append(html);
     }
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 //周排表html
@@ -739,7 +739,7 @@ function requestSpeAlmReport() {
         $("#schedule_weeklytable ul").append(html);
     }
     function _error(e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 //特定排表更新

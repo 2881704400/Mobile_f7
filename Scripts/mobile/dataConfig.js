@@ -44,7 +44,7 @@ function getJurisdictionData(){
         });
     }
   }).fail(function(e){
-   console.log(e);
+   // console.log(e);
   });
 }
 function functionalModule(className){

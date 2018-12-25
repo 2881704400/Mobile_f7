@@ -2,11 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-<<<<<<< HEAD
 	// myApp.router.navigate("/eventSearch/"); 
-=======
-	//myApp.router.navigate("/eventSearch/"); 
->>>>>>> 52af280abb5ecc2a021918959727299381eb09e6
 
     //图表
     // snapshotChart("purchase_Bar");

@@ -197,7 +197,9 @@ function openFileCommand(dt,equip_no, main_instruction, minor_instruction, value
                                myApp.router.navigate('/mettingDetails/'); 
                             }
                           },
-                          error: function(error){console.log(error)}             
+                          error: function(error){
+                            // console.log(error)
+                          }             
                          });
                     },500);
                   }
