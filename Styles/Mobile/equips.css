@@ -33,7 +33,6 @@ mixin：sass宏mixin
   transform: scaleY(0.33); }
 
 #equips .searchbar {
-  z-index: 99;
   background: #fff; }
   #equips .searchbar:after {
     height: 1px; }
