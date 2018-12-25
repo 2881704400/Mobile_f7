@@ -15,7 +15,7 @@ function snapShotDetail() {
 	loadMessage();
 
 	var searchbar = myApp.searchbar.create({
-		el: '.searchbar',
+		el: '.searchbarSnapDetail',
 		searchContainer: '.snapshotMessage-ul',
 		searchIn: '.item-title,.item-subtitle',
 	});
@@ -29,7 +29,7 @@ function loadMessage() {
 			Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey
 		},
 		data: {
-			"getDataTable":0,
+			"getDataTable": 0,
 		},
 		success: function(dt) {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
@@ -59,7 +59,9 @@ function loadMessage() {
 			if(dt.HttpStatus == 200 && dt.HttpData.data) {
 				var result = dt.HttpData.data;
 				let tableListData = [];
-				var strSureData = "",strData = "",countNum = 0;
+				var strSureData = "",
+					strData = "",
+					countNum = 0;
 				if(result.length > 0) {
 					for(var i = 0; i < result.length; i++) {
 						var textareaEventMsg = "";
@@ -96,7 +98,7 @@ function loadMessage() {
 								'<p>事件：' + textareaEventMsg + '</p>' +
 								'<p>处理意见：<textarea class="advice-textarea" placeholder="请输入处理意见"></textarea></p>' +
 								'<p>是否发送短信：&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' +
-								'<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="height:auto;display:block"></div></p>' +
+								'<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="max-height:300px;overflow-y: auto;display:block"></div></p>' +
 								"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + textareaEventMsg + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
 								'</div></div>' +
 								'</li>';
@@ -127,7 +129,7 @@ function loadMessage() {
 					$("#snapShotDetailListId").css({
 						"margin-bottom": "100px"
 					})
-				}else{
+				} else {
 					$("#snapShotDetailListId").html(strData + strSureData);
 					$("#snapShotDetailListId").css({
 						"margin-bottom": "0px"
@@ -184,7 +186,20 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 		});
 		isShortMsg = true;
 	}
-	//console.log(checkValArr, strAdviceMsg)
+
+	var Time = strTime.replace("T", " ");
+	var TimeArr = [];
+	var strTimeArr = "";
+	if(Time != "" && Time != null) {
+		TimeArr = Time.split(".");
+		strTimeArr = TimeArr[1].toString();
+		if(strTimeArr.length >= 6) {
+			strTimeArr = strTimeArr.substring(0, 6)
+		} else {
+			strTimeArr = strTimeArr + "000000".substring(0, 6 - strTimeArr.length)
+		}
+	}
+
 	$.ajax({
 		type: 'post',
 		url: '/api/event/confirm_evt',
@@ -196,7 +211,7 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 			shortmsg: isShortMsg, //是否发送短信
 			telUser: checkValArr.toString(), //发送人的电话
 			evtname: strEventMsg, //事件名
-			time: strTime.replace("T"," "), //事件时间
+			time: TimeArr[0] + "." + strTimeArr, //事件时间
 			userName: window.localStorage.userName //是否发送短信
 		},
 		success: function(dt) {

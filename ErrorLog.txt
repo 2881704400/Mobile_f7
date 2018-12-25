@@ -1,153 +1,117 @@
-----------2018/12/18 15:13:47----------
+----------2018/12/23 22:28:57----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:29:52----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:30:12----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:33:10----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:33:43----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:33:47----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:34:22----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 22:39:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:37:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:40:07----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:50:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:52:54----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:53:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:56:21----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:57:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/23 23:59:59----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:01:39----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:04:31----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/24 0:05:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/20 19:31:25----------
+System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
+----------2018/12/20 19:31:35----------
+System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
+----------2018/12/25 14:42:41----------
 System.MissingMethodException: 找不到方法:“Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)”。
    在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
-----------2018/12/18 15:15:34----------
-System.MissingMethodException: 找不到方法:“Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)”。
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
-----------2018/12/18 16:56:46----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r88_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/18 18:09:01----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r88_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/19 8:54:17----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r88_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/19 15:19:10----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/19 15:19:10----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/19 15:39:05----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/22 9:23:52----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
-----------2018/12/22 10:27:16----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
    在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
 -------------------------------------
 
-----------2018/12/22 11:28:03----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/22 13:24:00----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/22 13:24:00----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/23 9:29:53----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWService.Net.ClassLib.UserPermissions(String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1339
--------------------------------------
-
-----------2018/12/23 10:37:21----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/23 13:09:42----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/23 13:09:42----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/23 15:53:21----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/23 23:15:26----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/23 23:15:26----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/24 10:40:44----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/24 10:40:44----------
-AlarmCenter
--------------------------------------
-
-----------2018/12/24 11:00:02----------
-System.ArgumentException: 已添加了具有相同键的项。
-   在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
-   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
-   在 AlarmCenter.DataCenter.WebUserDictionary.AddUser(String Name)
-   在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
--------------------------------------
-
-----------2018/12/24 11:22:54----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
-----------2018/12/24 11:22:58----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
-----------2018/12/24 11:26:36----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
--------------------------------------
-
+<<<<<<< HEAD
 ----------2018/12/24 13:05:54----------
 System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
    在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
@@ -236,3 +200,5 @@ System.ArgumentException: 已添加了具有相同键的项。
    在 GWServiceAPI.Net.LibClass.PermissionLib.UserPermission(String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\PermissionLib.cs:行号 68
 -------------------------------------
 
+=======
+>>>>>>> master

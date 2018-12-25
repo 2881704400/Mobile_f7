@@ -39,11 +39,11 @@ $(function() {
 	}
 });
 
-function changeContentBoxBg(){
-	
-	$(".voice-container .pannel-chat-info").each(function(i){
-		var len=$(".voice-container .pannel-chat-info").length;
-		if(!$(this).find(".chart-content").hasClass("stay-right")&&i<len-1){
+function changeContentBoxBg() {
+
+	$(".voice-container .pannel-chat-info").each(function(i) {
+		var len = $(".voice-container .pannel-chat-info").length;
+		if(!$(this).find(".chart-content").hasClass("stay-right") && i < len - 1) {
 			$(this).addClass("chart-content-old");
 		}
 	})
@@ -53,9 +53,9 @@ function onTouchStart(e) {
 	e.preventDefault();
 	var touch = e.touches[0];
 	startY = touch.pageY; //刚触摸时的坐标
-	
+
 	cancelVoiceFlag = cancelFlag = false;
-	
+
 	$(".voice-container").html('<div class="pannel-chat-info">' +
 		'	<div class="chart-content">' +
 		'		<span>请告诉我，您想要进行的操作</span>' +
@@ -104,7 +104,7 @@ function onTouchMove(e) {
 }
 
 function onTouchEnd(e) {
-	if(cancelVoiceFlag||cancelFlag) {
+	if(cancelVoiceFlag || cancelFlag) {
 		$(".voice-arrow-cancel").hide();
 		$(".voice-arrow-box").hide();
 		$(".voice-arrow-dialog").show();
@@ -212,9 +212,17 @@ function callbackVoiceXFData(dt) {
 	if(cancelVoiceFlag) {
 		return;
 	}
-	var _url = service + "/VoiceControlString";
-	var _data = "audioData=" + dt + "&&userName=" + window.localStorage.userName;
-	ajaxService("post", _url, true, _data, _successf, _error);
+	var _url = "/api/Voice/voice_string";
+	var _data = {
+		data_string: dt
+	}
+//	ajaxServiceSend("post", _url, true, _data, _successf, _error);
+	$.when(AlarmCenterContext.post(_url, _data, null)).done(function(e) {
+		myApp.dialog.alert(e)
+		_successf(e);
+	}).fail(function(e) {myApp.dialog.alert(e)
+		_error(qXHR, textStatus, errorThrown);
+	});
 
 	function _successf(data) {
 		var rets = $(data).children("string").text();
@@ -258,19 +266,20 @@ function callbackVoiceXFData(dt) {
 	}
 }
 
-function ajaxServiceSend(_type, _url, _asycn, _data, _beforeSend, _success, _error) {
+function ajaxServiceSend(_type, _url, _asycn, _data, _success, _error) {
 	var ajaxs = $.ajax({
 		type: _type,
 		url: _url,
 		timeout: 5000,
 		async: _asycn,
 		data: _data,
-		beforeSend: _beforeSend,
 		success: _success,
 		error: _error,
 		complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
 			if(status == 'timeout') { //超时,status还有success,error等值的情况
 				ajaxs.abort();
+				console.log("超时");
+				// myApp.hideIndicator();
 				myApp.dialog.create({
 					title: "系统提示",
 					text: '请求超时，请查看网络是否已连接！',
@@ -291,7 +300,13 @@ function callbackVoiceBuffer(dt) {
 	}
 	var _url = service + "/VoiceControlByte";
 	var _data = "audioData=" + dt + "&&userName=" + window.localStorage.userName;
-	ajaxService("post", _url, true, _data, _successf, _error);
+//	ajaxServiceSend("post", _url, true, _data, _successf, _error);
+
+	$.when(AlarmCenterContext.post(1, 2)).done(function(n, l) {
+		_successf(n);
+	}).fail(function(e) {
+		_error(qXHR, textStatus, errorThrown);
+	});
 
 	function _successf(data) {
 		var rets = $(data).children("string").text();

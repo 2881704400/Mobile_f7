@@ -1,4 +1,4 @@
-﻿var equipHtml=[
+﻿﻿var equipHtml=[
 	 {lable:"设备号",key:"equip_no"},{lable:"设备名称",key:"equip_nm"},{lable:"关联界面",key:"related_pic"},{lable:"设备属性",key:"equip_detail"},
 	 {lable:"通讯刷新周期",key:"acc_cyc"},{lable:"故障处理意见",key:"proc_advice"},{lable:"故障提示",key:"out_of_contact"},{lable:"故障恢复提示",key:"contacted"},
 	 {lable:"报警声音文件",key:"event_wav"},{lable:"通讯端口",key:"local_addr"},{lable:"设备地址",key:"equip_addr"},{lable:"通讯参数",key:"communication_param"},
@@ -778,8 +778,9 @@ function getlinkVideoList(){
 	    				'</li>';
 	    		$(".sheet-video ul").append(html);
 			}
-//			console.log(videoList)
+
 		}
+
 	})
 }
 function selectVideo(video,name){
@@ -866,9 +867,6 @@ function loadConfig(){
 		getEquipSelect(selectEquiId);
 		myApp.popup.close(".popup-condition")
 		
-//			getYcSelect(selectEquiId);
-//			getYxSelect(selectEquiId);
-//			getSetSelect(selectEquiId);
 	}
 	
 }

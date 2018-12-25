@@ -20,7 +20,7 @@ $situationBoxShadow: #eee;
 //工具栏背景色
 $toolbarBgc: #000;
 $toolbarFontColor: white;
-$selectedColor: #FD971F;
+$selectedColor: #2d8cf0;
 $toolbarBoxShadow: #eee;
 
 //语音属性
@@ -42,7 +42,7 @@ $btnFontColor: #DEF0F9;
 $statsBgc: #fff;
 $statsFontColor: #333;
 $statsBorderColor: #f0f4f7;
-$selectedColor: #FD971F;
+$selectedColor: #2d8cf0;
 
 
 //未点击按钮颜色
@@ -50,6 +50,12 @@ $unclickedColor: #648EFF;
 $unclickedColor_a: #f6f6f6;
 $bzColor: #0ed1e6;
 $unclickBorderRadius: 6px;
+
+// 首页配置按钮
+$homeConfigBtnBg: #f4f4f5;
+$homeConfigBtnColor: #463d3d;
+
+
 // 统一table样式
 $tableHeaderFontSize: 1rem;
 $tableHeaderFontColor: #666;
@@ -65,11 +71,13 @@ $tableBorderBottom: #eee;
 $inputBorderColor: #eee; 
 
 // tab切换属性
-$tabBackground: #cea16c;
+$tabSelected: #4177e6;
+$tabBackground: #5087f9;
 $tabFontColor: white;
 
 // popup弹框
-$popupBackground: rgba(255,255,255,0.5);
+$popupBackground: rgba(51, 51, 51, 0.95);
+$popupBackTitle: white;
 
 $preBg:rgb(255,255,255);
 $bg:rgb(242,243,245);
@@ -77,3 +85,7 @@ $titColor:rgb(173,173,173);
 $valueColor:rgb(69,158,241);
 $lineBg:rgb(234,234,234);
 $activeBg:rgb(62,124,251);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

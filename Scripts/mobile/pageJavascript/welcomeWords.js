@@ -1,271 +1,434 @@
-﻿var getcolor;
+﻿var welcome_getcolor;
+var welcome_objoriginal = new Object();
 
 function welcomeWords() {
-    var focusValue;
-    //close
-    $(".weicomeClose").unbind();
-    $(".weicomeClose").bind('click', function(event) {
-        get_no(this, WORDcommand.closewel.equipNo, WORDcommand.closewel.setNo, "");
-    });
-    $('.fontBackground input[type="number"]').unbind();
-    $('.fontBackground input[type="number"]').bind('focus', function(event) {
-        focusValue = $(this).val();
-        $(this).val("");
-    });
-    $('.fontBackground input[type="number"]').bind('blur', function(event) {
-        if ($(this).val() == "") $(this).val(focusValue);
-    });
-    $("#centerChcek").unbind();
-    $("#centerChcek").bind("click", function() {
-        if ($(this).is(":checked")) {
-            $(".canvasLeft").attr("disabled", "disabled");
-        } else {
-            $(".canvasLeft").removeAttr("disabled");
-        }
-    });
-    // ===============================================
-    // =================初始化图片====================
-    // ===============================================
-    var UrlSplit = location.href.split("/Views")[0].replace("http://", "").split(":");
-    var IpValue = UrlSplit[0],
-        portValue = UrlSplit[1];
-    var url1 = WORDcommand.backgroundImage.url,
-        fileName1 = ".png|.jpg|.JPG",
-        _urlChild1 = "/GWService.asmx/GetFileStructure",
-        setHtml = "";
-    var groupPhotoArray = new Array();
-    var typeEnd = new Array();
-    $.ajax({
-        type: 'post',
-        url: _urlChild1,
-        data: {
-            filePath: url1,
-            fileName: fileName1,
-        },
-        success: function(data) {
-            var dt = $(data).find("string").html();
-            var result = JSON.parse(dt);
-            if (result != "" && result != undefined && result != null) {
-                for (var i = 0; i < result.length; i++) {
-                    groupPhotoArray[i] = getNmae(result[i]).split(".")[0]; //获得数字名称
-                    typeEnd[i] = getNmae(result[i]).split(".")[getNmae(result[i]).split(".").length - 1]; //获取第一个文件名最后一个后缀
-                    if (i == 0) setHtml += '<div class="swiper-slide selectBorder" onclick="bannerActive_wel(this)" Indexid=' + i + ' set_no="1" set_equip="10005" set_id="1" ><img src="http://' + IpValue + ":" + (portValue == "" ? 80 : portValue) + "/BGImages/" + groupPhotoArray[i] + "." + typeEnd[i] + '"></div>';
-                    else setHtml += '<div class="swiper-slide" onclick="bannerActive_wel(this)" Indexid=' + i + ' set_no="1" set_equip="10005" set_id="1"><img src="http://' + IpValue + ":" + (portValue == "" ? 80 : portValue) + "/BGImages/" + groupPhotoArray[i] + "." + typeEnd[i] + '"></div>';
-                }
-                $(".setBackground").html(setHtml);
-                bannerList("swiper-3", "swiper-pagination", 10, 3);
-            }
-        }
-    }).done(function() {
-        $.ajax({
-            type: 'post',
-            url: "/GWService.asmx/GetDataTableFromSQL",
-            data: {
-                sql: "select top 1 *  from WelcomingSpeech where Type=0 order by ID desc",
-                userName: window.localStorage.userName,
-            },
-            success: function(data) {
-                console.log(data);
-                var dt = $(data).find("siginalVal").html();
-                var result = JSON.parse(dt);
-                if (result != "" && result != null && result != undefined) {
-                    $(".wecomeButtom div.selectBorder").removeClass("selectBorder"); //背景设置
-                    $(".wecomeButtom .swiper-slide[Indexid=" + result.BackgroundImg + "]").addClass("selectBorder"); //背景设置
-                    $(".canvasFont").val(result.FontSize); //字体大小
-                    $(".welcomeInput").val(result.Text); //文本内容
-                    $(".canvasLeft").val(result.CanvasLeft); //左侧距离
-                    $(".canvasTop").val(result.CanvasTop); //顶端距离
-                    $(".activeSkin").css("background", result.FontColor); //字体颜色
-                    $(".welcomeInput").css("color", result.FontColor); //字体颜色
-                    $("#fontFamily option[data-font='" + result.FontFamily + "']").attr("selected", true);
-                    if (result.FontWeight != "normal") //字体粗体
-                    {
-                        $(".icon-bgy15").addClass("textStyle_selected");
-                    }
-                    if (result.FontStyle != "normal") //字体斜体 
-                    {
-                        $(".icon-bgy14").addClass("textStyle_selected");
-                    }
-                    if (result.center != "") {
-                        $("#centerChcek").prop("checked", true);
-                        $(".canvasLeft").attr("disabled", "disabled");
-                    }
-                }
-            }
-        });
-    });
-    // 排序
-    function groupPhotoInit(number) {
-        return number.sort(NumAscSort);
-    }
-    // 升序
-    function NumAscSort(a, b) {
-        return a - b;
-    }
-    // 降序
-    function NumDescSort(a, b) {
-        return b - a;
-    }
-    //提取名称
-    function getNmae(name) {
-        return name.split("\\")[name.split("\\").length - 1];
-    }
-    // banner
-    function bannerList(class1, class2, number3, number4) {
-        var mySwiper3 = myApp.swiper.create('.' + class1, {
-            pagination: '.' + class1 + ' .' + class2,
-            spaceBetween: number3,
-            slidesPerView: number4
-        });
-    }
-    $(".welcomeHeaderPhone").height($(window).width() / 32 * 9);
-    $(".views").height($(window).height());
-    //排版选择
-    $(".textStyle div:eq(0) a").unbind();
-    $(".textStyle div:eq(0) a").bind("click", function() {
-        $(this).addClass("textStyle_selected").siblings().removeClass("textStyle_selected");
-    });
-    $(".textStyle div:eq(1) a").unbind();
-    $(".textStyle div:eq(1) a").bind("click", function() {
-        $(this).addClass("textStyle_selected1").siblings().removeClass("textStyle_selected1");
-    });
-    //粗体，斜体
-    $("a.icon-bgy15").unbind();
-    $("a.icon-bgy15").bind('click', function() {
-        if ($(this).hasClass("textStyle_selected")) {
-            $(this).removeClass("textStyle_selected");
-            $(".welcomeHeader span").css("fontWeight", "normal");
-        } else {
-            $(this).addClass("textStyle_selected");
-            $(".welcomeHeader span").css("fontWeight", "bold");
-        }
-    });
-    $("a.icon-bgy14").unbind();
-    $("a.icon-bgy14").bind('click', function() {
-        if ($(this).hasClass("textStyle_selected")) {
-            $(this).removeClass("textStyle_selected");
-            $(".welcomeHeader span").css("fontStyle", "normal");
-        } else {
-            $(this).addClass("textStyle_selected");
-            $(".welcomeHeader span").css("fontStyle", "italic");
-        }
-    });
-    // ===============================================
-    // ===================动画控制====================
-    // ===============================================
-    $(".activeSkin").unbind();
-    $(".activeSkin").bind('click', function() {
-        if ($("#SelectSkin").hasClass("displayNone")) weicomeInitAnimation();
-        else $("#SelectSkin").addClass("displayNone");
-    });
-    $("#colorSkin a").unbind();
-    $("#colorSkin a").bind('click', function() {
-        getcolor = $(this).find("i").css("backgroundColor");
-        $(".activeSkin").css("background", getcolor);
-        $(".welcomeInput").css("color", getcolor);
-        $("#SelectSkin").addClass("displayNone");
-    });
-    // ===============================================
-    // ===================欢迎保存====================
-    // ===============================================
-    var objoriginal = new Object();
-    $("#saveWord").bind('click', function() {
-        activeSave(this, 0);
-    });
+    switchToolbar("homeTool");
+	getFocusValue();
+	/*获取文件夹中背景图片信息*/
+	var url1 = WORDcommand.backgroundImage.url,
+		fileName1 = ".png|.jpg|.JPG",
+		_urlChild1 = "/GWService.asmx/GetFileStructure",
+		setHtml = "";
+	var groupPhotoArray = new Array(),
+		typeEnd = new Array();
+	$.ajax({
+		type: 'post',
+		url: _urlChild1,
+		data: {
+			filePath: url1,
+			fileName: fileName1,
+		},
+		success: function(data) {
+			var dt = $(data).find("string").html();
+			var result = JSON.parse(dt);
+			if(result != "" && result != undefined && result != null) {
+				for(var i = 0; i < result.length; i++) {
+					groupPhotoArray[i] = welcome_getNmae(result[i]).split(".")[0]; //获得数字名称
+					typeEnd[i] = welcome_getNmae(result[i]).split(".")[welcome_getNmae(result[i]).split(".").length - 1]; //获取第一个文件名最后一个后缀
+					if(i == 0) {
+						setHtml += '<div class="swiper-slide"><img src="/BGImages/' + groupPhotoArray[i] + "." + typeEnd[i] + '"><i class="iconfont icon-xuanzhongbiaoshi welcome-Word-control-icon-check" style="display:inline;"></i></div>';
+					} else {
+						setHtml += '<div class="swiper-slide"><img src="/BGImages/' + groupPhotoArray[i] + "." + typeEnd[i] + '"><i class="iconfont icon-xuanzhongbiaoshi welcome-Word-control-icon-check"></i></div>';
+					}
+				}
+				$(".setBackground").html(setHtml);
+				welcome_bannerList("swiper-3", "swiper-pagination", 10, 3);
+				$(".wecomeButtom .swiper-slide").find('img').unbind('click').bind('click', function() {
+					$(".wecomeButtom .swiper-slide").find('i').each(function() {
+						$(this).hide();
+					})
+					$(this).parent().find('i').show();
+					var imgSrc = $(this).attr("src");
+					$(".welcomeInput").css({
+						background: "url(" + imgSrc + ") no-repeat center center/100% 100%"
+					});
+				});
+			}
+		}
+	}).done(function() {
+		/*获取最近一次欢迎词格式信息*/
+		$.ajax({
+			type: 'post',
+			url: "/GWService.asmx/GetDataTableFromSQL",
+			data: {
+				sql: "select top 1 *  from WelcomingSpeech where Type=0 order by ID desc",
+				userName: window.localStorage.userName,
+			},
+			success: function(data) {
+				try {
+					var dt = $(data).find("siginalVal").html();
+					var result = JSON.parse(dt);
+				} catch(e) {}
+				if(result != "" && result != null && result != undefined) {
+					//左右对齐初始化
+					$("#alignControlId i").each(function(i) {
+						if(i < 3) {
+							$(this).removeClass("control-active-color");
+						}
+					});
+					if(result.CanvasLeft == "left") {
+						$("#alignControlId i").eq(0).addClass("control-active-color");
+					} else if(result.CanvasLeft == "center") {
+						$("#alignControlId i").eq(1).addClass("control-active-color");
+					} else if(result.CanvasLeft == "right") {
+						$("#alignControlId i").eq(2).addClass("control-active-color");
+					}
+					$(".welcomeInput").css("textAlign", result.CanvasLeft);
+					//上下对齐初始化
+					if(result.CanvasTop == "0") {
+						$("#alignControlId i").eq(3).removeClass("control-active-color");
+						$(".welcomeInput").css("padding", 0);
+					} else if(result.CanvasTop == "50") {
+						$("#alignControlId i").eq(3).addClass("control-active-color");
+						var textAreaHeight = $(".welcomeInput").height() / 4;
+						strAlignItem = "" + textAreaHeight + "px 0";
+						$(".welcomeInput").css("padding", strAlignItem);
+					}
+					//字体类别
+					$(".welcomeInput").css("fontFamily", result.FontFamily);
+					$("#fontFamily option[data-font='" + result.FontFamily + "']").attr("selected", true);
+					//字体大小
+					$('#controlrangeSliderValueId').text(result.FontSize);
+					$(".welcomeInput").css("fontSize", result.FontSize + "%");
+					myApp.range.get('.welcome-Word-control-tab-range-slider').setValue(result.FontSize);
+					//字体粗细
+					$("#thickControlId i").each(function(i) {
+						if(i < 2) {
+							$(this).removeClass("control-active-color");
+						}
+					});
+					if(result.FontStyle == "normal") {
+						$("#thickControlId i").eq(0).addClass("control-active-color");
+					} else {
+						$("#thickControlId i").eq(1).addClass("control-active-color");
+					}
+					if(result.FontWeight == "italic") {
+						$("#thickControlId i").eq(2).addClass("control-active-color");
+					} else {
+						$("#thickControlId i").eq(2).removeClass("control-active-color");
+					}
+					//字体颜色
+					$(".activeSkin").css("background", result.FontColor);
+					$(".welcomeInput").css("color", result.FontColor);
+					//背景设置
+					$(".welcomeInput").css({
+						background: "url(" + result.BackgroundImg + ") no-repeat center center/100% 100%"
+					});
+				}
+			}
+		});
+	});
+	/*菜单按钮点击事件*/
+	$(".welcome-Word-control-boxs li").find('i').unbind('click').bind('click', function() {
+		$(".welcome-Word-control-boxs li").each(function() {
+			$(this).find('i').css({
+				color: "#333333"
+			});
+		})
+		$(this).css({
+			color: "#3E7CFB"
+		});
+		var index = $(this).parent().index();
+		if(index == 0) {
+			$(".welcomeInput").focus();
+		}
+	});
 
-    function activeSave(that, number) {
-        objoriginal.Text = $(".welcomeInput").val(); //欢迎词
-        var welcomeVal = tramsformData(objoriginal.Text);
-        objoriginal.FontSize = $(".canvasFont").val(); //字体大小
-        getcolor = $(".publicInputEdit").css("color"); //字体颜色
-        if (getcolor == "" || getcolor == undefined) {
-            getcolor = "white";
-            objoriginal.FontColor = getcolor.toString();
-        } else objoriginal.FontColor = getcolor.toString();
-        //objoriginal.FontColor = colorRGB2Hex(getcolor); 
-        objoriginal.FontFamily = $("#fontFamily").find("option:selected").attr("data-font"); //字体类型
-        objoriginal.FontStyle = $(".setStyle a.icon-bgy14").hasClass("textStyle_selected") ? "italic" : "normal"; //粗体，斜体
-        objoriginal.FontWeight = $(".setStyle a.icon-bgy15").hasClass("textStyle_selected") ? "bold" : "normal"; //粗体，斜体
-        objoriginal.CanvasLeft = parseInt($(".canvasLeft").val()); //左边距 600
-        objoriginal.CanvasTop = parseInt($(".canvasTop").val()); //顶边距  300
-        getcolor = null;
-        // 背景图片
-        var fileNameURL = $(".selectBorder").find("img").attr("src");
-        if (fileNameURL == undefined) fileNameURL = $(".setBackground div:eq(0)").find("img").attr("src");
-        var fileName = fileNameURL.split("/")[fileNameURL.split("/").length - 1]; //name
-        objoriginal.BackgroundImg = $(".selectBorder").attr("indexid");
-        //是否居中
-        if ($("#centerChcek").prop("checked")) objoriginal.center = "positionClass";
-        else objoriginal.center = "";
-        var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + objoriginal.FontFamily + ";position: absolute;white-space: pre;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;background: url(" + fileNameURL + ") no-repeat center center/100%;\" class=\"a123\">" + "<span class=\"" + objoriginal.center + "\" style=\"font-size: " + objoriginal.FontSize + "px;color: " + objoriginal.FontColor + "; left: " + objoriginal.CanvasLeft + "px; top: " + objoriginal.CanvasTop + "px; font-weight: " + objoriginal.FontWeight + "; font-style: " + objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
-        console.log("insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(objoriginal) + "')");
-        var ajaxVar = $.ajax({
-            type: "POST",
-            url: "/GWService.asmx/ExecuteSQL",
-            timeout: 5000,
-            data: {
-                sql: "insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(objoriginal) + "')",
-                userName: window.localStorage.userName,
-            },
-            success: function(data) {
-                $(that).attr("disabled", false);
-                if ($(that).attr("id") == "viewsSave") {
-                    get_no(that,WORDcommand.Priviewwel.equipNo, WORDcommand.Priviewwel.setNo, "");
-                } else if ($(that).attr("id") == "saveWord") {
-                    var dt = $(data).find('int').text(); //返回受影响行数
-                    console.log(dt);
-                    if (dt == 1) {
-                        alertMsgSuccess.open();
-                    } else alertMsgError.open();
-                }
-            }
-        });
-    }
-    // ===============================================
-    // ===================预览========================
-    // ===============================================
-    $("#viewsSave").unbind();
-    $("#viewsSave").bind("click", function() {
-        activeSave(this, 1);
-    });
+	/*对齐图标点击事件*/
+	$("#alignControlId i").unbind('click').bind('click', function() {
+		var index = $(this).index();
+		var realLength = $("#alignControlId i").length;
+		$("#alignControlId i").each(function(i) {
+			if(i < realLength - 1 && index != 3) {
+				$(this).removeClass("control-active-color");
+			}
+		});
+
+		var strAlignItem = "";
+		var strJustifyContent = "";
+		if(index != 3) {
+			if(index == 0) {
+				strJustifyContent = "left";
+			} else if(index == 1) {
+				strJustifyContent = "center";
+			} else if(index == 2) {
+				strJustifyContent = "right";
+			}
+			$(this).addClass("control-active-color");
+			$(".welcomeInput").css("textAlign", strJustifyContent);
+		} else {
+			var textAreaHeight = $(".welcomeInput").height() / 4;
+			var isFlag = $(this).hasClass("control-active-color");
+			if(isFlag) {
+				$(this).removeClass("control-active-color");
+				strAlignItem = "0";
+			} else {
+				$(this).addClass("control-active-color");
+				strAlignItem = "" + textAreaHeight + "px 0";
+			}
+			$(".welcomeInput").css("padding", strAlignItem);
+		}
+	});
+
+	/*字体选择事件*/
+	$("#fontFamily").unbind('change').bind('change', function() {
+		var strData = $(this).find("option:selected").attr("data-font");
+		$(".welcomeInput").css("fontFamily", strData);
+	});
+
+	/*字体粗细选择事件*/
+	$("#thickControlId i").unbind('click').bind('click', function() {
+		var index = $(this).index();
+		var realLength = $("#thickControlId i").length;
+		$("#thickControlId i").each(function(i) {
+			if(i < realLength - 1 && index != 2) {
+				$(this).removeClass("control-active-color");
+			}
+		});
+
+		var strfontWeight = "";
+		var strfontWeight2 = "";
+		if(index != 2) {
+			if(index == 0) {
+				strfontWeight = "control-active-style-normal";
+			} else if(index == 1) {
+				strfontWeight = "control-active-style-bold";
+			}
+			$(this).addClass("control-active-color");
+			$(".welcomeInput").removeClass("control-active-style-normal control-active-style-bold").addClass(strfontWeight);
+		} else {
+			strfontWeight2 = "control-active-style-italic";
+			var isFlag = $(this).hasClass("control-active-color");
+			if(isFlag) {
+				$(this).removeClass("control-active-color");
+				strfontWeight2 = "";
+			} else {
+				$(this).addClass("control-active-color");
+				strfontWeight2 = "control-active-style-italic";
+			}
+			$(".welcomeInput").removeClass("control-active-style-italic").addClass(strfontWeight2);
+		}
+
+	});
+
+	/*滑块选择事件*/
+	$$('#controlrangeSliderId').on('range:change', function(e, range) {
+		$$('#controlrangeSliderValueId').text(range.value);
+		var realValue = range.value + 78;
+		$(".welcomeInput").css("fontSize", realValue + "%");
+	});
+
+	/*颜色框弹出事件*/
+	$(".activeSkin").unbind('click').bind('click', function() {
+		if($("#SelectSkin").hasClass("displayNone")) {
+			weicomeInitAnimation();
+		} else {
+			$("#SelectSkin").addClass("displayNone");
+		}
+	});
+
+	/*颜色选中事件*/
+	$("#colorSkin a").unbind('click').bind('click', function() {
+		welcome_getcolor = $(this).find("i").css("backgroundColor");
+		$(".activeSkin").css("background", welcome_getcolor);
+		$(".welcomeInput").css("color", welcome_getcolor);
+		$("#SelectSkin").addClass("displayNone");
+	});
+
+	/*slider图片选中事件*/
+	$(".wecomeButtom .swiper-slide").find('img').unbind('click').bind('click', function() {
+		$(".wecomeButtom .swiper-slide").find('i').each(function() {
+			$(this).hide();
+		})
+		$(this).parent().find('i').show();
+		var imgSrc = $(this).attr("src");
+		$(".welcomeInput").css({
+			background: "url(" + imgSrc + ") no-repeat center center/100% 100%"
+		});
+	});
+
+	/*大屏操作事件*/
+	$("#tab44 .welcome-Word-control-icon-mutual").unbind('click').bind('click', function() {
+		$("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('span').css({
+			color: '#FF4747'
+		});
+		$("#tab44 .welcome-Word-control-icon-mutual").eq(0).find('i').css({
+			color: '#333333'
+		});
+		$("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('i').removeClass().addClass("iconfont icon-weixuanzhong");
+		$(this).find('span').css({
+			color: '#FFFFFF'
+		});
+		var index = $(this).index();
+		var equipNo = $(this).attr("set_equip");
+		var setNo = $(this).attr("set_no");
+
+		if(index == 0) {
+			$(this).find('i').css({
+				color: '#3E7CFB'
+			});
+			welcome_activeSave(this, 1);
+			get_no(this, equipNo, setNo, "");
+		} else {
+			$(this).find('i').css({
+				color: '#FF4747'
+			});
+			$("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('i').removeClass().addClass("iconfont icon-xuanzhong");
+			get_no(this, equipNo, setNo, "");
+		}
+	});
+
+	/*保存欢迎词*/
+	$(".saveWelcomeWords").unbind('click').bind('click', function() {
+		welcome_activeSave(this, 0);
+	});
 }
-var fontWeight, fontHeight;
-// ===============================================
-// =====================动画函数==================
-// ===============================================
-function weicomeInitAnimation() { //可优化
-    weicomeTestAnim("SelectSkin", "flipInX", 200);
+
+//响应App绑定函数-获取键盘高度
+function getKeyboardScreenHeight2(KeyboardHieght,ScreenHeight) {
+	var heightRate=KeyboardHieght/ScreenHeight;
+	var parentHeight=document.body.clientHeight;
+	heightRate=heightRate*parentHeight-50;
+//	$(".welcomeInput").text(heightRate);
+	if(heightRate>0){
+		$(".welcome-Word-control-boxs").css("bottom",heightRate+"px");
+		$(".welcome-Word-control-tabs").css("height",heightRate+"px");
+	}
+	
+}
+
+function getFocusValue() {
+	if(typeof(myJavaFun) != "undefined") {
+		//App绑定函数-获取键盘高度
+		myJavaFun.getKeyboardHeight2();
+	}
+}
+
+//保存事件
+function welcome_activeSave(that, number) {
+	welcome_objoriginal = new Object();
+	//内容
+	welcome_objoriginal.Text = $(".welcomeInput").val();
+	var welcomeVal = welcome_tramsformData(welcome_objoriginal.Text);
+	//字体大小
+	welcome_objoriginal.FontSize = $('#controlrangeSliderValueId').html();
+	//字体颜色
+	welcome_getcolor = $(".publicInputEdit").css("color");
+	if(welcome_getcolor == "" || welcome_getcolor == undefined) {
+		welcome_getcolor = "white";
+		welcome_objoriginal.FontColor = welcome_getcolor.toString();
+	} else {
+		welcome_objoriginal.FontColor = welcome_getcolor.toString();
+	}
+	//welcome_objoriginal.FontColor = welcome_colorRGB2Hex(welcome_getcolor);
+	//字体类型
+	welcome_objoriginal.FontFamily = $("#fontFamily").find("option:selected").attr("data-font");
+	//粗细-常规，粗体
+	welcome_objoriginal.FontStyle = $("#thickControlId i").eq(1).hasClass("control-active-color") ? "bold" : "normal";
+	//粗细-斜体
+	welcome_objoriginal.FontWeight = $("#thickControlId i").eq(2).hasClass("control-active-color") ? "italic" : "";
+	//对齐-左右
+	welcome_objoriginal.textAlign = $("#alignControlId i").eq(0).hasClass("control-active-color") ? "0" : ($("#alignControlId i").eq(1).hasClass("control-active-color") ? "1" : "2");
+	//对齐-上下
+	welcome_objoriginal.textValign = $("#alignControlId i").eq(3).hasClass("control-active-color") ? "1" : "0";
+	//左对齐值
+	if(welcome_objoriginal.textAlign == 0) {
+		welcome_objoriginal.CanvasLeft = "left";
+	} else if(welcome_objoriginal.textAlign == 1) {
+		welcome_objoriginal.CanvasLeft = "center";
+	} else if(welcome_objoriginal.textAlign == 2) {
+		welcome_objoriginal.CanvasLeft = "right";
+	}
+	//垂直对齐值
+	if(welcome_objoriginal.textValign == 0) {
+		welcome_objoriginal.CanvasTop = 0;
+	} else if(welcome_objoriginal.textValign == 1) {
+		welcome_objoriginal.CanvasTop = 50;
+	}
+	welcome_getcolor = null;
+	// 背景图片
+	var imgIcon = $(".wecomeButtom .swiper-slide").eq(0).find('i').is(":hidden") ? ($(".wecomeButtom .swiper-slide").eq(1).find('i').is(":hidden") ? "2" : "1") : "0";
+	var fileNameURL = $(".welcomeInput").css("backgroundImage").replace('url("', '').replace('")', '');
+	if(fileNameURL == undefined || fileNameURL == "none") {
+		fileNameURL = $(".wecomeButtom .swiper-slide").eq(0).find("img").attr("src");
+	}
+	var fileName = fileNameURL.split("/")[fileNameURL.split("/").length - 1]; //name
+	
+	fileNameURL=fileNameURL.split(":")[2];
+	fileNameURL=fileNameURL.substring(fileNameURL.indexOf("/"),fileNameURL.length)
+	
+	welcome_objoriginal.BackgroundImg = fileNameURL;
+	//是否居中
+	welcome_objoriginal.center = "positionClass";
+	var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;background: url(" + fileNameURL + ") no-repeat center center/100%;\" class=\"a123\">" + "<span class=\"" + welcome_objoriginal.center + "\" style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; text-align: " + welcome_objoriginal.CanvasLeft + "; top: " + welcome_objoriginal.CanvasTop + "%; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
+	//	console.log("insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(welcome_objoriginal) + "')");
+	
+	var ajaxVar = $.ajax({
+		type: "POST",
+		url: "/GWService.asmx/ExecuteSQL",
+		timeout: 5000,
+		data: {
+			sql: "insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(welcome_objoriginal) + "')",
+			userName: window.localStorage.userName,
+		},
+		success: function(data) {
+			var dt = $(data).find('int').text(); //返回受影响行数
+			
+			if(dt == 1) {
+				alertMsgSuccess.open();
+			} else alertMsgError.open();
+		}
+	});
+}
+
+//slide初始化通用事件
+function welcome_bannerList(class1, class2, number3, number4) {
+	var mySwiper3 = myApp.swiper.create('.' + class1, {
+		pagination: '.' + class1 + ' .' + class2,
+		spaceBetween: number3,
+		slidesPerView: number4
+	});
+}
+
+//颜色弹出框动画调用
+function weicomeInitAnimation() {
+	weicomeTestAnim("SelectSkin", "flipInX", 200);
 }
 //动画调用
 function weicomeTestAnim(thatId, x, time) {
-    setTimeout(function() {
-        $('#' + thatId).removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $('#' + thatId).removeClass(x + ' animated');
-        });
-    }, time);
+	setTimeout(function() {
+		$('#' + thatId).removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+			$('#' + thatId).removeClass(x + ' animated');
+		});
+	}, time);
 };
 //格式转换
-function tramsformData(dataVal) {
-    var lengthVal = dataVal.length;
-    var stringVal = "";
-    for (var i = 0; i < lengthVal; i++) {
-        if (dataVal.charCodeAt(i) == 10) stringVal += "<br />";
-        else if (dataVal.charCodeAt(i) == 32) stringVal += "&nbsp;&nbsp;";
-        else stringVal += dataVal.charAt(i);
-    }
-    return stringVal;
+function welcome_tramsformData(dataVal) {
+	var lengthVal = dataVal.length;
+	var stringVal = "";
+	for(var i = 0; i < lengthVal; i++) {
+		if(dataVal.charCodeAt(i) == 10) stringVal += "<br />";
+		else if(dataVal.charCodeAt(i) == 32) stringVal += "&nbsp;&nbsp;";
+		else stringVal += dataVal.charAt(i);
+	}
+	return stringVal;
 }
 //RGB转16进制 
-function colorRGB2Hex(color) {
-    var rgb = color.split(',');
-    var r = parseInt(rgb[0].split('(')[1]);
-    var g = parseInt(rgb[1]);
-    var b = parseInt(rgb[2].split(')')[0]);
-    var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    return hex;
+function welcome_colorRGB2Hex(color) {
+	var rgb = color.split(',');
+	var r = parseInt(rgb[0].split('(')[1]);
+	var g = parseInt(rgb[1]);
+	var b = parseInt(rgb[2].split(')')[0]);
+	var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	return hex;
 }
 //active banner
 function bannerActive_wel(that) {
-    $(that).addClass("selectBorder").siblings().removeClass("selectBorder");
-    $(".welcomeHeader").css("background", "url(" + $(that).find("img").attr("src") + ") no-repeat center center/100% 100%");
+	$(that).addClass("selectBorder").siblings().removeClass("selectBorder");
+	$(".welcomeHeader").css("background", "url(" + $(that).find("img").attr("src") + ") no-repeat center center/100% 100%");
+}
+
+//提取名称
+function welcome_getNmae(name) {
+	return name.split("\\")[name.split("\\").length - 1];
 }

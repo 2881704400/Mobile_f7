@@ -2,11 +2,7 @@
     <div class="navbar">
         <div class="navbar-inner">
             <div class="left">
-                <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildUser(" "," "," "," "," ",2,"");'><i class="iconfont icon-f7_add"></i></a>
-                <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='equipAlert("",2);'><i class="iconfont icon-f7_add"></i></a>
-                <a class="link displayNone" href="#" id="schedule_administartor_nav" onclick='newlyBuildAlmReport("",2);'><i class="iconfont icon-f7_add"></i></a>
-                <a class="link displayNone" href="#" id="schedule_specificDate_nav" onclick='newlyBuildWeekAlmReport(2);'><i class="iconfont icon-f7_add"></i></a>
-                <a class="link displayNone" href="#" id="schedule_weeklytable_nav" onclick='newlyBuildSpeAlmReport("",2);'><i class="iconfont icon-f7_add"></i></a>
+                <a class="link" href="#" style="visibility: hidden;"> <i class="iconfont icon-f7_add"> </i> </a>
             </div>
             <div class="center sliding title">
                 报警排表
@@ -21,7 +17,7 @@
     </div>
     <div class="page-content">
       <div class="scheduleContainer">
-        <div class="subnavbarTabel row">
+        <div class="subnavbarTabel row no-gap">
             <a class="col-20 selectScheduleMenu" href="#schedule_user">
                 人员
             </a>
@@ -40,62 +36,51 @@
         </div>
 
         <div class="scheduleContent">
-            <div class="row" id="schedule_user">
-                <table class="publicTable">
-                     <thead><tr>
-                        <td>人员姓名</td>
-                        <td>电话</td>
-                        <td>短信</td>
-                        <td>电子邮箱</td>
-                        <td>报警级别</td>
-                    </tr></thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="displayNone" id="schedule_equip">
-                 <table class="publicTable">
-                     <thead><tr>
-                        <td>设备分组</td>
-                        <td>操作</td>
-                    </tr></thead>
-                    <tbody>
-                    </tbody>
-                 </table>
-            </div>
-            <div class="displayNone" id="schedule_administartor">
-                 <table class="publicTable">
-                     <thead><tr>
-                        <td>人员姓名</td>
-                        <td>设备分组名称</td>
-                    </tr></thead>
-                    <tbody>
-                    </tbody>
-                 </table>
-            </div>
-            <div class="displayNone" id="schedule_specificDate">
-                 <table class="publicTable">
-                     <thead><tr>
-                        <td>人员姓名</td>
-                        <td>星期</td>
-                        <td>开始时间</td>
-                        <td>结束时间</td>
-                    </tr></thead>
-                    <tbody>
-                    </tbody>
-                 </table>
-            </div>
-            <div class="displayNone" id="schedule_weeklytable">
-                <table class="publicTable">
-                     <thead><tr>
-                        <td>人员姓名</td>
-                        <td>开始时间</td>
-                        <td>结束时间</td>
-                    </tr></thead>
-                    <tbody>
-                    </tbody>
-                 </table>
-            </div>                        
+            <section class="row equipGroupPublic" id="schedule_user">
+                  <span class="row bottomBorderLine no-gap">
+                     <label class="col-50">人员信息</label>
+                     <label class="col-50">操作</label>
+                 </span>
+                 <ul class="publicTable"></ul>               
+            </section>
+            <section class="displayNone equipGroupPublic" id="schedule_equip">
+                 <span class="row bottomBorderLine no-gap">
+                     <label class="col-50">分组名称</label>
+                     <label class="col-50">操作</label>
+                 </span>
+                 <ul class="publicTable"></ul>
+            </section>
+            <section class="displayNone equipGroupPublic" id="schedule_administartor">
+                 <span class="row bottomBorderLine no-gap">
+                     <label class="col-50">人员姓名</label>
+                     <label class="col-50">设备分组名称</label>
+                 </span>
+                 <ul class="publicTable"></ul>
+            </section>
+            <section class="displayNone equipGroupPublic" id="schedule_specificDate">
+                 <span class="row bottomBorderLine no-gap">
+                     <label class="col-25">人员姓名</label>
+                     <label class="col-25">星期</label>
+                     <label class="col-25">开始时间</label>
+                     <label class="col-25">结束时间</label>
+                 </span>
+                 <ul class="publicTable"></ul>
+            </section>
+            <section class="displayNone equipGroupPublic" id="schedule_weeklytable">
+                <span class="row bottomBorderLine no-gap">
+                     <label class="col-30">人员姓名</label>
+                     <label class="col-35">开始时间</label>
+                     <label class="col-35">结束时间</label>
+                 </span>
+                 <ul class="publicTable"></ul>
+            </section>  
+            <div class="scheduleRightBottomBtn">
+            <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildUser(" "," "," "," "," ",2,"");'><i class="iconfont icon-f7_add"></i></a>
+            <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='equipAlert("",4);'><i class="iconfont icon-f7_add"></i></a>
+            <a class="link displayNone" href="#" id="schedule_administartor_nav" onclick='newlyBuildAlmReport("",2);'><i class="iconfont icon-f7_add"></i></a>
+            <a class="link displayNone" href="#" id="schedule_specificDate_nav" onclick='newlyBuildWeekAlmReport(2);'><i class="iconfont icon-f7_add"></i></a>
+            <a class="link displayNone" href="#" id="schedule_weeklytable_nav" onclick='newlyBuildSpeAlmReport("",2);'><i class="iconfont icon-f7_add"></i></a>
+            </div>                      
         </div>
         </div>
     </div>

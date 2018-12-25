@@ -1,7 +1,7 @@
-function getJurisdictionData(id){
+function getJurisdictionData(){
     // 权限管理
     var JurisdictionArray = [];
-  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
+  $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
     let result = n.HttpData;
     if(result.code == 200)
     {
@@ -10,30 +10,36 @@ function getJurisdictionData(id){
             url: service + "/UserPermissions",
             data: "userName=" + window.localStorage.userName,
             success: function(usersDt) {
+                $("#homeContents>ul").html("");
+            	getWebUser = $(usersDt).children("UserItem");
                 let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
+                                        
                 resultControl.forEach(function(item_p,index_p) {
                     if(item_p.trim())
                     result.data.forEach(function(item,index){
                      if(item.ClassName && item.ClassName.indexOf("larmCenter.APP") == 1 && item.HelpPath == item_p.trim())
-                     {
+                     { 
                        JurisdictionArray.push(item);
                      }
                    });     
                 });
-                var html ="";
+                var html =""; 
                 JurisdictionArray.forEach(function(item,index){
-                    html +=item.MultiScreens;
+                    html +=functionalModule(item.MultiScreens);
                 });
-                $("#homeContents").append(html);
-                switch(id)
-                {
-                    case "home_fsk_btn": configPage();break;
-                    case "": break;
-                    case "": break;
-                    case "": break;
-                    case "": break;
-                    default: break;
-                }
+                $("#homeContents>ul").append(html);
+                // 实现内容添加
+                JurisdictionArray.forEach(function(item,index){
+                    switch(item.MultiScreens)
+                    {
+                        case "home_snapShot": snashotData();break;
+                        case "home_shortcutFunction": commonlyUsedFun("pptPattern_container ol", "50", pptPattern); commonlyUsedFun("jjPattern_container ol", "50", jjPattern);break;
+                        case "home_control_btn": VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);break;
+                        case "home_Commonlyused": commonlyUsedFun("commonlyUsed", "25", commonlyUsed);break;
+                        case "": break;
+                        default: break;
+                    }
+                });
             }
         });
 
@@ -41,8 +47,80 @@ function getJurisdictionData(id){
   }).fail(function(e){
    console.log(e);
   });
-
 }
+function functionalModule(className){
+    var html = "";
+    switch(className)
+    {
+        case "home_snapShot":
+           html = `<li class="row home_snapShot statisticsTable no-gap">
+                        <a class="col-20"><p>0</p>故障</a>
+                        <a class="col-20"><p>0</p>警告</a>
+                        <a class="col-20"><p>0</p>信息</a>
+                        <a class="col-20"><p>0</p>设置</a>
+                        <a class="col-20" style="border-right: 0;"><p>0</p>资产</a>
+                    </li>`;
+        break;
+        case "home_shortcutFunction": 
+            html = `<li class="row home_shortcutFunction">
+               <dl class="functionMenu">
+                  <dd class="row">
+                      <div class="pptPattern_container col-50">
+                            <h3>
+                                <span>PPT</span>
+                                <label>ppt幻灯片播放</label>
+                            </h3>
+                            <ol class="row"></ol>
+                      </div>
+                      <div class="jjPattern_container col-50">
+                             <h3>
+                                <span>讲解</span>
+                                <label>视频讲解</label>
+                             </h3>
+                             <ol class="row"></ol>
+                      </div>                                      
+                  </dd>
+               </dl>
+            </li>`; 
+        break;
+        case "home_control_btn": 
+           html = `<li class="row home_control_btn">
+               <dl class="functionMenu">
+                  <dd>
+                      <div class="swiper-containerTrailer KOvm_container">
+                        <div class="swiper-wrapper">
+                        </div>
+                        <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm"></div>
+                      </div>
+                  </dd>
+               </dl>
+            </li>`;
+        break;
+        case "home_Commonlyused": 
+            html = `<li class="home_Commonlyused">
+                <dl class="">
+                  <dt></dt>
+                  <dd>
+                    <ol class="row commonlyUsed">                                   
+                    </ol>
+                  </dd>
+               </dl>
+            </li>`;
+        break;
+        case "": 
+
+        break;
+        case "": 
+
+        break;
+        default: break;
+    }
+   return html;
+}
+
+
+
+
 
 //*************************************************
 //------------------视频配置 start---------------
@@ -59,32 +137,32 @@ var commonlyUsed =[
         name: '列表视频',
         href: '/Video/',
         icon: 'iconfont icon-f7_video',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: '地图监控',
         href: '/videoControl/',
         icon: 'iconfont icon-f7_control',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: 'PPT',
         href: '/mettingPPT/',
         icon: 'iconfont icon-f7_ppt',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },
     {
         name: '欢迎词',
         href: '/welcomeWords/',
         icon: 'iconfont icon-f7_welcome',
-        equipNo: '300',
-        setNo: '10',
+        equipNo: '',
+        setNo: '',
         value: null,
     },                    
     ];
