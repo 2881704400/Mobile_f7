@@ -300,7 +300,10 @@
     
 
 }
-
+html.with-statusbar.device-ios .popup{
+    margin-top: 20px;
+    height: calc(100% - 20px) !important;
+}
 .ios{
     .sheet-condition-config{
        .toolbar:before{
@@ -341,7 +344,11 @@
     }
     
 }
+
 .popup-config{
+    .item-input-wrap{
+        border-bottom: none;
+    }
     .page-content{
         .list{
             margin: 0 0;
@@ -363,7 +370,7 @@
                 }
             }
             ul{
-                height: calc(100% - 80px);
+                height: calc(100% - 100px);
                 overflow: auto;
                 &:after{
                     height: 0px;
@@ -414,7 +421,7 @@
                height: 0;
            }
            
-           height: calc(100% - 75px);
+           height: calc(100% - 100px);
            margin-bottom: 15px;
            overflow: auto;
             li{
