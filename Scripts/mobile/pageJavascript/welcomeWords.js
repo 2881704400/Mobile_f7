@@ -353,8 +353,10 @@ function welcome_activeSave(that, number) {
 		fileNameURL = $(".wecomeButtom .swiper-slide").eq(0).find("img").attr("src");
 	}
 	var fileName = fileNameURL.split("/")[fileNameURL.split("/").length - 1]; //name
+	if(fileNameURL.indexOf(":")>-1){
+		fileNameURL=fileNameURL.split(":")[2];
+	}
 	
-	fileNameURL=fileNameURL.split(":")[2];
 	fileNameURL=fileNameURL.substring(fileNameURL.indexOf("/"),fileNameURL.length)
 	
 	welcome_objoriginal.BackgroundImg = fileNameURL;

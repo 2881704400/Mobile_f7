@@ -26,7 +26,9 @@ $(document).on("page:beforein", ".page[data-page='equips']", function (e) {
 
 //配置导航
 $(document).on("page:beforein", ".page[data-page='systemConfig']", function (e) {
+	
     initPageJS('systemConfig', '/Scripts/mobile/pageJavascript/');
+	
 });
 
 //事件查询

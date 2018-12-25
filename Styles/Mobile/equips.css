@@ -12,23 +12,31 @@ mixin：sass宏mixin
 .md .page > .navbar ~ .searchbar {
   top: 45px; }
 
-.md .page > .searchbar ~ * .page-content, .md .page > .searchbar ~ .page-content {
+.md .page > .searchbar ~ * .page-content,
+.md .page > .searchbar ~ .page-content {
   padding-top: 94px !important; }
 
-.md .searchbar input[type=search], .md .searchbar input[type=text] {
+.md .searchbar input[type=search],
+.md .searchbar input[type=text] {
   font-size: 16px; }
 
 .md .page > .searchbar:after {
-  background: none; }
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33); }
 
-.ios .navbar ~ .page:not(.no-navbar) > .searchbar, .ios .page > .navbar ~ .searchbar {
+.ios .navbar ~ .page:not(.no-navbar) > .searchbar,
+.ios .page > .navbar ~ .searchbar {
   top: 44px; }
+
+.md .popoverLink .list .list-button::after {
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33); }
 
 #equips .searchbar {
   z-index: 99;
   background: #fff; }
   #equips .searchbar:after {
-    height: 0; }
+    height: 1px; }
   #equips .searchbar .search {
     background: #f6f6f6; }
   #equips .searchbar .searchbar-disable-button {
@@ -54,10 +62,10 @@ mixin：sass宏mixin
   transform: none !important; }
 
 #ycAndyx .searchbar {
-  z-index: 99;
+  z-index: 1;
   background: #fff; }
   #ycAndyx .searchbar:after {
-    height: 0; }
+    height: 0px; }
   #ycAndyx .searchbar .search {
     background: #f6f6f6; }
   #ycAndyx .searchbar .searchbar-disable-button {
@@ -65,10 +73,9 @@ mixin：sass宏mixin
 #ycAndyx .ios .searchbar:after {
   height: 0; }
 #ycAndyx .toolbar {
-  z-index: 99;
-  border-bottom: 1px solid #eee; }
+  z-index: 99; }
   #ycAndyx .toolbar:after {
-    height: 0; }
+    height: 1px; }
   #ycAndyx .toolbar .toolbar-inner {
     overflow: hidden; }
     #ycAndyx .toolbar .toolbar-inner > a.tab-link {
@@ -84,7 +91,7 @@ mixin：sass宏mixin
     #ycAndyx #tabsWrap .tab .oneLine {
       padding: 1em 0;
       background: #fff;
-      border-bottom: 1px solid #eee;
+      position: relative;
       align-items: center; }
       #ycAndyx #tabsWrap .tab .oneLine .name {
         padding-right: 5px; }
@@ -103,6 +110,22 @@ mixin：sass宏mixin
             color: #FE4445; }
           #ycAndyx #tabsWrap .tab .oneLine .iconWrap i.comOk {
             color: #54BB5C; }
+      #ycAndyx #tabsWrap .tab .oneLine:after {
+        content: '';
+        position: absolute;
+        background-color: #c4c4c4;
+        display: block;
+        z-index: 15;
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33); }
     #ycAndyx #tabsWrap .tab#set li {
       width: 100%;
       font-size: 1rem;
@@ -119,55 +142,73 @@ mixin：sass宏mixin
         border: 1px solid #2d8cf0;
         background: #2d8cf0; }
 
-#eventQuery .eventQueryContent, #systemConfig .eventQueryContent {
+#eventQuery .eventQueryContent,
+#systemConfig .eventQueryContent {
   height: 100%;
   overflow: hidden;
   padding: 1rem; }
-#eventQuery .fab a, #systemConfig .fab a {
+#eventQuery .fab a,
+#systemConfig .fab a {
   background: #3e7cfb; }
-  #eventQuery .fab a i, #systemConfig .fab a i {
+  #eventQuery .fab a i,
+  #systemConfig .fab a i {
     font-size: 1.5rem; }
-#eventQuery .equipCon, #systemConfig .equipCon {
+#eventQuery .equipCon,
+#systemConfig .equipCon {
   height: calc(100% - 40px); }
-  #eventQuery .equipCon .eventWrap, #systemConfig .equipCon .eventWrap {
+  #eventQuery .equipCon .eventWrap,
+  #systemConfig .equipCon .eventWrap {
     height: calc(100% - 36px);
     overflow-y: auto; }
-  #eventQuery .equipCon .item-title, #systemConfig .equipCon .item-title {
+  #eventQuery .equipCon .item-title,
+  #systemConfig .equipCon .item-title {
     font-size: 14px; }
-#eventQuery .tabList, #systemConfig .tabList {
+#eventQuery .tabList,
+#systemConfig .tabList {
   margin: 0;
   background: #fff;
   height: 36px;
   width: 100%; }
-  #eventQuery .tabList a, #systemConfig .tabList a {
+  #eventQuery .tabList a,
+  #systemConfig .tabList a {
     height: 100%;
     line-height: 36px; }
-  #eventQuery .tabList .button, #systemConfig .tabList .button {
+  #eventQuery .tabList .button,
+  #systemConfig .tabList .button {
     transition-duration: 0s;
     -webkit-transition-duration: 0;
     color: #212121;
     border: none; }
-    #eventQuery .tabList .button:last-child, #systemConfig .tabList .button:last-child {
+    #eventQuery .tabList .button:last-child,
+    #systemConfig .tabList .button:last-child {
       border-radius: 0; }
-    #eventQuery .tabList .button:first-child, #systemConfig .tabList .button:first-child {
+    #eventQuery .tabList .button:first-child,
+    #systemConfig .tabList .button:first-child {
       border-radius: 0; }
-  #eventQuery .tabList .tab-link-active, #systemConfig .tabList .tab-link-active {
+  #eventQuery .tabList .tab-link-active,
+  #systemConfig .tabList .tab-link-active {
     background: #fff;
     border-bottom: 2px solid #3e7cfb !important;
     color: #3e7cfb; }
-#eventQuery .eventWrap, #systemConfig .eventWrap {
+#eventQuery .eventWrap,
+#systemConfig .eventWrap {
   width: 100%; }
-  #eventQuery .eventWrap .tab, #systemConfig .eventWrap .tab {
+  #eventQuery .eventWrap .tab,
+  #systemConfig .eventWrap .tab {
     width: 100%; }
-    #eventQuery .eventWrap .tab .list, #systemConfig .eventWrap .tab .list {
+    #eventQuery .eventWrap .tab .list,
+    #systemConfig .eventWrap .tab .list {
       height: 100%;
       overflow: auto; }
-  #eventQuery .eventWrap li, #systemConfig .eventWrap li {
+  #eventQuery .eventWrap li,
+  #systemConfig .eventWrap li {
     background: #fff; }
-    #eventQuery .eventWrap li .eventList, #systemConfig .eventWrap li .eventList {
+    #eventQuery .eventWrap li .eventList,
+    #systemConfig .eventWrap li .eventList {
       padding: 5px 0;
       align-items: center; }
-      #eventQuery .eventWrap li .eventList .name, #systemConfig .eventWrap li .eventList .name {
+      #eventQuery .eventWrap li .eventList .name,
+      #systemConfig .eventWrap li .eventList .name {
         color: #757575; }
 
 .sheet-alarm .block {
@@ -196,6 +237,10 @@ mixin：sass宏mixin
           .sheet-condition-config .sheet-modal-inner .block .list .eq-list:after {
             height: 0px; }
 
+html.with-statusbar.device-ios .popup {
+  margin-top: 20px;
+  height: calc(100% - 20px) !important; }
+
 .ios .sheet-condition-config .toolbar:before {
   background-color: #eaeaea !important;
   height: 2px; }
@@ -213,6 +258,8 @@ mixin：sass宏mixin
 .md .sheet-condition-config a {
   color: #459ef1; }
 
+.popup-config .item-input-wrap {
+  border-bottom: none; }
 .popup-config .page-content .list {
   margin: 0 0;
   height: 100%;
@@ -228,7 +275,7 @@ mixin：sass宏mixin
       .popup-config .page-content .list.edictList .btn .button.button-fill {
         float: right; }
   .popup-config .page-content .list ul {
-    height: calc(100% - 80px);
+    height: calc(100% - 100px);
     overflow: auto; }
     .popup-config .page-content .list ul:after {
       height: 0px; }
@@ -256,7 +303,7 @@ mixin：sass宏mixin
   margin-top: 0;
   height: calc(100% - 100px); }
   .popup-condition .list ul {
-    height: calc(100% - 75px);
+    height: calc(100% - 100px);
     margin-bottom: 15px;
     overflow: auto; }
     .popup-condition .list ul:after {

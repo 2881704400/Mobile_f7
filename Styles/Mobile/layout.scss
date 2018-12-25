@@ -88,14 +88,14 @@ mixin：sass宏mixin
             textarea.advice-textarea {
                 background: #F9F9F9;
             }
-            .span-color-sure{
+            .span-color-sure {
                 color: #54BB5C;
             }
-            .span-color-notsure{
+            .span-color-notsure {
                 color: #FE4445;
             }
-            .fontweight-normal{
-                font-weight: 500; 
+            .fontweight-normal {
+                font-weight: 500;
             }
             .content-container-block {
                 padding: 0 15px;
@@ -113,23 +113,62 @@ mixin：sass宏mixin
                         box-sizing: border-box;
                     }
                 }
-                .procsContent{
-                    li{
+                .procsContent {
+                    li {
                         border-bottom: 1px solid #c8c7cc;
-                        &:first-child{
+                        &:first-child {
                             border-top: 1px solid #c8c7cc;
                         }
-                        .item-inner:after{
+                        .item-inner:after {
                             height: 0px !important;
                         }
                     }
                 }
             }
+            .item-text {
+                font-size: 0.875rem;
+                color: rgba(51, 51, 51, .6);
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                background-color: #c4c4c4;
+                display: block;
+                z-index: 15;
+                top: auto;
+                right: auto;
+                bottom: 0;
+                left: 0;
+                height: 1px;
+                width: 100%;
+                -webkit-transform-origin: 50% 100%;
+                transform-origin: 50% 100%;
+                -webkit-transform: scaleY(.33);
+                transform: scaleY(.33);
+            }
         }
-        &:before{
+        &:before {
             height: 0px !important;
         }
     }
+}
+
+.searchbar.searchbarSnapDetail:after {
+    content: '';
+    position: absolute;
+    background-color: #c4c4c4 !important;
+    display: block;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    height: 1px !important;
+    width: 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-transform: scaleY(.33);
+    transform: scaleY(.33);
 }
 
 

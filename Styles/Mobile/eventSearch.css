@@ -102,16 +102,34 @@
         color: #333333;
         float: left;
         opacity: 0.6; }
-      .eventSearchContent .event-search-box .half-select-box input {
+      .eventSearchContent .event-search-box .half-select-box .half-select-box-input {
         min-width: 70%;
         height: 75%;
         position: relative;
         top: 12.5%;
-        float: left;
-        border-bottom: 1px solid rgba(51, 51, 51, 0.1);
-        font-size: 0.875rem;
-        color: #333333;
-        font-weight: bold; }
+        float: left; }
+        .eventSearchContent .event-search-box .half-select-box .half-select-box-input input {
+          width: 100%;
+          height: 100%;
+          font-size: 0.875rem;
+          color: #333333;
+          font-weight: bold; }
+        .eventSearchContent .event-search-box .half-select-box .half-select-box-input:after {
+          content: '';
+          position: absolute;
+          background-color: #c4c4c4;
+          display: block;
+          z-index: 15;
+          top: auto;
+          right: auto;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+          -webkit-transform: scaleY(0.33);
+          transform: scaleY(0.33); }
     .eventSearchContent .event-search-box .half-select-box-bottom {
       width: 80%;
       height: 50%;
@@ -179,7 +197,7 @@
         width: 100%;
         height: 36px;
         background-color: white;
-        border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+        position: relative; }
         .eventSearchContent .tabs .tab#tab1 .tab-table-header span {
           width: 25%;
           height: 100%;
@@ -200,6 +218,22 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis; }
+        .eventSearchContent .tabs .tab#tab1 .tab-table-header:after {
+          content: '';
+          position: absolute;
+          background-color: #c4c4c4;
+          display: block;
+          z-index: 15;
+          top: auto;
+          right: auto;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+          -webkit-transform: scaleY(0.33);
+          transform: scaleY(0.33); }
       .eventSearchContent .tabs .tab#tab1 ul {
         width: 100%;
         height: calc(100% - 36px);
@@ -207,7 +241,7 @@
         .eventSearchContent .tabs .tab#tab1 ul li {
           height: 38px;
           width: 100%;
-          border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+          position: relative; }
           .eventSearchContent .tabs .tab#tab1 ul li span {
             width: 25%;
             height: 100%;
@@ -229,6 +263,22 @@
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis; }
+          .eventSearchContent .tabs .tab#tab1 ul li:after {
+            content: '';
+            position: absolute;
+            background-color: #c4c4c4;
+            display: block;
+            z-index: 15;
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33); }
     .eventSearchContent .tabs .tab#tab2 {
       width: 100%;
       height: 100%;
@@ -240,7 +290,7 @@
         width: 100%;
         height: 36px;
         background-color: white;
-        border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+        position: relative; }
         .eventSearchContent .tabs .tab#tab2 .tab-table-header span {
           width: 25%;
           height: 100%;
@@ -262,6 +312,22 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis; }
+        .eventSearchContent .tabs .tab#tab2 .tab-table-header:after {
+          content: '';
+          position: absolute;
+          background-color: #c4c4c4;
+          display: block;
+          z-index: 15;
+          top: auto;
+          right: auto;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+          -webkit-transform: scaleY(0.33);
+          transform: scaleY(0.33); }
       .eventSearchContent .tabs .tab#tab2 ul {
         width: 100%;
         height: calc(100% - 36px);
@@ -269,7 +335,7 @@
         .eventSearchContent .tabs .tab#tab2 ul li {
           height: 38px;
           width: 100%;
-          border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+          position: relative; }
           .eventSearchContent .tabs .tab#tab2 ul li span {
             width: 25%;
             height: 100%;
@@ -291,6 +357,22 @@
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis; }
+          .eventSearchContent .tabs .tab#tab2 ul li:after {
+            content: '';
+            position: absolute;
+            background-color: #c4c4c4;
+            display: block;
+            z-index: 15;
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33); }
     .eventSearchContent .tabs .tab#tab3 {
       width: 100%;
       height: 100%;
@@ -302,7 +384,7 @@
         width: 100%;
         height: 36px;
         background-color: white;
-        border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+        position: relative; }
         .eventSearchContent .tabs .tab#tab3 .tab-table-header span {
           width: 25%;
           height: 100%;
@@ -318,6 +400,22 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis; }
+        .eventSearchContent .tabs .tab#tab3 .tab-table-header:after {
+          content: '';
+          position: absolute;
+          background-color: #c4c4c4;
+          display: block;
+          z-index: 15;
+          top: auto;
+          right: auto;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+          -webkit-transform: scaleY(0.33);
+          transform: scaleY(0.33); }
       .eventSearchContent .tabs .tab#tab3 ul {
         width: 100%;
         height: calc(100% - 36px);
@@ -325,7 +423,7 @@
         .eventSearchContent .tabs .tab#tab3 ul li {
           height: 38px;
           width: 100%;
-          border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+          position: relative; }
           .eventSearchContent .tabs .tab#tab3 ul li span {
             width: 25%;
             height: 100%;
@@ -341,5 +439,21 @@
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis; }
+          .eventSearchContent .tabs .tab#tab3 ul li:after {
+            content: '';
+            position: absolute;
+            background-color: #c4c4c4;
+            display: block;
+            z-index: 15;
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33); }
 
 /*# sourceMappingURL=eventSearch.css.map */

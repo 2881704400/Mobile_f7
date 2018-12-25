@@ -83,8 +83,44 @@ mixin：sass宏mixin
           border-top: 1px solid #c8c7cc; }
         .snapshot-main .snapshotMessage-ul li .content-container-block .procsContent li .item-inner:after {
           height: 0px !important; }
+    .snapshot-main .snapshotMessage-ul li .item-text {
+      font-size: 0.875rem;
+      color: rgba(51, 51, 51, 0.6); }
+    .snapshot-main .snapshotMessage-ul li:after {
+      content: '';
+      position: absolute;
+      background-color: #c4c4c4;
+      display: block;
+      z-index: 15;
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      -webkit-transform: scaleY(0.33);
+      transform: scaleY(0.33); }
   .snapshot-main .snapshotMessage-ul:before {
     height: 0px !important; }
+
+.searchbar.searchbarSnapDetail:after {
+  content: '';
+  position: absolute;
+  background-color: #c4c4c4 !important;
+  display: block;
+  z-index: 15;
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  height: 1px !important;
+  width: 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33); }
 
 /*首页样式*/
 .mainDiv {

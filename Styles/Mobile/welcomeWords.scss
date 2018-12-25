@@ -657,9 +657,12 @@ input:focus::-webkit-input-placeholder {
     margin: 0;
 }
 
-.ios .list .item-inner:after,
-.md .list .item-inner:after,
-.list ul:after,
-.list ul:before {
+.ios .welcomePageContents .list .item-inner:after,
+.md .welcomePageContents .list .item-inner:after,
+.welcomePageContents .list ul:after,
+.welcomePageContents .list ul:before {
     height: 0!important;
+    
 }
+
+
