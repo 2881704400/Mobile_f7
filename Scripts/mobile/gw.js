@@ -86,8 +86,10 @@ var AlarmCenterContext = {
     updSetConfig:function(data){
     	return this.post("/api/real/update_setparm",{update:data});
     },
-    
-    
+    //PPT
+     pptConfig:function(equip){
+        return this.get("/api/PPT/GetCurrenSession?equip="+equip,{});
+    },   
     get: function (url, data) {
         var i = $.Deferred();
         $.ajax({
@@ -105,7 +107,7 @@ var AlarmCenterContext = {
                 i.resolveWith(this, [e])
             },
             error: function (e, n) {
-                i.rejectWith(this, ["网络异常，请稍候重试"]),
+                i.rejectWith(this, ["网络异常，请稍候重试"]);
                     // console.log(JSON.stringify(e), n)
             }
         });
@@ -126,7 +128,7 @@ var AlarmCenterContext = {
                 i.resolveWith(this, [e])
             },
             error: function (e, n) {
-                i.rejectWith(this, ["网络异常，请稍候重试"]),
+                i.rejectWith(this, ["网络异常，请稍候重试"]);
                     // console.log(JSON.stringify(e), n)
             }
         }), i.promise();

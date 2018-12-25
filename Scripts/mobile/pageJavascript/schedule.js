@@ -36,51 +36,42 @@ function schedule() {
 var schedule_public_username = [];
 function requestUser() {
     var disabled = "'disabled'";
-    var jsonData = {
-        "url": "/api/GWServiceWebAPI/get_AdministratorData",
-        "data": {
-            getDataTable: "0"
-        },
-        "success": _success,
-        "error": _error,
-    };
-    $.fn.axpost(jsonData);
-    function _success(data) {
-        let arrayLike = data.HttpData.data;
-        let code = data.HttpData.code,
-            html = "";
-        $("#schedule_user ul").html("");
-        if (code == 200) {
-            let AlarmTabulateLenth = arrayLike.length;
-            for (var i = 0; i < AlarmTabulateLenth; i++) {
-                let telphoneUser = arrayLike[i].Telphone.toString().trim() == "" ? null : arrayLike[i].Telphone;
-                let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
-                let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
-                let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
-                html += `<li class="swipeout bottomBorderLine">
-                      <div class="item-content swipeout-content schedule-content row no-gap">
-                        <i class="iconfont icon-f7_usersName"></i>
-                        <div class="col-50">
-                            <p>${arrayLike[i].Administrator}</p>
-                            <p>报警级别: <label>${arrayLike[i].AckLevel}</label></p>
-                        </div>
-                        <div class="col-50"><a href="#" class="detailsBtn linkColor" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1,${disabled})">详情</a>   </div>              
-                      </div>
-                      <div class="swipeout-actions-right">
-                        <a href="#" class="delBtn" onclick="delUser(this,${arrayLike[i].Administrator})">删除</a>
-                      </div>
-                    </li>`;
-                schedule_public_username.push(arrayLike[i].Administrator);
+
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_AdministratorData",{data: {getDataTable: "0"}})).done(function(data){
+             let arrayLike = data.HttpData.data;
+            let code = data.HttpData.code,
+                html = "";
+            $("#schedule_user ul").html("");
+            if (code == 200) {
+                let AlarmTabulateLenth = arrayLike.length;
+                for (var i = 0; i < AlarmTabulateLenth; i++) {
+                    let telphoneUser = arrayLike[i].Telphone.toString().trim() == "" ? null : arrayLike[i].Telphone;
+                    let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
+                    let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
+                    let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
+                    html += `<li class="swipeout bottomBorderLine">
+                          <div class="item-content swipeout-content schedule-content row no-gap">
+                            <i class="iconfont icon-f7_usersName"></i>
+                            <div class="col-50">
+                                <p>${arrayLike[i].Administrator}</p>
+                                <p>报警级别: <label>${arrayLike[i].AckLevel}</label></p>
+                            </div>
+                            <div class="col-50"><a href="#" class="detailsBtn linkColor" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1,${disabled})">详情</a>   </div>              
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="delBtn" onclick="delUser(this,${arrayLike[i].Administrator})">删除</a>
+                          </div>
+                        </li>`;
+                    schedule_public_username.push(arrayLike[i].Administrator);
+                }
+            } else {
+                requestUser();
+                return false;
             }
-        } else {
-            requestUser();
-            return false;
-        }
-        $("#schedule_user ul").append(html);
-    }
-    function _error(e) {
-        // console.log(e);
-    }
+            $("#schedule_user ul").append(html);
+    }).fail(function(e){
+
+    });
 }
 //人员html
 function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, index, status) {
@@ -160,6 +151,42 @@ function publicAjax(jsonString, url, index) {
     function _error(e) {
         scheduleAlert.open();
     }
+
+ //    $.when(AlarmCenterContext.post(url,{"data": jsonString})).done(function(data){
+ // let arrayLike = data.HttpStatus;
+ // console.log(arrayLike);
+ //        if (arrayLike == 200 && data.HttpData.data != 0) {
+ //            scheduleAlertSusscess.open();
+ //            switch (index) {
+ //                case 1:
+ //                    requestUser();
+ //                    break;
+ //                case 2:
+ //                    requestEquipGroup();
+ //                    break;
+ //                case 3:
+ //                    requestAlmReport(requestEGAReport);
+ //                    break;
+ //                case 4:
+ //                    requestWeekAlmReport();
+ //                    break;
+ //                case 5:
+ //                    requestSpeAlmReport();
+ //                    break;
+ //                default:
+ //                    break;
+ //            }
+ //        } else {
+ //            scheduleAlert.open();
+ //        }
+ //    }).fail(function(e){
+
+ //    });
+
+
+
+
+
 }
 // ********************************************************************************
 //设备分组

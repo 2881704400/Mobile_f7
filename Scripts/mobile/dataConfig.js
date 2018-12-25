@@ -497,8 +497,8 @@ var WORDcommand ={
 var PPTcommand ={
     "returnSoft":{  
         name: '返回软件',
-        equipNo: '1',
-        setNo: '5'
+        equipNo: '2',
+        setNo: '25'
      },
      "openPPT":{
         name: '打开PPT',
@@ -512,7 +512,7 @@ var PPTcommand ={
      },     
      "setIp":{
         name: '设置插件IP',
-        set_ip: '192.168.0.152',//window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
+        set_ip: '192.168.0.187',//window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
      },
      "setPage":{
         name:"设置跳页",

@@ -132,16 +132,16 @@
 
 .popup-aboutuser { 
 	position: absolute;    background: #{$popupBackground};padding: 5%;
-	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$popupBackTitle};text-align: center;}
+	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$popupBackTitle};text-align: center;    margin-bottom: 15%;}
 	.popupContent{
-         height: 60%;position: relative;
+         height: 60%;position: relative;margin-bottom: 10%;
         .item-title,input{color: #{$popupBackTitle} !important;}
         .item-title{text-indent: 5%;}
         input{  text-indent: 10%; }
         i.icon-checkbox{border-radius: 0!important;}
         &>ul{height: 100%;overflow-y: auto;background: transparent; &>li{margin-bottom: 10px;}}
         &>ul:after,&>ul:before,.item-inner:after{transform: scaleY(0)!important;}
-        &>.allSelect{width: 100%;position: absolute;left: 0;top: 0px;height: 44px;line-height: 44px;}
+        &>.allSelect{width: 100%;position: absolute;left: 0;top: 0px;height: 44px;line-height: 44px;z-index: 1;}
      }
     .popupBtb{padding: 0px 20px;a{color: #{$btnFontColor};font-size: #{$btnFontSize};height: 2.5rem;line-height: 2.5rem;background: #{$btnBackground}}}
 }
