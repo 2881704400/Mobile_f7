@@ -1,0 +1,74 @@
+----------2018/12/25 15:38:59----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/25 15:39:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/25 15:40:58----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/25 16:42:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
+-------------------------------------
+
+----------2018/12/25 16:47:30----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetVCtrol1(String csVoice, String UserNm)
+   在 GWServiceAPI.Net.LibClass.VoiceLib.VoiceControl(String audioData, String dataType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\VoiceLib.cs:行号 57
+-------------------------------------
+
+----------2018/12/25 17:09:26----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+----------2018/12/25 17:26:53----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+----------2018/12/25 19:37:45----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+----------2018/12/25 19:38:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
+-------------------------------------
+
+----------2018/12/25 19:38:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
+-------------------------------------
+

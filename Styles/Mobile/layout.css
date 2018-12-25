@@ -6,6 +6,9 @@ mixin：sass宏mixin
 mixin：sass宏mixin
 */
 /*实时快照样式*/
+.md .page > .searchbar {
+  z-index: 2; }
+
 .snapshot-main {
   width: 100%;
   height: 100%;
@@ -40,6 +43,8 @@ mixin：sass宏mixin
         color: #3FAA20; }
       .snapshot-main .snapshot-ul li:nth-child(5) .badge {
         background: #3FAA20; }
+    .snapshot-main .snapshot-ul:before {
+      height: 0 !important; }
   .snapshot-main .snapshotMessage-ul li {
     font-size: 15px;
     background: white; }

@@ -141,6 +141,7 @@ html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
 	height: 20px;
 	background: #000;
+	
 }
 
 html.with-statusbar.device-android .panel,

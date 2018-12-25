@@ -251,7 +251,9 @@ function searchEquipItems() {
 						}
 
 						var html = '';
-						for(var i = lastItemIndex; i <= lastItemIndex + itemsPerLoad; i++) {
+						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
+						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
+						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
 							html += "<li onclick='showEventDetail(0,\"" + EqpEvtData[i].time + "\",\"" + EqpEvtData[i].event + "\")'>" +
 								'		<span>' + EqpEvtData[i].time + '</span>' +
 								'		<span>' + EqpEvtData[i].equip_nm + '</span>' +
@@ -315,7 +317,9 @@ function searchEquipItems() {
 						}
 
 						var html = '';
-						for(var i = lastItemIndex; i <= lastItemIndex + itemsPerLoad; i++) {
+						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
+						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
+						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
 							html += "<li onclick='showEventDetail(1,\"" + SetEvtData[i].time + "\",\"" + SetEvtData[i].event + "\")'>" +
 								'		<span>' + SetEvtData[i].time + '</span>' +
 								'		<span>' + SetEvtData[i].equip_nm + '</span>' +
@@ -377,7 +381,9 @@ function searchEquipItems() {
 						}
 
 						var html = '';
-						for(var i = lastItemIndex; i <= lastItemIndex + itemsPerLoad; i++) {
+						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
+						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
+						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
 							html += "<li onclick='showEventDetail(2,\"" + SysEvtData[i].time + "\",\"" + SysEvtData[i].event + "\")'>" +
 								'		<span>' + SysEvtData[i].time + '</span>' +
 								'		<span>' + SysEvtData[i].event + '</span>' +
