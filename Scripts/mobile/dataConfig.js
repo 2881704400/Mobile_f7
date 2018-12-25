@@ -167,7 +167,13 @@ var commonlyUsed =[
 
 // 列表数据模型
 var KOvm =[
-
+    {
+        name: '智能建筑',
+        icon: 'iconfont icon-f7_icon_jz',
+        equipNo: '300',
+        setNo: '10',
+        value: null,
+    },
     {
         name: '智能建筑',
         icon: 'iconfont icon-f7_icon_jz',
