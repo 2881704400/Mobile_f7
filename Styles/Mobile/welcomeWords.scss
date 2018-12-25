@@ -657,9 +657,22 @@ input:focus::-webkit-input-placeholder {
     margin: 0;
 }
 
-.ios .list .item-inner:after,
-.md .list .item-inner:after,
-.list ul:after,
-.list ul:before {
+.ios .list .item-inner:after,.md .list .item-inner:after,.list ul:after,.list ul:before {
     height: 0!important;
+    
+}
+.ios .popup-condition .list .item-inner:after,.md .popup-condition .list .item-inner:after{
+    height: 1px !important;
+    
+}
+.ios .popup-config .list .item-inner:after,.md .popup-config .list .item-inner:after,.popup-config .list ul:after ,.popup-config .list ul:before{
+    height: 1px !important;
+    
+}
+.ios #systemConfig .list .item-inner:after,.md #systemConfig .list .item-inner:after,#systemConfig .list ul:after,#systemConfig .list ul:before {
+    height: 1px !important;
+    
+}
+.popup-config .item-input-wrap{
+    border-bottom: none;
 }
