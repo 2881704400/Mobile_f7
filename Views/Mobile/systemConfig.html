@@ -8,9 +8,11 @@
                     </a>
                 </div>                         
                 <div class="center sliding title">系统配置</div>
-                        <div class="right">
-                            <a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
-                        </div>
+                <div class="right">
+                    <a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
+                    	<i class="iconfont icon-sousuo"></i>
+                    </a>
+                </div>
             </div>
         </div>        
         <div  class="page-content" >
@@ -19,329 +21,41 @@
         <div class="row no-gap equipCon" >
 					
 					<p class="segmented tabList tabListConfig" >
-            	<a href="#tab-1" class="tab-link button tab-link-active" >设备</a>
-      				<a href="#tab-2" class="tab-link button"  >遥测</a>
-     					<a href="#tab-3" class="tab-link button"  >遥信</a>
-     					<a href="#tab-4" class="tab-link button"  >设置</a>
+            	<a href="#tab-1" class="tab-link button tab-link-active" onclick="loadData(0)">设备</a>
+      				<a href="#tab-2" class="tab-link button"   onclick="loadData(1)">遥测</a>
+     					<a href="#tab-3" class="tab-link button"  onclick="loadData(2)">遥信</a>
+     					<a href="#tab-4" class="tab-link button"  onclick="loadData(3)">设置</a>
 					</p>
 					<div class="tabs-animated-wrap eventWrap">
-							<div class="fab fab-right-top">
+							<!--<div class="fab fab-right-top">
 						    <a href="#" class="sheet-open " data-sheet=".sheet-condition">
 						      	<i class="iconfont icon-sousuo"></i>
 						    </a>
-							</div>
+							</div>-->
 					
 					    <div class="tabs ">
 					    	
 					      <div id="tab-1" class="tab tab-active">
 					       	<div class="list accordion-list" style="margin: 0;">
-								  	<ul id="equipTable" >
-								    	<li class="accordion-item">
-											    	<a href="#" class="item-content item-link">
-												        <div class="item-inner">
-												        <div class="item-title">${dat[i].equip_nm}</div></div>
-											    	</a>
-											       <div class="accordion-item-content" >
-											        <div class="block" onclick="lookOtherInfor(0)">
-											          <div class="row  eventList">
-											          	<div class="col-35  name">设备号：</div>
-											          	<div class="col-65 con">${dat[i].equip_no}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">设备属性：</div>
-											          	<div class="col-65 con">${dat[i].equip_detail}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">故障提示：</div>
-											          	<div class="col-65 con">${dat[i].out_of_contact}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">报警文件：</div>
-											          	<div class="col-65 con">${dat[i].event_wav}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">通讯端口：</div>
-											          	<div class="col-65 con">${dat[i].local_addr}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">通讯地址：</div>
-											          	<div class="col-65 con">${dat[i].equip_addr}</div>
-											          </div>
-											          
-											        </div>
-											      </div>
-											</li>
-											<li class="accordion-item">
-											    	<a href="#" class="item-content item-link">
-												        <div class="item-inner">
-												        <div class="item-title">${dat[i].equip_nm}</div></div>
-											    	</a>
-											       <div class="accordion-item-content" >
-											        <div class="block">
-											          <div class="row  eventList">
-											          	<div class="col-35  name">设备号：</div>
-											          	<div class="col-65 con">${dat[i].equip_no}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">设备属性：</div>
-											          	<div class="col-65 con">${dat[i].equip_detail}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">故障提示：</div>
-											          	<div class="col-65 con">${dat[i].out_of_contact}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">报警文件：</div>
-											          	<div class="col-65 con">${dat[i].event_wav}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">通讯端口：</div>
-											          	<div class="col-65 con">${dat[i].local_addr}</div>
-											          </div>
-											          <div class="row  eventList">
-											          	<div class="col-35  name">通讯地址：</div>
-											          	<div class="col-65 con">${dat[i].equip_addr}</div>
-											          </div>
-											          
-											        </div>
-											      </div>
-											</li>
-								  </ul>
-								</div>
+									  	<ul id="equipTable" ></ul>
+									</div>
 					      </div>
 					      <div id="tab-2" class="tab">
 					      	<div class="list accordion-list" style="margin: 0;">
-								  <ul id="ycp">
-						       		<li class="accordion-item">
-								    	<a href="#" class="item-content item-link">
-									        <div class="item-inner">
-									          <div class="item-title">${dat[i].yc_nm}</div>
-									        </div>
-								    	</a>
-								       <div class="accordion-item-content" >
-								        <div class="block">
-								          <div class="row  eventList">
-								          	<div class="col-35  name">设备号：</div>
-								          	<div class="col-65 con">${dat[i].equip_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">测点号：</div>
-								          	<div class="col-65 con">${dat[i].yc_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">最小值：</div>
-								          	<div class="col-65 con">${dat[i].physic_min}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">最大值：</div>
-								          	<div class="col-65 con">${dat[i].physic_max}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">下限值：</div>
-								          	<div class="col-65 con">${dat[i].val_min}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">上限值：</div>
-								          	<div class="col-65 con">${dat[i].val_max}</div>
-								          </div>
-								          
-								        </div>
-								      </div>
-								    </li>
-								    <li class="accordion-item">
-								    	<a href="#" class="item-content item-link">
-									        <div class="item-inner">
-									          <div class="item-title">${dat[i].yc_nm}</div>
-									        </div>
-								    	</a>
-								       <div class="accordion-item-content" >
-								        <div class="block">
-								          <div class="row  eventList">
-								          	<div class="col-35  name">设备号：</div>
-								          	<div class="col-65 con">${dat[i].equip_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">测点号：</div>
-								          	<div class="col-65 con">${dat[i].yc_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">最小值：</div>
-								          	<div class="col-65 con">${dat[i].physic_min}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">最大值：</div>
-								          	<div class="col-65 con">${dat[i].physic_max}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">下限值：</div>
-								          	<div class="col-65 con">${dat[i].val_min}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">上限值：</div>
-								          	<div class="col-65 con">${dat[i].val_max}</div>
-								          </div>
-								          
-								        </div>
-								      </div>
-								    </li>
-								    
-								  </ul>
-								</div>
+									  <ul id="ycp">
+									  </ul>
+									</div>
 					      </div>
 					      <div id="tab-3" class="tab">
 					      	<div class="list accordion-list" style="margin: 0;">
 									  <ul id="yxp">
-							        	<li class="accordion-item">
-								    	<a href="#" class="item-content item-link">
-									        <div class="item-inner">
-									          <div class="item-title">${dat[i].yx_nm}</div>
-									        </div>
-								    	</a>
-								       <div class="accordion-item-content" >
-								        <div class="block">
-								          <div class="row  eventList">
-								          	<div class="col-35  name">设备号：</div>
-								          	<div class="col-65 con">${dat[i].yx_nm}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">测点号：</div>
-								          	<div class="col-65 con">${dat[i].yx_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">0-1事件：</div>
-								          	<div class="col-65 con">${dat[i].evt_01}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">1-0事件：</div>
-								          	<div class="col-65 con">${dat[i].evt_10}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">操作命令：</div>
-								          	<div class="col-65 con">${dat[i].main_instruction}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">操作参数：</div>
-								          	<div class="col-65 con">${dat[i].minor_instruction}</div>
-								          </div>
-								          
-								        </div>
-								      </div>
-								    </li>
-								    <li class="accordion-item">
-								    	<a href="#" class="item-content item-link">
-									        <div class="item-inner">
-									          <div class="item-title">${dat[i].yx_nm}</div>
-									        </div>
-								    	</a>
-								       <div class="accordion-item-content" >
-								        <div class="block">
-								          <div class="row  eventList">
-								          	<div class="col-35  name">设备号：</div>
-								          	<div class="col-65 con">${dat[i].yx_nm}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">测点号：</div>
-								          	<div class="col-65 con">${dat[i].yx_no}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">0-1事件：</div>
-								          	<div class="col-65 con">${dat[i].evt_01}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">1-0事件：</div>
-								          	<div class="col-65 con">${dat[i].evt_10}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">操作命令：</div>
-								          	<div class="col-65 con">${dat[i].main_instruction}</div>
-								          </div>
-								          <div class="row  eventList">
-								          	<div class="col-35  name">操作参数：</div>
-								          	<div class="col-65 con">${dat[i].minor_instruction}</div>
-								          </div>
-								          
-								        </div>
-								      </div>
-								    </li>
-									   
 									  </ul>
 						      </div>
 						    </div>
 					      <div id="tab-4" class="tab">
 					      	<div class="list accordion-list" style="margin: 0;">
 									  <ul id="set">
-							        	<li class="accordion-item">
-										    	<a href="#" class="item-content item-link">
-											        <div class="item-inner">
-											          <div class="item-title">${dat[i].set_nm}</div>
-											        </div>
-										    	</a>
-										       <div class="accordion-item-content" >
-										        <div class="block">
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设备号：</div>
-										          	<div class="col-65 con">${dat[i].equip_no}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设置号：</div>
-										          	<div class="col-65 con">${dat[i].set_no}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设置类型：</div>
-										          	<div class="col-65 con">${dat[i].set_type}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35 name">操作命令：</div>
-										          	<div class="col-65 con">${dat[i].main_instruction}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">操作参数：</div>
-										          	<div class="col-65 con">${dat[i].minor_instruction}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">动作：</div>
-										          	<div class="col-65 con">${dat[i].action}</div>
-										          </div>
-										          
-										        </div>
-										      </div>
-										    </li>
-									    	<li class="accordion-item">
-										    	<a href="#" class="item-content item-link">
-											        <div class="item-inner">
-											          <div class="item-title">${dat[i].set_nm}</div>
-											        </div>
-										    	</a>
-										       <div class="accordion-item-content" >
-										        <div class="block">
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设备号：</div>
-										          	<div class="col-65 con">${dat[i].equip_no}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设置号：</div>
-										          	<div class="col-65 con">${dat[i].set_no}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">设置类型：</div>
-										          	<div class="col-65 con">${dat[i].set_type}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35 name">操作命令：</div>
-										          	<div class="col-65 con">${dat[i].main_instruction}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">操作参数：</div>
-										          	<div class="col-65 con">${dat[i].minor_instruction}</div>
-										          </div>
-										          <div class="row  eventList">
-										          	<div class="col-35  name">动作：</div>
-										          	<div class="col-65 con">${dat[i].action}</div>
-										          </div>
-										          
-										        </div>
-										      </div>
-										    </li>
+							        	
 									  </ul>
 					        </div>
 					      </div>
@@ -349,15 +63,109 @@
 	            </div>
           </div>
         </div>
-        <div class="sheet-modal sheet-condition sheet-config" >
-				    <div class="toolbar">
+
+    
+        </div>
+        <!--<div class="sheet-modal sheet-condition-config sheet-alarm">
+        	<div class="toolbar">
+			      <div class="toolbar-inner">
+			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
+			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
+			      </div>
+			    </div>
+			    <div class="sheet-modal-inner">
+			    	<div class="block">
+			    		<div class="list eq-list">
+			    			<ul>
+			    				<li>
+			    					<label class="item-radio item-content">
+							        <input type="radio" name="demo-radio" value="1"  />
+							        <i class="icon icon-radio"></i>
+							        <div class="item-inner">
+							          <div class="item-title">是</div>
+							        </div>
+							      </label>
+			    				</li>
+			    				
+			    				<li>
+			    					<label class="item-radio item-content">
+							        <input type="radio" name="demo-radio" value="0"/>
+							        <i class="icon icon-radio"></i>
+							        <div class="item-inner">
+							          <div class="item-title">否</div>
+							        </div>
+							      </label>
+			    				</li>
+			    			</ul>
+			    		</div>
+			    	</div>
+			    </div>
+        </div>-->
+        <div class="sheet-modal sheet-condition-config sheet-paln">
+        	<div class="toolbar">
+			      <div class="toolbar-inner">
+			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
+			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
+			      </div>
+			    </div>
+			    <div class="sheet-modal-inner">
+			    	<div class="block">
+			    		<div class="list">
+			    			<ul class="eq-list">
+			    			
+			    			</ul>
+			    		</div>
+			    	</div>
+			    </div>
+        </div>
+        <div class="sheet-modal sheet-condition-config sheet-zichan">
+        	<div class="toolbar">
+			      <div class="toolbar-inner">
+			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
+			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
+			      </div>
+			    </div>
+			    <div class="sheet-modal-inner">
+			    	<div class="block">
+			    		<div class="list">
+			    			<ul class=" eq-list"></ul>
+			    		</div>
+			    	</div>
+			    </div>
+        </div>
+        <div class="sheet-modal sheet-condition-config sheet-video">
+	        	<div class="toolbar">
 				      <div class="toolbar-inner">
 				        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
 				        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
 				      </div>
 				    </div>
 				    <div class="sheet-modal-inner">
-				    	<form class="searchbar">
+				    	<div class="block">
+				    		<div class="list">
+				    			<ul class=" eq-list">
+				    				
+				    			</ul>
+				    		</div>
+				    	</div>
+				    </div>
+        </div>
+        <div class="popup popup-condition">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center sliding title ">
+									设备选择
+								</div>
+								<div class="right">
+									<a href="#" class="link popup-close">
+										关闭
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="searchbar-backdrop"></div>
+						<div class="block content-wrap">
+							<form class="searchbar">
 							  <div class="searchbar-inner">
 							    <div class="searchbar-input-wrap">
 							      <input type="search" placeholder="设备名称">
@@ -367,217 +175,67 @@
 							    <span class="searchbar-disable-button">取消</span>
 							  </div>
 							</form>
-				      <div class="block">
-				      	<div class="searchbar-backdrop"></div>
+							<p class="sele-tile">设备列表</p>
+						
+				      		
 	  						<div class="eq-list list">
-	  								<ul>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  									<li>
-	  										 <label class="item-checkbox item-content">
-										        <input type="checkbox" name="demo-checkbox" value="Books" checked="checked"/>
-										        <i class="icon icon-checkbox"></i>
-										        <div class="item-inner">
-										          <div class="item-title">Books</div>
-										        </div>
-										      </label>
-	  									</li>
-	  								</ul>
-	  							</div>
-					      </div>
-				    </div>
-				</div>
-    
-        </div>
-        <div class="sheet-modal sheet-condition sheet-alarm">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul>
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food" checked />
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">是</div>
-							        </div>
-							      </label>
-			    				</li>
-			    				
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food"/>
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">否</div>
-							        </div>
-							      </label>
-			    				</li>
-			    			</ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
-        <div class="sheet-modal sheet-condition sheet-paln">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul>
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food" checked />
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">是</div>
-							        </div>
-							      </label>
-			    				</li>
-			    				
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food"/>
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">否</div>
-							        </div>
-							      </label>
-			    				</li>
-			    			</ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
-        <div class="sheet-modal sheet-condition sheet-zichan">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul>
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food" checked />
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">是</div>
-							        </div>
-							      </label>
-			    				</li>
-			    				
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food"/>
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">否</div>
-							        </div>
-							      </label>
-			    				</li>
-			    			</ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
-        <div class="sheet-modal sheet-condition sheet-video">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul>
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food" checked />
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">是</div>
-							        </div>
-							      </label>
-			    				</li>
-			    				
-			    				<li>
-			    					<label class="item-radio item-content">
-							        <input type="radio" name="demo-radio" value="Food"/>
-							        <i class="icon icon-radio"></i>
-							        <div class="item-inner">
-							          <div class="item-title">否</div>
-							        </div>
-							      </label>
-			    				</li>
-			    			</ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
+	  							<ul></ul>
+	  							<div class="btn" onclick="loadConfig()">
+						      		<div class="button button-big button-fill">
+						      			确定
+						      		</div>
+						      	</div>
+	  						</div>
+						      	
+						
+						</div>
+					</div>
+				<div class="popup popup-config">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="left">
+									<!--<a href="#" class="back link">
+										<i class="iconfont icon-back"></i>
+									</a>  -->
+								</div>
+								<div class="center sliding title ">
+									详细信息
+								</div>
+								<div class="right">
+									<a href="#" class="link" onclick="loadPopupInfor()">
+										关闭
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="page">
+							<div class="page-content">
+								<div class="list inforList">
+								  <ul>
+								    
+								  </ul>
+								  <div class="btn" >
+					      		<div class="button button-big button-fill" onclick="loadInforEdict(this)">
+					      			编辑
+					      		</div>
+					      	</div>
+								</div>
+								
+								<div class="list edictList no-hairlines-md"  style="display: none;">
+									<ul>
+											
+									</ul>
+									 <div class="btn" >
+					      		<div class="button button-big closep" onclick="cancelInforEdict(this)">
+					      			取消
+					      		</div>
+					      		<div class="button button-big button-fill" onclick="upInforEdict(this)">
+					      			提交
+					      		</div>
+					      	</div>
+								</div>
+							    
+							</div>
+						</div>
+					    
+					</div>
