@@ -169,7 +169,7 @@ function getServerKey() {
             userpwd: $('#inputPassword').val()
         },
         success: function (dt) {
-            console.log(dt);
+            //console.log(dt);
             $('.loading-text').html('获取登录结果…');
             if (dt.HttpStatus == 200) {
                 var dts = dt.HttpData;

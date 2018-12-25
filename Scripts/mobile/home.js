@@ -2,6 +2,10 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
+<<<<<<< HEAD
+	// myApp.router.navigate("/schedule/"); 
+=======
+>>>>>>> 670c14ca8b99e4145cd860f72880837aba9863b2
 
     getJurisdictionData();
 

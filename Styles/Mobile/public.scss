@@ -55,7 +55,6 @@ $unclickBorderRadius: 6px;
 $homeConfigBtnBg: #f4f4f5;
 $homeConfigBtnColor: #463d3d;
 
-
 // 统一table样式
 $tableHeaderFontSize: 1rem;
 $tableHeaderFontColor: #666;
@@ -76,10 +75,10 @@ $tabBackground: #5087f9;
 $tabFontColor: white;
 
 // popup弹框
-$popupBackground: rgba(51, 51, 51, 0.95);
-$popupBackTitle: white;
+$popupBackground: rgba(255, 255, 255,1);
+$popupBackTitle: #666;
 
-$preBg:rgb(255,255,255);
+$preBg: rgb(255,255,255);
 $bg:rgb(242,243,245);
 $titColor:rgb(173,173,173);
 $valueColor:rgb(69,158,241);
