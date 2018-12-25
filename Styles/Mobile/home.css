@@ -74,7 +74,6 @@ mixin：sass宏mixin
             text-overflow: -o-ellipsis-lastline;
             overflow: hidden;
             text-overflow: ellipsis;
-            display: flex;
             text-align: center;
             -webkit-line-clamp: 2;
             line-clamp: 2;

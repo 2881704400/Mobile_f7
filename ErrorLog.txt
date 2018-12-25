@@ -53,3 +53,22 @@ System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分
    在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
 -------------------------------------
 
+----------2018/12/25 19:37:45----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+----------2018/12/25 19:38:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
+-------------------------------------
+
+----------2018/12/25 19:38:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
+-------------------------------------
+
