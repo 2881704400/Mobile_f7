@@ -42,7 +42,6 @@ function getJurisdictionData(){
                 });
             }
         });
-
     }
   }).fail(function(e){
    console.log(e);
@@ -87,10 +86,9 @@ function functionalModule(className){
            html = `<li class="row home_control_btn">
                <dl class="functionMenu">
                   <dd>
-                      <div class="swiper-containerTrailer KOvm_container">
-                        <div class="swiper-wrapper">
-                        </div>
-                        <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm"></div>
+                      <div class="swiper-containerTrailer KOvm_container swiper-init swiper-container" data-space-between="50" >
+                        <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm swiper-pagination"></div>
+                        <div class="swiper-wrapper" style="margin-bottom: 5%;"></div>
                       </div>
                   </dd>
                </dl>
@@ -499,8 +497,8 @@ var WORDcommand ={
 var PPTcommand ={
     "returnSoft":{  
         name: '返回软件',
-        equipNo: '300',
-        setNo: '10'
+        equipNo: '1',
+        setNo: '5'
      },
      "openPPT":{
         name: '打开PPT',
@@ -514,7 +512,7 @@ var PPTcommand ={
      },     
      "setIp":{
         name: '设置插件IP',
-        set_ip: window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
+        set_ip: '192.168.0.152',//window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
      },
      "setPage":{
         name:"设置跳页",

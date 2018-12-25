@@ -2,7 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-	myApp.router.navigate("/eventSearch/"); 
+	// myApp.router.navigate("/eventSearch/"); 
 
     //图表
     // snapshotChart("purchase_Bar");
@@ -65,11 +65,27 @@ function VideoBaner(className, slistName, jsonString) {
             $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").append(htmlTrailerChild);
         }
     }
-    var swiper = new Swiper('.' + className, {
-        pagination: {
-            el: '.' + slistName,
-        },
-    });
+    $(".swiper-paginationTrailer").html(""); 
+    var paginationDom = "";
+    for(var j= 0;j<xhTrailer;j++)
+    {
+        if(j==0)
+         {paginationDom =`<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>`;}
+        else
+         paginationDom +='<span class="swiper-pagination-bullet"></span>';
+    }
+    $(".swiper-paginationTrailer").append(paginationDom);
+    var swiper = myApp.swiper.create('.swiper-containerTrailer', {
+        speed: 400,
+        spaceBetween: 100,
+        pagination:'.swiper-pagination',
+    });      
+    var  activeIndex = 0;
+    $(".swiper-containerTrailer")[0].addEventListener('touchend', function(){
+        activeIndex = parseInt($(".swiper-slide-active").attr("dataid"))-1;
+        $(".swiper-paginationTrailer span:eq("+activeIndex+")").addClass("swiper-pagination-bullet-active").siblings().removeClass("swiper-pagination-bullet-active");
+     }, false);
+   
 }
 //常用
 function commonlyUsedFun(className, classListName, jsonString) {
