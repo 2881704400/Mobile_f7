@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ----------2018/12/23 22:28:57----------
 System.NullReferenceException: 未将对象引用设置到对象的实例。
    在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
@@ -202,3 +203,23 @@ System.ArgumentException: 已添加了具有相同键的项。
 
 =======
 >>>>>>> master
+=======
+----------2018/12/25 14:36:05----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+----------2018/12/25 14:38:59----------
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.DirectoryInfo.InternalGetDirectories(String searchPattern, SearchOption searchOption)
+   在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
+-------------------------------------
+
+>>>>>>> 172d085a59d09dd733934077d78f8b909e395677

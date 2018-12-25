@@ -65,7 +65,7 @@ function fileStuctureChild(url,objectList)
               }
               else if(stringFile[i] !="")
               {
-                  contentHtml = '<li class="bottomBorderLine"><a href="#" class="item-content item-link fileListActive"  data-url='+stringFile[i]+' set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,"","")\"><i class="iconfont icon-word"></i>'+getSubstrNmae(stringFile[i])+'</a></li>';
+                  contentHtml = '<li class="bottomBorderLine"><a href="#" class="item-content item-link fileListActive"  data-url='+stringFile[i]+' set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,null,null)\"><i class="iconfont icon-word"></i>'+getSubstrNmae(stringFile[i])+'</a></li>';
               }
               if(objectList == "")
                 $("#Filelist>ul").append(contentHtml);
@@ -121,12 +121,13 @@ function isFilePPT(){
      if(window.localStorage.storageI != undefined && window.localStorage.storageI != "")
      {
         $(".pptActive").find("a").remove();
-        $(".pptActive").append('<a href="#" class="item-content item-link historyPPT" data-url=""  set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,"","")\"></i><i class="iconfont icon-word"></i>'+window.localStorage.storageI+"</a>");
+        $(".pptActive").append('<a href="#" class="item-content item-link historyPPT" data-url=""  set_no='+PPTcommand.openPPT.setNo+' set_equip='+PPTcommand.openPPT.equipNo+' set_id='+PPTcommand.openPPT.setNo+' onclick=\"setMenu(this,null,null)\"></i><i class="iconfont icon-word"></i>'+window.localStorage.storageI+'</a>');
         $(".pptActive a").attr("data-url",window.localStorage.dataURL);
      }
 }
 
 function setMenu(that,value,slideIndex){
+     myApp.dialog.progress();
     if (Control_Equip_List(PPTcommand.returnSoft.equipNo) || Control_SetItem_List(PPTcommand.returnSoft.equipNo, false)) {
         var _url = "/GWServices.asmx/GetSetParmItem";
         var _dataSet = "equip_no=" + PPTcommand.returnSoft.equipNo + "&&set_no=" + PPTcommand.returnSoft.setNo;
@@ -136,14 +137,14 @@ function setMenu(that,value,slideIndex){
             if (resultJs != "false" && resultJs != "") 
                {   
                   var userResultJs =JSON.parse(resultJs);
-                  if(values =="")
+                  if(value =="")
                      openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, userResultJs[0].value, userResultJs[0].set_nm,slideIndex);
                   else
-                     openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, values, userResultJs[0].set_nm,slideIndex); 
+                     openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, value, userResultJs[0].set_nm,slideIndex); 
               }
               else
               {
-               alertMsgError.open();
+               alertMsgError.open(); myApp.dialog.close();
               }
         }
     }
@@ -159,7 +160,8 @@ function openFileCommand(dt,equip_no, main_instruction, minor_instruction, value
         var resultJs = $(data).children("string").text();
         if (resultJs != "false") {  
           if(!value)
-            setTimeout(function(){
+          {
+            // setTimeout(function(){
                $(".modalDiv").removeClass("displayNone");
                //辨别点击历史记录或者普通记录
                $(dt).hasClass("historyPPT")?window.localStorage.historyis = 1:window.localStorage.historyis = 0;
@@ -169,7 +171,8 @@ function openFileCommand(dt,equip_no, main_instruction, minor_instruction, value
                }
                setMenu(dt,$(dt).attr("data-url"),""); //传入url生成缩略图
                window.localStorage.pptUsername = $(dt).attr("data-url").split("\\")[$(dt).attr("data-url").split("\\").length-1].split(".")[0];  //ppt名称
-            },1000);
+            // },1000);            
+          }
            else
             {
                  if($(dt).parents("div.page-content").hasClass("mettingPPTContent")) //ppt列表
@@ -204,7 +207,7 @@ function openFileCommand(dt,equip_no, main_instruction, minor_instruction, value
                       $(".setviewPng").attr('src',src); 
                   }              
             }
-        }
+        }else{ myApp.dialog.close();}
     }
 }
 

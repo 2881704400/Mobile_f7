@@ -88,4 +88,6 @@ mixin：sass宏mixin
         &>ul{&>li{overflow: hidden;margin-bottom: 10px;
         &>a{font-size: #{$tableHeaderFontSize*0.8};width: 100%;height: 100%;display: inline-block;text-align: center;border: 1px solid #{$statsBorderColor};position: relative;&>p{margin: 0.5rem 0;color: #414141;}}}}
     }
+    //幻灯片
+    .swiper-paginationTrailer{width: 100%;position: absolute;bottom: -1%;left: 50%;transform: translateX(-50%);&>span{margin: 0px 1%;}}
 }

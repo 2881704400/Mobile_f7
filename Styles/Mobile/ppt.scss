@@ -2,12 +2,10 @@
 @charset "utf-8";
 @import 'public.scss';
 .pptActive a {
-    color: white;
     font-size: 0.8rem;
     height: 4rem;
     line-height: 4rem;
     display: inline-block;
-    border-bottom: 1px solid #273341;
     padding-left: 2.5rem;
     position: relative;
 }
@@ -115,7 +113,7 @@
     background: #212934;
 }
 .pptActive .item-content, .pptSelect .item-content {
-    background: #131C2B;
+    background:#{$tableHeaderBgc};
 }
 .pptActive>a, .pptSelect>a {
     width: 100%;

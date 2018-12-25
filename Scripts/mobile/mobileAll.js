@@ -106,7 +106,7 @@ function initLoads() {
     }
     try {
         //myJavaFun.GetAppVersion(); //获取App版本信息
-        //myJavaFun.GetSystemInfor(); //获取系统信息
+        //myJavaFun.GetSystemInfor(); //获取系统信息    
     } catch (ex) {}
 }
 var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages;
@@ -591,3 +591,34 @@ if (window.localStorage.localBgColor == 1) {
     });
 }
 
+//videoControl
+function videoControlDirction(direction){
+   switch(direction)
+   {
+        case "left_start": 
+           get_no("", 2, 25, "");
+           break;
+        case "left_stop":
+           get_no("", 2, 26, "");
+          break;
+        case "top_start":
+          get_no("", 2, 29, "");
+          break;
+        case "top_stop":
+          get_no("", 2, 30, "");
+          break;
+        case "right_start":
+          get_no("", 2, 27, "");
+          break;
+        case "right_stop":
+          get_no("", 2, 28, "");
+          break;
+        case "bottom_start":
+          get_no("", 2, 31, "");
+          break;
+        case "bottom_stop":
+          get_no("", 2, 32, "");
+          break;
+        default: break;
+   }
+}
