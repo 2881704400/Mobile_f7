@@ -68,6 +68,7 @@ function onVideoShow(dt, equip_no, key, accessToken) {
 			videoListLi(dll, equip_no, dt);
 		}
 		else {
+
 		    var sUserAgent = navigator.userAgent.toLowerCase();
 		    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
 		    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
@@ -75,7 +76,7 @@ function onVideoShow(dt, equip_no, key, accessToken) {
 		        videoListLi(dll, equip_no, dt);
 		    }
 		    else {
-		        videoListLi2(dt);
+		        videoListLi(dll, equip_no, dt);
 		    }
 		}
 	}
@@ -114,46 +115,99 @@ function videoListLi(dll, equip_no, dt) {
 }
 //节点事件
 function videoListClick(dt) {
-	var titleName = $(dt).find('.item-title').text();
-	var dll = $(dt).parent().parent().attr('dll');
-	if (dll == 'HikYun.NET.dll') {
-		var address = '';
-		var equip_no = $(dt).attr('equip_no');
-		var ids = $(dt).attr('ids');
+	// var titleName = $(dt).find('.item-title').text();
+	// var dll = $(dt).parent().parent().attr('dll');
+	// if (dll == 'HikYun.NET.dll') {
+	// 	var address = '';
+	// 	var equip_no = $(dt).attr('equip_no');
+	// 	var ids = $(dt).attr('ids');
 
-		var accessToken = $(dt).parent().parent().attr('accessToken');
-		var appkey = $(dt).parent().parent().attr('appkey');
-		var appsecret = $(dt).parent().parent().attr('appsecret');
-		var ChannelType = $(dt).attr('ChannelType');
-		var ChannelNum = $(dt).attr('ChannelNum');
-		var datas = {
-			'accessToken': accessToken,
-			'appkey': appkey,
-			'appsecret': appsecret,
-			'ChannelNum': ChannelNum,
-			'ChannelType': ChannelType,
-			'cameraName': titleName
-		}
-		var jsonString = JSON.stringify(datas);
-		try {
-			myJavaFun.HikYunVideoShow(jsonString);
-		}
-		catch (ex) {
-			alert('请更新APP客户端或者使用APP客户端打开！');
-		}
-	}
-	else {
-		var equip = $(dt).parent().parent().attr('jsonString');
-		var video = $(dt).attr('jsonString');
-		var json = '{"equip":' + equip + ',"video":' + video + '}';
-		try {
+	// 	var accessToken = $(dt).parent().parent().attr('accessToken');
+	// 	var appkey = $(dt).parent().parent().attr('appkey');
+	// 	var appsecret = $(dt).parent().parent().attr('appsecret');
+	// 	var ChannelType = $(dt).attr('ChannelType');
+	// 	var ChannelNum = $(dt).attr('ChannelNum');
+	// 	var datas = {
+	// 		'accessToken': accessToken,
+	// 		'appkey': appkey,
+	// 		'appsecret': appsecret,
+	// 		'ChannelNum': ChannelNum,
+	// 		'ChannelType': ChannelType,
+	// 		'cameraName': titleName
+	// 	}
+	// 	var jsonString = JSON.stringify(datas);
+	// 	try {
+	// 		myJavaFun.HikYunVideoShow(jsonString);
+	// 	}
+	// 	catch (ex) {
+	// 		alert('请更新APP客户端或者使用APP客户端打开！');
+	// 	}
+	// }
+	// else {
+	// 	var equip = $(dt).parent().parent().attr('jsonString');
+	// 	var video = $(dt).attr('jsonString');
+	// 	var json = '{"equip":' + equip + ',"video":' + video + '}';
+	// 	try {
 
-		    myJavaFun.Hik8700VideoShow(json);
-		}
-		catch (ex) {
-			alert('请更新APP客户端或者使用APP客户端打开！');
-		}
-	}
+	// 	    myJavaFun.Hik8700VideoShow(json);
+	// 	}
+	// 	catch (ex) {
+	// 		alert('请更新APP客户端或者使用APP客户端打开！');
+	// 	}
+	// }
+
+	var jsonStringParent = $(dt).parents("ul").attr("jsonstring"),jsonStringChild = $(dt).attr("jsonstring"),dll =$(dt).parents("ul").attr("dll");
+    if (dll == 'HikYun.NET.dll') {
+        var address = '';
+        var equip_no = $(dt).attr('equip_no');
+        var ids = $(dt).attr('ids');
+
+        var accessToken = $(dt).parent().parent().attr('accessToken');
+        var appkey = $(dt).parent().parent().attr('appkey');
+        var appsecret = $(dt).parent().parent().attr('appsecret');
+        var ChannelType = $(dt).attr('ChannelType');
+        var ChannelNum = $(dt).attr('ChannelNum');
+        var datas = {
+            'accessToken': accessToken,
+            'appkey': appkey,
+            'appsecret': appsecret,
+            'ChannelNum': ChannelNum,
+            'ChannelType': ChannelType,
+            'cameraName': titleName
+        }
+        var jsonString = JSON.stringify(datas);
+        try {
+            myJavaFun.HikYunVideoShow(jsonString);
+        }
+        catch (ex) {
+            alert('请更新APP客户端或者使用APP客户端打开！');
+        }
+    }
+    if (dll == 'Hik8700.NET.dll') {
+        var equip = jsonStringParent;
+        var video = jsonStringChild;
+        var json = '{"equip":' + equip + ',"video":' + video + '}';
+        try {
+            myJavaFun.Hik8700VideoShow(json);
+        }
+        catch (ex) {
+            alert('请更新APP客户端或者使用APP客户端打开！');
+        }
+    }
+    else {
+      
+        var equip = jsonStringParent;
+        var video = jsonStringChild;
+        var json = '{"equip":' + equip + ',"video":' + video + '}';
+        try {
+            myJavaFun.VideoShow(json);
+        }
+        catch (ex) {
+            alert('请更新APP客户端或者使用APP客户端打开！');
+        }
+    }
+
+
 }
 function onVideoClick() {
 	var video = document.getElementById("videoPlay");

@@ -118,6 +118,10 @@ select {
 
 .md .ptr-preloader{top:0!important;}
 
+.md .list .item-media{
+   min-width: 0!important;
+}
+
 html.with-statusbar.device-ios .framework7-root,
 html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {
 	padding-top: 20px;
