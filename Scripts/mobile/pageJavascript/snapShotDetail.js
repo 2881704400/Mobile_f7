@@ -2,6 +2,7 @@ var userAdmin = [];
 var chatList;
 
 function snapShotDetail() {
+	switchToolbar("snapshotTool");
 	//获取父页面参数
 	var chatObject = myApp.views.main.history,
 		urlLength = chatObject.length - 1;
