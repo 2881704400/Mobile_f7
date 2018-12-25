@@ -778,8 +778,9 @@ function getlinkVideoList(){
 	    				'</li>';
 	    		$(".sheet-video ul").append(html);
 			}
-//			console.log(videoList)
+
 		}
+
 	})
 }
 function selectVideo(video,name){
@@ -866,9 +867,6 @@ function loadConfig(){
 		getEquipSelect(selectEquiId);
 		myApp.popup.close(".popup-condition")
 		
-//			getYcSelect(selectEquiId);
-//			getYxSelect(selectEquiId);
-//			getSetSelect(selectEquiId);
 	}
 	
 }
