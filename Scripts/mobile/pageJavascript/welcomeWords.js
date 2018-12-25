@@ -3,7 +3,7 @@ var welcome_objoriginal = new Object();
 
 function welcomeWords() {
     switchToolbar("homeTool");
-//	getFocusValue();
+	getFocusValue();
 	/*获取文件夹中背景图片信息*/
 	var url1 = WORDcommand.backgroundImage.url,
 		fileName1 = ".png|.jpg|.JPG",
@@ -304,6 +304,7 @@ function getFocusValue() {
 	}
 }
 
+//保存事件
 function welcome_activeSave(that, number) {
 	welcome_objoriginal = new Object();
 	//内容
