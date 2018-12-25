@@ -184,7 +184,12 @@ function searchEquipItems() {
 	var realSearchEquip = "";
 	for(var n = 0; n < equip_list.length; n++) {
 		if(equip_list[n][0] == searchEquip) {
-			realSearchEquip = equip_list[n][1];
+			if(equip_list[n][0]=="全部设备"){
+				realSearchEquip = realEquipList;
+			}else{
+				realSearchEquip = equip_list[n][1];
+			}
+			
 			break;
 		}
 	}
