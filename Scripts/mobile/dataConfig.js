@@ -502,21 +502,21 @@ var PPTcommand ={
      },
      "openPPT":{
         name: '打开PPT',
-        equipNo: '4001',
+        equipNo: '1',
         setNo: '1'        
      },
      "closePPT":{
         name:"关闭PPT",
-        equipNo: '4001',
+        equipNo: '1',
         setNo: '7'        
      },     
      "setIp":{
         name: '设置插件IP',
-        set_ip: '192.168.0.187',//window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
+        set_ip: '192.168.0.152',//window.localStorage.service_url,    //设置为固定IP，则为  '192.168.0.165'  样式   
      },
      "setPage":{
         name:"设置跳页",
-        equipNo: '4001',
+        equipNo: '1',
         setNo: '4'        
      },
 };
