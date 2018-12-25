@@ -323,6 +323,11 @@ mixin：sass宏mixin
   height: 0px;
 }
 
+html.with-statusbar.device-ios .popup {
+  margin-top: 20px;
+  height: calc(100% - 20px) !important;
+}
+
 .ios .sheet-condition-config .toolbar:before {
   background-color: #eaeaea !important;
   height: 2px;
@@ -352,6 +357,10 @@ mixin：sass宏mixin
   color: #459ef1;
 }
 
+.popup-config .item-input-wrap {
+  border-bottom: none;
+}
+
 .popup-config .page-content .list {
   margin: 0 0;
   height: 100%;
@@ -375,7 +384,7 @@ mixin：sass宏mixin
 }
 
 .popup-config .page-content .list ul {
-  height: calc(100% - 80px);
+  height: calc(100% - 100px);
   overflow: auto;
 }
 
@@ -422,7 +431,7 @@ mixin：sass宏mixin
 }
 
 .popup-condition .list ul {
-  height: calc(100% - 75px);
+  height: calc(100% - 100px);
   margin-bottom: 15px;
   overflow: auto;
 }
