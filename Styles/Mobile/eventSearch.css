@@ -27,6 +27,10 @@
     .md .eventDetailPopup .page-content .eventDetailList textarea {
       font-size: 0.875rem; }
 
+.calendar-row {
+  height: 15% !important;
+  padding: 0 !important; }
+
 .md .eventDetailList .item-content .item-input-wrap {
   border-bottom: 0px solid rgba(0, 0, 0, 0.12); }
 
