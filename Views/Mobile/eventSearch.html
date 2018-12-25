@@ -17,46 +17,35 @@
                     </i>
 				</a>
 			</div>
+			<div class="subnavbar eventSearchSubNavBar">
+				<div class="subnavbar-inner">
+		          <div class="segmented segmented-raised">
+		            <a class="button tab-link tab-link-active" href="#tab1">设备事件</a>
+		            <a class="button tab-link" href="#tab2">设置事件</a>
+		            <a class="button tab-link" href="#tab3">系统事件</a>
+		          </div>
+		        </div>
+			</div>
 		</div>
 	</div>
-	<div class="page-content ptr-content eventSearchPageContent" data-ptr-distance="55">
-		<!-- 默认的下拉刷新层 -->
-		<div class="ptr-preloader">
-			<div class="preloader">
-			</div>
-			<div class="ptr-arrow">
-			</div>
-		</div>
-		<div class="searchbar-backdrop">
-		</div>
+	<div class="page-content eventSearchPageContent " style="padding-top: 96px !important;">
 		<div class="eventSearchContent">
 			<div class="event-search-box">
 				<div class="half-select-box">
 					<label>时间跨度：</label>
 					<input type="text" placeholder="时间段选择" readonly="readonly" id="eventSearchTimeId" />
 				</div>
+				<button class="col button button-fill color-blue" onclick="searchEquipItems()">查询</button>
 				<div class="half-select-box-bottom">
 					<label>设备选择：</label>
 					<input type="text" placeholder="请选择设备" readonly="readonly" id="eventSearchEquipId" />
-					<button class="col button button-fill color-blue" onclick="searchEquipItems()">查询</button>
-				</div>
-			</div>
-			<div class="content-block event-search-tabs">
-				<!-- Buttons row as tabs controller -->
-				<div class="buttons-row">
-					<!-- Link to 1st tab, active -->
-					<a href="#tab1" class="tab-link button tab-link-active">设备事件</a>
-					<!-- Link to 2nd tab -->
-					<a href="#tab2" class="tab-link button">设置事件</a>
-					<!-- Link to 3rd tab -->
-					<a href="#tab3" class="tab-link button">系统事件</a>
 				</div>
 			</div>
 			<!-- Tabs, tabs wrapper -->
 			<div class="tabs">
 				<!-- Tab 1, active by default -->
 				<div id="tab1" class="tab tab-active">
-					<div class="content-block">
+					<div class="content-block tab-content-box">
 						<div class="tab-table-header">
 							<span>时间</span>
 							<span>设备名称</span>
@@ -72,12 +61,11 @@
 				</div>
 				<!-- Tab 2 -->
 				<div id="tab2" class="tab">
-					<div class="content-block">
+					<div class="content-block tab-content-box">
 						<div class="tab-table-header">
 							<span>时间</span>
 							<span>设备名称</span>
 							<span>设置事件</span>
-							<span>操作人</span>
 						</div>
 						<ul id="eventSearchSetId">
 							<!--<li>
@@ -89,7 +77,7 @@
 				</div>
 				<!-- Tab 3 -->
 				<div id="tab3" class="tab">
-					<div class="content-block">
+					<div class="content-block tab-content-box">
 						<div class="tab-table-header">
 							<span>时间</span>
 							<span>系统事件</span>
