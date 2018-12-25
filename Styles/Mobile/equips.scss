@@ -189,7 +189,6 @@
 }
 
 #eventQuery,#systemConfig{
-   
     .eventQueryContent{height: 100%;overflow: hidden;padding: 1rem;}
     .fab{
         a{
@@ -218,10 +217,7 @@
         a{
             height: 100%;line-height: 36px;
         }
-        .tab-link-active{
-            background: #fff;
-            border-bottom: 2px solid #FD971F !important;
-        }
+        
         .button{
             transition-duration:0s;
             -webkit-transition-duration:0;
@@ -234,12 +230,21 @@
                 border-radius: 0;
             }
         }
+        .tab-link-active{
+            background: #fff;
+            border-bottom: 2px solid $activeBg !important;
+            color:$activeBg ;
+        }
     }
     .eventWrap{
         width: 100%;
         .tab{
 //          border: 1px solid red;
             width: 100%;
+            .list{
+                height: 100%;
+                overflow: auto;
+            }
         }
         li{
             background: #fff;
@@ -266,16 +271,9 @@
     }
     
 }
-.popup-config{
-    .item-input-wrap{
-        border-bottom: none;
-    }
-}
-.sheet-condition{
+
+.sheet-condition-config{
     height:320px;
-     .item-input-wrap{
-        border-bottom: none;
-    }
     .toolbar-inner{
         background: $preBg;
         border-bottom: 1px solid $lineBg;
@@ -283,120 +281,28 @@
     .sheet-modal-inner{
         background: $preBg;
         .block{
-            margin: 10px 0 0 0;
+            margin:  0;
             height: 100%;
+            overflow: hidden;
            .list{
                margin: 10px 0 0 0;
-               &.eq-list{
-                   height: calc(100% - 135px);
+               height: calc(100% - 15px);
+               .eq-list{
+                   height:100%  ;
                    overflow: auto;
+                   &:after{
+                       height: 0px;
+                   }
                }
            }
         }
     }
     
-    &.sheet-config{
-        .sheet-modal-inner{
-           
-            .block{
-               
-               .list{
-                   
-                   &.eq-list{
-                       height: calc(100% - 55px);
-                      
-                   }
-               }
-            }
-        }
-    }
-}
 
-
-#systemConfig {
-    .equipCon {
-        height: 100%;
-        padding: 1rem;
-        .col-25 {
-            height: 100%;
-        }
-        .col-75 {
-            height: 100%;
-        }
-    }
-}
-
-.ios .startTime {
-    .toolbar {
-        top: 0px;
-    }
-    .calendar-selected-date {
-        color: #fff;
-    }
-}
-
-.startTime {
-    .calendar-header {
-        background: #2d8cf0;
-    }
-    .toolbar {
-        top: 50px;
-    }
-    .calendar-footer {
-        a {
-            color: #2d8cf0;
-        }
-    }
-    .calendar-day.calendar-day-today span {
-        color: #2d8cf0;
-    }
-    .calendar-day.calendar-day-selected span {
-        background: #2d8cf0;
-        color: #fff;
-    }
-}
-
-.md {
-    #systemConfig {
-        .searchbar {
-            margin: 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            box-shadow: none;
-        }
-        .progressbar-infinite {
-            background: #fff;
-            display: none;
-            &:after {
-                background: #2d8cf0;
-            }
-            &:before {
-                background: #2d8cf0;
-            }
-        }
-    }
-}
-
-.ios {
-    #systemConfig {
-        .searchbar {
-            background: #fff;
-        }
-        .progressbar-infinite {
-            background: #fff;
-            display: none;
-            &:after {
-                background: #2d8cf0;
-            }
-            &:before {
-                background: #2d8cf0;
-            }
-        }
-    }
 }
 
 .ios{
-    .sheet-condition{
+    .sheet-condition-config{
        .toolbar:before{
            background-color:$lineBg !important;
            height: 2px;
@@ -415,35 +321,16 @@
         }
 
     }
-}
-.popup-config{
-    .page-content{
-        
-        .list{
-            margin: 0 0;
-            ul{
-                overflow: hidden;
-                .item-title{
-                    color:$titColor ;
-                }
-                .item-after{
-                    color: $valueColor;
-                }
-                .btn{
-                    margin: 35px 0;
-                    div{
-                        width: 60%;
-                        margin: 0 auto;
-                    }
-                }
-            }
-            
+    .popup-condition-config{
+        .searchbar{
+            background: #fff;
         }
-       
+        
     }
+    
 }
 .md{
-    .sheet-condition{
+    .sheet-condition-config{
         .toolbar{
             transform:none;
         }
@@ -451,4 +338,90 @@
             color: $valueColor;
         }
     }
+}
+.popup-config{
+    .page-content{
+        .list{
+            margin: 0 0;
+            height: 100%;
+            background: #fff;
+            &.edictList{
+                .btn{
+                    width: 95%;
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    .button{
+                        width: 45%;
+                        float: left;
+                        border: 1px solid #2196f3;
+                        &.button-fill{
+                            float: right;
+                        }
+                    }
+                }
+            }
+            ul{
+                height: calc(100% - 80px);
+                overflow: auto;
+                &:after{
+                    height: 0px;
+                }
+                .item-title{
+                    color:$titColor ;
+                }
+                .item-after{
+                    color: $valueColor;
+                    max-width: 60%;
+                    white-space: normal;
+                    word-break: break-all;
+                    
+                }
+            }
+            .btn{
+                margin: 15px 0;
+                div{
+                    width: 60%;
+                    margin: 0 auto;
+                }
+            }
+            
+        }
+       
+    }
+}
+.popup-condition{
+    .content-wrap{
+        height: calc(100% - 44px);
+        margin: 0 0;
+        .searchbar{
+            background:#fff ;
+            &:after{
+                height: 0;
+            }
+        }
+    }
+   .list{
+       margin-top: 0;
+       height: calc(100% - 100px);
+       
+           
+       
+       ul{
+           &:after{
+               height: 0;
+           }
+           
+           height: calc(100% - 75px);
+           margin-bottom: 15px;
+           overflow: auto;
+            li{
+               .icon-checkbox{
+                    border-radius: 0;
+                }
+           }
+       }
+      
+       
+   }
+   
 }
