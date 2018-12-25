@@ -9,8 +9,29 @@
     .ios .eventDetailPopup .page-content .eventDetailList {
       margin: 0.5rem;
       background-color: #FFFFFF; }
+      .ios .eventDetailPopup .page-content .eventDetailList input,
+      .ios .eventDetailPopup .page-content .eventDetailList textarea {
+        font-size: 0.875rem; }
       .ios .eventDetailPopup .page-content .eventDetailList .item-input-wrap {
-        border-bottom: 0px solid #4177e6; }
+        border-bottom: 0px solid rgba(0, 0, 0, 0.12); }
+
+.eventDetailPopup .navbar {
+  background-color: white;
+  color: #333333; }
+
+.md .eventDetailPopup .page-content {
+  padding-top: 0px !important; }
+  .md .eventDetailPopup .page-content .eventDetailList {
+    margin: 0.5rem 0; }
+    .md .eventDetailPopup .page-content .eventDetailList input,
+    .md .eventDetailPopup .page-content .eventDetailList textarea {
+      font-size: 0.875rem; }
+
+.md .eventDetailList .item-content .item-input-wrap {
+  border-bottom: 0px solid rgba(0, 0, 0, 0.12); }
+
+.md .eventDetailList .item-content:last-child .item-input-wrap:after {
+  height: 0px !important; }
 
 .md .eventSearchSubNavBar .button:not(.button-fill):not(.button-fill-md) {
   color: #000; }
@@ -71,22 +92,20 @@
       height: 50%;
       float: left; }
       .eventSearchContent .event-search-box .half-select-box label {
-        width: 30%;
         height: 100%;
         line-height: 39px;
-        font-size: 1rem;
+        font-size: 0.875rem;
         color: #333333;
         float: left;
         opacity: 0.6; }
       .eventSearchContent .event-search-box .half-select-box input {
-        width: 65%;
+        min-width: 70%;
         height: 75%;
         position: relative;
         top: 12.5%;
         float: left;
-        line-height: 39px;
         border-bottom: 1px solid rgba(51, 51, 51, 0.1);
-        font-size: 1rem;
+        font-size: 0.875rem;
         color: #333333;
         font-weight: bold; }
     .eventSearchContent .event-search-box .half-select-box-bottom {
@@ -94,21 +113,20 @@
       height: 50%;
       float: left; }
       .eventSearchContent .event-search-box .half-select-box-bottom label {
-        width: 30%;
         height: 100%;
         line-height: 39px;
-        font-size: 1rem;
+        font-size: 0.875rem;
         color: #333333;
         float: left;
         opacity: 0.6; }
       .eventSearchContent .event-search-box .half-select-box-bottom input {
-        width: 65%;
+        min-width: 70%;
         height: 75%;
         position: relative;
         top: 12.5%;
         border-bottom: 1px solid rgba(51, 51, 51, 0.1);
         float: left;
-        font-size: 1rem;
+        font-size: 0.875rem;
         color: #333333;
         font-weight: bold; }
     .eventSearchContent .event-search-box button {

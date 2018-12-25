@@ -9,7 +9,7 @@ function eventSearch() {
 	switchToolbar("configTool");
 
 	//初始化
-	$("#eventSearchTimeId").val(getNowTime()+" - "+getNowTime());
+	$("#eventSearchTimeId").val(getNowTime() + " - " + getNowTime());
 	$("#eventSearchEquipId").val("全部设备");
 	$("#eventSearchTypeId").val("全部事件类型");
 
@@ -24,7 +24,23 @@ function eventSearch() {
 		dateFormat: 'yyyy/mm/dd',
 		monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
 		dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
-		rangePicker: true
+		rangePicker: true,
+		on: {
+			closed: function(e) {
+				var value = $("#eventSearchTimeId").val();
+				var searchTime = $("#eventSearchTimeId").val();
+				var realSearchTime = "";
+				if(searchTime) {
+					var searchTimeArrs = searchTime.split(" - ");
+					if(searchTimeArrs.length == 1) {
+						realSearchTime += searchTimeArrs[0] + " - " + searchTimeArrs[0];
+					}else{
+						realSearchTime=searchTime;
+					}
+					$("#eventSearchTimeId").val(realSearchTime);
+				}
+			},
+		}
 	});
 
 	eventDetailPopup = myApp.popup.create({
@@ -173,7 +189,7 @@ function searchEquipItems() {
 		}
 	}
 	//	var searchType = $("#eventSearchTypeId").val();
-	var searchTabType = $(".event-search-tabs .buttons-row").find("a").map(function() {
+	var searchTabType = $(".eventSearchSubNavBar .subnavbar-inner").find("a").map(function() {
 		if($(this).hasClass("tab-link-active")) {
 			return $(this).html();
 		}
@@ -188,7 +204,7 @@ function searchEquipItems() {
 		function _successEqp(data) {
 			var resultJs = $(data).children("string").text();
 			var result = EqpEvtData = JSON.parse(resultJs);
-			var resultLength=result.length>20?20:result.length;
+			var resultLength = result.length > 20 ? 20 : result.length;
 			var strData = "";
 			if(result && result != "false") {
 				for(var i = 0; i < resultLength; i++) {
@@ -253,7 +269,7 @@ function searchEquipItems() {
 			var resultJs = $(data).children("string").text();
 			var result = SetEvtData = JSON.parse(resultJs);
 			var strData = "";
-			var resultLength=result.length>20?20:result.length;
+			var resultLength = result.length > 20 ? 20 : result.length;
 			if(result && result != "false") {
 				for(var i = 0; i < resultLength; i++) {
 					strData += "<li onclick='showEventDetail(1,\"" + result[i].time + "\",\"" + result[i].event + "\")'>" +
@@ -316,7 +332,7 @@ function searchEquipItems() {
 		function _successSys(data) {
 			var resultJs = $(data).children("string").text();
 			var result = SysEvtData = JSON.parse(resultJs);
-			var resultLength=result.length>20?20:result.length;
+			var resultLength = result.length > 20 ? 20 : result.length;
 			var strData = "";
 			if(result && result != "false") {
 				for(var i = 0; i < resultLength; i++) {
@@ -344,9 +360,8 @@ function searchEquipItems() {
 				nScrollHight = $(this)[0].scrollHeight;
 				nScrollTop = $(this)[0].scrollTop;
 				if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-					myApp.dialog.progress();
-
 					allowInfinite = false;
+					myApp.dialog.progress();
 
 					setTimeout(function() {
 						allowInfinite = true;
@@ -375,7 +390,6 @@ function searchEquipItems() {
 }
 
 function showEventDetail(type, time, event) {
-	console.log(type, time, event); //EqpEvtData = null, SetEvtData = null, SysEvtData = null;
 	eventDetailPopup.open();
 	var strData = "";
 	if(type == 0) {
@@ -401,7 +415,7 @@ function showEventDetail(type, time, event) {
 					'				<div class="item-inner">' +
 					'					<div class="item-title item-label">设备事件</div>' +
 					'					<div class="item-input-wrap">' +
-					'						<textarea class="resizable" readonly>"' + event + '"</textarea>' +
+					'						<textareareadonly>"' + event + '"</textarea>' +
 					'					</div>' +
 					'				</div>' +
 					'			</li>';
@@ -441,7 +455,7 @@ function showEventDetail(type, time, event) {
 					'				<div class="item-inner">' +
 					'					<div class="item-title item-label">设备事件</div>' +
 					'					<div class="item-input-wrap">' +
-					'						<textarea class="resizable" readonly>"' + event + '"</textarea>' +
+					'						<textarea readonly>"' + event + '"</textarea>' +
 					'					</div>' +
 					'				</div>' +
 					'			</li>';
@@ -465,7 +479,7 @@ function showEventDetail(type, time, event) {
 					'				<div class="item-inner">' +
 					'					<div class="item-title item-label">设备事件</div>' +
 					'					<div class="item-input-wrap">' +
-					'						<textarea class="resizable" readonly>"' + event + '"</textarea>' +
+					'						<textarea readonly>"' + event + '"</textarea>' +
 					'					</div>' +
 					'				</div>' +
 					'			</li>';
