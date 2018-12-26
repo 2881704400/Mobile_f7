@@ -132,13 +132,30 @@
 
 .scheduleModifyPageContent{
     background-color: #F2F3F5 !important;
+    padding-top: 54px !important;
 }
 
 .scheduleModifyContainer{
     background-color: #FFFFFF;
-    input{color: #{$selectedColor} !important;font-size: 1rem !important;}
-    .comfirmModify{color: #{$btnFontColor};width: 43%;margin: 5% 5% 0 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;}
-    .comfirmCancel{margin: 5% 2% 0 5%;background: #{$btnCancelBackground};}
+    .item-content{
+        height: 72px !important;
+        padding-right: 15px;
+    }
+    .item-title.item-label{
+        color: rgba(51,51,51,.6);
+        margin-top: 5px;
+    }
+    .item-input-wrap {
+        position: absolute;
+        bottom: 8px;
+    }
+    input{color: #{$selectedColor} !important;font-size: 1.125rem !important;font-weight: 600;
+        &::-webkit-input-placeholder{
+            color: rgba(51,51,51,.2);
+        }
+    }
+    .comfirmModify{color: #{$btnWhiteFontColor};width: 43%;margin: 5% 5% 15% 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;font-weight: 600;letter-spacing: 2px;}
+    .comfirmCancel{margin: 5% 2% 15% 5%;background: #{$btnCancelBackground};}
 }
 
 .popup-aboutuser { 

@@ -116,11 +116,6 @@ select {
 	padding-top: 44px!important;
 }
 
-.md .statusbar{
-	height: 20px;
-	background: #000000 !important;
-}
-
 .md .ptr-preloader {
 	/*top: 0!important;*/
 }
@@ -136,13 +131,12 @@ html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {
 
 html.with-statusbar.device-android .framework7-root,
 html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
-	padding-top: 20px !important;
+	padding-top: 20px;
 }
 
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
-	height: 20px;
-	display: block !important;
+	height: 0px;
 }
 
 html.device-ios .statusbar,
