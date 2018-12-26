@@ -2,19 +2,14 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-<<<<<<< HEAD
-	myApp.router.navigate("/scheduleModify/"); 
-=======
-	// myApp.router.navigate("/schedule/");
-
->>>>>>> 3982b27e8c6d18b3c1c4652bf2c3daa7c19ff0f7
+	myApp.router.navigate("/scheduleModify/");
     getJurisdictionData();
-	setTimeout(function(){
+	/*setTimeout(function(){
 		getAppStatusBarHeight();
-	},3000);
+	},3000);*/
 }
 
-//响应App绑定函数-获取状态栏高度
+/*//响应App绑定函数-获取状态栏高度
 function getStatusBarHeight(height){
 	myApp.dialog.alert("状态栏高度："+height);
 	$(".md .statusbar").height(height+"px");
@@ -26,7 +21,7 @@ function getAppStatusBarHeight() {
 		//App绑定函数-获取键盘高度
 		myJavaFun.getStatusBarHeight();
 	}
-}
+}*/
 
 //授权名称
 function authorizationName() {
