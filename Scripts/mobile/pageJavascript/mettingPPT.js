@@ -38,6 +38,7 @@ $.extend({
 })
 // 文件结构处理
 var stringFile;
+
 function fileStuctureChild(url, objectList) {
     $(objectList).next().html("");
     var _urlChild = "/GWService.asmx/GetFileStructure";
@@ -114,39 +115,20 @@ function isFilePPT() {
         $(".pptActive a").attr("data-url", window.localStorage.dataURL);
     }
 }
+
 function setMenu(that, value, slideIndex) {
-    // if (Control_Equip_List(PPTcommand.returnSoft.equipNo) || Control_SetItem_List(PPTcommand.returnSoft.equipNo, false)) {
-    //     var _url = "/GWServices.asmx/GetSetParmItem";
-    //     var _dataSet = "equip_no=" + PPTcommand.returnSoft.equipNo + "&&set_no=" + PPTcommand.returnSoft.setNo;
-    //     JQajaxo("post", _url, true, _dataSet, _successfSet);
-    //     function _successfSet(data) {
-    //         var resultJs = $(data).children("string").text();
-    //         if (resultJs != "false" && resultJs != "") 
-    //            {   
-    //               var userResultJs =JSON.parse(resultJs);
-    //               if(value =="")
-    //                  openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, userResultJs[0].value, userResultJs[0].set_nm,slideIndex);
-    //               else
-    //                  openFileCommand(that,PPTcommand.returnSoft.equipNo, userResultJs[0].main_instruction, userResultJs[0].minor_instruction, value, userResultJs[0].set_nm,slideIndex); 
-    //           }
-    //           else
-    //           {
-    //            alertMsgError.open(); myApp.dialog.close();
-    //           }
-    //     }
-    // }
-    openFileCommand(that, 1, 1, "-", (value ? value : $(that).attr("data-url")), "test", "");
+    openFileCommand(that, 1, 1, "-", (value ? value : $(that).attr("data-url")), "test", slideIndex);
 }
 //设置命令-确定
 function openFileCommand(dt, equip_no, main_instruction, minor_instruction, value, set_nm, slideIndex) { //equip_no,main_instruction,minor_instruction,value,set_nm
     var userName = window.localStorage.userName;
-    // if (userName == null || userName == "") {userName = window.sessionStorage.userName;}
-    var _url = "/GWService.asmx/SetupsCommand";
-    var _dataSet = "equip_no=" + encodeURIComponent(equip_no) + "&&main_instruction=" + encodeURIComponent(main_instruction) + "&&minor_instruction=" + encodeURIComponent(minor_instruction) + "&&value=" + encodeURIComponent(value) + "&&user_name=" + encodeURIComponent(userName);
-    JQajaxo("post", _url, true, _dataSet, _successfSet);
-    function _successfSet(data) {
-        var resultJs = $(data).children("string").text();
-        if (resultJs != "false") {
+    $.when(AlarmCenterContext.post("/api/Real/setup", {
+        equip_no: equip_no,
+        main_instr: main_instruction,
+        mino_instr: minor_instruction,
+        value: value
+    })).done(function(n) {
+        if (n.HttpData.code == 200 || n.HttpData.code == 201) {
             myApp.dialog.progress();
             //辨别点击历史记录或者普通记录
             $(dt).hasClass("historyPPT") ? window.localStorage.historyis = 1 : window.localStorage.historyis = 0;
@@ -154,33 +136,33 @@ function openFileCommand(dt, equip_no, main_instruction, minor_instruction, valu
             if (!isStucture($(dt).text()) && $(dt).text() != "") {
                 $.setFounction(dt);
             }
-            window.localStorage.pptUsername = $(dt).attr("data-url").split("\\")[$(dt).attr("data-url").split("\\").length - 1].split(".")[0]; //ppt名称          
+            try {
+                window.localStorage.pptUsername = $(dt).attr("data-url").split("\\")[$(dt).attr("data-url").split("\\").length - 1].split(".")[0]; //ppt名称          
+            } catch (e) {};
             if ($(dt).parents("div.page-content").hasClass("mettingPPTContent")) //ppt列表
             {
-                window.localStorage.historyis == 1?setMenu($(".selectBorder"), window.localStorage.savePage, window.localStorage.savePage):"";
                 var setTimeout = setInterval(function() {
-                    $.when(AlarmCenterContext.pptConfig(1)).done(function(n){
+                    $.when(AlarmCenterContext.pptConfig(1)).done(function(n) {
                         var result = n.HttpData;
-                            if (result.PageCount != -1) {
-                                window.localStorage.sessionFilename = result.Session; //data[1];
-                                window.localStorage.sessionValue = result.PageCount; //data[1];
-                                myApp.dialog.close();
-                                clearInterval(setTimeout);
-                                myApp.router.navigate('/mettingDetails/');
-                            }
-                        }).fail(function(e){
-
-                        });
-
+                        if (result.PageCount != -1) {
+                            window.localStorage.sessionFilename = result.Session; //data[1];
+                            window.localStorage.sessionValue = result.PageCount; //data[1];
+                            myApp.dialog.close();
+                            clearInterval(setTimeout);
+                            myApp.router.navigate('/mettingDetails/');
+                        }
+                    }).fail(function(e) {});
                 }, 500);
             }
-            if($(dt).parents("div.page-content").hasClass("mettingDetailsContent")){ //ppt详情
-                $(".mettingDetails_index").find("div:eq("+(slideIndex-1)+")").addClass("selectBorder").siblings().removeClass("selectBorder");
-                var src= $(".mettingDetails_index>div:eq("+(slideIndex-1)+")").find("img").attr("src");
-                $(".setviewPng").attr('src',src); 
-            }              
+            if ($(dt).parents("div.page-content").hasClass("mettingDetailsContent")) { //ppt详情
+                $(".mettingDetails_index").find("div:eq(" + (slideIndex - 1) + ")").addClass("selectBorder").siblings().removeClass("selectBorder");
+                var src = $(".mettingDetails_index>div:eq(" + (slideIndex - 1) + ")").find("img").attr("src");
+                $(".setviewPng").attr('src', src);
+            }
         } else {
             myApp.dialog.close();
         }
-    }
+    }).fail(function(e) {
+        myApp.dialog.close();
+    });
 }

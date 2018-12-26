@@ -504,34 +504,26 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
     });
 }
 //发送命令
-// function get_no(dt, set_equip, set_no, values) {
-//     var set_equipOld, set_noOld, valuesOld, main_instrOld, mino_instrOld;
-//     if (set_equip == "") {
-//         set_equipOld = $(dt).attr("set_equip");
-//         set_noOld = $(dt).attr("set_no");
-//     } else {
-//         set_equipOld = set_equip;
-//         set_noOld = set_no;
-//     }
-//     var ajaxVar = $.ajax({
-//         type: "POST",
-//         url: "/GWService.asmx/GetDataTableFromSQL",
-//         timeout: 5000,
-//         data: {
-//             sql: "select * from setParm where equip_no =" + set_equipOld + " and set_no=" + set_noOld,
-//             userName: window.localStorage.userName,
-//         },
-//         success: function(data) {
-//             var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-//             if (dt.find("equip_no").html() != "") {
-//                 if (values == "") onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-//                 else onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-//             } else {
-//                 alertMsgError.open();
-//             }
-//         }
-//     });
-// }
+function get_no(dt, set_equip, set_no, values) {
+    var ajaxVar = $.ajax({
+        type: "POST",
+        url: "/GWService.asmx/GetDataTableFromSQL",
+        timeout: 5000,
+        data: {
+            sql: "select * from setParm where equip_no =" + set_equip + " and set_no=" + set_no,
+            userName: window.localStorage.userName,
+        },
+        success: function(data) {
+            var dt = $(data).find('DataTable'); //返回XML格式的DataTable
+            if (dt.find("equip_no").html() != "") {
+                if (values == "") onSetCommand(dt, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
+                else onSetCommand(dt, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
+            } else {
+                alertMsgError.open();
+            }
+        }
+    });
+}
 function get_no_set(dt,values) {
     var set_equipOld="", set_noOld="";
     try{
