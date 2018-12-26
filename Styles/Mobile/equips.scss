@@ -151,6 +151,11 @@
                 }
                 .val {
                     font-weight: 600;
+                    max-width: 60%;
+                    display: inline-block;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
                 .iconWrap {
                     text-align: center;
