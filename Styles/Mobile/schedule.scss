@@ -135,6 +135,7 @@
 }
 
 .scheduleModifyContainer{
+    background-color: #FFFFFF;
     input{color: #{$selectedColor} !important;font-size: 1rem !important;}
     .comfirmModify{color: #{$btnFontColor};width: 43%;margin: 5% 5% 0 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;}
     .comfirmCancel{margin: 5% 2% 0 5%;background: #{$btnCancelBackground};}

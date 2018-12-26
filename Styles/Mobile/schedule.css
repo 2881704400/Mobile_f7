@@ -251,23 +251,25 @@ mixin：sass宏mixin
 .scheduleModifyPageContent {
   background-color: #F2F3F5 !important; }
 
-.scheduleModifyContainer input {
-  color: #2d8cf0 !important;
-  font-size: 1rem !important; }
-.scheduleModifyContainer .comfirmModify {
-  color: #DEF0F9;
-  width: 43%;
-  margin: 5% 5% 0 2%;
-  padding: 0.8rem;
-  float: left;
-  background: #2d8cf0;
-  border: 0;
-  border-radius: 6px;
-  outline: none;
-  font-size: 1rem; }
-.scheduleModifyContainer .comfirmCancel {
-  margin: 5% 2% 0 5%;
-  background: #F56565; }
+.scheduleModifyContainer {
+  background-color: #FFFFFF; }
+  .scheduleModifyContainer input {
+    color: #2d8cf0 !important;
+    font-size: 1rem !important; }
+  .scheduleModifyContainer .comfirmModify {
+    color: #DEF0F9;
+    width: 43%;
+    margin: 5% 5% 0 2%;
+    padding: 0.8rem;
+    float: left;
+    background: #2d8cf0;
+    border: 0;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem; }
+  .scheduleModifyContainer .comfirmCancel {
+    margin: 5% 2% 0 5%;
+    background: #F56565; }
 
 .popup-aboutuser {
   position: absolute;
