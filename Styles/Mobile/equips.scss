@@ -15,7 +15,7 @@
 
 .ios .tabbar-labels~* .page-content,
 .ios .tabbar-labels~.page-content {
-    padding-bottom: 44px;
+    padding-bottom: 50px;
 }
 
 .poverCurve .popover-angle.on-bottom {
@@ -340,11 +340,6 @@
             }
         }
     }
-}
-
-html.with-statusbar.device-ios .popup {
-    margin-top: 20px;
-    height: calc(100% - 20px) !important;
 }
 
 .ios {

@@ -117,7 +117,7 @@ function equipVideo(equip_no, ID, dll) {
                 var userb = usera[i];
                 var jsonStringParent = JSON.stringify(userb); //111
                 if (userb.equip_no == equip_no) {
-                    videoListLi(equip_no, ID, dll, jsonStringParent);
+                    videoListLiMap(equip_no, ID, dll, jsonStringParent);
                 }
             }
         }
@@ -125,7 +125,7 @@ function equipVideo(equip_no, ID, dll) {
     JQajaxo("post", _url, true, _data, _sccess);
 }
 //添加节点   GW_VideoInfo
-function videoListLi(equip_no, ID, dll, jsonStringParent) {
+function videoListLiMap(equip_no, ID, dll, jsonStringParent) {
     var _url = service + "/VideoConfigs";
     var _data = "data=" + equip_no;
 
@@ -136,14 +136,14 @@ function videoListLi(equip_no, ID, dll, jsonStringParent) {
             for (var i = 0; i < usera.length; i++) {
                 var userb = usera[i];
                 var jsonStringChild = JSON.stringify(userb); //222
-                if (userb.ID == ID) videoListClick(jsonStringParent, jsonStringChild, dll);
+                if (userb.ID == ID) videoListClickMap(jsonStringParent, jsonStringChild, dll);
             }
         }
     }
     JQajaxo("post", _url, true, _data, _sccess);
 }
 //节点事件
-function videoListClick(jsonStringParent, jsonStringChild, dll) {
+function videoListClickMap(jsonStringParent, jsonStringChild, dll) {
     if (dll == 'HikYun.NET.dll') {
         var address = '';
         var equip_no = $(dt).attr('equip_no');
@@ -199,7 +199,7 @@ function onVideoClick() {
     }
 }
 //控制按钮
-function controlsBtn(equip_no, Video_id) {
+function controlsBtnMap(equip_no, Video_id) {
     if (Control_Equip_List(equip_no) || Control_SetItem_List(equip_no, false)) {
         $('.videoControls').find('a').each(function() {
             var values = $(this).attr('values');

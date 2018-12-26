@@ -79,10 +79,12 @@ var myApp = new Framework7({
     }, {
         path: '/mettingDetails/',
         url: 'mettingDetails.html',
-    },
-    {
+    }, {
         path: '/scheduleModify/',
         url: 'scheduleModify.html',
+    }, {
+        path: '/equipLinkageModify/',
+        url: 'equipLinkageModify.html',
     },
     ],
     on: {

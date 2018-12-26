@@ -36,7 +36,7 @@ function getJurisdictionData(){
                         case "home_shortcutFunction": commonlyUsedFun("pptPattern_container ol", "50", pptPattern); commonlyUsedFun("jjPattern_container ol", "50", jjPattern);break;
                         case "home_control_btn": VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);break;
                         case "home_Commonlyused": commonlyUsedFun("commonlyUsed", "25", commonlyUsed);break;
-                        case "": break;
+                        case "home_sysMenu": commonlyUsedFun("sysFourMenu", "25", sysFourMenu);break;
                         default: break;
                     }
                 });
@@ -105,8 +105,16 @@ function functionalModule(className){
                </dl>
             </li>`;
         break;
-        case "": 
-
+        case "home_sysMenu": 
+			html = `<li class="home_Commonlyused">
+                <dl class="">
+                  <dt></dt>
+                  <dd>
+                    <ol class="row sysFourMenu">                                   
+                    </ol>
+                  </dd>
+               </dl>
+            </li>`;
         break;
         case "": 
 
@@ -128,6 +136,41 @@ var map, infoPoint = [ //经纬度+设备号+通道号
     [113.922468, 22.497125, 2003, 2]
 ];
 
+// 系统四菜单
+var sysFourMenu =[
+    {
+        name: '事件查询',
+        href: '/eventSearch/',
+        icon: 'iconfont icon-xintubiao-',
+        equipNo: '',
+        setNo: '',
+        value: null,
+    },
+    {
+        name: '系统配置',
+        href: '/systemConfig/',
+        icon: 'iconfont icon-navicon-xtpz',
+        equipNo: '',
+        setNo: '',
+        value: null,
+    },
+    {
+        name: '报警排表',
+        href: '/schedule/',
+        icon: 'iconfont icon-paibiao',
+        equipNo: '',
+        setNo: '',
+        value: null,
+    },
+    {
+        name: '设备联动',
+        href: '/equipLinkage/',
+        icon: 'iconfont icon-app_icons--',
+        equipNo: '',
+        setNo: '',
+        value: null,
+    },                    
+];
 
 // 常用
 var commonlyUsed =[
@@ -163,7 +206,7 @@ var commonlyUsed =[
         setNo: '',
         value: null,
     },                    
-    ];
+];
 
 // 列表数据模型
 var KOvm =[

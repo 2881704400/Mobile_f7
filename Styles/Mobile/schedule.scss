@@ -17,7 +17,7 @@
                     &>i{font-size: 2.5rem;position: absolute;left: 3px;top: 3px;}
                     &>div:nth-of-type(1){height: 40px;text-align: left;padding-left: 50px;
                         &>p{margin: 0;line-height: 20px;}
-                        &>p:nth-child(1){font-size: 1rem;}
+                        &>p:nth-child(1){font-size: 12px;}
                         &>p:nth-child(2){font-size: 12px;margin: 0;line-height: 20px;&>label{font-size: 1rem;color: #FF3B30;}}
                     }
                     &>div:nth-of-type(2){height: 100%;line-height: 40px;text-align: center;}
@@ -47,7 +47,7 @@
             &>ul{
                 position: absolute;left: 0;top: 0;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
                 &>li{
-                    font-size: 12px;height: 35px;line-height: 35px;position: relative;
+                    font-size: 13px;height: 35px;line-height: 35px;position: relative;
                     .delBtn{background: #FF3B30;}
                 }
             }
@@ -59,11 +59,11 @@
 .equipLinkageContainer{
     height: 100%;position: relative;
     &>.subnavbarTabel{
-        height: 36px;line-height: 36px;overflow: hidden;border-bottom: 1px solid #{$inputBorderColor};
+        height: 40px;line-height: 40px;overflow: hidden;border-bottom: 1px solid #{$inputBorderColor};
         &>a{font-size: #{$tableHeaderFontSize*0.9};    height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{
-        position: absolute;top: 36px;left: 0;right: 0;bottom: 0;
+        position: absolute;top: 40px;left: 0;right: 0;bottom: 0;
         &>div.equipGroupPublic{height: 100%;margin: 0;overflow: auto;}
             thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
             tbody{
@@ -82,7 +82,7 @@
             &>ul{
                 position: absolute;left: 0;top: 0;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
                 &>li{
-                    font-size: 12px;height: 35px;line-height: 35px;position: relative;
+                    font-size: 14px;height: 40px;line-height: 40px;position: relative;
                     .delBtn{background: #FF3B30;}
                 }
             }
@@ -132,15 +132,35 @@
 
 .scheduleModifyPageContent{
     background-color: #F2F3F5 !important;
+    // padding-top: 54px !important;
 }
 
 .scheduleModifyContainer{
-    background-color: #FFFFFF;border-top: 10px solid #{$popupBackground};
+        height: 100%;border-top: 10px solid #{$popupBackground};   
     input,select{color: #{$selectedColor} !important;font-size: 1rem !important;}
-    .comfirmModify{color: #{$btnFontColor};width: 43%;margin: 5% 5% 0 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;}
-    .comfirmCancel{margin: 5% 2% 0 5%;background: #{$btnCancelBackground};}
+    .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;}
+    .equipLinkageList:after{    bottom: -40px!important;}
+    // .item-content{
+    //     height: 72px !important;
+    //     padding-right: 15px;
+    // }
+    // .item-title.item-label{
+    //     color: rgba(51,51,51,.6);
+    //     margin-top: 5px;
+    // }
+    // .item-input-wrap {
+    //     position: absolute;
+    //     bottom: 8px;
+    // }
+    input{
+        &::-webkit-input-placeholder{
+            color: rgba(51,51,51,.2);
+        }
+    }
+    .comfirmModify{color: #{$btnWhiteFontColor};width: 43%;margin: 5% 5% 15% 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;font-weight: 600;letter-spacing: 2px;}
+    .comfirmCancel{margin: 5% 2% 15% 5%;background: #{$btnCancelBackground};}
 }
-.scheduleModifyContainer_equipgroup{height: 60%;&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
+.scheduleModifyContainer_equipgroup{height: 60%;background: #{$situationContainerBgc};&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
 
 .popup-aboutuser { 
 	position: absolute;background: #{$popupBackground};padding: 5%;
