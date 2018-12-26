@@ -23,7 +23,7 @@
 }
 
 .md .page>.navbar~.searchbar {
-    top: 45px;
+    top: 44px;
 }
 
 .md .page>.searchbar~* .page-content,
@@ -53,7 +53,6 @@
 
 #equips {
     .searchbar {
-        background: #fff;
         &:after {
             height: 1px;
         }
@@ -101,7 +100,6 @@
 
 #ycAndyx {
     .searchbar {
-        z-index: 1;
         background: #fff;
         &:after {
             height: 0px;

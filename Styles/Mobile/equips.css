@@ -10,7 +10,7 @@ mixin：sass宏mixin
   display: none; }
 
 .md .page > .navbar ~ .searchbar {
-  top: 45px; }
+  top: 44px; }
 
 .md .page > .searchbar ~ * .page-content,
 .md .page > .searchbar ~ .page-content {
@@ -32,14 +32,12 @@ mixin：sass宏mixin
   -webkit-transform: scaleY(0.33);
   transform: scaleY(0.33); }
 
-#equips .searchbar {
-  background: #fff; }
-  #equips .searchbar:after {
-    height: 1px; }
-  #equips .searchbar .search {
-    background: #f6f6f6; }
-  #equips .searchbar .searchbar-disable-button {
-    color: #2d8cf0; }
+#equips .searchbar:after {
+  height: 1px; }
+#equips .searchbar .search {
+  background: #f6f6f6; }
+#equips .searchbar .searchbar-disable-button {
+  color: #2d8cf0; }
 #equips .ios .searchbar:after {
   height: 0; }
 #equips .equip-list {
@@ -61,7 +59,6 @@ mixin：sass宏mixin
   transform: none !important; }
 
 #ycAndyx .searchbar {
-  z-index: 1;
   background: #fff; }
   #ycAndyx .searchbar:after {
     height: 0px; }

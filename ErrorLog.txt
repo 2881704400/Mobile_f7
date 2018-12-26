@@ -102,3 +102,15 @@ System.IO.DirectoryNotFoundException: 未能找到路径“D:\PPT”的一部分
    在 GWService.Net.Data.Methods.GetFileAll(String filePath, String fileName, String fileType) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 515
 -------------------------------------
 
+----------2018/12/26 10:17:25----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.EventQueryHistory(String tableName, String times, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 914
+-------------------------------------
+
+----------2018/12/26 13:04:58----------
+System.ArgumentOutOfRangeException: 长度不能小于 0。
+参数名: length
+   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 GWService.Net.ClassLib.GetEquipAllState() 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 718
+-------------------------------------
+

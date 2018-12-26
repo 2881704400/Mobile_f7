@@ -2,12 +2,19 @@ var equip_list = null,
 	realEquipList = "",
 	EqpEvtData = null,
 	SetEvtData = null,
-	SysEvtData = null;
-var eventDetailPopup;
+	SysEvtData = null,
+	EqpEvtDataFlag = true,
+	SetEvtDataFlag = true,
+	SysEvtDataFlag = true;
+var equipPicker;
 
 function eventSearch() {
 	switchToolbar("configTool");
-
+	
+	EqpEvtDataFlag = true,
+	SetEvtDataFlag = true,
+	SysEvtDataFlag = true;
+	
 	//初始化
 	$("#eventSearchTimeId").val(getNowTime() + " - " + getNowTime());
 	$("#eventSearchEquipId").val("全部设备");
@@ -34,80 +41,14 @@ function eventSearch() {
 					var searchTimeArrs = searchTime.split(" - ");
 					if(searchTimeArrs.length == 1) {
 						realSearchTime += searchTimeArrs[0] + " - " + searchTimeArrs[0];
-					}else{
-						realSearchTime=searchTime;
+					} else {
+						realSearchTime = searchTime;
 					}
 					$("#eventSearchTimeId").val(realSearchTime);
 				}
 			},
 		}
 	});
-
-	eventDetailPopup = myApp.popup.create({
-		content: '<div class="popup eventDetailPopup">' +
-			'	<div class="navbar">' +
-			'		<div class="navbar-inner">' +
-			'			<div class="left hideMenu">' +
-			'				<a class="back link" href="#">' +
-			'					<i class="iconfont icon-back">' +
-			'            </i>' +
-			'				</a>' +
-			'			</div>' +
-			'			<div class="center sliding title eventDetailPopupTitle">' +
-			'				设备事件详情' +
-			'			</div>' +
-			'			<div class="right">' +
-			'				<a href="#" class="link popup-close">关闭</a>' +
-			'			</div>' +
-			'		</div>' +
-			'	</div>' +
-			'	<div class="page-content">' +
-			'	<div class="list eventDetailList">' +
-			'		<ul>' +
-			'			<li class="item-content item-input">' +
-			'				<div class="item-inner">' +
-			'					<div class="item-title item-label">Name</div>' +
-			'					<div class="item-input-wrap">' +
-			'						<input type="text" name="name">' +
-			'					</div>' +
-			'				</div>' +
-			'			</li>' +
-			'		</ul>' +
-			'	</div>' +
-			'</div>' +
-			'</div>'
-	});
-
-	//事件类型选择
-	/*var pickerModel = myApp.picker.create({
-		inputEl: '#eventSearchTypeId',
-		rotateEffect: false,
-		renderToolbar: function() {
-			return '<div class="toolbar">' +
-				'<div class="toolbar-inner">' +
-				'<div class="left">' +
-				'<a href="#" class="link sheet-close popover-close">取消</a>' +
-				'</div>' +
-				'<div class="center">' +
-				'<a href="#" class="link toolbar-randomize-link">选择设备</a>' +
-				'</div>' +
-				'<div class="right">' +
-				'<a href="#" class="link sheet-close popover-close">确定</a>' +
-				'</div>' +
-				'</div>' +
-				'</div>';
-		},
-		cols: [{
-			textAlign: 'center',
-			values: ['全部事件类型', '设备事件', '设置事件', '系统事件']
-		}],
-		on: {
-			change: function(picker, values, displayValues) {
-				$("#eventSearchTypeId").html(values);
-			},
-		}
-	});*/
-
 }
 
 //加载所有设备
@@ -132,7 +73,7 @@ function onEquipLists() {
 				realEquipList = realEquipList.substring(0, realEquipList.length - 1);
 			}
 			//设备选择
-			myApp.picker.create({
+			equipPicker = myApp.picker.create({
 				inputEl: '#eventSearchEquipId',
 				rotateEffect: false,
 				renderToolbar: function() {
@@ -157,8 +98,46 @@ function onEquipLists() {
 				on: {
 					change: function(picker, values, displayValues) {
 						$("#eventSearchEquipId").html(values);
+						$("#eventSearchEquipId").attr("readonly", false);
 					},
+					closed: function(picker) {
+						var value = picker.cols[0].values[0];
+						var realValue = equipPicker.cols[0].value;
+						equipPicker.cols[0].replaceValues(allEquipList, "");
+						var inputValue = $("#eventSearchEquipId").val();
+						var equipCountNum = false;
+						for(var n = 0; n < allEquipList.length; n++) {
+							if(allEquipList[n] == inputValue) {
+								equipCountNum = true;
+								break;
+							}
+						}
+						if(!equipCountNum) {
+							equipPicker.cols[0].setValue(value);
+							$("#eventSearchEquipId").val(value);
+						} else {
+							equipPicker.cols[0].setValue(realValue);
+						}
+						$("#eventSearchEquipId").attr("readonly", true);
+					},
+					opened: function(e) {
+						$("#eventSearchEquipId").attr("readonly", false);
+					}
 				}
+			});
+
+			$("#eventSearchEquipId").bind('input', function() {
+				var value = $(this).val();
+				var strValueArr = [];
+				for(var n = 0; n < allEquipList.length; n++) {
+					if(allEquipList[n].indexOf(value) > -1) {
+						strValueArr.push(allEquipList[n]);
+					}
+				}
+				if(strValueArr.length > 0) {
+					equipPicker.cols[0].replaceValues(strValueArr, "");
+				}
+
 			});
 			//			searchEquipItems();
 		}
@@ -184,12 +163,12 @@ function searchEquipItems() {
 	var realSearchEquip = "";
 	for(var n = 0; n < equip_list.length; n++) {
 		if(equip_list[n][0] == searchEquip) {
-			if(equip_list[n][0]=="全部设备"){
+			if(equip_list[n][0] == "全部设备") {
 				realSearchEquip = realEquipList;
-			}else{
+			} else {
 				realSearchEquip = equip_list[n][1];
 			}
-			
+
 			break;
 		}
 	}
@@ -225,47 +204,50 @@ function searchEquipItems() {
 			$("#eventSearchEquipsId").html(strData);
 			myApp.dialog.close();
 
-			// Loading flag
-			var allowInfinite = true;
-			var lastItemIndex = $$('#eventSearchSetId li').length;
-			var maxItems = EqpEvtData.length;
-			var itemsPerLoad = 20;
+			if(EqpEvtDataFlag) {
+				// Loading flag
+				var allowInfinite = true;
+				var lastItemIndex = $$('#eventSearchSetId li').length;
+				var maxItems = EqpEvtData.length;
+				var itemsPerLoad = 20;
 
-			var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
-			var nScrollTop = 0; //滚动到的当前位置
-			var nDivHight = $("#tab1").height();
-			$("#tab1").unbind('srcoll').bind('scroll', function() {
-				nScrollHight = $(this)[0].scrollHeight;
-				nScrollTop = $(this)[0].scrollTop;
-				if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-					myApp.dialog.progress();
+				var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
+				var nScrollTop = 0; //滚动到的当前位置
+				var nDivHight = $("#tab1").height();
+				$("#tab1").unbind('srcoll').bind('scroll', function() {
+					nScrollHight = $(this)[0].scrollHeight;
+					nScrollTop = $(this)[0].scrollTop;
+					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
+						myApp.dialog.progress();
 
-					allowInfinite = false;
+						allowInfinite = false;
 
-					setTimeout(function() {
-						allowInfinite = true;
-						if(lastItemIndex >= maxItems) {
+						setTimeout(function() {
+							allowInfinite = true;
+							if(lastItemIndex >= maxItems) {
+								myApp.dialog.close();
+								myApp.dialog.alert("没有更多数据了");
+								return;
+							}
+
+							var html = '';
+							var lastItemIndexMax = lastItemIndex + itemsPerLoad;
+							lastItemIndexMax = lastItemIndexMax >= maxItems ? maxItems : lastItemIndexMax;
+							for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
+								html += "<li onclick='showEventDetail(0,\"" + EqpEvtData[i].time + "\",\"" + EqpEvtData[i].event + "\")'>" +
+									'		<span>' + EqpEvtData[i].time + '</span>' +
+									'		<span>' + EqpEvtData[i].equip_nm + '</span>' +
+									'		<span>' + EqpEvtData[i].event + '</span>' +
+									'	</li>';
+							}
+							$$('#eventSearchSetId').append(html);
+							lastItemIndex = $$('#eventSearchSetId li').length;
 							myApp.dialog.close();
-							myApp.dialog.alert("没有更多数据了");
-							return;
-						}
-
-						var html = '';
-						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
-						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
-						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
-							html += "<li onclick='showEventDetail(0,\"" + EqpEvtData[i].time + "\",\"" + EqpEvtData[i].event + "\")'>" +
-								'		<span>' + EqpEvtData[i].time + '</span>' +
-								'		<span>' + EqpEvtData[i].equip_nm + '</span>' +
-								'		<span>' + EqpEvtData[i].event + '</span>' +
-								'	</li>';
-						}
-						$$('#eventSearchSetId').append(html);
-						lastItemIndex = $$('#eventSearchSetId li').length;
-						myApp.dialog.close();
-					}, 1000);
-				}
-			});
+						}, 1000);
+					}
+				});
+				EqpEvtDataFlag = false;
+			}
 		}
 		JQajaxoNoCancel("post", _url, true, _data, _successEqp);
 	} else if(searchTabType == "设置事件") {
@@ -291,47 +273,51 @@ function searchEquipItems() {
 			$("#eventSearchSetId").html(strData);
 			myApp.dialog.close();
 
-			// Loading flag
-			var allowInfinite = true;
-			var lastItemIndex = $$('#eventSearchSetId li').length;
-			var maxItems = SetEvtData.length;
-			var itemsPerLoad = 20;
+			if(SetEvtDataFlag) {
+				// Loading flag
+				var allowInfinite = true;
+				var lastItemIndex = $$('#eventSearchSetId li').length;
+				var maxItems = SetEvtData.length;
+				var itemsPerLoad = 20;
 
-			var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
-			var nScrollTop = 0; //滚动到的当前位置
-			var nDivHight = $("#tab2").height();
-			$("#tab2").unbind('srcoll').bind('scroll', function() {
-				nScrollHight = $(this)[0].scrollHeight;
-				nScrollTop = $(this)[0].scrollTop;
-				if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-					myApp.dialog.progress();
+				var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
+				var nScrollTop = 0; //滚动到的当前位置
+				var nDivHight = $("#tab2").height();
+				$("#tab2").unbind('srcoll').bind('scroll', function() {
+					nScrollHight = $(this)[0].scrollHeight;
+					nScrollTop = $(this)[0].scrollTop;
+					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
+						myApp.dialog.progress();
 
-					allowInfinite = false;
+						allowInfinite = false;
 
-					setTimeout(function() {
-						allowInfinite = true;
-						if(lastItemIndex >= maxItems) {
+						setTimeout(function() {
+							allowInfinite = true;
+							if(lastItemIndex >= maxItems) {
+								myApp.dialog.close();
+								myApp.dialog.alert("没有更多数据了");
+								return;
+							}
+
+							var html = '';
+							var lastItemIndexMax = lastItemIndex + itemsPerLoad;
+							lastItemIndexMax = lastItemIndexMax >= maxItems ? maxItems : lastItemIndexMax;
+							for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
+								html += "<li onclick='showEventDetail(1,\"" + SetEvtData[i].time + "\",\"" + SetEvtData[i].event + "\")'>" +
+									'		<span>' + SetEvtData[i].time + '</span>' +
+									'		<span>' + SetEvtData[i].equip_nm + '</span>' +
+									'		<span>' + SetEvtData[i].event + '</span>' +
+									'	</li>';
+							}
+							$$('#eventSearchSetId').append(html);
+							lastItemIndex = $$('#eventSearchSetId li').length;
 							myApp.dialog.close();
-							myApp.dialog.alert("没有更多数据了");
-							return;
-						}
+						}, 1000);
+					}
+				});
+				SetEvtDataFlag = false;
+			}
 
-						var html = '';
-						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
-						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
-						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
-							html += "<li onclick='showEventDetail(1,\"" + SetEvtData[i].time + "\",\"" + SetEvtData[i].event + "\")'>" +
-								'		<span>' + SetEvtData[i].time + '</span>' +
-								'		<span>' + SetEvtData[i].equip_nm + '</span>' +
-								'		<span>' + SetEvtData[i].event + '</span>' +
-								'	</li>';
-						}
-						$$('#eventSearchSetId').append(html);
-						lastItemIndex = $$('#eventSearchSetId li').length;
-						myApp.dialog.close();
-					}, 1000);
-				}
-			});
 		}
 		JQajaxoNoCancel("post", _url, true, _data, _successSet);
 	} else {
@@ -356,150 +342,55 @@ function searchEquipItems() {
 			$("#eventSearchSystemId").html(strData);
 			myApp.dialog.close();
 
-			// Loading flag
-			var allowInfinite = true;
-			var lastItemIndex = $$('#eventSearchSystemId li').length;
-			var maxItems = SysEvtData.length;
-			var itemsPerLoad = 20;
+			if(SysEvtDataFlag) {
+				// Loading flag
+				var allowInfinite = true;
+				var lastItemIndex = $$('#eventSearchSystemId li').length;
+				var maxItems = SysEvtData.length;
+				var itemsPerLoad = 20;
 
-			var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
-			var nScrollTop = 0; //滚动到的当前位置
-			var nDivHight = $("#tab3").height();
-			$("#tab3").unbind('srcoll').bind('scroll', function() {
-				nScrollHight = $(this)[0].scrollHeight;
-				nScrollTop = $(this)[0].scrollTop;
-				if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-					allowInfinite = false;
-					myApp.dialog.progress();
+				var nScrollHight = 0; //滚动距离总长(注意不是滚动条的长度)
+				var nScrollTop = 0; //滚动到的当前位置
+				var nDivHight = $("#tab3").height();
+				$("#tab3").unbind('srcoll').bind('scroll', function() {
+					nScrollHight = $(this)[0].scrollHeight;
+					nScrollTop = $(this)[0].scrollTop;
+					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
+						allowInfinite = false;
+						myApp.dialog.progress();
 
-					setTimeout(function() {
-						allowInfinite = true;
-						if(lastItemIndex >= maxItems) {
+						setTimeout(function() {
+							allowInfinite = true;
+							if(lastItemIndex >= maxItems) {
+								myApp.dialog.close();
+								myApp.dialog.alert("没有更多数据了");
+								return;
+							}
+
+							var html = '';
+							var lastItemIndexMax = lastItemIndex + itemsPerLoad;
+							lastItemIndexMax = lastItemIndexMax >= maxItems ? maxItems : lastItemIndexMax;
+							for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
+								html += "<li onclick='showEventDetail(2,\"" + SysEvtData[i].time + "\",\"" + SysEvtData[i].event + "\")'>" +
+									'		<span>' + SysEvtData[i].time + '</span>' +
+									'		<span>' + SysEvtData[i].event + '</span>' +
+									'	</li>';
+							}
+							$$('#eventSearchSystemId').append(html);
+							lastItemIndex = $$('#eventSearchSystemId li').length;
 							myApp.dialog.close();
-							myApp.dialog.alert("没有更多数据了");
-							return;
-						}
-
-						var html = '';
-						var lastItemIndexMax=lastItemIndex + itemsPerLoad;
-						lastItemIndexMax=lastItemIndexMax>=maxItems?maxItems:lastItemIndexMax;
-						for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
-							html += "<li onclick='showEventDetail(2,\"" + SysEvtData[i].time + "\",\"" + SysEvtData[i].event + "\")'>" +
-								'		<span>' + SysEvtData[i].time + '</span>' +
-								'		<span>' + SysEvtData[i].event + '</span>' +
-								'	</li>';
-						}
-						$$('#eventSearchSystemId').append(html);
-						lastItemIndex = $$('#eventSearchSystemId li').length;
-						myApp.dialog.close();
-					}, 1000);
-				}
-			});
+						}, 1000);
+					}
+				});
+				SysEvtDataFlag = false;
+			}
 		}
 		JQajaxoNoCancel("post", _url, true, _data, _successSys);
 	}
 }
 
 function showEventDetail(type, time, event) {
-	eventDetailPopup.open();
-	var strData = "";
-	if(type == 0) {
-		for(var i = 0; i < EqpEvtData.length; i++) {
-			if(EqpEvtData[i].time == time && EqpEvtData[i].event == event) {
-				strData += '<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">时间</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + time + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">设备名称</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + EqpEvtData[i].equip_nm + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">设备事件</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<textareareadonly>"' + event + '"</textarea>' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>';
-				break;
-			}
-		}
-		$(".eventDetailPopupTitle").html("设备事件详情");
-		$(".eventDetailList").html(strData);
-	} else if(type == 1) {
-		for(var i = 0; i < SetEvtData.length; i++) {
-			if(SetEvtData[i].time == time && SetEvtData[i].event == event) {
-				strData += '<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">时间</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + time + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">设备名称</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + SetEvtData[i].equip_nm + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">操作人</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + SetEvtData[i].operator + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">设备事件</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<textarea readonly>"' + event + '"</textarea>' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>';
-				break;
-			}
-		}
-		$(".eventDetailPopupTitle").html("设置事件详情");
-		$(".eventDetailList").html(strData);
-	} else {
-		for(var i = 0; i < SysEvtData.length; i++) {
-			if(SysEvtData[i].time == time && SysEvtData[i].event == event) {
-				strData += '<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">时间</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<input type="text" name="name" readonly value="' + time + '">' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>' +
-					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
-					'					<div class="item-title item-label">设备事件</div>' +
-					'					<div class="item-input-wrap">' +
-					'						<textarea readonly>"' + event + '"</textarea>' +
-					'					</div>' +
-					'				</div>' +
-					'			</li>';
-				break;
-			}
-		}
-		$(".eventDetailPopupTitle").html("系统事件详情");
-		$(".eventDetailList").html(strData);
-	}
+	myApp.router.navigate("/equipSearchDetail/?"+type+"&"+time+"&"+event+"");
 }
 
 function getNowTime() {

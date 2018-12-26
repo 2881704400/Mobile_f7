@@ -32,15 +32,13 @@ $(document).on("page:beforein", ".page[data-page='systemConfig']", function (e) 
 });
 
 //事件查询
-$(document).on("page:beforein", ".page[data-page='eventQuery']", function (e) {
-	
-    initPageJS('eventQuery', '/Scripts/mobile/pageJavascript/');
+$(document).on("page:beforein", ".page[data-page='eventSearch']", function (e) {
+    initPageJS('eventSearch', '/Scripts/mobile/pageJavascript/');
 });
 
-//事件查询-新
-$(document).on("page:beforein", ".page[data-page='eventSearch']", function (e) {
-	
-    initPageJS('eventSearch', '/Scripts/mobile/pageJavascript/');
+//事件查询-详情
+$(document).on("page:beforein", ".page[data-page='equipSearchDetail']", function (e) {
+    initPageJS('equipSearchDetail', '/Scripts/mobile/pageJavascript/');
 });
 
 //报警排表
