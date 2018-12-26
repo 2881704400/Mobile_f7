@@ -3,14 +3,13 @@
 @import 'public.scss';
 
 .scheduleContainer{
-    height: 100%;position: relative;padding: 1rem;
+    height: 100%;position: relative;
     &>.subnavbarTabel{
-    	height: 3rem;line-height: 3rem;
-    	&>a{font-size: #{$tableHeaderFontSize*0.8};border: 1px solid #{$tabBackground};border-right: 0;height: 100%;white-space: nowrap;text-align: center;}
-        &>a:last-child{border-right: 1px solid #{$tabBackground};}
+    	height: 36px;line-height: 36px;border-bottom: 1px solid #{$inputBorderColor};
+    	&>a{font-size: #{$tableHeaderFontSize*0.9};border-right: 0;height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.scheduleContent{
-        position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;overflow-y:auto; 
+        position: absolute;top: 36px;left: 0rem;right: 0rem;bottom: 0rem;overflow-y:auto; 
         //人员
     	#schedule_user{
              li{width: 100%;height: 50px;position: relative;padding: 5px 0;
@@ -18,8 +17,8 @@
                     &>i{font-size: 2.5rem;position: absolute;left: 3px;top: 3px;}
                     &>div:nth-of-type(1){height: 40px;text-align: left;padding-left: 50px;
                         &>p{margin: 0;line-height: 20px;}
-                        &>p:nth-child(1){font-size: 12px;}
-                        &>p:nth-child(2){font-size: 14px;margin: 0;line-height: 20px;&>label{font-size: 1rem;color: #FF3B30;}}
+                        &>p:nth-child(1){font-size: 1rem;}
+                        &>p:nth-child(2){font-size: 12px;margin: 0;line-height: 20px;&>label{font-size: 1rem;color: #FF3B30;}}
                     }
                     &>div:nth-of-type(2){height: 100%;line-height: 40px;text-align: center;}
                 }
@@ -46,7 +45,7 @@
                 &>label:last-child{border-right: 0;}
              }
             &>ul{
-                position: absolute;left: 0;top: 35px;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
+                position: absolute;left: 0;top: 0;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
                 &>li{
                     font-size: 12px;height: 35px;line-height: 35px;position: relative;
                     .delBtn{background: #FF3B30;}
@@ -58,13 +57,13 @@
 }
 
 .equipLinkageContainer{
-    height: 100%;position: relative;padding: 1rem;
+    height: 100%;position: relative;
     &>.subnavbarTabel{
-        height: 3rem;line-height: 3rem;overflow: hidden;
-        &>a{font-size: #{$tableHeaderFontSize*0.8};    height: 100%;border: 1px solid  #{$tabBackground};white-space: nowrap;text-align: center;}
+        height: 36px;line-height: 36px;overflow: hidden;border-bottom: 1px solid #{$inputBorderColor};
+        &>a{font-size: #{$tableHeaderFontSize*0.9};    height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{
-        position: absolute;top: 4rem;left: 1rem;right: 1rem;bottom: 1rem;
+        position: absolute;top: 36px;left: 0;right: 0;bottom: 0;
         &>div.equipGroupPublic{height: 100%;margin: 0;overflow: auto;}
             thead{ font-size: #{$tableHeaderFontSize};color: #{$tableHeaderFontColor};background: #{$tableHeaderBgc};}
             tbody{
@@ -81,7 +80,7 @@
                 &>label:last-child{border-right: 0;}
             }
             &>ul{
-                position: absolute;left: 0;top: 44px;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
+                position: absolute;left: 0;top: 0;right: 0;bottom: 0;overflow-y: auto;padding-bottom: 50px;
                 &>li{
                     font-size: 12px;height: 35px;line-height: 35px;position: relative;
                     .delBtn{background: #FF3B30;}
@@ -89,6 +88,7 @@
             }
         }
         #equipLinkage_edit{height: 100%;margin: 0;overflow: hidden;&>ul{height: 100%;overflow-y: auto;padding-bottom: 50px;}}
+        .item-input-wrap{border-bottom: 1px solid #{$tabSelected};}
     }
         #schedule_user>table{min-width: auto;}
         .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
@@ -100,10 +100,10 @@
                         font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 5px;background: #{$btnBackground}; 
                    }
                  }
-                 &>a{.item-inner:after{height: 0px!important;}}
+                 // &>a{.item-inner:after{height: 0px!important;}}
                 }
             }
-            &>ul:after,&>ul:before{height: 0px!important;}
+            // &>ul:after,&>ul:before{height: 0px!important;}
            .sceneList{ 
             &>li{padding: 5% 0;
               &>div.sceneHeader{
@@ -123,11 +123,16 @@
                 .rightBtnModul{
                     line-height: 40px;text-align: center;
                     &>a{i{color: #{$situationFontColor};font-size:  1.5rem;padding: 0;}}
-                }
-              }
             }
           }
         }
+      }
+    }
+}
+
+.scheduleModifyContainer{
+    input{color: #{$tabSelected};font-size: 1rem;}
+    .comfirmModify{color: #{$btnFontColor};width: 80%;margin: 20% 10% 0 10%;padding: 1rem;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;}
 }
 
 .popup-aboutuser { 
@@ -148,16 +153,12 @@
 
 .equipAlertHeader{padding: 10px;&>label{margin: 0px 5px;}}
 .equipAlertContent{&>div{line-height: 40px;padding: 10px;} select,input{font-size: 0.8rem;height: 40px;line-height: 40px;text-indent: 10px;border: 1px solid #{$inputBorderColor};}}
-
 .bottomBorderLine:after{content:"";width: 100%;height: 1px;display: inline-block; position: absolute;bottom: 0;left: 0;border-bottom: 1px solid #{$inputBorderColor};transform: scaleY(0.5);}
 .linkColor{color: #{$tabSelected}!important;}
 //选中菜单颜色
-.selectScheduleMenu{color: #{$tabFontColor}!important;font-size: 12px;background: #{$tabSelected};}
+.selectScheduleMenu{color: #{$tabSelected}!important;font-size: 12px;border-bottom: 2px solid #{$tabSelected};}
 //添加按钮
 .scheduleRightBottomBtn{position: absolute;right: 5%;bottom: 10%;&>a{&>i{font-size: 3rem;color: #{$tabSelected};}}}
-.item-input-wrap{border-bottom: 1px solid #{$tabSelected};}
+
 .item-input-wrap input{border: 0;}
 .dialog-input-field .item-input-wrap input{border-bottom: 1px solid #{$tabSelected}!important;}
-    
-
- // border-bottom: 1px solid #{$btnBackground};

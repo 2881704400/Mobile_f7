@@ -2,14 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-<<<<<<< HEAD
-
-	// myApp.router.navigate("/schedule/"); 
-
-=======
-	// myApp.router.navigate("/schedule/"); 
->>>>>>> 95413c1a383955c9ef5e6dbcc2af6be3a8a50d80
-
+	myApp.router.navigate("/scheduleModify/"); 
     getJurisdictionData();
 
 }
@@ -61,9 +54,14 @@ function VideoBaner(className, slistName, jsonString) {
         if (i % 8 == 0 || i == 0) {
             xhTrailer++;
             var htmlTrailer = "<div class=\"swiper-slide\" dataID='" + xhTrailer + "'>" + "<ul class=\"row\" >" + htmlTrailerChild + "</ul></div>";
+
             $("." + className + " .swiper-wrapper").append(htmlTrailer);
         } else {
             $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").append(htmlTrailerChild);
+        }
+        if(i == countTrailer-1 && $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").find("li").length<8)
+        {
+            $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").addClass("homeControlFunction");
         }
     }
     $(".swiper-paginationTrailer").html(""); 

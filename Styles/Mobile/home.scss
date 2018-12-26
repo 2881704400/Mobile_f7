@@ -110,4 +110,6 @@ mixin：sass宏mixin
     }
     //幻灯片
     .swiper-paginationTrailer{width: 100%;position: absolute;bottom: -1%;left: 50%;transform: translateX(-50%);&>span{margin: 0px 1%;}}
+    // .homeControlFunction:before{ content: "";flex: auto;}
+    .homeControlFunction:after{ content: "";flex: auto;}
 }

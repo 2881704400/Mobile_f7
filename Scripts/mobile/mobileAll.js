@@ -79,7 +79,12 @@ var myApp = new Framework7({
     }, {
         path: '/mettingDetails/',
         url: 'mettingDetails.html',
-    }],
+    },
+    {
+        path: '/scheduleModify/',
+        url: 'scheduleModify.html',
+    },
+    ],
     on: {
         pageInit: function(page) {
             $("#voiceContainer").addClass("voiceContainer");
@@ -533,28 +538,23 @@ function get_no_set(dt,values) {
     catch(e){
         // myApp.dialog.alert("请先绑定功能设备号");
     }
-    if(set_equipOld.trim() || set_equipOld.trim() =="") return false;
-    var ajaxVar = $.ajax({
-        type: "POST",
-        url: "/GWService.asmx/GetDataTableFromSQL",
-        timeout: 5000,
-        data: {
-            sql: "select * from setParm where equip_no =" + set_equipOld + " and set_no=" + set_noOld,
-            userName: window.localStorage.userName,
-        },
-        success: function(data) {
-            var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-            if (dt.find("equip_no").html() != "") {
-                if (values == "") onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-                else onSetCommand(dt, set_equipOld, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-            } else {
-                alertMsgError.open();
-            }
+    if(!set_equipOld.trim() || set_equipOld.trim() =="") return false;
+    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
+        var result = n.HttpData.data;
+        if (result.length>0) {
+            if (values == "") 
+                onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
+            else 
+                onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
+        } else {
+            alertMsgError.open();
         }
+    }).fail(function(e){
+       alertMsgError.open();
     });
 }
 function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
-    var ajaxVar = $.ajax({
+    $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
         timeout: 5000,
@@ -566,7 +566,7 @@ function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
             user_name: window.localStorage.userName
         },
         success: function(data) {
-            alertMsgSuccess.open();
+            $(data).find("string").text() == "true"?alertMsgSuccess.open():alertMsgError.open();
         }
     });
 }

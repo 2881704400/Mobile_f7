@@ -3,7 +3,6 @@
 $(document).on("page:beforein", ".page[data-page='home']", function (e) {
     onHomePage();
 });
-
 //实时快照
 $(document).on("page:beforein", ".page[data-page='snapshot']", function (e) {
     initPageJS('snapshot', '/Scripts/mobile/pageJavascript/');
@@ -87,4 +86,8 @@ $(document).on("page:beforein", ".page[data-page='mettingDetails']", function (e
 // 欢迎词
 $(document).on("page:beforein", ".page[data-page='welcomeWords']", function (e) {
     initPageJS('welcomeWords', '/Scripts/mobile/pageJavascript/');
+});
+// 报警排表内容修改
+$(document).on("page:beforein", ".page[data-page='scheduleModify']", function (e) {
+    initPageJS('scheduleModify', '/Scripts/mobile/pageJavascript/');
 });

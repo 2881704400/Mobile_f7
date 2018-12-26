@@ -1,6 +1,6 @@
 function Video() {
 	if ($("#Video_tree").find("li").length == 0) {
-		equipVideo();
+		equipVideoList();
 	}
 	$$('#Video_content_ref').on("ptr:refresh", refresh_Video);
 
@@ -10,7 +10,7 @@ function refresh_Video(e) {
     
 	setTimeout(function() {
 		$("#Video_tree").html("");
-		equipVideo();
+		equipVideoList();
 		// 加载完毕需要重置
 		e.detail();
 		myApp.toast.create({
@@ -22,7 +22,7 @@ function refresh_Video(e) {
 
 }
 var tableVideoConfig;
-function equipVideo() {
+function equipVideoList() {
 	var _url = service + "/VideoConfigs";
 	var _data = "data=equip";
 	function _sccess(data) {

@@ -1,35 +1,10 @@
-var scheduleTimeAler, scheduleAlert, scheduleAlertSusscess;
-function schedule() {
-    switchToolbar("configTool");
-    scheduleAlert = myApp.toast.create({
-        text: "操作失败",
-        position: 'center',
-        closeTimeout: 2000,
-    });
-    scheduleAlertSusscess = myApp.toast.create({
-        text: "操作成功",
-        position: 'center',
-        closeTimeout: 2000,
-    });
-    scheduleTimeAlert = function(txt) {
-        return myApp.toast.create({
-            text: txt,
-            position: 'center',
-            closeTimeout: 2000,
-        })
-    };
-    //顶部菜单切换
-    $(".subnavbarTabel>a").unbind();
-    $(".subnavbarTabel>a").bind("click", function() {
-        $(this).addClass("selectScheduleMenu").siblings().removeClass("selectScheduleMenu");
-        //切换
-        switchMenu(this);
-        //顶部添加
-        $($(this).attr("href") + "_nav").removeClass("displayNone").siblings().addClass("displayNone");
-    });
-    //人员数据请求
-    schedule_public_username.length = 0;
-    requestUser();
+
+function scheduleModify() {
+    var chatObject = myApp.views.main.history,
+    urlLength = chatObject.length - 1,
+    receiveUser = chatObject[urlLength].split("?")[1],msgArray=[];
+    receiveUser?msgArray = receiveUser.split("&"):"";
+    
 }
 // ********************************************************************************
 // 人员
@@ -49,14 +24,14 @@ function requestUser() {
                     let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
                     let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
                     let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
-                    html += `<li class="swipeout bottomBorderLine" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1,${disabled})">
+                    html += `<li class="swipeout bottomBorderLine">
                           <div class="item-content swipeout-content schedule-content row no-gap">
                             <i class="iconfont icon-f7_usersName"></i>
                             <div class="col-50">
                                 <p>${arrayLike[i].Administrator}</p>
                                 <p>报警级别: <label>${arrayLike[i].AckLevel}</label></p>
                             </div>
-                            <div class="col-50"><a href="#" class="detailsBtn linkColor" >详情</a>   </div>              
+                            <div class="col-50"><a href="#" class="detailsBtn linkColor" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1,${disabled})">详情</a>   </div>              
                           </div>
                           <div class="swipeout-actions-right">
                             <a href="#" class="delBtn" onclick="delUser(this,${arrayLike[i].Administrator})">删除</a>
@@ -75,7 +50,8 @@ function requestUser() {
 }
 //人员html
 function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, index, status) {
-    myApp.router.navigate("/scheduleModify/?table=schedule_user&userName="+userName+"&telphone="+telphone+"&telmobile="+telmobile+"&emailValue="+emailValue+"&ackLevel="+ackLevel); 
+    var html = '<div class="popup popup-aboutuser">' + '<h1>人员信息修改</h1>' + '<div class="popupContent list inline-labels no-hairlines-md">' + '<ul>' + '<li class="item-content item-input" style="padding-left: 0;">' + '<div class="item-inner">' + '<div class="item-title item-label">人员姓名</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="你的姓名" value = "' + userName.toString().trim() + '"  class="userName" ' + status + '>' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">' + '<div class="item-inner">' + '<div class="item-title item-label">电话号码</div>' + '<div class="item-input-wrap">' + '<input type="number" placeholder="你的电话号码" value = "' + telphone + '" class="telphone">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">' + '<div class="item-inner">' + '<div class="item-title item-label">短信号码</div>' + '<div class="item-input-wrap">' + '<input type="number" placeholder="你的邮箱" value = "' + telmobile + '" class="telmobile">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">' + '<div class="item-inner">' + '<div class="item-title item-label">电子邮箱</div>' + '<div class="item-input-wrap">' + '<input type="email" placeholder="你的电话号码" value = "' + emailValue + '" class="emailValue">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">' + '<div class="item-inner">' + '<div class="item-title item-label">报警级别</div>' + '<div class="item-input-wrap">' + '<input type="number" placeholder="报警级别" value = "' + ackLevel + '" class="ackLevel">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '</ul>' + '</div>' + '<div class="popupBtb row">' + '<a class="link popup-close col-50 button" href="#">返回</a>' + '<a class="link popup-close popupOpenBtn col-50 button" href="#" onclick="updateUser(this,' + index + ')">确认</a>' + '</div>' + '</div>';
+    popupAlert(html);
 }
 //人员数据库表更新
 function updateUser(that, index) {

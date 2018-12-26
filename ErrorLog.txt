@@ -72,3 +72,580 @@ System.NullReferenceException: 未将对象引用设置到对象的实例。
    在 GWService.Net.ClassLib.GetSystemConfig(String table_name, String equip_no_list) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 654
 -------------------------------------
 
+----------2018/12/26 11:05:00----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:01----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:02----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:03----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:05----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:06----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:06----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:15----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:15----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:15----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:15----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:16----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:16----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:16----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:27----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:28----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:05:31----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:06:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:06:36----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.Data.DatatableAndJson.ToJson(DataTable dt) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\DatatableAndJson.cs:行号 38
+   在 GWService.Net.ClassLib.VideoConfig(String data) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 1266
+-------------------------------------
+
+----------2018/12/26 11:08:35----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 11:08:58----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:08:59----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:08:59----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:09:19----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:09:20----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:09:20----------
+System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterDatabaseService.GetDataTableFromSQL(String strSQL)
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:09:41----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:14----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:10:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:35----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:35----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:35----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:53----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:53----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:56----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:56----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:10:56----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
+-------------------------------------
+
+----------2018/12/26 11:10:56----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:11:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:11:14----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:11:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWService.Net.Data.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\Data\Methods.cs:行号 40
+   在 GWService.Net.ClassLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 122
+-------------------------------------
+
+----------2018/12/26 11:11:17----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 GWService.Net.ClassLib.GetDataTableFromSQL(String sql, String userName) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 161
+-------------------------------------
+
+----------2018/12/26 11:21:45----------
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String csPort, String Name, String PWD, ClientType CT, Boolean bLogin)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 55
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
+----------2018/12/26 13:12:03----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:14:45----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String auth) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 295
+-------------------------------------
+
+----------2018/12/26 13:15:05----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String auth) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 295
+-------------------------------------
+
+----------2018/12/26 13:15:42----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String auth) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 295
+-------------------------------------
+
+----------2018/12/26 13:16:25----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String auth) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 295
+-------------------------------------
+
+----------2018/12/26 13:18:17----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String auth) 位置 C:\Users\GW-007\Desktop\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 295
+-------------------------------------
+
+----------2018/12/26 13:18:30----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:19:50----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:20:31----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:20:35----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:21:21----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
+----------2018/12/26 13:21:40----------
+System.ServiceModel.FaultException: 由于内部错误，服务器无法处理该请求。有关该错误的详细信息，请打开服务器上的 IncludeExceptionDetailInFaults (从 ServiceBehaviorAttribute 或从 <serviceDebug> 配置行为)以便将异常信息发送回客户端，或打开对每个 Microsoft .NET Framework SDK 文档的跟踪并检查服务器跟踪日志。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   在 System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.SetParm(Int32 EquipNo, String strCMD1, String strCMD2, String strCMD3, String strUser)
+   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 780
+-------------------------------------
+
