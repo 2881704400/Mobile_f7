@@ -89,3 +89,7 @@ $(document).on("page:beforein", ".page[data-page='welcomeWords']", function (e) 
 $(document).on("page:beforein", ".page[data-page='scheduleModify']", function (e) {
     initPageJS('scheduleModify', '/Scripts/mobile/pageJavascript/');
 });
+// 设备联动内容修改
+$(document).on("page:beforein", ".page[data-page='equipLinkageModify']", function (e) {
+    initPageJS('equipLinkageModify', '/Scripts/mobile/pageJavascript/');
+});

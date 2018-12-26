@@ -131,12 +131,14 @@ html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {
 
 html.with-statusbar.device-android .framework7-root,
 html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
-	padding-top: 20px;
+	padding-top: 24px !important;
 }
 
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
-	height: 0px;
+	height: 24px;
+	background: #000 !important;
+	display: block !important;
 }
 
 html.device-ios .statusbar,

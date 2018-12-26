@@ -2,26 +2,31 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-	myApp.router.navigate("/scheduleModify/");
+//	myApp.router.navigate("/equipLinkageModify/");
     getJurisdictionData();
+    getAppStatusBarHeight();
 	/*setTimeout(function(){
 		getAppStatusBarHeight();
 	},3000);*/
 }
 
-/*//响应App绑定函数-获取状态栏高度
-function getStatusBarHeight(height){
-	myApp.dialog.alert("状态栏高度："+height);
-	$(".md .statusbar").height(height+"px");
+//响应App绑定函数-获取状态栏高度
+function getStatusBarHeight(height,ScreenHeight) {
+	
+	var heightRate=height/ScreenHeight;
+	var parentHeight=document.body.clientHeight;
+	heightRate=heightRate*parentHeight;
+	if(heightRate>0){
+		$(".md .statusbar").height(heightRate+"px");
+	}
 }
 
 function getAppStatusBarHeight() {
 	if(typeof(myJavaFun) != "undefined") {
-		myApp.dialog.alert("开始获取状态栏高度：");
 		//App绑定函数-获取键盘高度
 		myJavaFun.getStatusBarHeight();
 	}
-}*/
+}
 
 //授权名称
 function authorizationName() {
