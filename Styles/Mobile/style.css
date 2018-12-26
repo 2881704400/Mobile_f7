@@ -106,7 +106,7 @@ select {
 	transform: translateY(-100%);*/
 }
 
-.md .view-menu-toolbar{
+.md .view-menu-toolbar {
 	height: 50px;
 	top: 100%;
 	transform: translateY(-100%);
@@ -116,10 +116,17 @@ select {
 	padding-top: 44px!important;
 }
 
-.md .ptr-preloader{top:0!important;}
+.md .statusbar{
+	height: 20px;
+	background: #000000 !important;
+}
 
-.md .list .item-media{
-   min-width: 0!important;
+.md .ptr-preloader {
+	/*top: 0!important;*/
+}
+
+.md .list .item-media {
+	min-width: 0!important;
 }
 
 html.with-statusbar.device-ios .framework7-root,
@@ -129,19 +136,19 @@ html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {
 
 html.with-statusbar.device-android .framework7-root,
 html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
-	padding-top: 0;
+	padding-top: 20px !important;
 }
 
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
-	height: 0px;
+	height: 20px;
+	display: block !important;
 }
 
 html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
 	height: 20px;
 	background: #000;
-	
 }
 
 html.with-statusbar.device-android .panel,

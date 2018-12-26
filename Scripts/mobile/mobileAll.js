@@ -32,11 +32,11 @@ var myApp = new Framework7({
         path: '/systemConfig/',
         url: 'systemConfig.html',
     }, {
-        path: '/eventQuery/',
-        url: 'eventQuery.html',
-    }, {
         path: '/eventSearch/',
         url: 'eventSearch.html',
+    }, {
+        path: '/equipSearchDetail/',
+        url: 'equipSearchDetail.html',
     }, {
         path: '/schedule/',
         url: 'schedule.html',

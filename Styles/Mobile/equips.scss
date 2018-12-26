@@ -23,7 +23,7 @@
 }
 
 .md .page>.navbar~.searchbar {
-    top: 45px;
+    top: 44px;
 }
 
 .md .page>.searchbar~* .page-content,
@@ -53,7 +53,6 @@
 
 #equips {
     .searchbar {
-        background: #fff;
         &:after {
             height: 1px;
         }
@@ -101,7 +100,6 @@
 
 #ycAndyx {
     .searchbar {
-        z-index: 1;
         background: #fff;
         &:after {
             height: 0px;
@@ -147,12 +145,25 @@
                 padding: 1em 0;
                 background: #fff;
                 position: relative;
-                align-items: center;
+                .item-title{
+                    position: relative;
+                    top: 1px;
+                }
                 .name {
                     padding-right: 5px;
+                    max-width: 100%;
+                    display: inline-block;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
                 .val {
                     font-weight: 600;
+                    max-width: 100%;
+                    display: inline-block;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
                 .iconWrap {
                     text-align: center;

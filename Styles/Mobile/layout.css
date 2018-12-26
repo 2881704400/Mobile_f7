@@ -7,7 +7,7 @@ mixin：sass宏mixin
 */
 /*实时快照样式*/
 .md .page > .searchbar {
-  z-index: 2; }
+  background: #FFFFFF; }
 
 .snapshot-main {
   width: 100%;

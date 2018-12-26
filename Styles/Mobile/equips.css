@@ -10,7 +10,7 @@ mixin：sass宏mixin
   display: none; }
 
 .md .page > .navbar ~ .searchbar {
-  top: 45px; }
+  top: 44px; }
 
 .md .page > .searchbar ~ * .page-content,
 .md .page > .searchbar ~ .page-content {
@@ -32,14 +32,12 @@ mixin：sass宏mixin
   -webkit-transform: scaleY(0.33);
   transform: scaleY(0.33); }
 
-#equips .searchbar {
-  background: #fff; }
-  #equips .searchbar:after {
-    height: 1px; }
-  #equips .searchbar .search {
-    background: #f6f6f6; }
-  #equips .searchbar .searchbar-disable-button {
-    color: #2d8cf0; }
+#equips .searchbar:after {
+  height: 1px; }
+#equips .searchbar .search {
+  background: #f6f6f6; }
+#equips .searchbar .searchbar-disable-button {
+  color: #2d8cf0; }
 #equips .ios .searchbar:after {
   height: 0; }
 #equips .equip-list {
@@ -61,7 +59,6 @@ mixin：sass宏mixin
   transform: none !important; }
 
 #ycAndyx .searchbar {
-  z-index: 1;
   background: #fff; }
   #ycAndyx .searchbar:after {
     height: 0px; }
@@ -90,12 +87,24 @@ mixin：sass宏mixin
     #ycAndyx #tabsWrap .tab .oneLine {
       padding: 1em 0;
       background: #fff;
-      position: relative;
-      align-items: center; }
+      position: relative; }
+      #ycAndyx #tabsWrap .tab .oneLine .item-title {
+        position: relative;
+        top: 1px; }
       #ycAndyx #tabsWrap .tab .oneLine .name {
-        padding-right: 5px; }
+        padding-right: 5px;
+        max-width: 100%;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden; }
       #ycAndyx #tabsWrap .tab .oneLine .val {
-        font-weight: 600; }
+        font-weight: 600;
+        max-width: 100%;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden; }
       #ycAndyx #tabsWrap .tab .oneLine .iconWrap {
         text-align: center; }
         #ycAndyx #tabsWrap .tab .oneLine .iconWrap i {

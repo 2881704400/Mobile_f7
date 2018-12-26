@@ -1,31 +1,26 @@
 .eventSearchPageContent {
   padding-bottom: 50px !important; }
 
-.ios .eventDetailPopup {
-  margin-top: 20px; }
-  .ios .eventDetailPopup .page-content {
-    padding-top: 0px !important;
-    background-color: #F2F3F5; }
-    .ios .eventDetailPopup .page-content .eventDetailList {
-      margin: 0.5rem;
-      background-color: #FFFFFF; }
-      .ios .eventDetailPopup .page-content .eventDetailList input,
-      .ios .eventDetailPopup .page-content .eventDetailList textarea {
-        font-size: 0.875rem; }
-      .ios .eventDetailPopup .page-content .eventDetailList .item-input-wrap {
-        border-bottom: 0px solid rgba(0, 0, 0, 0.12); }
+.ios .equipSearchDetailContent.page-content {
+  background-color: #F2F3F5; }
+  .ios .equipSearchDetailContent.page-content .eventDetailList {
+    margin: 0.5rem;
+    background-color: #FFFFFF; }
+    .ios .equipSearchDetailContent.page-content .eventDetailList input,
+    .ios .equipSearchDetailContent.page-content .eventDetailList textarea {
+      font-size: 0.875rem; }
+    .ios .equipSearchDetailContent.page-content .eventDetailList .item-input-wrap {
+      border-bottom: 0px solid rgba(0, 0, 0, 0.12); }
 
-.eventDetailPopup .navbar {
+.equipSearchDetailContent .navbar {
   background-color: white;
   color: #333333; }
 
-.md .eventDetailPopup .page-content {
-  padding-top: 0px !important; }
-  .md .eventDetailPopup .page-content .eventDetailList {
-    margin: 0.5rem 0; }
-    .md .eventDetailPopup .page-content .eventDetailList input,
-    .md .eventDetailPopup .page-content .eventDetailList textarea {
-      font-size: 0.875rem; }
+.md .equipSearchDetailContent.page-content .eventDetailList {
+  margin: 0.5rem 0; }
+  .md .equipSearchDetailContent.page-content .eventDetailList input,
+  .md .equipSearchDetailContent.page-content .eventDetailList textarea {
+    font-size: 0.875rem; }
 
 .calendar-row {
   height: 15% !important;
@@ -55,7 +50,8 @@
     border-left: none; }
 
 .subnavbar.eventSearchSubNavBar {
-  background: white !important; }
+  background: white !important;
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.1); }
   .subnavbar.eventSearchSubNavBar .subnavbar-inner {
     width: 100%;
     padding: 0 0.5rem;
