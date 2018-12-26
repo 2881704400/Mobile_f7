@@ -145,13 +145,21 @@
                 padding: 1em 0;
                 background: #fff;
                 position: relative;
-                align-items: center;
+                .item-title{
+                    position: relative;
+                    top: 1px;
+                }
                 .name {
                     padding-right: 5px;
+                    max-width: 100%;
+                    display: inline-block;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
                 .val {
                     font-weight: 600;
-                    max-width: 60%;
+                    max-width: 100%;
                     display: inline-block;
                     white-space: nowrap;
                     text-overflow: ellipsis;
