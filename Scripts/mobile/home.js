@@ -2,12 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-<<<<<<< HEAD
 	myApp.router.navigate("/scheduleModify/"); 
-=======
-	// myApp.router.navigate("/schedule/");
-
->>>>>>> 3982b27e8c6d18b3c1c4652bf2c3daa7c19ff0f7
     getJurisdictionData();
 	setTimeout(function(){
 		getAppStatusBarHeight();

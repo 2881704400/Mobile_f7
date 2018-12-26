@@ -4,7 +4,27 @@ function scheduleModify() {
     urlLength = chatObject.length - 1,
     receiveUser = chatObject[urlLength].split("?")[1],msgArray=[];
     receiveUser?msgArray = receiveUser.split("&"):"";
-    
+    if(msgArray.length>0)
+     switch(msgArray[0].split("=")[1])
+     {
+        case "schedule_user": 
+          $(".schedule_username").val();
+        break;
+        case "schedule_equip": break;
+        case "schedule_administartor": break;
+        case "schedule_specificDate": break;
+        case "schedule_weeklytable": break;
+        default: break;
+     }
+}
+function isArray(str,arrayStr){
+   for(var i= 0;i<arrayStr.length;i++)
+   {
+      if(str == arrayStr[i].split("=")[0])
+      {
+        return arrayStr[i].split("=")[1];
+      }
+   }
 }
 // ********************************************************************************
 // 人员

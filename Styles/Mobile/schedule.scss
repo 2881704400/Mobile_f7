@@ -131,12 +131,17 @@
 }
 
 .scheduleModifyContainer{
-    input{color: #{$tabSelected};font-size: 1rem;}
-    .comfirmModify{color: #{$btnFontColor};width: 80%;margin: 20% 10% 0 10%;padding: 1rem;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;}
+    border-top: 10px solid #{$popupBackground};background: #{$popupBackground};
+    input{color: #396986!important;font-size: 1rem;}
+    .scheduleFooter{
+        margin-top: 20%;padding: 0 5%;
+        button{font-size: #{$btnFontSize*1.1};color: #{$btnFontColor};padding: 0.8rem;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;}
+        .cancelBtn{background: #{$btnBackground1};}
+    }
 }
 
 .popup-aboutuser { 
-	position: absolute;    background: #{$popupBackground};padding: 5%;
+	position: absolute;background: #{$popupBackground};padding: 5%;
 	h1{width: 100%;font-size: 1.2rem;padding-top: 20px;color: #{$popupBackTitle};text-align: center;    margin-bottom: 15%;}
 	.popupContent{
          height: 60%;position: relative;margin-bottom: 10%;
