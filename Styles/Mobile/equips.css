@@ -245,10 +245,6 @@ mixin：sass宏mixin
           .sheet-condition-config .sheet-modal-inner .block .list .eq-list:after {
             height: 0px; }
 
-html.with-statusbar.device-ios .popup {
-  margin-top: 20px;
-  height: calc(100% - 20px) !important; }
-
 .ios .sheet-condition-config .toolbar:before {
   background-color: #eaeaea !important;
   height: 2px; }

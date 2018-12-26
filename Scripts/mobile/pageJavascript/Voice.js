@@ -218,9 +218,8 @@ function callbackVoiceXFData(dt) {
 	}
 //	ajaxServiceSend("post", _url, true, _data, _successf, _error);
 	$.when(AlarmCenterContext.post(_url, _data, null)).done(function(e) {
-		myApp.dialog.alert(e)
 		_successf(e);
-	}).fail(function(e) {myApp.dialog.alert(e)
+	}).fail(function(e) {
 		_error(qXHR, textStatus, errorThrown);
 	});
 

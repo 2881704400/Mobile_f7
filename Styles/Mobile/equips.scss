@@ -342,11 +342,6 @@
     }
 }
 
-html.with-statusbar.device-ios .popup {
-    margin-top: 20px;
-    height: calc(100% - 20px) !important;
-}
-
 .ios {
     .sheet-condition-config {
         .toolbar:before {
