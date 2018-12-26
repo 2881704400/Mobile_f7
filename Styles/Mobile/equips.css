@@ -214,7 +214,7 @@ mixin：sass宏mixin
 }
 
 #eventQuery .equipCon .eventWrap, #systemConfig .equipCon .eventWrap {
-  height: calc(100% - 36px);
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -357,89 +357,94 @@ html.with-statusbar.device-ios .popup {
   color: #459ef1;
 }
 
-.popup-config .item-input-wrap {
+#sysConfigEdict .item-input-wrap {
   border-bottom: none;
 }
 
-.popup-config .page-content .list {
+#sysConfigEdict .page-content .list {
   margin: 0 0;
   height: 100%;
   background: #fff;
 }
 
-.popup-config .page-content .list.edictList .btn {
+#sysConfigEdict .page-content .list.edictList .btn {
   width: 95%;
   margin: 0 auto;
   margin-top: 20px;
 }
 
-.popup-config .page-content .list.edictList .btn .button {
+#sysConfigEdict .page-content .list.edictList .btn .button {
   width: 45%;
   float: left;
   border: 1px solid #2196f3;
 }
 
-.popup-config .page-content .list.edictList .btn .button.button-fill {
+#sysConfigEdict .page-content .list.edictList .btn .button.button-fill {
   float: right;
 }
 
-.popup-config .page-content .list ul {
-  height: calc(100% - 100px);
+#sysConfigEdict .page-content .list ul {
+  height: calc(100% - 35px);
   overflow: auto;
 }
 
-.popup-config .page-content .list ul:after {
+#sysConfigEdict .page-content .list ul:after {
   height: 0px;
 }
 
-.popup-config .page-content .list ul .item-title {
+#sysConfigEdict .page-content .list ul .item-title {
   color: #adadad;
 }
 
-.popup-config .page-content .list ul .item-after {
+#sysConfigEdict .page-content .list ul .item-after {
   color: #459ef1;
   max-width: 60%;
   white-space: normal;
   word-break: break-all;
 }
 
-.popup-config .page-content .list .btn {
+#sysConfigEdict .page-content .list .btn {
   margin: 15px 0;
 }
 
-.popup-config .page-content .list .btn div {
+#sysConfigEdict .page-content .list .btn div {
   width: 60%;
   margin: 0 auto;
 }
 
-.popup-condition .content-wrap {
-  height: calc(100% - 44px);
+#equipConfigList .content-wrap {
+  height: calc(100% - 5px);
   margin: 0 0;
+  padding: 0;
 }
 
-.popup-condition .content-wrap .searchbar {
+#equipConfigList .content-wrap .sele-tile {
+  text-indent: 15px;
+}
+
+#equipConfigList .content-wrap .searchbar {
   background: #fff;
 }
 
-.popup-condition .content-wrap .searchbar:after {
+#equipConfigList .content-wrap .searchbar:after {
   height: 0;
 }
 
-.popup-condition .list {
+#equipConfigList .list {
   margin-top: 0;
-  height: calc(100% - 100px);
+  height: calc(100% - 90px);
 }
 
-.popup-condition .list ul {
-  height: calc(100% - 100px);
+#equipConfigList .list ul {
+  height: 100%;
   margin-bottom: 15px;
   overflow: auto;
 }
 
-.popup-condition .list ul:after {
+#equipConfigList .list ul:after {
   height: 0;
 }
 
-.popup-condition .list ul li .icon-checkbox {
+#equipConfigList .list ul li .icon-checkbox {
   border-radius: 0;
 }

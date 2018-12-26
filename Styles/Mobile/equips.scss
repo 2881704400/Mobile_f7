@@ -1,5 +1,7 @@
 @charset "utf-8";
 @import 'public.scss';
+//全局字体颜色
+
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~.page-content,
@@ -202,7 +204,7 @@
     .equipCon{
         height:calc(100% - 40px) ;
         .eventWrap{
-            height: calc(100% - 36px);
+            height:100%;
             overflow-y: auto;
         }
         .item-title{font-size: 14px;}
@@ -345,7 +347,7 @@ html.with-statusbar.device-ios .popup{
     
 }
 
-.popup-config{
+#sysConfigEdict{
     .item-input-wrap{
         border-bottom: none;
     }
@@ -370,7 +372,7 @@ html.with-statusbar.device-ios .popup{
                 }
             }
             ul{
-                height: calc(100% - 100px);
+                height: calc(100% - 35px);
                 overflow: auto;
                 &:after{
                     height: 0px;
@@ -399,10 +401,15 @@ html.with-statusbar.device-ios .popup{
        
     }
 }
-.popup-condition{
+#equipConfigList{
     .content-wrap{
-        height: calc(100% - 44px);
+        height: calc(100% - 5px);
         margin: 0 0;
+        
+        padding: 0;
+        .sele-tile{
+            text-indent: 15px;
+        }
         .searchbar{
             background:#fff ;
             &:after{
@@ -412,16 +419,12 @@ html.with-statusbar.device-ios .popup{
     }
    .list{
        margin-top: 0;
-       height: calc(100% - 100px);
-       
-           
-       
+       height: calc(100% - 90px);
        ul{
            &:after{
                height: 0;
            }
-           
-           height: calc(100% - 100px);
+           height:100%;
            margin-bottom: 15px;
            overflow: auto;
             li{

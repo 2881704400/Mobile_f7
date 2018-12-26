@@ -23,7 +23,18 @@ $(document).on("page:beforein", ".page[data-page='voice']", function (e) {
 $(document).on("page:beforein", ".page[data-page='equips']", function (e) {
     initPageJS('equips', '/Scripts/mobile/pageJavascript/');
 });
-
+//配置列表加载页面
+$(document).on("page:beforein", ".page[data-page='equipConfigList']", function (e) {
+	
+    initPageJS('equipConfigList', '/Scripts/mobile/pageJavascript/');
+	
+});
+/*配置页面*/
+$(document).on("page:beforein", ".page[data-page='sysConfigEdict']", function (e) {
+	
+    initPageJS('sysConfigEdict', '/Scripts/mobile/pageJavascript/');
+	
+});
 //配置导航
 $(document).on("page:beforein", ".page[data-page='systemConfig']", function (e) {
 	

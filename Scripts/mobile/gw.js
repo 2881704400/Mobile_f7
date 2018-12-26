@@ -58,21 +58,31 @@ var AlarmCenterContext = {
     getLinkVideo:function(){
     	return this.post("/api/GWServiceWebAPI/get_VideoInfoData",{getDataTable:""});
     },
-    /*设备配置*/
+    /*设备配置多个*/
     setEquipConfig:function(data){
     	return this.post("/api/real/get_equip",{equip_nos:data},null);
     },
-    /*遥测配置*/
+    /*遥测配置多个*/
     setYcConfig:function(data){
     	return this.post("/api/real/get_ycp",{equip_nos:data});
     },
-    /*遥信配置*/
+    /*遥信配置多个*/
     setYxConfig:function(data){
     	return this.post("/api/real/get_yxp",{equip_nos:data});
     },
- 	/*设置配置*/
+ 	/*设置配置多个*/
  	setSetConfig:function(data){
     	return this.post("/api/real/get_setparm",{equip_nos:data });
+    },
+    setYcConfigSingle:function(equipNo,ycpNo){
+//  	console.log(equipNo,ycpNo)
+    	return this.post("/api/real/get_ycp_single",{equip_no:equipNo,ycp_no:ycpNo });
+    },
+    setYxConfigSingle:function(equipNo,yxpNo){
+    	return this.post("/api/real/get_yxp_single",{equip_no:equipNo,yxp_no:yxpNo });
+    },
+    setSetConfigSingle:function(equipNo,setNo){
+    	return this.post("/api/real/get_setparm_single",{equip_no:equipNo,set_no:setNo });
     },
     updEquipConfig:function(data){
     	return this.post("/api/real/update_equip",{update:data});
@@ -105,8 +115,8 @@ var AlarmCenterContext = {
                 i.resolveWith(this, [e])
             },
             error: function (e, n) {
-                i.rejectWith(this, ["网络异常，请稍候重试"]),
-                    console.log(JSON.stringify(e), n)
+                i.rejectWith(this, ["网络异常，请稍候重试"])
+                    
             }
         });
         return i.promise()
@@ -126,8 +136,8 @@ var AlarmCenterContext = {
                 i.resolveWith(this, [e])
             },
             error: function (e, n) {
-                i.rejectWith(this, ["网络异常，请稍候重试"]),
-                    console.log(JSON.stringify(e), n)
+                i.rejectWith(this, ["网络异常，请稍候重试"])
+                 
             }
         }), i.promise();
     }

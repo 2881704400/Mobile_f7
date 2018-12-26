@@ -2,7 +2,8 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-
+//  myApp.router.navigate("/sysConfigEdict/");
+//	myApp.$route("/equipConfigList/")
     getJurisdictionData();
 
 }

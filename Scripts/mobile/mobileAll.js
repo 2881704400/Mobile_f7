@@ -79,7 +79,14 @@ var myApp = new Framework7({
     }, {
         path: '/mettingDetails/',
         url: 'mettingDetails.html',
-    }],
+    }, {
+        path: '/equipConfigList/',
+        url: 'equipConfigList.html',
+    }, {
+        path: '/sysConfigEdict/',
+        url: 'sysConfigEdict.html',
+    }
+    ],
     on: {
         pageInit: function(page) {
             $("#voiceContainer").addClass("voiceContainer");
@@ -216,7 +223,6 @@ function loadNameMobile() {
             error: function(e) {
                 window.localStorage.userName = '';
                 myJavaFuntion.OpenLocalUrl("login");
-                console.log(e);
             },
             complete: function(XMLHttpRequest, status) {
                 if (window.localStorage.userName != "" && window.localStorage.userName != null) {
