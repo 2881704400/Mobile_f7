@@ -2,13 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-<<<<<<< HEAD
-
-	// myApp.router.navigate("/schedule/"); 
-
-=======
-	// myApp.router.navigate("/schedule/"); 
->>>>>>> 95413c1a383955c9ef5e6dbcc2af6be3a8a50d80
+	// myApp.router.navigate("/schedule/");
 
     getJurisdictionData();
 
