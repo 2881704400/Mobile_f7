@@ -49,8 +49,8 @@ function requestUser() {
                     let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
                     let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
                     let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
-                    html += `<li class="swipeout bottomBorderLine" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1,${disabled})">
-                          <div class="item-content swipeout-content schedule-content row no-gap">
+                    html += `<li class="swipeout bottomBorderLine" >
+                          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1)">
                             <i class="iconfont icon-f7_usersName"></i>
                             <div class="col-50">
                                 <p>${arrayLike[i].Administrator}</p>
@@ -59,7 +59,7 @@ function requestUser() {
                             <div class="col-50"><a href="#" class="detailsBtn linkColor" >详情</a>   </div>              
                           </div>
                           <div class="swipeout-actions-right">
-                            <a href="#" class="delBtn" onclick="delUser(this,${arrayLike[i].Administrator})">删除</a>
+                            <a href="#" class="delBtn" onclick="delUser(this,'${arrayLike[i].Administrator}')">删除</a>
                           </div>
                         </li>`;
                     schedule_public_username.push(arrayLike[i].Administrator);
@@ -74,28 +74,11 @@ function requestUser() {
     });
 }
 //人员html
-function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, index, status) {
-    myApp.router.navigate("/scheduleModify/?table=schedule_user&userName="+userName+"&telphone="+telphone+"&telmobile="+telmobile+"&emailValue="+emailValue+"&ackLevel="+ackLevel); 
-}
-//人员数据库表更新
-function updateUser(that, index) {
-    var dt = $(that).parent().parent();
-    if (!dt.find("input.userName").val()) {
-        scheduleAlert.open();
-        return false;
-    }
-    let AdministratorUpdate = {
-        getDataTable: "Administrator",
-        Administrator: dt.find("input.userName").val(),
-        Telphone: dt.find("input.telphone").val(),
-        MobileTel: dt.find("input.telmobile").val(),
-        EMail: dt.find("input.emailValue").val(),
-        AckLevel: parseInt(dt.find("input.ackLevel").val()),
-        ifName: "Administrator",
-        ifValue: dt.find("input.userName").val()
-    };
-    if (index == 1) publicAjax(AdministratorUpdate, "/api/GWServiceWebAPI/updateEquipGroup", 1);
-    else publicAjax(AdministratorUpdate, "/api/GWServiceWebAPI/insertEquipGroup", 1);
+function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, status) {
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=人员修改&index=1&table=schedule_user&schedule1_username="+userName+"&schedule1_hpone="+telphone+"&schedule1_msm="+telmobile+"&schedule1_email="+emailValue+"&schedule1_level="+ackLevel); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=人员修改&index=2&table=schedule_user"); 
 }
 //人员表删除
 function delUser(that, userName) {
@@ -109,6 +92,7 @@ function delUser(that, userName) {
             };
         publicAjax(deleteJson, "/api/GWServiceWebAPI/deleteEquipGroup", 1);
     });
+    return false;
 }
 //人员表公共请求
 function publicAjax(jsonString, url, index) {
@@ -150,42 +134,6 @@ function publicAjax(jsonString, url, index) {
     function _error(e) {
         scheduleAlert.open();
     }
-
- //    $.when(AlarmCenterContext.post(url,{"data": jsonString})).done(function(data){
- // let arrayLike = data.HttpStatus;
- // console.log(arrayLike);
- //        if (arrayLike == 200 && data.HttpData.data != 0) {
- //            scheduleAlertSusscess.open();
- //            switch (index) {
- //                case 1:
- //                    requestUser();
- //                    break;
- //                case 2:
- //                    requestEquipGroup();
- //                    break;
- //                case 3:
- //                    requestAlmReport(requestEGAReport);
- //                    break;
- //                case 4:
- //                    requestWeekAlmReport();
- //                    break;
- //                case 5:
- //                    requestSpeAlmReport();
- //                    break;
- //                default:
- //                    break;
- //            }
- //        } else {
- //            scheduleAlert.open();
- //        }
- //    }).fail(function(e){
-
- //    });
-
-
-
-
-
 }
 // ********************************************************************************
 //设备分组
@@ -200,7 +148,6 @@ function requestEquipGroup() {
         "error": _error,
     };
     $.fn.axpost(jsonData);
-
     function _success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code,
@@ -213,7 +160,7 @@ function requestEquipGroup() {
                 html += `<li class="swipeout bottomBorderLine">
                   <div class="item-content swipeout-content schedule-content row no-gap" style="padding-left: 0;">
                     <div class="col-50 equipGroupInput" >
-                        <span onclick="newlyBuildEquip(this)" equipcomb="${arrayLike[i].equipcomb}" group_no="${arrayLike[i].group_no}">${arrayLike[i].group_name}</span>
+                        <span onclick="activeLinkEquipGroup(this,1)" equipcomb="${arrayLike[i].equipcomb}" group_no="${arrayLike[i].group_no}">${arrayLike[i].group_name}</span>
                         <div class="displayNone"><input type="text" value=""/></div>
                     </div>
                     <div class="col-50">
@@ -242,79 +189,12 @@ function requestEquipGroup() {
     }
 }
 // 设备html
-var currentArray = [];
-function newlyBuildEquip(that) {
-    currentArray.length = 0, that_parent = that;
-    var jsonData = {
-        "url": "/api/GWServiceWebAPI/get_EquipData",
-        "data": {
-            getDataTable: ""
-        },
-        "success": _success,
-        "error": _error,
-    };
-    $.fn.axpost(jsonData);
-    var coutResult;
-    $(that).attr("equipcomb") ? coutResult = $(that).attr("equipcomb").split("#") : coutResult = "#";
-    function _success(data) {
-        let arrayLike = data.HttpData.data,
-            code = data.HttpData.code;
-        var item = "",
-            html = '<div class="popup popup-aboutuser">' + '<h1 class="equipGroupTitle" group_no="' + $(that).attr("group_no") + '">' + $(that).text() + '</h1>' + '<div class="popupContent list inline-labels no-hairlines-md">' + '<div class="allSelect"><label class="item-checkbox item-content" onclick="allSelectEquip()">' + '<input type="checkbox" name="checkbox" >' + '<i class="icon icon-checkbox"></i>' + '<div class="item-inner">' + '<div class="item-title">全选</div>' + '</div>' + '</label></div>' + '<ul class="equipTypeSelect" style="padding-top: 60px;">';
-        if (code == 200) {
-            var AlarmTabulateLenth = arrayLike.length;
-            for (var i = 0; i < AlarmTabulateLenth; i++) {
-                let checkboxSet = "";
-                for (var j = 0; j < coutResult.length; j++) {
-                    if (coutResult[j] == arrayLike[i].equip_no) {
-                        currentArray.push(arrayLike[i].equip_no);
-                        checkboxSet = "checked";
-                    }
-                }
-                html += '<li class="">' + '<label class="item-checkbox item-content bottomBorderLine" onclick="actionString(this)" equip_no="' + arrayLike[i].equip_no + '">' + '<input type="checkbox" name="checkbox-' + i + '"  value="' + arrayLike[i].equip_nm + '" ' + checkboxSet + '>' + '<i class="icon icon-checkbox"></i>' + '<div class="item-inner">' + '<div class="item-title">' + arrayLike[i].equip_nm + '</div>' + '</div>' + '</label>' + '</li>';
-            }
-            popupAlert(html + '</ul>' + '</div>' + '<div class="popupBtb row">' + '<a class="link popup-close col-50 button" href="#">返回</a>' + '<a class="link col-50 button allComfirm" href="#" onclick="updateEquip(this,0,1)">确认</a>' + '</div>' + '</div>');
-            // 判断是否全选
-            if (currentArray.length == $(".equipTypeSelect li").length) $(".allSelect input").prop("checked", true);
-            else $(".allSelect input").prop("checked", false);
-        } else {
-            newlyBuildEquip(that);
-            return false;
-        }
-    }
+function activeLinkEquipGroup(that,status) {
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=1&table=schedule_equip&equipcomb="+$(that).attr("equipcomb")+"&group_no="+$(that).attr("group_no")+"&currentTxt="+$(that).text()); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=2&table=schedule_equip"); 
 
-    function _error(e) {
-        // console.log(e);
-    }
-}
-function actionString(dt) {
-    !$(dt).find("input").is(':checked') ? currentArray.push($(dt).attr("equip_no")) : currentArray.splice(currentArray.indexOf($(dt).attr("equip_no")), 1);
-    if (currentArray.length == $(".equipTypeSelect li").length) $(".allSelect input").prop("checked", true);
-    else $(".allSelect input").prop("checked", false);
-}
-//设备更新添加
-function updateEquip(that, equipName, index) {
-    if (index == 1) {
-        let updateJson = {
-            getDataTable: "EquipGroup",
-            equipcomb: currentArray.length > 0 ? "#" + currentArray.join("#") : "#",
-            group_name: $(".equipGroupTitle").text(),
-            ifValue: $(".equipGroupTitle").attr("group_no")
-        };
-        publicAjax(updateJson, "/api/GWServiceWebAPI/updateEquipGroup", 2);
-    } else {
-        var NewLineVal, NewLineArray = [];
-        $("#schedule_equip").find("li").each(function(index) {
-            NewLineArray.push($(this).find("div.equipGroupInput span").attr("group_no"));
-        });
-        NewLineVal = NewLineArray.length == 0 ? 1 : Math.max.apply(null, NewLineArray) + 1;
-        let insertJson = {
-            getDataTable: "EquipGroup",
-            groupName: "新增项目",
-            groupNo: NewLineVal
-        };
-        publicAjax(insertJson, "/api/GWServiceWebAPI/insertEquipGroup", 2);
-    }
 }
 //设备删除
 function delEquip(that) {
@@ -346,7 +226,7 @@ function equipAlert(dt, index) {
             }
             let updateJson = {
                 getDataTable: "EquipGroup",
-                equipcomb: "#",
+                equipcomb: tbject.attr("equipcomb"),
                 group_name: val,
                 ifValue: tbject.attr("group_no")
             };
@@ -357,7 +237,18 @@ function equipAlert(dt, index) {
             $(dt).parents("div.col-50").prev().find("span").removeClass("displayNone").siblings().addClass("displayNone");
             break;
         case 4:
-            updateEquip(dt, "", 2);
+            // updateEquip(dt, "", 2);
+            var NewLineVal, NewLineArray = [];
+            $("#schedule_equip").find("li").each(function(index) {
+                NewLineArray.push($(this).find("div.equipGroupInput span").attr("group_no"));
+            });
+            NewLineVal = NewLineArray.length == 0 ? 1 : Math.max.apply(null, NewLineArray) + 1;
+            let insertJson = {
+                getDataTable: "EquipGroup",
+                groupName: "新增项目",
+                groupNo: NewLineVal
+            };
+            publicAjax(insertJson, "/api/GWServiceWebAPI/insertEquipGroup", 2);
             break;
         default:
             break;
@@ -367,33 +258,6 @@ function equipAlert(dt, index) {
 function getMaxNo() {
     if (equipArray.length == 0) return 1;
     else return Math.max.apply(null, equipArray) + 1;
-}
-//全选
-function allSelectEquip() {
-    currentArray.length = 0;
-    if (!$(".allSelect").find("input").is(':checked')) {
-        $(".equipTypeSelect li").each(function(i) {
-            $(this).find("input").prop("checked", true);
-            currentArray.push($(this).find("label").attr("equip_no"));
-        });
-    } else {
-        $(".equipTypeSelect li").each(function(i) {
-            $(this).find("input").prop("checked", false);
-            currentArray.length = 0;
-        });
-    }
-}
-//处理equipcomb
-var groupNOArray = [];
-function allEquipCom(dt, value) {
-    $(dt).parent().next().find("li").each(function(index) {
-        groupNOArray.push($(this).find("label").attr("equip_no"));
-    });
-    if (value == 1) {
-        $(that_parent).attr("equipcomb", "#");
-    } else {
-        $(that_parent).attr("equipcomb", "#" + groupNOArray.join("#") + "#");
-    }
 }
 // ********************************************************************************
 //管理范围
@@ -439,98 +303,11 @@ function requestAlmReport(almGroupObject) {
     }
 }
 // 设备html
-function newlyBuildAlmReport(that, index) {
-    var userData = {
-        "url": "/api/GWServiceWebAPI/get_AdministratorData",
-        "data": {
-            getDataTable: "0"
-        },
-        "success": user_success,
-        "error": user_error,
-    };
-    $.fn.axpost(userData);
-
-    function user_success(data) {
-        let arrayLike = data.HttpData.data;
-        let code = data.HttpData.code;
-        if (code == 200) {
-            equipAjax(arrayLike);
-        }
-    }
-    function user_error(e) {}
-    function equipAjax(userResult) {
-        var equipData = {
-            "url": "/api/GWServiceWebAPI/get_EquipGroupData",
-            "data": {
-                getDataTable: "0"
-            },
-            "success": equip_success,
-            "error": equip_error,
-        };
-        $.fn.axpost(equipData);
-
-        function equip_success(data) {
-            let arrayLike = data.HttpData.data;
-            let code = data.HttpData.code;
-            if (code == 200) {
-                var histroyUserName = "",
-                    histroyGroupName = "";
-                if (index == 1) // 修改
-                {
-                    histroyUserName = $(that).find("div:eq(0)").text(), histroyGroupName = $(that).find("div:eq(1)").text();
-                }
-                //界面  
-                viewHTML(that, histroyUserName, histroyGroupName, userResult, arrayLike, index);
-            }
-        }
-
-        function equip_error(e) {}
-    }
-    function viewHTML(dt, oldUserName, oldGroupName, userName, groupName, no) {
-        var html = '<div class="popup popup-aboutuser">' + '<h1>管理范围</h1>' + '<div class="popupContent list inline-labels no-hairlines-md">' + '<ul class="list">' + '<li class="item-content item-input"  style="padding-left: 0;margin-bottom: 30px;">'  + '<div class="item-inner" style="margin-left: 0;">' + '<div class="item-title item-label">人员姓名</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="请选择人员名称" value ="' + oldUserName + '" readonly="readonly" id="userInput">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner" style="margin-left: 0;">' + '<div class="item-title item-label">分组名称</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="请选择分组名称" value ="' + oldGroupName + '" readonly="readonly" id="groupInput">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '</ul>' + '</div>' + '<div class="popupBtb row">' + '<a class="link popup-close col-50 button" href="#">返回</a>' + '<a class="link col-50 button" href="#" onclick="updateAlmReport(this,' + $(dt).attr("dataid") + ',' + no + ')">确认</a>' + '</div>' + '</div>';
-        popupAlert(html);
-        var arrayUser = [],
-            arrayGroup = [];
-        userName.forEach(function(item, index) {
-            arrayUser.push(item.Administrator);
-        });
-        groupName.forEach(function(item, index) {
-            arrayGroup.push(item.group_name);
-        })
-        listInit("userInput", arrayUser);
-        listInit("groupInput", arrayGroup);
-    }
-}
-//设备更新添加
-function updateAlmReport(that, parentId, index) {
-    var weekID = getMaxId("schedule_administartor"); //获取新建id主键
-    var dt = $(that).parent().prev();
-    if (index == 1) {
-        let updateJson = {
-            getDataTable: "AlmReport",
-            group_no: getEquipNO(requestEGAReport, dt.find("#groupInput").val()),
-            Administrator: dt.find("#userInput").val(),
-            ifValue: parentId,
-        };
-        publicAjax(updateJson, "/api/GWServiceWebAPI/updateEquipGroup", 3);
-    } else {
-        let insertJson = {
-            getDataTable: "AlmReport",
-            group_no: getEquipNO(requestEGAReport, dt.find("#groupInput").val()),
-            Administrator: dt.find("#userInput").val(),
-            ifValue: weekID
-        };
-        publicAjax(insertJson, "/api/GWServiceWebAPI/insertEquipGroup", 3);
-    }
-}
-//最大ID添加1
-function getMaxId(id) {
-    var parentDt = $("#" + id).find("tbody"),
-        arrayIndex = [];
-    parentDt.find("tr").each(function(index) {
-        arrayIndex.push($(this).attr("dataid"));
-    });
-    return arrayIndex.length == 0 ? 1 : Math.max.apply(null, arrayIndex) + 1;
+function newlyBuildAlmReport(that, status) {
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=1&table=schedule_administartor&dataid="+$(that).attr("dataid")+"&datano="+$(that).attr("datano")+"&username="+$(that).find("div:eq(0)").text()+"&groupname="+$(that).find("div:eq(1)").text()); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=2&table=schedule_administartor");  
 }
 //返回对应设备号的设备名称
 function getEquipName(equipObject, equipno) {
@@ -578,7 +355,6 @@ function requestEGAlmReport() {
 function delAlmReport(that) {
     myApp.dialog.confirm("是否删除该管理范围", "提示", function() {
         let dt = $(that).parent().siblings();
-        alert(dt.attr("dataid"));
         var deleteJson = {
             getDataTable: "AlmReport",
             ifName: "id",
@@ -639,6 +415,7 @@ function requestWeekAlmReport() {
         $("#schedule_specificDate ul").html("");
         if (code == 200) {
             let AlarmTabulateLenth = arrayLike.length;
+            console.log(arrayLike);
             for (var i = 0; i < AlarmTabulateLenth; i++) {
                 var sTime = formatDate(new Date(arrayLike[i].begin_time), "hh:mm"),
                     eTime = formatDate(new Date(arrayLike[i].end_time), "hh:mm");
@@ -666,50 +443,13 @@ function requestWeekAlmReport() {
     }
 }
 //周排表html
-function newlyBuildWeekAlmReport(tThatParent, index) {
-    var html = '<div class="popup popup-aboutuser week_WeekAlmReportUl">' + '<h1>周排表修改</h1>' + '<div class="popupContent list inline-labels no-hairlines-md">' + '<ul>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">人员姓名</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="选择人员" value = "' + getVal($(tThatParent).find("div:eq(0)").text(), index) + '"  class="week_userName" id="week_userName">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label" >星期</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="选择星期" value = "' + (index == 1 ? weekReturn(parseInt($(tThatParent).attr("dataday"))) : "") + '" class="week_week" id="week_week">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">开始时间</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="输入开始时间(00:00)" value = "' + getVal($(tThatParent).find("div:eq(2)").text(), index) + '" class="week_stime">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">结束时间</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="输入结束时间(00:00)" value = "' + getVal($(tThatParent).find("div:eq(3)").text(), index) + '" class="week_etime">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '</ul>' + '</div>' + '<div class="popupBtb row">' + '<a class="link popup-close col-50 button" href="#">返回</a>' + '<a class="link popupOpenBtn col-50 button" href="#" onclick="updateWeekAlmReport(this,' + index + ')" dataid = ' + $(tThatParent).attr("dataid") + '>确认</a>' + '</div>' + '</div>';
-    popupAlert(html);
-    let arrayWeek = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日", "每天"];
-    listInit("week_userName", schedule_public_username);
-    listInit("week_week", arrayWeek);
+function newlyBuildWeekAlmReport(tThatParent, status) {
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=周排表修改&index=1&table=schedule_specificDate&username="+$(tThatParent).find("div:eq(0)").text()+"&week="+$(tThatParent).find("div:eq(1)").text()+"&stime="+$(tThatParent).find("div:eq(2)").text()+"&etime="+$(tThatParent).find("div:eq(3)").text()+"&dataid="+$(tThatParent).attr("dataid")); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=周排表修改&index=2&table=schedule_specificDate"); 
 }
-//返回值
-function getVal(value, index) {
-    if (index == 1) return value;
-    else return "";
-}
-//周排表更新
-function updateWeekAlmReport(that, index) {
-    var reg = /^(20|21|22|23|[0-1]\d):[0-5]\d$/,
-        weekID, dt, week_day;;
-    if (!reg.test($(".week_stime").val()) || !reg.test($(".week_etime").val())) {
-        scheduleTimeAlert("时间格式错误").open();
-        return;
-    }
-    if (parseInt($(".week_stime").val().replace(":", "")) > parseInt($(".week_etime").val().replace(":", ""))) {
-        scheduleTimeAlert("开始时间不能大于结束时间").open();
-        return;
-    }
-    if (index == 1) {
-        weekID = $(that).attr("dataid");
-        dt = $(that).parent().parent();
-        week_day = weekReturn(dt.find("input.week_week").val());
-    } else {
-        weekID = getMaxId("schedule_specificDate");
-        dt = $(".week_WeekAlmReportUl");
-        week_day = weekReturn(dt.find("input.week_week").val());
-    } //获取新建id主键
-    let WeekAlmReportInsert = {
-        getDataTable: "WeekAlmReport",
-        Administrator: dt.find("input.week_userName").val(),
-        week_day: week_day,
-        begin_time: dt.find("input.week_stime").val(),
-        end_time: dt.find("input.week_etime").val(),
-        ifValue: weekID
-    };
-    if (index == 1) publicAjax(WeekAlmReportInsert, "/api/GWServiceWebAPI/updateEquipGroup", 4);
-    else publicAjax(WeekAlmReportInsert, "/api/GWServiceWebAPI/insertEquipGroup", 4);
-}
+
 //周排表删除
 function delWeekAlmReport(that) {
     myApp.dialog.confirm("是否删除该周排表", "提示", function() {
@@ -768,27 +508,7 @@ function requestSpeAlmReport() {
         // console.log(e);
     }
 }
-//特定排表更新
-function updateSpeAlmReport(that, index) {
-    var weekID, dt, week_day;
-    if (index == 1) {
-        weekID = $(that).attr("dataid");
-        dt = $(that).parent().parent();
-        week_day = $(that).attr("dataWeek");
-    } else {
-        weekID = getMaxId("schedule_weeklytable");
-        dt = $(".Spe_WeekAlmReportUl");
-    } //获取新建id主键
-    let WeekAlmReportInsert = {
-        getDataTable: "SpeAlmReport",
-        Administrator: dt.find("input.Spe_userName").val(),
-        begin_time: dt.find("input.Spe_stime").val(),
-        end_time: dt.find("input.Spe_etime").val(),
-        ifValue: weekID
-    };
-    if (index == 1) publicAjax(WeekAlmReportInsert, "/api/GWServiceWebAPI/updateEquipGroup", 5);
-    else publicAjax(WeekAlmReportInsert, "/api/GWServiceWebAPI/insertEquipGroup", 5);
-}
+
 //特定排表删除
 function delSpeAlmReport(that) {
     myApp.dialog.confirm("是否删除该特定排表", "提示", function() {
@@ -803,61 +523,11 @@ function delSpeAlmReport(that) {
     });
 }
 
-function newlyBuildSpeAlmReport(tThatParent, index) {
-    var html = '<div class="popup popup-aboutuser Spe_WeekAlmReportUl">' + '<h1>特定排表修改</h1>' + '<div class="popupContent list inline-labels no-hairlines-md">' + '<ul>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">人员姓名</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="选择人员" value = "' + getVal($(tThatParent).find("div:eq(0)").text(), index) + '"  class="Spe_userName" id="Spe_userName">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">开始时间</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="输入开始时间" value = "' + getVal($(tThatParent).find("div:eq(1)").text(), index) + '" class="Spe_stime" id="Spe_stime">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '<li class="item-content item-input" style="padding-left: 0;">'  + '<div class="item-inner">' + '<div class="item-title item-label">结束时间</div>' + '<div class="item-input-wrap">' + '<input type="text" placeholder="输入结束时间" value = "' + getVal($(tThatParent).find("div:eq(2)").text(), index) + '" class="Spe_etime" id="Spe_etime">' + '<span class="input-clear-button"></span>' + '</div>' + '</div>' + '</li>' + '</ul>' + '</div>' + '<div class="popupBtb row">' + '<a class="link popup-close col-50 button" href="#">返回</a>' + '<a class="link popupOpenBtn col-50 button" href="#" onclick="updateSpeAlmReport(this,' + index + ')" dataid = ' + (index == 1 ? $(tThatParent).attr("dataid") : getMaxId("schedule_weeklytable")) + '>确认</a>' + '</div>' + '</div>';
-    popupAlert(html);
-    if (index == 2) {
-        myApp.calendar.create({
-            inputEl: '#Spe_stime',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy/mm/dd 00:00:00',
-            cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
-            value: [new Date()],
-        })
-        myApp.calendar.create({
-            inputEl: '#Spe_etime',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy/mm/dd 00:00:00',
-            cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
-            value: [new Date()],
-        })
-    } else {
-        myApp.calendar.create({
-            inputEl: '#Spe_stime',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy/mm/dd 00:00:00',
-            cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
-            // value: [new Date()],
-        })
-        myApp.calendar.create({
-            inputEl: '#Spe_etime',
-            openIn: 'customModal',
-            header: false,
-            footer: true,
-            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-            dateFormat: 'yyyy/mm/dd 00:00:00',
-            cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
-            // value: [new Date()],
-        })
-    }
-    listInit("Spe_userName", schedule_public_username);
+function newlyBuildSpeAlmReport(tThatParent, status) {
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=1&table=schedule_weeklytable&username="+$(tThatParent).find("div:eq(0)").text()+"&stime="+$(tThatParent).find("div:eq(1)").text()+"&etime="+$(tThatParent).find("div:eq(2)").text()+"&dataid="+$(tThatParent).attr("dataid")); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=2&table=schedule_weeklytable"); 
 }
 //switchMenu
 function switchMenu(dt) {

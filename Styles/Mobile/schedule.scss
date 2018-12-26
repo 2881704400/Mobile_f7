@@ -31,7 +31,7 @@
             .schedule-content{height: 100%;
                &>div:nth-child(1){height: 100%;
                 &>span{width: 100%;height: 100%;line-height: 40px;display: inline-block;}
-                &>div{height: 100%;&>input{width: 100%;height: 100%;border: 0;border-bottom: 1px solid #{$inputBorderColor};}}
+                &>div{height: 100%;&>input{width: 100%;height: 100%;border: 0;border-bottom: 1px solid #{$inputBorderColor};text-align: center;}}
                }
                &>div:nth-child(2){height: 100%;&>span{&>a{margin: 0 5%;}}}
             }
@@ -130,15 +130,17 @@
     }
 }
 
-.scheduleModifyContainer{
-    border-top: 10px solid #{$popupBackground};background: #{$popupBackground};
-    input{color: #396986!important;font-size: 1rem;}
-    .scheduleFooter{
-        margin-top: 20%;padding: 0 5%;
-        button{font-size: #{$btnFontSize*1.1};color: #{$btnFontColor};padding: 0.8rem;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;}
-        .cancelBtn{background: #{$btnBackground1};}
-    }
+.scheduleModifyPageContent{
+    background-color: #F2F3F5 !important;
 }
+
+.scheduleModifyContainer{
+    background-color: #FFFFFF;border-top: 10px solid #{$popupBackground};
+    input,select{color: #{$selectedColor} !important;font-size: 1rem !important;}
+    .comfirmModify{color: #{$btnFontColor};width: 43%;margin: 5% 5% 0 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;}
+    .comfirmCancel{margin: 5% 2% 0 5%;background: #{$btnCancelBackground};}
+}
+.scheduleModifyContainer_equipgroup{height: 60%;&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
 
 .popup-aboutuser { 
 	position: absolute;background: #{$popupBackground};padding: 5%;
