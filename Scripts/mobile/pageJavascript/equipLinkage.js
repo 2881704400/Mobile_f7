@@ -371,7 +371,7 @@ function publicFun(ycpData, yxpData) {
         return result;
     })
     myApp.dialog.close();
-    $("#equipLinkage_set ul").append(html);
+    $("#equipLinkage_set ul").html(html);
 }
 //联动设置添加
 var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[],dtParent;
@@ -566,7 +566,8 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
               { 
                  // $(dtParent).parents("li").remove();
                  initAddList();
-                  toastCenterLinkageSuccess.open();              
+                  toastCenterLinkageSuccess.open();
+                  myApp.router.back();
               }
         }).fail(function(e){
             toastCenterLinkage.open();
@@ -580,7 +581,8 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
                 // console.log($("#equipLinkage_set ul")[0].scrollHeight);
                  initAddList();
                  $("#equipLinkage_set ul").animate({scrollTop: $("#equipLinkage_set ul")[0].scrollHeight+'px'}, 50);
-                 toastCenterLinkageSuccess.open();       
+                 toastCenterLinkageSuccess.open();
+                 myApp.router.back();
               }
         }).fail(function(e){
             toastCenterLinkage.open();
