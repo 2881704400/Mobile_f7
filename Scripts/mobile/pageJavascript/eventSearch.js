@@ -142,24 +142,29 @@ function onEquipLists() {
 						$("#eventSearchEquipId").attr("readonly", false);
 					},
 					closed: function(picker) {
-						var value = picker.cols[0].values[0];
-						var realValue = equipPicker.cols[0].value;
-						equipPicker.cols[0].replaceValues(allEquipList, "");
-						var inputValue = $("#eventSearchEquipId").val();
-						var equipCountNum = false;
-						for(var n = 0; n < allEquipList.length; n++) {
-							if(allEquipList[n] == inputValue) {
-								equipCountNum = true;
-								break;
+						if(picker.cols[0].values.length>0){
+							var value = picker.cols[0].values[0];
+							var realValue = equipPicker.cols[0].value;
+							equipPicker.cols[0].replaceValues(allEquipList, "");
+							var inputValue = $("#eventSearchEquipId").val();
+							var equipCountNum = false;
+							for(var n = 0; n < allEquipList.length; n++) {
+								if(allEquipList[n] == inputValue) {
+									equipCountNum = true;
+									break;
+								}
 							}
-						}
-						if(!equipCountNum) {
-							equipPicker.cols[0].setValue(value);
-							$("#eventSearchEquipId").val(value);
-						} else {
-							equipPicker.cols[0].setValue(realValue);
+							if(!equipCountNum) {
+								equipPicker.cols[0].setValue(value);
+								$("#eventSearchEquipId").val(value);
+							} else {
+								equipPicker.cols[0].setValue(realValue);
+							}
+						}else{
+							equipPicker.cols[0].replaceValues(allEquipList, "");
 						}
 						$("#eventSearchEquipId").attr("readonly", true);
+						
 					},
 					opened: function(e) {
 						$("#eventSearchEquipId").attr("readonly", false);
@@ -175,9 +180,7 @@ function onEquipLists() {
 						strValueArr.push(allEquipList[n]);
 					}
 				}
-				if(strValueArr.length > 0) {
-					equipPicker.cols[0].replaceValues(strValueArr, "");
-				}
+				equipPicker.cols[0].replaceValues(strValueArr, "");
 
 			});
 			//			searchEquipItems();
