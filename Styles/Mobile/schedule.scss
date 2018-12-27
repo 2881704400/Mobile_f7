@@ -138,8 +138,8 @@
 .scheduleModifyContainer{
         height: 100%;border-top: 10px solid #{$popupBackground};   
     input,select{color: #{$selectedColor} !important;font-size: 1rem !important;}
-    .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;}
-    .equipLinkageList:after{    bottom: -40px!important;}
+    .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;background: #FFFFFF;}
+    .equipLinkageList:after{    bottom: -40px!important;    height: 0px !important;}
     // .item-content{
     //     height: 72px !important;
     //     padding-right: 15px;
