@@ -524,7 +524,7 @@ var jjPattern =[
 var WORDcommand ={
     "backgroundImage":{  
         name: '背景图片',
-        url: 'D:\\AlarmCenter\\Web\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
+        url: 'D:\\AlarmCenter\\AlarmCenterWeb2.0\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
      },
      "Priviewwel":{
         name: '预览欢迎词',
