@@ -74,7 +74,7 @@ function getEquipSelect(arr,equipHtml){
 	var str=arr.toString();
 	var htmlStr=equipHtml;
 	$.when(AlarmCenterContext.setEquipConfig(str)).done(function(e){
-//		$("#equipTable").html("");
+		$("#equipTable").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
