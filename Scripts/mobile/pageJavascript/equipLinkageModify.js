@@ -16,6 +16,7 @@ function equipLinkageModify() {
     	var optCode=receiveUserArr[6];
     	var remarks=receiveUserArr[7];
     	var ID=receiveUserArr[8];
+    	$("#equipLinkageModifyId").attr("dataID",ID)
     	index=receiveUserArr[9];
     	if(equipName!=" "&&equipName!="undefined"){
     		$("#equipTiggerName").val(equipName);
@@ -41,7 +42,6 @@ function equipLinkageModify() {
     }
     
     $("#equipLinkageModifyId").unbind('click').bind('click',function(){
-    	$("#equipLinkageModifyId").attr("dataID",index)
     	addLinkage(this,index);
     });
 }
