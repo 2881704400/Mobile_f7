@@ -1,5 +1,7 @@
 @charset "utf-8";
 @import 'public.scss';
+//全局字体颜色
+
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~.page-content,
@@ -242,10 +244,17 @@
             }
         }
     }
+<<<<<<< HEAD
     .equipCon {
         height: calc(100% - 40px);
         .eventWrap {
             height: calc(100% - 36px);
+=======
+    .equipCon{
+        height:calc(100% - 40px) ;
+        .eventWrap{
+            height:100%;
+>>>>>>> zf
             overflow-y: auto;
         }
         .item-title {
@@ -378,8 +387,13 @@
     }
 }
 
+<<<<<<< HEAD
 .popup-config {
     .item-input-wrap {
+=======
+#sysConfigEdict{
+    .item-input-wrap{
+>>>>>>> zf
         border-bottom: none;
     }
     .page-content {
@@ -402,8 +416,13 @@
                     }
                 }
             }
+<<<<<<< HEAD
             ul {
                 height: calc(100% - 100px);
+=======
+            ul{
+                height: calc(100% - 35px);
+>>>>>>> zf
                 overflow: auto;
                 &:after {
                     height: 0px;
@@ -428,6 +447,7 @@
         }
     }
 }
+<<<<<<< HEAD
 
 .popup-condition {
     .content-wrap {
@@ -436,10 +456,25 @@
         .searchbar {
             background: #fff;
             &:after {
+=======
+#equipConfigList{
+    .content-wrap{
+        height: calc(100% - 5px);
+        margin: 0 0;
+        
+        padding: 0;
+        .sele-tile{
+            text-indent: 15px;
+        }
+        .searchbar{
+            background:#fff ;
+            &:after{
+>>>>>>> zf
                 height: 0;
             }
         }
     }
+<<<<<<< HEAD
     .list {
         margin-top: 0;
         height: calc(100% - 100px);
@@ -452,6 +487,20 @@
             overflow: auto;
             li {
                 .icon-checkbox {
+=======
+   .list{
+       margin-top: 0;
+       height: calc(100% - 90px);
+       ul{
+           &:after{
+               height: 0;
+           }
+           height:100%;
+           margin-bottom: 15px;
+           overflow: auto;
+            li{
+               .icon-checkbox{
+>>>>>>> zf
                     border-radius: 0;
                 }
             }

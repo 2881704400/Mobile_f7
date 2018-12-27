@@ -86,6 +86,12 @@ var myApp = new Framework7({
         path: '/equipLinkageModify/',
         url: 'equipLinkageModify.html',
     },
+     {   path: '/equipConfigList/',
+        url: 'equipConfigList.html',
+    }, {
+        path: '/sysConfigEdict/',
+        url: 'sysConfigEdict.html',
+    }
     ],
     on: {
         pageInit: function(page) {

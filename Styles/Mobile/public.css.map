@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 "version": 3,
 "mappings": ";AAAA;;EAEE",
@@ -5,3 +6,12 @@
 "names": [],
 "file": "public.css"
 }
+=======
+{
+"version": 3,
+"mappings": ";AAAA;;EAEE",
+"sources": ["../../../../%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/Mobile_f7/Styles/Mobile/public.scss"],
+"names": [],
+"file": "public.css"
+}
+>>>>>>> zf

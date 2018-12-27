@@ -1,201 +1,62 @@
-﻿  <div data-page="systemConfig" class="page" id="systemConfig">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <!-- 标题 -->                  
-                <div class="left hideMenu">
-                    <a href="#" class="back link">
-                        <i class="iconfont icon-back"></i>
-                    </a>
-                </div>                         
-                <div class="center sliding title">系统配置</div>
-                <div class="right">
-                    <a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
+﻿<div data-page="systemConfig" class="page" id="systemConfig">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<!-- 标题 -->
+			<div class="left ">
+				<a href="#" class="back link">
+					<i class="iconfont icon-back"></i>
+				</a>
+			</div>
+			<div class="center sliding title">系统配置</div>
+			<div class="right">
+				<!--<a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
                     	<i class="iconfont icon-sousuo"></i>
-                    </a>
-                </div>
-            </div>
-        </div>        
-        <div  class="page-content" >
+                    </a>-->
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
 
-			
-        <div class="row no-gap equipCon" >
-					
-					<p class="segmented tabList tabListConfig" >
-            	<a href="#tab-1" class="tab-link button tab-link-active" onclick="loadData(0)">设备</a>
-      				<a href="#tab-2" class="tab-link button"   onclick="loadData(1)">遥测</a>
-     					<a href="#tab-3" class="tab-link button"  onclick="loadData(2)">遥信</a>
-     					<a href="#tab-4" class="tab-link button"  onclick="loadData(3)">设置</a>
-					</p>
-					<div class="tabs-animated-wrap eventWrap">
-					    <div class="tabs ">
-					    	
-					      <div id="tab-1" class="tab tab-active">
-					       	<div class="list accordion-list" style="margin: 0;">
-									  	<ul id="equipTable" ></ul>
-									</div>
-					      </div>
-					      <div id="tab-2" class="tab">
-					      	<div class="list accordion-list" style="margin: 0;">
-									  <ul id="ycp">
-									  </ul>
-									</div>
-					      </div>
-					      <div id="tab-3" class="tab">
-					      	<div class="list accordion-list" style="margin: 0;">
-									  <ul id="yxp">
-									  </ul>
-						      </div>
-						    </div>
-					      <div id="tab-4" class="tab">
-					      	<div class="list accordion-list" style="margin: 0;">
-									  <ul id="set">
-							        	
-									  </ul>
-					        </div>
-					      </div>
-	            		
-	            </div>
-          </div>
-        </div>
+		<div class="row no-gap equipCon">
 
-    
-        </div>
-       
-        <div class="sheet-modal sheet-condition-config sheet-paln">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul class="eq-list">
-			    			
-			    			</ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
-        <div class="sheet-modal sheet-condition-config sheet-zichan">
-        	<div class="toolbar">
-			      <div class="toolbar-inner">
-			        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-			        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-			      </div>
-			    </div>
-			    <div class="sheet-modal-inner">
-			    	<div class="block">
-			    		<div class="list">
-			    			<ul class=" eq-list"></ul>
-			    		</div>
-			    	</div>
-			    </div>
-        </div>
-        <div class="sheet-modal sheet-condition-config sheet-video">
-	        	<div class="toolbar">
-				      <div class="toolbar-inner">
-				        <div class="left"><a class="link sheet-close" href="#">取消</a></div>
-				        <div class="right"><a class="link sheet-close" href="#">确定</a></div>
-				      </div>
-				    </div>
-				    <div class="sheet-modal-inner">
-				    	<div class="block">
-				    		<div class="list">
-				    			<ul class=" eq-list">
-				    				
-				    			</ul>
-				    		</div>
-				    	</div>
-				    </div>
-        </div>
-        <div class="popup popup-condition">
-						<div class="navbar">
-							<div class="navbar-inner">
-								<div class="center sliding title ">
-									设备选择
-								</div>
-								<div class="right">
-									<a href="#" class="link popup-close">
-										关闭
-									</a>
-								</div>
-							</div>
-						</div>
-						<!--<div class="searchbar-backdrop"></div>-->
-						<div class="block content-wrap">
-							<form class="searchbar" id="search">
-							  <div class="searchbar-inner">
-							    <div class="searchbar-input-wrap">
-							      <input type="search" placeholder="设备名称">
-							      <i class="searchbar-icon"></i>
-							      <span class="input-clear-button"></span>
-							    </div>
-							    <span class="searchbar-disable-button">取消</span>
-							  </div>
-							</form>
-							<p class="sele-tile">设备列表</p>
-						
-				      		
-	  						<div class="eq-list list">
-	  							<ul></ul>
-	  							<div class="btn" onclick="loadConfig()">
-						      		<div class="button button-big button-fill">
-						      			确定
-						      		</div>
-						      	</div>
-	  						</div>
-						      	
-						
+			<p class="segmented tabList tabListConfig">
+				<a href="#tab-1" class="tab-link button tab-link-active" onclick="loadData(0)">设备</a>
+				<a href="#tab-2" class="tab-link button" onclick="loadData(1)">遥测</a>
+				<a href="#tab-3" class="tab-link button" onclick="loadData(2)">遥信</a>
+				<a href="#tab-4" class="tab-link button" onclick="loadData(3)">设置</a>
+			</p>
+			<div class="tabs-animated-wrap eventWrap">
+				<div class="tabs ">
+
+					<div id="tab-1" class="tab tab-active">
+						<div class="list links-list" style="margin: 0;">
+							<ul id="equipTable">
+
+							</ul>
 						</div>
 					</div>
-				<div class="popup popup-config">
-						<div class="navbar">
-							<div class="navbar-inner">
-								<div class="left">
-									<!--<a href="#" class="back link">
-										<i class="iconfont icon-back"></i>
-									</a>  -->
-								</div>
-								<div class="center sliding title ">
-									详细信息
-								</div>
-								<div class="right">
-									<a href="#" class="link" onclick="loadPopupInfor()">
-										关闭
-									</a>
-								</div>
-							</div>
+					<div id="tab-2" class="tab">
+						<div class="list  links-list" style="margin: 0;">
+							<ul id="ycp">
+							</ul>
 						</div>
-						<div class="page">
-							<div class="page-content">
-								<div class="list inforList">
-								  <ul>
-								    
-								  </ul>
-								  <div class="btn" >
-					      		<div class="button button-big button-fill" onclick="loadInforEdict(this)">
-					      			编辑
-					      		</div>
-					      	</div>
-								</div>
-								
-								<div class="list edictList no-hairlines-md"  style="display: none;">
-									<ul>
-											
-									</ul>
-									 <div class="btn" >
-					      		<div class="button button-big closep" onclick="cancelInforEdict(this)">
-					      			取消
-					      		</div>
-					      		<div class="button button-big button-fill" onclick="upInforEdict(this)">
-					      			提交
-					      		</div>
-					      	</div>
-								</div>
-							    
-							</div>
-						</div>
-					    
 					</div>
+					<div id="tab-3" class="tab">
+						<div class="list links-list" style="margin: 0;">
+							<ul id="yxp">
+							</ul>
+						</div>
+					</div>
+					<div id="tab-4" class="tab">
+						<div class="list links-list" style="margin: 0;">
+							<ul id="set">
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
