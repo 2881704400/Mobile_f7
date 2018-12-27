@@ -43,21 +43,25 @@ function systemConfig(){
 	getlinkVideoList();
 	getPlanList();
 
-	var id=myApp.views.main.router.currentRoute.query.equipId;
+	var id=parseInt(myApp.views.main.router.currentRoute.query.equipId) ;
 	var name=myApp.views.main.router.currentRoute.query.equipName;
-
+	
 	selectEquiId=[id];	
 	getEquipSelect(selectEquiId,equipHtml);
+	
 	$(".tabListConfig a").each(function(){
-		$(this).click(function(){
+		$(this).off().click(function(){
+			
 			var type=$(this).attr("seType");
 			if(type==0){
 				getEquipSelect(selectEquiId,equipHtml);
-			}else if(type==1){
+			}
+			else if(type==1){
 				getYcSelect(selectEquiId);
-			}else if(type==2){
+			}
+			else if(type==2){
 				getYxSelect(selectEquiId);
-			}else{
+			}else if(type==3){
 				getSetSelect(selectEquiId);
 			}	
 		})
@@ -68,21 +72,20 @@ function systemConfig(){
 
 function getEquipSelect(arr,equipHtml){
 	var str=arr.toString();
+	var htmlStr=equipHtml;
 	$.when(AlarmCenterContext.setEquipConfig(str)).done(function(e){
-		$("#equipTable").html("");
+//		$("#equipTable").html("");
 		if(e.HttpData.code==200&&e.HttpData.data){
 			var dat=e.HttpData.data,lg=dat.length;
 			for(var i=0;i<lg;i++){
 				var value=dat[i];
 				var valueStr=value;
-				loadInfor(0,valueStr,equipHtml)
-
+				loadInforCon(0,valueStr,htmlStr);
 			}
 		}
 	})
 }
-function loadInfor(deal,str,equipHtml){
-		$("#equipTable").html("");
+function loadInforCon(deal,str,equipHtml){
 		alarmCode=str.alarm_scheme;
 		edictType=deal;
 		for(var i=0;i<equipHtml.length;i++){
@@ -96,6 +99,7 @@ var alarmCode=0,updateAlarmCode=0,canEdict,edictDom,edictType;
 var canexecution,record,inversion,mapping,curve_rcd;
 function loadEdictHtml(label,key,id,value,type,dom){
 	var html="";
+	
 	if(id=="equip_no"||id=="yc_no"||id=="yx_no"||id=="set_no"){
 		html='<li class="item-content item-input">'+
 			      '<div class="item-inner">'+
@@ -333,7 +337,7 @@ function loadEdictHtml(label,key,id,value,type,dom){
 				'</li>';
 	}
 
-	
+//	console.log(html)
 	$(dom).append(html);
 }
 
@@ -350,11 +354,7 @@ function getSetSelect(arr){
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
 				var html='<li >'+
 							'<a href="/sysConfigEdict/?setType=3&equipId='+value.equip_no+' &equipName='+value.set_nm+'&setId='+value.set_no+'" >'+value.set_nm+'</a>'+
-//					        '<div class="item-content  swipeout-content">'+
-//						        '<div class="item-inner">'+
-//						          '<div class="item-title">'+value.set_nm+'</div>'+
-//						        '</div>'+
-//						      '</div>'+  					    	
+				    	
 						'</li>';
 				$("#set").append(html)
 			}
@@ -374,11 +374,7 @@ function getYxSelect(arr){
 				var valueStr=JSON.stringify(value).replace(/"/g,"'");
 				var html='<li  >'+
 							'<a href="/sysConfigEdict/?setType=2&equipId='+value.equip_no+' &equipName='+value.yx_nm+'&yxId='+value.yx_no+'" >'+value.yx_nm+'</a>'+
-//					        '<div class="item-content  swipeout-content">'+
-//						        '<div class="item-inner">'+
-//						          '<div class="item-title">'+value.yx_nm+'</div>'+
-//						        '</div>'+
-//						      '</div>'+					    	
+			    	
 						'</li>';
 				$("#yxp").append(html)
 			}
@@ -398,11 +394,7 @@ function getYcSelect(arr){
 //				var valueStr=JSON.stringify(value).replace(/"/g,"'");
 				var html='<li >'+
 							'<a href="/sysConfigEdict/?setType=1&equipId='+value.equip_no+' &equipName='+value.yc_nm+'&ycId='+value.yc_no+'" >'+value.yc_nm+'</a>'+
-//					        '<div class="item-content  swipeout-content">'+
-//						        '<div class="item-inner">'+
-//						          '<div class="item-title">'+value.yc_nm+'</div>'+
-//						        '</div>'+
-//						      '</div>'+
+
 						      									    	
 						'</li>';
 				$("#ycp").append(html);
