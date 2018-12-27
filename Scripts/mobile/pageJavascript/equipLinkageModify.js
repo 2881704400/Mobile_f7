@@ -42,6 +42,6 @@ function equipLinkageModify() {
     
     $("#equipLinkageModifyId").unbind('click').bind('click',function(){
     	$("#equipLinkageModifyId").attr("dataID",index)
-    	addLinkage(this,'+index+');
+    	addLinkage(this,index);
     });
 }

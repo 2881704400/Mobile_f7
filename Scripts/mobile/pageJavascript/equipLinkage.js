@@ -538,7 +538,7 @@ function loadLinkageEquips(data) {
 }
 // 插入或者更新记录 
 function addLinkage(dt,index) { //index = 1 更新，index = 2 插入  
-      
+      console.log(dt,index)
       let equipLink_cType = getObject(equipTiggerType,"equipTiggerType",2);
       let equipLink_spot = getObject(equipTiggerType,"equipTiggerType",1);
       let equipLink_linkEquipNo = getObject(linkageEquips,"equipTigger_Link",2);
