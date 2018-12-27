@@ -17,7 +17,7 @@
                     </i>
 				</a>
 			</div>
-			<div class="subnavbar eventSearchSubNavBar">
+			<!--<div class="subnavbar eventSearchSubNavBar">
 				<div class="subnavbar-inner">
 		          <div class="segmented segmented-raised">
 		            <a class="button tab-link tab-link-active" href="#tab1">设备事件</a>
@@ -25,11 +25,18 @@
 		            <a class="button tab-link" href="#tab3">系统事件</a>
 		          </div>
 		        </div>
-			</div>
+			</div>-->
 		</div>
 	</div>
-	<div class="page-content eventSearchPageContent " style="padding-top: 88px !important;">
+	<div class="page-content eventSearchPageContent ">
 		<div class="eventSearchContent">
+			<!--<div class="content-block event-search-tabs">
+				<div class="buttons-row">
+					<a href="#tab1" class="tab-link button tab-link-active">设备事件</a>
+					<a href="#tab2" class="tab-link button">设置事件</a>
+					<a href="#tab3" class="tab-link button">系统事件</a>
+				</div>
+			</div>-->
 			<div class="event-search-box">
 				<div class="half-select-box">
 					<label>时间跨度：</label>
@@ -38,11 +45,11 @@
 					</div>
 				</div>
 				<button class="col button button-fill color-blue" onclick="searchEquipItems()">查询</button>
-				<div class="half-select-box">
-					<label>设备选择：</label>
-					<div class="half-select-box-input">
-						<input type="text" placeholder="请选择设备" id="eventSearchEquipId" />
-					</div>
+				<div class="half-select-box-bottom">
+					<label>设备事件：</label>
+					<input type="text" placeholder="请选择设备" id="eventSearchEquipId" />
+					<input type="text" placeholder="请选择事件" id="eventSearchTypeId" />
+
 				</div>
 			</div>
 			<!-- Tabs, tabs wrapper -->

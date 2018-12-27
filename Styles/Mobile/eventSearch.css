@@ -138,15 +138,17 @@
         float: left;
         opacity: 0.6; }
       .eventSearchContent .event-search-box .half-select-box-bottom input {
-        min-width: 70%;
-        height: 75%;
+        width: 43%;
+        height: 80%;
         position: relative;
-        top: 12.5%;
+        top: 10%;
         border-bottom: 1px solid rgba(51, 51, 51, 0.1);
         float: left;
-        font-size: 0.875rem;
-        color: #333333;
-        font-weight: bold; }
+        font-size: 1rem;
+        color: #333333; }
+        .eventSearchContent .event-search-box .half-select-box-bottom input:last-child {
+          width: 24%;
+          margin: 0 3%; }
     .eventSearchContent .event-search-box button {
       width: 18%;
       height: 100%;
@@ -158,10 +160,8 @@
       background-color: #2d8cf0 !important; }
   .eventSearchContent .event-search-tabs {
     width: 100%;
-    height: 36px;
+    height: 40px;
     margin-bottom: 10px;
-    border: 1px solid #2d8cf0;
-    border-right: 0px solid #2d8cf0;
     background: white; }
     .eventSearchContent .event-search-tabs .buttons-row {
       width: 100%;
@@ -172,12 +172,28 @@
         float: left;
         border-radius: 0px;
         border: none;
-        border-right: 1px solid #2d8cf0;
-        color: #2d8cf0;
-        line-height: 34px; }
+        color: #333333;
+        line-height: 38px; }
       .eventSearchContent .event-search-tabs .buttons-row .tab-link-active {
-        color: white;
-        background-color: #2d8cf0; }
+        color: #2d8cf0;
+        background: none !important;
+        border-bottom: 2px solid #2d8cf0; }
+      .eventSearchContent .event-search-tabs .buttons-row:after {
+        content: '';
+        position: absolute;
+        background-color: #c4c4c4;
+        display: block;
+        z-index: 15;
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33); }
   .eventSearchContent .tabs {
     width: 100%;
     height: calc(100% - 88px);

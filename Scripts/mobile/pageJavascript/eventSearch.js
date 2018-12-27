@@ -18,7 +18,7 @@ function eventSearch() {
 	//初始化
 	$("#eventSearchTimeId").val(getNowTime() + " - " + getNowTime());
 	$("#eventSearchEquipId").val("全部设备");
-	$("#eventSearchTypeId").val("全部事件类型");
+	$("#eventSearchTypeId").val("设备事件");
 
 	//加载所有设备
 	onEquipLists();
@@ -49,6 +49,47 @@ function eventSearch() {
 			},
 		}
 	});
+	
+	//事件类型选择
+	var pickerModel = myApp.picker.create({
+		inputEl: '#eventSearchTypeId',
+		rotateEffect: false,
+		renderToolbar: function() {
+			return '<div class="toolbar">' +
+				'<div class="toolbar-inner">' +
+				'<div class="left">' +
+				'<a href="#" class="link sheet-close popover-close">取消</a>' +
+				'</div>' +
+				'<div class="center">' +
+				'<a href="#" class="link toolbar-randomize-link">选择设备</a>' +
+				'</div>' +
+				'<div class="right">' +
+				'<a href="#" class="link sheet-close popover-close">确定</a>' +
+				'</div>' +
+				'</div>' +
+				'</div>';
+		},
+		cols: [{
+			textAlign: 'center',
+			values: ['设备事件', '设置事件', '系统事件']
+		}],
+		on: {
+			change: function(picker, values, displayValues) {
+				$("#eventSearchTypeId").html(values);
+				values=values+"";
+				$(".eventSearchContent .tabs .tab").each(function(){
+					$(this).removeClass("tab-active");
+				});
+				if(values=="设备事件"){
+					$(".eventSearchContent .tabs .tab").eq(0).addClass("tab-active");
+				}else if(values=="设置事件"){
+					$(".eventSearchContent .tabs .tab").eq(1).addClass("tab-active");
+				}else{
+					$(".eventSearchContent .tabs .tab").eq(2).addClass("tab-active");
+				}
+			},
+		}
+	})
 }
 
 //加载所有设备
@@ -172,12 +213,12 @@ function searchEquipItems() {
 			break;
 		}
 	}
-	//	var searchType = $("#eventSearchTypeId").val();
-	var searchTabType = $(".eventSearchSubNavBar .subnavbar-inner").find("a").map(function() {
+	var searchTabType = $("#eventSearchTypeId").val();
+	/*var searchTabType = $(".eventSearchSubNavBar .subnavbar-inner").find("a").map(function() {
 		if($(this).hasClass("tab-link-active")) {
 			return $(this).html();
 		}
-	}).get().join("");
+	}).get().join("");*/
 
 	var _url = "";
 	var _data = "";
