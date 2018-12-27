@@ -2,7 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-	// myApp.router.navigate("/schedule/"); 
+//	 myApp.router.navigate("/systemConfig/"); 
     getJurisdictionData();
     getAppStatusBarHeight();
 	/*setTimeout(function(){
