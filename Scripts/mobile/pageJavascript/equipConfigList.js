@@ -8,8 +8,7 @@ function equipConfigList(){
 	getEquipList();
 }
 function getEquipList(){
-//	myApp.dialog.progress()
-	$("#equipConfigList .eq-list ul").html("")
+	myApp.dialog.progress()
 	$.when(AlarmCenterContext.getEquipList()).done(function(e) {
 		var dat=JSON.parse($(e).find("string").text()),lg=dat.length;
 		if(lg&&lg>0){
@@ -29,7 +28,7 @@ function getEquipList(){
 						'</li>';
 			$("#equipConfigList .eq-list ul").append(html)
 		}
-//		myApp.dialog.close()
+		myApp.dialog.close()
 	});
 
 }
