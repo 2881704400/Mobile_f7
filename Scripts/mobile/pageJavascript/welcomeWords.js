@@ -3,7 +3,7 @@ var welcome_objoriginal = new Object();
 
 function welcomeWords() {
     switchToolbar("homeTool");
-	getFocusValue();
+//	getFocusValue();
 	/*获取文件夹中背景图片信息*/
 	var url1 = WORDcommand.backgroundImage.url,
 		fileName1 = ".png|.jpg|.JPG",
@@ -300,7 +300,9 @@ function getKeyboardScreenHeight2(KeyboardHieght,ScreenHeight) {
 function getFocusValue() {
 	if(typeof(myJavaFun) != "undefined") {
 		//App绑定函数-获取键盘高度
-		myJavaFun.getKeyboardHeight2();
+		if(typeof myJavaFun.getKeyboardHeight2 === "function"){
+			myJavaFun.getKeyboardHeight2();
+		}
 	}
 }
 
