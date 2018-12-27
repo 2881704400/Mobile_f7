@@ -1,5 +1,8 @@
-﻿
+﻿var alertSuc,alertFai;
+
 function sysConfigEdict(){
+	alertSuc= myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
+	alertFai= myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
 	var equipHtml=[
 	 {lable:"设备号",key:"equip_no"},{lable:"设备名称",key:"equip_nm"},{lable:"关联界面",key:"related_pic"},{lable:"设备属性",key:"equip_detail"},
 	 {lable:"通讯刷新周期",key:"acc_cyc"},{lable:"故障处理意见",key:"proc_advice"},{lable:"故障提示",key:"out_of_contact"},{lable:"故障恢复提示",key:"contacted"},
@@ -672,15 +675,12 @@ function upInforEdict(){
 
 			$.when(AlarmCenterContext.updEquipConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
-//					loadPopupInfor()
-					myApp.dialog.alert('提交成功', "温馨提示");
-//					getEquipSelect(selectEquiId);
-					
+					alertSuc.open();
 				}else{
-					myApp.dialog.alert('提交失败', "温馨提示");
+					alertFai.open();
 				}
 			}).fail(function(){
-				myApp.dialog.alert('提交失败', "温馨提示");
+				alertFai.open();
 			})
 			
 		}else if(edictType==1){
@@ -777,15 +777,12 @@ function upInforEdict(){
 			})
 			$.when(AlarmCenterContext.updYcConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
-//					loadPopupInfor()
-					myApp.dialog.alert('提交成功', "温馨提示");
-//					getYcSelect(selectEquiId);
-					
+					alertSuc.open();
 				}else{
-					myApp.dialog.alert('提交失败', "温馨提示");
+					alertFai.open();
 				}
 			}).fail(function(){
-				myApp.dialog.alert('提交失败', "温馨提示");
+				alertFai.open();
 			})
 			
 		}else if(edictType==2){
@@ -883,15 +880,12 @@ function upInforEdict(){
 			
 			$.when(AlarmCenterContext.updYxConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
-//					loadPopupInfor()
-					myApp.dialog.alert('提交成功', "温馨提示");
-//					getYxSelect(selectEquiId);
-					
+					alertSuc.open();
 				}else{
-					myApp.dialog.alert('提交失败', "温馨提示");
+					alertFai.open();
 				}
 			}).fail(function(){
-				myApp.dialog.alert('提交失败', "温馨提示");
+				alertFai.open();
 			})
 			
 		}else{
@@ -983,12 +977,12 @@ function upInforEdict(){
 			
 			$.when(AlarmCenterContext.updSetConfig(JSON.stringify(uploadJson))).done(function(e){
 				if(e.HttpData.code==200&&e.HttpData.data){
-					myApp.dialog.alert('提交成功', "温馨提示");
+					alertSuc.open();
 				}else{
-					myApp.dialog.alert('提交失败', "温馨提示");
+					alertFai.open();
 				}
 			}).fail(function(){
-				myApp.dialog.alert('提交失败', "温馨提示");
+				alertFai.open();
 			})
 			
 		}	
