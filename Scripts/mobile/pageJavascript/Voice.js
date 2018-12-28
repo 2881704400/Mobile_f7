@@ -247,9 +247,10 @@ function callbackVoiceXFData(dt) {
 					changeContentBoxBg();
 				}, 500);
 			}
-			isVoices = false;
-			ocument.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
 		}
+		isVoices = false;
+		document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
+		document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
 	}
 
 	function _error(qXHR, textStatus, errorThrown) {
@@ -329,9 +330,10 @@ function callbackVoiceBuffer(dt) {
 					changeContentBoxBg();
 				}, 500);
 			}
-			isVoices = false;
-			ocument.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
 		}
+		isVoices = false;
+		document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
+		document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
 	}
 
 	function _error(qXHR, textStatus, errorThrown) {
