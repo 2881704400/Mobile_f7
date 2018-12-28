@@ -2,7 +2,7 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-	
+//	 myApp.router.navigate("/systemConfig/"); 
     getJurisdictionData();
     getAppStatusBarHeight();
 	/*setTimeout(function(){
@@ -13,7 +13,6 @@ function onHomePage() {
 
 //响应App绑定函数-获取状态栏高度
 function getStatusBarHeight(height,ScreenHeight) {
-	
 	var heightRate=height/ScreenHeight;
 	var parentHeight=document.body.clientHeight;
 	heightRate=heightRate*parentHeight;
@@ -25,7 +24,9 @@ function getStatusBarHeight(height,ScreenHeight) {
 function getAppStatusBarHeight() {
 	if(typeof(myJavaFun) != "undefined") {
 		//App绑定函数-获取键盘高度
-		myJavaFun.getStatusBarHeight();
+		if(typeof myJavaFun.getStatusBarHeight === "function"){
+			myJavaFun.getStatusBarHeight();
+		}
 	}
 }
 

@@ -553,7 +553,7 @@ function get_no_set(dt,values) {
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
         var result = n.HttpData.data;
         if (result.length>0) {
-            if (values == "") 
+            if (values == "" || !values) 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
             else 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);

@@ -3,7 +3,7 @@ var welcome_objoriginal = new Object();
 
 function welcomeWords() {
     switchToolbar("homeTool");
-	getFocusValue();
+//	getFocusValue();
 	/*获取文件夹中背景图片信息*/
 	var url1 = WORDcommand.backgroundImage.url,
 		fileName1 = ".png|.jpg|.JPG",
@@ -66,19 +66,19 @@ function welcomeWords() {
 							$(this).removeClass("control-active-color");
 						}
 					});
-					if(result.CanvasLeft == "left") {
+					if(result.CanvasLeft == "flex-start") {
 						$("#alignControlId i").eq(0).addClass("control-active-color");
 					} else if(result.CanvasLeft == "center") {
 						$("#alignControlId i").eq(1).addClass("control-active-color");
-					} else if(result.CanvasLeft == "right") {
+					} else if(result.CanvasLeft == "flex-end") {
 						$("#alignControlId i").eq(2).addClass("control-active-color");
 					}
 					$(".welcomeInput").css("textAlign", result.CanvasLeft);
 					//上下对齐初始化
-					if(result.CanvasTop == "0") {
+					if(result.CanvasTop == "flex-start") {
 						$("#alignControlId i").eq(3).removeClass("control-active-color");
 						$(".welcomeInput").css("padding", 0);
-					} else if(result.CanvasTop == "50") {
+					} else if(result.CanvasTop == "center") {
 						$("#alignControlId i").eq(3).addClass("control-active-color");
 						var textAreaHeight = $(".welcomeInput").height() / 4;
 						strAlignItem = "" + textAreaHeight + "px 0";
@@ -300,7 +300,9 @@ function getKeyboardScreenHeight2(KeyboardHieght,ScreenHeight) {
 function getFocusValue() {
 	if(typeof(myJavaFun) != "undefined") {
 		//App绑定函数-获取键盘高度
-		myJavaFun.getKeyboardHeight2();
+		if(typeof myJavaFun.getKeyboardHeight2 === "function"){
+			myJavaFun.getKeyboardHeight2();
+		}
 	}
 }
 
@@ -333,17 +335,17 @@ function welcome_activeSave(that, number) {
 	welcome_objoriginal.textValign = $("#alignControlId i").eq(3).hasClass("control-active-color") ? "1" : "0";
 	//左对齐值
 	if(welcome_objoriginal.textAlign == 0) {
-		welcome_objoriginal.CanvasLeft = "left";
+		welcome_objoriginal.CanvasLeft = "flex-start";
 	} else if(welcome_objoriginal.textAlign == 1) {
 		welcome_objoriginal.CanvasLeft = "center";
 	} else if(welcome_objoriginal.textAlign == 2) {
-		welcome_objoriginal.CanvasLeft = "right";
+		welcome_objoriginal.CanvasLeft = "flex-end";
 	}
 	//垂直对齐值
 	if(welcome_objoriginal.textValign == 0) {
-		welcome_objoriginal.CanvasTop = 0;
+		welcome_objoriginal.CanvasTop = "flex-start";
 	} else if(welcome_objoriginal.textValign == 1) {
-		welcome_objoriginal.CanvasTop = 50;
+		welcome_objoriginal.CanvasTop = "center";
 	}
 	welcome_getcolor = null;
 	// 背景图片
@@ -353,16 +355,16 @@ function welcome_activeSave(that, number) {
 		fileNameURL = $(".wecomeButtom .swiper-slide").eq(0).find("img").attr("src");
 	}
 	var fileName = fileNameURL.split("/")[fileNameURL.split("/").length - 1]; //name
-	if(fileNameURL.indexOf(":")>-1){
-		fileNameURL=fileNameURL.split(":")[2];
-	}
-	
-	fileNameURL=fileNameURL.substring(fileNameURL.indexOf("/"),fileNameURL.length)
+//	if(fileNameURL.indexOf(":")>-1){
+//		fileNameURL=fileNameURL.split(":")[2];
+//	}
+//	
+//	fileNameURL=fileNameURL.substring(fileNameURL.indexOf("/"),fileNameURL.length)
 	
 	welcome_objoriginal.BackgroundImg = fileNameURL;
 	//是否居中
 	welcome_objoriginal.center = "positionClass";
-	var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;background: url(" + fileNameURL + ") no-repeat center center/100%;\" class=\"a123\">" + "<span class=\"" + welcome_objoriginal.center + "\" style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; text-align: " + welcome_objoriginal.CanvasLeft + "; top: " + welcome_objoriginal.CanvasTop + "%; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
+	var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;width: 100%;height: 100%;display: flex;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;background: url(" + fileNameURL + ") no-repeat center center/100%;\" class=\"a123\">" + "<span style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; justify-content: " + welcome_objoriginal.CanvasLeft + "; align-items: " + welcome_objoriginal.CanvasTop + "; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
 	//	console.log("insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(welcome_objoriginal) + "')");
 	
 	var ajaxVar = $.ajax({

@@ -216,36 +216,37 @@ function callbackVoiceXFData(dt) {
 	var _data = {
 		data_string: dt
 	}
-//	ajaxServiceSend("post", _url, true, _data, _successf, _error);
-	$.when(AlarmCenterContext.post(_url, _data, null)).done(function(e) {
+	ajaxServiceSendVoice("post", _url, true, _data, _successf, _error);
+	/*$.when(AlarmCenterContext.post(_url, _data)).done(function(e) {
 		_successf(e);
 	}).fail(function(e) {
 		_error(qXHR, textStatus, errorThrown);
-	});
+	});*/
 
-	function _successf(data) {
-		var rets = $(data).children("string").text();
-		if(rets == "") {
-			$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>未识别！</span>");
-		} else {
-
-			rets = rets.replace("未识别语音,内容---", "");
-			rets = rets.replace("。", "");
-			$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + rets + "</span>");
-			setTimeout(function() {
-				$(".voice-container").append('<div class="pannel-chat-info">' +
-					'	<div class="chart-content">' +
-					'		<span>好的，开始执行：' + rets + '..</span>' +
-					'	</div>' +
-					'</div>');
-				$(".voice-container").append('<div class="pannel-chat-info">' +
-					'	<div class="chart-content">' +
-					'		<span>' + rets + '已执行</span>' +
-					'	</div>' +
-					'</div>');
-				$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
-				changeContentBoxBg();
-			}, 500);
+	function _successf(dt) {
+		if(dt.HttpStatus == 200 && dt.HttpData.data) {
+			var result = dt.HttpData.data;
+			if(result == "") {
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>未识别！</span>");
+			} else {
+				result = result.replace("未识别语音,内容---", "");
+				result = result.replace("。", "");
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
+				setTimeout(function() {
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>好的，开始执行：' + result + '..</span>' +
+						'	</div>' +
+						'</div>');
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>' + result + '已执行</span>' +
+						'	</div>' +
+						'</div>');
+					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+					changeContentBoxBg();
+				}, 500);
+			}
 		}
 		isVoices = false;
 		document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
@@ -265,7 +266,7 @@ function callbackVoiceXFData(dt) {
 	}
 }
 
-function ajaxServiceSend(_type, _url, _asycn, _data, _success, _error) {
+function ajaxServiceSendVoice(_type, _url, _asycn, _data, _success, _error) {
 	var ajaxs = $.ajax({
 		type: _type,
 		url: _url,
@@ -297,36 +298,38 @@ function callbackVoiceBuffer(dt) {
 	}
 	var _url = service + "/VoiceControlByte";
 	var _data = "audioData=" + dt + "&&userName=" + window.localStorage.userName;
-//	ajaxServiceSend("post", _url, true, _data, _successf, _error);
+	ajaxServiceSendVoice("post", _url, true, _data, _successf, _error);
 
-	$.when(AlarmCenterContext.post(1, 2)).done(function(n, l) {
+	/*$.when(AlarmCenterContext.post(_url, _data)).done(function(n, l) {
 		_successf(n);
 	}).fail(function(e) {
 		_error(qXHR, textStatus, errorThrown);
-	});
+	});*/
 
-	function _successf(data) {
-		var rets = $(data).children("string").text();
-		if(rets == "") {
-			$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>未识别！</span>");
-		} else {
-			rets = rets.replace("未识别语音,内容---", "");
-			rets = rets.replace("。", "");
-			$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + rets + "</span>");
-			setTimeout(function() {
-				$(".voice-container").append('<div class="pannel-chat-info">' +
-					'	<div class="chart-content">' +
-					'		<span>好的，开始执行：' + rets + '..</span>' +
-					'	</div>' +
-					'</div>');
-				$(".voice-container").append('<div class="pannel-chat-info">' +
-					'	<div class="chart-content">' +
-					'		<span>' + rets + '已执行</span>' +
-					'	</div>' +
-					'</div>');
-				$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
-				changeContentBoxBg();
-			}, 500);
+	function _successf(dt) {
+		if(dt.HttpStatus == 200 && dt.HttpData.data) {
+			var result = dt.HttpData.data;
+			if(result == "") {
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>未识别！</span>");
+			} else {
+				result = result.replace("未识别语音,内容---", "");
+				result = result.replace("。", "");
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
+				setTimeout(function() {
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>好的，开始执行：' + result + '..</span>' +
+						'	</div>' +
+						'</div>');
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>' + result + '已执行</span>' +
+						'	</div>' +
+						'</div>');
+					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+					changeContentBoxBg();
+				}, 500);
+			}
 		}
 		isVoices = false;
 		document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);

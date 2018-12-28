@@ -270,12 +270,15 @@
             </summary>
             <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getSetParmRadioList(System.Int32,System.Int32)">
             <summary>
             获取设备控制数据
             </summary>
             <returns></returns>
         </member>
+=======
+>>>>>>> 98dc1dcd8c96d63a1969c56a5c2b88524ba11ccb
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ExProcCmdData">
             <summary>
             获取系统控制数据

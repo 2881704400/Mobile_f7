@@ -7,7 +7,6 @@ function equipSearchDetail() {
 	var type = chatValue[0];
 	var time = chatValue[1];
 	var event = chatValue[2];
-	console.log(type,time,event)
 	var strData = "";
 	if(type == 0) {
 		for(var i = 0; i < EqpEvtData.length; i++) {
