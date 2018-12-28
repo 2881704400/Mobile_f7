@@ -146,7 +146,7 @@ function onEquipLists() {
 }
 
 function searchEquipItems() {
-	myApp.dialog.progress();
+	myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 	var searchTime = $("#eventSearchTimeId").val();
 	var realSearchTime = "";
 	if(searchTime) {
@@ -218,7 +218,7 @@ function searchEquipItems() {
 					nScrollHight = $(this)[0].scrollHeight;
 					nScrollTop = $(this)[0].scrollTop;
 					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-						myApp.dialog.progress();
+						myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 
 						allowInfinite = false;
 
@@ -287,7 +287,7 @@ function searchEquipItems() {
 					nScrollHight = $(this)[0].scrollHeight;
 					nScrollTop = $(this)[0].scrollTop;
 					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-						myApp.dialog.progress();
+						myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 
 						allowInfinite = false;
 
@@ -357,7 +357,7 @@ function searchEquipItems() {
 					nScrollTop = $(this)[0].scrollTop;
 					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
 						allowInfinite = false;
-						myApp.dialog.progress();
+						myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 
 						setTimeout(function() {
 							allowInfinite = true;

@@ -8,7 +8,7 @@ function equipConfigList(){
 	getEquipList();
 }
 function getEquipList(){
-//	myApp.dialog.progress()
+//	myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>')
 	$("#equipConfigList .eq-list ul").html("")
 	$.when(AlarmCenterContext.getEquipList()).done(function(e) {
 		var dat=JSON.parse($(e).find("string").text()),lg=dat.length;

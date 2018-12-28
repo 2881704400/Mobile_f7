@@ -2,12 +2,13 @@
 function onHomePage() {
     authorizationName();
     switchToolbar("homeTool");
-	// myApp.router.navigate("/schedule/"); 
+	
     getJurisdictionData();
     getAppStatusBarHeight();
 	/*setTimeout(function(){
 		getAppStatusBarHeight();
 	},3000);*/
+    myApp.router.navigate("/equipLinkage/"); 
 }
 
 //响应App绑定函数-获取状态栏高度
@@ -214,3 +215,5 @@ $.fn.extend({
         });
     },
 });
+
+

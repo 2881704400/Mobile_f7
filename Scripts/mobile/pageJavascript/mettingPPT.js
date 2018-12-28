@@ -129,7 +129,7 @@ function openFileCommand(dt, equip_no, main_instruction, minor_instruction, valu
         value: value
     })).done(function(n) {
         if (n.HttpData.code == 200 || n.HttpData.code == 201) {
-            myApp.dialog.progress();
+            myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
             //辨别点击历史记录或者普通记录
             $(dt).hasClass("historyPPT") ? window.localStorage.historyis = 1 : window.localStorage.historyis = 0;
             //点击的是文件,则保存点击记录

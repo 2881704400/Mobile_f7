@@ -89,10 +89,56 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_JMdata(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_UserListData">
             -----------------------------------------------------------------------------------------------------------------------------------------------
              实时快照及定时任务接口
             -----------------------------------------------------------------------------------------------------------------------------------------------
+            <summary>
+            解析用户信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.searchUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            查询用户信息
+            </summary>
+            <param name="jb">
+            Name 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.DeleteUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            删除用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.AddUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            password 用户密码
+            remark 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.UpdateUserDataByName(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增用户数据
+            </summary>
+            <param name="jb">
+            name 用户名称
+            password 用户密码
+            remark 用户名称
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_JMdata(Newtonsoft.Json.Linq.JObject)">
             <summary>
             解析用户名称
             </summary>
@@ -170,55 +216,55 @@
             </param>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AdministratorData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AdministratorData">
             <summary>
             获取实时快照数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_GWZiChanTableData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_GWZiChanTableData">
             <summary>
             获取资产表数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_VideoInfoData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_VideoInfoData">
             <summary>
             获取视频信息数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AlarmProcData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AlarmProcData">
             <summary>
             获取报警信息数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_PlanData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_PlanData">
             <summary>
             获取计划信息数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcSpecTableData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcSpecTableData">
             <summary>
             获取特殊日期安排数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcWeekTableData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcWeekTableData">
             <summary>
             获取每周任务安排数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcCycleTListData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcCycleTListData">
             <summary>
             获取循环任务数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_SetParmData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_SetParmData">
             <summary>
             获取设备控制数据
             </summary>
@@ -230,13 +276,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ExProcCmdData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ExProcCmdData">
             <summary>
             获取系统控制数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcTimeTListData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_ProcTimeTListData">
             <summary>
             获取普通任务列表数据
             </summary>
@@ -322,14 +368,13 @@
             </param>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getLinkageList(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getLinkageList">
             -----------------------------------------------------------------------------------------------------------------------------------------------
              设备数据及设备联动接口
             -----------------------------------------------------------------------------------------------------------------------------------------------
             <summary>
             获取设备联动配置列表
             </summary>
-            <param name="req"></param>
             <returns></returns>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.addLinkage(Newtonsoft.Json.Linq.JObject)">
@@ -402,37 +447,37 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_EquipGroupData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_EquipGroupData">
             <summary>
             获取设备组数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getEquipList(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getEquipList">
             <summary>
             获取设备表数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_EquipData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_EquipData">
             <summary>
             获取设备表数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AlmReportData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_AlmReportData">
             <summary>
             获取报警排表数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_WeekAlmReportData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_WeekAlmReportData">
             <summary>
             获取周排表数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_SpeAlmReportData(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_SpeAlmReportData">
             <summary>
             获取特定日期排表数据
             </summary>
