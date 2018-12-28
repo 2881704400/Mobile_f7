@@ -1,13 +1,9 @@
-html.with-statusbar.device-ios .popup,
-html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup {
+.popup.popup-voices {
 	top: 0px !important;
 	height: 100% !important;
-}
-
-html.with-statusbar.device-android .popup,
-html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
-	top: 0px !important;
-	height: 100% !important;
+	width: 100%;
+	left: 0;
+	margin: 0;
 }
 
 .popup-voices {

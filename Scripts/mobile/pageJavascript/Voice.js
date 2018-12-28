@@ -209,6 +209,7 @@ function callbackVoiceXFMessage(dt) {
 }
 
 function callbackVoiceXFData(dt) {
+	var voiceString=dt;
 	if(cancelVoiceFlag) {
 		return;
 	}
@@ -241,6 +242,26 @@ function callbackVoiceXFData(dt) {
 					$(".voice-container").append('<div class="pannel-chat-info">' +
 						'	<div class="chart-content">' +
 						'		<span>' + result + '已执行</span>' +
+						'	</div>' +
+						'</div>');
+					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+					changeContentBoxBg();
+				}, 500);
+			}
+		}else {
+			if(!voiceString){
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>您好像没有说话哦！</span>");
+			}else{
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + voiceString + "</span>");
+				setTimeout(function() {
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>好的，开始执行：' + voiceString + '..</span>' +
+						'	</div>' +
+						'</div>');
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>' + voiceString + '指令异常，执行失败！</span>' +
 						'	</div>' +
 						'</div>');
 					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
@@ -293,6 +314,7 @@ function ajaxServiceSendVoice(_type, _url, _asycn, _data, _success, _error) {
 
 //接收回调数据并上传至服务器
 function callbackVoiceBuffer(dt) {
+	var voiceString=dt;
 	if(!isVoices) {
 		return;
 	}
@@ -324,6 +346,26 @@ function callbackVoiceBuffer(dt) {
 					$(".voice-container").append('<div class="pannel-chat-info">' +
 						'	<div class="chart-content">' +
 						'		<span>' + result + '已执行</span>' +
+						'	</div>' +
+						'</div>');
+					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
+					changeContentBoxBg();
+				}, 500);
+			}
+		}else {
+			if(!voiceString){
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>您好像没有说话哦！</span>");
+			}else{
+				$(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + voiceString + "</span>");
+				setTimeout(function() {
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>好的，开始执行：' + voiceString + '..</span>' +
+						'	</div>' +
+						'</div>');
+					$(".voice-container").append('<div class="pannel-chat-info">' +
+						'	<div class="chart-content">' +
+						'		<span>' + voiceString + '指令异常，执行失败！</span>' +
 						'	</div>' +
 						'</div>');
 					$('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
