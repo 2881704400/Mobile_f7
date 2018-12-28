@@ -460,7 +460,7 @@ var pptPattern =[
         icon: 'iconfont icon-f7_ppt',
         equipNo: '300',
         setNo: '7',
-        value: null,
+        value: 'D:\\PPT\\1.pptx',
     },
     {
         name: '关闭',

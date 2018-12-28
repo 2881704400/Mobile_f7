@@ -9,16 +9,16 @@ function equipLinkage() {
         if($(this).attr("href") == "#equipLinkage_set")
             {
                 setTimeout(function(){initAddList();},1000);
-                myApp.dialog.progress();
+                 myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
             }
         else
             {
-                myApp.dialog.progress();
+                myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
                 setTimeout(function(){initSceneList();},1500);
             }
     });
     // 初始化设备
-    myApp.dialog.progress();
+    myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
     initAddList();//联动设置
     toastCenterLinkage = myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
     toastCenterLinkageSuccess = myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
@@ -64,105 +64,7 @@ function initAddList() {
 }
 //公共请求
 var publicFirstData;
-// function equipLinkPublicAjax(jsonString, url, index) {
-//     var jsonData = {
-//         "url": url,
-//         "data": jsonString,
-//         "success": _success,
-//         "error": _error,
-//     };
-//     $.fn.axpost(jsonData);
-//     function _success(data) {
-//         let arrayLike = data.HttpStatus;
-//         if (arrayLike == 200 && data.HttpData.data) {
-//             switch (index) {
-//                 case 1:
-//                     // publicFirstData = data.HttpData.data;
-//                     // tiggerEquip(data.HttpData.data);
-//                     break;
-//                 case 2:
-//                     // linkEquip(data.HttpData.data);
-//                     break;
-//                 case 3:
-//                     // linkage_init = data.HttpData;
-//                     // equipLinkList();
-//                     // equipLinkPublicAjax({
-//                     //     findEquip: false
-//                     // }, "/api/GWServiceWebAPI/getSetparmList", 4);
-//                     break;
-//                 case 4:
-//                     // setparm_init = data.HttpData;
-//                     // equipLinkList();
-//                     break;
-//                 case 5:
-//                     ycpData_table_5 = data.HttpData;
-//                     break;
-//                 case 6:
-//                     yxpData_table_6 = data.HttpData;
-//                     notEqualToYCPYXP();
-//                     break;
-//                 case 7:
-//                     // ycpData_table_7 = data.HttpData;
-//                     // notEqualToYCP();
-//                     break;
-//                 case 8:
-//                     // yxpData_table_8 = data.HttpData;
-//                     // notEqualToYXP();
-//                     break;
-//                 case 9:
-//                     // ycpData_table_9=data.HttpData;
-//                     // equipLinkPublicAjax({
-//                     //      equip_nos: link_listInit_no
-//                     // }, "/api/GWServiceWebAPI/getYxp", 10);
-//                     break;
-//                 case 10: 
-//                    // yxpData_table_10 = data.HttpData;
-//                    // writeContent();
-//                     break;
-//                 case 11: 
-//                   // loadLinkageEquips(data.HttpData.data);
-//                 break;
-//                 // case 12: $("#equipLinkage_set tbody").html("");initTableList();break;
-//                 // case 13: $("#equipLinkage_set tbody").html("");initTableList();break;
-//                 // case 14:  $("#equipLinkage_set tbody").html("");initTableList();break;
-//             }
-//         }
-//         else{
-//             toastCenterLinkage.open();
-//         }
-//     }
-//     function _error(e) {}
-// }
-//触发设备
-// function tiggerEquip(data) {
-//     listAdd = data.map(item => {
-//         return {
-//             value: item.equip_no,
-//             label: item.equip_nm,
-//             loading: false,
-//             children: []
-//         }
-//     })
-//     equipLinkPublicAjax({findEquip: false}, "/api/GWServiceWebAPI/getSetparmList", 2);
-// }
-//联动设备
-// function linkEquip(data) {    
-//     linkageEquips = publicFirstData.filter((equip, index) => {
-//         if (data.some(parm => {
-//                 return equip.equip_no === parm.equip_no
-//             })) {
-//             return equip
-//         }
-//     }).map(equip => {
-//         return {
-//             value: equip.equip_no,
-//             label: equip.equip_nm,
-//             loading: false,
-//             children: []
-//         }
-//     })
-//     initTableList();
-// }
+
 //列表处理
 var tableNameNoYcp, tableNameNoYxp, ycpData_table_5, yxpData_table_6, ycpData_table_7, yxpData_table_8, ycpData_table_9,yxpData_table_10,
     typeList = [{
@@ -449,7 +351,6 @@ var html = '<div class="popup popup-aboutuser">'+
        '<div class="popupBtb row">'+
         '<a class="link popup-close col-50 button" href="#">返回</a>'+
         '<a class="link popupOpenBtn col-50 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+ID+'>确认</a>'+
-        // '<a class="link col-33 button" href="#" onclick="deleteLinkage(this)" dataID='+ID+'>删除</a>'+
       '</div>'+
     '</div>';
     //console.log(dt,equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index)
@@ -744,155 +645,142 @@ function getObject(arrayObject,className,index){
 }
 
 //初始化场景设置
-var sceneData = [],controlEquipList,setList,equipList;
+
 function initSceneList() {
+    var sceneDataList = [],controlEquipList,setList,equipList;
     $("#equipLinkage_edit ul").html("");
-        $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
-                data:{findEquip: false},
-                async:false
-            }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
-                data:{},
-                async:false
-        })).done(function(n,l){
-            let rt = n.HttpData,equipRt = l.HttpData;
-            if (n.HttpData.code ==200 && l.HttpData.code ==200) {
-                myApp.dialog.close();
-                setList = rt.data, equipList = equipRt.data; 
-                //可控设备
-                controlEquipList = setList.filter(item => {
-                  return item.set_type
-                }).map(item => {return item});
-                //过滤出场景
-                sceneData = setList.filter(item => {
-                  return item.set_type === "J"
-                }).map(item => { 
-              var valueString = item.value,eqset_no=[],setParm_no=[],html=htmlHeader=htmlContent=htmlFooter="";
-              if(valueString)
-               valueString.indexOf("+") !=-1?eqset_no = valueString.split("+"):eqset_no.push(valueString);
-              if(eqset_no.length>0)
-              {
-                for(var i=0;i<eqset_no.length;i++)
-                { 
-                  var equip_no_flg = true;
-                  if(eqset_no[i].indexOf(",") != -1)
-                    { equip_no_flg = true;}
-                  else
-                    {equip_no_flg = false;}
-
-                  htmlContent += '<div class="row childrenEquipControl" combination="'+eqset_no[i]+'">'+
-                        '<div class="leftTaskName col-60">'+
-                          '<b>'+(i+1)+'.</b>'+
-                          '<a href="#">'+(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))+'</a>:<strong>'+(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))+'</strong>'+
-                        '</div>'+
-                        '<div class="rightBtnModul col-40 row no-gap">'+
-                            '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
-                            '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
-                            '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
-                        '</div>'+
-                  '</div>';                 
-                  }
-              }
-                htmlHeader = '<li class="accordion-item bottomBorderLine"><a href="#" class="item-content item-link">'+
-                    '<div class="item-inner">'+
-                      '<div class="item-title">'+item.set_nm+'</div>'+
-                    '</div></a>'+
-                  '<div class="accordion-item-content">'+
-                    '<div class="block">'+
-                       '<ul class="sceneList">'+
-                        '<li class="row">'+
-                           '<div class="sceneHeader row">'+
-                            '<span class="col-25">场景名称</span>'+
-                            '<span class="col-75"><input type="text" value="'+item.set_nm+'"/></span>'+
-                           '</div>'+
-                           '<div class="sceneContent row">'+
-                            '<span class="col-25">'+
-                                '<label>场景控制项</label>'+
-                            '</span>'+
-                            '<span class="col-75">';
-                htmlFooter = '</span>'+
-                           '</div>'+
-                        '</li>'+
-                      '</ul>'+
-                    '</div>'+
-                    '<div class="sceneBtn"><a href="#" class="addSceneControl" onclick="sceneAlert(this,\'增加控制项\',\'append\')" dataArgs='+JSON.stringify(controlEquipList)+'>新增控制</a><a href="#" class="saveScene" onclick="submitScene(this,'+item.equip_no+','+item.set_no+')" >保存场景</a><a href="#" class="delScene" onclick="deleteScene('+item.equip_no+','+item.set_no+')">删除场景</a></div>'+
-                  '</div>'+
-                '</li>';
-                html = htmlHeader+htmlContent+htmlFooter;
-                $("#equipLinkage_edit>ul").append(html);
-                // $("#equipLinkage_edit>ul").animate({scrollTop: $("#equipLinkage_edit>ul")[0].scrollHeight+'px'}, 50);
-                return item;
-                })
-         }
-        }).fail(function(e){
-             myApp.dialog.close();
-        });
-}
-
-//添加场景
-function addScene(titleName) {
-    if (sceneData.some(item => {
-    return item.set_nm === titleName
-    })) {
-      tooitp("不能有相同的场景名称");
-     return false;}
-    let setNo = 1,
-      equipNo = 0
-    if (sceneData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll').length > 0) {
-      equipNo = sceneData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll')[0].equip_no
-    }
-    sceneData.forEach(item => {
-      setNo += (sceneData.some(scene => {
-        return scene.set_no === setNo
-      })) ? 1 : 0
-    })
-    let reqData = {
-      title: titleName,
-      equipNo: equipNo,
-      setNo: setNo
-    }
-    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/addScene",{
-    data:reqData,
-    async:false
-        })).done(function(n){
-     initSceneList();
-    }).fail(function(e){});
-}
-//提示
-function tooitp(txt){
- try{myApp.notification.destroy(toast); } catch(e){}
- var toast = myApp.notification.create({
-    title: '系统提示',
-    titleRightText: '',
-    subtitle: '<br />',
-    text: txt,
-    closeTimeout: 1000,
- }).open();
-}
-//保存场景
-function submitScene(dt,equipNo,setNo) {
-  let sceneName = $(dt).parent().prev().find("input").val(),dataStr="";
-  $(dt).parent().prev().find("div.childrenEquipControl").each(function(item){
-    dataStr += ($(this).attr("combination")+"+");
-  });
-  try{dataStr = dataStr.substr(0,dataStr.length-1);}
-  catch(e){}
-  let reqData = {equipNo: equipNo, setNo: setNo, sceneName: sceneName, dataStr: dataStr }
-  $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/updateScene",{
-            data:reqData,
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
+            data:{findEquip: false},
             async:false
-        })).done(function(n){
-     initSceneList();
-    }).fail(function(e){});
+        }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
+            data:{},
+            async:false
+    })).done(function(n,l){
+        let rt = n.HttpData,equipRt = l.HttpData;
+        if (n.HttpData.code ==200 && l.HttpData.code ==200) {
+            myApp.dialog.close();
+            setList = rt.data, equipList = equipRt.data; 
+            //可控设备
+            controlEquipList = setList.filter(item => {
+              return item.set_type
+            }).map(item => {return item});
+            //过滤出场景
+             var htmlHeader ="";
+            sceneDataList = setList.filter(item => {
+              return item.set_type === "J"
+            }).map(item => { 
+                  // var valueString = item.value,eqset_no=[],setParm_no=[],html=htmlHeader=htmlContent=htmlFooter="";
+                  // if(valueString)
+                  //  valueString.indexOf("+") !=-1?eqset_no = valueString.split("+"):eqset_no.push(valueString);
+                  // if(eqset_no.length>0)
+                  // {
+                  //   for(var i=0;i<eqset_no.length;i++)
+                  //   { 
+                  //     var equip_no_flg = true;
+                  //     if(eqset_no[i].indexOf(",") != -1)
+                  //       { equip_no_flg = true;}
+                  //     else
+                  //       {equip_no_flg = false;}
+
+
+                  //     // htmlContent += '<div class="row childrenEquipControl" combination="'+eqset_no[i]+'">'+
+                  //     //       '<div class="leftTaskName col-60">'+
+                  //     //         '<b>'+(i+1)+'.</b>'+
+                  //     //         '<a href="#">'+(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))+'</a>:<strong>'+(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))+'</strong>'+
+                  //     //       '</div>'+
+                  //     //       '<div class="rightBtnModul col-40 row no-gap">'+
+                  //     //           '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
+                  //     //           '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
+                  //     //           '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
+                  //     //       '</div>'+
+                  //     // '</div>';                 
+                  //     }
+                  // }
+
+                      htmlHeader +=`<li class="swipeout bottomBorderLine">
+                          <div class="item-content swipeout-content schedule-content row no-gap" onclick="scanelEdit(this,1)" equip_no="${item.equip_no}" set_no="${item.set_no}" combination="${item.value}">
+                              <a href="#" class="item-link item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">${item.set_nm} </div>
+                                </div>
+                            </a>    
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="delBtn" onclick="deleteScene(this,${item.equip_no},${item.set_no})">删除</a>
+                          </div>
+                        </li>`;
+
+
+                       // htmlContent +=`<li class="swipeout bottomBorderLine">
+                       //      <div class="item-content swipeout-content schedule-content row no-gap" onclick="scanelEdit(this,1)" equipcomb="${eqset_no[i]}">
+                       //          <div class="item-inner">
+                       //            <div class="item-title">${i+1} ${(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))} <strong>${(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))}</strong></div>
+                       //            <div class="item-after"><i class="iconfont icon-f7_top_jt"></i></div>
+                       //          </div>
+                       //      </div>
+                       //      <div class="swipeout-actions-right">
+                       //        <a href="#" class="delBtn" onclick="deleteScene(this)" style="">删除</a>
+                       //      </div>
+                       //    </li> `;
+
+
+                    // htmlHeader = '<li class="accordion-item bottomBorderLine"><a href="#" class="item-content item-link">'+
+                    //     '<div class="item-inner">'+
+                    //       '<div class="item-title">'+item.set_nm+'</div>'+
+                    //     '</div></a>'+
+                    //   '<div class="accordion-item-content">'+
+                    //     '<div class="block">'+
+                    //        '<ul class="sceneList">'+
+                    //         '<li class="row">'+
+                    //            '<div class="sceneHeader row">'+
+                    //             '<span class="col-25">场景名称</span>'+
+                    //             '<span class="col-75"><input type="text" value="'+item.set_nm+'"/></span>'+
+                    //            '</div>'+
+                    //            '<div class="sceneContent row">'+
+                    //             '<span class="col-25">'+
+                    //                 '<label>场景控制项</label>'+
+                    //             '</span>'+
+                    //             '<span class="col-75">';
+                    // htmlFooter = '</span>'+
+                    //            '</div>'+
+                    //         '</li>'+
+                    //       '</ul>'+
+                    //     '</div>'+
+                    //     '<div class="sceneBtn"><a href="#" class="addSceneControl" onclick="sceneAlert(this,\'增加控制项\',\'append\')" dataArgs='+JSON.stringify(controlEquipList)+'>新增控制</a><a href="#" class="saveScene" onclick="submitScene(this,'+item.equip_no+','+item.set_no+')" >保存场景</a><a href="#" class="delScene" onclick="deleteScene('+item.equip_no+','+item.set_no+')">删除场景</a></div>'+
+                    //   '</div>'+
+                    // '</li>';
+                    return item;
+            });
+            $("#equipLinkage_edit>ul").append(htmlHeader);
+     }
+    }).fail(function(e){
+         myApp.dialog.close();
+    });
 }
+//场景URL
+function scanelEdit(that,status){
+    if(status == 1)
+      myApp.router.navigate("/scheduleModify/?title=场景编辑&index=1&table=equipLinkage_edit_modify&equip_no="+$(that).attr("equip_no")+"&set_no="+$(that).attr("set_no")+"&combination="+$(that).attr("combination")+"&currentTxt="+$(that).find(".item-title").text()); 
+    else
+      myApp.router.navigate("/scheduleModify/?title=场景编辑&index=2&table=equipLinkage_edit_modify"); 
+}
+
+
+
+
+
+
 //删除场景
-function deleteScene(equipNo,setNo) {
+function deleteScene(dt,equipNo,setNo) {
+
     myApp.dialog.confirm("是否删除当前场景","提示",function(){
       let reqData = {equipNo: equipNo, setNo: setNo}
       $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/deleteScene",{
                 data:reqData,
                 async:false
             })).done(function(n){
-         initSceneList();
+             $(dt).parents("li").remove();
+             toastCenterLinkageSuccess.open();
         }).fail(function(e){});
     });
 }
@@ -902,88 +790,6 @@ function sceneControl(dt,txtTitle){
        addScene(name);
     });   
 }
-//弹窗
-var html_ul_li;
-function sceneAlert(dt,txtTitle,positionargs){
-    var  html ="";
-    try{
-        controlEquipList.forEach(function(item,index){
-           equipList.forEach(function(itemchild,indexchild){
-            if(item.equip_no == itemchild.equip_no)
-               html += "<option combination='"+item.equip_no+","+item.set_no+"' combinationVal='"+item.value+"'  value="+item.set_nm+">"+item.set_nm+"</option>";
-           });
-        });        
-    }
-    catch(e){}
-    myApp.dialog.confirm('<div>'+
-             '<div class="equipAlertHeader">'+
-                '<label class="ivu-radio-wrapper ivu-radio-wrapper-checked" ><span class="ivu-radio ivu-radio-checked"><span class="ivu-checkbox-inner"></span> <input type="radio" name="equipCon" class="ivu-radio-input" id="checkEquip_1" checked></span> 设备控制</label>'+
-                '<label class="ivu-radio-wrapper ivu-radio-wrapper-checked" ><span class="ivu-radio ivu-radio-checked"><span class="ivu-radio-inner"></span> <input type="radio" name="equipCon" class="ivu-radio-input" id="checkEquip_2"></span> 延迟设置</label>'+                     
-            '</div>'+    
-            '<div class="equipAlertContent">'+
-                '<div class="row"><label class="col-40">选择设备</label><select class="equipOption col-60" autofocus>'+
-                html+
-                '</select></div>'+
-                '<div class="row displayNone"><label class="col-40">时长(ms)</label><input type="number" value="0" class="equipIntervalTime col-60"/></div>'+                 
-            '</div>'+ 
-          '</div>'
 
-        ,txtTitle, function (name) {
-            let equipName_time,equipName_Value;
-            if($("#checkEquip_1").is(":checked"))
-            {
-                equipName_time =$(".equipOption").find("option:selected").attr("combination");
-            }
-            else
-            {
-                equipName_time = $(".equipIntervalTime").val();
-            }
-          var childrenEl="",index=0; 
-          if(positionargs == 'append'){
-            childrenEl= $(dt).parent().prev().find("div.sceneContent span.col-75");
-            index = childrenEl.find("div.childrenEquipControl").length+1;
-          }else{
-            childrenEl= $(dt).parent().parent();
-            index = $(dt).parents("span.col-75").find("div.childrenEquipControl").length+1;
-          }
-          html_ul_li = '<div class="row childrenEquipControl" combination="'+equipName_time+'">'+
-                '<div class="leftTaskName col-60">'+
-                  '<b>'+index+'.</b>'+
-                  '<a href="#">'+($("#checkEquip_1").is(":checked")?filterFun(equipList,equipName_time.split(",")[0],null):"间隔操作")+'</a>:<strong>'+($("#checkEquip_1").is(":checked")?filterFun(setList,equipName_time.split(",")[0],equipName_time.split(",")[1]):"延时间隔"+equipName_time+"毫秒")+'</strong>'+
-                '</div>'+
-                '<div class="rightBtnModul col-40 row no-gap">'+
-                    '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
-                    '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
-                    '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
-                '</div>'+
-          '</div>'; 
-         positionargs == 'append'?childrenEl.append(html_ul_li):(positionargs == 'before'?childrenEl.before(html_ul_li):childrenEl.after(html_ul_li));
-    });
-    $("#checkEquip_1,#checkEquip_2").unbind();
-    $("#checkEquip_1,#checkEquip_2").bind("change",function(){
-       $(this).attr("id") == "checkEquip_1"?$(".equipAlertContent>div:eq(0)").removeClass("displayNone").siblings().addClass("displayNone"):$(".equipAlertContent>div:eq(1)").removeClass("displayNone").siblings().addClass("displayNone");
-    });
-}
-//删除当前控制项
-function currentControl(dt){
-    myApp.dialog.confirm("是否删除当前控制项","提示",function(){
-         $(dt).parent().parent().remove();
-    });
-  
-}
 
-//过滤函数
-function filterFun(obj,selecet_equip_no,selecet_set_no){
-  if(selecet_set_no == null)
-      return  obj.filter(item => {
-                      return item.equip_no == selecet_equip_no;
-                    }).map(item => { 
-                          return "" || item.equip_nm;
-                    });
-  else
-      return  obj.filter(item => {
-                      return item.equip_no == selecet_equip_no && item.set_no == selecet_set_no;
-                    }).map(item => {
-                          return "" || item.set_nm;
-                    });    
-}
+

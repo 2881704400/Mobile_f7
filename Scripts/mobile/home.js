@@ -8,6 +8,7 @@ function onHomePage() {
 	/*setTimeout(function(){
 		getAppStatusBarHeight();
 	},3000);*/
+    myApp.router.navigate("/equipLinkage/"); 
 }
 
 //响应App绑定函数-获取状态栏高度
@@ -116,7 +117,7 @@ function commonlyUsedFun(className, classListName, jsonString) {
     var htmlTrailerChild = "",
         xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
+        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
     }
     $("." + className).append(htmlTrailerChild);
 }
@@ -215,3 +216,5 @@ $.fn.extend({
         });
     },
 });
+
+

@@ -104,3 +104,6 @@ $(document).on("page:beforein", ".page[data-page='scheduleModify']", function (e
 $(document).on("page:beforein", ".page[data-page='equipLinkageModify']", function (e) {
     initPageJS('equipLinkageModify', '/Scripts/mobile/pageJavascript/');
 });
+$(document).on("page:beforein", ".page[data-page='scheduleModifyChild']", function (e) {
+    initPageJS('scheduleModifyChild', '/Scripts/mobile/pageJavascript/');
+});

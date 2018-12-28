@@ -1,4 +1,4 @@
-var indexAll = 0,msgArray=[]; //1更新\2插入
+var indexAll = 0,msgArray=[],scheduleModifyTooip,scheduleModifySuccessTooip; //1更新\2插入
 function scheduleModify() {
     var chatObject = myApp.views.main.history,
     urlLength = chatObject.length - 1,
@@ -39,10 +39,26 @@ function scheduleModify() {
             $(".scheduleModifyContainer_weeklytable").removeClass("displayNone").siblings().addClass("displayNone");
             newlyBuildSpeAlmReport_view();
          break;
+         case "equipLinkage_edit_modify":
+             $(".equipLinkage_edit_modify").removeClass("displayNone").siblings().addClass("displayNone");
+             initSceneList_view();
+         break;
+         // case "equipLinkage_edit_modify_child":
+         //     $(".equipLinkage_edit_modify_child").removeClass("displayNone").siblings().addClass("displayNone");
+         //     scenalControlPro_init();
+         //     equiplinkageStr="";
+         // break;
         default: 
 
         break;
      }
+
+     // 提示
+         scheduleModifyTooip = myApp.toast.create({text: "请输入场景名称", position: 'center', closeTimeout: 2000, });
+         scheduleModifySuccessTooip = myApp.toast.create({text: "保存成功", position: 'center', closeTimeout: 2000, });
+         scheduleModifyInputTooip = myApp.toast.create({text: "场景名称不能重复", position: 'center', closeTimeout: 2000, });
+
+
 }
 function isArray(str,arrayStr){
    for(var i= 0;i<arrayStr.length;i++)
@@ -416,13 +432,10 @@ function newlyBuildSpeAlmReport_view() {
                     else
                        n_html += `<option value="${item.Administrator}">${item.Administrator}</option>`;                    
                 }
-
             });
             $(".scheduleModifyContainer_weeklytable_username").html(n_html);
             $(".scheduleModifyContainer_weeklytable_stime").val(isArray("stime",msgArray));
             $(".scheduleModifyContainer_weeklytable_etime").val(isArray("etime",msgArray));
-
-
          }
          else
          {
@@ -483,4 +496,219 @@ function newlyBuildSpeAlmReport_view() {
         })
     }
     // listInit("Spe_userName", schedule_public_username);
+}
+// 场景编辑
+var sceneData = [],scaneEquipData = [];
+function initSceneList_view() {
+    var controlEquipList,setList,equipList;
+    $(".equipLinkage_edit_modify>ul").html("");
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
+            data:{findEquip: false},
+            async:false
+        }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
+            data:{},
+            async:false
+    })).done(function(n,l){
+        let rt = n.HttpData,equipRt = l.HttpData;
+        if (n.HttpData.code ==200 && l.HttpData.code ==200) {
+            myApp.dialog.close();
+            sceneData = rt.data,scaneEquipData = equipRt.data;
+            setList = rt.data, equipList = equipRt.data; 
+            // 场景名称
+             $("#equipLinkage_input").val(isArray("currentTxt",msgArray));
+             //选择设备
+             controlEquipList = setList.filter(item => {
+              return (item.equip_no == isArray("equip_no",msgArray) && item.set_nm.trim() == isArray("currentTxt",msgArray).trim());
+             }).map(item => {return item});
+             // console.log(controlEquipList);
+           // 场景控制项目
+              var valueString = (controlEquipList.length>0?controlEquipList[0].value.trim():""),valueArray = [];
+              if(valueString)
+               valueString.indexOf("+") !=-1?valueArray = valueString.split("+"):valueArray.push(valueString);
+
+              
+
+              if(equiplinkageStr.length>0)//添加新增控制项
+              {
+                let firstMsg = equiplinkageStr.shift();
+                if(firstMsg == "last")
+                    equiplinkageStr.forEach(function(item,index){
+                        valueArray.push(equiplinkageStr[index]);
+                    });
+                else
+                {
+                     equiplinkageStr.unshift(parseInt(firstMsg),0);
+                     Array.prototype.splice.apply(valueArray, equiplinkageStr); 
+                     // console.log(valueArray);
+                     // return false;
+                }
+              }
+
+                // valueArray.concat(equiplinkageStr);
+
+              if(valueArray.length>0)
+              {
+                var htmlContent = "";
+                for(var i=0;i<valueArray.length;i++)
+                { 
+                  var equip_no_flg = true;
+                  if(valueArray[i].indexOf(",") != -1)
+                    { equip_no_flg = true;}
+                  else
+                    {equip_no_flg = false;}
+
+                   htmlContent +=`<li class="swipeout bottomBorderLine" equipcomb="${valueArray[i]}">
+                        <div class="item-content swipeout-content schedule-content row no-gap" >
+                            <div class="item-inner">
+                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,valueArray[i].split(",")[0],null):(valueArray[i]?"间隔操作":""))}: <strong>${(equip_no_flg?filterFun(setList,valueArray[i].split(",")[0],valueArray[i].split(",")[1]):(valueArray[i]?"延时间隔"+valueArray[i]+"毫秒":""))}</strong></div>
+                              <div class="item-after" onclick="scenalControlPro(${i})" ><i class="iconfont icon-f7_top_jt"></i></div>
+                            </div>
+                        </div>
+                        <div class="swipeout-actions-right">
+                          <a href="#" class="delBtn" onclick="currentControl(this)" style="">删除</a>
+                        </div>
+                      </li> `;
+                  }
+                $(".equipLinkage_edit_modify>ul").append(htmlContent);       
+                 equiplinkageStr.length=0;              
+              }
+     }
+    }).fail(function(e){
+         myApp.dialog.close();
+    });
+}
+
+//过滤函数
+function filterFun(obj,selecet_equip_no,selecet_set_no){
+  if(selecet_set_no == null)
+      return  obj.filter(item => {
+                      return item.equip_no == selecet_equip_no;
+                    }).map(item => { 
+                          return "" || item.equip_nm;
+                    });
+  else
+      return  obj.filter(item => {
+                      return item.equip_no == selecet_equip_no && item.set_no == selecet_set_no;
+                    }).map(item => {
+                          return "" || item.set_nm;
+                    });    
+}
+
+//保存场景
+function submitScene(dt) {
+    if(indexAll == 1)
+    {
+          let sceneName = $("#equipLinkage_input").val(),dataStr="";
+          if(!sceneName)
+            scheduleModifyTooip.open();
+          $(".equipLinkage_edit_modify ul li").each(function(item){
+            dataStr += ($(this).attr("equipcomb")+"+");
+          });
+          try{dataStr = dataStr.substr(0,dataStr.length-1);}
+          catch(e){}
+          let reqData = {equipNo: isArray("equip_no",msgArray), setNo: isArray("set_no",msgArray), sceneName: sceneName, dataStr: dataStr }
+          $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/updateScene",{
+                    data:reqData,
+                    async:false
+                })).done(function(n){
+            initSceneList();
+                 scheduleModifySuccessTooip.open();
+            }).fail(function(e){});
+    }
+    else
+    {
+        addScene();
+    }
+}
+//添加场景
+function addScene() {
+    //场景名
+    if (sceneData.some(item => {
+    return item.set_nm === $("#equipLinkage_input").val();
+    })) {
+     scheduleModifyInputTooip.open();
+     return false;}
+    if($("#equipLinkage_input").val().trim() == "") 
+    {
+        myApp.dialog.alert("场景名称不能为空","提示");
+        return false;
+    }
+     //场景设备号和设置号
+    
+    var equipNo="",set_no=[],str = "";
+    if (scaneEquipData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll').length > 0) {
+      equipNo = scaneEquipData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll')[0].equip_no;
+    }
+    if(sceneData.length>0)
+    {
+       var setParmList = sceneData.filter(equip => equip.equip_no === equipNo);
+        if(setParmList.length>0)
+        {
+            setParmList.forEach(function(item,index){
+             set_no.push(item.set_no);
+            });
+        }
+    }
+    //控制项
+      $(".equipLinkage_edit_modify ul li").each(function(item){
+        str += ($(this).attr("equipcomb")+"+");
+    });  
+      try{str = str.substr(0,str.length-1);} catch(e){}
+    let reqData = {
+      title: $("#equipLinkage_input").val(),
+      equipNo: equipNo,
+      setNo: set_no.length>0?(Math.max.apply(null, set_no) + 1):1,
+      value: str,
+    }
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/addScene",{
+    data:reqData,
+    async:false
+        })).done(function(n){
+        scheduleModifySuccessTooip.open();
+     initSceneList();
+    }).fail(function(e){});
+}
+
+//新增控制
+function scenalControlPro(val){
+  myApp.router.navigate("/scheduleModifyChild/?"+val); 
+}
+//新增控制初始化
+
+function scenalControlPro_init() {
+    var controlEquipList,setList,equipList;
+    $(".equipLinkage_edit_modify_child_equip").html("");
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getSetparmList",{findEquip:false})).done(function(l){
+        let equipRt = l.HttpData;
+        if (l.HttpData.code ==200) {
+            var l_html ="";
+            equipRt.data.forEach(function(item,index){
+                if(indexAll == 1)
+                {
+                   if(isArray("username",msgArray) == item.set_nm && isArray("equip_no",msgArray) == item.equip_no)
+                      l_html += `<option value="${item.set_nm}" combination="${item.equip_no},${item.set_no}" selected>${item.set_nm}</option>`;
+                    else
+                       l_html += `<option value="${item.set_nm}" combination="${item.equip_no},${item.set_no}">${item.set_nm}</option>`;  
+                }
+                else
+                {
+                    if(index == 0)
+                      l_html += `<option value="${item.set_nm}" combination="${item.equip_no},${item.set_no}" selected>${item.set_nm}</option>`;
+                    else
+                       l_html += `<option value="${item.set_nm}" combination="${item.equip_no},${item.set_no}">${item.set_nm}</option>`;                    
+                }
+            });
+            $(".equipLinkage_edit_modify_child_equip").html(l_html);
+            // console.log(equipRt.data);
+         }
+    }).fail(function(e){
+         myApp.dialog.close();
+    });
+}
+//删除当前控制项
+function currentControl(dt){
+    myApp.dialog.confirm("是否删除当前控制项","提示",function(){
+         $(dt).parent().parent().remove();
+    });
+  
 }

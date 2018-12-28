@@ -1,6 +1,6 @@
 ﻿function equips() {
 	switchToolbar("equipsTool");
-	myApp.dialog.progress();
+	myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 	allEquipSatatus();
 	//获取所有设备的状态
 	var $ptrContent = $$('.equipPageContent');

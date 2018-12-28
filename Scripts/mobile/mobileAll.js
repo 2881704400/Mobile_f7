@@ -91,6 +91,9 @@ var myApp = new Framework7({
     }, {
         path: '/sysConfigEdict/',
         url: 'sysConfigEdict.html',
+    }, {
+        path: '/scheduleModifyChild/',
+        url: 'scheduleModifyChild.html',
     }
     ],
     on: {
@@ -122,7 +125,7 @@ function initLoads() {
         //myJavaFun.GetSystemInfor(); //获取系统信息    
     } catch (ex) {}
 }
-var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages;
+var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages,equiplinkageStr=[];
 //连接服务器
 function InitEnsure() {
     var ajaxs = $.ajax({

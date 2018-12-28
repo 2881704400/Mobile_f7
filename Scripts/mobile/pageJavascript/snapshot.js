@@ -3,7 +3,7 @@ function snapshot() {
     switchToolbar("snapshotTool");
     var snapashot_ptr = $$('.snapashot-page-content');
     snapashot_ptr.on("ptr:refresh", refreshpg);
-    myApp.dialog.progress();
+    myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
     initData();
 }
 //获取事件的报警配置

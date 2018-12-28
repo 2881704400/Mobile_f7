@@ -1,7 +1,7 @@
 /*PPT*/
 @charset "utf-8";
 @import 'public.scss';
-
+// 报警排表
 .scheduleContainer{
     height: 100%;position: relative;
     &>.subnavbarTabel{
@@ -55,7 +55,7 @@
     	.icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
     }
 }
-
+// 联动
 .equipLinkageContainer{
     height: 100%;position: relative;
     &>.subnavbarTabel{
@@ -94,16 +94,12 @@
         .icon-f7_modify,.icon-f7_delete{font-size: 1.5rem;padding: 0px 10px;}
         #equipLinkage_edit{
             &>ul{ &>li{position: relative;
-                .item-title{font-size: 1rem;}
-                .sceneBtn{padding: 20px;text-align: center;
-                    &>a{
-                        font-size: 1rem;color: #{$btnFontColor};padding: 8px 15px;margin: 0px 5px;background: #{$btnBackground}; 
-                   }
-                 }
-                 // &>a{.item-inner:after{height: 0px!important;}}
+                .item-title{font-size: 0.9rem;}
+                .delBtn{padding: 20px;text-align: center; background: #FF3B30;}
+                 a{width: 100%;font-size: 1rem;.item-inner:after{height: 0px!important;}}
                 }
             }
-            // &>ul:after,&>ul:before{height: 0px!important;}
+            &>ul:after,&>ul:before{height: 0px!important;}
            .sceneList{ 
             &>li{padding: 5% 0;
               &>div.sceneHeader{
@@ -130,16 +126,15 @@
     }
 }
 
-.scheduleModifyPageContent{
-    background-color: #F2F3F5 !important;
-    // padding-top: 54px !important;
-}
-
+.scheduleModifyPageContent{background-color: #F2F3F5 !important;}
+// 修改子页
 .scheduleModifyContainer{
-        height: 100%;border-top: 10px solid #{$popupBackground};   
+    height: 100%;border-top: 10px solid #{$popupBackground};   
     input,select{color: #{$selectedColor} !important;font-size: 1rem !important;}
-    .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;background: #FFFFFF;}
-    .equipLinkageList:after{    bottom: -40px!important;    height: 0px !important;}
+    .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;}
+    .equipLinkageList:after{    bottom: -40px!important;}
+    // .equipLinkageList{height: 75%;overflow-y: auto;padding-bottom: 50px;background: #FFFFFF;}
+    // .equipLinkageList:after{    bottom: -40px!important;    height: 0px !important;}
     // .item-content{
     //     height: 72px !important;
     //     padding-right: 15px;
@@ -159,8 +154,29 @@
     }
     .comfirmModify{color: #{$btnWhiteFontColor};width: 43%;margin: 5% 5% 15% 2%;padding: 0.8rem;float: left;background: #{$btnBackground};border: 0;border-radius: #{$unclickBorderRadius};outline: none;font-size: 1rem;font-weight: 600;letter-spacing: 2px;}
     .comfirmCancel{margin: 5% 2% 15% 5%;background: #{$btnCancelBackground};}
+
 }
 .scheduleModifyContainer_equipgroup{height: 60%;background: #{$situationContainerBgc};&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
+// 场景编辑
+.equipLinkage_edit_modify{
+    .equipLinkage_edit_header{
+      &>div{    font-size: 0.9rem;height: 40px;line-height: 40px;padding-left: 8%; background: #{$tableHeaderBgc};#equipLinkage_input{    text-align: right; padding-right: 5%;color: #{$tableHeaderFontColor}!important;}span{a{color: #{$tabSelected}!important;}text-align: right; padding-right: 5%;}}
+       
+      &>div:nth-child(1){margin-bottom: 10px;}
+    }
+    ul{max-height: 60%;
+    overflow-y: auto;li{    padding-left: 6%;.item-content,.item-inner{width: 100%;} .item-inner{i{font-size: 1.8rem;}} .delBtn{background: #FF3B30;}}}
+    ul:after{height: 0!important;}
+}
+// 场景控制项目
+.equipLinkage_edit_modify_child {
+    ul{li.equipLinkage_edit_modify_childFirst{
+            padding: 20px 0;text-align: center;
+        &>div{i{font-size: 2rem;vertical-align: sub;}}
+        .selectedIcorlor i{color: #{$selectedColor};}
+        }
+    }
+}
 
 .popup-aboutuser { 
 	position: absolute;background: #{$popupBackground};padding: 5%;
@@ -186,6 +202,7 @@
 .selectScheduleMenu{color: #{$tabSelected}!important;font-size: 12px;border-bottom: 2px solid #{$tabSelected};}
 //添加按钮
 .scheduleRightBottomBtn{position: absolute;right: 5%;bottom: 10%;&>a{&>i{font-size: 3rem;color: #{$tabSelected};}}}
+
 
 .item-input-wrap input{border: 0;}
 .dialog-input-field .item-input-wrap input{border-bottom: 1px solid #{$tabSelected}!important;}
