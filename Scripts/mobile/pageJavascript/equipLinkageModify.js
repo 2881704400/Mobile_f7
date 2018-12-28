@@ -30,6 +30,8 @@ function equipLinkageModify() {
 		}
 		if(delayTime != " " && delayTime != "undefined") {
 			$("#equipTiggerTime").val(delayTime);
+		}else{
+			$("#equipTiggerTime").val(0);
 		}
 		if(linkageEquip != " " && linkageEquip != "undefined") {
 			$("#equipTigger_Link").val(linkageEquip);
