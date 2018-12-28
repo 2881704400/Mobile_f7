@@ -244,6 +244,7 @@
             }
         }
     }
+
     .equipCon{
         height:calc(100% - 40px) ;
         .eventWrap{
@@ -291,6 +292,17 @@
                 height: 100%;
                 overflow: auto;
             }
+            #equipTable{
+                 .item-title {
+                    color: $titColor;
+                }
+            }
+            
+            .btn{
+                margin: 35px auto;
+                width: 60%;
+                
+            }
         }
         li {
             background: #fff;
@@ -303,6 +315,7 @@
             }
         }
     }
+    
 }
 
 .sheet-alarm {
@@ -404,6 +417,7 @@
                     }
                 }
             }
+
             ul{
                 height: calc(100% - 35px);
                 overflow: auto;

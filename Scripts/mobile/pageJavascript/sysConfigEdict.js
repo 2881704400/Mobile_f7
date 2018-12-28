@@ -3,17 +3,7 @@
 function sysConfigEdict(){
 	alertSuc= myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
 	alertFai= myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
-	var equipHtml=[
-	 {lable:"设备号",key:"equip_no"},{lable:"设备名称",key:"equip_nm"},{lable:"关联界面",key:"related_pic"},{lable:"设备属性",key:"equip_detail"},
-	 {lable:"通讯刷新周期",key:"acc_cyc"},{lable:"故障处理意见",key:"proc_advice"},{lable:"故障提示",key:"out_of_contact"},{lable:"故障恢复提示",key:"contacted"},
-	 {lable:"报警声音文件",key:"event_wav"},{lable:"通讯端口",key:"local_addr"},{lable:"设备地址",key:"equip_addr"},{lable:"通讯参数",key:"communication_param"},
-	 {lable:"通讯时间参数",key:"communication_time_param"},{lable:"报警升级周期（分钟）",key:"AlarmRiseCycle"},{lable:"模板设备号",key:"raw_equip_no"},
-	 {lable:"附表名称",key:"tabname"},{lable:"属性",key:"attrib"},{lable:"安全时段",key:"SafeTime"},{lable:"关联视频",key:"related_video"},
-	 {lable:"资产编号",key:"ZiChanID"},{lable:"预案号",key:"PlanNo"},
-	 {lable:"是否显示报警",key:"alarm",type:"showAlarm,sheet-alarm",value:1},
-	 {lable:"是否记录报警",key:"alarm",type:"markAlarm,sheet-alarm",value:2}
-	
-]
+
 var ychtml=[
 	{lable:"设备号",key:"equip_no"},{lable:"模拟量编号",key:"yc_no"},{lable:"模拟量名称",key:"yc_nm"},{lable:"单位",key:"unit"},
 	{lable:"属性值",key:"val_trait"},{lable:"下限值",key:"val_min"},{lable:"上限值",key:"val_max"},{lable:"最小值",key:"physic_min"},
@@ -63,7 +53,6 @@ var sethtml=[
 					type:"alarmWay"+i+",sheet-alarm,alarmway",
 					value:value.Proc_Code
 				}
-				equipHtml.push(obj);
 				ychtml.push(obj);
 				yxhtml.push(obj);
 			}
@@ -72,11 +61,7 @@ var sethtml=[
 	getAccessList();
 	getlinkVideoList();
 	getPlanList();
-//	getAlarmWayList();
-	if(type==0){
-		$("#sysConfigEdict .navbar .title").text("设备配置")
-		getEquipSingle(eqNo,equipHtml);
-	}else if(type==1){
+	if(type==1){
 		$("#sysConfigEdict .navbar .title").text("遥测配置")
 		getYcSingle(eqNo,ycNo,ychtml);
 		
@@ -87,40 +72,6 @@ var sethtml=[
 		$("#sysConfigEdict .navbar .title").text("设置配置")
 		setSetSingle(eqNo,setNo,sethtml)
 	}
-}
-function getAlarmWayList(){
-	$.when(AlarmCenterContext.getAlarmWay()).done(function(e){
-		if(e.HttpData.code=200&&e.HttpData.data){
-			var dat=e.HttpData.data,lg=dat.length;
-			for(var i=0;i<lg;i++){
-				var value=dat[i];
-				var obj={
-					lable:value.Proc_name,
-					key:"alarmWay",
-					type:"alarmWay"+i+",sheet-alarm,alarmway",
-					value:value.Proc_Code
-				}
-				equipHtml.push(obj);
-				ychtml.push(obj);
-				yxhtml.push(obj);
-			}
-		}
-	})
-}
-function getEquipSingle(equip,equipHtml){
-	$.when(AlarmCenterContext.setEquipConfig(equip)).done(function(e){
-		$("#equipTable").html("");
-		if(e.HttpData.code==200&&e.HttpData.data){
-			var dat=e.HttpData.data,lg=dat.length;
-			for(var i=0;i<lg;i++){
-				var value=dat[i];
-				var valueStr=value;
-//				var valueStr=JSON.stringify(value).replace(/"/g,"'"); 	
-				loadInfor(0,valueStr,equipHtml)
-			}
-		}
-//		myApp.dialog.close()
-	})
 }
 function  getYcSingle(equip,ycno,ychtml){
 	$.when(AlarmCenterContext.setYcConfigSingle(equip,ycno)).done(function(e){
@@ -175,43 +126,15 @@ var selectEquiId=[],videoList={},acessList={};
 var alarmCode=0,updateAlarmCode=0,canEdict,edictDom,edictType;
 var canexecution,record,inversion,mapping,curve_rcd;
 function loadInfor(deal,str,equipHtml){
-	
-//	var str=JSON.parse(strs)
 	alarmCode=str.alarm_scheme;
 	edictType=deal;
-//	updateAlarmCode=str.alarm_scheme;
-//	$(".popup-config .inforList").html("");
-//	$(".popup-config .title").text(name+"详情")
 	$("#sysConfigEdict .edictList ul").html("");
-//	if(deal==0){
-		for(var i=0;i<equipHtml.length;i++){
-			var value=equipHtml[i];
-			var boolStr=value.type;
-//			loadInforHtml(value.lable,str[value.key],boolStr,value.key,value.value,'.popup-config .inforList ul');
-			loadEdictHtml(value.lable,str[value.key],value.key,value.value,value.type,'#sysConfigEdict .edictList ul');
-		}
-//	}else if(deal==1){
-//		for(var i=0;i<equipHtml.length;i++){
-//			var value=equipHtml[i];
-//			var boolStr=value.type;
-////			loadInforHtml(value.lable,str[value.key],boolStr,value.key,value.value,'.popup-config .inforList ul');
-//			loadEdictHtml(value.lable,str[value.key],value.key,value.value,value.type,'#sysConfigEdict .edictList ul');
-//		}
-//	}else if(deal==2){
-//		for(var i=0;i<equipHtml.length;i++){
-//			var value=equipHtml[i];
-//			var boolStr=value.type;
-////			loadInforHtml(value.lable,str[value.key],boolStr,value.key,value.value,'.popup-config .inforList ul');
-//			loadEdictHtml(value.lable,str[value.key],value.key,value.value,value.type,'#sysConfigEdict .edictList ul');
-//		}
-//	}else{
-//		for(var i=0;i<equipHtml.length;i++){
-//			var value=equipHtml[i];
-//			var boolStr=value.type;
-////			loadInforHtml(value.lable,str[value.key],boolStr,value.key,value.value,'.popup-config .inforList ul');
-//			loadEdictHtml(value.lable,str[value.key],value.key,value.value,value.type,'#sysConfigEdict .edictList ul');
-//		}
-//	}
+	for(var i=0;i<equipHtml.length;i++){
+		var value=equipHtml[i];
+		var boolStr=value.type;
+		loadEdictHtml(value.lable,str[value.key],value.key,value.value,value.type,'#sysConfigEdict .edictList ul');
+	}
+
 	
 }
 function loadEdictHtml(label,key,id,value,type,dom){
@@ -557,23 +480,7 @@ function showPlanSheet(dom,plan){
 	myApp.sheet.open('.sheet-paln')
 }
 
-function loadInforEdict(dom){
-	var str=$(".popup-config .title").text();
-	$(".popup-config .title").text(str.replace("详情","编辑"))
-	$(dom).parents(".inforList").hide();
-	$(dom).parents(".inforList").siblings(".edictList").show();
-}
-function cancelInforEdict(dom){
-	var str=$(".popup-config .title").text();
-	$(".popup-config .title").text(str.replace("编辑","详情"))
-	$(dom).parents(".edictList").hide();
-	$(dom).parents(".edictList").siblings(".inforList").show();
-}
-function loadPopupInfor(){
-	myApp.popup.close(".popup-config")
-	$(".inforList").show();
-	$(".edictList").hide();
-}
+
 
 
 function selectZichan(zichan,name){
@@ -593,97 +500,7 @@ function selectPlan(plan){
 }
 function upInforEdict(){
 	var updateObj={},val,uploadJson=[];
-		if(edictType==0){
-			$(".edictList ul li").each(function(){
-			var idStr=$(this).find("input").attr("id");
-			if(idStr){
-			    val=$(this).find("input").val();
-				if(idStr=="equip_no"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+val+"'"
-					}
-				}
-				else if(idStr=="canexecution"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+canexecution+"'"
-					}
-				}else if(idStr=="record"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+record+"'"
-					}
-				}else if(idStr=="inversion"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+inversion+"'"
-					}
-				}else if(idStr=="mapping"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+mapping+"'"
-					}
-				}else if(idStr=="curve_rcd"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+curve_rcd+"'"
-					}
-				}
-				else if(idStr=="ZiChanID"){
-					var upval=$(this).find("input").attr("upval");
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+upval+"'"
-					}
-				}
-				else if(idStr=="related_video"){
-					var upval=$(this).find("input").attr("upval");
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+upval+"'"
-					}
-				}else if(idStr=="alarm"){
-					return
-				}
-				else{
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						"listName":idStr,
-						"vlaue":"'"+val+"'"
-					}
-				}
-				uploadJson.push(updateObj);
-
-			}
-
-		})
-			uploadJson.push({
-				"id":$("#equip_no").val(),
-				"listName":"alarm_scheme",
-				"vlaue":"'"+alarmCode+"'"
-				
-			})
-
-			$.when(AlarmCenterContext.updEquipConfig(JSON.stringify(uploadJson))).done(function(e){
-				if(e.HttpData.code==200&&e.HttpData.data){
-					alertSuc.open();
-				}else{
-					alertFai.open();
-				}
-			}).fail(function(){
-				alertFai.open();
-			})
-			
-		}else if(edictType==1){
+		if(edictType==1){
 			$(".edictList ul li").each(function(){
 			var idStr=$(this).find("input").attr("id");
 			if(idStr){
@@ -698,40 +515,19 @@ function upInforEdict(){
 				}else if(idStr=="yc_no"){
 					return;
 				}
-				else if(idStr=="canexecution"){
+				else if(idStr=="mapping"){
 					updateObj={
 						id:"'"+$("#equip_no").val()+"'",
 						yc_no:$("#yc_no").val(),
 						"listName":idStr,
-						"vlaue":"'"+canexecution+"'"
-					}
-				}else if(idStr=="record"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+record+"'"
-					}
-				}else if(idStr=="inversion"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+inversion+"'"
-					}
-				}else if(idStr=="mapping"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+mapping+"'"
+						"vlaue":mapping
 					}
 				}else if(idStr=="curve_rcd"){
 					updateObj={
 						id:"'"+$("#equip_no").val()+"'",
 						yc_no:$("#yc_no").val(),
 						"listName":idStr,
-						"vlaue":"'"+curve_rcd+"'"
+						"vlaue":curve_rcd
 					}
 				}
 				else if(idStr=="ZiChanID"){
@@ -800,40 +596,12 @@ function upInforEdict(){
 				}else if(idStr=="yx_no"){
 					return;
 				}
-				else if(idStr=="canexecution"){
+				else if(idStr=="inversion"){
 					updateObj={
 						id:"'"+$("#equip_no").val()+"'",
 						yx_no:$("#yx_no").val(),
 						"listName":idStr,
-						"vlaue":"'"+canexecution+"'"
-					}
-				}else if(idStr=="record"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+record+"'"
-					}
-				}else if(idStr=="inversion"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+inversion+"'"
-					}
-				}else if(idStr=="mapping"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+mapping+"'"
-					}
-				}else if(idStr=="curve_rcd"){
-					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
-						"listName":idStr,
-						"vlaue":"'"+curve_rcd+"'"
+						"vlaue":inversion
 					}
 				}
 				else if(idStr=="ZiChanID"){
@@ -908,55 +676,15 @@ function upInforEdict(){
 						updateObj={
 							id:"'"+$("#equip_no").val()+"'",
 							set_no:$("#set_no").val(),
-							"listName":idStr,
+							"listName":"[canexecution]",
 							"vlaue":canexecution
 						}
 					}else if(idStr=="record"){
 						updateObj={
 							id:"'"+$("#equip_no").val()+"'",
 							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+record+"'"
-						}
-					}else if(idStr=="inversion"){
-						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+inversion+"'"
-						}
-					}else if(idStr=="mapping"){
-						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+mapping+"'"
-						}
-					}else if(idStr=="curve_rcd"){
-						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+curve_rcd+"'"
-						}
-					}
-					else if(idStr=="ZiChanID"){
-						var upval=$(this).find("input").attr("upval");
-						
-						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+upval+"'"
-						}
-					}
-					else if(idStr=="related_video"){
-						var upval=$(this).find("input").attr("upval");
-						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
-							"listName":idStr,
-							"vlaue":"'"+upval+"'"
+							"listName":"[record]",
+							"vlaue":record
 						}
 					}else if(idStr=="alarm"){
 						return
