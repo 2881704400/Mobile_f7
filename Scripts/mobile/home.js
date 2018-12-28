@@ -5,10 +5,6 @@ function onHomePage() {
 //	 myApp.router.navigate("/systemConfig/"); 
     getJurisdictionData();
     getAppStatusBarHeight();
-	/*setTimeout(function(){
-		getAppStatusBarHeight();
-	},3000);*/
-    myApp.router.navigate("/equipLinkage/"); 
 }
 
 //响应App绑定函数-获取状态栏高度
