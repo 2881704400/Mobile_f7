@@ -116,7 +116,6 @@ function publicAjaxModify(jsonString, url, index) {
 var currentArray = [];
 function newlyBuildEquip(str) {
     currentArray.length = 0;
-    console.log(str);
     var jsonData = {
         "url": "/api/GWServiceWebAPI/get_EquipData",
         "data": {
@@ -147,8 +146,6 @@ function newlyBuildEquip(str) {
             }
             $(".scheduleModifyContainer_equipgroup>div").append(html + '</ul>');
             // 判断是否全选
-            console.log(currentArray.length +"=="+ $(".equipTypeSelect li").length);
-            console.log(currentArray);
             if (currentArray.length == $(".equipTypeSelect li").length) $(".allSelect input").prop("checked", true);
             else $(".allSelect input").prop("checked", false);
         } else {

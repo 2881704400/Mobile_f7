@@ -415,7 +415,6 @@ function requestWeekAlmReport() {
         $("#schedule_specificDate ul").html("");
         if (code == 200) {
             let AlarmTabulateLenth = arrayLike.length;
-            console.log(arrayLike);
             for (var i = 0; i < AlarmTabulateLenth; i++) {
                 var sTime = formatDate(new Date(arrayLike[i].begin_time), "hh:mm"),
                     eTime = formatDate(new Date(arrayLike[i].end_time), "hh:mm");

@@ -548,7 +548,7 @@ function get_no_set(dt,values) {
     }
     if(!set_equipOld.trim() || set_equipOld.trim() =="") return false;
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
-        var result = n.HttpData.data;console.log(result);console.log(result[0],!values,values == "");
+        var result = n.HttpData.data;
         if (result.length>0) {
             if (values == "" || !values) 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);

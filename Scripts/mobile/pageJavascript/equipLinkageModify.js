@@ -36,7 +36,7 @@ function equipLinkageModify() {
     	if(linkageOpt!=" "&&linkageOpt!="undefined"){
     		$("#equipTiggerCom").val(linkageOpt);
     	}
-    	if(remarks!=" "&&remarks!="undefined"){console.log(remarks)
+    	if(remarks!=" "&&remarks!="undefined"){
     		$("#equipTiggerInfo").val(remarks);
     	}
     }
