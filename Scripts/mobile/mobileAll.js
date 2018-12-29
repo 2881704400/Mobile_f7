@@ -553,7 +553,7 @@ function get_no_set(dt,values) {
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
         var result = n.HttpData.data;
         if (result.length>0) {
-            if (values == null || values == undefined || !values || values.trim() == "") 
+            if (values == "null" || values == "undefined" || !values || values.trim() == "") 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
             else 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
@@ -565,7 +565,9 @@ function get_no_set(dt,values) {
     });
 }
 function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
-  
+    if(mino_instr.toString().trim() == "")
+    {mino_instr = "' '";}
+
     $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
