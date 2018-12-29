@@ -477,7 +477,6 @@ function listInit(id, value) {
 }
 //动态创建弹窗
 var popup;
-
 function popupAlert(html) {
     popup = myApp.popup.create({
         content: html,
@@ -541,6 +540,7 @@ function get_no(dt, set_equip, set_no, values) {
     });
 }
 function get_no_set(dt,values) {
+
     var set_equipOld="", set_noOld="";
     try{
         set_equipOld = $(dt).attr("set_equip");
@@ -553,7 +553,7 @@ function get_no_set(dt,values) {
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
         var result = n.HttpData.data;
         if (result.length>0) {
-            if (values == "" || !values) 
+            if (values == null || values == undefined || !values || values.trim() == "") 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
             else 
                 onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
@@ -565,6 +565,7 @@ function get_no_set(dt,values) {
     });
 }
 function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
+  
     $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
@@ -599,28 +600,28 @@ function videoControlDirction(direction){
    switch(direction)
    {
         case "left_start": 
-           get_no("", 2, 25, "");
+           get_no("", 20005, 13, "");
            break;
         case "left_stop":
-           get_no("", 2, 26, "");
+           get_no("", 20005, 14, "");
           break;
         case "top_start":
-          get_no("", 2, 29, "");
+          get_no("", 20005, 17, "");
           break;
         case "top_stop":
-          get_no("", 2, 30, "");
+          get_no("", 20005, 18, "");
           break;
         case "right_start":
-          get_no("", 2, 27, "");
+          get_no("", 20005, 15, "");
           break;
         case "right_stop":
-          get_no("", 2, 28, "");
+          get_no("", 20005, 16, "");
           break;
         case "bottom_start":
-          get_no("", 2, 31, "");
+          get_no("", 20005, 19, "");
           break;
         case "bottom_stop":
-          get_no("", 2, 32, "");
+          get_no("", 20005, 20, "");
           break;
         default: break;
    }

@@ -1,6 +1,6 @@
-function getJurisdictionData(){
-    // 权限管理
-    var JurisdictionArray = [];
+﻿function getJurisdictionData(){
+  // 权限管理
+  var JurisdictionArray = [];
   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
     let result = n.HttpData;
     if(result.code == 200)
@@ -43,9 +43,7 @@ function getJurisdictionData(){
             }
         });
     }
-  }).fail(function(e){
-   // console.log(e);
-  });
+  }).fail(function(e){});
 }
 function functionalModule(className){
     var html = "";
@@ -211,8 +209,8 @@ var commonlyUsed =[
 // 列表数据模型
 var KOvm =[
     {
-        name: '智能建筑',
-        icon: 'iconfont icon-f7_icon_jz',
+        name: '返回软件',
+        icon: 'iconfont icon-f7_home',
         equipNo: '300',
         setNo: '10',
         value: null,
@@ -512,8 +510,8 @@ var jjPattern =[
     {
         name: '继续讲解',
         icon: 'iconfont icon-f7_j_x',
-        equipNo: '300',
-        setNo: '10116',
+        equipNo: '1007',
+        setNo: '4',
         value: null,
     },                   
     ];
@@ -546,8 +544,8 @@ var WORDcommand ={
 var PPTcommand ={
     "returnSoft":{  
         name: '返回软件',
-        equipNo: '1005',
-        setNo: '1701'
+        equipNo: '300',
+        setNo: '10108'
      },
      "openPPT":{
         name: '打开PPT',
