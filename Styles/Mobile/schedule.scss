@@ -156,6 +156,13 @@
     .comfirmCancel{margin: 5% 2% 15% 5%;background: #{$btnCancelBackground};}
 
 }
+
+.equipLinkAgeModifyContainer{
+    .equipLinkageList{background: #FFFFFF;}
+       .equipLinkageList:after{    bottom: -40px!important;    height: 0px !important;}
+       
+}
+
 .scheduleModifyContainer_equipgroup{height: 60%;background: #{$situationContainerBgc};&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
 // 场景编辑
 .equipLinkage_edit_modify{
