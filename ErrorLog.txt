@@ -151,3 +151,9 @@ Exception rethrown at [0]:
    在 GWServiceAPI.Net.LibClass.VoiceLib.VoiceControl(String audioData, String dataType)
 -------------------------------------
 
+----------2018/12/29 17:06:54----------
+System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+-------------------------------------
+
