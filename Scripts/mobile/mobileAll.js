@@ -565,8 +565,7 @@ function get_no_set(dt,values) {
     });
 }
 function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
-    if(mino_instr.toString().trim() == "")
-    {mino_instr = "' '";}
+
 
     $.ajax({
         type: "POST",
