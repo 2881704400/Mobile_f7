@@ -1,6 +1,6 @@
-function getJurisdictionData(){
-    // 权限管理
-    var JurisdictionArray = [];
+﻿function getJurisdictionData(){
+  // 权限管理
+  var JurisdictionArray = [];
   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
     let result = n.HttpData;
     if(result.code == 200)
@@ -43,9 +43,7 @@ function getJurisdictionData(){
             }
         });
     }
-  }).fail(function(e){
-   // console.log(e);
-  });
+  }).fail(function(e){});
 }
 function functionalModule(className){
     var html = "";
@@ -211,8 +209,8 @@ var commonlyUsed =[
 // 列表数据模型
 var KOvm =[
     {
-        name: '智能建筑',
-        icon: 'iconfont icon-f7_icon_jz',
+        name: '返回软件',
+        icon: 'iconfont icon-f7_home',
         equipNo: '300',
         setNo: '10',
         value: null,
@@ -453,34 +451,34 @@ var KOvm =[
 
 
 
-//PPT
+//首页PPT
 var pptPattern =[
     {
         name: '打开PPT',
         icon: 'iconfont icon-f7_ppt',
-        equipNo: '300',
-        setNo: '7',
-        value: 'D:\\PPT\\1.pptx',
+        equipNo: '4001',
+        setNo: '1',
+        value: 'D:\/PPT\/123.pptx',
     },
     {
         name: '关闭',
         icon: 'iconfont icon-f7_c_l',
-        equipNo: '300',
-        setNo: '8',
+        equipNo: '4001',
+        setNo: '7',
         value: null,
     },
     {
         name: '上一页',
         icon: 'iconfont icon-f7_prev',
-        equipNo: '1005',
-        setNo: '7001',
+        equipNo: '4001',
+        setNo: '2',
         value: null,
     },
     {
         name: '下一页',
         icon: 'iconfont icon-f7_next',
-        equipNo: '1005',
-        setNo: '7002',
+        equipNo: '4001',
+        setNo: '3',
         value: null,
     },                    
     ];
@@ -512,8 +510,8 @@ var jjPattern =[
     {
         name: '继续讲解',
         icon: 'iconfont icon-f7_j_x',
-        equipNo: '300',
-        setNo: '10116',
+        equipNo: '1007',
+        setNo: '4',
         value: null,
     },                   
     ];
@@ -546,17 +544,17 @@ var WORDcommand ={
 var PPTcommand ={
     "returnSoft":{  
         name: '返回软件',
-        equipNo: '2',
-        setNo: '25'
+        equipNo: '300',
+        setNo: '10108'
      },
      "openPPT":{
         name: '打开PPT',
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '1'        
      },
      "closePPT":{
         name:"关闭PPT",
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '7'        
      },     
      "setIp":{
@@ -565,7 +563,7 @@ var PPTcommand ={
      },
      "setPage":{
         name:"设置跳页",
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '4'        
      },
 };

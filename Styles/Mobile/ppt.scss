@@ -167,7 +167,7 @@
     height: 100%;
 }
 .selectBorder {
-    border: 1px solid #dab009 !important;
+    border: 1px solid #{$tabSelected}!important;
     transition: all 0.3s;
 }
 .pptActive .item-title, .pptSelect .item-title {

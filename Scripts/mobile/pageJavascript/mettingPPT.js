@@ -117,7 +117,7 @@ function isFilePPT() {
 }
 
 function setMenu(that, value, slideIndex) {
-    openFileCommand(that, 1, 1, "-", (value ? value : $(that).attr("data-url")), "test", slideIndex);
+    openFileCommand(that, $(that).attr("set_equip"), 1, "-", (value ? value : $(that).attr("data-url")), "test", slideIndex);
 }
 //设置命令-确定
 function openFileCommand(dt, equip_no, main_instruction, minor_instruction, value, set_nm, slideIndex) { //equip_no,main_instruction,minor_instruction,value,set_nm
@@ -142,7 +142,7 @@ function openFileCommand(dt, equip_no, main_instruction, minor_instruction, valu
             if ($(dt).parents("div.page-content").hasClass("mettingPPTContent")) //ppt列表
             {
                 var setTimeout = setInterval(function() {
-                    $.when(AlarmCenterContext.pptConfig(1)).done(function(n) {
+                    $.when(AlarmCenterContext.pptConfig($(dt).attr("set_equip"))).done(function(n) {
                         var result = n.HttpData;
                         if (result.PageCount != -1) {
                             window.localStorage.sessionFilename = result.Session; //data[1];

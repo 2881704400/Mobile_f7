@@ -520,14 +520,10 @@ function initSceneList_view() {
              controlEquipList = setList.filter(item => {
               return (item.equip_no == isArray("equip_no",msgArray) && item.set_nm.trim() == isArray("currentTxt",msgArray).trim());
              }).map(item => {return item});
-             // console.log(controlEquipList);
            // 场景控制项目
               var valueString = (controlEquipList.length>0?controlEquipList[0].value.trim():""),valueArray = [];
               if(valueString)
                valueString.indexOf("+") !=-1?valueArray = valueString.split("+"):valueArray.push(valueString);
-
-              
-
               if(equiplinkageStr.length>0)//添加新增控制项
               {
                 let firstMsg = equiplinkageStr.shift();
@@ -539,13 +535,8 @@ function initSceneList_view() {
                 {
                      equiplinkageStr.unshift(parseInt(firstMsg),0);
                      Array.prototype.splice.apply(valueArray, equiplinkageStr); 
-                     // console.log(valueArray);
-                     // return false;
                 }
               }
-
-                // valueArray.concat(equiplinkageStr);
-
               if(valueArray.length>0)
               {
                 var htmlContent = "";
@@ -561,7 +552,7 @@ function initSceneList_view() {
                         <div class="item-content swipeout-content schedule-content row no-gap" >
                             <div class="item-inner">
                               <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,valueArray[i].split(",")[0],null):(valueArray[i]?"间隔操作":""))}: <strong>${(equip_no_flg?filterFun(setList,valueArray[i].split(",")[0],valueArray[i].split(",")[1]):(valueArray[i]?"延时间隔"+valueArray[i]+"毫秒":""))}</strong></div>
-                              <div class="item-after" onclick="scenalControlPro(${i})" ><i class="iconfont icon-f7_top_jt"></i></div>
+                              <div class="item-after" onclick="scenalControlPro(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
                             </div>
                         </div>
                         <div class="swipeout-actions-right">
@@ -670,8 +661,18 @@ function addScene() {
 }
 
 //新增控制
-function scenalControlPro(val){
-  myApp.router.navigate("/scheduleModifyChild/?"+val); 
+function scenalControlPro(dt){
+
+ submitScene(dt);
+  if(indexAll == 1)
+  {
+    let val =  $(dt).attr("index");
+    myApp.router.navigate("/scheduleModifyChild/?"+val); 
+  }
+  else
+  {
+    myApp.router.navigate("/scheduleModifyChild/?last"); 
+  }
 }
 //新增控制初始化
 
@@ -709,6 +710,10 @@ function scenalControlPro_init() {
 function currentControl(dt){
     myApp.dialog.confirm("是否删除当前控制项","提示",function(){
          $(dt).parent().parent().remove();
+        // 序列化每项序号
+        $(".equipLinkage_edit_modify>ul li").each(function(index){
+            $(this).find(".item-after").attr("index",index);
+        });
     });
-  
+
 }
