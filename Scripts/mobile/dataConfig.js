@@ -453,34 +453,34 @@ var KOvm =[
 
 
 
-//PPT
+//首页PPT
 var pptPattern =[
     {
         name: '打开PPT',
         icon: 'iconfont icon-f7_ppt',
-        equipNo: '300',
-        setNo: '7',
-        value: 'D:\\PPT\\1.pptx',
+        equipNo: '4001',
+        setNo: '1',
+        value: 'D:\/PPT\/123.pptx',
     },
     {
         name: '关闭',
         icon: 'iconfont icon-f7_c_l',
-        equipNo: '300',
-        setNo: '8',
+        equipNo: '4001',
+        setNo: '7',
         value: null,
     },
     {
         name: '上一页',
         icon: 'iconfont icon-f7_prev',
-        equipNo: '1005',
-        setNo: '7001',
+        equipNo: '4001',
+        setNo: '2',
         value: null,
     },
     {
         name: '下一页',
         icon: 'iconfont icon-f7_next',
-        equipNo: '1005',
-        setNo: '7002',
+        equipNo: '4001',
+        setNo: '3',
         value: null,
     },                    
     ];
@@ -546,17 +546,17 @@ var WORDcommand ={
 var PPTcommand ={
     "returnSoft":{  
         name: '返回软件',
-        equipNo: '2',
-        setNo: '25'
+        equipNo: '1005',
+        setNo: '1701'
      },
      "openPPT":{
         name: '打开PPT',
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '1'        
      },
      "closePPT":{
         name:"关闭PPT",
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '7'        
      },     
      "setIp":{
@@ -565,7 +565,7 @@ var PPTcommand ={
      },
      "setPage":{
         name:"设置跳页",
-        equipNo: '1',
+        equipNo: '4001',
         setNo: '4'        
      },
 };
