@@ -456,7 +456,7 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
         cNo: equipLink_cNo?equipLink_cNo:0,
         delay: $(".equipTiggerTime").val(),
         linkEquipNo: equipLink_linkEquipNo.length>0?equipLink_linkEquipNo[0].value:"",
-        linkNo: equipLink_linkNo.length>0?equipLink_linkNo[0].set_no:"",
+        linkNo: equipLink_linkNo.length>0&&equipLink_linkNo?equipLink_linkNo[0].set_no:"null",
         optCode: '""',
         remarks: $(".equipTiggerInfo").val() || ""
       } 
