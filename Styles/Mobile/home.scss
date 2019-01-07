@@ -45,14 +45,7 @@ mixin：sass宏mixin
                 #purchase_Bar{margin: 0 auto;}
                }
                &>div{overflow: hidden;}       
-               .p-ellipsis1{font-size: 12px;text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align:center;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;}            
-            }            
+               .p-ellipsis1{font-size: 12px;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; text-align:center; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;} }
           }
           .functionMenu{
             &>dt{
@@ -65,7 +58,7 @@ mixin：sass宏mixin
                   width: 100%;height: 100%;display: inline-block;color: #{$homeConfigBtnColor};
                   padding: 5px;border-radius: #{$unclickBorderRadius};
                   i{font-size: 2rem;}
-                  p{margin: 0.2rem 0;}
+                  p{margin: 0.2rem 0;    white-space: nowrap;}
                   img{width: 40%;}
                 }
               }
