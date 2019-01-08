@@ -31,6 +31,10 @@ $(function() {
 	if(!window.localStorage.voiceList) {
 		window.localStorage.voiceList = "1";
 	}
+	else
+	{
+		try{myJavaFun.initMicrosoftSpeech();}catch(e){}
+	}
 
 	try {
 		myJavaFun.VoiceOpen();
@@ -67,7 +71,8 @@ function onTouchStart(e) {
 	try {
 		isVoices = true;
 		if(window.localStorage.voiceList == "0") {
-			myJavaFun.StartVice();
+			// myJavaFun.StartVice();
+			myJavaFun.startMicrosoftSpeech();
 		} else {
 			myJavaFun.StartVoice(window.localStorage.voiceList);
 		}
@@ -125,7 +130,8 @@ function onTouchEnd(e) {
 		});
 		try {
 			if(window.localStorage.voiceList == "0") {
-				myJavaFun.StopVice();
+				// myJavaFun.StopVice();
+				myJavaFun.stopMicrosoftSpeech();
 			} else {
 				myJavaFun.StopVoice();
 			}
@@ -166,7 +172,8 @@ function onTouchEnd(e) {
 	setTimeout(function() {
 		try {
 			if(window.localStorage.voiceList == "0") {
-				myJavaFun.StopVice();
+				// myJavaFun.StopVice();
+				myJavaFun.stopMicrosoftSpeech();
 			} else {
 				myJavaFun.StopVoice();
 			}
@@ -389,4 +396,35 @@ function callbackVoiceBuffer(dt) {
 			}
 		}, 3000);
 	}
+}
+
+
+function microsoftSpeech(dt) {
+	console.log(JSON.stringify(dt));
+	console.log(dt.message);
+
+   if(dt.status == 200)
+   {
+	    var rets = dt.message;
+	    if (rets == "") {
+	        $("#voiceMessage").html("未识别！");
+	    }
+	    else {
+	        $("#voiceMessage").html(rets);
+	    }
+	    isVoices = false;
+	    document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
+	    document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
+	}
+	else{
+	    $("#voiceMessage").html("服务器出错！");
+	    isVoices = false;
+	    document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
+	    document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
+	    setTimeout(function () {
+	        if (isVoices == false) {
+	            $("#voiceMessage").html("按住说话");
+	        }
+	    }, 3000);
+	} 
 }

@@ -120,6 +120,14 @@ html.with-statusbar.device-ios .popup, html.with-statusbar.ios:not(.device-ios):
 // 下拉刷新
 .md .page-with-subnavbar .ptr-preloader, .md .searchbar~.ptr-content .ptr-preloader, .md .toolbar:not(.toolbar-bottom-md)~.ptr-content .ptr-preloader{top: 44px;}
 
+html.device-android .statusbar,
+html.md:not(.device-ios):not(.device-android) .statusbar {
+    background: #{$toolbarBgc} !important;
+}
 
+html.device-ios .statusbar,
+html.ios:not(.device-ios):not(.device-android) .statusbar {
+    background: #{$toolbarBgc};
+}
 
 

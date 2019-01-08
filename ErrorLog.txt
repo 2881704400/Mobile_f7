@@ -1,226 +1,136 @@
-----------2019/1/7 20:48:30----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:48:30----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:48:37----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:48:37----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:48:41----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:48:41----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:11----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:48:43----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:48:43----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:49:13----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:49:13----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:49:29----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:49:30----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:12----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:49:37----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:49:37----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:49:41----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:49:41----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:49:52----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:49:52----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:13----------
+count;-1
 -------------------------------------
 
-----------2019/1/7 20:51:16----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:14----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:51:16----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:14----------
+session;eed5a272abd846e89cd1bdfa57580286
 -------------------------------------
 
-----------2019/1/7 20:52:45----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:15:14----------
+count;17
 -------------------------------------
 
-----------2019/1/7 20:52:45----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:19:18----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:53:36----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:19:18----------
+session;032a11ba3deb4510be7d71cdb5ea590d
 -------------------------------------
 
-----------2019/1/7 20:53:37----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:19:18----------
+count;17
 -------------------------------------
 
-----------2019/1/7 20:53:54----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:19:18----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/7 20:53:55----------
-System.FormatException: 输入字符串的格式不正确。
-   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   在 System.Int32.Parse(String s)
-   在 GWService.Net.ClassLib.SetupsCommand(String equip_no, String main_instruction, String minor_instruction, String value, String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r89_fix\AlarmCenterWeb\GWService.Net\ClassLib.cs:行号 779
+----------2019/1/8 9:19:18----------
+session;032a11ba3deb4510be7d71cdb5ea590d
 -------------------------------------
 
-----------2019/1/2 8:44:55----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+----------2019/1/8 9:19:18----------
+count;17
 -------------------------------------
 
-----------2019/1/2 8:45:13----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+----------2019/1/8 9:19:18----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
 -------------------------------------
 
-----------2019/1/2 8:46:52----------
-System.MissingMethodException: Method not found: 'Void AlarmCenter.DataCenter.DataCenter.RunProxy(System.String, System.String, System.String, System.String, AlarmCenter.DataCenter.ClientType, Boolean)'.
-   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD)
-   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\r90_fix\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 147
+----------2019/1/8 9:19:18----------
+session;032a11ba3deb4510be7d71cdb5ea590d
+-------------------------------------
+
+----------2019/1/8 9:19:18----------
+count;17
+-------------------------------------
+
+----------2019/1/8 9:19:18----------
+select main_instruction,Reserve1 from ycp where equip_no =4001 and main_instruction='session' or main_instruction='count'
+-------------------------------------
+
+----------2019/1/8 9:19:18----------
+session;032a11ba3deb4510be7d71cdb5ea590d
+-------------------------------------
+
+----------2019/1/8 9:19:18----------
+count;17
+-------------------------------------
+
+----------2019/1/8 9:45:27----------
+AlarmCenter服务未启动或服务运行出错，若服务出错请查看/AlarmCenter/XLog.txt错误日志
 -------------------------------------
 

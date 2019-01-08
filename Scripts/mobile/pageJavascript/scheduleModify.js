@@ -520,7 +520,7 @@ function initSceneList_view() {
               return (item.equip_no == isArray("equip_no",msgArray) && item.set_nm.trim() == isArray("currentTxt",msgArray).trim());
              }).map(item => {return item});
            // 场景控制项目
-              var valueString = (controlEquipList.length>0?controlEquipList[0].value.trim():""),valueArray = [];
+              var valueString = (controlEquipList.length>0?controlEquipList[0].value.toString().trim():""),valueArray = [];
               if(valueString)
                valueString.indexOf("+") !=-1?valueArray = valueString.split("+"):valueArray.push(valueString);
               if(equiplinkageStr.length>0)//添加新增控制项
