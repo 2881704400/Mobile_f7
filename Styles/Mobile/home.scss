@@ -47,6 +47,7 @@ mixin：sass宏mixin
                &>div{overflow: hidden;}       
                .p-ellipsis1{font-size: 12px;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; text-align:center; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;} }
           }
+
           .functionMenu{
             &>dt{
               width: 100%;height: 30px;display: inline-block;
@@ -55,13 +56,21 @@ mixin：sass宏mixin
             &>dd{
               li{margin-top: 10px;
                 .homeBtn{
-                  width: 100%;height: 100%;display: inline-block;
-                  // padding: 5px;border-radius: #{$unclickBorderRadius};    background: rgba(160, 153, 153, 0.1);    
-                  i{font-size: 2rem;color: #{$tabFontColor};border-radius: #{$homeBtnBorderRadius};    
+                  width: 100%;height: 100%;display: inline-block; position: relative;
+                  i{font-size: 2rem;color: #{$homeConfigBtnColor};border-radius: #{$homeBtnBorderRadius};     
+                  // animation: rotate .5s linear infinite;
                   padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;}
                   p{color: #{$homeConfigBtnColor};margin: 0; white-space: nowrap;}
                   img{width: 40%;}
                 }
+                // .homeBtn::before{
+                //     content: '';
+                //     height: 8px; width: 80%; background: #000; opacity: .2; border-radius: 50%;
+                //     position: absolute;
+                //     top: 72px;
+                //     left: 10%;
+                //     animation: shadow .5s linear 2;
+                // }
               }
             }
           }
@@ -71,7 +80,7 @@ mixin：sass宏mixin
                 width: 100%;height: 100%;display: inline-block;
                 // border-radius: #{$unclickBorderRadius};
                 i{
-                  font-size: 2rem;color: #{$tabFontColor};border-radius: #{$homeBtnBorderRadius};    
+                  font-size: 2rem;color: #{$homeConfigBtnColor};border-radius: #{$homeBtnBorderRadius};    
                   padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;
                  }
                 p{color: #{$homeConfigBtnColor};margin: 0;}
@@ -112,4 +121,30 @@ mixin：sass宏mixin
       .swiper-pagination-bullet-active{box-shadow: 1px 1px 20px #{$unclickBorderColor}, -1px -1px 20px #{$unclickBorderColor};}
      }
     .homeControlFunction:after{ content: "";flex: 0.7;}
+}
+
+//动画
+
+@keyframes shadow {
+    0%, 100% {transform: scaleX(1);}
+    50% {transform: scaleX(1.2);}
+}
+
+@keyframes rotate {
+    0% {
+    transform: translateY(0) ;
+  }
+    25% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(20px) scale(1.1, 0.9);
+       
+    }
+    75% {
+        ransform: translateY(10px) ;
+    }
+    100% {
+        transform: translateY(0) ;
+    }
 }

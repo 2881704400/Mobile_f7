@@ -78,7 +78,7 @@ function mettingDetails() {
     i = 1;
     $(".closeFile,.setScreenSizeChild").unbind();
     $(".closeFile,.setScreenSizeChild").bind('click', function() {
-        get_no(this, PPTcommand.closePPT.equipNo, PPTcommand.closePPT.setNo, "", "");
+        get_no_val(this, PPTcommand.closePPT.equipNo, PPTcommand.closePPT.setNo, "", "");
         if ($(this).hasClass("setScreenSizeChild")) {
             $(this).addClass("displayNone").siblings().removeClass("displayNone");
         }
@@ -161,7 +161,7 @@ function isPage(that) {
     //记录页数
     window.localStorage.savePage = parseInt($(".selectBorder").attr("Indexid"));
     //跳转至该页
-    get_no(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, $(".selectBorder").attr("Indexid"));
+    get_no_val(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, $(".selectBorder").attr("Indexid"));
     isTFault = true;
 }
 //================================================初始化==========================================================
@@ -233,7 +233,7 @@ function bannerActive(that) {
 
         var Indexid = parseInt($(that).attr("Indexid")); //当前所选
         window.localStorage.savePage = Indexid;
-        setTimeout(function(){get_no(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, Indexid);},50);
+        setTimeout(function(){get_no_val(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, Indexid);},50);
     }
 
 }

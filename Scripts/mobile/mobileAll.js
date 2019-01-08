@@ -519,40 +519,15 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
     });
 }
 //发送命令
-function get_no(that, set_equip, set_no, values) {
-
-    // var ajaxVar = $.ajax({
-    //     type: "POST",
-    //     url: "/GWService.asmx/GetDataTableFromSQL",
-    //     timeout: 5000,
-    //     data: {
-    //         sql: "select * from setParm where equip_no =" + set_equip + " and set_no=" + set_no,
-    //         userName: window.localStorage.userName,
-    //     },
-    //     success: function(data) {
-    //         var result = $(data).find('DataTable'); //返回XML格式的DataTable
-    //         console.log(result);
-    //         console.log(data.toString());
-            
-    //         // if (dt.find("equip_no").html() != "") {
-    //         //     console.log(JSON.stringify(dt));
-    //         //     if (values == "") onSetCommand_return(that, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-    //         //     else onSetCommand_return(that, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-    //         // } else {
-    //         //     alertMsgError.open();
-    //         // }
-    //     }
-    // });
-
-
+function get_no_val(that, set_equip, set_no, values) {
 
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equip, set_no: set_no})).done(function(n,l){
         var result = n.HttpData.data;
         if (result.length>0) {
-            if (values == "null" || values == "undefined" || !values || values.trim() == "") 
-                onSetCommand_return(that, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
+            if (!values) 
+                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, result[0].value);
             else 
-                onSetCommand_return(that, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
+                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, values);
         } else {
             alertMsgError.open();
         }
@@ -584,6 +559,7 @@ function get_no_set(dt,values) {
     });
 }
 function onSetCommand_return(dt, equip_no, main_instr, mino_instr, valueset) {
+
     $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
