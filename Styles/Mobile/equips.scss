@@ -464,7 +464,7 @@
 
    .list{
        margin-top: 0;
-       height: calc(100% - 90px);
+       height: calc(100% - 90px);padding-bottom: 50px;
        ul{
            &:after{
                height: 0;

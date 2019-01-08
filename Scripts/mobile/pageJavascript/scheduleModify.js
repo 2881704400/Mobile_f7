@@ -141,7 +141,7 @@ function newlyBuildEquip(str) {
         "error": _error,
     };
     $.fn.axpost(jsonData);
-    var coutResult;str ? coutResult = str : coutResult = "#";
+    var coutResult;str ? coutResult = str.split("#") || "#" : coutResult = "#";
     function _success(data) {
         let arrayLike = data.HttpData.data,
             code = data.HttpData.code;
@@ -151,7 +151,6 @@ function newlyBuildEquip(str) {
             var AlarmTabulateLenth = arrayLike.length;
             for (var i = 0; i < AlarmTabulateLenth; i++) {
                 let checkboxSet = "";
-
                 for (var j = 0; j < coutResult.length; j++) {
                     if (coutResult[j] == arrayLike[i].equip_no) {
                         currentArray.push(arrayLike[i].equip_no);

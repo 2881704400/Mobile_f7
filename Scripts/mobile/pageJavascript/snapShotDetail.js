@@ -1,5 +1,6 @@
 var userAdmin = [];
 var chatList;
+var snapshotDetailArrs=[];
 
 function snapShotDetail() {
 	switchToolbar("snapshotTool");
@@ -65,6 +66,7 @@ function loadMessage() {
 					countNum = 0;
 				if(result.length > 0) {
 					for(var i = 0; i < result.length; i++) {
+						snapshotDetailArrs.push(result[i]);
 						var textareaEventMsg = "";
 						if(result[i].EventMsg.length > 200) {
 							textareaEventMsg = "<textarea>" + result[i].EventMsg + "</textarea>";
@@ -100,7 +102,7 @@ function loadMessage() {
 								'<p>处理意见：<textarea class="advice-textarea" placeholder="请输入处理意见"></textarea></p>' +
 								'<p>是否发送短信：&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' +
 								'<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="max-height:300px;overflow-y: auto;display:block"></div></p>' +
-								"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + textareaEventMsg + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
+								"<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">确定</a></p>" +
 								'</div></div>' +
 								'</li>';
 							countNum++;
@@ -175,7 +177,7 @@ function onProcsCheckBox(countNum) { //console.log(countNum)
 	}
 }
 
-function OnSureMessage(countNum, strEventMsg, strTime) {
+function OnSureMessage(countNum, strTime) {
 	/*阻止事件冒泡*/
 	event.stopPropagation();
 	var checkValArr = []; //短信联系人选中值
@@ -187,7 +189,8 @@ function OnSureMessage(countNum, strEventMsg, strTime) {
 		});
 		isShortMsg = true;
 	}
-
+	
+	var strEventMsg=snapshotDetailArrs[countNum].EventMsg;
 	var Time = strTime.replace("T", " ");
 	var TimeArr = [];
 	var strTimeArr = "";

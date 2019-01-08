@@ -1,7 +1,7 @@
 ﻿//首页事件
 function onHomePage() {
-    authorizationName();
     switchToolbar("homeTool");
+    authorizationName();
 //	 myApp.router.navigate("/systemConfig/"); 
     getJurisdictionData();
     getAppStatusBarHeight();
@@ -38,6 +38,8 @@ function authorizationName() {
         success: function(data) {
             var dt = $(data).find('string').text();
             if (dt) {
+                if(dt == "false")
+                    dt = "AlarmCenter";
                 $(".auth_name_get").text(dt);
                 window.localStorage.auth_name_title = dt;
             } else {
@@ -113,7 +115,7 @@ function commonlyUsedFun(className, classListName, jsonString) {
     var htmlTrailerChild = "",
         xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
+        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:"+jsonString[i].color+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
     }
     $("." + className).append(htmlTrailerChild);
 }

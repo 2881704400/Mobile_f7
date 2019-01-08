@@ -49,12 +49,12 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     /*底部菜单*/
     .toolbar{
         &:before{height: 0px;}
-        a.link{font-size: 12px;line-height: 22px!important;cursor: pointer;}
+        a.link{font-size: 12px;height: 50px!important;line-height: 25px!important;cursor: pointer;}
         .toolbar-inner{ 
             // box-shadow: 0px -1px 1px #{$toolbarBoxShadow};
             border-top: 1px solid #{$toolbarBoxShadow};
             &>a.active{color: #{$selectedColor};}
-            &>a{color: #{$toolbarFontColor}; i{font-size: 1.6rem;}}
+            &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
             #voiceBtn{ 
               &>span{width: 90%; height: 90%; position: relative; display: inline-block; 
                 border-radius: 50%; background: #{$toolbarBgc}; margin: 5%;
@@ -63,7 +63,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
             #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
             a.link.active-state:before{opacity: 0!important;}
         }
-        background-color: #{$headerBgc};     
+        background-color: #{$headerBgc};
     }
 
 }
