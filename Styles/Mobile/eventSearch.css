@@ -196,7 +196,7 @@
         transform: scaleY(0.33); }
   .eventSearchContent .tabs {
     width: 100%;
-    height: calc(100% - 88px);
+    height: calc(100% - 110px);
     background: white;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px; }

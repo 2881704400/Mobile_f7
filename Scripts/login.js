@@ -166,7 +166,7 @@ function getServerKey() {
         dataType: "json",
         data: {
             username: $('#inputName').val(),
-            userpwd: $('#inputPassword').val()
+            userpwd: md5($('#inputPassword').val())
         },
         success: function (dt) {
             //console.log(dt);

@@ -251,7 +251,7 @@ function searchEquipItems() {
 			if(EqpEvtDataFlag) {
 				// Loading flag
 				var allowInfinite = true;
-				var lastItemIndex = $$('#eventSearchSetId li').length;
+				var lastItemIndex = $$('#eventSearchEquipsId li').length;
 				var maxItems = EqpEvtData.length;
 				var itemsPerLoad = 20;
 
@@ -278,14 +278,14 @@ function searchEquipItems() {
 							var lastItemIndexMax = lastItemIndex + itemsPerLoad;
 							lastItemIndexMax = lastItemIndexMax >= maxItems ? maxItems : lastItemIndexMax;
 							for(var i = lastItemIndex; i < lastItemIndexMax; i++) {
-								html += "<li onclick='showEventDetail(0,\"" + EqpEvtData[i].time + "\",\"" + EqpEvtData[i].event + "\")'>" +
+								html += "<li onclick='showEventDetail(0,\"" + EqpEvtData[i].time + "\",\"" + EqpEvtData[i].event + "\")'>" + 
 									'		<span>' + EqpEvtData[i].time + '</span>' +
 									'		<span>' + EqpEvtData[i].equip_nm + '</span>' +
 									'		<span>' + EqpEvtData[i].event + '</span>' +
 									'	</li>';
 							}
-							$$('#eventSearchSetId').append(html);
-							lastItemIndex = $$('#eventSearchSetId li').length;
+							$$('#eventSearchEquipsId').append(html);
+							lastItemIndex = $$('#eventSearchEquipsId li').length;
 							myApp.dialog.close();
 						}, 1000);
 					}
