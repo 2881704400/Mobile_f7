@@ -1,4 +1,5 @@
 ﻿function getJurisdictionData(){
+    myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
   // 权限管理
   var JurisdictionArray = [];
   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
@@ -10,6 +11,7 @@
             url: service + "/UserPermissions",
             data: "userName=" + window.localStorage.userName,
             success: function(usersDt) {
+                 myApp.dialog.close();
                 $("#homeContents>ul").html("");
             	getWebUser = $(usersDt).children("UserItem");
                 let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
@@ -43,7 +45,9 @@
             }
         });
     }
-  }).fail(function(e){});
+  }).fail(function(e){
+      // myApp.router.navigate("/home/"); 
+  });
 }
 function functionalModule(className){
     var html = "";
@@ -130,8 +134,8 @@ function functionalModule(className){
 //------------------视频配置 start---------------
 //*************************************************
 var map, infoPoint = [ //经纬度+设备号+通道号
-    [113.960046, 22.535688, 2003, 1],
-    [113.922468, 22.497125, 2003, 2]
+    [113.960046, 22.535688, 20005, 1],
+    [113.922468, 22.497125, 20005, 1]
 ];
 
 // 系统四菜单
@@ -139,6 +143,7 @@ var sysFourMenu =[
     {
         name: '事件查询',
         href: '/eventSearch/',
+        color: '',//'#4284FE',
         icon: 'iconfont icon-xintubiao-',
         equipNo: '',
         setNo: '',
@@ -147,6 +152,7 @@ var sysFourMenu =[
     {
         name: '系统配置',
         href: '/systemConfig/',
+        color: '',//'#FF4582',
         icon: 'iconfont icon-navicon-xtpz',
         equipNo: '',
         setNo: '',
@@ -155,6 +161,7 @@ var sysFourMenu =[
     {
         name: '报警排表',
         href: '/schedule/',
+        color: '',//'#FF4F55',
         icon: 'iconfont icon-paibiao',
         equipNo: '',
         setNo: '',
@@ -163,6 +170,7 @@ var sysFourMenu =[
     {
         name: '设备联动',
         href: '/equipLinkage/',
+        color: '',//'#3961B6',
         icon: 'iconfont icon-app_icons--',
         equipNo: '',
         setNo: '',
@@ -175,6 +183,7 @@ var commonlyUsed =[
     {
         name: '列表视频',
         href: '/Video/',
+        color: '',// '#FFBC01',
         icon: 'iconfont icon-f7_video',
         equipNo: '',
         setNo: '',
@@ -183,6 +192,7 @@ var commonlyUsed =[
     {
         name: '地图监控',
         href: '/videoControl/',
+        color: '',// '#62D1FF',
         icon: 'iconfont icon-f7_control',
         equipNo: '',
         setNo: '',
@@ -191,6 +201,7 @@ var commonlyUsed =[
     {
         name: 'PPT',
         href: '/mettingPPT/',
+        color: '',// '#8354A2',
         icon: 'iconfont icon-f7_ppt',
         equipNo: '',
         setNo: '',
@@ -199,6 +210,7 @@ var commonlyUsed =[
     {
         name: '欢迎词',
         href: '/welcomeWords/',
+        color: '',// '#F53173',
         icon: 'iconfont icon-f7_welcome',
         equipNo: '',
         setNo: '',
@@ -439,14 +451,13 @@ var KOvm =[
         setNo: '10112',
         value: null,
     },
-
     {
         name: '小镇现场演示',
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '10093',
         value: null,
-    }
+    },
 ];
 
 
@@ -455,6 +466,7 @@ var KOvm =[
 var pptPattern =[
     {
         name: '打开PPT',
+        color: '',
         icon: 'iconfont icon-f7_ppt',
         equipNo: '4001',
         setNo: '1',
@@ -462,6 +474,7 @@ var pptPattern =[
     },
     {
         name: '关闭',
+         color: '',
         icon: 'iconfont icon-f7_c_l',
         equipNo: '4001',
         setNo: '7',
@@ -469,6 +482,7 @@ var pptPattern =[
     },
     {
         name: '上一页',
+         color: '',
         icon: 'iconfont icon-f7_prev',
         equipNo: '4001',
         setNo: '2',
@@ -476,6 +490,7 @@ var pptPattern =[
     },
     {
         name: '下一页',
+         color: '',
         icon: 'iconfont icon-f7_next',
         equipNo: '4001',
         setNo: '3',
@@ -488,6 +503,7 @@ var pptPattern =[
 var jjPattern =[
     {
         name: '开始讲解',
+        color: '',
         icon: 'iconfont icon-f7_jj',
         equipNo: '1007',
         setNo: '1',
@@ -495,20 +511,23 @@ var jjPattern =[
     },
     {
         name: '停止讲解',
+        color: '',
         icon: 'iconfont icon-f7_s_t',
         equipNo: '1007',
         setNo: '2',
         value: null,
     },
     {
-            name: '暂停讲解',
-            icon: 'iconfont icon-f7_stop_0',
-            equipNo: '1007',
-            setNo: '3',
-            value: null,
+        name: '暂停讲解',
+        color: '',
+        icon: 'iconfont icon-f7_stop_0',
+        equipNo: '1007',
+        setNo: '3',
+        value: null,
     },
     {
         name: '继续讲解',
+        color: '',
         icon: 'iconfont icon-f7_j_x',
         equipNo: '1007',
         setNo: '4',

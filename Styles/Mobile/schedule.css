@@ -11,7 +11,8 @@ mixin：sass宏mixin
     line-height: 36px;
     border-bottom: 1px solid #eee; }
     .scheduleContainer > .subnavbarTabel > a {
-      font-size: 0.9rem;
+      font-size: 1rem;
+      color: #333;
       border-right: 0;
       height: 100%;
       white-space: nowrap;
@@ -118,7 +119,8 @@ mixin：sass宏mixin
     overflow: hidden;
     border-bottom: 1px solid #eee; }
     .equipLinkageContainer > .subnavbarTabel > a {
-      font-size: 0.9rem;
+      font-size: 1rem*1.1;
+      color: #333;
       height: 100%;
       white-space: nowrap;
       text-align: center; }
@@ -285,17 +287,12 @@ mixin：sass宏mixin
     margin: 5% 2% 15% 5%;
     background: #f38b8b; }
 
-.equipLinkAgeModifyContainer .equipLinkageList {
-  background: #FFFFFF; }
-.equipLinkAgeModifyContainer .equipLinkageList:after {
-  bottom: -40px !important;
-  height: 0px !important; }
-
 .scheduleModifyContainer_equipgroup {
   height: 60%;
   background: #fff; }
   .scheduleModifyContainer_equipgroup > div {
-    height: 100%; }
+    height: 100%;
+    overflow-y: auto; }
   .scheduleModifyContainer_equipgroup .allSelect .item-inner:after {
     height: 0 !important; }
 

@@ -268,13 +268,13 @@ function welcomeWords() {
 				color: '#3E7CFB'
 			});
 			welcome_activeSave(this, 1);
-			get_no(this, equipNo, setNo, "");
+			get_no_val(this, equipNo, setNo, "");
 		} else {
 			$(this).find('i').css({
 				color: '#FF4747'
 			});
 			$("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('i').removeClass().addClass("iconfont icon-xuanzhong");
-			get_no(this, equipNo, setNo, "");
+			get_no_val(this, equipNo, setNo, "");
 		}
 	});
 

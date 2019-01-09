@@ -6,7 +6,7 @@
     height: 100%;position: relative;
     &>.subnavbarTabel{
     	height: 36px;line-height: 36px;border-bottom: 1px solid #{$inputBorderColor};
-    	&>a{font-size: #{$tableHeaderFontSize*0.9};border-right: 0;height: 100%;white-space: nowrap;text-align: center;}
+    	&>a{font-size: #{$tableHeaderFontSize};color: #{$statsFontColor};border-right: 0;height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.scheduleContent{
         position: absolute;top: 36px;left: 0rem;right: 0rem;bottom: 0rem;overflow-y:auto; 
@@ -60,7 +60,7 @@
     height: 100%;position: relative;
     &>.subnavbarTabel{
         height: 40px;line-height: 40px;overflow: hidden;border-bottom: 1px solid #{$inputBorderColor};
-        &>a{font-size: #{$tableHeaderFontSize*0.9};    height: 100%;white-space: nowrap;text-align: center;}
+        &>a{font-size: #{$tableHeaderFontSize}*1.1; color: #{$statsFontColor};height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{
         position: absolute;top: 40px;left: 0;right: 0;bottom: 0;
@@ -157,13 +157,8 @@
 
 }
 
-.equipLinkAgeModifyContainer{
-    .equipLinkageList{background: #FFFFFF;}
-       .equipLinkageList:after{    bottom: -40px!important;    height: 0px !important;}
-       
-}
+.scheduleModifyContainer_equipgroup{height: 60%;background: #{$situationContainerBgc};&>div{height: 100%;    overflow-y: auto;}.allSelect{.item-inner:after{height: 0!important;}}}
 
-.scheduleModifyContainer_equipgroup{height: 60%;background: #{$situationContainerBgc};&>div{height: 100%;}.allSelect{.item-inner:after{height: 0!important;}}}
 // 场景编辑
 .equipLinkage_edit_modify{
     .equipLinkage_edit_header{

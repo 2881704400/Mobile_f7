@@ -143,6 +143,7 @@ function openFileCommand(dt, equip_no, main_instruction, minor_instruction, valu
             {
                 var setTimeout = setInterval(function() {
                     $.when(AlarmCenterContext.pptConfig($(dt).attr("set_equip"))).done(function(n) {
+                      
                         var result = n.HttpData;
                         if (result.PageCount != -1) {
                             window.localStorage.sessionFilename = result.Session; //data[1];

@@ -100,11 +100,11 @@ select {
 	display: none!important;
 }
 
-.md .toolbar {
-	/*height: 50px;
-	top: 100%;
-	transform: translateY(-100%);*/
-}
+.view-menu-toolbar{position: relative;}
+
+/*.view-menu-toolbar:after{content:"";position: absolute;left: 0;top: 0;right: 0;bottom: 0;filter: blur(20px);z-index: -1;
+background: url("../../Image/1.jpg") no-repeat center center/100% 100%;
+}*/
 
 .md .view-menu-toolbar {
 	height: 50px;
@@ -137,14 +137,12 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
 	height: 24px;
-	background: #000 !important;
 	display: block !important;
 }
 
 html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
 	height: 20px;
-	background: #000;
 }
 
 html.with-statusbar.device-android .panel,

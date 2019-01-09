@@ -110,7 +110,7 @@ var service = "/GWService.asmx",
 initLoads();
 
 function initLoads() {
-	myApp.dialog.progress();
+	myApp.dialog.progress();  
 
     loadNameMobile();
     setTimeout(function() {
@@ -519,44 +519,38 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
     });
 }
 //发送命令
-function get_no(dt, set_equip, set_no, values) {
-    var ajaxVar = $.ajax({
-        type: "POST",
-        url: "/GWService.asmx/GetDataTableFromSQL",
-        timeout: 5000,
-        data: {
-            sql: "select * from setParm where equip_no =" + set_equip + " and set_no=" + set_no,
-            userName: window.localStorage.userName,
-        },
-        success: function(data) {
-            var dt = $(data).find('DataTable'); //返回XML格式的DataTable
-            if (dt.find("equip_no").html() != "") {
-                if (values == "") onSetCommand(dt, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), dt.find("value").html());
-                else onSetCommand(dt, set_equip, dt.find("main_instruction").html(), dt.find("minor_instruction").html(), values);
-            } else {
-                alertMsgError.open();
-            }
+function get_no_val(that, set_equip, set_no, values) {
+
+    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equip, set_no: set_no})).done(function(n,l){
+        var result = n.HttpData.data;
+        if (result.length>0) {
+            if (!values) 
+                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, result[0].value);
+            else 
+                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, values);
+        } else {
+            alertMsgError.open();
         }
+    }).fail(function(e){
+       alertMsgError.open();
     });
+
 }
 function get_no_set(dt,values) {
-
     var set_equipOld="", set_noOld="";
     try{
         set_equipOld = $(dt).attr("set_equip");
         set_noOld = $(dt).attr("set_no");
     }
-    catch(e){
-        // myApp.dialog.alert("请先绑定功能设备号");
-    }
+    catch(e){}
     if(!set_equipOld.trim() || set_equipOld.trim() =="") return false;
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
         var result = n.HttpData.data;
         if (result.length>0) {
             if (values == "null" || values == "undefined" || !values || values.trim() == "") 
-                onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
+                onSetCommand_return(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
             else 
-                onSetCommand(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
+                onSetCommand_return(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
         } else {
             alertMsgError.open();
         }
@@ -564,8 +558,7 @@ function get_no_set(dt,values) {
        alertMsgError.open();
     });
 }
-function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
-
+function onSetCommand_return(dt, equip_no, main_instr, mino_instr, valueset) {
 
     $.ajax({
         type: "POST",
@@ -579,7 +572,13 @@ function onSetCommand(dt, equip_no, main_instr, mino_instr, valueset) {
             user_name: window.localStorage.userName
         },
         success: function(data) {
+           
             $(data).find("string").text() == "true"?alertMsgSuccess.open():alertMsgError.open();
+            //ppt details
+            if ($(dt).hasClass("selectBorder")) {
+                $(".viewsPng").find("img").attr("src",$(dt).find("img").attr("src"));
+            }
+        },error: function(error){
         }
     });
 }
@@ -601,28 +600,36 @@ function videoControlDirction(direction){
    switch(direction)
    {
         case "left_start": 
-           get_no("", 20005, 13, "");
+           // get_no("", 20005, 13, "");
+           onSetCommand_return("", 20005, "1", "0", "true");
            break;
         case "left_stop":
-           get_no("", 20005, 14, "");
+           // get_no("", 20005, 14, "");
+           onSetCommand_return("", 20005, "1", "0", "false");
           break;
         case "top_start":
-          get_no("", 20005, 17, "");
+          // get_no("", 20005, 17, "");
+          onSetCommand_return("", 20005, "1", "1", "true");
           break;
         case "top_stop":
-          get_no("", 20005, 18, "");
+          // get_no("", 20005, 18, "");
+          onSetCommand_return("", 20005, "1", "1", "false");
           break;
         case "right_start":
-          get_no("", 20005, 15, "");
+          // get_no("", 20005, 15, "");
+          onSetCommand_return("", 20005, "1", "2", "true");
           break;
         case "right_stop":
-          get_no("", 20005, 16, "");
+          // get_no("", 20005, 16, "");
+          onSetCommand_return("", 20005, "1", "2", "false");
           break;
         case "bottom_start":
-          get_no("", 20005, 19, "");
+          // get_no("", 20005, 19, "");
+          onSetCommand_return("", 20005, "1", "3", "true");
           break;
         case "bottom_stop":
-          get_no("", 20005, 20, "");
+          // get_no("", 20005, 20, "");
+          onSetCommand_return("", 20005, "1", "3", "false");
           break;
         default: break;
    }
