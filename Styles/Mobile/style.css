@@ -96,15 +96,9 @@ select {
 	}
 }
 
-.displayNone {
-	display: none!important;
-}
+.displayNone {display: none!important; }
 
 .view-menu-toolbar{position: relative;}
-
-/*.view-menu-toolbar:after{content:"";position: absolute;left: 0;top: 0;right: 0;bottom: 0;filter: blur(20px);z-index: -1;
-background: url("../../Image/1.jpg") no-repeat center center/100% 100%;
-}*/
 
 .md .view-menu-toolbar {
 	height: 50px;

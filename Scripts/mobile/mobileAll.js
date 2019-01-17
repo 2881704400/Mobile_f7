@@ -240,6 +240,7 @@ function loadNameMobile() {
                     InitEnsure();
                     AppShows();
                     onHomePage();
+                    getLanguageChoice(window.localStorage.voiceList);//语音初始语言选择
                     $(".voiceDivs,.toolbar").removeClass("displayNone");
                 } else {
                     myJavaFuntion.OpenLocalUrl("login");
@@ -633,4 +634,49 @@ function videoControlDirction(direction){
           break;
         default: break;
    }
+}
+
+//修改界面字体
+function modifyZnUs(){
+    if(window.localStorage.voiceList == "0" || window.localStorage.voiceList == "3")
+    {
+        $(".voice-header>span").text("Voice control");
+        $(".voice-arrow-dialog").text("Long pressed speech...."); 
+    }
+    else
+    {
+              $(".voice-header>span").text("语音控制");
+        $(".voice-arrow-dialog").text("长按说话....");   
+    }
+}
+//切换语音
+function getLanguageChoice(val){
+  switch(val)
+  {
+    case "0": //讯飞中文
+      try {myJavaFun.SetVoiceXFLanguage("en_US");} catch (ex) {}
+         
+    break;
+    case "1": //讯飞英文
+      try {myJavaFun.SetVoiceXFLanguage("zh_CN");} catch (ex) {}
+          
+    break;
+    case "2": //微软中文
+      try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
+      
+    break;
+    case "3": //微软英文
+      try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
+            
+    break;
+    default: break;
+  }
+
+}
+
+//二维码扫描调用
+function RichScan(){
+    try{
+        myJavaFun.RichScan();
+    }catch(e){}
 }

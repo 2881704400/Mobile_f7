@@ -160,16 +160,18 @@
 }
 
 .popup-voices .voice-arrow-dialog {
-	width: 86px;
-	height: 24px;
-	position: absolute;
-	left: 50%;
-	margin-left: -43px;
-	bottom: 85px;
-	color: #FFFFFF;
-	font-size: 0.75rem;
-	text-align: center;
-	line-height: 24px;
+    /* width: 86px; */
+    height: 24px;
+    position: absolute;
+    left: 50%;
+    /* margin-left: -43px; */
+    bottom: 85px;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 24px;
+    white-space: nowrap;
+    transform: translateX(-50%);
 }
 
 .popup-voices .voice-arrow-box {

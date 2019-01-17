@@ -33,14 +33,13 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     /*顶部导航栏*/
     .navbar{
         background-color: #{$headerBgc};
-        // box-shadow: 0px  1px 1px #{$headerBoxShadow};
         &:after{height: 0px}
         &>.navbar-inner{ 
             .left{
                 .back i{font-size: 1.5rem;color: #{$toolbarFontColor};}
                 .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
                 .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-                a{i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};}}
+                a{padding: 10px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.3rem;}}
              }
             .title{color: #{$toolbarFontColor};}
             .right i{font-size: 2rem;color: #{$toolbarFontColor};}

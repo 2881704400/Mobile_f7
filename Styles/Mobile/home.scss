@@ -19,11 +19,6 @@ mixin：sass宏mixin
     border-top: none !important;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
-
-// .home_Commonlyused{
-//     height: 100px;
-// }
-
 #homeContents{
     width: 100%;height: 100%;overflow-y: auto; padding: 0.5rem 0.5rem 50px 0.5rem;background: #F2F3F5;
     &>ul.charts-block{

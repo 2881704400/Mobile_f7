@@ -143,7 +143,7 @@ var sysFourMenu =[
     {
         name: '事件查询',
         href: '/eventSearch/',
-        color: '',//'#4284FE',
+        color: '',  // '#4284FE',
         icon: 'iconfont icon-xintubiao-',
         equipNo: '',
         setNo: '',
@@ -152,7 +152,7 @@ var sysFourMenu =[
     {
         name: '系统配置',
         href: '/systemConfig/',
-        color: '',//'#FF4582',
+        color: '',  // '#FF4582',
         icon: 'iconfont icon-navicon-xtpz',
         equipNo: '',
         setNo: '',
@@ -161,7 +161,7 @@ var sysFourMenu =[
     {
         name: '报警排表',
         href: '/schedule/',
-        color: '',//'#FF4F55',
+        color: '',  // '#FF4F55',
         icon: 'iconfont icon-paibiao',
         equipNo: '',
         setNo: '',
@@ -170,7 +170,7 @@ var sysFourMenu =[
     {
         name: '设备联动',
         href: '/equipLinkage/',
-        color: '',//'#3961B6',
+        color: '',  // '#3961B6',
         icon: 'iconfont icon-app_icons--',
         equipNo: '',
         setNo: '',
