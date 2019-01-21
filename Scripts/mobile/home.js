@@ -68,11 +68,12 @@ function tipsInformtion(tipsStr, tipsEvent) {
 }
 //轮播
 function VideoBaner(className, slistName, jsonString) {
+
     $(".KOvm_container>div,.wiper-paginationTrailer-KOvm").html("");
     var countTrailer = jsonString.length;
     var xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        var htmlTrailerChild = "<li class=\"col-25\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
+        var htmlTrailerChild = "<li class=\"col-25\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:"+jsonString[i].color+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
         if (i % 8 == 0 || i == 0) {
             xhTrailer++;
             var htmlTrailer = "<div class=\"swiper-slide\" dataID='" + xhTrailer + "'>" + "<ul class=\"row\" >" + htmlTrailerChild + "</ul></div>";

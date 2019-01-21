@@ -164,7 +164,7 @@ function unEncrypt(Text) {
 function getServerKey() {
 	$.ajax({
 		type: 'post',
-		url: '/api/server/getkey',
+		url: '/api/server/getkey_mobile',
 		dataType: "json",
 		data: {
 			username: $('#inputName').val(),

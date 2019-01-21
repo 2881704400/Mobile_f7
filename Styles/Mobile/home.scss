@@ -52,13 +52,13 @@ mixin：sass宏mixin
               li{margin-top: 10px;
                 .homeBtn{
                   width: 100%;height: 100%;display: inline-block; position: relative;
-                  i{font-size: 2rem;color: #{$homeConfigBtnColor};border-radius: #{$homeBtnBorderRadius};     
+                  i{font-size: 2rem;color: #{$situationContainerBgc};border-radius: #{$homeBtnBorderRadius};     
                   // animation: rotate .5s linear infinite;
                   padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;}
                   p{color: #{$homeConfigBtnColor};margin: 0; white-space: nowrap;}
                   img{width: 40%;}
                 }
-                // .homeBtn::before{
+                // .homeBtn::before{  //$homeConfigBtnColor 
                 //     content: '';
                 //     height: 8px; width: 80%; background: #000; opacity: .2; border-radius: 50%;
                 //     position: absolute;
@@ -73,9 +73,8 @@ mixin：sass宏mixin
             li{ 
               a{
                 width: 100%;height: 100%;display: inline-block;
-                // border-radius: #{$unclickBorderRadius};
                 i{
-                  font-size: 2rem;color: #{$homeConfigBtnColor};border-radius: #{$homeBtnBorderRadius};    
+                  font-size: 2rem;color: #{$situationContainerBgc};border-radius: #{$homeBtnBorderRadius};    
                   padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;
                  }
                 p{color: #{$homeConfigBtnColor};margin: 0;}

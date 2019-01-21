@@ -143,7 +143,7 @@ var sysFourMenu =[
     {
         name: '事件查询',
         href: '/eventSearch/',
-        color: '',  // '#4284FE',
+        color:  '',//'#4284FE',
         icon: 'iconfont icon-xintubiao-',
         equipNo: '',
         setNo: '',
@@ -152,7 +152,7 @@ var sysFourMenu =[
     {
         name: '系统配置',
         href: '/systemConfig/',
-        color: '',  // '#FF4582',
+        color:  '',//'#FF4582',
         icon: 'iconfont icon-navicon-xtpz',
         equipNo: '',
         setNo: '',
@@ -161,7 +161,7 @@ var sysFourMenu =[
     {
         name: '报警排表',
         href: '/schedule/',
-        color: '',  // '#FF4F55',
+        color:  '',//'#FF4F55',
         icon: 'iconfont icon-paibiao',
         equipNo: '',
         setNo: '',
@@ -170,7 +170,7 @@ var sysFourMenu =[
     {
         name: '设备联动',
         href: '/equipLinkage/',
-        color: '',  // '#3961B6',
+        color:  '',//'#3961B6',
         icon: 'iconfont icon-app_icons--',
         equipNo: '',
         setNo: '',
@@ -183,7 +183,7 @@ var commonlyUsed =[
     {
         name: '列表视频',
         href: '/Video/',
-        color: '',// '#FFBC01',
+        color:  '',//'#FFBC01',
         icon: 'iconfont icon-f7_video',
         equipNo: '',
         setNo: '',
@@ -192,7 +192,7 @@ var commonlyUsed =[
     {
         name: '地图监控',
         href: '/videoControl/',
-        color: '',// '#62D1FF',
+        color:  '',//'#62D1FF',
         icon: 'iconfont icon-f7_control',
         equipNo: '',
         setNo: '',
@@ -201,7 +201,7 @@ var commonlyUsed =[
     {
         name: 'PPT',
         href: '/mettingPPT/',
-        color: '',// '#8354A2',
+        color:  '',//'#8354A2',
         icon: 'iconfont icon-f7_ppt',
         equipNo: '',
         setNo: '',
@@ -210,7 +210,7 @@ var commonlyUsed =[
     {
         name: '欢迎词',
         href: '/welcomeWords/',
-        color: '',// '#F53173',
+        color:  '',//'#F53173',
         icon: 'iconfont icon-f7_welcome',
         equipNo: '',
         setNo: '',
@@ -225,6 +225,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_home',
         equipNo: '300',
         setNo: '10',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -232,6 +233,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jz',
         equipNo: '300',
         setNo: '2',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -239,6 +241,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hb',
         equipNo: '300',
         setNo: '31',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -246,6 +249,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hl',
         equipNo: '300',
         setNo: '32',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -253,6 +257,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_bj',
         equipNo: '300',
         setNo: '33',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -260,6 +265,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_pw',
         equipNo: '300',
         setNo: '34',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -267,6 +273,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '3',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -274,6 +281,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jt',
         equipNo: '300',
         setNo: '4',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -281,6 +289,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dw',
         equipNo: '300',
         setNo: '11',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -288,6 +297,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dsj1',
         equipNo: '300',
         setNo: '17',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -295,6 +305,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jy',
         equipNo: '300',
         setNo: '18',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -302,6 +313,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jd',
         equipNo: '300',
         setNo: '25',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -309,6 +321,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_cg',
         equipNo: '300',
         setNo: '81',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -316,6 +329,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_gj',
         equipNo: '300',
         setNo: '82',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -323,6 +337,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_3d3d',
         equipNo: '300',
         setNo: '83',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -330,6 +345,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hbxx',
         equipNo: '300',
         setNo: '84',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -337,6 +353,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_3d',
         equipNo: '300',
         setNo: '85',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -344,6 +361,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '86',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -351,6 +369,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dt',
         equipNo: '300',
         setNo: '92',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -358,6 +377,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '100',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -365,6 +385,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_equipList',
         equipNo: '300',
         setNo: '98',
+        color: '#3961B6',
         value: null,
     },  
     {
@@ -372,6 +393,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '99',
+        color: '#3961B6',
         value: null,
     },  
     {
@@ -379,6 +401,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_gk',
         equipNo: '300',
         setNo: '2000',
+        color: '#3961B6',
         value: null,
     },
      {
@@ -386,6 +409,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_zm',
         equipNo: '300',
         setNo: '101',
+        color: '#3961B6',
         value: null,
     },                      
     {
@@ -393,6 +417,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
         setNo: '10112',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -400,6 +425,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10107',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -407,6 +433,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hf',
         equipNo: '300',
         setNo: '6',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -414,6 +441,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_fq',
         equipNo: '300',
         setNo: '10106',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -421,6 +449,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_kt',
         equipNo: '300',
         setNo: '10105',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -428,6 +457,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jk',
         equipNo: '1005',
         setNo: '1500',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -435,6 +465,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hys',
         equipNo: '1005',
         setNo: '1000',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -442,6 +473,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jk',
         equipNo: '300',
         setNo: '10096',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -449,6 +481,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10112',
+        color: '#3961B6',
         value: null,
     },
     {
@@ -456,6 +489,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '10093',
+        color: '#3961B6',
         value: null,
     },
 ];

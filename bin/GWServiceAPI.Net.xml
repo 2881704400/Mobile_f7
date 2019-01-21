@@ -535,7 +535,7 @@
             obj.verificationCode:验证码
             </param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey_mobile(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取key
             </summary>
