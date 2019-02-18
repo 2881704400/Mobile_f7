@@ -7,9 +7,6 @@ window.onload = function() {
 
 	var wd = ($(document).width() / 2 - 70 / 2);
 
-	// $("#loading-center-absolute").css("left", wd + "px");
-	//$(".loading-text").css("left", (wd + 6) + "px");
-
 	if('addEventListener' in document) {
 		document.addEventListener('DOMContentLoaded', function() {
 			FastClick.attach(document.body);

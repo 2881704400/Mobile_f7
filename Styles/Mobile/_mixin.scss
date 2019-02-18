@@ -37,4 +37,28 @@
     justify-content: $jus;
 }
 
+// 分辨率背景图片
+@mixin screenPiexl($val) {
+
+    @media screen and (min-width: 320px) {
+      background: url("../../../../Image/phone/"+$val+"320.png") no-repeat top center/100% auto;
+    }
+
+    @media screen and (min-width: 360px) {
+      background: url("../../../../Image/phone/"+$val+"360.png") no-repeat top center/100% auto;
+    }
+
+    @media screen and (min-width: 375px) {
+       background: url("../../../../Image/phone/"+$val+"375.png") no-repeat top center/100% auto;
+    }
+
+    @media screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+       background: url("../../../../Image/phone/"+$val+"375.png") no-repeat top center/100% auto,url("../../../../Image/phone/"+$val+".png") no-repeat bottom center/100% auto;
+    }    
+
+    @media screen and (min-width: 414px) {
+       background: url("../../../../Image/phone/"+$val+"414.png") no-repeat top center/100% auto;
+    }
+
+}
 

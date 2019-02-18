@@ -2,9 +2,10 @@
 function onHomePage() {
     switchToolbar("homeTool");
     authorizationName();
-//	 myApp.router.navigate("/systemConfig/"); 
     getJurisdictionData();
     getAppStatusBarHeight();
+
+
 }
 
 //响应App绑定函数-获取状态栏高度
@@ -68,16 +69,14 @@ function tipsInformtion(tipsStr, tipsEvent) {
 }
 //轮播
 function VideoBaner(className, slistName, jsonString) {
-
     $(".KOvm_container>div,.wiper-paginationTrailer-KOvm").html("");
     var countTrailer = jsonString.length;
-    var xhTrailer = 0;
+    var xhTrailer = 0,signIndex = window.localStorage.languageList == 1? 6: 8;
     for (var i = 0; i < countTrailer; i++) {
-        var htmlTrailerChild = "<li class=\"col-25\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:"+jsonString[i].color+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
-        if (i % 8 == 0 || i == 0) {
+        var htmlTrailerChild = "<li class=\""+(window.localStorage.languageList == 1?"col-33":"col-25")+"\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:linear-gradient(45deg,"+jsonString[i].color+")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\" ></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
+        if (i % signIndex == 0 || i == 0) {
             xhTrailer++;
             var htmlTrailer = "<div class=\"swiper-slide\" dataID='" + xhTrailer + "'>" + "<ul class=\"row\" >" + htmlTrailerChild + "</ul></div>";
-
             $("." + className + " .swiper-wrapper").append(htmlTrailer);
         } else {
             $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").append(htmlTrailerChild);
@@ -116,7 +115,7 @@ function commonlyUsedFun(className, classListName, jsonString) {
     var htmlTrailerChild = "",
         xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + jsonString[i].href + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:"+jsonString[i].color+"\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + jsonString[i].name + "</p>" + "</a>" + "</li>";
+        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + (window.localStorage.languageList == 1?jsonString[i].href_en:jsonString[i].href_zh) + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background: linear-gradient(30deg,"+jsonString[i].color+")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "</li>";
     }
     $("." + className).append(htmlTrailerChild);
 }
@@ -183,6 +182,8 @@ function snashotCount(btnInfoLevels_home) {
         });
     }
 }
+
+
 //配置界面
 function configPage(){
     $.fn.home_fsk_btn(equipCommand);
@@ -204,7 +205,7 @@ $.fn.extend({
     home_fsk_btn: function(stringJson) {
         var html = '';
         stringJson.forEach(function(item, index) {
-            html += `<li class="col-33"><a class="btn btn-border-o ${item.className}" set_equip="${item.equipNo}" set_no="${item.setNo}" ><p>${item.name}</p></a></li>`;
+            html += `<li class="col-33"><a class="btn btn-border-o ${item.className}" set_equip="${item.equipNo}" set_no="${item.setNo}" ><p>${(window.localStorage.languageList == 1?item.name_en:item.name)}</p></a></li>`;
         });
         $(".home_fsk_btn ul").append(html);
         $(".home_fsk_btn li a").unbind();

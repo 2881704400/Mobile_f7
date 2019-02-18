@@ -11,7 +11,9 @@ $(function() {
         $(".view-main").css({
             filter: 'blur(8px)'
         })
+        //打开语音时，初始化界面内容
         $(".voice-container").html('<div class="pannel-chat-info">' + '	<div class="chart-content">' + initAlert() + '	</div>' + '</div>');
+        modifyZnUs();
     });
     $$('.popup-voices').on('popup:close', function(e, popup) {
         $(".view-main").css({
@@ -25,8 +27,7 @@ $(function() {
      if (!window.localStorage.voiceList) {window.localStorage.voiceList = "1";} 
      try {myJavaFun.VoiceOpen();myJavaFun.initMicrosoftSpeech();} catch (ex) {}
 
-     //修改
-     modifyZnUs();
+
 });
 
 function changeContentBoxBg() {
@@ -55,7 +56,7 @@ function onTouchStart(e) {
             myJavaFun.StartVoice("1");
         }
     } catch (ex) {}
-    $(".voice-container").append('<div class="pannel-chat-info">' + '	<div class="chart-content stay-right">' + '		<div class="waveAnim"><i></i><i></i><i></i><i></i><i></i></div>' + '	</div>' + '</div>');
+    $(".voice-container").append('<div class="pannel-chat-info">' + '	<div class="chart-content stay-right">' + '<div class="waveAnim"><i></i><i></i><i></i><i></i><i></i></div>' + '	</div>' + '</div>');
     $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
     changeContentBoxBg();
 }
@@ -110,7 +111,7 @@ function onTouchEnd(e) {
             }
         } catch (ex) {
             isVoices = false;
-            $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>无法使用此功能，请下载最新app！</span>");
+            $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>无法使用此功能，请下载最新app！</span>":"<span>Unable to use this feature, please download the latest app!</span>");
             document.getElementById("voiceBtn").addEventListener('touchstart', onTouchStart);
             document.getElementById("voiceBtn").addEventListener('touchend', onTouchEnd);
             setTimeout(function() {
@@ -150,7 +151,7 @@ function onTouchEnd(e) {
             }
         } catch (ex) {
             isVoices = false;
-            $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>无法使用此功能，请下载最新app！</span>");
+            $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>无法使用此功能，请下载最新app！</span>":"<span>Unable to use this feature, please download the latest app!</span>");
             $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
             changeContentBoxBg();
             document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
@@ -177,7 +178,7 @@ function callbackVoiceXFMessage(dt) {
     if (cancelVoiceFlag) {
         return;
     }
-    $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.voiceList=="1"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
+    $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
     $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').show();
     $("#waveAnim").hide();
     isVoices = false;
@@ -202,14 +203,14 @@ function callbackVoiceXFData(dt) {
             var result = dt.HttpData.data;
 
             if (result == "") {
-                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.voiceList=="1"?"<span>未识别！</span>":"<span> Unidentified！</span>");
+                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>未识别！</span>":"<span> Unidentified！</span>");
             } else {
                 result = result.replace("未识别语音,内容---", "");
                 result = result.replace("。", "");
                 $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
                 setTimeout(function() {
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.voiceList=="1"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.voiceList=="1"?"已执行</span>":" executed</span>") + '</div>' + '</div>');
+                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.languageList == "0"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
+                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.languageList == "0"?"已执行</span>":" executed</span>") + '</div>' + '</div>');
                     $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
                     changeContentBoxBg();
                 }, 500);
@@ -217,12 +218,12 @@ function callbackVoiceXFData(dt) {
         } else {
             if (!voiceString) {
 
-                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.voiceList=="1"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
+                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
             } else {
                 $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + voiceString + "</span>");
                 setTimeout(function() {
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.voiceList=="1"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + voiceString + '..</span>' + ' </div>' + '</div>');
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + voiceString + (window.localStorage.voiceList=="1"?"指令异常，执行失败！</span>":" Instruction exception, execution failure!") + ' </div>' + '</div>');
+                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.languageList == "0"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + voiceString + '..</span>' + ' </div>' + '</div>');
+                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + voiceString + (window.localStorage.languageList == "0"?"指令异常，执行失败！</span>":" Instruction exception, execution failure!") + ' </div>' + '</div>');
                     $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
                     changeContentBoxBg();
                 }, 500);
@@ -281,22 +282,22 @@ function microsoftSpeech(dt) {
         result = result.replace("。", "");
         $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
         setTimeout(function() {
-            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.voiceList=="2"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
-            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.voiceList=="2"?"已执行</span>":" executed</span>") + '</div>' + '</div>');
+            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.languageList == "0"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
+            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.languageList == "0"?"已执行</span>":" executed</span>") + '</div>' + '</div>');
             $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
             changeContentBoxBg();
         }, 500);        
     }
     else if(dt.status == 202)
     {
-        $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.voiceList=="2"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
+        $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
     }
     else
     {
          $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
         setTimeout(function() {
-            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.voiceList=="2"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
-            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.voiceList=="2"?"指令异常，执行失败！</span>":" Instruction exception, execution failure!") + ' </div>' + '</div>');
+            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.languageList == "0"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
+            $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.languageList == "0"?"指令异常，执行失败！</span>":" Instruction exception, execution failure!") + ' </div>' + '</div>');
             $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
             changeContentBoxBg();
         }, 500);       
@@ -310,7 +311,8 @@ function microsoftSpeech(dt) {
 
 //初始化提示语句
 function initAlert(){
-      if(window.localStorage.voiceList == "1" || window.localStorage.voiceList == "2")
+     
+      if(window.localStorage.languageList == "0")
         {return '<span>请告诉我，您想要进行的操作</span>';}
       else
         return '<span>Please tell me what you want to do.</span>';
@@ -318,7 +320,7 @@ function initAlert(){
 }
 //指令提示
 function initInstructions(){
-      if(window.localStorage.voiceList == "1" || window.localStorage.voiceList == "2")
+      if(window.localStorage.languageList == "0")
         return '<span>指令已取消</span>';
       else
         return '<span>Instruction cancelled.</span>';
@@ -326,7 +328,7 @@ function initInstructions(){
 
 //识别提示
 function initIdentifying(){
-      if(window.localStorage.voiceList == "1" || window.localStorage.voiceList == "2")
+      if(window.localStorage.languageList == "0")
         return '<span>正在识别..</span>';
       else
         return '<span>Identifying...</span>';

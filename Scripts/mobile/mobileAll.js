@@ -8,8 +8,8 @@ var myApp = new Framework7({
         swipeOnlyClose: true,
     },
     dialog: {
-        buttonOk: '确认',
-        buttonCancel: '取消',
+        buttonOk: window.localStorage.languageList == 1?'confirm':'确认',
+        buttonCancel: window.localStorage.languageList == 1?'cancel':'取消',
     },
     statusbar: {
         enabled: true,
@@ -19,7 +19,8 @@ var myApp = new Framework7({
     picker: {
         toolbarCloseText: '确认',
     },
-    routes: [{
+    routes: [
+    {
         path: '/home/',
         url: 'home.html',
     }, {
@@ -62,9 +63,6 @@ var myApp = new Framework7({
         path: '/ycAndyx/',
         url: 'ycAndyx.html',
     }, {
-        path: '/ycAndyx/',
-        url: 'ycAndyx.html',
-    }, {
         path: '/Video/',
         url: 'Video.html',
     }, {
@@ -94,11 +92,87 @@ var myApp = new Framework7({
     }, {
         path: '/scheduleModifyChild/',
         url: 'scheduleModifyChild.html',
-    }
+    },
+
+     {
+        path: '/mobile-en/home_en/',
+        url: 'mobile-en/home_en.html',
+    }, {
+        path: '/mobile-en/snapshot_en/',
+        url: 'mobile-en/snapshot_en.html',
+    }, {
+        path: '/mobile-en/equips_en/',
+        url: 'mobile-en/equips_en.html',
+    }, {
+        path: '/mobile-en/systemConfig_en/',
+        url: 'mobile-en/systemConfig_en.html',
+    }, {
+        path: '/mobile-en/eventSearch_en/',
+        url: 'mobile-en/eventSearch_en.html',
+    }, {
+        path: '/mobile-en/equipSearchDetail_en/',
+        url: 'mobile-en/equipSearchDetail_en.html',
+    }, {
+        path: '/mobile-en/schedule_en/',
+        url: 'mobile-en/schedule_en.html',
+    }, {
+        path: '/mobile-en/equipLinkage_en/',
+        url: 'mobile-en/equipLinkage_en.html',
+    }, {
+        path: '/mobile-en/UserInfor_en/',
+        url: 'mobile-en/UserInfor_en.html',
+    }, {
+        path: '/mobile-en/setPage_en/',
+        url: 'mobile-en/setPage_en.html',
+    }, {
+        path: '/mobile-en/snapShotDetail_en/',
+        url: 'mobile-en/snapShotDetail_en.html',
+    }, {
+        path: '/mobile-en/RealTimeList/',
+        content: '123',
+    }, {
+        path: '/mobile-en/resultEvent/',
+        content: '123',
+    }, {
+        path: '/mobile-en/ycAndyx_en/',
+        url: 'mobile-en/ycAndyx_en.html',
+    }, {
+        path: '/mobile-en/Video_en/',
+        url: 'mobile-en/Video_en.html',
+    }, {
+        path: '/mobile-en/videoControl_en/',
+        url: 'mobile-en/videoControl_en.html',
+    }, {
+        path: '/mobile-en/welcomeWords_en/',
+        url: 'mobile-en/welcomeWords_en.html',
+    }, {
+        path: '/mobile-en/mettingPPT_en/',
+        url: 'mobile-en/mettingPPT_en.html',
+    }, {
+        path: '/mobile-en/mettingDetails_en/',
+        url: 'mobile-en/mettingDetails_en.html',
+    }, {
+        path: '/mobile-en/scheduleModify_en/',
+        url: 'mobile-en/scheduleModify_en.html',
+    }, {
+        path: '/mobile-en/equipLinkageModify_en/',
+        url: 'mobile-en/equipLinkageModify_en.html',
+    },
+     {   path: '/mobile-en/equipConfigList_en/',
+        url: 'mobile-en/equipConfigList_en.html',
+    }, {
+        path: '/mobile-en/sysConfigEdict_en/',
+        url: 'mobile-en/sysConfigEdict_en.html',
+    }, {
+        path: '/mobile-en/scheduleModifyChild_en/',
+        url: 'mobile-en/scheduleModifyChild_en.html',
+    }   
     ],
     on: {
         pageInit: function(page) {
+             try{ hubConn.stop();}catch(e){}
             $("#voiceContainer").addClass("voiceContainer");
+            window.localStorage.languageList == 1?$(".right a.icon-only").attr("href","/mobile-en/setPage_en/"):$(".right a.icon-only").attr("href","/setPage/");
         },
         popupOpen: function(popup) {},
         init: function() {}
@@ -106,24 +180,13 @@ var myApp = new Framework7({
 });
 var mainView = myApp.views.create('.view-main'); //web接口地址
 var service = "/GWService.asmx",
-    $$ = Framework7.$;
+$$ = Framework7.$;
 initLoads();
-
 function initLoads() {
 	myApp.dialog.progress();  
-
     loadNameMobile();
-    setTimeout(function() {
-        $("#app").css("visibility", "visible");
-    }, 1500);
-    //语音记录选择
-    if (!window.localStorage.voiceList) {
-        window.localStorage.voiceList = "1";
-    }
-    try {
-        //myJavaFun.GetAppVersion(); //获取App版本信息
-        //myJavaFun.GetSystemInfor(); //获取系统信息    
-    } catch (ex) {}
+    //如果没有语音记录则默认为讯飞
+    if (!window.localStorage.voiceList) {window.localStorage.voiceList = "1";}
 }
 var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages,equiplinkageStr=[];
 //连接服务器
@@ -137,15 +200,16 @@ function InitEnsure() {
             var analyze = $(dt).children("string").text();
             if (analyze != "" || analyze != "false") {
                 $("#app").css("visibility", "visible");
-                /*$.ajax({
-                    type: "post",
-                    url: service + "/UserPermissions",
-                    data: "userName=" + window.localStorage.userName,
-                    success: function(usersDt) {
-                        getWebUser = $(usersDt).children("UserItem");
-                        // authPage(dt);//权限设置
-                    }
-                });*/
+
+                // $.ajax({
+                //     type: "post",
+                //     url: service + "/UserPermissions",
+                //     data: "userName=" + window.localStorage.userName,
+                //     success: function(usersDt) {
+                //         getWebUser = $(usersDt).children("UserItem");
+                //         // authPage(dt);//权限设置
+                //     }
+                // });
             }
         },
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
@@ -232,15 +296,23 @@ function loadNameMobile() {
             error: function(e) {
                 window.localStorage.userName = '';
                 myJavaFuntion.OpenLocalUrl("login");
-                // console.log(e);
             },
             complete: function(XMLHttpRequest, status) {
                 if (window.localStorage.userName != "" && window.localStorage.userName != null) {
                     $("#userName").html("我(" + window.localStorage.userName + ")");
-                    InitEnsure();
-                    AppShows();
-                    onHomePage();
-                    getLanguageChoice(window.localStorage.voiceList);//语音初始语言选择
+                     InitEnsure(); AppShows();onHomePage();
+                    //查询表中用户选择的语言
+                      $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName="+window.localStorage.userName)).done(function(n){
+                        var result = n.HttpData.data;
+                        if (result.length>0 && result[0].status != "0" && n.HttpData.code == 200) {
+                           window.localStorage.languageList = 1;
+                           tranformMenu(1);
+                        } 
+                        else
+                        {
+                            window.localStorage.languageList = 0;
+                        }
+                     }).fail(function(e){});  
                     $(".voiceDivs,.toolbar").removeClass("displayNone");
                 } else {
                     myJavaFuntion.OpenLocalUrl("login");
@@ -257,19 +329,18 @@ function AppShows() {
 //清空缓存
 function onAppCacheClear() {
     myApp.dialog.create({
-        title: "清空",
-        text: '是否清空缓存，重新加载？',
+        title: window.localStorage.languageList == 1?"empty":"清空",
+        text: window.localStorage.languageList == 1?"Whether to empty the cache and reload?":"是否清空缓存，重新加载？",
         buttons: [{
-            text: '取消'
+            text: window.localStorage.languageList == 1?"Cancel":'取消'
         }, {
-            text: '确定',
+            text: window.localStorage.languageList == 1?"Confirm":'确定',
             onClick: function() {
                 myJavaFun.AppCacheClear();
             }
         }]
     }).open();
 }
-
 function AppCacheClearCallback(dt) {
     if (dt == "true") {
         location.reload();
@@ -287,12 +358,12 @@ function AppCacheClearCallback(dt) {
 function onUserLogout() {
     myApp.dialog.create({
         cssClass: "exit",
-        title: "注销",
-        text: '确定要注销当前账户吗？',
+        title: window.localStorage.languageList == 1?"Cancellation":"注销",
+        text: window.localStorage.languageList == 1?"Are you sure you want to cancel your current account?":'确定要注销当前账户吗？',
         buttons: [{
-            text: '取消'
+            text: window.localStorage.languageList == 1?"Cancel":'取消'
         }, {
-            text: '确定',
+            text: window.localStorage.languageList == 1?"Confirm":'确定',
             onClick: function() {
                 window.localStorage.userName = "";
                 window.localStorage.userPWD = "";
@@ -309,19 +380,18 @@ function onAbout() {
         var version = data.HttpData.data;
         var versionNameHTML = '';
         if (window.localStorage.versionName != "" && window.localStorage.versionName != null) {
-            versionNameHTML = '<br/>App版本：v' + window.localStorage.versionName;
+            versionNameHTML = (window.localStorage.languageList == 1?"<br/>App Edition：v":"<br/>App版本：v") + window.localStorage.versionName;
         }
         myApp.dialog.create({
-            title: "关于",
-            text: 'API版本：v' + version + versionNameHTML,
+            title: window.localStorage.languageList == 1?"":"关于",
+            text: (window.localStorage.languageList == 1?"App Edition：v":"API版本：v") + version + versionNameHTML,
             buttons: [{
-                text: '确定'
+                text: window.localStorage.languageList == 1?"Confirm":"确定"
             }]
         }).open();
     }
     JQajaxo("get", _url, true, "", _success);
 }
-
 function backss() {
     var mainView = myApp.addView('.view-main');
     var pages = new Array();
@@ -350,7 +420,6 @@ function initPageJS(dt, ext) { //ext扩展界面地址
         evil(dt + "()");
     }
 }
-
 function evil(fn) {
     var Fn = Function; //一个变量指向Function，防止有些前端编译工具报错
     return new Fn('return ' + fn)();
@@ -638,34 +707,42 @@ function videoControlDirction(direction){
 
 //修改界面字体
 function modifyZnUs(){
-    if(window.localStorage.voiceList == "0" || window.localStorage.voiceList == "3")
+    if(window.localStorage.languageList == "1")
     {
         $(".voice-header>span").text("Voice control");
+        $(".voice-arrow-cancel").text("Cancel");
         $(".voice-arrow-dialog").text("Long pressed speech...."); 
     }
     else
     {
-              $(".voice-header>span").text("语音控制");
+        $(".voice-header>span").text("语音控制");
+        $(".voice-arrow-cancel").text("取消");
         $(".voice-arrow-dialog").text("长按说话....");   
     }
+    getLanguageChoice($("#voiceList").find("option:selected").attr("data-value"));
 }
 //切换语音
 function getLanguageChoice(val){
+
   switch(val)
   {
-    case "0": //讯飞中文
+    case "0": //讯飞英文
+    // alert("讯飞英文");
       try {myJavaFun.SetVoiceXFLanguage("en_US");} catch (ex) {}
          
     break;
-    case "1": //讯飞英文
+    case "1": //讯飞中文
+    // alert("讯飞中文");
       try {myJavaFun.SetVoiceXFLanguage("zh_CN");} catch (ex) {}
           
     break;
     case "2": //微软中文
+    // alert("微软中文");
       try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
       
     break;
     case "3": //微软英文
+    // alert("微软英文");
       try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
             
     break;
@@ -680,3 +757,150 @@ function RichScan(){
         myJavaFun.RichScan();
     }catch(e){}
 }
+
+//singar
+
+var hubConn,hubProxy,signalR = {
+connectServer: function(equipNo) {
+      hubConn = null
+      hubConn = $.hubConnection();
+      hubProxy = hubConn.createHubProxy('ServerHub');
+      hubProxy.on('sendConnect', data => {
+        //连接
+      });
+
+      // 来自广播新消息类型和数据
+      hubProxy.on('sendAll', (data, type) => {
+        // console.log('ycyxall--------------' + type, data)
+      });
+
+      // ycp有广播消息
+      hubProxy.on('sendYcpSingle', data => {
+        // console.log('yccccp----------------', data)
+        try{
+          let index = data.split(",")[0],value = data.split(",")[2],companyString = data.split(",")[5];
+          $("#valueycps_"+index).find("span.val").html(value+companyString); 
+        }catch(e){}
+
+      });
+
+      // yxp有广播消息
+      hubProxy.on('sendYxpSingle', data => {
+         console.log('yxxxxp-------------------', data)
+         try{
+          let index = data.split(",")[0],status = data.split(",")[4];
+          if(status == "True")
+             $("#m_alarmyxps_"+index).find(".iconWrap i").addClass("alarm").removeClass("comOk"); 
+          else
+            {$("#m_alarmyxps_"+index).find(".iconWrap i").removeClass("alarm").addClass("comOk"); }
+        }catch(e){}
+
+      });
+
+      // 监听设备状态
+      hubProxy.on('sendEquipSingle', data => {
+        // console.log('equip-------------------', data)
+        try{
+          let index = data.split(",")[0],status = data.split(",")[2];
+          $("#imgConf_"+index).find("img").attr("src","/Image/alarm/"+status+".png"); 
+        }catch(e){}
+      });
+      
+      hubConn.stop()
+      // 开始连接signalr
+      hubConn.start()
+        .done(() => {
+          // console.log('start!')
+          hubProxy.invoke('Connect');
+          hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+          hubProxy.invoke('StartListen', equipNo,  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+        })
+        .fail(err => {
+            console.log('错误-------:', err)
+        })
+
+      // signalr重连
+      hubConn.reconnecting(() => {
+        hubConn.stop();
+        hubConn.start()
+          .done(() => {
+              console.log('start!')
+              hubProxy.invoke('Connect')
+              hubProxy.invoke('ListenEquipAll',  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+              hubProxy.invoke('StartListen', equipNo,  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+          })
+          .fail(err => {
+              console.log('错误-------:', err)
+          })
+      })
+      // signalr断开连接
+      hubConn.disconnected(() => {
+        hubConn.stop()
+//      alert(1)点击设备数据的时候触发
+      })
+      // 高频连接触发
+      hubConn.connectionSlow((err) => {
+        // console.log(err)
+      })
+      // 收到signalr消息触发
+      hubConn.received((err) => {
+//            console.log(err,"shoudaoxiaoxi")
+      })
+    },
+  connectHub: function(equipNo) {
+      // console.log('reflash conn')
+      this.hubConn.stop()
+      // 开始连接signalr
+      this.hubConn.start()
+        .done(() => {
+          // console.log('start!')
+          this.hubProxy.invoke('Connect')
+          this.hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+          this.hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+        })
+        .fail(err => {
+            console.log('错误-------:', err)
+        })
+    },
+  }
+
+  //中英文目录切换
+  function tranformMenu(val){
+    let obj;
+    if(val == 1)
+      obj = selLanguageEN;
+    else
+        obj= selLanguageZH;
+    window.localStorage.languageList = val;  //1对应英文
+    obj.forEach(function(item,index){
+        if(item.id =="setPageTool"){
+            $("#"+item.id).attr("href",item.url)
+        }
+        else
+        {
+            $("#"+item.id).attr("href",item.url).find("span").text(item.name);
+        }
+    });
+  }
+
+  //中英文弹窗
+  function tranformAlert(title,tooip,confirmBtn,cancelBtn,confirmEvent,cancelEvent){
+      myApp.dialog.create({
+      title: title,
+      text: tooip,
+      buttons: [{
+          text: cancelBtn,
+          onClick: function() {
+            try{evil(cancelEvent)();} catch(e){}
+          }          
+      }, {
+          text: confirmBtn,
+          onClick: function() {
+             try{evil(confirmEvent)();} catch(e){} 
+          }
+      }]
+     }).open();
+  }
+
+
+

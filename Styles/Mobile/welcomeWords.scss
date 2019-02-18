@@ -562,7 +562,6 @@ input:focus::-webkit-input-placeholder {
 }
 
 .welcome-Word-control-icon-mutual span {
-    width: 1.75rem;
     height: 95px;
     font-size: 0.875rem;
     font-family: PingFang SC Medium;
@@ -640,27 +639,27 @@ input:focus::-webkit-input-placeholder {
 
 /*返回*/
 
-.ios .icon-back,
-.md .icon-back {
+.ios div#welcomeWords .icon-back,
+.md div#welcomeWords .icon-back {
     background-image: url()!important;
 }
 
-.ios .icon-back,
-.ios .icon-prev,
-.md .icon-back {
+.ios div#welcomeWords .icon-back,
+.ios div#welcomeWords .icon-prev,
+.md div#welcomeWords .icon-back {
     width: auto;
     height: auto;
 }
 
-.ios .list,
-.md .list {
+.ios div#welcomeWords .list,
+.md div#welcomeWords .list {
     margin: 0;
 }
 
-.ios .welcomePageContents .list .item-inner:after,
-.md .welcomePageContents .list .item-inner:after,
-.welcomePageContents .list ul:after,
-.welcomePageContents .list ul:before {
+.ios div#welcomeWords .welcomePageContents .list .item-inner:after,
+.md div#welcomeWords .welcomePageContents .list .item-inner:after,
+div#welcomeWords .welcomePageContents .list ul:after,
+div#welcomeWords .welcomePageContents .list ul:before {
     height: 0!important;
     
 }

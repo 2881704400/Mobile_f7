@@ -5,25 +5,24 @@
 			<div class="navbar">
 		        <div class="navbar-inner">
 		            <!-- 标题 -->                  
-		            <div class="left hideMenu">
-		                <a href="#" class="back link">
-		                    <i class="iconfont icon-back"></i>
-		                </a>
-		            </div>                         
+							<div class="left">
+								<a href="#" onclick="RichScan()" id="scan">
+									<i class="iconfont icon-scanIcon"></i>
+								</a>  
+							</div>                       
 		            <div class="center sliding title">设备列表</div>
-		            <div class="right">
-		                <!--<a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
-		                	<i class="iconfont icon-sousuo"></i>
-		                </a>-->
-		            </div>
+							<div class="right">
+								<a href="/setPage/" class="link icon-only panel-open" id="setPageTool"><i class="iconfont icon-f7_right_user"></i></a>
+							</div>
 		        </div>
 		    </div>   
 		</div>
 		
 		<div class="page-content">
 			
-			<div class="block content-wrap">
-				<div class="searchbar-backdrop"></div>
+			<div class="block content-wrap equipConfigList_container">
+				<!-- <div class="searchbar-backdrop"></div> -->
+				<header class="equipConfigList_en_header">
 				<form class="searchbar" id="search">
 				  <div class="searchbar-inner">
 				    <div class="searchbar-input-wrap">
@@ -36,6 +35,7 @@
 				</form>
 				
 				<p class="sele-tile">设备列表</p>
+			</header>
 				<div class="eq-list list links-list">
 					<ul>
 						

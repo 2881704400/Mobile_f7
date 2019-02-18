@@ -1,21 +1,15 @@
 
 function ycAndyx(){
-	
 	var urlstr=myApp.views.main.history,leng=urlstr.length;
 	var url=urlstr[leng-1].split("#")[1]
 	var equip_no=url.split("&")[0];
 	var name=url.split("&")[1];
 	$("#titleStats").text(name)
 	realShows(equip_no, name)
-	/*$(".ios .ptr-preloader").css({zIndex:"99"})
-	$(".ios .ptr-preloader .preloader").css({top:"66px"})
-	$(".ios .ptr-preloader .ptr-arrow").css({top:"66px"})*/
-
 	var searchbar = myApp.searchbar.create({
 		el: '.searchbar2',
 		searchContainer:".tab",
 		searchIn: '.item-title',
-		  
 	});
 }
 
@@ -97,6 +91,7 @@ function allowScroll(hei){
 	}
 }
 //获取设备信息
+var signalR_equip_no;
 function realShows(equip_no, name) {
     var _urlCount = service + "/EquipItemCount";
     var _dataCount = "equip_no=" + equip_no + "&&userName=" + window.localStorage.userName;
@@ -109,6 +104,9 @@ function realShows(equip_no, name) {
                 countAll.push(parseInt(useraCount[i].count));
             }
             realHtmls(countAll, equip_no, name);
+            //开启signalR
+            signalR.connectServer(equip_no);
+            signalR_equip_no = equip_no;
         }
     }
     JQajaxo("post", _urlCount, true, _dataCount, _callBackCount);
@@ -234,11 +232,11 @@ function jsonTodata(data, tableName, alarm) {
             else {
                 alarmImg = 'alarm';
             }
-           var newRow=`<li class="row oneLine no-gap" id="m_alarmycps_${i}">
+           var newRow=`<li class="row oneLine no-gap" id="m_alarmycps_${usera[i].m_iYCNo}">
 			      			<div class="col-15 iconWrap">
 			      				<i class="iconfont icon-dian ${alarmImg}"></i>
 			      			</div>
-			      			<div class="item-title col-70 " id="valueycps_${i}">
+			      			<div class="item-title col-70 " id="valueycps_${usera[i].m_iYCNo}">
 			      				<span class="name">${usera[i].m_YCNm}</span>
 			      				<span class="val">${usera[i].m_YCValue}${usera[i].m_Unit}</spn>
 			      			</div>
@@ -273,11 +271,11 @@ function jsonTodata(data, tableName, alarm) {
                 alarmImg = 'alarm';
             }
 
-			var newRow =`<li class="row oneLine no-gap" id="m_alarmyxps_${j}">
+			var newRow =`<li class="row oneLine no-gap" id="m_alarmyxps_${usera[j].m_iYXNo }">
 			      			<div class="col-15 iconWrap">
 			      				<i class="iconfont icon-dian ${alarmImg}"></i>
 			      			</div>
-			      			<div class="item-title col-85" id="valueyxps_${j}">
+			      			<div class="item-title col-85" id="valueyxps_${usera[j].m_iYXNo}">
 			      				<span class="name">${usera[j].m_YXNm}</span>
 			      				<span class="val">${usera[j].m_YXState}</spn>
 			      			</div>
@@ -400,7 +398,7 @@ function onSetCommand(str_1, str_2, str_3, str_4, dt) {
     }
 }
 //曲线点
-var curveDrop = -9;
+var curveDrop = -5;
 //遥测表曲线值
 var dataCurve = new Array();
 //动态数据
@@ -422,7 +420,7 @@ function curveBox(number,nameCurve,dts){
                 useUTC: false
             }
         });
-        $(".poverCurve").css({"top":"50%","left":"50%","transform":"translate(-50%,-50%)"})
+        $(".poverCurve").css({"width": "95%","top":"50%","left":"50%","transform":"translate(-50%,-50%)"})
         $('#highcharts').highcharts({
             chart: {
                 type: 'spline',
@@ -432,35 +430,24 @@ function curveBox(number,nameCurve,dts){
                 events: {
                     load: function () {
                         clearInterval(dynamicCurve);
-                        // set up the updating of the chart each second
                         var series = this.series[0];
                         var yVals = 0;
-                        if (!isNaN(yVals)) {
-                            yVals = parseFloat(dataCurve[number][0]);
-                        } else {
-                            yVals = 0;
-                        }
-                        var x = (new Date()).getTime(), // current time
-                           // y = parseInt(10 * Math.random());//Math.random()*10;
-                            y = yVals;
+                       !isNaN(yVals)?yVals = parseFloat(dataCurve[number][0]):yVals = 0;
+                        var x = (new Date()).getTime(),y = yVals;
                         series.addPoint([x, y], true, true);
                         dynamicCurve = setInterval(function () {
                             if ($("#poverCurveTitle").length < 1) {
                                 clearInterval(dynamicCurve);
+                                signalR.connectServer(signalR_equip_no);
                                 return;
                             }
                             refreshDatas();
-                            var yVals = 0;
-                            if (!isNaN(yVals)) {
-                                yVals = parseFloat(dataCurve[number][0]);
-                            } else {
-                                yVals = 0;
-                            }
-                            var x = (new Date()).getTime(), // current time
-                               // y = parseInt(10 * Math.random());//Math.random()*10;
-                                y = yVals;
+                            //yVals = 0;
+                            !isNaN(yVals)?yVals = parseFloat(dataCurve[number][0]):yVals = 0;
+
+                            x = (new Date()).getTime(), y = yVals;
                             series.addPoint([x, y], true, true);
-                        }, 1000);
+                        }, 2000);
                     }
                 },
                 backgroundColor: 'none'
@@ -509,7 +496,7 @@ function curveBox(number,nameCurve,dts){
                 enabled: false
             },
             exporting: {
-                enabled: false
+                enabled: true
             },
             series: [{
                 name: '当前值：',
@@ -556,7 +543,6 @@ function refreshDatas() {
             yxpToHtml(resultJs);
         }
     }
-//
     function ycpToHtml(data) {
         var usera = JSON.parse(data);
         for (var i = 0; i < usera.length; i++) {
@@ -576,11 +562,11 @@ function refreshDatas() {
                 alarmImg = 'alarm';
             }
             
-            $('#m_alarmycps_' + i).find("i.icon-dian").addClass(alarmImg);
-            $("#valueycps_" + i).find(".val").html(userc[1] + userc[4]);
+            $('#m_alarmycps_' + userb.m_iYCNo).find("i.icon-dian").addClass(alarmImg);
+            $("#valueycps_" + userb.m_iYCNo).find(".val").html(userc[1] + userc[4]);
             
             if (alarmImg == 'alarm') {//有报警置顶
-                var dom = $("#valueycps_" + i).parent();
+                var dom = $("#valueycps_" + userb.m_iYCNo).parent();
                 var doms = dom.parent();
                 dom.remove();
                 doms.prepend(dom);
@@ -605,10 +591,10 @@ function refreshDatas() {
             else {
                 alarmImg = 'alarm';
             }
-            $('#m_alarmyxps_' + i).find('i.icon-dian').addClass(alarmImg);
-            $("#valueyxps_" + i).find(".val").html(userc[1]);
+            $('#m_alarmyxps_' + userb.m_iYXNo).find('i.icon-dian').addClass(alarmImg);
+            $("#valueyxps_" + userb.m_iYXNo).find(".val").html(userc[1]);
             if (alarmImg == 'HaveAlarm') {
-                var dom = $("#valueyxps_" + i).parent();
+                var dom = $("#valueyxps_" + userb.m_iYXNo).parent();
                 var doms = dom.parent();
                 dom.remove();
                 doms.prepend(dom);

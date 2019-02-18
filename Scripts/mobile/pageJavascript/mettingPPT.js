@@ -37,18 +37,14 @@ $.extend({
     }
 })
 // 文件结构处理
-var stringFile;
+var stringFile, UsbDriveTips = myApp.toast.create({text: "没有检测到对应设备.", position: 'center', closeTimeout: 2000, });
 
 function fileStuctureChild(url, objectList) {
     $(objectList).next().html("");
-    var _urlChild = "/GWService.asmx/GetFileStructure";
-    var _dataSetChild = "filePath=" + url + "&&fileName=" + "";
-    JQajaxo("post", _urlChild, true, _dataSetChild, _sccessChild);
-
-    function _sccessChild(data) {
+    $(objectList).next().html("");
+    $.when(AlarmCenterContext.post("/api/Other/GetFileStructure",{filePath: url,fileName: "",})).done(function(n){
         $(".modalDiv").addClass("displayNone");
-        var result = $$(data).children("string").text(),
-            contentHtml = "";
+        var result = n.HttpData, contentHtml = "";
         if (result != "false" && result != "null") {
             stringFile = JSON.parse(result);
             //继续查询每项列表下的子目录
@@ -68,7 +64,9 @@ function fileStuctureChild(url, objectList) {
                 }
             }
         }
-    }
+    }).fail(function(e){
+         UsbDriveTips.open();
+    });
 }
 //文件夹 true
 function isStucture(stringFile) {

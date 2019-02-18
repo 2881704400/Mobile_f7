@@ -12,10 +12,10 @@
                 <li>
                     <a href="#" class="item-link smart-select smart-select-init" id="voiceList" onchange="onVoiceList()" data-page-back-link-text="">
                         <select name="voiceTop">
-                            <option value="0" >Pilot flight</option> 
-                            <option value="1" selected="selected">讯飞</option>
-                             <option value="2">微软</option>
-                            <option value="3" >Microsoft</option>
+                            <!-- <option value="0" >Pilot flight</option>  -->
+                            <option value="1" selected="selected" data-value = "1">讯飞</option>
+                             <option value="2" data-value = "2">微软</option>
+<!--                             <option value="3" >Microsoft</option> -->
                         </select>
                         <div class="item-content">
                             <div class="item-media"><i class="iconfont icon-f7_voice"></i></div>
@@ -24,7 +24,21 @@
                             </div>
                         </div>
                     </a>
-                </li>             
+                </li>     
+                <li>
+                    <a href="#" class="item-link smart-select smart-select-init" id="languageList" onchange="selectLanguage()" data-page-back-link-text="">
+                        <select name="languageTop">
+                            <option value="0" selected="selected">中文</option> 
+                            <option value="1" >英文</option>
+                        </select>
+                        <div class="item-content">
+                            <div class="item-media"><i class="iconfont icon-f7_language"></i></div>
+                            <div class="item-inner" id="languageListName">
+                                <div class="item-title">语言</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>                           
                   <li >
                     <a href="#" class=" item-content">
                             <div class="item-content">

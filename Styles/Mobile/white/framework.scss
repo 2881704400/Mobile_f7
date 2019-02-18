@@ -2,7 +2,7 @@
 mixin：sass宏mixin
 */
 @import  'public.scss';
-
+@import  '../_mixin.scss';
 
 /*顶部状态栏颜色*/
 html.with-statusbar.device-android .framework7-root {
@@ -13,12 +13,11 @@ html.with-statusbar.device-android .panel {
 }
 .active-state:active {
     opacity: 1!important;
-
 }   
 .ios .statusbar,.md .statusbar,.statusbar {
     background: #{$headerBgc};
 }
-.ios a{    color: #414141;}
+.ios a,.md a,.ios .button{color: #{$situationFontColor};}
 .md .statusbar {
     display: none!important;
 }
@@ -27,19 +26,42 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
 .hideMenu{visibility: hidden; opacity: 0;}
 .displayNone{display: none;}
 .view{
+    // 搜索
+    .searchbar-inner{padding: 0 1rem;background: #{$situationBgc};}    
     /*内容区*/ 
     .ios .page,.md .page,.page{background: #{$situationContainerBgc};}
-    .page-content{padding-bottom: 50px;}
+    .page-content{
+        padding-bottom: 50px; background: #{$situationBgc};
+        #homeContents{
+            &>ul.charts-block{
+                &>li{
+                    dl{dd{background: #{$statsBgc}; } }
+                    .functionMenu{&>dd{ li{.homeBtn{p{color: #{$situationFontColor};}} } } }
+                    .commonlyUsed,.sysFourMenu{li{a{p{color: #{$situationFontColor};} } } }
+                    .pptPattern_container,.jjPattern_container{h3{label{color: #414154;} }}                           
+                }
+                .statisticsTable{ 
+                    background: #{$statsBgc};
+                    a{color: #{$statsFontColor};}
+                }
+            }
+        }
+        //实时快照
+        .snapshot-main {
+            .snapshot-ul {li {background: #{$situationContainerBgc};}}
+            .snapshotMessage-ul {li{ background: #{$situationContainerBgc};}} 
+        }
+
+    }
     /*顶部导航栏*/
     .navbar{
         background-color: #{$headerBgc};
-        &:after{height: 0px}
         &>.navbar-inner{ 
             .left{
-                .back i{font-size: 1.5rem;color: #{$toolbarFontColor};}
-                .back i.icon-back{width: auto;height: auto;background-image: url()!important;}
-                .back i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-                a{padding: 10px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.3rem;}}
+                i{font-size: 1.5rem;color: #{$toolbarFontColor};}
+                i.icon-back{width: auto;height: auto;background-image: url()!important;}
+                i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+                a{padding: 5px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.3rem;}}
              }
             .title{color: #{$toolbarFontColor};}
             .right i{font-size: 2rem;color: #{$toolbarFontColor};}
@@ -47,11 +69,9 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     }
     /*底部菜单*/
     .toolbar{
-        &:before{height: 0px;}
         a.link{font-size: 12px;height: 50px!important;line-height: 25px!important;cursor: pointer;}
         .toolbar-inner{ 
-            // box-shadow: 0px -1px 1px #{$toolbarBoxShadow};
-            border-top: 1px solid #{$toolbarBoxShadow};
+            z-index: 99;
             &>a.active{color: #{$selectedColor};}
             &>a{color: #{$toolbarFontColor}; i{font-size: 2rem;}}
             #voiceBtn{ 
@@ -62,9 +82,10 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
             #voiceBtn:active span,#voiceBtn:active i{ color: #{$selectedColor}!important; }
             a.link.active-state:before{opacity: 0!important;}
         }
-        background-color: #{$headerBgc};
+       // background: url(../../../Image/phone/white414.png) no-repeat center center/auto 100%;
+        @include screenPiexl(wh);
     }
-
+    .toolbar:before{height: 0;};
 }
 .md .navbar{
     height: 44px;
@@ -129,4 +150,49 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
     background: #{$toolbarBgc};
 }
 
+//实时快照
+.snapshot-main .snapshotMessage-ul li .content-container-block{color: #6d6d72;}
 
+// 设备列表
+#equips,#equips_en { .equip-list{background: #{$situationContainerBgc}}}
+#ycAndyx #tabsWrap .tab .oneLine, #ycAndyx_en #tabsWrap .tab .oneLine{ background: #{$situationContainerBgc}; }
+
+// 设置页
+.setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul{background: #{$situationContainerBgc}; }
+
+// 事件查询
+.eventSearchContent{background: #{$situationBgc};
+ .tabs{background: #{$situationContainerBgc}; .tab .tab-table-header{background: #{$situationContainerBgc};} 
+  .tab ul li{color: #{$situationFontColor}; span{color: #{$situationFontColor};} }
+ }
+ .event-search-box{
+    background: #{$situationContainerBgc};
+    .half-select-box label,.half-select-box-bottom label,.half-select-box-input input,.half-select-box-bottom input,.half-select-box-bottom input:last-child{color: #{$situationFontColor};}
+ }
+}
+.equipSearchDetailContent.page-content{background: #{$situationBgc}; .eventDetailList{color:  #{$situationFontColor};background: #{$situationContainerBgc}; input{color:  #{$situationFontColor};}} }
+
+//系统配置
+#equipConfigList .content-wrap .sele-tile{color:  #{$situationFontColor};}
+#equipConfigList .list ul,#eventQuery .tabList, #systemConfig .tabList, #systemConfig_en .tabList{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+#eventQuery .eventWrap li, #systemConfig .eventWrap li, #systemConfig_en .eventWrap li,#sysConfigEdict .page-content .list, #sysConfigEdict_en .page-content .list{color: #{$situationFontColor};background: #{$situationBgc};}
+.item-input-wrap input{color: #{$situationFontColor}!important;}
+#sysConfigEdict .page-content .list ul, #sysConfigEdict_en .page-content .list ul{background: transparent;}
+#sysConfigEdict{ div.page-content{ ul:before{height: 0px;} } }
+
+// 报警排表
+.scheduleContainer>.scheduleContent .equipGroupPublic>ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.scheduleModifyPageContent,.scheduleContainer>.subnavbarTabel{background: #{$situationContainerBgc};}
+.scheduleModifyContainer ul,.scheduleModifyContainer_equipgroup>div,.scheduleModifyContainer input{color: #adadad;background: #{$situationContainerBgc}!important; a{color: #{$situationFontColor};}}
+.scheduleModifyContainer ul:before{height: 0px!important;}
+.scheduleModifyContainer select{color: #{$situationFontColor}!important;}
+
+// 设备联动
+.equipLinkageContainer>.equipLinkageContent #equipLinkage_edit{background: #{$situationBgc};}
+.equipLinkageContainer>.subnavbarTabel,.equipLinkageContainer>.equipLinkageContent #equipLinkage_edit>ul,.equipLinkage_edit_modify .equipLinkage_edit_header>div{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.equipLinkageContainer>.equipLinkageContent .equipGroupPublic>ul{background: #{$situationContainerBgc};li{color: #{$situationFontColor};}}
+.sheet-modal div.right a{color: #007aff!important;}
+.equipLinkage_edit_modify .equipLinkage_edit_header>div #equipLinkage_input{color: #{$situationFontColor};}
+
+// 修改列表
+.ios .scheduleModifyPageContent .list,.md .scheduleModifyPageContent .list{margin: 0;padding-top: 10px;}

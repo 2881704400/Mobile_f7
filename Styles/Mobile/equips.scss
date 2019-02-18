@@ -5,16 +5,8 @@
 .ios .navbar~.page-with-subnavbar:not(.no-navbar) .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~* .page-content,
 .ios .navbar~:not(.no-navbar) .subnavbar~.page-content,
-.ios .page-with-subnavbar .navbar~.page-content {
-    .tabs-animated-wrap {
-        //      padding-top: 88px;
-    }
-}
-
-.ios .toolbar.toolCon {
-    //  top: 88px !important;
-}
-
+.ios .page-with-subnavbar .navbar~.page-content {.tabs-animated-wrap {}}
+.ios .toolbar.toolCon {}
 .ios .tabbar-labels~* .page-content,
 .ios .tabbar-labels~.page-content {
     padding-bottom: 50px;
@@ -53,7 +45,7 @@
     transform: scaleY(.33);
 }
 
-#equips {
+#equips,#equips_en {
     .searchbar {
         &:after {
             height: 1px;
@@ -74,7 +66,7 @@
     }
     .equip-list {
         margin-bottom: 30px;
-        background: #fff;
+        // background: #fff;
         li {
             i {
                 color: #7D828F;
@@ -95,12 +87,12 @@
     }
 }
 
-.md #ycAndyx .toolbar {
+.md #ycAndyx .toolbar,.md #ycAndyx_en .toolbar {
     top: auto !important;
     transform: none !important;
 }
 
-#ycAndyx {
+#ycAndyx,#ycAndyx_en  {
     .searchbar {
         background: #fff;
         &:after {
@@ -145,7 +137,7 @@
             overflow: auto;
             .oneLine {
                 padding: 1em 0;
-                background: #fff;
+                // background: #fff;
                 position: relative;
                 .item-title{
                     position: relative;
@@ -230,7 +222,7 @@
 }
 
 #eventQuery,
-#systemConfig {
+#systemConfig,#systemConfig_en {
     .eventQueryContent {
         height: 100%;
         overflow: hidden;
@@ -258,7 +250,7 @@
     }
     .tabList {
         margin: 0;
-        background: #fff;
+        // background: #fff;
         height: 36px;
         width: 100%;
         a {
@@ -268,7 +260,6 @@
         .button {
             transition-duration: 0s;
             -webkit-transition-duration: 0;
-            color: #212121;
             border: none;
             &:last-child {
                 border-radius: 0;
@@ -278,15 +269,15 @@
             }
         }
         .tab-link-active {
-            background: #fff;
+            background: transparent;
             border-bottom: 2px solid $activeBg !important;
-            color: $activeBg;
+            // color: $activeBg;
         }
     }
     .eventWrap {
         width: 100%;
         .tab {
-            //          border: 1px solid red;
+            //border: 1px solid red;
             width: 100%;
             .list {
                 height: 100%;
@@ -297,15 +288,12 @@
                     color: $titColor;
                 }
             }
-            
             .btn{
                 margin: 35px auto;
                 width: 60%;
-                
             }
         }
         li {
-            background: #fff;
             .eventList {
                 padding: 5px 0;
                 align-items: center;
@@ -393,7 +381,7 @@
     }
 }
 
-#sysConfigEdict{
+#sysConfigEdict,#sysConfigEdict_en{
     .item-input-wrap{
         border-bottom: none;
     }
@@ -401,7 +389,7 @@
         .list {
             margin: 0 0;
             height: 100%;
-            background: #fff;
+            // background: #fff;
             &.edictList {
                 .btn {
                     width: 95%;
@@ -448,11 +436,9 @@
 #equipConfigList{
     .content-wrap{
         height: calc(100% - 5px);
-        margin: 0 0;
-        
+        margin: 0;
         padding: 0;
         .sele-tile{
-            text-indent: 15px;
         }
         .searchbar{
             background:#fff ;
@@ -463,20 +449,26 @@
     }
 
    .list{
-       margin-top: 0;
-       height: calc(100% - 90px);padding-bottom: 50px;
+       margin: 0;
+       height: calc(100% - 90px);
        ul{
            &:after{
                height: 0;
            }
-           height:100%;
-           margin-bottom: 15px;
-           overflow: auto;
+           margin-bottom: 50px;
             li{
                .icon-checkbox{
                     border-radius: 0;
                 }
             }
         }
+    }
+}
+
+#equipConfigList_en,#equipConfigList{
+    .equipConfigList_container{
+         width: 100%;height: 100%;margin: 0;padding: 10px;
+       .equipConfigList_en_header{form{background: transparent;}}
+      .eq-list{height: 85%;overflow-y: auto;}
     }
 }
