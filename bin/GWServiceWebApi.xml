@@ -494,6 +494,127 @@
             中英文切换插入记录
              </summary>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertChatInfo(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+             插入聊天记录..........................................................................
+            </summary>
+            <param name="jb">
+            sendUser 发送用户名
+            receiveUser 接收用户名
+            conceTxt 发送信息
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.ReadChatInfo(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+             聊天信息读取
+            </summary>
+            <param name="jb">
+            sendUser 发送用户名
+            receiveUser 接收用户名
+            conceTxt 发送信息
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.SaveTxt(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            保存聊天记录 "c:\\MsgChat"
+            </summary>
+            <param name="fileUrl"></param>
+            <param name="sendName"></param>
+            <param name="receiveName"></param>
+            <param name="DateTime"></param>
+            <param name="concentext"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.ReadTxt(System.String,System.String,System.String)">
+            <summary>
+            读取聊天记录c:\\MsgChat
+            </summary>
+            <param name="fileUrl"></param>
+            <param name="fileName"></param>
+            /// <param name="DateTime"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.readUrlRecord(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            读取某次聊天记录
+            </summary>
+            <param name="jb"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.readyEndRecord(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            读取聊天记录c:\\MsgChat 存在的最后一条记录
+            </summary>
+            <param name="jb">
+            sendName 发送用户名
+            receiveName 接收用户名
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gwFixeddateNotice">
+            <summary>
+            获取当天通知数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gwFixeddateNoticeRadio(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取当天通知数据
+            </summary>
+            <param name="jb">
+            set_no 遥信设置号
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getSetNoData(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+              获取指定set_no通知数据
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getNoticeID">
+            <summary>
+              获取通知最大ID
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getNoticeRangeID(System.Int32)">
+            <summary>
+              获取通知范围内数据
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getCallRecord(System.String,System.Int32,System.String)">
+            <summary>
+             获取呼叫记录
+            </summary>
+            <param>
+            str 包含字符
+            equip_no 设备号
+            timeStr 日期字符串
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getFixedCallRecord(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+             获取固定呼叫记录
+            </summary>
+            <param>
+            str 包含字符
+            equip_no 设备号
+            set_no 遥信遥测号
+            timeStr 日期字符串
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gw_push_message">
+            <summary>
+              获取手机存储信息
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertNoticeRecord(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+              插入通知数据
+            </summary>
+            <param name="jb">
+            userName 用户名
+            set_no 遥信设置号
+            position 呼叫位置
+            callTime 呼叫时间
+            </param>
+        </member>
         <member name="P:GWServiceAPI.Net.Controllers.ValidateCode.MaxLength">
             <summary>
             验证码的最大长度

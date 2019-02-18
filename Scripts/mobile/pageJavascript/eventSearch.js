@@ -181,9 +181,7 @@ function onEquipLists() {
 					}
 				}
 				equipPicker.cols[0].replaceValues(strValueArr, "");
-
 			});
-			//			searchEquipItems();
 		}
 	}
 	JQajaxoNoCancel("post", _url, false, "", _successf);
@@ -217,14 +215,8 @@ function searchEquipItems() {
 		}
 	}
 	var searchTabType = $("#eventSearchTypeId").val();
-	/*var searchTabType = $(".eventSearchSubNavBar .subnavbar-inner").find("a").map(function() {
-		if($(this).hasClass("tab-link-active")) {
-			return $(this).html();
-		}
-	}).get().join("");*/
 
-	var _url = "";
-	var _data = "";
+	var _url = "",_data = "";
 	if(searchTabType == "设备事件") {
 		_url = service + "/QueryEquipEvt";
 		_data = "times=" + realSearchTime + "&&equip_no_list=" + realSearchEquip;
@@ -262,15 +254,15 @@ function searchEquipItems() {
 					nScrollHight = $(this)[0].scrollHeight;
 					nScrollTop = $(this)[0].scrollTop;
 					if(nScrollTop + nDivHight >= nScrollHight && allowInfinite) {
-						myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
+						// myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 
 						allowInfinite = false;
 
 						setTimeout(function() {
 							allowInfinite = true;
 							if(lastItemIndex >= maxItems) {
-								myApp.dialog.close();
-								myApp.dialog.alert("没有更多数据了");
+								// myApp.dialog.close();
+								// myApp.dialog.alert("没有更多数据了");
 								return;
 							}
 

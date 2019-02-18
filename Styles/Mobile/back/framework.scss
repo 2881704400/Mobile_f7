@@ -75,7 +75,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
         }
     }
     /*底部菜单*/
-    .toolbar{
+    .view-menu-toolbar{
         a.link{font-size: 12px;height: 50px!important;line-height: 25px!important;cursor: pointer;}
         .toolbar-inner{ 
             z-index: 99;
@@ -170,6 +170,7 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 }
 #ycAndyx #tabsWrap .tab .oneLine, #ycAndyx_en #tabsWrap .tab .oneLine{ background: #{$situationContainerBgc}; }
 #ycAndyx #tabsWrap .tab .oneLine .item-title, #ycAndyx_en #tabsWrap .tab .oneLine .item-title{color: #{$situationFontColor};}
+#ycAndyx .toolbar .toolbar-inner, #ycAndyx_en .toolbar .toolbar-inner{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 
 // 设置页
 .setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul,.smart-select-page div.page-content ul{background: #{$situationContainerBgc}; }
@@ -211,6 +212,15 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 .sheet-modal div.right a{color: #007aff!important;}
 .equipLinkage_edit_modify .equipLinkage_edit_header>div #equipLinkage_input{color: #{$situationFontColor};}
 
-
 // 修改列表
 .ios .scheduleModifyPageContent .list,.md .scheduleModifyPageContent .list{margin: 0;padding-top: 10px;}
+
+//实时视频
+#Video_content_ref  div.accordion-list{  margin: 10px 0px 50px 0px;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};   }}
+
+// PPT
+.pptActive,#Filelist{    margin: 10px 0;color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.mettingDetailsContent{color: #{$situationFontColor};background: #{$situationBgc};}
+// 欢迎词
+.welcomeWordContents{color: #{$situationFontColor};background: #{$situationBgc};}
+.welcome-Word-control-boxs{color: #{$situationFontColor};background: #{$situationContainerBgc};}

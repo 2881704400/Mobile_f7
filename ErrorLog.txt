@@ -3204,3 +3204,193 @@ if exists(select * from GW_Language where userName = 'admin') begin Update GW_La
 equipItem 57077710  26
 -------------------------------------
 
+----------2019/2/18 8:43:52----------
+equipItem 8578279  2005
+-------------------------------------
+
+----------2019/2/18 8:46:28----------
+equipItem 8578279  2005
+-------------------------------------
+
+----------2019/2/18 10:16:57----------
+equipItem 52902730  2000
+-------------------------------------
+
+----------2019/2/18 10:38:16----------
+if exists(select * from GW_Language where userName = 'admin') begin Update GW_Language Set status =1 Where userName = 'admin' end else begin insert into GW_Language(userName, status) values('admin', 1) end
+-------------------------------------
+
+----------2019/2/18 10:38:19----------
+if exists(select * from GW_Language where userName = 'admin') begin Update GW_Language Set status =0 Where userName = 'admin' end else begin insert into GW_Language(userName, status) values('admin', 0) end
+-------------------------------------
+
+----------2019/2/18 10:48:35----------
+equipItem 52902730  2000
+-------------------------------------
+
+----------2019/2/18 10:48:39----------
+equipItem 52902730  2000
+-------------------------------------
+
+----------2019/2/18 10:48:48----------
+equipItem 52902730  2000
+-------------------------------------
+
+----------2019/2/18 13:38:07----------
+if exists(select * from GW_Language where userName = 'admin') begin Update GW_Language Set status =1 Where userName = 'admin' end else begin insert into GW_Language(userName, status) values('admin', 1) end
+-------------------------------------
+
+----------2019/2/18 13:38:15----------
+if exists(select * from GW_Language where userName = 'admin') begin Update GW_Language Set status =0 Where userName = 'admin' end else begin insert into GW_Language(userName, status) values('admin', 0) end
+-------------------------------------
+
+----------2019/2/18 14:40:02----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:40:51----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:41:05----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:41:06----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:41:12----------
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.InvalidOperationException: 当应用程序不是以 UserInteractive 模式运行时显示模式对话框或窗体是无效操作。请指定 ServiceNotification 或 DefaultDesktopOnly 样式，以显示服务应用程序发出的通知。
+   在 System.Windows.Forms.MessageBox.ShowCore(IWin32Window owner, String text, String caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, Boolean showHelp)
+   在 System.Windows.Forms.MessageBox.Show(String text)
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 62
+-------------------------------------
+
+----------2019/2/18 15:41:26----------
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 62
+-------------------------------------
+
+----------2019/2/18 15:41:27----------
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 62
+-------------------------------------
+
+----------2019/2/18 15:41:27----------
+System.ServiceModel.CommunicationObjectAbortedException: 无法将通信对象 System.ServiceModel.Channels.ServiceChannel 用于通信，因为它已经被中止。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.GetUserName2SF()
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 77
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 240
+-------------------------------------
+
+----------2019/2/18 15:41:27----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:41:48----------
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.InvalidOperationException: 当应用程序不是以 UserInteractive 模式运行时显示模式对话框或窗体是无效操作。请指定 ServiceNotification 或 DefaultDesktopOnly 样式，以显示服务应用程序发出的通知。
+   在 System.Windows.Forms.MessageBox.ShowCore(IWin32Window owner, String text, String caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, Boolean showHelp)
+   在 System.Windows.Forms.MessageBox.Show(String text)
+   在 AlarmCenter.DataCenter.DataCenter.RunProxy(String csIP, String Name, String PWD, ClientType CT, Boolean bLogin)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 62
+-------------------------------------
+
+----------2019/2/18 15:41:48----------
+System.ServiceModel.CommunicationObjectAbortedException: 无法将通信对象 System.ServiceModel.Channels.ServiceChannel 用于通信，因为它已经被中止。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.GetUserName2SF()
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 77
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 240
+-------------------------------------
+
+----------2019/2/18 15:42:26----------
+System.ServiceModel.CommunicationObjectAbortedException: 无法将通信对象 System.ServiceModel.Channels.ServiceChannel 用于通信，因为它已经被中止。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.GetUserName2SF()
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 77
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 240
+-------------------------------------
+
+----------2019/2/18 15:42:27----------
+System.ServiceModel.CommunicationObjectAbortedException: 无法将通信对象 System.ServiceModel.Channels.ServiceChannel 用于通信，因为它已经被中止。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 AlarmCenterWcfServiceLibrary.IAlarmCenterService.GetUserName2SF()
+   在 GWServiceAPI.Net.LibClass.Methods.RunProxy(String csIP, String csPort, String Name, String PWD) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\Methods.cs:行号 77
+   在 GWServiceAPI.Net.LibClass.ServerLib.ConnectService(String user_name) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\ServerLib.cs:行号 240
+-------------------------------------
+
+----------2019/2/18 15:43:08----------
+paramInfos.Length:5;paras.Length5
+-------------------------------------
+
+----------2019/2/18 15:57:25----------
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.String.System.IConvertible.ToInt32(IFormatProvider provider)
+   在 System.Convert.ToInt32(Object value)
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.updateJSON(String jsonChange, String tableName, String eqnolist) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 720
+   在 GWServiceAPI.Net.LibClass.RealTimeLib.SystemSetupsChange(String jsonChange, String tableName, String auth) 位置 D:\ganweisoft\AlarmCenterV90\web\branches\AlarmCenterWeb\GWServiceAPI.Net\LibClass\RealTimeLib.cs:行号 698
+-------------------------------------
+

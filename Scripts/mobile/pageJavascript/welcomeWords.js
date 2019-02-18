@@ -1,7 +1,6 @@
 ﻿var welcome_getcolor, welcome_objoriginal = new Object();
 
 function welcomeWords() {
-    toolbarActive('welcomeWordsTool');
     //	getFocusValue();
     /*获取文件夹中背景图片信息*/
     var url1 = WORDcommand.backgroundImage.url,
@@ -118,14 +117,7 @@ function welcomeWords() {
     });
     /*菜单按钮点击事件*/
     $(".welcome-Word-control-boxs li").find('i').unbind('click').bind('click', function() {
-        $(".welcome-Word-control-boxs li").each(function() {
-            $(this).find('i').css({
-                color: "#333333"
-            });
-        })
-        $(this).css({
-            color: "#3E7CFB"
-        });
+        $(this).addClass("selectMenuWelcomewords").parent().siblings().find("i").removeClass("selectMenuWelcomewords");
         var index = $(this).parent().index();
         if (index == 0) {
             $(".welcomeInput").focus();

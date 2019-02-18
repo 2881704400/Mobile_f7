@@ -19,7 +19,7 @@
 .welcomeWordContents {
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
+    // background: #FFFFFF;
     padding: 0px 5%;
     position: relative;
 }
@@ -66,7 +66,7 @@
     height: 44px;
     line-height: 44px;
     font-size: 2rem;
-    color: #333333;
+    // color: #333333;
 }
 
 .welcome-Word-control-tabs {
@@ -99,7 +99,7 @@
     float: left;
     font-family: PingFang SC Regular;
     font-size: 1rem;
-    color: #333333;
+    // color: #333333;
     letter-spacing: 1px;
     display: flex;
     display: -webkit-flex;
@@ -117,7 +117,7 @@
     width: 25%;
     height: 100%;
     font-size: 1.6rem !important;
-    color: #333333;
+    // color: #333333;
     float: left;
     display: flex;
     display: -webkit-flex;
@@ -488,7 +488,7 @@ input:focus::-webkit-input-placeholder {
 .wecomeButtom .swiper-slide {
     width: calc(100% / 3);
     height: 100%;
-    background: #FFFFFF;
+    // background: #FFFFFF;
     box-sizing: border-box;
     padding: 0 5px;
     border: 0px solid #517B80;
@@ -664,4 +664,4 @@ div#welcomeWords .welcomePageContents .list ul:before {
     
 }
 
-
+.selectMenuWelcomewords{color: #3E7CFB;}
