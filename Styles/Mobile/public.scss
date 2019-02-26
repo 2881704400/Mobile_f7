@@ -40,6 +40,7 @@ $btnCancelBackground: #f38b8b;
 $btnFontColor: #DEF0F9;
 $btnWhiteFontColor: #FFFFFF;
 
+
 //统计栏属性
 $statsBgc: #fff;
 $statsFontColor: #333;
@@ -52,10 +53,13 @@ $unclickedColor: #648EFF;
 $unclickedColor_a: #f6f6f6;
 $bzColor: #0ed1e6;
 $unclickBorderRadius: 6px;
+$unclickBorderColor: #ddd;
 
 // 首页配置按钮
-$homeConfigBtnBg: #f4f4f5;
+$homeConfigBtnBg: rgba(160,153,153,0.3);
 $homeConfigBtnColor: #463d3d;
+
+$homeBtnBorderRadius: 20%;
 
 // 统一table样式
 $tableHeaderFontSize: 1rem;

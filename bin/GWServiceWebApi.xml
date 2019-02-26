@@ -64,16 +64,12 @@
             </summary>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWgenerateCaptchaCodeController.GenerateCaptchaCode">
-            -----------------------------------------------------------------------------------------------------------------------------------------------
-             实时快照及定时任务接口
-            -----------------------------------------------------------------------------------------------------------------------------------------------
-             <summary>
-             生成随机数
-             </summary>
-             <param >
-             
-             </param>
-             <returns></returns>
+            <summary>
+            生成随机数
+            </summary>
+            <param >
+            </param>
+            <returns></returns>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWgenerateCaptchaCodeController.CreateValidateGraphicCore">
             <summary>
@@ -89,56 +85,10 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_UserListData">
-            -----------------------------------------------------------------------------------------------------------------------------------------------
-             实时快照及定时任务接口
-            -----------------------------------------------------------------------------------------------------------------------------------------------
-            <summary>
-            解析用户信息
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.searchUserDataByName(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            查询用户信息
-            </summary>
-            <param name="jb">
-            Name 用户名称
-            </param>
-            <returns></returns>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.DeleteUserDataByName(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            删除用户数据
-            </summary>
-            <param name="jb">
-            name 用户名称
-            </param>
-            <returns></returns>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.AddUserDataByName(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            新增用户数据
-            </summary>
-            <param name="jb">
-            name 用户名称
-            password 用户密码
-            remark 用户名称
-            </param>
-            <returns></returns>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.UpdateUserDataByName(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            新增用户数据
-            </summary>
-            <param name="jb">
-            name 用户名称
-            password 用户密码
-            remark 用户名称
-            </param>
-            <returns></returns>
-        </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.get_JMdata(Newtonsoft.Json.Linq.JObject)">
+            -----------------------------------------------------------------------------------------------------------------------------------------------
+             其他接口
+            -----------------------------------------------------------------------------------------------------------------------------------------------
             <summary>
             解析用户名称
             </summary>
@@ -148,6 +98,9 @@
             <returns></returns>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.set_DeleteTableData(Newtonsoft.Json.Linq.JObject)">
+            -----------------------------------------------------------------------------------------------------------------------------------------------
+             实时快照及定时任务接口
+            -----------------------------------------------------------------------------------------------------------------------------------------------
             <summary>
             删除数据 DELETE FROM getDataTable where tableVlue
             </summary>
@@ -511,15 +464,39 @@
             <param name="obj">
             </param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.WriteLog(System.String)">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gwPushGroupInfo(System.String)">
             <summary>
-            写入日志，默认c盘
+              获取推送分组信息
             </summary>
-            <param name="strLog"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getClientTypeInfo">
+            <summary>
+            获取client信息
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getWelcomeSpeech">
+            <summary>
+            WelcomingSpeech 欢迎词最新一条记录
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertWelcomeSpeech(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            WelcomingSpeech 欢迎词插入一条记录
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getLanguageStatus(System.String)">
+            <summary>
+            中英文切换查询
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertLanguageStatus(System.String,System.Int32)">
+             <summary>
+            中英文切换插入记录
+             </summary>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertChatInfo(Newtonsoft.Json.Linq.JObject)">
             <summary>
-             插入聊天记录
+             插入聊天记录..........................................................................
             </summary>
             <param name="jb">
             sendUser 发送用户名
@@ -557,10 +534,86 @@
             <param name="fileName"></param>
             /// <param name="DateTime"></param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getClientTypeInfo">
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.readUrlRecord(Newtonsoft.Json.Linq.JObject)">
             <summary>
-            获取client信息
+            读取某次聊天记录
             </summary>
+            <param name="jb"></param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.readyEndRecord(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            读取聊天记录c:\\MsgChat 存在的最后一条记录
+            </summary>
+            <param name="jb">
+            sendName 发送用户名
+            receiveName 接收用户名
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gwFixeddateNotice">
+            <summary>
+            获取当天通知数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gwFixeddateNoticeRadio(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取当天通知数据
+            </summary>
+            <param name="jb">
+            set_no 遥信设置号
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getSetNoData(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+              获取指定set_no通知数据
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getNoticeID">
+            <summary>
+              获取通知最大ID
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getNoticeRangeID(System.Int32)">
+            <summary>
+              获取通知范围内数据
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getCallRecord(System.String,System.Int32,System.String)">
+            <summary>
+             获取呼叫记录
+            </summary>
+            <param>
+            str 包含字符
+            equip_no 设备号
+            timeStr 日期字符串
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.getFixedCallRecord(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+             获取固定呼叫记录
+            </summary>
+            <param>
+            str 包含字符
+            equip_no 设备号
+            set_no 遥信遥测号
+            timeStr 日期字符串
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.gw_push_message">
+            <summary>
+              获取手机存储信息
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.GWServiceWebAPIController.insertNoticeRecord(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+              插入通知数据
+            </summary>
+            <param name="jb">
+            userName 用户名
+            set_no 遥信设置号
+            position 呼叫位置
+            callTime 呼叫时间
+            </param>
         </member>
         <member name="P:GWServiceAPI.Net.Controllers.ValidateCode.MaxLength">
             <summary>

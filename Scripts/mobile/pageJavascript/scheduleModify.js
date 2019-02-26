@@ -54,9 +54,9 @@ function scheduleModify() {
      }
 
      // 提示
-         scheduleModifyTooip = myApp.toast.create({text: "请输入场景名称", position: 'center', closeTimeout: 2000, });
-         scheduleModifySuccessTooip = myApp.toast.create({text: "保存成功", position: 'center', closeTimeout: 2000, });
-         scheduleModifyInputTooip = myApp.toast.create({text: "场景名称不能重复", position: 'center', closeTimeout: 2000, });
+         scheduleModifyTooip = window.localStorage.languageList == 1?myApp.toast.create({text: "Please enter the scenario name", position: 'center', closeTimeout: 2000, }):myApp.toast.create({text: "请输入你的场景名称", position: 'center', closeTimeout: 2000, });
+         scheduleModifySuccessTooip = window.localStorage.languageList == 1?myApp.toast.create({text: "Save successfully", position: 'center', closeTimeout: 2000, }):myApp.toast.create({text: "保存成功", position: 'center', closeTimeout: 2000, });
+         scheduleModifyInputTooip = window.localStorage.languageList == 1?myApp.toast.create({text: "Scenario names cannot be repeated", position: 'center', closeTimeout: 2000, }):myApp.toast.create({text: "名称不能重复", position: 'center', closeTimeout: 2000, });
 
 
 }
@@ -141,7 +141,7 @@ function newlyBuildEquip(str) {
         "error": _error,
     };
     $.fn.axpost(jsonData);
-    var coutResult;str ? coutResult = str : coutResult = "#";
+    var coutResult;str ? coutResult = str.split("#") || "#" : coutResult = "#";
     function _success(data) {
         let arrayLike = data.HttpData.data,
             code = data.HttpData.code;
@@ -151,14 +151,13 @@ function newlyBuildEquip(str) {
             var AlarmTabulateLenth = arrayLike.length;
             for (var i = 0; i < AlarmTabulateLenth; i++) {
                 let checkboxSet = "";
-
                 for (var j = 0; j < coutResult.length; j++) {
                     if (coutResult[j] == arrayLike[i].equip_no) {
                         currentArray.push(arrayLike[i].equip_no);
                         checkboxSet = "checked";
                     }
                 }
-                html += '<li class="">' + '<label class="item-checkbox item-content bottomBorderLine" onclick="actionString(this)" equip_no="' + arrayLike[i].equip_no + '">' + '<input type="checkbox" name="checkbox-' + i + '"  value="' + arrayLike[i].equip_nm + '" ' + checkboxSet + '>' + '<i class="icon icon-checkbox"></i>' + '<div class="item-inner">' + '<div class="item-title">' + arrayLike[i].equip_nm + '</div>' + '</div>' + '</label>' + '</li>';
+                html += '<li class="">' + '<label class="item-checkbox item-content" onclick="actionString(this)" equip_no="' + arrayLike[i].equip_no + '">' + '<input type="checkbox" name="checkbox-' + i + '"  value="' + arrayLike[i].equip_nm + '" ' + checkboxSet + '>' + '<i class="icon icon-checkbox"></i>' + '<div class="item-inner">' + '<div class="item-title">' + arrayLike[i].equip_nm + '</div>' + '</div>' + '</label>' + '</li>';
             }
             $(".scheduleModifyContainer_equipgroup>div").append(html + '</ul>');
             // 判断是否全选
@@ -199,7 +198,7 @@ function updateEquip(that) {
         NewLineVal = NewLineArray.length == 0 ? 1 : Math.max.apply(null, NewLineArray) + 1;
         let insertJson = {
             getDataTable: "EquipGroup",
-            groupName: "新增项目",
+            groupName: "New projects",
             groupNo: NewLineVal
         };
         publicAjaxModify(insertJson, "/api/GWServiceWebAPI/insertEquipGroup", 2);
@@ -364,11 +363,11 @@ function updateWeekAlmReport(that) {
     var reg = /^(20|21|22|23|[0-1]\d):[0-5]\d$/,
         weekID, dt, week_day;
     if (!reg.test($(".scheduleModifyContainer_specificDate_stime").val()) || !reg.test($(".scheduleModifyContainer_specificDate_stime").val())) {
-        scheduleTimeAlert("时间格式错误").open();
+        scheduleTimeAlert("Error in time format").open();
         return;
     }
     if (parseInt($(".scheduleModifyContainer_specificDate_stime").val().replace(":","")) > parseInt($(".scheduleModifyContainer_specificDate_stime").val().replace(":", ""))) {
-        scheduleTimeAlert("开始时间不能大于结束时间").open();
+        scheduleTimeAlert("The start time should not be greater than the end time.").open();
         return;
     }
     if (indexAll == 1) {
@@ -453,8 +452,8 @@ function newlyBuildSpeAlmReport_view() {
             monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             dateFormat: 'yyyy/mm/dd 00:00:00',
             cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
+            headerPlaceholder: "End date",
+            toolbarCloseText: "Confirm",
             value: [new Date()],
         })
         myApp.calendar.create({
@@ -465,8 +464,8 @@ function newlyBuildSpeAlmReport_view() {
             monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             dateFormat: 'yyyy/mm/dd 00:00:00',
             cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
+            headerPlaceholder: "End date",
+            toolbarCloseText: "Confirm",
             value: [new Date()],
         })
     } else {
@@ -478,8 +477,8 @@ function newlyBuildSpeAlmReport_view() {
             monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             dateFormat: 'yyyy/mm/dd 00:00:00',
             cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
+            headerPlaceholder: "End date",
+            toolbarCloseText: "Confirm",
             // value: [new Date()],
         })
         myApp.calendar.create({
@@ -490,8 +489,8 @@ function newlyBuildSpeAlmReport_view() {
             monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             dateFormat: 'yyyy/mm/dd 00:00:00',
             cssClass: "startTime",
-            headerPlaceholder: "结束日期",
-            toolbarCloseText: "确定",
+            headerPlaceholder: "End date",
+            toolbarCloseText: "Confirm",
             // value: [new Date()],
         })
     }
@@ -521,7 +520,7 @@ function initSceneList_view() {
               return (item.equip_no == isArray("equip_no",msgArray) && item.set_nm.trim() == isArray("currentTxt",msgArray).trim());
              }).map(item => {return item});
            // 场景控制项目
-              var valueString = (controlEquipList.length>0?controlEquipList[0].value.trim():""),valueArray = [];
+              var valueString = (controlEquipList.length>0?controlEquipList[0].value.toString().trim():""),valueArray = [];
               if(valueString)
                valueString.indexOf("+") !=-1?valueArray = valueString.split("+"):valueArray.push(valueString);
               if(equiplinkageStr.length>0)//添加新增控制项
@@ -548,15 +547,15 @@ function initSceneList_view() {
                   else
                     {equip_no_flg = false;}
 
-                   htmlContent +=`<li class="swipeout bottomBorderLine" equipcomb="${valueArray[i]}">
+                   htmlContent +=`<li class="swipeout " equipcomb="${valueArray[i]}">
                         <div class="item-content swipeout-content schedule-content row no-gap" >
                             <div class="item-inner">
-                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,valueArray[i].split(",")[0],null):(valueArray[i]?"间隔操作":""))}: <strong>${(equip_no_flg?filterFun(setList,valueArray[i].split(",")[0],valueArray[i].split(",")[1]):(valueArray[i]?"延时间隔"+valueArray[i]+"毫秒":""))}</strong></div>
+                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,valueArray[i].split(",")[0],null):(valueArray[i]?"Interval operation":""))}: <strong>${(equip_no_flg?filterFun(setList,valueArray[i].split(",")[0],valueArray[i].split(",")[1]):(valueArray[i]?"Delay interval"+valueArray[i]+"Millisecond":""))}</strong></div>
                               <div class="item-after" onclick="scenalControlPro(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
                             </div>
                         </div>
                         <div class="swipeout-actions-right">
-                          <a href="#" class="delBtn" onclick="currentControl(this)" style="">删除</a>
+                          <a href="#" class="delBtn" onclick="currentControl(this)" style="">${window.localStorage.languageList == 1?"Delete":"删除"}</a>
                         </div>
                       </li> `;
                   }
@@ -602,7 +601,7 @@ function submitScene(dt) {
                     data:reqData,
                     async:false
                 })).done(function(n){
-            initSceneList();
+                 initSceneList();
                  scheduleModifySuccessTooip.open();
             }).fail(function(e){});
     }
@@ -621,7 +620,7 @@ function addScene() {
      return false;}
     if($("#equipLinkage_input").val().trim() == "") 
     {
-        myApp.dialog.alert("场景名称不能为空","提示");
+        myApp.dialog.alert("Scenario name cannot be empty","Tips");
         return false;
     }
      //场景设备号和设置号
@@ -708,7 +707,7 @@ function scenalControlPro_init() {
 }
 //删除当前控制项
 function currentControl(dt){
-    myApp.dialog.confirm("是否删除当前控制项","提示",function(){
+    myApp.dialog.confirm(window.localStorage.languageList == 1?"Whether to delete the current control":"是否删除当前项",window.localStorage.languageList == 1?"Tips":"提示",function(){
          $(dt).parent().parent().remove();
         // 序列化每项序号
         $(".equipLinkage_edit_modify>ul li").each(function(index){

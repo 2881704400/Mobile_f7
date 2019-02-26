@@ -9,7 +9,7 @@ input[disabled],textarea[disabled],button[disabled]{opacity: .65;cursor:not-allo
 
 html,body{background:#2d2e30;overflow: hidden;}
 .signin-content{width:auto;height:auto;position:fixed;left:0;right:0;}
-.signin-content form{width:330px;margin:0 auto;position:relative;}
+.signin-content .loginFormBox{width:330px;margin:0 auto;position:relative;}
 .signin-heading{margin:13px 0;}
 .signin-heading img{position:absolute;top:-2px;}
 .signin-heading span{padding-left:40px;}
@@ -30,7 +30,7 @@ html,body{background:#2d2e30;overflow: hidden;}
 .btns-style-5:hover{background-color:#60a0f6;color:#fff;}
 .btns-style-5:active{background-color:#6795d1;color:#fff;}
 @media (max-width:330px) { 
-    .signin-content form{width:95%;position:relative;}
+    .signin-content .loginFormBox{width:95%;position:relative;}
 }
 @media (max-width:992px) { 
     .signin-form button{cursor:pointer;width:100%;padding:12px 12px;margin-top:6px;position:relative;padding-right:34px;position:relative;font-size:16px;}

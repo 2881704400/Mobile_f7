@@ -8,6 +8,7 @@ html,
 body {
 	user-select: none;
 	-webkit-user-select: none;
+	overflow: hidden;
 }
 
 article,
@@ -48,6 +49,9 @@ table {
 input,
 select {
 	vertical-align: middle;
+}
+@media screen and (max-width: 320px) {
+	.setPageContainer .exitLogin{    top: 2%!important;}
 }
 
 @media screen and (min-width: 320px) {
@@ -96,15 +100,9 @@ select {
 	}
 }
 
-.displayNone {
-	display: none!important;
-}
+.displayNone {display: none!important; }
 
-.md .toolbar {
-	/*height: 50px;
-	top: 100%;
-	transform: translateY(-100%);*/
-}
+.view-menu-toolbar{position: relative;}
 
 .md .view-menu-toolbar {
 	height: 50px;
@@ -137,14 +135,12 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
 	height: 24px;
-	background: #000 !important;
 	display: block !important;
 }
 
 html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
 	height: 20px;
-	background: #000;
 }
 
 html.with-statusbar.device-android .panel,

@@ -3,16 +3,16 @@
         <div class="navbar-inner">
             <!-- 标题 -->
             <div class="left">
-               <a class="link" href="#" style="visibility: hidden;">
-                        <i class="iconfont icon-f7_add">
-                        </i>
-                    </a>
+                <a href="#" id="scan" onclick="RichScan()">
+                    <i class="iconfont icon-scanIcon">
+                    </i>
+                </a>
             </div>
             <div class="center sliding title">
                 设备联动
             </div>
             <div class="right">
-                <a class="link icon-only panel-open" href="/setPage/">
+                <a class="link icon-only panel-open" href="/setPage/" id="setPageTool">
                     <i class="iconfont icon-f7_right_user">
                     </i>
                 </a>
@@ -31,8 +31,9 @@
             </div>
             <div class="equipLinkageContent">
                 <section class="equipGroupPublic" id="equipLinkage_set">
-                    <ul class="publicTable"></ul>
-                  </section>
+                    <ul class="publicTable">
+                    </ul>
+                </section>
                 <section class="displayNone list accordion-list" id="equipLinkage_edit">
                     <ul>
                     </ul>
@@ -42,11 +43,11 @@
                         <i class="iconfont icon-f7_add">
                         </i>
                     </a>
-                    <a class="link displayNone" href="#" id="equipLinkage_edit_nav" onclick='scanelEdit(this,2);'>
+                    <a class="link displayNone" href="#" id="equipLinkage_edit_nav" onclick="scanelEdit(this,2);">
                         <i class="iconfont icon-f7_add">
                         </i>
                     </a>
-                </div> 
+                </div>
             </div>
         </div>
     </div>

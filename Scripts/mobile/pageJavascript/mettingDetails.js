@@ -1,6 +1,4 @@
-﻿var isTFault = true;
-var setHtml = "";
-var isNsys = true;
+﻿var isTFault = true,setHtml = "",isNsys = true;
 
 function mettingDetails() {
     $(".modalDiv").addClass("displayNone");
@@ -13,15 +11,25 @@ function mettingDetails() {
         if ($("#mettingDetails").hasClass("page-current")) {
             var thisValue1 = $(this).attr("id"),
                 thisURL1 = $(this).attr("href");
-            myApp.dialog.confirm('确认关闭正在播放PPT?', "信息提示", function() { //yes
-                addURL1();
-                toURL1(thisValue1);
-                //发送PPT关闭命令
-                $(".closeFile").click();
-            }, function() { //no
-                addURL1();
-                toURL1(thisValue1);
-            });
+            myApp.dialog.create({
+                title: "信息提示",
+                text: "确认关闭正在播放PPT?",
+                buttons: [{
+                    text: "取消",
+                    onClick: function() {
+                        addURL1();
+                        toURL1(thisValue1);
+                        //发送PPT关闭命令
+                        $(".closeFile").click();
+                    }
+                }, {
+                    text: "确认",
+                    onClick: function() {
+                        addURL1();
+                        toURL1(thisValue1);
+                    }
+                }]
+            }).open();
         }
     }
 
@@ -78,7 +86,7 @@ function mettingDetails() {
     i = 1;
     $(".closeFile,.setScreenSizeChild").unbind();
     $(".closeFile,.setScreenSizeChild").bind('click', function() {
-        get_no(this, PPTcommand.closePPT.equipNo, PPTcommand.closePPT.setNo, "", "");
+        get_no_val(this, PPTcommand.closePPT.equipNo, PPTcommand.closePPT.setNo, "", "");
         if ($(this).hasClass("setScreenSizeChild")) {
             $(this).addClass("displayNone").siblings().removeClass("displayNone");
         }
@@ -103,9 +111,8 @@ function mettingDetails() {
 }
 
 function getWidth() { //宽度+外边距
-    return window.screen.width*0.9/5;
+    return window.screen.width * 0.9 / 5;
 }
-
 // function addbackground() { //设置单击背景图片
 //     var tClass = $(this).attr("id");
 //     switch (tClass) {
@@ -125,7 +132,6 @@ function getWidth() { //宽度+外边距
 //             break;
 //     }
 // }
-
 // function removebackground() {
 //     $(".mettingDetailsBottom div").css("background", "url(/Image/phone/indexPage.png) no-repeat center/auto 100%");
 // }
@@ -161,7 +167,7 @@ function isPage(that) {
     //记录页数
     window.localStorage.savePage = parseInt($(".selectBorder").attr("Indexid"));
     //跳转至该页
-    get_no(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, $(".selectBorder").attr("Indexid"));
+    get_no_val(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, $(".selectBorder").attr("Indexid"));
     isTFault = true;
 }
 //================================================初始化==========================================================
@@ -180,41 +186,50 @@ function ajaxRequst() {
         requestAjax(i, false);
     }
 }
+var firstImgStatus = true;
 
 function requestAjax(j, k) {
     setTimeout(function() {
         var urlRe = "/PPTImages/" + window.localStorage.sessionFilename + "/" + j + ".jpg";
         $(".mettingDetails_index div[indexid='" + j + "']").html('<img src=' + urlRe + ' onerror="requestAjax(' + j + ',true)" />');
-        $(".setviewPng").attr("src", $(".mettingDetails_index div[indexid='1']").find("img").attr("src"));
     }, 800);
     //PPT跳转
-    if(j == parseInt(window.localStorage.sessionValue) && window.localStorage.historyis == 1)
-      setTimeout(function(){historyInit();},1000);
+    if (j == parseInt(window.localStorage.sessionValue) && window.localStorage.historyis == 1) {
+        window.localStorage.historyis = 0;
+        firstImgStatus = false;
+        setTimeout(function() {
+            historyInit();
+        }, 1000);
+    }
+    if (firstImgStatus) {
+        setTimeout(function() {
+            $(".setviewPng").attr("src", $(".mettingDetails_index div[indexid='1']").find("img").attr("src"));
+        }, 1000);
+    }
 }
 //================================================初始化历史记录==========================================================
 function historyInit() {
-    window.localStorage.historyis = 0;
     if (window.localStorage.pptUsername == window.localStorage.HistorypptUsername) {
-      $.ajax({
-          type: "POST",
-          url: "/GWService.asmx/SetupsCommand",
-          timeout: 5000,
-          data: {
-              equip_no: PPTcommand.setPage.equipNo,
-              main_instruction: 4,
-              minor_instruction: "-",
-              value: window.localStorage.savePage,
-              user_name: window.localStorage.userName
-          },
-          success: function(data) {
-              //跳转
-              $(".mettingDetails_index").css('transform', "translate3d(" + (getWidth() * (2 - window.localStorage.savePage)) + "px, 0px, 0px)");
-              setTimeout(function() {
-                $(".mettingDetails_index>div:eq('" + (window.localStorage.savePage - 1) + "')").addClass("selectBorder").siblings().removeClass("selectBorder");
-                $(".setviewPng").attr("src", $(".selectBorder img").attr("src"));
-              }, 100);
-          }
-      });
+        $.ajax({
+            type: "POST",
+            url: "/GWService.asmx/SetupsCommand",
+            timeout: 5000,
+            data: {
+                equip_no: PPTcommand.setPage.equipNo,
+                main_instruction: 4,
+                minor_instruction: "-",
+                value: window.localStorage.savePage,
+                user_name: window.localStorage.userName
+            },
+            success: function(data) {
+                //跳转
+                $(".mettingDetails_index").css('transform', "translate3d(" + (getWidth() * (2 - window.localStorage.savePage)) + "px, 0px, 0px)");
+                setTimeout(function() {
+                    $(".mettingDetails_index>div:eq('" + (window.localStorage.savePage - 1) + "')").addClass("selectBorder").siblings().removeClass("selectBorder");
+                    $(".viewsPng").find("img").attr("src", $(".selectBorder img").attr("src"));
+                }, 100);
+            }
+        });
     }
     //保存名字
     window.localStorage.HistorypptUsername = window.localStorage.pptUsername;
@@ -226,9 +241,8 @@ function bannerActive(that) {
     if ($(that).parent().hasClass("mettingDetails_index")) {
         var Indexid = parseInt($(that).attr("Indexid")); //当前所选
         window.localStorage.savePage = Indexid;
-        get_no(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, Indexid);
-    }
-    if ($(that).parent().hasClass("setBackground")) {
-        $(".welcomeHeader").css("background", "url(" + $(that).find("img").attr("src") + ") no-repeat center center/100% 100%");
+        setTimeout(function() {
+            get_no_val(that, PPTcommand.setPage.equipNo, PPTcommand.setPage.setNo, Indexid);
+        }, 50);
     }
 }

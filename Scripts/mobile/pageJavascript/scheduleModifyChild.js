@@ -9,7 +9,7 @@ function scheduleModifyChild() {
         $("."+$(this).attr("div_attribute")).removeClass("displayNone").siblings().addClass("displayNone");
         $(".equipLinkage_edit_modify_childFirst").removeClass("displayNone");
     });
-    scheduleModifyChildSuccessTooip = myApp.toast.create({text: "插入成功", position: 'center', closeTimeout: 2000, });
+    scheduleModifyChildSuccessTooip = myApp.toast.create({text: "Insert success", position: 'center', closeTimeout: 2000, });
     // 获取位置参数
     var chatObjectChild = myApp.views.main.history,
     urlLengthChild = chatObjectChild.length - 1;
@@ -27,7 +27,7 @@ function comfirmScaneControl(){
         let str = $(".equipLinkage_edit_modify_child_time").val();
         if(!str)
            {
-            myApp.dialog.alert("请输入正确的时长");
+            myApp.dialog.alert("Please enter the correct time");
             return false;
            } 
         else

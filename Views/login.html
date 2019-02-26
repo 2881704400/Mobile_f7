@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="signin-content">
-        <form class="flipInX animated" autocomplete="off">
+        <div class="flipInX animated loginFormBox" id="loginFormBoxId">
             <!--<h2 class="signin-heading"><img src="/Image/logo.png" /><span>新一代机房综合监控系统</span></h2>-->
             <div class="signin-form">
                 <div class="signin-input">
@@ -27,12 +27,12 @@
                     <input type="password" id="inputPassword" name="inputPassword" placeholder="请输入密码" required="" data-action="loginOnKey">
                 </div>
                 <!--<p class="advanced_service" data-action="loginAdvanced">高级</p>-->
-                <button class="btn btns-style-5" data-action="loginSumit">登 录 <i class="iconfont icon-youjiantou2"></i></button>
+                <button class="btn btns-style-5" data-action="loginSumit" id="loginSumitBtnId" onclick="return onSumitLogining()">登 录 <i class="iconfont icon-youjiantou2"></i></button>
                 <p class="advanced_service" data-action="loginAdvanced" style="display:none;">高级</p>
                 <div id="message" style="width:100%;text-align:center;"></div>
             </div>
             <!--<p class="signin-copyright">Copyright 2016.</p>-->
-        </form>
+        </div>
     </div>
     <div id="loading-center" style="display:none">
         <div id="loading-center-absolute">
@@ -45,6 +45,7 @@
     </div>
     <script src="/Scripts/plug/jquery-3.3.1.min.js"></script>
     <script src="/Scripts/plug/fastclick.min.js"></script>
+    <script src="/Scripts/mobile/md5.js"></script>
     <script src="/Scripts/login.js"></script>
 </body>
 </html>

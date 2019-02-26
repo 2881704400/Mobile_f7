@@ -19,7 +19,7 @@
 .welcomeWordContents {
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
+    // background: #FFFFFF;
     padding: 0px 5%;
     position: relative;
 }
@@ -66,7 +66,7 @@
     height: 44px;
     line-height: 44px;
     font-size: 2rem;
-    color: #333333;
+    // color: #333333;
 }
 
 .welcome-Word-control-tabs {
@@ -99,7 +99,7 @@
     float: left;
     font-family: PingFang SC Regular;
     font-size: 1rem;
-    color: #333333;
+    // color: #333333;
     letter-spacing: 1px;
     display: flex;
     display: -webkit-flex;
@@ -117,7 +117,7 @@
     width: 25%;
     height: 100%;
     font-size: 1.6rem !important;
-    color: #333333;
+    // color: #333333;
     float: left;
     display: flex;
     display: -webkit-flex;
@@ -488,7 +488,7 @@ input:focus::-webkit-input-placeholder {
 .wecomeButtom .swiper-slide {
     width: calc(100% / 3);
     height: 100%;
-    background: #FFFFFF;
+    // background: #FFFFFF;
     box-sizing: border-box;
     padding: 0 5px;
     border: 0px solid #517B80;
@@ -562,7 +562,6 @@ input:focus::-webkit-input-placeholder {
 }
 
 .welcome-Word-control-icon-mutual span {
-    width: 1.75rem;
     height: 95px;
     font-size: 0.875rem;
     font-family: PingFang SC Medium;
@@ -640,29 +639,29 @@ input:focus::-webkit-input-placeholder {
 
 /*返回*/
 
-.ios .icon-back,
-.md .icon-back {
+.ios div#welcomeWords .icon-back,
+.md div#welcomeWords .icon-back {
     background-image: url()!important;
 }
 
-.ios .icon-back,
-.ios .icon-prev,
-.md .icon-back {
+.ios div#welcomeWords .icon-back,
+.ios div#welcomeWords .icon-prev,
+.md div#welcomeWords .icon-back {
     width: auto;
     height: auto;
 }
 
-.ios .list,
-.md .list {
+.ios div#welcomeWords .list,
+.md div#welcomeWords .list {
     margin: 0;
 }
 
-.ios .welcomePageContents .list .item-inner:after,
-.md .welcomePageContents .list .item-inner:after,
-.welcomePageContents .list ul:after,
-.welcomePageContents .list ul:before {
+.ios div#welcomeWords .welcomePageContents .list .item-inner:after,
+.md div#welcomeWords .welcomePageContents .list .item-inner:after,
+div#welcomeWords .welcomePageContents .list ul:after,
+div#welcomeWords .welcomePageContents .list ul:before {
     height: 0!important;
     
 }
 
-
+.selectMenuWelcomewords{color: #3E7CFB;}

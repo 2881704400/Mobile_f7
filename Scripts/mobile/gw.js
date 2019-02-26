@@ -75,7 +75,7 @@ var AlarmCenterContext = {
     	return this.post("/api/real/get_setparm",{equip_nos:data });
     },
     setYcConfigSingle:function(equipNo,ycpNo){
-//  	console.log(equipNo,ycpNo)
+    //  	console.log(equipNo,ycpNo)
     	return this.post("/api/real/get_ycp_single",{equip_no:equipNo,ycp_no:ycpNo });
     },
     setYxConfigSingle:function(equipNo,yxpNo){
@@ -100,6 +100,15 @@ var AlarmCenterContext = {
      pptConfig:function(equip){
         return this.get("/api/PPT/GetCurrenSession?equip="+equip,{});
     },   
+     equip_yxp_state:function(equipno, yxno){//旧版本遥信
+        return this.post("/api/real/equip_yxp_state",{equip_no: equipno,yxp_no: yxno});
+    },  
+     equip_ycp_state:function(equipno, ycno){//旧版本遥测
+        return this.post("/api/real/equip_ycp_state",{equip_no: equipno,ycp_no: ycno});
+    },   
+     setup:function(equipno){//旧版本控制
+        return this.post("/api/real/setup",{equip_no: '51',main_instr: 'SetYCYXValue',mino_instr: 'X_38',value: '1'});
+    },                   
     get: function (url, data) {
         var i = $.Deferred();
         $.ajax({

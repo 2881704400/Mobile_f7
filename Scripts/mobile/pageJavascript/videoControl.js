@@ -1,8 +1,8 @@
 ﻿function videoControl() {
-    var map, infoPoint = [
-        [113.960046, 22.535688, 4007, 1],
-        [113.922468, 22.497125, 4007, 2]
-    ]; //经纬度+设备号+通道号
+    // var map, infoPoint = [
+    //     [113.960046, 22.535688, 4007, 1],
+    //     [113.922468, 22.497125, 4007, 2]
+    // ]; //经纬度+设备号+通道号
     var myIcon = new BMap.Icon("../../Image/Camera.png", new BMap.Size(40, 60));
     initBaiduMap();
 
@@ -203,18 +203,18 @@ function controlsBtnMap(equip_no, Video_id) {
     if (Control_Equip_List(equip_no) || Control_SetItem_List(equip_no, false)) {
         $('.videoControls').find('a').each(function() {
             var values = $(this).attr('values');
-            $(this).attr('ontouchstart', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '")');
-            $(this).attr('ontouchend', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '")');
+            $(this).attr('ontouchstart', 'onSetCommand_Map(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '")');
+            $(this).attr('ontouchend', 'onSetCommand_Map(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '")');
         });
         $('.videoControls2').find('img').each(function() {
             var values = $(this).attr('values');
-            $(this).attr('ontouchstart', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '",this)');
-            $(this).attr('ontouchend', 'onSetCommand(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '",this)');
+            $(this).attr('ontouchstart', 'onSetCommand_Map(' + equip_no + ',"' + Video_id + '","' + values + '","true","' + window.localStorage.userName + '",this)');
+            $(this).attr('ontouchend', 'onSetCommand_Map(' + equip_no + ',"' + Video_id + '","' + values + '","false","' + window.localStorage.userName + '",this)');
         });
     }
 }
 //设置命令-确定
-function onSetCommand(str_1, str_2, str_3, str_4, dt, thisDom) {
+function onSetCommand_Map(str_1, str_2, str_3, str_4, dt, thisDom) {
     if (thisDom) {
         var act = $(thisDom).attr('actives').split('_');
         if (act[1] == "j") {

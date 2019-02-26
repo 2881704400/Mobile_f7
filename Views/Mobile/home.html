@@ -14,8 +14,7 @@
 		<!--框架样式-->
 		<link rel="stylesheet" href="/Scripts/plug/1.5.0/framework7.min.css">
 		<!--图标字体样式-->
-		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_823316_c6htiyqy6iq.css" />
-		<!--<link rel="stylesheet" href="/fonts/iconfont.css">-->
+		<link rel="stylesheet" type="text/css" href="/fonts/iconfont-web2.0/iconfont.css" />
 		<!--声波动画-->
 		<link rel="stylesheet" type="text/css" href="/Styles/Plugin/waveAnimation.css" />
 		<!--本页样式-->
@@ -40,24 +39,23 @@
 				<div data-page="home" class="page" id="home">
 					<div class="navbar">
 						<div class="navbar-inner">
-							<div class="left hideMenu">
-								<a href="#" class="back link">
-									<i class="iconfont icon-back"></i>
+							<div class="left">
+								<a href="#" onclick="RichScan()" id="scan">
+									<i class="iconfont icon-scanIcon"></i>
 								</a>  
 							</div>
 							<div class="center sliding title auth_name_get"></div>
 							<div class="right">
-								<a href="/setPage/" class="link icon-only panel-open"><i class="iconfont icon-f7_right_user"></i></a>
+								<a href="/setPage/" class="link panel-open" id="setPageTool"><i class="iconfont icon-f7_right_user"></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="page-content mainDiv" >
+					<div class="page-content mainDiv">
 						<!-- 实时快照 -->
 					    <div id="homeContents">
 							<ul class="charts-block"></ul>
 					    </div>
 					</div>
-				
 				</div>
 				<div class="toolbar view-menu-toolbar tabbar tabbar-labels displayNone">
 					<div class="toolbar-inner row no-gap">
@@ -89,16 +87,16 @@
 						<div class="list">
 							<ul>
 								<li>
-									<a class="list-button item-link popover-close" href="/eventSearch/" id="eventSearchTool">事件查询</a>
+									<a class="list-button item-link popover-close" href="/eventSearch/" id="eventSearchTool"><span style="font-size: 13px;white-space: nowrap;">事件查询</span></a>
 								</li>
 								<li>
-									<a class="list-button item-link popover-close" href="/equipConfigList/">系统配置</a>
+									<a class="list-button item-link popover-close" href="/equipConfigList/" id="equipConfigListTool"><span style="font-size: 13px;white-space: nowrap;">系统配置</span></a>
 								</li>
 								<li>
-									<a class="list-button item-link popover-close" href="/schedule/" id="scheduleTool">报警排表</a>
+									<a class="list-button item-link popover-close" href="/schedule/" id="scheduleTool"><span style="font-size: 13px;white-space: nowrap;">报警排表</span></a>
 								</li>
 								<li>
-									<a class="list-button item-link popover-close" href="/equipLinkage/" id="equipLinkageTool">设备联动</a>
+									<a class="list-button item-link popover-close" href="/equipLinkage/" id="equipLinkageTool"><span style="font-size: 13px;white-space: nowrap;">设备联动</span></a>
 								</li>
 							</ul>
 						</div>
@@ -106,7 +104,7 @@
 				</div>
 				<div class="popup popup-voices">
 					<div class="voice-header">
-						<div class="voice-header-back popup-close"><i class="iconfont icon-back"></i></div>
+						<div class="voice-header-back popup-close" onclick="voiceCloseFun()"><i class="iconfont icon-back"></i></div>
 						<span>语音控制</span>
 					</div>
 					<div class="voice-container">
@@ -131,9 +129,7 @@
 						<div class="homeHuanAnimation"><img src="/Image/video.png" style="height: 50%;" /></div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
 		<!-- 框架js-->
 		<script src="/Scripts/plug/jquery-3.3.1.min.js"></script>
@@ -141,12 +137,12 @@
 		<script src="/Scripts/plug/jq.ajax.js"></script>
 		<script src="/Scripts/plug/highcharts.js"></script>
 		<script type="text/javascript" src="/Scripts/plug/1.5.0/framework7.js"></script>
-		<script type="text/javascript" src="/Scripts/plug/1.5.0/onorientationchange.js"></script>
+		<!-- <script type="text/javascript" src="/Scripts/plug/1.5.0/onorientationchange.js"></script> -->
 		<script src="/Scripts/plug/echarts.min.js"></script>
+		<script type="text/javascript" src="/Scripts/plug/jquery.signalR-2.1.2.min.js"></script>
 		<!-- 配置js -->
 		<script type="text/javascript" src="/Scripts/mobile/apiConfig.js"></script>
 		<script type="text/javascript" src="/Scripts/mobile/dataConfig.js"></script>
-		<!-- <script type="text/javascript" src="/Scripts/mobile/echartsCode.js"></script> -->
 		<!-- 移动端入口js-->
 		<script type="text/javascript" src="/Scripts/mobile/home.js"></script>
 		<script type="text/javascript" src="/Scripts/mobile/mobileAll.js"></script>

@@ -507,8 +507,8 @@ function upInforEdict(){
 			    val=$(this).find("input").val();
 				if(idStr=="equip_no"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
@@ -517,15 +517,15 @@ function upInforEdict(){
 				}
 				else if(idStr=="mapping"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":mapping
 					}
 				}else if(idStr=="curve_rcd"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":curve_rcd
 					}
@@ -534,8 +534,8 @@ function upInforEdict(){
 					var upval=$(this).find("input").attr("upval");
 					
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -543,8 +543,8 @@ function upInforEdict(){
 				else if(idStr=="related_video"){
 					var upval=$(this).find("input").attr("upval");
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -553,8 +553,8 @@ function upInforEdict(){
 				}
 				else{
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yc_no:$("#yc_no").val(),
+						"id":$("#equip_no").val(),
+						"yc_no":$("#yc_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
@@ -565,7 +565,7 @@ function upInforEdict(){
 
 		})
 			uploadJson.push({
-				id:"'"+$("#equip_no").val()+"'",
+				id:$("#equip_no").val(),
 				yc_no:$("#yc_no").val(),
 				listName:"alarm_scheme",
 				vlaue:"'"+alarmCode+"'"
@@ -588,8 +588,8 @@ function upInforEdict(){
 			    val=$(this).find("input").val();
 				if(idStr=="equip_no"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
+						"id":$("#equip_no").val(),
+						"yx_no":$("#yx_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
@@ -598,8 +598,8 @@ function upInforEdict(){
 				}
 				else if(idStr=="inversion"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
+						"id":$("#equip_no").val(),
+						"yx_no":$("#yx_no").val(),
 						"listName":idStr,
 						"vlaue":inversion
 					}
@@ -608,8 +608,8 @@ function upInforEdict(){
 					var upval=$(this).find("input").attr("upval");
 					
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
+						"id":$("#equip_no").val(),
+						"yx_no":$("#yx_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -617,8 +617,8 @@ function upInforEdict(){
 				else if(idStr=="related_video"){
 					var upval=$(this).find("input").attr("upval");
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
+						"id": $("#equip_no").val(),
+						"yx_no":$("#yx_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -627,8 +627,8 @@ function upInforEdict(){
 				}
 				else{
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
-						yx_no:$("#yx_no").val(),
+						"id":$("#equip_no").val(),
+						"yx_no":$("#yx_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
@@ -639,7 +639,7 @@ function upInforEdict(){
 
 		})
 			uploadJson.push({
-				id:"'"+$("#equip_no").val()+"'",
+				id:$("#equip_no").val(),
 				yx_no:$("#yx_no").val(),
 				listName:"alarm_scheme",
 				vlaue:"'"+alarmCode+"'"
@@ -663,8 +663,8 @@ function upInforEdict(){
 				    val=$(this).find("input").val();
 					if(idStr=="equip_no"){
 						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
+							"id":$("#equip_no").val(),
+							"set_no":$("#set_no").val(),
 							"listName":idStr,
 							"vlaue":"'"+val+"'"
 						}
@@ -674,15 +674,15 @@ function upInforEdict(){
 					else if(idStr=="canexecution"){
 						
 						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
+							"id":$("#equip_no").val(),
+							"set_no":$("#set_no").val(),
 							"listName":"[canexecution]",
 							"vlaue":canexecution
 						}
 					}else if(idStr=="record"){
 						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
+							"id":$("#equip_no").val(),
+							"set_no":$("#set_no").val(),
 							"listName":"[record]",
 							"vlaue":record
 						}
@@ -691,8 +691,8 @@ function upInforEdict(){
 					}
 					else{
 						updateObj={
-							id:"'"+$("#equip_no").val()+"'",
-							set_no:$("#set_no").val(),
+							"id":$("#equip_no").val(),
+							"set_no":$("#set_no").val(),
 							"listName":idStr,
 							"vlaue":"'"+val+"'"
 						}

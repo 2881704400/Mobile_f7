@@ -7,15 +7,15 @@ function equipLinkage() {
         $($(this).attr("href")).removeClass("displayNone").siblings("section").addClass("displayNone");
         $($(this).attr("href") + "_nav").removeClass("displayNone").siblings().addClass("displayNone"); //切换添加
         if($(this).attr("href") == "#equipLinkage_set")
-            {
-                setTimeout(function(){initAddList();},1000);
-                 myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
-            }
+        {
+            setTimeout(function(){initAddList();},1000);
+            myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
+        }
         else
-            {
-                myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
-                setTimeout(function(){initSceneList();},1500);
-            }
+        {
+            myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
+            setTimeout(function(){initSceneList();},1500);
+        }
     });
     // 初始化设备
     myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');

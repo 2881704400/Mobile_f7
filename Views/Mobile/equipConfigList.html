@@ -1,65 +1,68 @@
-
 <div class="pages">
-	<div class="page" id="equipConfigList" data-page="equipConfigList">
-		<div class="navbar">
-			<div class="navbar">
-		        <div class="navbar-inner">
-		            <!-- 标题 -->                  
-		            <div class="left hideMenu">
-		                <a href="#" class="back link">
-		                    <i class="iconfont icon-back"></i>
-		                </a>
-		            </div>                         
-		            <div class="center sliding title">设备列表</div>
-		            <div class="right">
-		                <!--<a href="#" class="link icon-only popup-open" data-popup=".popup-condition">
-		                	<i class="iconfont icon-sousuo"></i>
-		                </a>-->
-		            </div>
-		        </div>
-		    </div>   
-		</div>
-		
-		<div class="page-content">
-			
-			<div class="block content-wrap">
-				<div class="searchbar-backdrop"></div>
-				<form class="searchbar" id="search">
-				  <div class="searchbar-inner">
-				    <div class="searchbar-input-wrap">
-				      <input type="search" placeholder="设备名称">
-				      <i class="searchbar-icon"></i>
-				      <span class="input-clear-button"></span>
-				    </div>
-				    <span class="searchbar-disable-button">取消</span>
-				  </div>
-				</form>
-				
-				<p class="sele-tile">设备列表</p>
-				<div class="eq-list list links-list">
-					<ul>
-						
-					</ul>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="page" data-page="equipConfigList" id="equipConfigList">
+        <div class="navbar">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- 标题 -->
+                    <div class="left">
+                        <a href="#" id="scan" onclick="RichScan()">
+                            <i class="iconfont icon-scanIcon">
+                            </i>
+                        </a>
+                    </div>
+                    <div class="center sliding title">
+                        设备列表
+                    </div>
+                    <div class="right">
+                        <a class="link icon-only panel-open" href="/setPage/" id="setPageTool">
+                            <i class="iconfont icon-f7_right_user">
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block content-wrap equipConfigList_container">
+                <header class="equipConfigList_en_header">
+                    <form class="searchbar" id="search">
+                        <div class="searchbar-inner">
+                            <div class="searchbar-input-wrap">
+                                <input placeholder="设备名称" type="search">
+                                    <i class="searchbar-icon">
+                                    </i>
+                                    <span class="input-clear-button">
+                                    </span>
+                                </input>
+                            </div>
+                            <span class="searchbar-disable-button">
+                                取消
+                            </span>
+                        </div>
+                    </form>
+                    <p class="sele-tile">
+                        设备列表
+                    </p>
+                </header>
+                <div class="eq-list list links-list">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 <div class="popup popup-condition">
-						<div class="navbar">
-							<div class="navbar-inner">
-								<div class="center sliding title ">
-									设备选择
-								</div>
-								<div class="right">
-									<a href="#" class="link popup-close">
-										关闭
-									</a>
-								</div>
-							</div>
-						</div>
-						<!--<div class="searchbar-backdrop"></div>-->
-						
-					</div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center sliding title ">
+                设备选择
+            </div>
+            <div class="right">
+                <a class="link popup-close" href="#">
+                    关闭
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

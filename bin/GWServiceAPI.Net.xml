@@ -132,6 +132,16 @@
             其他
             </summary>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.OtherController.GetFileStructure(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取文件夹结构
+            </summary>
+            <param>
+            obj.filePath 文件地址（为空则使用默认地址）（值为u时，获取u盘或移动硬盘的数据）
+            obj.fileName 指定需要显示的文件名的后缀（多个例如.ppt|.pdf|.xlsx）（为空则使用默认值）
+            </param>
+            <returns></returns>
+        </member>
         <member name="M:GWServiceAPI.Net.Controllers.OtherController.reset_alarm(Newtonsoft.Json.Linq.JObject)">
             <summary>
             更改整张表的数据
@@ -522,6 +532,15 @@
             obj.verificationCode:验证码
             </param>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey_mobile(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取key
+            </summary>
+            <param name="obj">
+            obj.username:用户名
+            obj.userpwd:密码（MD5）
+            </param>
+        </member>
         <member name="M:GWServiceAPI.Net.Controllers.ServerController.getkey(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取key
@@ -536,6 +555,16 @@
             获取AlarmCenterAPI程序版本
             </summary>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.GetLoginUserInfo">
+            <summary>
+            获取用户名称
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.ConnectService">
+            <summary>
+            连接服务器
+            </summary>
+        </member>
         <member name="M:GWServiceAPI.Net.Controllers.ServerController.auth_name">
             <summary>
             获取软件授权名称
@@ -546,6 +575,16 @@
             适配AlarmCenter服务
             </summary>
             <param name="obj">obj.fromPath:地址</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.ServerController.UpdUserData(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            修改用户密码
+            </summary>
+            <param name="obj">
+            obj.userName:用户名
+            obj.passWord:密码
+            obj.newPassWord:新密码
+            </param>
         </member>
         <member name="T:GWServiceAPI.Net.LibClass.ApiCode">
             <summary>
@@ -635,6 +674,21 @@
         <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1015(GWServiceAPI.Net.Models.DataResult)">
             <summary>
             验证码输入错误
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1016(GWServiceAPI.Net.Models.DataResult)">
+            <summary>
+            用户名过长
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1017(GWServiceAPI.Net.Models.DataResult)">
+            <summary>
+            原密码认证失败
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1018(GWServiceAPI.Net.Models.DataResult)">
+            <summary>
+            口令复杂度不符合要求
             </summary>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.DatatableAndJson.ToJson(System.Data.DataTable)">
@@ -836,6 +890,29 @@
             <param name="error">错误信息</param>
             <param name="path">地址</param>
         </member>
+        <member name="M:GWServiceAPI.Net.LibClass.Libs.PassWordInspect(System.String)">
+            <summary>
+            检查口令复杂度
+            </summary>
+            <param name="passWord">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.Libs.InspectPassWord(System.String,System.String)">
+            <summary>
+            验证密码
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.Libs.UpdPassWord(System.String,System.String)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="userName">用户名</param>
+            <param name="passWord">新密码</param>
+            <returns></returns>
+        </member>
         <member name="T:GWServiceAPI.Net.LibClass.QRcodeLib">
             <summary>
             二维码操作
@@ -857,6 +934,23 @@
             <summary>
             其他
             </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.OtherLib.GetFileStructure(System.String,System.String)">
+            <summary>
+            获取文件夹结构
+            </summary>
+            <param name="filePath">文件地址（为空则使用默认地址）（值为u时，获取u盘或移动硬盘的数据）</param>
+            <param name="fileName">指定需要显示的文件名的后缀（多个例如.ppt|.pdf|.xlsx）（为空则使用默认值）</param>
+            <returns></returns>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.OtherLib.GetFileAll(System.String,System.String,System.String)">
+            <summary>
+            获取文件夹结构
+            </summary>
+            <param name="filePath">文件地址（为空则使用默认地址）（值为u时，获取u盘或移动硬盘的数据）</param>
+            <param name="fileName">定需要显示的文件名的后缀（多个例如.ppt|.pdf|.xlsx）（为空则使用默认值）</param>
+            <param name="fileType">指名类型：值为‘DirectoryInfo’返回文件夹，值为‘FileInfo’返回文件</param>
+            <returns></returns>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.OtherLib.ResetAlarmTab(System.String,System.String)">
             <summary>
@@ -951,12 +1045,13 @@
             语音控制
             </summary>
         </member>
-        <member name="M:GWServiceAPI.Net.LibClass.VoiceLib.VoiceControl(System.String,System.String)">
+        <member name="M:GWServiceAPI.Net.LibClass.VoiceLib.VoiceControl(System.String,System.String,System.String)">
             <summary>
             语音控制
             </summary>
             <param name="audioData">语音数据</param>
             <param name="dataType">语音数据类型</param>
+            <param name="userName">用户名</param>
         </member>
         <member name="T:GWServiceAPI.Net.LibClass.RealTimeLib">
             <summary>
@@ -1237,12 +1332,6 @@
             获取本机ip地址
             </summary>
         </member>
-        <member name="M:GWServiceAPI.Net.LibClass.Methods.WriteLog(System.String)">
-            <summary>
-            写入日志，默认c盘
-            </summary>
-            <param name="strLog"></param>
-        </member>
         <member name="M:GWServiceAPI.Net.LibClass.Methods.ConditionEquipNo(System.String)">
             <summary>
             多个设备号的条件
@@ -1364,19 +1453,25 @@
             <param name="appkey"></param>
             <param name="infokey"></param>
         </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.GetLoginUserInfo">
+            <summary>
+            获取用户名称
+            </summary>
+            <param name="user_name">用户名</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.ConnectServiceFun(System.String)">
+            <summary>
+            连接服务器
+            </summary>
+            <param name="user_name">用户名</param>
+        </member>
         <member name="M:GWServiceAPI.Net.LibClass.ServerLib.ConnectService(System.String)">
             <summary>
             连接服务器
             </summary>
             <param name="user_name">用户名</param>
         </member>
-        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.WriteLog(System.String)">
-            <summary>
-            写入日志，默认c盘
-            </summary>
-            <param name="strLog"></param>
-        </member>
-        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.LoginService_pc(System.String,System.String)">
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.Md5LoginService(System.String,System.String)">
             <summary>
             登录服务
             </summary>

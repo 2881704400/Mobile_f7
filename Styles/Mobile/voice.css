@@ -14,7 +14,7 @@
 	width: 70px;
 	height: 35px;
 	border-radius: 0 0 70px 70px;
-	background-color: #F2F3F5;
+	/*background-color: #F2F3F5;*/
 	position: absolute;
 	left: 50%;
 	bottom: 15px;
@@ -33,6 +33,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	    box-shadow: 0px 0px 50px white;
 }
 
 .video-content-btn div img {
@@ -125,7 +126,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	text-align: justify
+	/*text-align: justify*/
 }
 
 .stay-right {
@@ -160,16 +161,18 @@
 }
 
 .popup-voices .voice-arrow-dialog {
-	width: 86px;
-	height: 24px;
-	position: absolute;
-	left: 50%;
-	margin-left: -43px;
-	bottom: 85px;
-	color: #FFFFFF;
-	font-size: 0.75rem;
-	text-align: center;
-	line-height: 24px;
+    /* width: 86px; */
+    height: 24px;
+    position: absolute;
+    left: 50%;
+    /* margin-left: -43px; */
+    bottom: 85px;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 24px;
+    white-space: nowrap;
+    transform: translateX(-50%);
 }
 
 .popup-voices .voice-arrow-box {

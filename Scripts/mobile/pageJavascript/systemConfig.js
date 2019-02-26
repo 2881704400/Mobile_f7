@@ -690,38 +690,38 @@ function upInforEdict(){
 			    val=$(this).find("input").val();
 				if(idStr=="equip_no"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
 				}
 				else if(idStr=="canexecution"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+canexecution+"'"
 					}
 				}else if(idStr=="record"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+record+"'"
 					}
 				}else if(idStr=="inversion"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+inversion+"'"
 					}
 				}else if(idStr=="mapping"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+mapping+"'"
 					}
 				}else if(idStr=="curve_rcd"){
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+curve_rcd+"'"
 					}
@@ -729,7 +729,7 @@ function upInforEdict(){
 				else if(idStr=="ZiChanID"){
 					var upval=$(this).find("input").attr("upval");
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -737,7 +737,7 @@ function upInforEdict(){
 				else if(idStr=="related_video"){
 					var upval=$(this).find("input").attr("upval");
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+upval+"'"
 					}
@@ -746,7 +746,7 @@ function upInforEdict(){
 				}
 				else{
 					updateObj={
-						id:"'"+$("#equip_no").val()+"'",
+						"id":$("#equip_no").val(),
 						"listName":idStr,
 						"vlaue":"'"+val+"'"
 					}
@@ -774,7 +774,6 @@ function upInforEdict(){
 			})
 			
 		}
-
 }
 function lookOtherInfor(type){
 	myApp.popup.open(".popup-config")
