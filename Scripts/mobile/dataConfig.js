@@ -139,11 +139,7 @@ var sysFourMenu =[
         name_en: 'Event query',
         href_zh: '/eventSearch/',
         href_en: '/mobile-en/eventSearch_en/',
-<<<<<<< HEAD
         color: '#4284FE,#2e57a2',
-=======
-        color: '#4284FE,#4284FE',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-xintubiao-',
         equipNo: '',
         setNo: '',
@@ -154,11 +150,7 @@ var sysFourMenu =[
         name_en: 'system configuration',
         href_zh: '/equipConfigList/',
         href_en: '/mobile-en/equipConfigList_en/',
-<<<<<<< HEAD
         color: '#e499b1,#FF4582',
-=======
-        color: '#FF4582,#FF4582',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-navicon-xtpz',
         equipNo: '',
         setNo: '',
@@ -169,11 +161,7 @@ var sysFourMenu =[
         name_en: 'Alarm schedule',
         href_zh: '/schedule/',
         href_en: '/mobile-en/schedule_en/',
-<<<<<<< HEAD
         color: '#dc9597,#e23037',
-=======
-        color: '#FF4F55,#FF4F55',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-paibiao',
         equipNo: '',
         setNo: '',
@@ -184,11 +172,7 @@ var sysFourMenu =[
         name_en: 'Equipment linkage',
         href_zh: '/equipLinkage/',
         href_en: '/mobile-en/equipLinkage_en/',
-<<<<<<< HEAD
         color: '#7a9ae0,#3464ca',
-=======
-        color: '#3961B6,#3961B6',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-app_icons--',
         equipNo: '',
         setNo: '',
@@ -203,11 +187,7 @@ var commonlyUsed =[
         name_en: 'List video',
         href_zh: '/Video/',
         href_en: '/mobile-en/Video_en/',
-<<<<<<< HEAD
         color: '#ecdaa5,#d8ac31',
-=======
-        color: '#FFBC01,#FFBC01',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_video',
         equipNo: '',
         setNo: '',
@@ -218,11 +198,7 @@ var commonlyUsed =[
         name_en: 'Map monitoring',
         href_zh: '/videoControl/',
         href_en: '/mobile-en/videoControl_en/',
-<<<<<<< HEAD
         color: '#81d1f3,#62D1FF',
-=======
-        color: '#62D1FF,#62D1FF',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_control',
         equipNo: '',
         setNo: '',
@@ -233,11 +209,7 @@ var commonlyUsed =[
         name_en: 'PPT',
         href_zh: '/mettingPPT/',
         href_en: '/mobile-en/mettingPPT_en/',
-<<<<<<< HEAD
         color: '#c695e6,#5d3477',
-=======
-        color: '#8354A2,#8354A2',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_ppt',
         equipNo: '',
         setNo: '',
@@ -248,11 +220,7 @@ var commonlyUsed =[
         name_en: 'Welcome speech',
         href_zh: '/welcomeWords/',
         href_en: '/mobile-en/welcomeWords_en/',
-<<<<<<< HEAD
         color: '#e0a8bb,#F53173',
-=======
-        color: '#F53173,#F53173',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_welcome',
         equipNo: '',
         setNo: '',
@@ -268,11 +236,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_home',
         equipNo: '300',
         setNo: '10',
-<<<<<<< HEAD
         color: '#8bc3ef,#3c81b7',
-=======
-        color: '#6db0e4,#065ea2',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -281,11 +245,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jz',
         equipNo: '300',
         setNo: '2',
-<<<<<<< HEAD
         color: '#d49ca8,#f50538',
-=======
-        color: '#DB5874,#DB5874',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -294,11 +254,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hb',
         equipNo: '300',
         setNo: '31',
-<<<<<<< HEAD
         color: '#d7b1ea,#a40df3',
-=======
-        color: '#BC7ADE,#BC7ADE',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -307,11 +263,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hl',
         equipNo: '300',
         setNo: '32',
-<<<<<<< HEAD
         color: '#96d2e6,#00BAF9',
-=======
-        color: '#00BAF9,#00BAF9',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -320,11 +272,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_bj',
         equipNo: '300',
         setNo: '33',
-<<<<<<< HEAD
         color: '#f5999e,#F22834',
-=======
-        color: '#F22834,#F22834',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -333,11 +281,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_pw',
         equipNo: '300',
         setNo: '34',
-<<<<<<< HEAD
         color: '#f1d499,#f3ac1e',
-=======
-        color: '#FAB427,#FAB427',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -346,11 +290,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '3',
-<<<<<<< HEAD
         color: '#eca7a0,#FC6758',
-=======
-        color: '#FC6758,#FC6758',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -359,11 +299,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jt',
         equipNo: '300',
         setNo: '4',
-<<<<<<< HEAD
         color: '#b8e29d,#55a91f',
-=======
-        color: '#73DC30,#73DC30',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -372,11 +308,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dw',
         equipNo: '300',
         setNo: '11',
-<<<<<<< HEAD
         color: '#efd29c,#e29b12',
-=======
-        color: '#ECB752,#ECB752',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -385,11 +317,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dsj1',
         equipNo: '300',
         setNo: '17',
-<<<<<<< HEAD
         color: '#d0f3b2,#6cde08',
-=======
-        color: '#2C3D1D,#2C3D1D',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -398,11 +326,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jy',
         equipNo: '300',
         setNo: '18',
-<<<<<<< HEAD
         color: '#a6dbe0,#22bbca',
-=======
-        color: '#03B8C9,#03B8C9',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -411,11 +335,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jd',
         equipNo: '300',
         setNo: '25',
-<<<<<<< HEAD
         color: '#ecd5a7,#FBB730',
-=======
-        color: '#FBB730,#FBB730',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -424,11 +344,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_cg',
         equipNo: '300',
         setNo: '81',
-<<<<<<< HEAD
         color: '#bacea3,#7cbd31',
-=======
-        color: '#96D054,#96D054',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -437,11 +353,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_gj',
         equipNo: '300',
         setNo: '82',
-<<<<<<< HEAD
         color: '#a6f1ed,#16cdea',
-=======
-        color: '#6BD61F,#6BD61F',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -450,11 +362,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_3d3d',
         equipNo: '300',
         setNo: '83',
-<<<<<<< HEAD
         color: '#e09c96,#e81c08',
-=======
-        color: '#F66B5D,#F66B5D',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -463,11 +371,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hbxx',
         equipNo: '300',
         setNo: '84',
-<<<<<<< HEAD
         color: '#ecdc93,#e8c118',
-=======
-        color: '#DEBF39,#DEBF39',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -476,11 +380,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_3d',
         equipNo: '300',
         setNo: '85',
-<<<<<<< HEAD
         color: '#eaafc5,#FE2F7D',
-=======
-        color: '#FE2F7D,#FE2F7D',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -489,11 +389,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dj',
         equipNo: '300',
         setNo: '86',
-<<<<<<< HEAD
         color: '#a4cce8,#1095f3',
-=======
-        color: '#0294FB,#0294FB',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -502,11 +398,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_dt',
         equipNo: '300',
         setNo: '92',
-<<<<<<< HEAD
         color: '#de98aa,#e00f44',
-=======
-        color: '#F84371,#F84371',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -515,11 +407,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '100',
-<<<<<<< HEAD
         color: '#9fd9de,#03B8C9',
-=======
-        color: '#03B8C9,#03B8C9',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -528,11 +416,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_equipList',
         equipNo: '300',
         setNo: '98',
-<<<<<<< HEAD
         color: '#ec9da6,#ec263c',
-=======
-        color: '#F24F61,#F24F61',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },  
     {
@@ -541,11 +425,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '99',
-<<<<<<< HEAD
         color: '#d3b4ea,#9e2aea',
-=======
-        color: '#B363E8,#B363E8',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },  
     {
@@ -554,11 +434,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_gk',
         equipNo: '300',
         setNo: '2000',
-<<<<<<< HEAD
         color: '#e8cea1,#FBB132',
-=======
-        color: '#FBB132,#FBB132',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
      {
@@ -567,11 +443,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_zm',
         equipNo: '300',
         setNo: '101',
-<<<<<<< HEAD
         color: '#98b3ec,#0a52ea',
-=======
-        color: '#3961B6,#3961B6',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },                      
     {
@@ -580,11 +452,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_welcome',
         equipNo: '300',
         setNo: '10112',
-<<<<<<< HEAD
         color: '#86bfe8,#2093e8',
-=======
-        color: '#399AE0,#399AE0',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -593,11 +461,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10107',
-<<<<<<< HEAD
         color: '#8ed5ec,#0baee4',
-=======
-        color: '#46B5DA,#46B5DA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -606,11 +470,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hf',
         equipNo: '300',
         setNo: '6',
-<<<<<<< HEAD
         color: '#b5a1ec,#460de0',
-=======
-        color: '#7746FC,#7746FC',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -619,11 +479,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_fq',
         equipNo: '300',
         setNo: '10106',
-<<<<<<< HEAD
         color: '#23407d,#3961B6',
-=======
-        color: '#3961B6,#3961B6',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -632,11 +488,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_kt',
         equipNo: '300',
         setNo: '10105',
-<<<<<<< HEAD
         color: '#dec9a8,#FCB540',
-=======
-        color: '#FCB540,#FCB540',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -645,11 +497,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jk',
         equipNo: '1005',
         setNo: '1500',
-<<<<<<< HEAD
         color: '#d3f3b5,#82d632',
-=======
-        color: '#7FD929,#7FD929',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -658,11 +506,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_hys',
         equipNo: '1005',
         setNo: '1000',
-<<<<<<< HEAD
         color: '#e99bef,#e420d5',
-=======
-        color: '#3961B6,#3961B6',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -671,11 +515,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_jk',
         equipNo: '300',
         setNo: '10096',
-<<<<<<< HEAD
         color: '#f1c7a4,#ea7815',
-=======
-        color: '#80D831,#80D831',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -684,11 +524,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xf',
         equipNo: '300',
         setNo: '10112',
-<<<<<<< HEAD
         color: '#93aeea,#1b60f1',
-=======
-        color: '#3961B6,#3961B6',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
     {
@@ -697,11 +533,7 @@ var KOvm =[
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
         setNo: '10093',
-<<<<<<< HEAD
         color: '#a2d3e4,#12afe8',
-=======
-        color: '#0BBAFA,#0BBAFA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         value: null,
     },
 ];
@@ -713,11 +545,7 @@ var pptPattern =[
     {
         name: '打开PPT',
         name_en: 'Open PPT',
-<<<<<<< HEAD
         color: '#9cd5ea,#1892bd',
-=======
-        color: '#0BBAFA,#0BBAFA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_ppt',
         equipNo: '4001',
         setNo: '1',
@@ -726,11 +554,7 @@ var pptPattern =[
     {
         name: '关闭',
         name_en: 'Close PPT',
-<<<<<<< HEAD
          color: '#9cd5ea,#1892bd',
-=======
-         color: '#0BBAFA,#0BBAFA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_c_l',
         equipNo: '4001',
         setNo: '7',
@@ -739,11 +563,7 @@ var pptPattern =[
     {
         name: '上一页',
         name_en: 'Previous page',
-<<<<<<< HEAD
          color: '#9cd5ea,#1892bd',
-=======
-         color: '#0BBAFA,#0BBAFA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_prev',
         equipNo: '4001',
         setNo: '2',
@@ -752,11 +572,7 @@ var pptPattern =[
     {
         name: '下一页',
         name_en: 'Next page',
-<<<<<<< HEAD
          color: '#9cd5ea,#1892bd',
-=======
-         color: '#0BBAFA,#0BBAFA',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_next',
         equipNo: '4001',
         setNo: '3',
@@ -769,11 +585,7 @@ var jjPattern =[
     {
         name: '开始讲解',
         name_en: 'explain',
-<<<<<<< HEAD
         color: '#e4c586,#e89e08',
-=======
-        color: '#FAB427,#FAB427',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_jj',
         equipNo: '1007',
         setNo: '1',
@@ -782,11 +594,7 @@ var jjPattern =[
     {
         name: '停止讲解',
         name_en: 'Stop',
-<<<<<<< HEAD
         color: '#e4c586,#e89e08',
-=======
-        color: '#FAB427,#FAB427',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_s_t',
         equipNo: '1007',
         setNo: '2',
@@ -795,11 +603,7 @@ var jjPattern =[
     {
         name: '暂停讲解',
         name_en: 'suspend',
-<<<<<<< HEAD
         color: '#e4c586,#e89e08',
-=======
-        color: '#FAB427,#FAB427',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_stop_0',
         equipNo: '1007',
         setNo: '3',
@@ -808,11 +612,7 @@ var jjPattern =[
     {
         name: '继续讲解',
         name_en: 'Continue',
-<<<<<<< HEAD
         color: '#e4c586,#e89e08',
-=======
-        color: '#FAB427,#FAB427',
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         icon: 'iconfont icon-f7_j_x',
         equipNo: '1007',
         setNo: '4',
@@ -825,11 +625,7 @@ var WORDcommand ={
     "backgroundImage":{  
         name: '背景图片',
         name_en: 'Background picture',
-<<<<<<< HEAD
         url: 'D:\\AlarmCenter\\ganwei_mobile_f7\\Image\\bg',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
-=======
-        url: 'D:\\AlarmCenter\\AlarmCenterWeb2.0\\BGImages',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
      },
      "Priviewwel":{
         name: '预览欢迎词',
@@ -933,11 +729,7 @@ var selLanguageZH =[
          "voicearrowdialog": "长按说话..",
          "id":"voiceAlarm",
      },                                  
-<<<<<<< HEAD
      ],selLanguageEN =[
-=======
-],selLanguageEN =[
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
      {
         "name":"设置页面",
         "url": "/mobile-en/setPage_en/",

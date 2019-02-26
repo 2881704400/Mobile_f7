@@ -18,11 +18,7 @@ $(function() {
     $$('.popup-voices').on('popup:close', function(e, popup) {
         $(".view-main").css({
             filter: 'blur(0px)'
-<<<<<<< HEAD
         });
-=======
-        })
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
     });
     document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
     document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
@@ -30,11 +26,6 @@ $(function() {
     //记录选择
      if (!window.localStorage.voiceList) {window.localStorage.voiceList = "1";} 
      try {myJavaFun.VoiceOpen();myJavaFun.initMicrosoftSpeech();} catch (ex) {}
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 });
 
 function changeContentBoxBg() {
@@ -201,7 +192,6 @@ function callbackVoiceXFData(dt) {
     }
     var _url = "/api/Voice/voice_string";
     var _data = {
-<<<<<<< HEAD
         data_string: dt,
         userName: window.localStorage.userName
     }
@@ -227,32 +217,6 @@ function callbackVoiceXFData(dt) {
         } else {
             if (!voiceString) {
 
-=======
-        data_string: dt
-    }
-    ajaxServiceSendVoice("post", _url, true, _data, _successf, _error);
-    function _successf(dt) {
-
-        if (dt.HttpStatus == 200 && dt.HttpData.data) {
-            var result = dt.HttpData.data;
-
-            if (result == "") {
-                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>未识别！</span>":"<span> Unidentified！</span>");
-            } else {
-                result = result.replace("未识别语音,内容---", "");
-                result = result.replace("。", "");
-                $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + result + "</span>");
-                setTimeout(function() {
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + (window.localStorage.languageList == "0"?"<span>好的，开始执行：":"<span>Okay, let's get started：") + result + '..</span>' + ' </div>' + '</div>');
-                    $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + result + (window.localStorage.languageList == "0"?"已执行</span>":" executed</span>") + '</div>' + '</div>');
-                    $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
-                    changeContentBoxBg();
-                }, 500);
-            }
-        } else {
-            if (!voiceString) {
-
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
                 $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(window.localStorage.languageList == "0"?"<span>您好像没有说话哦！</span>":"<span>You don't seem to be talking！</span>");
             } else {
                 $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>" + voiceString + "</span>");
