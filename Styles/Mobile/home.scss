@@ -26,8 +26,14 @@ mixin：sass宏mixin
           dl{
             width: 100%;
             dt{}
+<<<<<<< HEAD
             dd{ 
                width: 100%;text-align: center;padding: 10px;overflow: hidden;
+=======
+            dd{ box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+               width: 100%;text-align: center;padding: 10px;overflow: hidden;
+                // background: #{$statsBgc};  
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
               .charts_bar{
                 width: 100%;#purchase_Bar{width: 100%;height: 190px;}
                 .barRightBorder{border-right: 1px solid #{$statsBorderColor};}
@@ -79,10 +85,17 @@ mixin：sass宏mixin
         }
         .statisticsTable{
          
+<<<<<<< HEAD
           padding: 10px; box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
           a{font-size: 8px;position: relative;
             p{font-family: serif;font-size: 1.5rem;margin: 0.2rem 0;} 
             &:after{content: "";width: 1px;transform: scaleX(0.5);height: 60%;border-right: 1px solid #e4d8b4;position: absolute;top: 25%;right: 0%;}
+=======
+          padding: 10px; box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+          a{font-size: 8px;position: relative;
+            p{font-family: serif;font-size: 1.5rem;margin: 0.2rem 0;} 
+            &:after{content: "";width: 1px;transform: scaleX(0.5);height: 60%;border-right: 1px solid #{$selectedColor};position: absolute;top: 25%;right: 0%;}
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
           }
           a:nth-of-type(1) p{color: red;}
           a:nth-of-type(2) p{color: #F18E2E;}

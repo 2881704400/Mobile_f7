@@ -51,16 +51,28 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
             .snapshot-ul {li {background: #{$situationContainerBgc};}}
             .snapshotMessage-ul {li{ background: #{$situationContainerBgc};}} 
         }
+<<<<<<< HEAD
     }
     /*顶部导航栏*/
     .navbar{
         background-color: #{$headerBgc};    
+=======
+
+    }
+    /*顶部导航栏*/
+    .navbar{
+        background-color: #{$headerBgc};
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         &>.navbar-inner{ 
             .left{
                 i{font-size: 1.5rem;color: #{$toolbarFontColor};}
                 i.icon-back{width: auto;height: auto;background-image: url()!important;}
                 i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+<<<<<<< HEAD
                 a{padding: 5px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.5rem;}}
+=======
+                a{padding: 5px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.3rem;}}
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
              }
             .title{color: #{$toolbarFontColor}; overflow: visible;text-overflow: unset;  }
             .right{
@@ -156,7 +168,11 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #equips,#equips_en { .equip-list{background: #{$situationContainerBgc}}}
 #ycAndyx #tabsWrap .tab .oneLine, #ycAndyx_en #tabsWrap .tab .oneLine{ background: #{$situationContainerBgc}; }
 #ycAndyx .toolbar .toolbar-inner, #ycAndyx_en .toolbar .toolbar-inner{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+<<<<<<< HEAD
 #ycAndyx .toolbar .toolbar-inner>a.tab-link, #ycAndyx_en .toolbar .toolbar-inner>a.tab-link{color: #{$situationFontColor};}
+=======
+
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 // 设置页
 .setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul{background: #{$situationContainerBgc}; }
 
@@ -175,12 +191,20 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 //系统配置
 #equipConfigList .content-wrap .sele-tile{color:  #{$situationFontColor};}
 #equipConfigList .list ul,#eventQuery .tabList, #systemConfig .tabList, #systemConfig_en .tabList{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+<<<<<<< HEAD
 #eventQuery .eventWrap li, #systemConfig .eventWrap li, #systemConfig_en .eventWrap li,#sysConfigEdict .page-content .list, #sysConfigEdict_en .page-content .list{color: #{$situationFontColor};}
 .item-input-wrap input{color: #{$situationFontColor}!important;}
 #sysConfigEdict .page-content .list ul, #sysConfigEdict_en .page-content .list ul{background: transparent;}
 #sysConfigEdict{ div.page-content{ ul:before{height: 0px;} } }
 #eventQuery .tabList .tab-link-active, #systemConfig .tabList .tab-link-active, #systemConfig_en .tabList .tab-link-active{color: #{$situationFontColor};}
 #equipConfigList_en .equipConfigList_container .eq-list ul, #equipConfigList .equipConfigList_container .eq-list ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+=======
+#eventQuery .eventWrap li, #systemConfig .eventWrap li, #systemConfig_en .eventWrap li,#sysConfigEdict .page-content .list, #sysConfigEdict_en .page-content .list{color: #{$situationFontColor};background: #{$situationBgc};}
+.item-input-wrap input{color: #{$situationFontColor}!important;}
+#sysConfigEdict .page-content .list ul, #sysConfigEdict_en .page-content .list ul{background: transparent;}
+#sysConfigEdict{ div.page-content{ ul:before{height: 0px;} } }
+
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 // 报警排表
 .scheduleContainer>.scheduleContent .equipGroupPublic>ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 .scheduleModifyPageContent,.scheduleContainer>.subnavbarTabel{background: #{$situationContainerBgc};}
@@ -197,6 +221,7 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 
 // 修改列表
 .ios .scheduleModifyPageContent .list,.md .scheduleModifyPageContent .list{margin: 0;padding-top: 10px;}
+<<<<<<< HEAD
 
 //实时视频
 #Video_content_ref  div.accordion-list{ margin: 10px 0px 50px 0px;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
@@ -208,5 +233,16 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 // 欢迎词
 .welcomeWordContents{color: #{$situationFontColor};background: #{$situationBgc};}
 .welcome-Word-control-boxs{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+=======
 
+//实时视频
+#Video_content_ref  div.accordion-list{  margin: 10px 0px 50px 0px;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 
+// PPT
+.pptActive,#Filelist{    margin: 10px 0;color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.mettingDetailsContent{color: #{$situationFontColor};background: #{$situationBgc};}
+
+// 欢迎词
+.welcomeWordContents{color: #{$situationFontColor};background: #{$situationBgc};}
+.welcome-Word-control-boxs{color: #{$situationFontColor};background: #{$situationContainerBgc};}

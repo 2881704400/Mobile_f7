@@ -166,10 +166,14 @@ var myApp = new Framework7({
     }, {
         path: '/mobile-en/scheduleModifyChild_en/',
         url: 'mobile-en/scheduleModifyChild_en.html',
+<<<<<<< HEAD
     }, {
         path: '/test/',
         url: 'test.html',
     }    
+=======
+    }   
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
     ],
     on: {
         pageInit: function(page) {
@@ -207,6 +211,19 @@ function InitEnsure() {
             var analyze = dt.HttpData.code;
             if (analyze == 200) {
                 $("#app").css("visibility", "visible");
+<<<<<<< HEAD
+=======
+
+                // $.ajax({
+                //     type: "post",
+                //     url: service + "/UserPermissions",
+                //     data: "userName=" + window.localStorage.userName,
+                //     success: function(usersDt) {
+                //         getWebUser = $(usersDt).children("UserItem");
+                //         // authPage(dt);//权限设置
+                //     }
+                // });
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
             }
         },
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
@@ -722,10 +739,14 @@ function modifyZnUs(){
 }
 //切换语音
 function getLanguageChoice(val){
+<<<<<<< HEAD
   try{
     myJavaFun.DestroyIvw();
   } catch(e){}
   
+=======
+
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
   switch(val)
   {
     case "0": //讯飞英文
@@ -753,11 +774,14 @@ function getLanguageChoice(val){
 
 }
 
+<<<<<<< HEAD
 function voiceCloseFun()
 {
     try{myJavaFun.BackVoiceUI();}catch(e){}//语音注销
 }
 
+=======
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 //二维码扫描调用
 function RichScan(){
     try{

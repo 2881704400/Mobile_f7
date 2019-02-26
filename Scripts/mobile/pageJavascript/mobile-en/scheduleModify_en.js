@@ -100,6 +100,7 @@ function publicAjaxModify_en(jsonString, url, index) {
             scheduleAlertSusscess.open();
             switch (index) {
                 case 1:
+<<<<<<< HEAD
                     requestUser_en();
                     break;
                 case 2:
@@ -113,6 +114,21 @@ function publicAjaxModify_en(jsonString, url, index) {
                     break;
                 case 5:
                     requestSpeAlmReport_en();
+=======
+                    requestUser();
+                    break;
+                case 2:
+                    requestEquipGroup();
+                    break;
+                case 3:
+                    requestAlmReport(requestEGAReport);
+                    break;
+                case 4:
+                    requestWeekAlmReport();
+                    break;
+                case 5:
+                    requestSpeAlmReport();
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
                     break;
                 default:
                     break;

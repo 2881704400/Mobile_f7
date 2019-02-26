@@ -211,9 +211,12 @@ $(document).on("page:beforein", ".page[data-page='equipLinkageModify_en']", func
 });
 $(document).on("page:beforein", ".page[data-page='scheduleModifyChild_en']", function (e) {
     initPageJS('scheduleModifyChild_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+<<<<<<< HEAD
 });
 
 // test
 $(document).on("page:beforein", ".page[data-page='test']", function (e) {
     initPageJS('test', '/Scripts/mobile/pageJavascript/');
+=======
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 });

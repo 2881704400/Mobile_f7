@@ -246,13 +246,21 @@ function welcomeWords() {
                 color: '#3E7CFB'
             });
             welcome_activeSave(this, 1);
+<<<<<<< HEAD
             get_no_val(this, equipNo, setNo, "");
+=======
+            get_no(this, equipNo, setNo, "");
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         } else {
             $(this).find('i').css({
                 color: '#FF4747'
             });
             $("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('i').removeClass().addClass("iconfont icon-xuanzhong");
+<<<<<<< HEAD
             get_no_val(this, equipNo, setNo, "");
+=======
+            get_no(this, equipNo, setNo, "");
+>>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         }
     });
     /*保存欢迎词*/
