@@ -106,7 +106,6 @@ function VideoBaner(className, slistName, jsonString) {
         activeIndex = parseInt($(".swiper-slide-active").attr("dataid"))-1;
         $(".swiper-paginationTrailer span:eq("+activeIndex+")").addClass("swiper-pagination-bullet-active").siblings().removeClass("swiper-pagination-bullet-active");
      }, false);
-   
 }
 //常用
 function commonlyUsedFun(className, classListName, jsonString) {

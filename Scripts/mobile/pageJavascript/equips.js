@@ -1,4 +1,5 @@
-﻿function equips() {
+﻿var equipListStatus = true;
+function equips() {
 	switchToolbar("equipsTool");
 	myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
 	allEquipSatatus();
@@ -32,6 +33,10 @@
 		searchContainer: '.equip-list',
 		searchIn: '.item-title',
 	});
+
+
+
+
 }
 var AllEquipStat;
 
@@ -72,6 +77,8 @@ function treeConfList() {
 }
 //添加节点到html
 function treeHTML(len, name, equip_no, thisDom) {
+	if(equipListStatus)//开启signalR    
+	  {signalR.connectServer(equip_no);equipListStatus = false;}
 	var newRow = "";
 	if(len > 0) {
 		var alarm = selectAlarm(name);
@@ -83,7 +90,7 @@ function treeHTML(len, name, equip_no, thisDom) {
 		}
 		newRow = `<li class="accordion-item" onclick="onTreePar(this,'${name}',event)">
     			 <a href="#" class="item-content item-link">
-			    	<div class="item-media">
+			    	<div class="item-media equipListStatus_${equip_no}">
 			        	<i class="iconfont icon-dian ${alarmClass}"></i>
 			        </div>
 			        <div class="item-inner">
@@ -111,16 +118,15 @@ function treeHTML(len, name, equip_no, thisDom) {
 						name = allEquipStat[1];
 					}
 					newRow = `<li>
-								    <a href="/ycAndyx/#${equip_no}&${name}" class="item-link item-content">
-								        <div class="item-media">
+								<a href="/ycAndyx/#${equip_no}&${name}" class="item-link item-content">
+								        <div class="item-media equipListStatus_${equip_no}">
 								        	<i class="iconfont icon-dian ${iconColorClass}"></i>
 								        </div>
 								        <div class="item-inner">
 								          <div class="item-title">${name}</div>
 								        </div>
 								    </a>
-								</li>
-				        		`
+								</li>`;
 					if(allEquipStat[2] == 'HaveAlarm') {
 						thisDom.prepend(newRow);
 					} else {
@@ -130,7 +136,7 @@ function treeHTML(len, name, equip_no, thisDom) {
 			}
 			if(newRow == "") {
 				newRow = `<li><a href="#" class="item-link item-content">
-								        <div class="item-media">
+								        <div class="item-media equipListStatus_${equip_no}">
 								        	<i class="iconfont icon-dian noCom"></i>
 								        </div>
 								        <div class="item-inner">

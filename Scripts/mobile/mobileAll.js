@@ -606,6 +606,16 @@ function get_no_val(that, set_equip, set_no, values) {
 
 }
 function get_no_set(dt,values) {
+
+   //动画
+   $($(dt).hasClass("bomeBtn"))
+     {
+        $(dt).find("i").addClass("startAnimation");
+        setTimeout(function(){
+            $(dt).find("i").removeClass("startAnimation");
+        },1200);
+     }
+
     var set_equipOld="", set_noOld="";
     try{
         set_equipOld = $(dt).attr("set_equip");
@@ -793,7 +803,7 @@ connectServer: function(equipNo) {
 
       // yxp有广播消息
       hubProxy.on('sendYxpSingle', data => {
-         console.log('yxxxxp-------------------', data)
+        //  console.log('yxxxxp-------------------', data)
          try{
           let index = data.split(",")[0],status = data.split(",")[4];
           if(status == "True")
@@ -809,7 +819,14 @@ connectServer: function(equipNo) {
         // console.log('equip-------------------', data)
         try{
           let index = data.split(",")[0],status = data.split(",")[2];
-          $("#imgConf_"+index).find("img").attr("src","/Image/alarm/"+status+".png"); 
+          // $("#imgConf_"+index).find("img").attr("src","/Image/alarm/"+status+".png"); 
+          if(status == "CommunicationOK")
+            $(".equipListStatus_"+index).find("i").removeClass("noCom alarm").addClass("comOk");
+          else if(status == "HaveAlarm")
+            $(".equipListStatus_"+index).find("i").removeClass("noCom comOk").addClass("alarm");
+          else
+            $(".equipListStatus_"+index).find("i").removeClass("comOk alarm").addClass("noCom");
+
         }catch(e){}
       });
       

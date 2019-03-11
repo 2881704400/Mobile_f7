@@ -15,10 +15,6 @@
     //语言初始化
     $("#languageList").find("option:eq(0)").attr("selected", true);
     $("#languageListName>.item-after").html("中文");
-<<<<<<< HEAD
-=======
-    // modifyZnUs();
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
     //用户
     $(".userClassName p").html(window.localStorage.userName);
     myApp.navbar.hide('.navbar');
@@ -55,10 +51,6 @@
 function onVoiceList() {
     window.localStorage.voiceList = $("#voiceList").find("option:selected").attr("value");
     // getLanguageChoice($("#voiceList").find("option:selected").attr("data-value"));
-<<<<<<< HEAD
-=======
-
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 }
 
 function selectLanguage() {

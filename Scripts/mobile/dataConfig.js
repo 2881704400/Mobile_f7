@@ -1,6 +1,6 @@
 ﻿function getJurisdictionData(){
     myApp.dialog.progress((window.localStorage.languageList == 1?'<a style="font-size: 1rem">Loading...</a>':'<a style="font-size: 1rem">加载中...</a>'));
-  // 权限管理
+  // 权限管理 
   var JurisdictionArray = [];
   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData",{async:false})).done(function(n,l){
     let result = n.HttpData;

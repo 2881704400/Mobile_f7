@@ -23,6 +23,12 @@ function equipLinkage() {
     toastCenterLinkage = myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
     toastCenterLinkageSuccess = myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
 }
+//左侧添加菜单
+function transformReportingObstaciesMenu1(){
+
+   $(".scheduleRightBottomBtn").hasClass("transformReportingMenu")?$(".scheduleRightBottomBtn").removeClass("transformReportingMenu"):$(".scheduleRightBottomBtn").addClass("transformReportingMenu");
+
+}
 //初始化列表
 var linkage_init, setparm_init;
 var listAdd = [],linkageEquips = [];

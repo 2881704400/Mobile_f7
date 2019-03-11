@@ -245,11 +245,9 @@ function jsonTodata(data, tableName, alarm) {
 			      			</div>
 			      		</li>`;
             if (alarmImg == 'alarm') {
-//              $("#" + tableName + " .tabContent").prepend(newRow);
                  $("#" + tableName ).prepend(newRow);
             }
             else {
-//              $("#" + tableName + " .tabContent").append(newRow);
                 $("#" + tableName ).append(newRow);
                 
             }

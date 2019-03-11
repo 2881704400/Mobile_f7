@@ -1,0 +1,21 @@
+insert into GWAddinModule(ID,Name,ClassName,HelpPath,MultiScreens) values
+(90016,'APP场景按钮控制','AlarmCenter.APP.Home.home_fsk_btn','AM90016','home_control_btn'),
+(90017,'APP视频欢迎词功能','AlarmCenter.APP.Home.home_Commonlyused','AM90017','home_Commonlyused'),
+(90018,'APP快捷功能','AlarmCenter.APP.Home.home_shortcutFunction','AM90018','home_shortcutFunction'),
+(90019,'APP实时快照','AlarmCenter.APP.Home.home_snapShot','AM90019','home_snapShot'),
+(90020,'APP系统四菜单','AlarmCenter.APP.Home.home_sysMenu','AM90020','home_sysMenu')
+
+CREATE TABLE [dbo].[GW_Language](
+ [id] [int] IDENTITY(1,1) NOT NULL,
+ [userName] [nvarchar](50) NULL,
+ [status] [int] NULL
+)
+
+insert into GW_Language(userName,status) values('zkx',0)
+
+
+alter table AlmReport add id int IDENTITY(1,1) NOT NULL
+
+alter table SpeAlmReport add id int IDENTITY(1,1) NOT NULL
+
+alter table WeekAlmReport add id int IDENTITY(1,1) NOT NULL

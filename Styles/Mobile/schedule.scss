@@ -44,7 +44,7 @@
                 &>label:last-child{border-right: 0;}
              }
             &>ul{
-                position: absolute;left: 0px;top: 10px;right: 0px;overflow-y: auto;margin-bottom: 50px;
+                position: absolute;left: 0px;top: 1px;right: 0px;overflow-y: auto;margin-bottom: 50px;
                 &>li{
                     font-size: 13px;height: 50px;line-height: 50px;position: relative;
                     .delBtn{background: #FF3B30;}
@@ -80,14 +80,14 @@
                 &>label:last-child{border-right: 0;}
             }
             &>ul{
-                margin: 10px 0px 50px 0px;
+                margin: 1px 0px 50px 0px;
                 &>li{
                     font-size: 14px;height: 40px;line-height: 40px;position: relative;
                     .delBtn{background: #FF3B30;}
                 }
             }
         }
-        #equipLinkage_edit{height: 100%;padding: 10px 0px 50px 0px;margin: 0;overflow-y: auto;&>ul{margin-bottom: 50px;}}
+        #equipLinkage_edit{height: 100%;padding: 1px 0px 50px 0px;margin: 0;overflow-y: auto;&>ul{margin-bottom: 50px;}}
         .item-input-wrap{border-bottom: 1px solid #{$tabSelected};}
     }
         #schedule_user>table{min-width: auto;}
@@ -195,8 +195,14 @@
 //选中菜单颜色
 .selectScheduleMenu{font-size: 12px;border-bottom: 1px solid #{$tabSelected};}
 //添加按钮
-.scheduleRightBottomBtn{position: absolute;right: 5%;bottom: 10%;&>a{&>i{font-size: 3rem;color: #{$tabSelected};}}}
-
-
+// .scheduleRightBottomBtn{position: absolute;right: 5%;bottom: 10%;&>a{&>i{font-size: 3rem;color: #{$tabSelected};}}}
 .item-input-wrap input{border: 0;}
 .dialog-input-field .item-input-wrap input{border-bottom: 1px solid #{$tabSelected}!important;}
+//左侧按钮
+.scheduleRightBottomBtn{    position: absolute; left: 0%; bottom: 50%; width: 20%; height: 25%; transition: all 1s;}
+.scheduleRightBottomBtn a{width: 100%;height: 100%;display: inline-block;}
+.transformReportingMenu{left: -19%!important;}
+.transformReportingMenu img{transform: rotateY(180deg);}
+.scheduleRightBottomBtn img{position: absolute;left: 100%;top: 50%;margin-top: -1rem;width:2rem;height: 2rem;}
+.scheduleRightBottomBtn span{width: 100%;height: 100%;display: inline-block;border-top-right-radius: 20px; border-bottom-right-radius: 20px; background: #258de5;overflow: hidden;}
+.scheduleRightBottomBtn button{    width: 100%; height: 100%; border: 0; background: transparent; color: white;}

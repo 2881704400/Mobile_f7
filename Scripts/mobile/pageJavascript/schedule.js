@@ -30,6 +30,13 @@ function schedule() {
     //人员数据请求
     schedule_public_username.length = 0;
     requestUser();
+    
+}
+//左侧添加菜单
+function transformReportingObstaciesMenu(){
+
+   $(".scheduleRightBottomBtn").hasClass("transformReportingMenu")?$(".scheduleRightBottomBtn").removeClass("transformReportingMenu"):$(".scheduleRightBottomBtn").addClass("transformReportingMenu");
+
 }
 // ********************************************************************************
 // 人员

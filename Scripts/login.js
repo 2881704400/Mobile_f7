@@ -2,6 +2,13 @@
 var terminal = null;
 var urlSearch = '';
 window.onload = function() {
+
+
+
+
+
+
+
 	var hg = ($(document).height() / 2 - $(".signin-content").height() / 2) - 50;
 	$(".signin-content").css("top", hg + "px");
 

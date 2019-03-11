@@ -19,14 +19,15 @@ function mettingDetails() {
                     onClick: function() {
                         addURL1();
                         toURL1(thisValue1);
-                        //发送PPT关闭命令
-                        $(".closeFile").click();
+
                     }
                 }, {
                     text: "确认",
                     onClick: function() {
                         addURL1();
                         toURL1(thisValue1);
+                        //发送PPT关闭命令
+                        $(".closeFile").click();                        
                     }
                 }]
             }).open();
