@@ -73,12 +73,37 @@
                  </span> -->
                  <ul class="publicTable"></ul>
             </section>  
-            <div class="scheduleRightBottomBtn">
-            <a class="link" href="#" id="schedule_user_nav" onclick='newlyBuildUser_en(" "," "," "," "," ",2);'><i class="iconfont icon-f7_add"></i></a>
-            <a class="link displayNone" href="#" id="schedule_equip_nav" onclick='equipAlert_en("",4);'><i class="iconfont icon-f7_add"></i></a>
-            <a class="link displayNone" href="#" id="schedule_administartor_nav" onclick='newlyBuildAlmReport_en("",2);'><i class="iconfont icon-f7_add"></i></a>
-            <a class="link displayNone" href="#" id="schedule_specificDate_nav" onclick='newlyBuildWeekAlmReport_en("",2);'><i class="iconfont icon-f7_add"></i></a>
-            <a class="link displayNone" href="#" id="schedule_weeklytable_nav" onclick='newlyBuildSpeAlmReport_en("",2);'><i class="iconfont icon-f7_add"></i></a>
+            <div class="scheduleRightBottomBtn transformReportingMenu">
+                <a class="link" href="#" id="schedule_user_nav" >
+                        <span>
+                            <button onclick='newlyBuildUser_en(" "," "," "," "," ",2);'>Newly added</button>
+                        </span>
+                        <img src="/Image/phone/directionjt.png" alt="" onclick="transformReportingObstaciesMenu()"/>
+                </a>
+                <a class="link displayNone" href="#" id="schedule_equip_nav" >
+                        <span>
+                             <button onclick='equipAlert_en("",4);'>Newly added</button>
+                         </span>
+                        <img src="/Image/phone/directionjt.png" alt="" onclick="transformReportingObstaciesMenu()"/>
+                </a>
+                <a class="link displayNone" href="#" id="schedule_administartor_nav" >
+                        <span>
+                             <button onclick='newlyBuildAlmReport_en("",2);'>Newly added</button>
+                         </span>
+                        <img src="/Image/phone/directionjt.png" alt="" onclick="transformReportingObstaciesMenu()"/>
+                </a>
+                <a class="link displayNone" href="#" id="schedule_specificDate_nav" >
+                        <span>
+                             <button onclick='newlyBuildWeekAlmReport_en("",2);'>Newly added</button>
+                         </span>
+                        <img src="/Image/phone/directionjt.png" alt="" onclick="transformReportingObstaciesMenu()"/>
+                </a>
+                <a class="link displayNone" href="#" id="schedule_weeklytable_nav" >
+                        <span>
+                             <button onclick='newlyBuildSpeAlmReport_en("",2);'>Newly added</button>
+                         </span>
+                        <img src="/Image/phone/directionjt.png" alt="" onclick="transformReportingObstaciesMenu()"/>
+                </a>
             </div>                      
         </div>
         </div>

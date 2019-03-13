@@ -31,6 +31,12 @@ function schedule_en() {
     schedule_public_username.length = 0;
     requestUser_en();
 }
+//左侧添加菜单
+function transformReportingObstaciesMenu(){
+
+   $(".scheduleRightBottomBtn").hasClass("transformReportingMenu")?$(".scheduleRightBottomBtn").removeClass("transformReportingMenu"):$(".scheduleRightBottomBtn").addClass("transformReportingMenu");
+
+}
 // ********************************************************************************
 // 人员
 var schedule_public_username = [];

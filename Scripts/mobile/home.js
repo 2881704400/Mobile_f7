@@ -4,7 +4,8 @@ function onHomePage() {
     authorizationName();
     getJurisdictionData();
     getAppStatusBarHeight();
-
+    //切换中英文右上角链接
+    tranformMenu(window.localStorage.languageList);
 
 }
 

@@ -304,7 +304,7 @@ function loadNameMobile() {
                         var result = n.HttpData.data;
                         if (result.length>0 && result[0].status != "0" && n.HttpData.code == 200) {
                            window.localStorage.languageList = 1;
-                           tranformMenu(1);
+                           // tranformMenu(1);
                         } 
                         else
                         {
@@ -733,7 +733,12 @@ function modifyZnUs(){
 //切换语音
 function getLanguageChoice(val){
   try{
+
     myJavaFun.DestroyIvw();
+    //先移除
+    document.getElementById("videoContentBtnId").removeEventListener('touchstart', onTouchStart);
+    document.getElementById("videoContentBtnId").removeEventListener('touchend', onTouchEnd);
+    document.getElementById("videoContentBtnId").removeEventListener('touchmove', onTouchMove);
   } catch(e){}
   
   switch(val)
@@ -891,14 +896,10 @@ connectServer: function(equipNo) {
   //中英文目录切换
   function tranformMenu(val){
     let obj;
-    if(val == 1)
-      obj = selLanguageEN;
-    else
-        obj= selLanguageZH;
-    window.localStorage.languageList = val;  //1对应英文
+    val == 1?obj = selLanguageEN:obj= selLanguageZH;
     obj.forEach(function(item,index){
         if(item.id =="setPageTool"){
-            $("#"+item.id).attr("href",item.url)
+            $(".navbar div.right a").attr("href",item.url)
         }
         else
         {
