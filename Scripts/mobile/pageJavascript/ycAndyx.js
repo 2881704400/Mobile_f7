@@ -400,7 +400,7 @@ var curveDrop = -5;
 //遥测表曲线值
 var dataCurve = new Array();
 //动态数据
-var dynamicCurve;
+var dynamicCurve,popover ;
 function curveBox(number,nameCurve,dts){
 	var curveHeight = 300;//曲线高度
 //  if ($(window).width() > 768) {
@@ -408,7 +408,7 @@ function curveBox(number,nameCurve,dts){
 //  }
      myApp.request.get("plug/popoverCurve.html", "", function (data) {
      	var popoverHTML=data;
-     	myApp.popover.create({
+     	popover  = myApp.popover.create({
                 targetEl: "#ycp",
                 content: popoverHTML,
         }).open();
@@ -442,7 +442,6 @@ function curveBox(number,nameCurve,dts){
                             refreshDatas();
                             //yVals = 0;
                             !isNaN(yVals)?yVals = parseFloat(dataCurve[number][0]):yVals = 0;
-
                             x = (new Date()).getTime(), y = yVals;
                             series.addPoint([x, y], true, true);
                         }, 2000);

@@ -555,7 +555,7 @@ function popupAlert(html) {
     }).open();
 }
 //封装ajax
-function JQajaxo(_type, _url, _asycn, _data, _success) {
+function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
     var ajaxs = $.ajax({
         type: _type,
         url: _url,
@@ -577,6 +577,7 @@ function JQajaxo(_type, _url, _asycn, _data, _success) {
             XMLHttpRequest = null;
         },
         error: function() {
+            try{ clearInterval(dynamicCurve);}catch(e){}
             myApp.dialog.create({
                 title: "系统提示",
                 text: '请求错误，请查看网络是否已连接！',
@@ -675,40 +676,41 @@ if (window.localStorage.localBgColor == 1) {
 }
 
 //videoControl
-function videoControlDirction(direction){
+function videoControlDirction(EquipNum,main_instruction,direction){
+    console.log(EquipNum+","+direction+","+main_instruction);
    switch(direction)
    {
         case "left_start": 
-           // get_no("", 20005, 13, "");
-           onSetCommand_return("", 20005, "1", "0", "true");
+           // get_no("", EquipNum, 13, "");
+           onSetCommand_return("", EquipNum, main_instruction, "0", "true");
            break;
         case "left_stop":
-           // get_no("", 20005, 14, "");
-           onSetCommand_return("", 20005, "1", "0", "false");
+           // get_no("", EquipNum, 14, "");
+           onSetCommand_return("", EquipNum, main_instruction, "0", "false");
           break;
         case "top_start":
-          // get_no("", 20005, 17, "");
-          onSetCommand_return("", 20005, "1", "1", "true");
+          // get_no("", EquipNum, 17, "");
+          onSetCommand_return("", EquipNum, main_instruction, "1", "true");
           break;
         case "top_stop":
-          // get_no("", 20005, 18, "");
-          onSetCommand_return("", 20005, "1", "1", "false");
+          // get_no("", EquipNum, 18, "");
+          onSetCommand_return("", EquipNum, main_instruction, "1", "false");
           break;
         case "right_start":
-          // get_no("", 20005, 15, "");
-          onSetCommand_return("", 20005, "1", "2", "true");
+          // get_no("", EquipNum, 15, "");
+          onSetCommand_return("", EquipNum, main_instruction, "2", "true");
           break;
         case "right_stop":
-          // get_no("", 20005, 16, "");
-          onSetCommand_return("", 20005, "1", "2", "false");
+          // get_no("", EquipNum, 16, "");
+          onSetCommand_return("", EquipNum, main_instruction, "2", "false");
           break;
         case "bottom_start":
-          // get_no("", 20005, 19, "");
-          onSetCommand_return("", 20005, "1", "3", "true");
+          // get_no("", EquipNum, 19, "");
+          onSetCommand_return("", EquipNum, main_instruction, "3", "true");
           break;
         case "bottom_stop":
-          // get_no("", 20005, 20, "");
-          onSetCommand_return("", 20005, "1", "3", "false");
+          // get_no("", EquipNum, 20, "");
+          onSetCommand_return("", EquipNum, main_instruction, "3", "false");
           break;
         default: break;
    }
@@ -733,14 +735,19 @@ function modifyZnUs(){
 //切换语音
 function getLanguageChoice(val){
   try{
-
-    myJavaFun.DestroyIvw();
-    //先移除
+    
+      //先移除
     document.getElementById("videoContentBtnId").removeEventListener('touchstart', onTouchStart);
     document.getElementById("videoContentBtnId").removeEventListener('touchend', onTouchEnd);
     document.getElementById("videoContentBtnId").removeEventListener('touchmove', onTouchMove);
+    //后监听
+    document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
+    document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
+    document.getElementById("videoContentBtnId").addEventListener('touchmove', onTouchMove);
+
+    myJavaFun.DestroyIvw();
   } catch(e){}
-  
+
   switch(val)
   {
     case "0": //讯飞英文

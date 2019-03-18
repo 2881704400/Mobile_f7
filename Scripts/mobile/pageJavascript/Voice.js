@@ -20,10 +20,7 @@ $(function() {
             filter: 'blur(0px)'
         });
     });
-    //后监听
-    document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
-    document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
-    document.getElementById("videoContentBtnId").addEventListener('touchmove', onTouchMove);
+
     //记录选择
      if (!window.localStorage.voiceList) {window.localStorage.voiceList = "1";} 
      try {myJavaFun.VoiceOpen();myJavaFun.initMicrosoftSpeech();} catch (ex) {}
