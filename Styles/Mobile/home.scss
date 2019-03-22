@@ -27,7 +27,7 @@ mixin：sass宏mixin
             width: 100%;
             dt{}
             dd{ 
-               width: 100%;text-align: center;padding: 10px;overflow: hidden; box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+               width: 100%;text-align: center;padding: 10px;overflow: hidden; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
               .charts_bar{
                 width: 100%;#purchase_Bar{width: 100%;height: 190px;}
                 .barRightBorder{border-right: 1px solid #{$statsBorderColor};}
@@ -79,7 +79,7 @@ mixin：sass宏mixin
         }
         .statisticsTable{
          
-          padding: 10px; box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+          padding: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
           a{font-size: 12px;position: relative;
             p{font-family: serif;font-size: 1.5rem;margin: 0.2rem 0;} 
             &:after{content: "";width: 1px;transform: scaleX(0.9);height: 60%;border-right: 1px solid #e9e7e1;position: absolute;top: 25%;right: 0%;}

@@ -677,7 +677,7 @@ if (window.localStorage.localBgColor == 1) {
 
 //videoControl
 function videoControlDirction(EquipNum,main_instruction,direction){
-    console.log(EquipNum+","+direction+","+main_instruction);
+   
    switch(direction)
    {
         case "left_start": 
@@ -720,54 +720,40 @@ function videoControlDirction(EquipNum,main_instruction,direction){
 function modifyZnUs(){
     if(window.localStorage.languageList == "1")
     {
-        $(".voice-header>span").text("Voice control");
-        $(".voice-arrow-cancel").text("Cancel");
-        $(".voice-arrow-dialog").text("Long pressed speech...."); 
+        // $(".voice-header>span").text("Voice control");
+        // $(".voice-arrow-cancel").text("Cancel");
+        $(".voice-arrow-dialog").text("Press to speak"); 
     }
     else
     {
-        $(".voice-header>span").text("语音控制");
-        $(".voice-arrow-cancel").text("取消");
-        $(".voice-arrow-dialog").text("长按说话....");   
+        // $(".voice-header>span").text("语音控制");
+        // $(".voice-arrow-cancel").text("取消");
+        $(".voice-arrow-dialog").text("按下说话");   
     }
-    getLanguageChoice($("#voiceList").find("option:selected").attr("data-value"));
+    getLanguageChoice(window.localStorage.languageList);
+
 }
 //切换语音
 function getLanguageChoice(val){
-  try{
-    
-      //先移除
-    document.getElementById("videoContentBtnId").removeEventListener('touchstart', onTouchStart);
-    document.getElementById("videoContentBtnId").removeEventListener('touchend', onTouchEnd);
-    document.getElementById("videoContentBtnId").removeEventListener('touchmove', onTouchMove);
-    //后监听
-    document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
-    document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
-    document.getElementById("videoContentBtnId").addEventListener('touchmove', onTouchMove);
-
-    myJavaFun.DestroyIvw();
-  } catch(e){}
 
   switch(val)
   {
-    case "0": //讯飞英文
-    // alert("讯飞英文");
-      try {myJavaFun.SetVoiceXFLanguage("en_US");} catch (ex) {}
+    case "1": //讯飞英文
+      try {myJavaFun.SetAIUILanguage("english");} catch (ex) {}
          
     break;
-    case "1": //讯飞中文
-    // alert("讯飞中文");
-      try {myJavaFun.SetVoiceXFLanguage("zh_CN");} catch (ex) {}
+    case "0": //讯飞中文
+      try {myJavaFun.SetAIUILanguage("mandarin");} catch (ex) {}
           
     break;
-    case "2": //微软中文
-    // alert("微软中文");
-      try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
+    // case "2": //微软中文
+    // // alert("微软中文");
+    //   try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
       
-    break;
-    case "3": //微软英文
-    // alert("微软英文");
-      try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
+    // break;
+    // case "3": //微软英文
+    // // alert("微软英文");
+    //   try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
             
     break;
     default: break;
