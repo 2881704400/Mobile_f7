@@ -55,10 +55,10 @@ function functionalModule(className){
     {
         case "home_snapShot":
            html = `<li class="row home_snapShot statisticsTable no-gap">
-                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"fault":"故障"}</a>
-                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"warning":"警告"}</a>
-                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"information":"信息"}</a>
-                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Setup":"设置"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Errors":"故障"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Warnings":"警告"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Informations":"信息"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Settings":"设置"}</a>
                         <a class="col-20" style="border-right: 0;"><p>0</p>${window.localStorage.languageList == 1?"Assets":"资产"}</a>
                     </li>`;
         break;
@@ -132,7 +132,7 @@ var map, infoPoint = [ //经纬度+设备号+通道号
     [113.922468, 22.497125, 20005, 1]
 ];
 
-// 系统四菜单 
+// 系统四菜单   
 var sysFourMenu =[
     {
         name: '事件查询',
@@ -147,7 +147,7 @@ var sysFourMenu =[
     },
     {
         name: '系统配置',
-        name_en: 'system configuration',
+        name_en: 'System configuration',
         href_zh: '/equipConfigList/',
         href_en: '/mobile-en/equipConfigList_en/',
         color: '#e499b1,#FF4582',
@@ -313,7 +313,7 @@ var KOvm =[
     },
     {
         name: '能源系统',
-        name_en: 'energy system',
+        name_en: 'Energy system',
         icon: 'iconfont icon-f7_icon_dsj1',
         equipNo: '300',
         setNo: '17',
@@ -455,80 +455,80 @@ var KOvm =[
         color: '#86bfe8,#2093e8',
         value: null,
     },
+    // {
+    //     name: '消防报警',
+    //     name_en: 'Fire alarm',
+    //     icon: 'iconfont icon-f7_icon_xf',
+    //     equipNo: '300',
+    //     setNo: '10107',
+    //     color: '#8ed5ec,#0baee4',
+    //     value: null,
+    // },
+    // {
+    //     name: '消防恢复正常',
+    //     name_en: 'Fire Protection returned to normal',
+    //     icon: 'iconfont icon-f7_icon_hf',
+    //     equipNo: '300',
+    //     setNo: '6',
+    //     color: '#b5a1ec,#460de0',
+    //     value: null,
+    // },
+    // {
+    //     name: '防区报警',
+    //     name_en: 'Defense alarm',
+    //     icon: 'iconfont icon-f7_icon_fq',
+    //     equipNo: '300',
+    //     setNo: '10106',
+    //     color: '#23407d,#3961B6',
+    //     value: null,
+    // },
+    // {
+    //     name: '空调报警',
+    //     name_en: 'Air conditioning alarm',
+    //     icon: 'iconfont icon-f7_icon_kt',
+    //     equipNo: '300',
+    //     setNo: '10105',
+    //     color: '#dec9a8,#FCB540',
+    //     value: null,
+    // },
+    // {
+    //     name: '总部前台监控',
+    //     name_en: 'Headquarters Front Desk Monitoring',
+    //     icon: 'iconfont icon-f7_icon_jk',
+    //     equipNo: '1005',
+    //     setNo: '1500',
+    //     color: '#d3f3b5,#82d632',
+    //     value: null,
+    // },
+    // {
+    //     name: '总部会议室监控',
+    //     name_en: 'Headquarters conference room monitoring',
+    //     icon: 'iconfont icon-f7_icon_hys',
+    //     equipNo: '1005',
+    //     setNo: '1000',
+    //     color: '#e99bef,#e420d5',
+    //     value: null,
+    // },
+    // {
+    //     name: '展厅监控',
+    //     name_en: 'Exhibition hall monitoring',
+    //     icon: 'iconfont icon-f7_icon_jk',
+    //     equipNo: '300',
+    //     setNo: '10096',
+    //     color: '#f1c7a4,#ea7815',
+    //     value: null,
+    // },
+    // {
+    //     name: '欢迎模式',
+    //     name_en: 'Welcome mode',
+    //     icon: 'iconfont icon-f7_icon_xf',
+    //     equipNo: '300',
+    //     setNo: '10112',
+    //     color: '#93aeea,#1b60f1',
+    //     value: null,
+    // },
     {
-        name: '消防报警',
-        name_en: 'Fire alarm',
-        icon: 'iconfont icon-f7_icon_xf',
-        equipNo: '300',
-        setNo: '10107',
-        color: '#8ed5ec,#0baee4',
-        value: null,
-    },
-    {
-        name: '消防恢复正常',
-        name_en: 'Fire Protection returned to normal',
-        icon: 'iconfont icon-f7_icon_hf',
-        equipNo: '300',
-        setNo: '6',
-        color: '#b5a1ec,#460de0',
-        value: null,
-    },
-    {
-        name: '防区报警',
-        name_en: 'Defense alarm',
-        icon: 'iconfont icon-f7_icon_fq',
-        equipNo: '300',
-        setNo: '10106',
-        color: '#23407d,#3961B6',
-        value: null,
-    },
-    {
-        name: '空调报警',
-        name_en: 'Air conditioning alarm',
-        icon: 'iconfont icon-f7_icon_kt',
-        equipNo: '300',
-        setNo: '10105',
-        color: '#dec9a8,#FCB540',
-        value: null,
-    },
-    {
-        name: '总部前台监控',
-        name_en: 'Headquarters Front Desk Monitoring',
-        icon: 'iconfont icon-f7_icon_jk',
-        equipNo: '1005',
-        setNo: '1500',
-        color: '#d3f3b5,#82d632',
-        value: null,
-    },
-    {
-        name: '总部会议室监控',
-        name_en: 'Headquarters conference room monitoring',
-        icon: 'iconfont icon-f7_icon_hys',
-        equipNo: '1005',
-        setNo: '1000',
-        color: '#e99bef,#e420d5',
-        value: null,
-    },
-    {
-        name: '展厅监控',
-        name_en: 'Exhibition hall monitoring',
-        icon: 'iconfont icon-f7_icon_jk',
-        equipNo: '300',
-        setNo: '10096',
-        color: '#f1c7a4,#ea7815',
-        value: null,
-    },
-    {
-        name: '欢迎模式',
-        name_en: 'Welcome mode',
-        icon: 'iconfont icon-f7_icon_xf',
-        equipNo: '300',
-        setNo: '10112',
-        color: '#93aeea,#1b60f1',
-        value: null,
-    },
-    {
-        name: '小镇现场演示',
+        name: '宣传片播放',
         name_en: 'Town Live Demonstration',
         icon: 'iconfont icon-f7_icon_xz',
         equipNo: '300',
@@ -584,7 +584,7 @@ var pptPattern =[
 var jjPattern =[
     {
         name: '开始讲解',
-        name_en: 'explain',
+        name_en: 'Explain',
         color: '#e4c586,#e89e08',
         icon: 'iconfont icon-f7_jj',
         equipNo: '1007',
@@ -602,7 +602,7 @@ var jjPattern =[
     },
     {
         name: '暂停讲解',
-        name_en: 'suspend',
+        name_en: 'Suspend',
         color: '#e4c586,#e89e08',
         icon: 'iconfont icon-f7_stop_0',
         equipNo: '1007',
@@ -625,7 +625,7 @@ var WORDcommand ={
     "backgroundImage":{  
         name: '背景图片',
         name_en: 'Background picture',
-        url: 'D:\\AlarmCenter\\ganwei_mobile_f7\\Image\\bg',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
+        url: 'D:\\AlarmCenter\\Web\\Image\\bg',  //注意，图片路径以localhost读取,如果设置路径和文件路径不一致，可能导致出显示取错误
      },
      "Priviewwel":{
         name: '预览欢迎词',
@@ -726,7 +726,7 @@ var selLanguageZH =[
          "voiceheader": "语音控制",
          "voicecontainer": "请告诉我，您想要进行的操作.",
          "voicearrowcancel": "取消指令",
-         "voicearrowdialog": "长按说话..",
+         "voicearrowdialog": "长按说话",
          "id":"voiceAlarm",
      },                                  
      ],selLanguageEN =[
@@ -736,51 +736,51 @@ var selLanguageZH =[
         "id":"setPageTool",
      },
      {
-         "name":"home",
+         "name":"Home",
          "url": "/home/",//"/mobile-en/home_en/",
          "id":"homeTool",
      },
      {
-         "name":"snapshot",
+         "name":"Snapshot",
          "url":"/mobile-en/snapshot_en/",
          "id":"snapshotTool",
      },
      {
-         "name":"device list",
+         "name":"Device list",
          "url":"/mobile-en/equips_en/",
          "id":"equipsTool",
      },
      {
-         "name":"system",
+         "name":"System",
          "url":"#",
          "id":"configTool",
      },
      {
-         "name":"event query",
+         "name":"Event query",
          "url":"/mobile-en/eventSearch_en/",
          "id":"eventSearchTool",
      },
      {
-         "name":"system configuration",
+         "name":"System configuration",
          "url":"/mobile-en/equipConfigList_en/",
          "id":"equipConfigListTool",
      },
      {
-         "name":"alarm schedule",
+         "name":"Alarm schedule",
          "url":"/mobile-en/schedule_en/",
          "id":"scheduleTool",
      },
      {
-         "name":"equipment linkage",
+         "name":"Equipment linkage",
          "url":"/mobile-en/equipLinkage_en/",
          "id":"equipLinkageTool",
      }, 
      {
-         "name":"voice view",
+         "name":"Voice view",
          "voiceheader": "Voice control",
          "voicecontainer": "Please tell me what you want to do.",
          "voicearrowcancel": "Cancel",
-         "voicearrowdialog": "Long pressed speech..",
+         "voicearrowdialog": "Long pressed speech",
          "id":"voiceAlarm",
      }, 
 ];

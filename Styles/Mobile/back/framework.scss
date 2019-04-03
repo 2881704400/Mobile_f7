@@ -70,9 +70,9 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
                 i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
                 a{padding: 5px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.5rem;}}
              }
-            .title{color: #{$toolbarFontColor};overflow: visible;text-overflow: unset; }
+            .title{color: #{$toolbarFontColor};max-width: 200px;overflow: hidden;text-overflow: ellipsis; }
             .right{
-                               a{padding: 5px; i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}}
+                a{padding: 5px;font-size: 1.1rem;color: #{$toolbarFontColor};i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}}
             }
         }
     }
@@ -177,6 +177,7 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #ycAndyx #tabsWrap .tab .oneLine .item-title, #ycAndyx_en #tabsWrap .tab .oneLine .item-title{color: #{$situationFontColor};}
 #ycAndyx .toolbar .toolbar-inner, #ycAndyx_en .toolbar .toolbar-inner{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 #ycAndyx .toolbar .toolbar-inner>a.tab-link, #ycAndyx_en .toolbar .toolbar-inner>a.tab-link{color: #{$situationFontColor};}
+#set li{ background:  #{$situationContainerBgc};}
 // 设置页
 .setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul,.smart-select-page div.page-content ul{background: #{$situationContainerBgc}; }
 .setPageContainer a.item-content, .setPageContainer a>div.item-content,.setPageContainer>div.userClassName i,.smart-select-page div.page-content ul div.item-title{color: #{$situationFontColor};}
@@ -185,7 +186,8 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 
 // 事件查询
 .eventSearchContent{background: #{$situationBgc};
- .tabs{background: #{$situationContainerBgc}; .tab .tab-table-header{background: #{$situationContainerBgc};} 
+  .tabs{
+  .tab .tab-table-header{background: #{$situationContainerBgc};} 
   .tab ul li{color: #{$situationFontColor}; span{color: #{$situationFontColor};} }
  }
  .event-search-box{
@@ -204,7 +206,9 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #sysConfigEdict{ div.page-content{ ul:before{height: 0px;} } }
 #equipConfigList_en .equipConfigList_container .eq-list ul, #equipConfigList .equipConfigList_container .eq-list ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 // 报警排表
-.scheduleContainer>.scheduleContent .equipGroupPublic>ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.scheduleContainer>.scheduleContent .equipGroupPublic>ul{
+    color: #{$situationFontColor};
+}
 .scheduleModifyPageContent,.scheduleContainer>.subnavbarTabel{background: #{$situationContainerBgc};}
 .scheduleModifyContainer ul,.scheduleModifyContainer_equipgroup>div,.scheduleModifyContainer input, .scheduleModifyContainer select{color: #adadad;background: #{$situationContainerBgc}!important; a{color: #{$situationFontColor};}}
 .scheduleModifyContainer ul:before{height: 0px!important;}
@@ -222,7 +226,8 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 .dialog-progress .dialog-title a{color: #007aff;}
 
 //实时视频
-#Video_content_ref  div.accordion-list{  margin: 10px 0px 50px 0px;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};   }}
+#Video_content_ref  div.accordion-list{     height: 99%; position: relative; top: 1%;margin: 0;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
+
 
 // PPT
 .pptActive,#Filelist{    margin: 10px 0;color: #{$situationFontColor};background: #{$situationContainerBgc};}

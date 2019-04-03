@@ -66,7 +66,7 @@
     }
     .equip-list {
         margin-bottom: 30px;
-        // background: #fff;
+        // background: #fff; 
         li {
             i {
                 color: #7D828F;
@@ -86,7 +86,7 @@
         }
     }
 }
-
+ 
 .md #ycAndyx .toolbar,.md #ycAndyx_en .toolbar {
     top: auto !important;
     transform: none !important;
@@ -137,7 +137,7 @@
             overflow: auto;
             .oneLine {
                 padding: 1em 0;
-                // background: #fff;
+                // background: #fff;  
                 position: relative;
                 .item-title{
                     position: relative;
@@ -158,6 +158,8 @@
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    position: absolute;
+                    right: 5%;
                 }
                 .iconWrap {
                     text-align: center;
@@ -176,7 +178,6 @@
                         &.comOk {
                             color: #54BB5C;
                         }
-                        //                      }
                     }
                 }
                 &:after {
@@ -201,9 +202,10 @@
                 li {
                     width: 100%;
                     font-size: #{$btnFontSize};
-                    color: #{$btnBackground};
-                    border: 1px solid #{$btnBackground};
+                    color: white;
+                   
                     border-radius: #{$unclickBorderRadius};
+                   
                     margin-bottom: 10px;
                     P {
                         margin: 0;
@@ -238,24 +240,17 @@
     }
 
     .equipCon{
-        height:calc(100% - 40px) ;
-        .eventWrap{
-            height:100%;
-            overflow-y: auto;
-        }
-        .item-title {
-            font-size: 14px;
-        }
-        //      #tab-1,#tab-2,#tab-3,#tab-4,#equipEventContent ul,#setEventContent ul,#stsEventContent ul{margin-bottom: 100px;}
+        height: 99%; position: relative; top: 1%;
+        .eventWrap{height:100%; overflow-y: auto; }
+        .item-title {font-size: 14px; }
     }
     .tabList {
         margin: 0;
-        // background: #fff;
-        height: 36px;
+        height: 50px;
         width: 100%;
         a {
             height: 100%;
-            line-height: 36px;
+            line-height: 50px;overflow: unset;
         }
         .button {
             transition-duration: 0s;
@@ -284,6 +279,7 @@
                 overflow: auto;
             }
             #equipTable{
+                  background: transparent;    padding-bottom: 100px;
                  .item-title {
                     color: $titColor;
                 }
@@ -472,3 +468,4 @@
       .eq-list{height: 85%;padding-bottom: 50px;margin: 0;overflow-y: auto;}
     }
 }
+.visibilitySelect{visibility: hidden;}

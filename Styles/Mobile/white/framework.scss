@@ -57,14 +57,21 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
         background-color: #{$headerBgc};    
         &>.navbar-inner{ 
             .left{
+                width: 15%;height: 100%;margin: 0;
                 i{font-size: 1.5rem;color: #{$toolbarFontColor};}
                 i.icon-back{width: auto;height: auto;background-image: url()!important;}
                 i.icon{font-family: "iconfont" !important; font-size: 2rem; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-                a{padding: 5px;i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.5rem;}}
+                a{
+                    width: 100%;height: 100%;line-height: 44px;display: inline-block;
+                    i.icon-f7_add{font-size: 2rem;color: #{$allFontColor};} i.icon-scanIcon{font-size: 1.5rem;}
+                }
              }
-            .title{color: #{$toolbarFontColor}; overflow: visible;text-overflow: unset;  }
+            .title{color: #{$toolbarFontColor}; title{color: #{$toolbarFontColor};max-width: 200px;overflow: hidden;text-overflow: ellipsis; }}
             .right{
-                            a{padding: 5px; i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}}
+                width: 15%;height: 100%;margin: 0;text-align: right;
+                a{
+                    font-size: 1.1rem;color: #{$toolbarFontColor}; width: 100%;height: 100%;line-height: 44px;display: inline-block;    
+                    i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}}
             }
         }
     }
@@ -157,12 +164,15 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #ycAndyx #tabsWrap .tab .oneLine, #ycAndyx_en #tabsWrap .tab .oneLine{ background: #{$situationContainerBgc}; }
 #ycAndyx .toolbar .toolbar-inner, #ycAndyx_en .toolbar .toolbar-inner{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 #ycAndyx .toolbar .toolbar-inner>a.tab-link, #ycAndyx_en .toolbar .toolbar-inner>a.tab-link{color: #{$situationFontColor};}
+#set li{ background: #{$btnBackground};}
 // 设置页
 .setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul{background: #{$situationContainerBgc}; }
 
 // 事件查询
 .eventSearchContent{background: #{$situationBgc};
- .tabs{background: #{$situationContainerBgc}; .tab .tab-table-header{background: #{$situationContainerBgc};} 
+  .tabs{
+    // background: #{$situationContainerBgc}; 
+  .tab .tab-table-header{background: #{$situationContainerBgc};} 
   .tab ul li{color: #{$situationFontColor}; span{color: #{$situationFontColor};} }
  }
  .event-search-box{
@@ -182,7 +192,9 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #eventQuery .tabList .tab-link-active, #systemConfig .tabList .tab-link-active, #systemConfig_en .tabList .tab-link-active{color: #{$situationFontColor};}
 #equipConfigList_en .equipConfigList_container .eq-list ul, #equipConfigList .equipConfigList_container .eq-list ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
 // 报警排表
-.scheduleContainer>.scheduleContent .equipGroupPublic>ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+.scheduleContainer>.scheduleContent .equipGroupPublic>ul{color: #{$situationFontColor};
+// background: #{$situationContainerBgc};
+}
 .scheduleModifyPageContent,.scheduleContainer>.subnavbarTabel{background: #{$situationContainerBgc};}
 .scheduleModifyContainer ul,.scheduleModifyContainer_equipgroup>div,.scheduleModifyContainer input{color: #adadad;background: #{$situationContainerBgc}!important; a{color: #{$situationFontColor};}}
 .scheduleModifyContainer ul:before{height: 0px!important;}
@@ -199,7 +211,7 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 .ios .scheduleModifyPageContent .list,.md .scheduleModifyPageContent .list{margin: 0;padding-top: 10px;}
 
 //实时视频
-#Video_content_ref  div.accordion-list{ margin: 10px 0px 50px 0px;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
+#Video_content_ref  div.accordion-list{     height: 99%; position: relative; top: 1%;margin: 0;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
 
 // PPT
 .pptActive,#Filelist{margin: 10px 0;color: #{$situationFontColor};background: #{$situationContainerBgc};}

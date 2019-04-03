@@ -100,11 +100,17 @@ function judgeSnapshotName(val){
     var result = "";
      switch(val)
      {
-        case "故障": result =window.localStorage.languageList == 1?"fault":"故障";break;
-        case "警告": result =window.localStorage.languageList == 1?"warning":"警告";break;
-        case "信息": result =window.localStorage.languageList == 1?"information":"信息";break;
-        case "设置": result =window.localStorage.languageList == 1?"Setup":"设置";break;
+        case "故障": result =window.localStorage.languageList == 1?"Errors":"故障";break;
+        case "警告": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
+        case "信息": result =window.localStorage.languageList == 1?"Informations":"信息";break;
+        case "设置": result =window.localStorage.languageList == 1?"Settings":"设置";break;
         case "资产": result =window.localStorage.languageList == 1?"Assets":"资产";break;
+
+        case "Errors": result =window.localStorage.languageList == 1?"Errors":"故障";break;
+        case "Warnings": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
+        case "Informations": result =window.localStorage.languageList == 1?"Informations":"信息";break;
+        case "Settings": result =window.localStorage.languageList == 1?"Settings":"设置";break;
+        case "Assets": result =window.localStorage.languageList == 1?"Assets":"资产";break;        
         default: break;
      }
      return result;

@@ -254,13 +254,13 @@ function welcomeWords_en() {
                 color: '#3E7CFB'
             });
             welcome_activeSave(this, 1);
-            get_no(this, equipNo, setNo, "");
+            get_no_val(this, equipNo, setNo, "");
         } else {
             $(this).find('i').css({
                 color: '#FF4747'
             });
             $("#tab44 .welcome-Word-control-icon-mutual").eq(1).find('i').removeClass().addClass("iconfont icon-xuanzhong");
-            get_no(this, equipNo, setNo, "");
+            get_no_val(this, equipNo, setNo, "");
         }
     });
     /*保存欢迎词*/
@@ -294,6 +294,7 @@ function welcome_activeSave(that, number) {
     //内容
     welcome_objoriginal.Text = $(".welcomeInput").val();
     var welcomeVal = welcome_tramsformData(welcome_objoriginal.Text);
+
     //字体大小
     welcome_objoriginal.FontSize = $('#controlrangeSliderValueId').html();
     //字体颜色
@@ -340,8 +341,8 @@ function welcome_activeSave(that, number) {
     welcome_objoriginal.BackgroundImg = fileNameURL;
     //是否居中
     welcome_objoriginal.center = "positionClass";
-    var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;width: 100%;height: 100%;display: flex;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;background: url(" + fileNameURL + ") no-repeat center center/100%;\" class=\"a123\">" + "<span style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; justify-content: " + welcome_objoriginal.CanvasLeft + "; align-items: " + welcome_objoriginal.CanvasTop + "; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
-
+    var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;width: 100%;height: 100%;display: flex;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;    text-align: center;background: url(" + fileNameURL.replace("url(","").replace(")","") + ") no-repeat center center/100%;\" class=\"a123\">" + "<span style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; justify-content: " + welcome_objoriginal.CanvasLeft + "; align-items: " + welcome_objoriginal.CanvasTop + "; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
+   console.log(allHTML);
 
    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertWelcomeSpeech?JSONContent="+allHTML+"&BGImage="+fileName+"&Type="+number+"&siginalVal="+JSON.stringify(welcome_objoriginal))).done(function(n,l){
 	var dt = n.HttpData.data;
@@ -394,7 +395,7 @@ function welcome_tramsformData(dataVal) {
     var stringVal = "";
     for (var i = 0; i < lengthVal; i++) {
         if (dataVal.charCodeAt(i) == 10) stringVal += "<br />";
-        else if (dataVal.charCodeAt(i) == 32) stringVal += "&nbsp;&nbsp;";
+        else if (dataVal.charCodeAt(i) == 32) stringVal += "  ";
         else stringVal += dataVal.charAt(i);
     }
     return stringVal;

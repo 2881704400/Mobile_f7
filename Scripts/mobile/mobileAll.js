@@ -8,8 +8,8 @@ var myApp = new Framework7({
         swipeOnlyClose: true,
     },
     dialog: {
-        buttonOk: window.localStorage.languageList == 1?'confirm':'确认',
-        buttonCancel: window.localStorage.languageList == 1?'cancel':'取消',
+        buttonOk: window.localStorage.languageList == 1 ? 'confirm' : '确认',
+        buttonCancel: window.localStorage.languageList == 1 ? 'cancel' : '取消',
     },
     statusbar: {
         enabled: true,
@@ -19,8 +19,7 @@ var myApp = new Framework7({
     picker: {
         toolbarCloseText: '确认',
     },
-    routes: [
-    {
+    routes: [{
         path: '/home/',
         url: 'home.html',
     }, {
@@ -83,8 +82,8 @@ var myApp = new Framework7({
     }, {
         path: '/equipLinkageModify/',
         url: 'equipLinkageModify.html',
-    },
-     {   path: '/equipConfigList/',
+    }, {
+        path: '/equipConfigList/',
         url: 'equipConfigList.html',
     }, {
         path: '/sysConfigEdict/',
@@ -92,9 +91,7 @@ var myApp = new Framework7({
     }, {
         path: '/scheduleModifyChild/',
         url: 'scheduleModifyChild.html',
-    },
-
-     {
+    }, {
         path: '/mobile-en/home_en/',
         url: 'mobile-en/home_en.html',
     }, {
@@ -157,8 +154,8 @@ var myApp = new Framework7({
     }, {
         path: '/mobile-en/equipLinkageModify_en/',
         url: 'mobile-en/equipLinkageModify_en.html',
-    },
-     {   path: '/mobile-en/equipConfigList_en/',
+    }, {
+        path: '/mobile-en/equipConfigList_en/',
         url: 'mobile-en/equipConfigList_en.html',
     }, {
         path: '/mobile-en/sysConfigEdict_en/',
@@ -169,13 +166,14 @@ var myApp = new Framework7({
     }, {
         path: '/test/',
         url: 'test.html',
-    }    
-    ],
+    }],
     on: {
         pageInit: function(page) {
-             try{ hubConn.stop();}catch(e){}
+            try {
+                hubConn.stop();
+            } catch (e) {}
             $("#voiceContainer").addClass("voiceContainer");
-            window.localStorage.languageList == 1?$(".right a.icon-only").attr("href","/mobile-en/setPage_en/"):$(".right a.icon-only").attr("href","/setPage/");
+            window.localStorage.languageList == 1 ? $(".right a.icon-only").attr("href", "/mobile-en/setPage_en/") : $(".right a.icon-only").attr("href", "/setPage/");
         },
         popupOpen: function(popup) {},
         init: function() {}
@@ -183,23 +181,26 @@ var myApp = new Framework7({
 });
 var mainView = myApp.views.create('.view-main'); //web接口地址
 var service = "/GWService.asmx",
-$$ = Framework7.$;
+    $$ = Framework7.$;
 initLoads();
+
 function initLoads() {
-	myApp.dialog.progress();  
+    myApp.dialog.progress();
     loadNameMobile();
     //如果没有语音记录则默认为讯飞
-    if (!window.localStorage.voiceList) {window.localStorage.voiceList = "1";}
+    if (!window.localStorage.voiceList) {
+        window.localStorage.voiceList = "1";
+    }
 }
-var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages,equiplinkageStr=[];
+
+var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages, equiplinkageStr = [];
 //连接服务器
 function InitEnsure() {
-
     var ajaxs = $.ajax({
         type: "post",
         timeout: 10000,
         url: "/api/Server/ConnectService",
-        dataType:"JSON",
+        dataType: "JSON",
         headers: {
             Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey,
         },
@@ -210,8 +211,8 @@ function InitEnsure() {
             }
         },
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
-        	myApp.dialog.close();
-        	if (status == 'timeout') { //超时,status还有success,error等值的情况
+            myApp.dialog.close();
+            if (status == 'timeout') { //超时,status还有success,error等值的情况
                 ajaxs.abort();
                 myApp.dialog.create({
                     title: "系统提示",
@@ -223,8 +224,8 @@ function InitEnsure() {
             }
         }
     });
-
 }
+
 //重连服务器
 function initEnsureChonglian(fun) {
     var _url = service + "/GetName2SFService";
@@ -240,6 +241,7 @@ function initEnsureChonglian(fun) {
     }
     JQajaxo("post", _url, true, _data, _success);
 }
+
 //解析
 function getValueByKey(str, key) {
     var urlSearchSplit = str.split('&');
@@ -251,6 +253,7 @@ function getValueByKey(str, key) {
     }
     return '';
 }
+
 //载入界面
 function loadNameMobile() {
     if (location.search) {
@@ -298,19 +301,19 @@ function loadNameMobile() {
             complete: function(XMLHttpRequest, status) {
                 if (window.localStorage.userName != "" && window.localStorage.userName != null) {
                     $("#userName").html("我(" + window.localStorage.userName + ")");
-                     InitEnsure(); AppShows();onHomePage();
+                    InitEnsure();
+                    AppShows();
+                    onHomePage();
                     //查询表中用户选择的语言
-                      $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName="+window.localStorage.userName)).done(function(n){
+                    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
                         var result = n.HttpData.data;
-                        if (result.length>0 && result[0].status != "0" && n.HttpData.code == 200) {
-                           window.localStorage.languageList = 1;
-                           // tranformMenu(1);
-                        } 
-                        else
-                        {
+                        if (result.length > 0 && result[0].status != "0" && n.HttpData.code == 200) {
+                            window.localStorage.languageList = 1;
+                        } else {
                             window.localStorage.languageList = 0;
                         }
-                     }).fail(function(e){});  
+                        tranformMenu(window.localStorage.languageList);
+                    }).fail(function(e) {});
                     $(".voiceDivs,.toolbar").removeClass("displayNone");
                 } else {
                     myJavaFuntion.OpenLocalUrl("login");
@@ -319,26 +322,29 @@ function loadNameMobile() {
         });
     }, 100);
 }
+
 //app显示
 function AppShows() {
     $("#appCacheClearLi").show();
     $("#appRichScan").show();
 }
+
 //清空缓存
 function onAppCacheClear() {
     myApp.dialog.create({
-        title: window.localStorage.languageList == 1?"empty":"清空",
-        text: window.localStorage.languageList == 1?"Whether to empty the cache and reload?":"是否清空缓存，重新加载？",
+        title: window.localStorage.languageList == 1 ? "empty" : "清空",
+        text: window.localStorage.languageList == 1 ? "Whether to empty the cache and reload?" : "是否清空缓存，重新加载？",
         buttons: [{
-            text: window.localStorage.languageList == 1?"Cancel":'取消'
+            text: window.localStorage.languageList == 1 ? "Cancel" : '取消'
         }, {
-            text: window.localStorage.languageList == 1?"Confirm":'确定',
+            text: window.localStorage.languageList == 1 ? "Confirm" : '确定',
             onClick: function() {
                 myJavaFun.AppCacheClear();
             }
         }]
     }).open();
 }
+
 function AppCacheClearCallback(dt) {
     if (dt == "true") {
         location.reload();
@@ -352,45 +358,46 @@ function AppCacheClearCallback(dt) {
         }).open();
     }
 }
+
 //注销事件
 function onUserLogout() {
     myApp.dialog.create({
         cssClass: "exit",
-        title: window.localStorage.languageList == 1?"Cancellation":"注销",
-        text: window.localStorage.languageList == 1?"Are you sure you want to cancel your current account?":'确定要注销当前账户吗？',
+        title: window.localStorage.languageList == 1 ? "Cancellation" : "注销",
+        text: window.localStorage.languageList == 1 ? "Are you sure you want to cancel your current account?" : '确定要注销当前账户吗？',
         buttons: [{
-            text: window.localStorage.languageList == 1?"Cancel":'取消'
+            text: window.localStorage.languageList == 1 ? "Cancel" : '取消'
         }, {
-            text: window.localStorage.languageList == 1?"Confirm":'确定',
+            text: window.localStorage.languageList == 1 ? "Confirm" : '确定',
             onClick: function() {
                 window.localStorage.userName = "";
                 window.localStorage.userPWD = "";
-                
                 myJavaFuntion.OpenLocalUrl("login");
             }
         }]
     }).open();
 }
+
 //关于事件
 function onAbout() {
     var _url = "/api/server/version";
-
     function _success(data) {
         var version = data.HttpData.data;
         var versionNameHTML = '';
         if (window.localStorage.versionName != "" && window.localStorage.versionName != null) {
-            versionNameHTML = (window.localStorage.languageList == 1?"<br/>App Edition：v":"<br/>App版本：v") + window.localStorage.versionName;
+            versionNameHTML = (window.localStorage.languageList == 1 ? "<br/>App Edition：v" : "<br/>App版本：v") + window.localStorage.versionName;
         }
         myApp.dialog.create({
-            title: window.localStorage.languageList == 1?"":"关于",
-            text: (window.localStorage.languageList == 1?"App Edition：v":"API版本：v") + version + versionNameHTML,
+            title: window.localStorage.languageList == 1 ? "" : "关于",
+            text: (window.localStorage.languageList == 1 ? "App Edition：v" : "API版本：v") + version + versionNameHTML,
             buttons: [{
-                text: window.localStorage.languageList == 1?"Confirm":"确定"
+                text: window.localStorage.languageList == 1 ? "Confirm" : "确定"
             }]
         }).open();
     }
     JQajaxo("get", _url, true, "", _success);
 }
+
 function backss() {
     var mainView = myApp.addView('.view-main');
     var pages = new Array();
@@ -401,6 +408,7 @@ function backss() {
         mainView.router.back()
     }
 }
+
 //执行子界面方法
 function initPageJS(dt, ext) { //ext扩展界面地址
     if ($("#" + dt + "_id").length == 0) {
@@ -419,10 +427,12 @@ function initPageJS(dt, ext) { //ext扩展界面地址
         evil(dt + "()");
     }
 }
+
 function evil(fn) {
     var Fn = Function; //一个变量指向Function，防止有些前端编译工具报错
     return new Fn('return ' + fn)();
 }
+
 var alertMsgSuccess = myApp.notification.create({
         title: '系统提示',
         titleRightText: '',
@@ -437,6 +447,7 @@ var alertMsgSuccess = myApp.notification.create({
         text: '操作失败或没有该命令配置',
         closeTimeout: 1000,
     });
+
 //判断当前设备是否可查看
 function Browse_Equip_List(equips) {
     var equipBool = false;
@@ -453,6 +464,7 @@ function Browse_Equip_List(equips) {
     }
     return equipBool;
 }
+
 //判断当前设备是否可查看(子集)
 function Browse_SpecialEquip_List(equips, num) {
     var equipBool = false;
@@ -475,6 +487,7 @@ function Browse_SpecialEquip_List(equips, num) {
     }
     return equipBool;
 }
+
 //判断当前设备是否可控制
 function Control_Equip_List(equips) {
     var equipBool = false;
@@ -491,6 +504,7 @@ function Control_Equip_List(equips) {
     }
     return equipBool;
 }
+
 //判断当前设备是否可控制（子集）
 function Control_SetItem_List(equips, num) {
     var equipBool = false;
@@ -513,6 +527,7 @@ function Control_SetItem_List(equips, num) {
     }
     return equipBool;
 }
+
 //退出登陆
 function exitLogin() {
     try {
@@ -522,10 +537,12 @@ function exitLogin() {
         else myApp.dialog.alert("退出登陆异常");
     }
 }
+
 //切换底部工具栏
 function switchToolbar(id) {
     $("#" + id).addClass("active").siblings().removeClass("active");
 }
+
 //语音信息提示
 function voiceTooip(txt) {
     return myApp.toast.create({
@@ -534,6 +551,7 @@ function voiceTooip(txt) {
         closeTimeout: 3000,
     });
 }
+
 //下拉列表初始化
 function listInit(id, value) {
     myApp.picker.create({
@@ -544,6 +562,7 @@ function listInit(id, value) {
         }]
     });
 }
+
 //动态创建弹窗
 var popup;
 function popupAlert(html) {
@@ -554,6 +573,7 @@ function popupAlert(html) {
         }
     }).open();
 }
+
 //封装ajax
 function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
     var ajaxs = $.ajax({
@@ -577,7 +597,9 @@ function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
             XMLHttpRequest = null;
         },
         error: function() {
-            try{ clearInterval(dynamicCurve);}catch(e){}
+            try {
+                clearInterval(dynamicCurve);
+            } catch (e) {}
             myApp.dialog.create({
                 title: "系统提示",
                 text: '请求错误，请查看网络是否已连接！',
@@ -588,58 +610,57 @@ function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
         }
     });
 }
+
 //发送命令
 function get_no_val(that, set_equip, set_no, values) {
-
-    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equip, set_no: set_no})).done(function(n,l){
+    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList", {
+        set_equip: set_equip,
+        set_no: set_no
+    })).done(function(n, l) {
         var result = n.HttpData.data;
-        if (result.length>0) {
-            if (!values) 
-                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, result[0].value);
-            else 
-                onSetCommand_return(that, set_equip,result[0].main_instruction, result[0].minor_instruction, values);
+        if (result.length > 0) {
+            if (!values) onSetCommand_return(that, set_equip, result[0].main_instruction, result[0].minor_instruction, result[0].value);
+            else onSetCommand_return(that, set_equip, result[0].main_instruction, result[0].minor_instruction, values);
         } else {
             alertMsgError.open();
         }
-    }).fail(function(e){
-       alertMsgError.open();
+    }).fail(function(e) {
+        alertMsgError.open();
     });
-
 }
-function get_no_set(dt,values) {
 
-   //动画
-   $($(dt).hasClass("bomeBtn"))
-     {
+function get_no_set(dt, values) {
+
+    //动画
+    if($(dt).hasClass("homeBtn")) { 
         $(dt).find("i").addClass("startAnimation");
-        setTimeout(function(){
+        setTimeout(function() {
             $(dt).find("i").removeClass("startAnimation");
-        },1200);
-     }
-
-    var set_equipOld="", set_noOld="";
-    try{
+        }, 1200);
+    }
+    var set_equipOld = "",
+        set_noOld = "";
+    try {
         set_equipOld = $(dt).attr("set_equip");
         set_noOld = $(dt).attr("set_no");
-    }
-    catch(e){}
-    if(!set_equipOld.trim() || set_equipOld.trim() =="") return false;
-    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList",{set_equip: set_equipOld, set_no: set_noOld})).done(function(n,l){
+    } catch (e) {}
+    if (!set_equipOld.trim() || set_equipOld.trim() == "") return false;
+    $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList", {
+        set_equip: set_equipOld,
+        set_no: set_noOld
+    })).done(function(n, l) {
         var result = n.HttpData.data;
-        if (result.length>0) {
-            if (values == "null" || values == "undefined" || !values || values.trim() == "") 
-                onSetCommand_return(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, result[0].value);
-            else 
-                onSetCommand_return(dt, set_equipOld,result[0].main_instruction, result[0].minor_instruction, values);
+        if (result.length > 0) {
+            if (values == "null" || values == "undefined" || !values || values.trim() == "") onSetCommand_return(dt, set_equipOld, result[0].main_instruction, result[0].minor_instruction, result[0].value);
+            else onSetCommand_return(dt, set_equipOld, result[0].main_instruction, result[0].minor_instruction, values);
         } else {
             alertMsgError.open();
         }
-    }).fail(function(e){
-       alertMsgError.open();
+    }).fail(function(e) {
+        alertMsgError.open();
     });
 }
 function onSetCommand_return(dt, equip_no, main_instr, mino_instr, valueset) {
-
     $.ajax({
         type: "POST",
         url: "/GWService.asmx/SetupsCommand",
@@ -652,14 +673,13 @@ function onSetCommand_return(dt, equip_no, main_instr, mino_instr, valueset) {
             user_name: window.localStorage.userName
         },
         success: function(data) {
-           
-            $(data).find("string").text() == "true"?alertMsgSuccess.open():alertMsgError.open();
+            $(data).find("string").text() == "true" ? alertMsgSuccess.open() : alertMsgError.open();
             //ppt details
             if ($(dt).hasClass("selectBorder")) {
-                $(".viewsPng").find("img").attr("src",$(dt).find("img").attr("src"));
+                $(".viewsPng").find("img").attr("src", $(dt).find("img").attr("src"));
             }
-        },error: function(error){
-        }
+        },
+        error: function(error) {}
     });
 }
 //切换背景
@@ -674,251 +694,205 @@ if (window.localStorage.localBgColor == 1) {
         $(this).attr("href", hrefUrl);
     });
 }
-
 //videoControl
-function videoControlDirction(EquipNum,main_instruction,direction){
-   
-   switch(direction)
-   {
-        case "left_start": 
-           // get_no("", EquipNum, 13, "");
-           onSetCommand_return("", EquipNum, main_instruction, "0", "true");
-           break;
+function videoControlDirction(EquipNum, main_instruction, direction) {
+    switch (direction) {
+        case "left_start":
+            // get_no("", EquipNum, 13, "");
+            onSetCommand_return("", EquipNum, main_instruction, "0", "true");
+            break;
         case "left_stop":
-           // get_no("", EquipNum, 14, "");
-           onSetCommand_return("", EquipNum, main_instruction, "0", "false");
-          break;
+            // get_no("", EquipNum, 14, "");
+            onSetCommand_return("", EquipNum, main_instruction, "0", "false");
+            break;
         case "top_start":
-          // get_no("", EquipNum, 17, "");
-          onSetCommand_return("", EquipNum, main_instruction, "1", "true");
-          break;
+            // get_no("", EquipNum, 17, "");
+            onSetCommand_return("", EquipNum, main_instruction, "1", "true");
+            break;
         case "top_stop":
-          // get_no("", EquipNum, 18, "");
-          onSetCommand_return("", EquipNum, main_instruction, "1", "false");
-          break;
+            // get_no("", EquipNum, 18, "");
+            onSetCommand_return("", EquipNum, main_instruction, "1", "false");
+            break;
         case "right_start":
-          // get_no("", EquipNum, 15, "");
-          onSetCommand_return("", EquipNum, main_instruction, "2", "true");
-          break;
+            // get_no("", EquipNum, 15, "");
+            onSetCommand_return("", EquipNum, main_instruction, "2", "true");
+            break;
         case "right_stop":
-          // get_no("", EquipNum, 16, "");
-          onSetCommand_return("", EquipNum, main_instruction, "2", "false");
-          break;
+            // get_no("", EquipNum, 16, "");
+            onSetCommand_return("", EquipNum, main_instruction, "2", "false");
+            break;
         case "bottom_start":
-          // get_no("", EquipNum, 19, "");
-          onSetCommand_return("", EquipNum, main_instruction, "3", "true");
-          break;
+            // get_no("", EquipNum, 19, "");
+            onSetCommand_return("", EquipNum, main_instruction, "3", "true");
+            break;
         case "bottom_stop":
-          // get_no("", EquipNum, 20, "");
-          onSetCommand_return("", EquipNum, main_instruction, "3", "false");
-          break;
-        default: break;
-   }
-}
-
-//修改界面字体
-function modifyZnUs(){
-    if(window.localStorage.languageList == "1")
-    {
-        // $(".voice-header>span").text("Voice control");
-        // $(".voice-arrow-cancel").text("Cancel");
-        $(".voice-arrow-dialog").text("Press to speak"); 
+            // get_no("", EquipNum, 20, "");
+            onSetCommand_return("", EquipNum, main_instruction, "3", "false");
+            break;
+        default:
+            break;
     }
-    else
-    {
-        // $(".voice-header>span").text("语音控制");
-        // $(".voice-arrow-cancel").text("取消");
-        $(".voice-arrow-dialog").text("按下说话");   
+}
+//修改界面字体
+function modifyZnUs() {
+    if (window.localStorage.languageList == "1") {
+        $(".voice-arrow-dialog").text("Press to speak");
+    } else {
+        $(".voice-arrow-dialog").text("按下说话");
     }
     getLanguageChoice(window.localStorage.languageList);
-
 }
 //切换语音
-function getLanguageChoice(val){
-
-  switch(val)
-  {
-    case "1": //讯飞英文
-      try {myJavaFun.SetAIUILanguage("english");} catch (ex) {}
-         
-    break;
-    case "0": //讯飞中文
-      try {myJavaFun.SetAIUILanguage("mandarin");} catch (ex) {}
-          
-    break;
-    // case "2": //微软中文
-    // // alert("微软中文");
-    //   try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
-      
-    // break;
-    // case "3": //微软英文
-    // // alert("微软英文");
-    //   try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
-            
-    break;
-    default: break;
-  }
-
+function getLanguageChoice(val) {
+    switch (val) {
+        case "1": //讯飞英文
+            try {
+                myJavaFun.SetAIUILanguage("english");
+            } catch (ex) {}
+            break;
+        case "0": //讯飞中文
+            try {
+                myJavaFun.SetAIUILanguage("mandarin");
+            } catch (ex) {}
+            break;
+            break;
+        default:
+            break;
+    }
 }
-
-function voiceCloseFun()
-{
-    try{myJavaFun.BackVoiceUI();}catch(e){}//语音注销
+function voiceCloseFun() {
+    try {
+        myJavaFun.BackVoiceUI();
+    } catch (e) {} //语音注销
 }
-
 //二维码扫描调用
-function RichScan(){
-    try{
+function RichScan() {
+    try {
         myJavaFun.RichScan();
-    }catch(e){}
+    } catch (e) {}
 }
-
 //singar
-
-var hubConn,hubProxy,signalR = {
-connectServer: function(equipNo) {
-      hubConn = null
-      hubConn = $.hubConnection();
-      hubProxy = hubConn.createHubProxy('ServerHub');
-      hubProxy.on('sendConnect', data => {
-        //连接
-      });
-
-      // 来自广播新消息类型和数据
-      hubProxy.on('sendAll', (data, type) => {
-        // console.log('ycyxall--------------' + type, data)
-      });
-
-      // ycp有广播消息
-      hubProxy.on('sendYcpSingle', data => {
-        // console.log('yccccp----------------', data)
-        try{
-          let index = data.split(",")[0],value = data.split(",")[2],companyString = data.split(",")[5];
-          $("#valueycps_"+index).find("span.val").html(value+companyString); 
-        }catch(e){}
-
-      });
-
-      // yxp有广播消息
-      hubProxy.on('sendYxpSingle', data => {
-        //  console.log('yxxxxp-------------------', data)
-         try{
-          let index = data.split(",")[0],status = data.split(",")[4];
-          if(status == "True")
-             $("#m_alarmyxps_"+index).find(".iconWrap i").addClass("alarm").removeClass("comOk"); 
-          else
-            {$("#m_alarmyxps_"+index).find(".iconWrap i").removeClass("alarm").addClass("comOk"); }
-        }catch(e){}
-
-      });
-
-      // 监听设备状态
-      hubProxy.on('sendEquipSingle', data => {
-        // console.log('equip-------------------', data)
-        try{
-          let index = data.split(",")[0],status = data.split(",")[2];
-          // $("#imgConf_"+index).find("img").attr("src","/Image/alarm/"+status+".png"); 
-          if(status == "CommunicationOK")
-            $(".equipListStatus_"+index).find("i").removeClass("noCom alarm").addClass("comOk");
-          else if(status == "HaveAlarm")
-            $(".equipListStatus_"+index).find("i").removeClass("noCom comOk").addClass("alarm");
-          else
-            $(".equipListStatus_"+index).find("i").removeClass("comOk alarm").addClass("noCom");
-
-        }catch(e){}
-      });
-      
-      hubConn.stop()
-      // 开始连接signalr
-      hubConn.start()
-        .done(() => {
-          // console.log('start!')
-          hubProxy.invoke('Connect');
-          hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey , window.localStorage.ac_infokey)
-          hubProxy.invoke('StartListen', equipNo,  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
-        })
-        .fail(err => {
-            console.log('错误-------:', err)
-        })
-
-      // signalr重连
-      hubConn.reconnecting(() => {
-        hubConn.stop();
-        hubConn.start()
-          .done(() => {
-              console.log('start!')
-              hubProxy.invoke('Connect')
-              hubProxy.invoke('ListenEquipAll',  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
-              hubProxy.invoke('StartListen', equipNo,  window.localStorage.ac_appkey , window.localStorage.ac_infokey)
-          })
-          .fail(err => {
-              console.log('错误-------:', err)
-          })
-      })
-      // signalr断开连接
-      hubConn.disconnected(() => {
+var hubConn, hubProxy, signalR = {
+    connectServer: function(equipNo) {
+        hubConn = null
+        hubConn = $.hubConnection();
+        hubProxy = hubConn.createHubProxy('ServerHub');
+        hubProxy.on('sendConnect', data => {
+            //连接
+        });
+        // 来自广播新消息类型和数据
+        hubProxy.on('sendAll', (data, type) => {
+            // console.log('ycyxall--------------' + type, data)
+        });
+        // ycp有广播消息
+        hubProxy.on('sendYcpSingle', data => {
+            // console.log('yccccp----------------', data)
+            try {
+                let index = data.split(",")[0],
+                    value = data.split(",")[2],
+                    companyString = data.split(",")[5];
+                $("#valueycps_" + index).find("span.val").html(value + companyString);
+            } catch (e) {}
+        });
+        // yxp有广播消息
+        hubProxy.on('sendYxpSingle', data => {
+            //  console.log('yxxxxp-------------------', data)
+            try {
+                let index = data.split(",")[0],
+                    status = data.split(",")[4];
+                if (status == "True") $("#m_alarmyxps_" + index).find(".iconWrap i").addClass("alarm").removeClass("comOk");
+                else {
+                    $("#m_alarmyxps_" + index).find(".iconWrap i").removeClass("alarm").addClass("comOk");
+                }
+            } catch (e) {}
+        });
+        // 监听设备状态
+        hubProxy.on('sendEquipSingle', data => {
+            // console.log('equip-------------------', data)
+            try {
+                let index = data.split(",")[0],
+                    status = data.split(",")[2];
+                if (status == "CommunicationOK") $(".equipListStatus_" + index).find("i").removeClass("noCom alarm").addClass("comOk");
+                else if (status == "HaveAlarm") $(".equipListStatus_" + index).find("i").removeClass("noCom comOk").addClass("alarm");
+                else $(".equipListStatus_" + index).find("i").removeClass("comOk alarm").addClass("noCom");
+            } catch (e) {}
+        });
         hubConn.stop()
-//      alert(1)点击设备数据的时候触发
-      })
-      // 高频连接触发
-      hubConn.connectionSlow((err) => {
-        // console.log(err)
-      })
-      // 收到signalr消息触发
-      hubConn.received((err) => {
-//            console.log(err,"shoudaoxiaoxi")
-      })
-    },
-  connectHub: function(equipNo) {
-      // console.log('reflash conn')
-      this.hubConn.stop()
-      // 开始连接signalr
-      this.hubConn.start()
-        .done(() => {
-          // console.log('start!')
-          this.hubProxy.invoke('Connect')
-          this.hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey , window.localStorage.ac_infokey)
-          this.hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey , window.localStorage.ac_infokey)
+        // 开始连接signalr
+        hubConn.start().done(() => {
+            hubProxy.invoke('Connect');
+            hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+            hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+        }).fail(err => {
+            console.log('错误-------:', err)
         })
-        .fail(err => {
+        // signalr重连
+        hubConn.reconnecting(() => {
+            hubConn.stop();
+            hubConn.start().done(() => {
+                console.log('start!')
+                hubProxy.invoke('Connect')
+                hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+                hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+            }).fail(err => {
+                console.log('错误-------:', err)
+            })
+        })
+        // signalr断开连接
+        hubConn.disconnected(() => {
+            hubConn.stop();
+        })
+        // 高频连接触发
+        hubConn.connectionSlow((err) => {
+        })
+        // 收到signalr消息触发
+        hubConn.received((err) => {
+        })
+    },
+    connectHub: function(equipNo) {
+        this.hubConn.stop()
+        // 开始连接signalr
+        this.hubConn.start().done(() => {
+            // console.log('start!')
+            this.hubProxy.invoke('Connect')
+            this.hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+            this.hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+        }).fail(err => {
             console.log('错误-------:', err)
         })
     },
-  }
-
-  //中英文目录切换
-  function tranformMenu(val){
+}
+//中英文目录切换
+function tranformMenu(val) {
     let obj;
-    val == 1?obj = selLanguageEN:obj= selLanguageZH;
-    obj.forEach(function(item,index){
-        if(item.id =="setPageTool"){
-            $(".navbar div.right a").attr("href",item.url)
-        }
-        else
-        {
-            $("#"+item.id).attr("href",item.url).find("span").text(item.name);
+    val == 1 ? obj = selLanguageEN : obj = selLanguageZH;
+    obj.forEach(function(item, index) {
+        if (item.id == "setPageTool") {
+            $(".navbar div.right a").attr("href", item.url)
+        } else {
+            $("#" + item.id).attr("href", item.url).find("span").text(item.name);
         }
     });
-  }
-
-  //中英文弹窗
-  function tranformAlert(title,tooip,confirmBtn,cancelBtn,confirmEvent,cancelEvent){
-      myApp.dialog.create({
-      title: title,
-      text: tooip,
-      buttons: [{
-          text: cancelBtn,
-          onClick: function() {
-            try{evil(cancelEvent)();} catch(e){}
-          }          
-      }, {
-          text: confirmBtn,
-          onClick: function() {
-             try{evil(confirmEvent)();} catch(e){} 
-          }
-      }]
-     }).open();
-  }
-
-
-
+}
+//中英文弹窗
+function tranformAlert(title, tooip, confirmBtn, cancelBtn, confirmEvent, cancelEvent) {
+    myApp.dialog.create({
+        title: title,
+        text: tooip,
+        buttons: [{
+            text: cancelBtn,
+            onClick: function() {
+                try {
+                    evil(cancelEvent)();
+                } catch (e) {}
+            }
+        }, {
+            text: confirmBtn,
+            onClick: function() {
+                try {
+                    evil(confirmEvent)();
+                } catch (e) {}
+            }
+        }]
+    }).open();
+}

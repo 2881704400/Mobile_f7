@@ -1,5 +1,6 @@
 ﻿var event_Level_list,btnInfoNames = [],btnInfoLevels = [],timeInterval;
 function snapshot() {
+
     switchToolbar("snapshotTool");
     var snapashot_ptr = $$('.snapashot-page-content');
     snapashot_ptr.on("ptr:refresh", refreshpg);
@@ -61,6 +62,7 @@ function getRealTimeEventCount() {
                     var resultDataArr = resultData.toString().split(",");
                     var strData = "";
                     var iconData="";
+      
                     for (var i = 0; i < resultDataArr.length; i++) {
                     	if(i==0){
                     		iconData="icon-web-cuowu";
@@ -73,7 +75,7 @@ function getRealTimeEventCount() {
                     	}else if(i==4){
                     		iconData="icon-web-assets";
                     	}
-                        strData += '<li>' + '<a href="/snapShotDetail/?' + btnInfoNames[i] + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont ' + iconData + '"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + btnInfoNames[i] + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
+                        strData += '<li>' + '<a href="/snapShotDetail/?' + judgeSnapshotName(btnInfoNames[i]) + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont ' + iconData + '"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + judgeSnapshotName(btnInfoNames[i]) + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
                     }
                     $("#snapshotMenuListId").html(strData);
                     myApp.dialog.close();
@@ -96,3 +98,22 @@ function refreshpg(e) {
     }, 2000);
 }
 
+function judgeSnapshotName(val){
+    var result = "";
+     switch(val)
+     {
+        case "故障": result =window.localStorage.languageList == 1?"Errors":"故障";break;
+        case "警告": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
+        case "信息": result =window.localStorage.languageList == 1?"Informations":"信息";break;
+        case "设置": result =window.localStorage.languageList == 1?"Settings":"设置";break;
+        case "资产": result =window.localStorage.languageList == 1?"Assets":"资产";break;
+
+        case "Errors": result =window.localStorage.languageList == 1?"Errors":"故障";break;
+        case "Warnings": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
+        case "Informations": result =window.localStorage.languageList == 1?"Informations":"信息";break;
+        case "Settings": result =window.localStorage.languageList == 1?"Settings":"设置";break;
+        case "Assets": result =window.localStorage.languageList == 1?"Assets":"资产";break;        
+        default: break;
+     }
+     return result;
+}

@@ -1,4 +1,5 @@
 var scheduleTimeAler, scheduleAlert, scheduleAlertSusscess;
+
 function schedule() {
     switchToolbar("configTool");
     scheduleAlert = myApp.toast.create({
@@ -30,38 +31,38 @@ function schedule() {
     //人员数据请求
     schedule_public_username.length = 0;
     requestUser();
-    
 }
 //左侧添加菜单
-function transformReportingObstaciesMenu(){
-
-   $(".scheduleRightBottomBtn").hasClass("transformReportingMenu")?$(".scheduleRightBottomBtn").removeClass("transformReportingMenu"):$(".scheduleRightBottomBtn").addClass("transformReportingMenu");
-
+function transformReportingObstaciesMenu() {
+    $(".scheduleRightBottomBtn").hasClass("transformReportingMenu") ? $(".scheduleRightBottomBtn").removeClass("transformReportingMenu") : $(".scheduleRightBottomBtn").addClass("transformReportingMenu");
 }
-// ********************************************************************************
 // 人员
 var schedule_public_username = [];
+
 function requestUser() {
     var disabled = "'disabled'";
-
-    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_AdministratorData",{data: {getDataTable: "0"}})).done(function(data){
-             let arrayLike = data.HttpData.data;
-            let code = data.HttpData.code,
-                html = "";
-            $("#schedule_user ul").html("");
-            if (code == 200) {
-                let AlarmTabulateLenth = arrayLike.length;
-                for (var i = 0; i < AlarmTabulateLenth; i++) {
-                    let telphoneUser = arrayLike[i].Telphone.toString().trim() == "" ? null : arrayLike[i].Telphone;
-                    let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
-                    let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
-                    let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
-                    html += `<li class="swipeout bottomBorderLine" >
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_AdministratorData", {
+        data: {
+            getDataTable: "0"
+        }
+    })).done(function(data) {
+        let arrayLike = data.HttpData.data;
+        let code = data.HttpData.code,
+            html = "";
+        $("#schedule_user ul").html("");
+        if (code == 200) {
+            let AlarmTabulateLenth = arrayLike.length;
+            for (var i = 0; i < AlarmTabulateLenth; i++) {
+                let telphoneUser = arrayLike[i].Telphone.toString().trim() == "" ? null : arrayLike[i].Telphone;
+                let mobileTelUser = arrayLike[i].MobileTel.toString().trim() == "" ? null : arrayLike[i].MobileTel;
+                let emailUser = arrayLike[i].EMail.toString().trim() == "" ? null : arrayLike[i].EMail;
+                let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
+                html += `<li class="swipeout bottomBorderLine" >
                           <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildUser('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1)">
-                            <i class="iconfont icon-f7_usersName"></i>
+                        
                             <div class="col-50">
-                                <p>${arrayLike[i].Administrator}</p>
-                                <p>报警级别: <label>${arrayLike[i].AckLevel}</label></p>
+                                <span>${arrayLike[i].Administrator}</span>
+                                
                             </div>
                             <div class="col-50"><a href="#" class="detailsBtn linkColor" >详情</a>   </div>              
                           </div>
@@ -69,23 +70,19 @@ function requestUser() {
                             <a href="#" class="delBtn" onclick="delUser(this,'${arrayLike[i].Administrator}')">删除</a>
                           </div>
                         </li>`;
-                    schedule_public_username.push(arrayLike[i].Administrator);
-                }
-            } else {
-                requestUser();
-                return false;
+                schedule_public_username.push(arrayLike[i].Administrator);
             }
-            $("#schedule_user ul").append(html);
-    }).fail(function(e){
-
-    });
+        } else {
+            requestUser();
+            return false;
+        }
+        $("#schedule_user ul").append(html);
+    }).fail(function(e) {});
 }
 //人员html
 function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, status) {
-    if(status == 1)
-      myApp.router.navigate("/scheduleModify/?title=人员修改&index=1&table=schedule_user&schedule1_username="+userName+"&schedule1_hpone="+telphone+"&schedule1_msm="+telmobile+"&schedule1_email="+emailValue+"&schedule1_level="+ackLevel); 
-    else
-      myApp.router.navigate("/scheduleModify/?title=人员修改&index=2&table=schedule_user"); 
+    if (status == 1) myApp.router.navigate("/scheduleModify/?title=人员修改&index=1&table=schedule_user&schedule1_username=" + userName + "&schedule1_hpone=" + telphone + "&schedule1_msm=" + telmobile + "&schedule1_email=" + emailValue + "&schedule1_level=" + ackLevel);
+    else myApp.router.navigate("/scheduleModify/?title=人员修改&index=2&table=schedule_user");
 }
 //人员表删除
 function delUser(that, userName) {
@@ -110,6 +107,7 @@ function publicAjax(jsonString, url, index) {
         "error": _error,
     };
     $.fn.axpost(jsonData);
+
     function _success(data) {
         let arrayLike = data.HttpStatus;
         if (arrayLike == 200 && data.HttpData.data != 0) {
@@ -142,9 +140,10 @@ function publicAjax(jsonString, url, index) {
         scheduleAlert.open();
     }
 }
-// ********************************************************************************
+
 //设备分组
 var that_parent, equipArray = new Array();
+
 function requestEquipGroup() {
     var jsonData = {
         "url": "/api/GWServiceWebAPI/get_EquipGroupData",
@@ -155,6 +154,7 @@ function requestEquipGroup() {
         "error": _error,
     };
     $.fn.axpost(jsonData);
+
     function _success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code,
@@ -196,12 +196,9 @@ function requestEquipGroup() {
     }
 }
 // 设备html
-function activeLinkEquipGroup(that,status) {
-    if(status == 1)
-      myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=1&table=schedule_equip&equipcomb="+$(that).attr("equipcomb")+"&group_no="+$(that).attr("group_no")+"&currentTxt="+$(that).text()); 
-    else
-      myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=2&table=schedule_equip"); 
-
+function activeLinkEquipGroup(that, status) {
+    if (status == 1) myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=1&table=schedule_equip&equipcomb=" + $(that).attr("equipcomb") + "&group_no=" + $(that).attr("group_no") + "&currentTxt=" + $(that).text());
+    else myApp.router.navigate("/scheduleModify/?title=设备分组修改&index=2&table=schedule_equip");
 }
 //设备删除
 function delEquip(that) {
@@ -266,7 +263,7 @@ function getMaxNo() {
     if (equipArray.length == 0) return 1;
     else return Math.max.apply(null, equipArray) + 1;
 }
-// ********************************************************************************
+
 //管理范围
 function requestAlmReport(almGroupObject) {
     var jsonData = {
@@ -301,24 +298,18 @@ function requestAlmReport(almGroupObject) {
             requestAlmReport(almGroupName);
             return false;
         }
-
         $("#schedule_administartor ul").append(html);
     }
 
-    function _error(e) {
-        // console.log(e);
-    }
+    function _error(e) {}
 }
 // 设备html
 function newlyBuildAlmReport(that, status) {
-    if(status == 1)
-      myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=1&table=schedule_administartor&dataid="+$(that).attr("dataid")+"&datano="+$(that).attr("datano")+"&username="+$(that).find("div:eq(0)").text()+"&groupname="+$(that).find("div:eq(1)").text()); 
-    else
-      myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=2&table=schedule_administartor");  
+    if (status == 1) myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=1&table=schedule_administartor&dataid=" + $(that).attr("dataid") + "&datano=" + $(that).attr("datano") + "&username=" + $(that).find("div:eq(0)").text() + "&groupname=" + $(that).find("div:eq(1)").text());
+    else myApp.router.navigate("/scheduleModify/?title=管理范围修改&index=2&table=schedule_administartor");
 }
 //返回对应设备号的设备名称
 function getEquipName(equipObject, equipno) {
-    // console.log(equipObject);
     var equipName = "";
     equipObject.forEach(function(ele, index) {
         if (ele.group_no == equipno) {
@@ -338,6 +329,7 @@ function getEquipNO(equipObject, equipName) {
 }
 //请求设备分组
 var requestEGAReport;
+
 function requestEGAlmReport() {
     var equipData = {
         "url": "/api/GWServiceWebAPI/get_EquipGroupData",
@@ -348,6 +340,7 @@ function requestEGAlmReport() {
         "error": equip_error,
     };
     $.fn.axpost(equipData);
+
     function equip_success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code;
@@ -401,9 +394,10 @@ function almReportList(parentTaht, that) {
     $(parentTaht).attr("equipcomb", equipcombParentString);
     updateEquip($(parentTaht).next().find("i.icon-f7_modify"), $(parentTaht).text(), 1);
 }
-// ********************************************************************************
+
 //周排表
 var jsondate = [];
+
 function requestWeekAlmReport() {
     var jsonData = {
         "url": "/api/GWServiceWebAPI/get_WeekAlmReportData",
@@ -414,6 +408,7 @@ function requestWeekAlmReport() {
         "error": _error,
     };
     $.fn.axpost(jsonData);
+
     function _success(data) {
         let arrayLike = data.HttpData.data,
             code = data.HttpData.code,
@@ -428,8 +423,8 @@ function requestWeekAlmReport() {
                 jsondate = [arrayLike[i].Administrator, weekReturn(arrayLike[i].week_day), arrayLike[i].week_day, sTime.toString(), eTime.toString()];
                 html += `<li class="swipeout bottomBorderLine">
                   <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildWeekAlmReport(this,1)" dataid = "${arrayLike[i].id}" dataday="${arrayLike[i].week_day}">
-                    <div class="col-25">${arrayLike[i].Administrator}</div>
-                    <div class="col-25">${weekReturn(arrayLike[i].week_day)}</div>   
+                    <div class="col-35">${arrayLike[i].Administrator}</div>
+                    <div class="col-15">${weekReturn(arrayLike[i].week_day)}</div>   
                     <div class="col-25">${formatDate(new Date(arrayLike[i].begin_time),"hh:mm")}</div>           
                     <div class="col-25">${formatDate(new Date(arrayLike[i].end_time),"hh:mm")}</div>
                   </div>
@@ -444,18 +439,14 @@ function requestWeekAlmReport() {
         }
         $("#schedule_specificDate ul").append(html);
     }
-    function _error(e) {
-        // console.log(e);
-    }
+
+    function _error(e) {}
 }
 //周排表html
 function newlyBuildWeekAlmReport(tThatParent, status) {
-    if(status == 1)
-      myApp.router.navigate("/scheduleModify/?title=周排表修改&index=1&table=schedule_specificDate&username="+$(tThatParent).find("div:eq(0)").text()+"&week="+$(tThatParent).find("div:eq(1)").text()+"&stime="+$(tThatParent).find("div:eq(2)").text()+"&etime="+$(tThatParent).find("div:eq(3)").text()+"&dataid="+$(tThatParent).attr("dataid")); 
-    else
-      myApp.router.navigate("/scheduleModify/?title=周排表修改&index=2&table=schedule_specificDate"); 
+    if (status == 1) myApp.router.navigate("/scheduleModify/?title=周排表修改&index=1&table=schedule_specificDate&username=" + $(tThatParent).find("div:eq(0)").text() + "&week=" + $(tThatParent).find("div:eq(1)").text() + "&stime=" + $(tThatParent).find("div:eq(2)").text() + "&etime=" + $(tThatParent).find("div:eq(3)").text() + "&dataid=" + $(tThatParent).attr("dataid"));
+    else myApp.router.navigate("/scheduleModify/?title=周排表修改&index=2&table=schedule_specificDate");
 }
-
 //周排表删除
 function delWeekAlmReport(that) {
     myApp.dialog.confirm("是否删除该周排表", "提示", function() {
@@ -472,6 +463,7 @@ function delWeekAlmReport(that) {
 // ********************************************************************************
 //特定排表
 var spe_array = [];
+
 function requestSpeAlmReport() {
     var jsonData = {
         "url": "/api/GWServiceWebAPI/get_SpeAlmReportData",
@@ -482,6 +474,7 @@ function requestSpeAlmReport() {
         "error": _error,
     };
     $.fn.axpost(jsonData);
+
     function _success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code,
@@ -510,11 +503,11 @@ function requestSpeAlmReport() {
         }
         $("#schedule_weeklytable ul").append(html);
     }
+
     function _error(e) {
         // console.log(e);
     }
 }
-
 //特定排表删除
 function delSpeAlmReport(that) {
     myApp.dialog.confirm("是否删除该特定排表", "提示", function() {
@@ -530,15 +523,13 @@ function delSpeAlmReport(that) {
 }
 
 function newlyBuildSpeAlmReport(tThatParent, status) {
-    if(status == 1)
-      myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=1&table=schedule_weeklytable&username="+$(tThatParent).find("div:eq(0)").text()+"&stime="+$(tThatParent).find("div:eq(1)").text()+"&etime="+$(tThatParent).find("div:eq(2)").text()+"&dataid="+$(tThatParent).attr("dataid")); 
-    else
-      myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=2&table=schedule_weeklytable"); 
+    if (status == 1) myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=1&table=schedule_weeklytable&username=" + $(tThatParent).find("div:eq(0)").text() + "&stime=" + $(tThatParent).find("div:eq(1)").text() + "&etime=" + $(tThatParent).find("div:eq(2)").text() + "&dataid=" + $(tThatParent).attr("dataid"));
+    else myApp.router.navigate("/scheduleModify/?title=特定排表修改&index=2&table=schedule_weeklytable");
 }
 //switchMenu
 function switchMenu(dt) {
     let idObj = $(dt).attr("href")
-     $(idObj).removeClass("displayNone").siblings("section").addClass("displayNone");
+    $(idObj).removeClass("displayNone").siblings("section").addClass("displayNone");
     switch (idObj) {
         case "#schedule_user":
             requestUser();
@@ -634,6 +625,7 @@ function formatDate(date, fmt) {
     }
     return fmt;
 };
+
 function padLeftZero(str) {
     return ('00' + str).substr(str.length);
 };

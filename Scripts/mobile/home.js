@@ -45,23 +45,23 @@ function authorizationName() {
                 $(".auth_name_get").text(dt);
                 window.localStorage.auth_name_title = dt;
             } else {
-                tipsInformtion("获取授权名失败,是否退出登陆界面?", exitLogin);
+                tipsInformtion(window.localStorage.languageList == 1?"Failed to obtain authorization name":"获取授权名失败,是否退出登陆界面?", exitLogin);
             }
         },
         error: function(e) {
-            tipsInformtion("获取授权名失败,是否退出登陆界面?", exitLogin);
+            tipsInformtion(window.localStorage.languageList == 1?"Failed to obtain authorization name":"获取授权名失败,是否退出登陆界面?", exitLogin);
         }
     });
 }
 //提示窗口
 function tipsInformtion(tipsStr, tipsEvent) {
     myApp.dialog.create({
-        title: "信息提示",
+        title: window.localStorage.languageList == 1?"Tips":"提示",
         text: tipsStr,
         buttons: [{
-            text: '取消'
+            text: window.localStorage.languageList == 1?"Cancel":"取消"
         }, {
-            text: '确定',
+            text: window.localStorage.languageList == 1?"confirm":"确定",
             onClick: function() {
                 tipsEvent();
             }

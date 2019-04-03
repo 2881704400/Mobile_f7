@@ -1,10 +1,6 @@
 .eventSearchPageContent {
     padding-bottom: 50px !important;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
 .equipSearchDetailContent.page-content {
     .eventDetailList {
         margin: 0.5rem;
@@ -12,6 +8,7 @@
         textarea {
             font-size: 0.875rem;
         }
+        textarea{height: auto;}
         .item-input-wrap {
             border-bottom: 0px solid rgba(0, 0, 0, .12);
         }
@@ -28,41 +25,23 @@
         textarea {
             font-size: 0.875rem;
         }
+
     }
 }
-.calendar-row {
-    height: 15% !important;
-    padding: 0 !important;
-}
-.md .eventDetailList .item-content .item-input-wrap {
-    border-bottom: 0px solid rgba(0, 0, 0, .12);
-}
 
-.md .eventDetailList .item-content:last-child .item-input-wrap:after {
-    height: 0px !important;
-}
+.calendar-row {height: 15% !important;padding: 0 !important;}
 
-.md .eventSearchSubNavBar .button:not(.button-fill):not(.button-fill-md) {
-    color: #000;
-}
+.md .eventDetailList .item-content .item-input-wrap {border-bottom: 0px solid rgba(0, 0, 0, .12);}
 
-.md .eventSearchSubNavBar .button.tab-link-active {
-    background-color: #2d8cf0;
-    color: #fff !important;
-}
+.md .eventDetailList .item-content:last-child .item-input-wrap:after { height: 0px !important;}
 
-.md .eventSearchSubNavBar .segmented.segmented-raised {
-    box-shadow: none;
-    border: 1px solid #2d8cf0;
-}
+.md .eventSearchSubNavBar .button:not(.button-fill):not(.button-fill-md) { color: #000;}
 
-.md .eventSearchSubNavBar .segmented .button {
-    border-radius: 0;
-    border-left: 1px solid #2d8cf0;
-    &:first-child {
-        border-left: none;
-    }
-}
+.md .eventSearchSubNavBar .button.tab-link-active { background-color: #2d8cf0; color: #fff !important;}
+
+.md .eventSearchSubNavBar .segmented.segmented-raised {box-shadow: none; border: 1px solid #2d8cf0; }
+
+.md .eventSearchSubNavBar .segmented .button {border-radius: 0; border-left: 1px solid #2d8cf0; &:first-child {border-left: none; } }
 
 .subnavbar.eventSearchSubNavBar {
     background: white !important;
@@ -100,18 +79,10 @@
 .eventSearchContent {
     width: 100%;
     height: 100%;
-<<<<<<< HEAD
-=======
-    // background: #F2F3F5;
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
     padding: 0.5rem;
     .event-search-box {
         width: 100%;
         height: 78px;
-<<<<<<< HEAD
-=======
-        // background: #FFFFFF;
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
         padding-left: 1rem;
         margin-bottom: 10px;
         border-radius: 3px;
@@ -124,10 +95,6 @@
                 height: 100%;
                 line-height: 39px;
                 font-size: 0.875rem;
-<<<<<<< HEAD
-=======
-                // color: #333333;
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
                 float: left;
                 opacity: 0.6;
             }
@@ -141,10 +108,6 @@
                     width: 100%;
                     height: 100%;
                     font-size: 0.875rem;
-<<<<<<< HEAD
-=======
-                    // color: #333333;
->>>>>>> b50f1a6585bf4b01fd46e456cbc8591121d365d6
                     font-weight: bold;
                 }
                 &:after {
@@ -245,13 +208,12 @@
     }
     .tabs {
         width: 100%;
-        height: calc(100% - 88px);padding-bottom: 50px;
-        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+        height: calc(100% - 88px);
         border-radius: 3px;
         .tab#tab1 {
             width: 100%;
             height: 100%;
-            overflow-y: auto;
+
             border-radius: 3px;
             .tab-content-box {
                 width: 100%;
@@ -260,7 +222,6 @@
             .tab-table-header {
                 width: 100%;
                 height: 36px;
-                // background-color: white;
                 position: relative;
                 span {
                     width: 25%;
@@ -305,7 +266,7 @@
             }
             ul {
                 width: 100%;
-                height: calc(100% - 36px);
+                height: calc(100% - 36px);padding-bottom: 50px;
                 list-style: none;overflow-y: auto;
                 li {
                     height: 38px;
@@ -358,7 +319,6 @@
         .tab#tab2 {
             width: 100%;
             height: 100%;
-            overflow-y: auto;
             border-radius: 3px;
             .tab-content-box {
                 width: 100%;
@@ -413,7 +373,7 @@
             }
             ul {
                 width: 100%;
-                height: calc(100% - 36px);
+                height: calc(100% - 36px);overflow-y: auto;padding-bottom: 50px;
                 list-style: none;
                 li {
                     height: 38px;
@@ -466,7 +426,6 @@
         .tab#tab3 {
             width: 100%;
             height: 100%;
-            overflow-y: auto;
             border-radius: 3px;
             .tab-content-box {
                 width: 100%;
@@ -475,7 +434,7 @@
             .tab-table-header {
                 width: 100%;
                 height: 36px;
-                // background-color: white;
+                // background-color: white; 
                 position: relative;
                 span {
                     width: 25%;
@@ -514,24 +473,25 @@
             }
             ul {
                 width: 100%;
-                height: calc(100% - 36px);
+                height: calc(100% - 36px);overflow-y: auto;padding-bottom: 50px;
+                padding-bottom: 50px;
                 list-style: none;
                 li {
-                    height: 38px;
+                    height: 50px;
                     width: 100%;
                     position: relative;
                     span {
                         width: 25%;
                         height: 100%;
-                        // color: #333333;
                         font-size: 0.875rem;
                         display: inline-block;
                         text-align: center;
+                        line-height: 25px;
                         float: left;
                         &:last-child {
                             width: 75%;
                             text-align: left;
-                            line-height: 38px;
+                            line-height: 50px;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
