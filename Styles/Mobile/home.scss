@@ -17,42 +17,51 @@ mixin：sass宏mixin
     &>ul.charts-block{
       width: 100%;
         &>li{
-          width: 100%;margin: 0px auto 0.5rem auto;
-          h3{text-align: left;font-size: 0.9rem;font-weight: 300;margin-bottom: 1rem;
-          i{font-size: 1.5rem;margin-right: 10px;vertical-align: middle;position: relative;top: -2px;}
-          }  
-          dl{
-            width: 100%;
-            dt{}
-            dd{ 
-               width: 100%;text-align: center;padding: 10px;overflow: hidden; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-              .charts_bar{
-                width: 100%;#purchase_Bar{width: 100%;height: 190px;}
-                .barRightBorder{border-right: 1px solid #{$statsBorderColor};}
-                #purchase_ring,#purchase_circular{width: 100%;height: 190px;margin: 0 auto;}
-                #purchase_Bar{margin: 0 auto;}
-               }
-               &>div{overflow: hidden;}       
-               .p-ellipsis1{font-size: 12px;text-align:center; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;} }
-          }
+          width: 100%;text-align: center;padding: 10px;overflow: hidden; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);margin-bottom: 10px;
 
-          .functionMenu{
-            &>dt{
-              width: 100%;height: 30px;display: inline-block;
-              background: url(/Image/1.jpg) no-repeat center/ auto 100%;
-            }
-            &>dd{
-              li{margin-top: 10px;
-                .homeBtn{
-                  width: 100%;height: 100%;display: inline-block; position: relative;
-                  i{font-size: 2rem;color: #{$situationContainerBgc};border-radius: #{$homeBtnBorderRadius};     
-                  padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;}
-                  p{margin: 0; }
-                  img{width: 40%;}
-                }
+          h3{text-align: left;font-size: 0.9rem;font-weight: 300;margin-bottom: 1rem;
+          i{font-size: 1.5rem;margin-right: 10px;vertical-align: middle;position: relative;top: -2px;}}  
+          li{margin-top: 10px;
+              .homeBtn{
+                width: 100%;height: 100%;display: inline-block; position: relative;
+                i{font-size: 2rem;color: #{$situationContainerBgc};border-radius: #{$homeBtnBorderRadius};     
+                padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;}
+                p{margin: 0; }
+                img{width: 40%;}
               }
-            }
-          } 
+          }
+          // dl{
+          //   width: 100%;
+          //   dt{}
+          //   dd{ 
+          //      width: 100%;text-align: center;padding: 10px;overflow: hidden; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+          //     .charts_bar{
+          //       width: 100%;#purchase_Bar{width: 100%;height: 190px;}
+          //       .barRightBorder{border-right: 1px solid #{$statsBorderColor};}
+          //       #purchase_ring,#purchase_circular{width: 100%;height: 190px;margin: 0 auto;}
+          //       #purchase_Bar{margin: 0 auto;}
+          //      }
+          //      &>div{overflow: hidden;}       
+          //      .p-ellipsis1{font-size: 12px;text-align:center; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;} }
+          // }
+
+          // .functionMenu{
+          //   &>dt{
+          //     width: 100%;height: 30px;display: inline-block;
+          //     background: url(/Image/1.jpg) no-repeat center/ auto 100%;
+          //   }
+          //   &>dd{
+          //     li{margin-top: 10px;
+          //       .homeBtn{
+          //         width: 100%;height: 100%;display: inline-block; position: relative;
+          //         i{font-size: 2rem;color: #{$situationContainerBgc};border-radius: #{$homeBtnBorderRadius};     
+          //         padding: 0.3rem 0.8rem;margin-bottom: 10px;    background: #{$homeConfigBtnBg};display: inline-block;}
+          //         p{margin: 0; }
+          //         img{width: 40%;}
+          //       }
+          //     }
+          //   }
+          // } 
           .commonlyUsed,.sysFourMenu{
             li{ 
               a{

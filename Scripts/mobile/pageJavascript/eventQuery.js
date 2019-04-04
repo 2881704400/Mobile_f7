@@ -1,137 +1,85 @@
 ﻿var toastCenter;
 
 function eventQuery() {
-	
-
     switchToolbar("configTool");
     var calendarRange = myApp.calendar.create({
-	  inputEl: '#condition-timepiker',
-	  dateFormat: 'yyyy/mm/dd',
-	  monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-	  dayNamesShort:["日","一","二","三","四","五","六"],
-//	  weekendDays:[0,6],
-	  rangePicker: true
-	});
-	myApp.sheet.open('.sheet-eventQu');
-	var searchbar=myApp.searchbar.create({
-		el:'.eventQu',
-		searchContainer:'.eq-list',
-		searchIn:'.item-title'
-	})
+        inputEl: '#condition-timepiker',
+        dateFormat: 'yyyy/mm/dd',
+        monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+        dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
+        rangePicker: true
+    });
+    myApp.sheet.open('.sheet-eventQu');
+    var searchbar = myApp.searchbar.create({
+        el: '.eventQu',
+        searchContainer: '.eq-list',
+        searchIn: '.item-title'
+    })
+    getEquipList()
+}
 
-	getEquipList()
+function getEquipList() {
+    $.when(AlarmCenterContext.getEquipList()).done(function(e) {
+        var dat = JSON.parse(e.d),
+            lg = dat.length;
+        for (var i = 0; i < lg; i++) {
+            var value = dat[i];
+            if (value.value != "") {
+                var html = '<li onclick="selectEquip(\'' + value.value + '\')">' + '<label class="item-checkbox item-content">' + ' <input type="checkbox" name="demo-checkbox" value="' + value.value + '" />' + '<i class="icon icon-checkbox"></i>' + '<div class="item-inner">' + '<div class="item-title">' + value.name + '</div>' + ' </div>' + '</label>' + '</li>';
+                $(".eq-list ul").append(html)
+            }
+        }
+    });
+}
+var equipId = [];
 
+function selectEquip(value) {
+    if (equipId.indexOf(value) != -1) {
+        equipId.remove(value);
+    } else {
+        equipId.push(value);
+    }
+}
 
+function selectEvent() {
+    var timeStr = $("#condition-timepiker").val();
+    var start = timeStr.split("-")[0] + " 00:00";
+    var end = timeStr.split("-")[1] + "23:59";
+    var data = {
+        equip_no_list: equipId.toString(),
+        times: start + "," + end
+    }
+    if (!timeStr) {
+        myApp.dialog.alert('请选择查询日期', "温馨提示");
+        return;
+    } else {
+        getEventEquip(data);
+        getEventSet(data);
+        getEventSys(data);
+    }
+}
+function loadEvent(data) {}
+function getEventEquip(data) {
+    if (!data.equip_no_list) {
+        myApp.dialog.alert('请选择查询设备', "温馨提示");
+        return;
+    }
+    $.when(AlarmCenterContext.getEquipEvent()).done(function(e) {
+    })
+}
 
-//  toastCenter = myApp.toast.create({
-//    text: "没有数据",
-//    position: 'center',
-//    closeTimeout: 2000,
-//   });
+function getEventSet(data) {
+    if (!data.equip_no_list) {
+        myApp.dialog.alert('请选择查询设备', "温馨提示");
+        return;
+    }
+    $.when(AlarmCenterContext.getSetEvent()).done(function(e) {
+    })
+}
 
-//  $(".sureBtn").click();
-//
-//   $(".tabListQuery a").unbind();
-//   $(".tabListQuery a").bind("click",function(){
-//       $(this).addClass("tab-link-active").siblings().removeClass("tab-link-active");
-//	     var data = {
-//	        equip_no_list: equipArr.toString(),
-//	        times: $("#timePicker").val() + "00:00:00," + $("#timePicker2").val() + "23:59:59"
-//	     }
-//	     if(equipArr.length>0)
-//		 {
-//			var hrefConfig = $(".tabListQuery .tab-link-active").attr("href");
-//			if(hrefConfig == "#equipEventContent"){QueryEquipEvt(data);}
-//			else if(hrefConfig == "#setEventContent"){QuerySetupsEvt(data);}
-//			else if(hrefConfig == "#stsEventContent"){ getSetEvent();}
-//		 }
-//   });
-//  equipsArray.length = equipArr.length = 0;
-//  getData();
+function getEventSys(data) {
+    $.when(AlarmCenterContext.getSysSet()).done(function(e) {})
 }
-function getEquipList(){
-	$.when(AlarmCenterContext.getEquipList()).done(function(e) {
-
-		var dat=JSON.parse(e.d),lg=dat.length;
-//		console.log(dat)
-		for(var i=0;i<lg;i++){
-			var value=dat[i];
-			if(value.value!=""){
-				var html='<li onclick="selectEquip(\''+value.value+'\')">'+
-							'<label class="item-checkbox item-content">'+
-						       ' <input type="checkbox" name="demo-checkbox" value="'+value.value+'" />'+
-						        '<i class="icon icon-checkbox"></i>'+
-						        '<div class="item-inner">'+
-						          '<div class="item-title">'+value.name+'</div>'+
-						       ' </div>'+
-					        '</label>'+
-						'</li>';
-				$(".eq-list ul").append(html)
-			}
-			
-		}
-//		_successf(e);
-	});
-//	.fail(function(e) {myApp.dialog.alert(e)
-//		_error(qXHR, textStatus, errorThrown);
-//	});
-}
-var equipId=[];
-function selectEquip(value){
-	if(equipId.indexOf(value)!=-1){
-		equipId.remove(value);
-	}else{
-		equipId.push(value);
-	}
-}
-function selectEvent(){
-	var timeStr=$("#condition-timepiker").val();
-	var start=timeStr.split("-")[0]+" 00:00";
-	var end=timeStr.split("-")[1]+"23:59";
-	var data={
-		equip_no_list: equipId.toString(),
-	    times: start+","+end
-	}
-	
-	if(!timeStr){
-		myApp.dialog.alert('请选择查询日期', "温馨提示");
-		return;
-	}else{
-		getEventEquip(data);
-		getEventSet(data);
-		getEventSys(data);
-	}
-//	console.log(data)
-}
-function loadEvent(data){
-	
-}
-function getEventEquip(data){
-	if(!data.equip_no_list){
-		myApp.dialog.alert('请选择查询设备', "温馨提示");
-		return;
-	}
-	$.when(AlarmCenterContext.getEquipEvent()).done(function(e){
-//		console.log(e)
-	})
-}
-function getEventSet(data){
-	if(!data.equip_no_list){
-		myApp.dialog.alert('请选择查询设备', "温馨提示");
-		return;
-	}
-	$.when(AlarmCenterContext.getSetEvent()).done(function(e){
-//		console.log(e)
-	})
-}
-function getEventSys(data){
-	$.when(AlarmCenterContext.getSysSet()).done(function(e){
-//		console.log(e)
-	})
-}
-//var equipsArray = [],
-//  equipArr = [];
-
 function getData() {
     $.ajax({
         type: "post",
@@ -152,21 +100,15 @@ function getData() {
         }
     });
 }
-
-
-
-
 function getEvent() {
     if ($("#timePicker").val() == "") {
         myApp.dialog.alert('请选择开始日期', "温馨提示");
     } else if ($("#timePicker2").val() == "") {
         myApp.dialog.alert('请选择结束日期', "温馨提示");
     } else {
-
-	 	$(".tabListQuery a.tab-link-active").click();
+        $(".tabListQuery a.tab-link-active").click();
     }
 }
-
 function QueryEquipEvt(data) {
     $("#equipEventContent ul").html("");
     $.ajax({
@@ -176,16 +118,13 @@ function QueryEquipEvt(data) {
         data: data,
         success: function(res) {
             var str = $(res).find("string").text();
-           
-            if(str == "false")
-            {
-               toastCenter.open();
-            }
-            else
-            {
-              var dat = JSON.parse(str),html="";
-              for (var i = 0; i < dat.length; i++) {
-                html += `<li class="accordion-item">
+            if (str == "false") {
+                toastCenter.open();
+            } else {
+                var dat = JSON.parse(str),
+                    html = "";
+                for (var i = 0; i < dat.length; i++) {
+                    html += `<li class="accordion-item">
                                     <a href="#" class="item-content item-link">
                                         <div class="item-inner">
                                           <div class="item-title">${dat[i].event}</div>
@@ -210,13 +149,12 @@ function QueryEquipEvt(data) {
                                     </div>
                                   </div>
                                 </li>`
-              }
-               $("#equipEventContent>div").html("<ul>"+html+"</ul>");
+                }
+                $("#equipEventContent>div").html("<ul>" + html + "</ul>");
             }
         }
     });
 }
-
 function QuerySetupsEvt(data) {
     $("#setEventContent ul").html("")
     $.ajax({
@@ -226,15 +164,13 @@ function QuerySetupsEvt(data) {
         data: data,
         success: function(res) {
             var str = $(res).find("string").text();
-             if(str == "false")
-            {
+            if (str == "false") {
                 toastCenter.open();
-            }
-            else
-            {
-              var dat = JSON.parse(str),html="";
-              for (var i = 0; i < dat.length; i++) {
-                  html += `<li class="accordion-item">
+            } else {
+                var dat = JSON.parse(str),
+                    html = "";
+                for (var i = 0; i < dat.length; i++) {
+                    html += `<li class="accordion-item">
                       <a href="#" class="item-content item-link">
                           <div class="item-inner">
                             <div class="item-title">${dat[i].event}</div>
@@ -258,14 +194,12 @@ function QuerySetupsEvt(data) {
                         </div>
                       </div>
                     </li>`
-                 
-              } $("#setEventContent>div").append("<ul>"+html+"</ul>");
+                }
+                $("#setEventContent>div").append("<ul>" + html + "</ul>");
             }
-
-         }
+        }
     });
 }
-
 function getSetEvent() {
     var start = $("#timePicker").val(),
         end = $("#timePicker2").val();
@@ -279,37 +213,35 @@ function getSetEvent() {
         },
         success: function(res) {
             var str = $(res).find("string").text();
-            if(str == "false")
-            {
+            if (str == "false") {
                 toastCenter.open();
-            }
-            else
-            {
-            var dat = JSON.parse(str),html="";
-            for (var i = 0; i < dat.length; i++) {
-                html += `<li class="accordion-item">
-							    	<a href="#" class="item-content item-link">
-								        <div class="item-inner">
-								          <div class="item-title">${dat[i].event}</div>
-								          <div class="item-after"></div>
-								        </div>
-							    	</a>
-							       <div class="accordion-item-content">
-							        <div class="block">
-							          <div class="row  eventList">
-							          	<div class="col-35  name">系统事件：</div>
-							          	<div class="col-65 con">${dat[i].event}</div>
-							          </div>
+            } else {
+                var dat = JSON.parse(str),
+                    html = "";
+                for (var i = 0; i < dat.length; i++) {
+                    html += `<li class="accordion-item">
+                    <a href="#" class="item-content item-link">
+                        <div class="item-inner">
+                          <div class="item-title">${dat[i].event}</div>
+                          <div class="item-after"></div>
+                        </div>
+                    </a>
+                     <div class="accordion-item-content">
+                      <div class="block">
+                        <div class="row  eventList">
+                          <div class="col-35  name">系统事件：</div>
+                          <div class="col-65 con">${dat[i].event}</div>
+                        </div>
                            <div class="row  eventList">
                             <div class="col-35  name">时间：</div>
                             <div class="col-65 con">${dat[i].time}</div>
                           </div>                          
-							        </div>
-							      </div>
-							    </li>`;
-               
-            } $("#stsEventContent>div").append("<ul>"+html+"</ul>");
-          }
+                      </div>
+                    </div>
+                  </li>`;
+                }
+                $("#stsEventContent>div").append("<ul>" + html + "</ul>");
+            }
         }
     });
 }

@@ -35,7 +35,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
         #homeContents{
             &>ul.charts-block{
                 &>li{
-                    dl{dd{background: #{$statsBgc}; } }
+                    background: #{$statsBgc};
                     .functionMenu{&>dd{ li{.homeBtn{p{color: #{$situationFontColor};}} } } }
                     .commonlyUsed,.sysFourMenu{li{a{p{color: #{$situationFontColor};} } } }
                     .pptPattern_container,.jjPattern_container{h3{label{color: #414154;} }}                           
@@ -68,10 +68,11 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
              }
             .title{color: #{$toolbarFontColor}; title{color: #{$toolbarFontColor};max-width: 200px;overflow: hidden;text-overflow: ellipsis; }}
             .right{
-                width: 15%;height: 100%;margin: 0;text-align: right;
+                width: 15%;height: 100%;margin: 0;text-align: right;    
                 a{
-                    font-size: 1.1rem;color: #{$toolbarFontColor}; width: 100%;height: 100%;line-height: 44px;display: inline-block;    
-                    i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}}
+                    padding: 0;font-size: 1.1rem;color: #{$toolbarFontColor}; width: 100%;height: 100%;line-height: 44px;display: inline-block;    
+                    text-align: right; i.icon-f7_right_user{font-size: 1.6rem;color: #{$toolbarFontColor};}
+                }
             }
         }
     }
@@ -96,7 +97,8 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     .toolbar:before{height: 0;};
 }
 .md .navbar{
-    height: 44px;
+    height: 44px;   
+     .navbar-inner{ padding: 0 8px;}
     .title{margin: auto;}
     .right{margin-left: 0;}
 }

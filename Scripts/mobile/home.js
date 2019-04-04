@@ -6,28 +6,25 @@ function onHomePage() {
     getAppStatusBarHeight();
     //切换中英文右上角链接
     tranformMenu(window.localStorage.languageList);
-
 }
-
 //响应App绑定函数-获取状态栏高度
-function getStatusBarHeight(height,ScreenHeight) {
-	var heightRate=height/ScreenHeight;
-	var parentHeight=document.body.clientHeight;
-	heightRate=heightRate*parentHeight;
-	if(heightRate>0){
-		$(".md .statusbar").height(heightRate+"px");
-	}
+function getStatusBarHeight(height, ScreenHeight) {
+    var heightRate = height / ScreenHeight;
+    var parentHeight = document.body.clientHeight;
+    heightRate = heightRate * parentHeight;
+    if (heightRate > 0) {
+        $(".md .statusbar").height(heightRate + "px");
+    }
 }
 
 function getAppStatusBarHeight() {
-	if(typeof(myJavaFun) != "undefined") {
-		//App绑定函数-获取键盘高度
-		if(typeof myJavaFun.getStatusBarHeight === "function"){
-			myJavaFun.getStatusBarHeight();
-		}
-	}
+    if (typeof(myJavaFun) != "undefined") {
+        //App绑定函数-获取键盘高度
+        if (typeof myJavaFun.getStatusBarHeight === "function") {
+            myJavaFun.getStatusBarHeight();
+        }
+    }
 }
-
 //授权名称
 function authorizationName() {
     var ajaxVar = $.ajax({
@@ -40,28 +37,27 @@ function authorizationName() {
         success: function(data) {
             var dt = $(data).find('string').text();
             if (dt) {
-                if(dt == "false")
-                    dt = "AlarmCenter";
+                if (dt == "false") dt = "AlarmCenter";
                 $(".auth_name_get").text(dt);
                 window.localStorage.auth_name_title = dt;
             } else {
-                tipsInformtion(window.localStorage.languageList == 1?"Failed to obtain authorization name":"获取授权名失败,是否退出登陆界面?", exitLogin);
+                tipsInformtion(window.localStorage.languageList == 1 ? "Failed to obtain authorization name" : "获取授权名失败,是否退出登陆界面?", exitLogin);
             }
         },
         error: function(e) {
-            tipsInformtion(window.localStorage.languageList == 1?"Failed to obtain authorization name":"获取授权名失败,是否退出登陆界面?", exitLogin);
+            tipsInformtion(window.localStorage.languageList == 1 ? "Failed to obtain authorization name" : "获取授权名失败,是否退出登陆界面?", exitLogin);
         }
     });
 }
 //提示窗口
 function tipsInformtion(tipsStr, tipsEvent) {
     myApp.dialog.create({
-        title: window.localStorage.languageList == 1?"Tips":"提示",
+        title: window.localStorage.languageList == 1 ? "Tips" : "提示",
         text: tipsStr,
         buttons: [{
-            text: window.localStorage.languageList == 1?"Cancel":"取消"
+            text: window.localStorage.languageList == 1 ? "Cancel" : "取消"
         }, {
-            text: window.localStorage.languageList == 1?"confirm":"确定",
+            text: window.localStorage.languageList == 1 ? "confirm" : "确定",
             onClick: function() {
                 tipsEvent();
             }
@@ -72,9 +68,10 @@ function tipsInformtion(tipsStr, tipsEvent) {
 function VideoBaner(className, slistName, jsonString) {
     $(".KOvm_container>div,.wiper-paginationTrailer-KOvm").html("");
     var countTrailer = jsonString.length;
-    var xhTrailer = 0,signIndex = window.localStorage.languageList == 1? 6: 8;
+    var xhTrailer = 0,
+        signIndex = window.localStorage.languageList == 1 ? 6 : 8;
     for (var i = 0; i < countTrailer; i++) {
-        var htmlTrailerChild = "<li class=\""+(window.localStorage.languageList == 1?"col-33":"col-25")+"\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:linear-gradient(45deg,"+jsonString[i].color+")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\" ></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
+        var htmlTrailerChild = "<li class=\"" + (window.localStorage.languageList == 1 ? "col-33" : "col-25") + "\">" + "<a href=\"#\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this," + jsonString[i].value + ")\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background:linear-gradient(45deg," + jsonString[i].color + ")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1 ? jsonString[i].name_en : jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\" ></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1 ? jsonString[i].name_en : jsonString[i].name) + "</p>" + "</a>" + "<img src=\"#\" style=\"display:none;\"></li>";
         if (i % signIndex == 0 || i == 0) {
             xhTrailer++;
             var htmlTrailer = "<div class=\"swiper-slide\" dataID='" + xhTrailer + "'>" + "<ul class=\"row\" >" + htmlTrailerChild + "</ul></div>";
@@ -82,31 +79,28 @@ function VideoBaner(className, slistName, jsonString) {
         } else {
             $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").append(htmlTrailerChild);
         }
-        if(i == countTrailer-1 && $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").find("li").length<8)
-        {
+        if (i == countTrailer - 1 && $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").find("li").length < 8) {
             $("." + className + " .swiper-wrapper .swiper-slide[dataID=" + xhTrailer + "] ul").addClass("homeControlFunction");
         }
     }
-    $(".swiper-paginationTrailer").html(""); 
+    $(".swiper-paginationTrailer").html("");
     var paginationDom = "";
-    for(var j= 0;j<xhTrailer;j++)
-    {
-        if(j==0)
-         {paginationDom =`<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>`;}
-        else
-         paginationDom +='<span class="swiper-pagination-bullet"></span>';
+    for (var j = 0; j < xhTrailer; j++) {
+        if (j == 0) {
+            paginationDom = `<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>`;
+        } else paginationDom += '<span class="swiper-pagination-bullet"></span>';
     }
     $(".swiper-paginationTrailer").append(paginationDom);
     var swiper = myApp.swiper.create('.swiper-containerTrailer', {
         speed: 400,
         spaceBetween: 100,
-        pagination:'.swiper-pagination',
-    });      
-    var  activeIndex = 0;
-    $(".swiper-containerTrailer")[0].addEventListener('touchend', function(){
-        activeIndex = parseInt($(".swiper-slide-active").attr("dataid"))-1;
-        $(".swiper-paginationTrailer span:eq("+activeIndex+")").addClass("swiper-pagination-bullet-active").siblings().removeClass("swiper-pagination-bullet-active");
-     }, false);
+        pagination: '.swiper-pagination',
+    });
+    var activeIndex = 0;
+    $(".swiper-containerTrailer")[0].addEventListener('touchend', function() {
+        activeIndex = parseInt($(".swiper-slide-active").attr("dataid")) - 1;
+        $(".swiper-paginationTrailer span:eq(" + activeIndex + ")").addClass("swiper-pagination-bullet-active").siblings().removeClass("swiper-pagination-bullet-active");
+    }, false);
 }
 //常用
 function commonlyUsedFun(className, classListName, jsonString) {
@@ -115,14 +109,12 @@ function commonlyUsedFun(className, classListName, jsonString) {
     var htmlTrailerChild = "",
         xhTrailer = 0;
     for (var i = 0; i < countTrailer; i++) {
-        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + (window.localStorage.languageList == 1?jsonString[i].href_en:jsonString[i].href_zh) + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background: linear-gradient(30deg,"+jsonString[i].color+")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1?jsonString[i].name_en:jsonString[i].name) + "</p>" + "</a>" + "</li>";
+        htmlTrailerChild += "<li class=\"col-" + classListName + "\">" + "<a href=\"" + (window.localStorage.languageList == 1 ? jsonString[i].href_en : jsonString[i].href_zh) + "\"  id=\"homeBtn" + (i + 1) + "\" class=\"homeBtn\" set_equip=\"" + jsonString[i].equipNo + "\" set_no=\"" + jsonString[i].setNo + "\" onclick=\"get_no_set(this,'" + jsonString[i].value + "')\">" + "<i class=\"" + jsonString[i].icon + "\" style=\"background: linear-gradient(30deg," + jsonString[i].color + ")\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1 ? jsonString[i].name_en : jsonString[i].name) + "</p>" + "</a>" + "<a href=\"#\"  class=\"homeBtn displayNone\">" + "<i class=\"" + jsonString[i].icon + "\"></i>" + "<p class=\"p-ellipsis1\">" + (window.localStorage.languageList == 1 ? jsonString[i].name_en : jsonString[i].name) + "</p>" + "</a>" + "</li>";
     }
     $("." + className).append(htmlTrailerChild);
 }
 //实时快照 
-var event_Level_list_home, btnInfoNames_home = [],
-    btnInfoLevels_home = [];
-
+var event_Level_list_home, btnInfoNames_home = [],btnInfoLevels_home = [];
 function snashotData() {
     $.ajax({
         type: 'post',
@@ -153,7 +145,6 @@ function snashotData() {
         }
     });
 }
-
 function snashotCount(btnInfoLevels_home) {
     var strBtnInfoLevels = "";
     for (var i = 0; i < btnInfoLevels_home.length; i++) {
@@ -182,39 +173,124 @@ function snashotCount(btnInfoLevels_home) {
         });
     }
 }
-
-
 //配置界面
-function configPage(){
-    $.fn.home_fsk_btn(equipCommand);
-    $(".home_fsk_btn_title a:eq(0)").html(equipCommand[0].title);
-    $(".home_fsk_btn_title a:eq(1)").html(equipCommandPHM[0].title);
-    $(".home_fsk_btn_title a").unbind();
-    $(".home_fsk_btn_title a").bind("click", function() {
-    $(".home_fsk_btn ul").html("");
-    $(this).addClass("selectTab").siblings().removeClass("selectTab");
-    let dataid = $(this).attr("data-id");
-    if (dataid == 1) {
-        $.fn.home_fsk_btn(equipCommand);
-    } else {
-        $.fn.home_fsk_btn(equipCommandPHM);
-    }
+function getJurisdictionData() {
+    myApp.dialog.progress((window.localStorage.languageList == 1 ? '<a style="font-size: 1rem">Loading...</a>' : '<a style="font-size: 1rem">加载中...</a>'));
+    // 权限管理 
+    var JurisdictionArray = [];
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData", {
+        async: false
+    })).done(function(n, l) {
+        let result = n.HttpData;
+        if (result.code == 200) {
+            $.ajax({
+                type: "post",
+                url: service + "/UserPermissions",
+                data: "userName=" + window.localStorage.userName,
+                success: function(usersDt) {
+                    myApp.dialog.close();
+                    $("#homeContents>ul").html("");
+                    getWebUser = $(usersDt).children("UserItem");
+                    let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
+                    resultControl.forEach(function(item_p, index_p) {
+                        if (item_p.trim()) result.data.forEach(function(item, index) {
+                            if (item.ClassName && item.ClassName.indexOf("larmCenter.APP") == 1 && item.HelpPath == item_p.trim()) {
+                                JurisdictionArray.push(item);
+                            }
+                        });
+                    });
+                    var html = "";
+                    JurisdictionArray.forEach(function(item, index) {
+                        html += functionalModule(item.MultiScreens,"");
+                    });
+                    $("#homeContents>ul").append(html);
+                    // 实现内容添加
+                    JurisdictionArray.forEach(function(item, index) {
+                        switch (item.MultiScreens) {
+                            case "home_snapShot":
+                                snashotData();
+                                break;
+                            case "home_shortcutFunction":
+                                commonlyUsedFun("pptPattern_container ol", "50", pptPattern);
+                                commonlyUsedFun("jjPattern_container ol", "50", jjPattern);
+                                break;
+                            case "home_control_btn":
+                                VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);
+                                break;
+                            case "home_Commonlyused":
+                                commonlyUsedFun("commonlyUsed", "25", commonlyUsed);
+                                break;
+                            case "home_sysMenu":
+                                commonlyUsedFun("sysFourMenu", "25", sysFourMenu);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                }
+            });
+        }
+    }).fail(function(e) {
+        // myApp.router.navigate("/home/"); 
     });
 }
-$.fn.extend({
-    home_fsk_btn: function(stringJson) {
-        var html = '';
-        stringJson.forEach(function(item, index) {
-            html += `<li class="col-33"><a class="btn btn-border-o ${item.className}" set_equip="${item.equipNo}" set_no="${item.setNo}" ><p>${(window.localStorage.languageList == 1?item.name_en:item.name)}</p></a></li>`;
-        });
-        $(".home_fsk_btn ul").append(html);
-        $(".home_fsk_btn li a").unbind();
-        $(".home_fsk_btn li a").bind("click", function() {
-            $(this).addClass("selectBtb").parent().siblings().find("a").removeClass("selectBtb");
-            // 发送命令
-            get_no(this, "", "", "");
-        });
-    },
-});
 
+function functionalModule(className,htmlStr) {
+    var html = "";
+    switch (className) {
+        case "home_snapShot":
+            html = `<li class="row home_snapShot statisticsTable no-gap">
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Errors":"故障"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Warnings":"警告"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Informations":"信息"}</a>
+                        <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Settings":"设置"}</a>
+                        <a class="col-20" style="border-right: 0;"><p>0</p>${window.localStorage.languageList == 1?"Assets":"资产"}</a>
+                    </li>`;
+            break;
+        case "home_shortcutFunction":
+            html = `<li class="row home_shortcutFunction">
+                      <div class="pptPattern_container col-50">
+                            <h3>
+                                <span>PPT</span>
+                                <label>${window.localStorage.languageList == 1?"PPT Slide Play":"ppt幻灯片播放"}</label>
+                            </h3>
+                            <ol class="row"></ol>
+                      </div>
+                      <div class="jjPattern_container col-50">
+                             <h3>
+                                <span>${window.localStorage.languageList == 1?"explain":"讲解"}</span>
+                                <label>${window.localStorage.languageList == 1?"Video Explanation":"视频讲解"}</label>
+                             </h3>
+                             <ol class="row"></ol>
+                      </div>                                      
+            </li>`;
+            break;
+        case "home_control_btn":
+            html = `<li class="row home_control_btn">
 
+                      <div class="swiper-containerTrailer KOvm_container swiper-init swiper-container" data-space-between="50" >
+                        <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm swiper-pagination"></div>
+                        <div class="swiper-wrapper" style="margin-bottom: 5%;"></div>
+                      </div>
+            </li>`;
+            break;
+        case "home_Commonlyused":
+            html = `<li class="home_Commonlyused">
+                    <ol class="row commonlyUsed">                                   
+                    </ol>
+            </li>`;
+            break;
+        case "home_sysMenu":
+            html = `<li class="home_Commonlyused">
+                    <ol class="row sysFourMenu">                                   
+                    </ol>
+            </li>`;
+            break;
+        case "":
+            break;
+        default:
+            html = htmlStr;
+            break;
+    }
+    return html;
+}
