@@ -296,6 +296,33 @@
             obj.expression:表达式字符串
             </param>
         </member>
+        <member name="M:GWServiceAPI.Net.Controllers.RealController.setup_command(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            设备控制命令（设置按钮）
+            </summary>
+            <param name="obj">
+            obj.equip_no:设备号
+            obj.main_instr:设备属性1
+            obj.mino_instr:设备属性2
+            obj.value:设备值
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.RealController.setup_command2(System.String,System.String,System.String)">
+            <summary>
+            设备控制命令（设置按钮）
+            </summary>
+            <param name="equip_no">设备号</param>
+            <param name="set_no">设置号</param>
+            <param name="username">设置号</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.RealController.setup_command3(System.String,System.String,System.String)">
+            <summary>
+            设备控制命令（设置按钮）
+            </summary>
+            <param name="equip_no">设备号</param>
+            <param name="set_no">设置号</param>
+            <param name="username">设置号</param>
+        </member>
         <member name="M:GWServiceAPI.Net.Controllers.RealController.setup(Newtonsoft.Json.Linq.JObject)">
             <summary>
             设备控制命令（设置按钮）
@@ -547,7 +574,7 @@
             </summary>
             <param name="obj">
             obj.username:用户名
-            obj.userpwd:密码
+            obj.userpwd:密码（MD5）
             </param>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.ServerController.version">
@@ -689,6 +716,11 @@
         <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1018(GWServiceAPI.Net.Models.DataResult)">
             <summary>
             口令复杂度不符合要求
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ApiCode.Code1019(GWServiceAPI.Net.Models.DataResult)">
+            <summary>
+            新旧密码一致
             </summary>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.DatatableAndJson.ToJson(System.Data.DataTable)">
@@ -1051,7 +1083,6 @@
             </summary>
             <param name="audioData">语音数据</param>
             <param name="dataType">语音数据类型</param>
-            <param name="userName">用户名</param>
         </member>
         <member name="T:GWServiceAPI.Net.LibClass.RealTimeLib">
             <summary>
@@ -1109,6 +1140,16 @@
             <param name="minor_instruction">设备属性2</param>
             <param name="value">设备值</param>
             <param name="auth">认证信息</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand_unAuth(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            设备控制命令（设置按钮）
+            </summary>
+            <param name="equip_no">设备号</param>
+            <param name="main_instruction">设备属性1</param>
+            <param name="minor_instruction">设备属性2</param>
+            <param name="value">设备值</param>
+            <param name="userName">用户名</param>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.RealTimeLib.SetupsCommand1(System.String,System.String,System.String)">
             <summary>
@@ -1464,6 +1505,11 @@
             连接服务器
             </summary>
             <param name="user_name">用户名</param>
+        </member>
+        <member name="M:GWServiceAPI.Net.LibClass.ServerLib.ConnectServiceInfo(System.String)">
+            <summary>
+            连接服务器
+            </summary>
         </member>
         <member name="M:GWServiceAPI.Net.LibClass.ServerLib.ConnectService(System.String)">
             <summary>

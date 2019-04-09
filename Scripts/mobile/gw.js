@@ -1,5 +1,5 @@
 ﻿
-var AlarmCenterContext = {
+var hubConn,hubProxy,AlarmCenterContext = {
 
     projectName: "AlarmCenter",
     //单个设备实时状态
@@ -74,8 +74,8 @@ var AlarmCenterContext = {
  	setSetConfig:function(data){
     	return this.post("/api/real/get_setparm",{equip_nos:data });
     },
+    //配置表
     setYcConfigSingle:function(equipNo,ycpNo){
-    //  	console.log(equipNo,ycpNo)
     	return this.post("/api/real/get_ycp_single",{equip_no:equipNo,ycp_no:ycpNo });
     },
     setYxConfigSingle:function(equipNo,yxpNo){
@@ -108,7 +108,94 @@ var AlarmCenterContext = {
     },   
      setup:function(equipno){//旧版本控制
         return this.post("/api/real/setup",{equip_no: '51',main_instr: 'SetYCYXValue',mino_instr: 'X_38',value: '1'});
-    },                   
+    },    
+    connectServer: function(equipNo) {
+        hubConn = null
+        hubConn = $.hubConnection();
+        hubProxy = hubConn.createHubProxy('ServerHub');
+        hubProxy.on('sendConnect', data => {
+            //连接
+        });
+        // 来自广播新消息类型和数据
+        hubProxy.on('sendAll', (data, type) => {
+            // console.log('ycyxall--------------' + type, data)
+        });
+        // ycp有广播消息
+        hubProxy.on('sendYcpSingle', data => {
+            // console.log('yccccp----------------', data)
+            try {
+                var index = data.split(",")[0],name = data.split(",")[1],
+                    value = data.split(",")[2],statusY = new Boolean(data.split(",")[4]),
+                    companyString = data.split(",")[5];
+
+                    $(".edName[data-no = '"+index+"']").text(name);
+                    $(".edValue[data-no = '"+index+"']").text(value);
+                    $(".edCompany[data-no = '"+index+"']").text(companyString);
+                    if(!statusY)
+                    {
+                        $(".edIcon[data-no = '"+index+"']").removeClass("circle_green").addClass("circle_red");
+                    }
+                    else
+                    {
+                        $(".edIcon[data-no = '"+index+"']").addClass("circle_green").removeClass("circle_red");
+                    }
+            } catch (e) {}
+        });
+        // yxp有广播消息
+        hubProxy.on('sendYxpSingle', data => {
+            //  console.log('yxxxxp-------------------', data) 清理出来
+            try {
+                let index = data.split(",")[0],
+                    status = data.split(",")[4];
+                if (status == "True") $("#m_alarmyxps_" + index).find(".iconWrap i").addClass("alarm").removeClass("comOk");
+                else {
+                    $("#m_alarmyxps_" + index).find(".iconWrap i").removeClass("alarm").addClass("comOk");
+                }
+            } catch (e) {}
+        });
+        // 监听设备状态
+        hubProxy.on('sendEquipSingle', data => {
+            // console.log('equip-------------------', data)
+            try {
+                let index = data.split(",")[0],
+                    status = data.split(",")[2];
+                if (status == "CommunicationOK") $(".equipListStatus_" + index).find("i").removeClass("noCom alarm").addClass("comOk");
+                else if (status == "HaveAlarm") $(".equipListStatus_" + index).find("i").removeClass("noCom comOk").addClass("alarm");
+                else $(".equipListStatus_" + index).find("i").removeClass("comOk alarm").addClass("noCom");
+            } catch (e) {}
+        });
+        hubConn.stop()
+        // 开始连接signalr
+        hubConn.start().done(() => {
+            hubProxy.invoke('Connect');
+            hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+            hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+        }).fail(err => {
+            console.log('错误-------:', err)
+        })
+        // signalr重连
+        hubConn.reconnecting(() => {
+            hubConn.stop();
+            hubConn.start().done(() => {
+                console.log('start!')
+                hubProxy.invoke('Connect')
+                hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+                hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
+            }).fail(err => {
+                console.log('错误-------:', err)
+            })
+        })
+        // signalr断开连接
+        hubConn.disconnected(() => {
+            hubConn.stop();
+        })
+        // 高频连接触发
+        hubConn.connectionSlow((err) => {
+        })
+        // 收到signalr消息触发
+        hubConn.received((err) => {
+        })
+    },                    
     get: function (url, data) {
         var i = $.Deferred();
         $.ajax({

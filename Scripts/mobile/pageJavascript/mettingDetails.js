@@ -191,6 +191,7 @@ var firstImgStatus = true;
 
 function requestAjax(j, k) {
     setTimeout(function() {
+        $(".mettingDetails_index div[indexid='" + j + "']").attr("src","#");
         var urlRe = "/PPTImages/" + window.localStorage.sessionFilename + "/" + j + ".jpg";
         $(".mettingDetails_index div[indexid='" + j + "']").html('<img src=' + urlRe + ' onerror="requestAjax(' + j + ',true)" />');
     }, 800);
@@ -211,6 +212,7 @@ function requestAjax(j, k) {
 //================================================初始化历史记录==========================================================
 function historyInit() {
     if (window.localStorage.pptUsername == window.localStorage.HistorypptUsername) {
+        alert(window.localStorage.savePage);
         $.ajax({
             type: "POST",
             url: "/GWService.asmx/SetupsCommand",

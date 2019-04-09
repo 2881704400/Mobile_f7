@@ -1,9 +1,9 @@
-insert into GWAddinModule(ID,Name,ClassName,HelpPath,MultiScreens) values
-(90016,'APP³¡¾°°´Å¥¿ØÖÆ','AlarmCenter.APP.Home.home_fsk_btn','AM90016','home_control_btn'),
-(90017,'APPÊÓÆµ»¶Ó­´Ê¹¦ÄÜ','AlarmCenter.APP.Home.home_Commonlyused','AM90017','home_Commonlyused'),
-(90018,'APP¿ì½İ¹¦ÄÜ','AlarmCenter.APP.Home.home_shortcutFunction','AM90018','home_shortcutFunction'),
-(90019,'APPÊµÊ±¿ìÕÕ','AlarmCenter.APP.Home.home_snapShot','AM90019','home_snapShot'),
-(90020,'APPÏµÍ³ËÄ²Ëµ¥','AlarmCenter.APP.Home.home_sysMenu','AM90020','home_sysMenu')
+ï»¿insert into GWAddinModule(ID,Name,ClassName,HelpPath,MultiScreens,WebPage) values
+(90000,'å®æ—¶å¿«ç…§(APP)','AlarmCenter.APP.Home.HomeSnapShot','','','1'),
+(90001,'é¦–é¡µæŒ‰é’®ç©ºåˆ¶(APP)','AlarmCenter.APP.Home.HomeButton','','','1'),
+(90002,'å¸¸ç”¨åŠŸèƒ½(APP)','AlarmCenter.APP.Home.HomeCommonlyused','','','1'),
+(90003,'å¿«æ·åŠŸèƒ½(APP)','AlarmCenter.APP.Home.HomeShortcutFunction','','','1'),
+(90004,'ç³»ç»Ÿå››èœå•(APP)','AlarmCenter.APP.Home.HomeSystemMenu','','','1')
 
 CREATE TABLE [dbo].[GW_Language](
  [id] [int] IDENTITY(1,1) NOT NULL,

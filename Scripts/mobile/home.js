@@ -16,7 +16,6 @@ function getStatusBarHeight(height, ScreenHeight) {
         $(".md .statusbar").height(heightRate + "px");
     }
 }
-
 function getAppStatusBarHeight() {
     if (typeof(myJavaFun) != "undefined") {
         //App绑定函数-获取键盘高度
@@ -123,7 +122,7 @@ function snashotData() {
             Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
         },
         data: {},
-        success: function(dt) {
+        success: function(dt) {  
             if (dt.HttpStatus == 200 && dt.HttpData.data) {
                 var resultData = dt.HttpData.data;
                 var strData = "";
@@ -180,48 +179,60 @@ function getJurisdictionData() {
     var JurisdictionArray = [];
     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getJurisdictionData", {
         async: false
-    })).done(function(n, l) {
+    })).done(function(n) {
         let result = n.HttpData;
+        var JurisdictionFunArray = result.data.filter((item,index)=> {if(item.ClassName.indexOf("AlarmCenter.APP.Home")>-1) return item;});
         if (result.code == 200) {
             $.ajax({
                 type: "post",
+                // dataType: "json",
                 url: service + "/UserPermissions",
                 data: "userName=" + window.localStorage.userName,
                 success: function(usersDt) {
-                    myApp.dialog.close();
+                    myApp.dialog.close(); 
+                     
                     $("#homeContents>ul").html("");
                     getWebUser = $(usersDt).children("UserItem");
-                    let resultControl = $(usersDt).find("HomePage_List").text().split("\n");
-                    resultControl.forEach(function(item_p, index_p) {
-                        if (item_p.trim()) result.data.forEach(function(item, index) {
-                            if (item.ClassName && item.ClassName.indexOf("larmCenter.APP") == 1 && item.HelpPath == item_p.trim()) {
-                                JurisdictionArray.push(item);
-                            }
-                        });
-                    });
+                    let resultControl = $(usersDt).find("RoleItem").find("AddinModule_List").find("int"),JurisdictionArrayList = [];
+    
+                    if($(usersDt).find("IsAdministrator").text() == "true")
+                       JurisdictionArray=["HomeSnapShot","HomeButton","HomeCommonlyused","HomeShortcutFunction","HomeSystemMenu","homeNewlyBuild"];
+                    else 
+                     {
+                        resultControl.each(function( index_p,item_p) {JurisdictionArrayList.push($(item_p).text()); });
+                        let Juris = JurisdictionFunArray.filter((item,index)=>JurisdictionArrayList.some(item_ch=>item_ch.toString() == item.ID.toString()));
+                         Juris.forEach((item,index)=>{
+                           JurisdictionArray.push(item.ClassName.replace("AlarmCenter.APP.Home.",""));
+                         });
+                     }  
                     var html = "";
                     JurisdictionArray.forEach(function(item, index) {
-                        html += functionalModule(item.MultiScreens,"");
+                        html += functionalModule(item,"");
                     });
                     $("#homeContents>ul").append(html);
                     // 实现内容添加
                     JurisdictionArray.forEach(function(item, index) {
-                        switch (item.MultiScreens) {
-                            case "home_snapShot":
+                        switch (item) {
+                            case "HomeSnapShot":
                                 snashotData();
                                 break;
-                            case "home_shortcutFunction":
+                            case "HomeShortcutFunction":
                                 commonlyUsedFun("pptPattern_container ol", "50", pptPattern);
                                 commonlyUsedFun("jjPattern_container ol", "50", jjPattern);
                                 break;
-                            case "home_control_btn":
+                            case "HomeButton":
                                 VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);
                                 break;
-                            case "home_Commonlyused":
+                            case "HomeCommonlyused":
                                 commonlyUsedFun("commonlyUsed", "25", commonlyUsed);
                                 break;
-                            case "home_sysMenu":
+                            case "HomeSystemMenu":
                                 commonlyUsedFun("sysFourMenu", "25", sysFourMenu);
+                                break;
+                            case "homeNewlyBuild":
+                                //加载newlyBuild脚本
+                                 initPageJS('newlyBuild', '/Scripts/mobile/');
+
                                 break;
                             default:
                                 break;
@@ -238,8 +249,8 @@ function getJurisdictionData() {
 function functionalModule(className,htmlStr) {
     var html = "";
     switch (className) {
-        case "home_snapShot":
-            html = `<li class="row home_snapShot statisticsTable no-gap">
+        case "HomeSnapShot":
+            html = `<li class="row HomeSnapShot statisticsTable no-gap">
                         <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Errors":"故障"}</a>
                         <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Warnings":"警告"}</a>
                         <a class="col-20"><p>0</p>${window.localStorage.languageList == 1?"Informations":"信息"}</a>
@@ -247,8 +258,8 @@ function functionalModule(className,htmlStr) {
                         <a class="col-20" style="border-right: 0;"><p>0</p>${window.localStorage.languageList == 1?"Assets":"资产"}</a>
                     </li>`;
             break;
-        case "home_shortcutFunction":
-            html = `<li class="row home_shortcutFunction">
+        case "HomeShortcutFunction":
+            html = `<li class="row HomeShortcutFunction">
                       <div class="pptPattern_container col-50">
                             <h3>
                                 <span>PPT</span>
@@ -265,8 +276,8 @@ function functionalModule(className,htmlStr) {
                       </div>                                      
             </li>`;
             break;
-        case "home_control_btn":
-            html = `<li class="row home_control_btn">
+        case "HomeButton":
+            html = `<li class="row HomeButton">
 
                       <div class="swiper-containerTrailer KOvm_container swiper-init swiper-container" data-space-between="50" >
                         <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm swiper-pagination"></div>
@@ -274,19 +285,20 @@ function functionalModule(className,htmlStr) {
                       </div>
             </li>`;
             break;
-        case "home_Commonlyused":
-            html = `<li class="home_Commonlyused">
+        case "HomeCommonlyused":
+            html = `<li class="HomeCommonlyused">
                     <ol class="row commonlyUsed">                                   
                     </ol>
             </li>`;
             break;
-        case "home_sysMenu":
-            html = `<li class="home_Commonlyused">
+        case "HomeSystemMenu":
+            html = `<li class="HomeCommonlyused">
                     <ol class="row sysFourMenu">                                   
                     </ol>
             </li>`;
             break;
-        case "":
+        case "homeNewlyBuild":
+            html = `<li class="homeNewlyBuild"></li>`;
             break;
         default:
             html = htmlStr;
