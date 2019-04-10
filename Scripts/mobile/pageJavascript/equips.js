@@ -45,7 +45,7 @@ function allEquipSatatus() {
         if (resultStr != 'false') {
             AllEquipStat = resultStr.split(';');
             treeConfList();
-            //	获取设备的树状图 
+            //  获取设备的树状图 
         }
     }
 }
@@ -73,6 +73,7 @@ function treeConfList() {
 }
 //添加节点到html
 function treeHTML(len, name, equip_no, thisDom) {
+
     if (equipListStatus) //开启signalR    
     {
         signalR.connectServer(equip_no);
@@ -88,20 +89,20 @@ function treeHTML(len, name, equip_no, thisDom) {
             alarmClass = 'comOk';
         }
         newRow = `<li class="accordion-item" onclick="onTreePar(this,'${name}',event)">
-    			 <a href="#" class="item-content item-link">
-			    	<div class="item-media equipListStatus_${equip_no}">
-			        	<i class="iconfont icon-dian ${alarmClass}"></i>
-			        </div>
-			        <div class="item-inner">
-			          <div class="item-title">${name}</div>
-			        </div>
-			    </a>
-			    <div class="accordion-item-content " style="padding-left: 15px;">
-			    	<ul>
-			    	
-			    	</ul>
-			    </div>
-    		</li>`
+                 <a href="#" class="item-content item-link">
+                    <div class="item-media equipListStatus_${equip_no}">
+                        <i class="iconfont icon-dian ${alarmClass}"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title">${name}</div>
+                    </div>
+                </a>
+                <div class="accordion-item-content " style="padding-left: 15px;">
+                    <ul>
+                    
+                    </ul>
+                </div>
+            </li>`
         if (alarm > 0) {
             thisDom.prepend(newRow);
         } else {
@@ -117,15 +118,15 @@ function treeHTML(len, name, equip_no, thisDom) {
                         name = allEquipStat[1];
                     }
                     newRow = `<li>
-								<a href="/ycAndyx/#${equip_no}&${name}" class="item-link item-content">
-								        <div class="item-media equipListStatus_${equip_no}">
-								        	<i class="iconfont icon-dian ${iconColorClass}"></i>
-								        </div>
-								        <div class="item-inner">
-								          <div class="item-title">${name}</div>
-								        </div>
-								    </a>
-								</li>`;
+                                <a href="/ycAndyx/#${equip_no}&${name}" class="item-link item-content">
+                                        <div class="item-media equipListStatus_${equip_no}">
+                                            <i class="iconfont icon-dian ${iconColorClass}"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                          <div class="item-title">${name}</div>
+                                        </div>
+                                    </a>
+                                </li>`;
                     if (allEquipStat[2] == 'HaveAlarm') {
                         thisDom.prepend(newRow);
                     } else {
@@ -135,15 +136,15 @@ function treeHTML(len, name, equip_no, thisDom) {
             }
             if (newRow == "") {
                 newRow = `<li><a href="#" class="item-link item-content">
-								        <div class="item-media equipListStatus_${equip_no}">
-								        	<i class="iconfont icon-dian noCom"></i>
-								        </div>
-								        <div class="item-inner">
-								          <div class="item-title">${name}</div>
-								        </div>
-								    </a>
-								</li>
-				        		`
+                                        <div class="item-media equipListStatus_${equip_no}">
+                                            <i class="iconfont icon-dian noCom"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                          <div class="item-title">${name}</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                `
                 thisDom.append(newRow);
             }
             thisDom.attr('equiplist', 'true');
@@ -190,21 +191,22 @@ function selectAlarm(name) {
 }
 
 function onTreePar(dt, name, e) {
-    if ($(dt).next().find('ul').children('li').length == 0) {
-        var doms = selectDom(name);
-        doms.each(function() {
-            var len = $(this).children('GWEquipTreeItem').length;
-            var name = $(this).attr('name');
-            var equip_no = $(this).attr('EquipNo');
-            $(dt).children("a").next(".accordion-item-content").css({
-                height: "auto"
-            })
-            $(dt).children("a").next(".accordion-item-content").children("ul").html("")
-            treeHTML(len, name, equip_no, $(dt).children("a").next(".accordion-item-content").children("ul"));
-        });
-    }
+
+    var doms = selectDom(name); 
+    $(dt).find("ul").html("");
+    doms.each(function() {
+        var len = $(this).children('GWEquipTreeItem').length;
+        var name = $(this).attr('name');
+        var equip_no = $(this).attr('EquipNo');
+        $(dt).children("a").next(".accordion-item-content").css({
+            height: "auto"
+        })
+        
+        treeHTML(len, name, equip_no, $(dt).find("ul"));
+    });
+
     $(dt).children("a").next(".accordion-item-content").children("ul").click(function(e) {
-        e.stopPropagation()
+    e.stopPropagation()
     })
 }
 

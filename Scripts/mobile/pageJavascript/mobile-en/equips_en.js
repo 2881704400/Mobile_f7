@@ -180,23 +180,25 @@ function selectAlarm(name) {
 }
 
 function onTreePar(dt, name, e) {
-    if ($(dt).next().find('ul').children('li').length == 0) {
-        var doms = selectDom(name);
-        doms.each(function() {
-            var len = $(this).children('GWEquipTreeItem').length;
-            var name = $(this).attr('name');
-            var equip_no = $(this).attr('EquipNo');
-            $(dt).children("a").next(".accordion-item-content").css({
-                height: "auto"
-            })
-            $(dt).children("a").next(".accordion-item-content").children("ul").html("")
-            treeHTML(len, name, equip_no, $(dt).children("a").next(".accordion-item-content").children("ul"));
-        });
-    }
+
+    var doms = selectDom(name); 
+    $(dt).find("ul").html("");
+    doms.each(function() {
+        var len = $(this).children('GWEquipTreeItem').length;
+        var name = $(this).attr('name');
+        var equip_no = $(this).attr('EquipNo');
+        $(dt).children("a").next(".accordion-item-content").css({
+            height: "auto"
+        })
+        
+        treeHTML(len, name, equip_no, $(dt).find("ul"));
+    });
+
     $(dt).children("a").next(".accordion-item-content").children("ul").click(function(e) {
-        e.stopPropagation()
+    e.stopPropagation()
     })
 }
+
 
 function selectDom(name) {
     var selectDomRT = null;

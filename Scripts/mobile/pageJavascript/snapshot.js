@@ -9,6 +9,7 @@ function snapshot() {
 }
 //获取事件的报警配置
 function initData() {
+     btnInfoNames.length = 0,btnInfoLevels.length = 0;
     $.ajax({
         type: 'post',
         url: '/api/event/alarm_config',
@@ -58,11 +59,7 @@ function getRealTimeEventCount() {
             },
             success: function(dt) {
                 if (dt.HttpStatus == 200 && dt.HttpData.data) {
-                    var resultData = dt.HttpData.data;
-                    var resultDataArr = resultData.toString().split(",");
-                    var strData = "";
-                    var iconData="";
-      
+                    var resultData = dt.HttpData.data,resultDataArr = resultData.toString().split(","),strData = "", iconData="";
                     for (var i = 0; i < resultDataArr.length; i++) {
                     	if(i==0){
                     		iconData="icon-web-cuowu";

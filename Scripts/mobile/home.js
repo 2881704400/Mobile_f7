@@ -115,6 +115,7 @@ function commonlyUsedFun(className, classListName, jsonString) {
 //实时快照 
 var event_Level_list_home, btnInfoNames_home = [],btnInfoLevels_home = [];
 function snashotData() {
+    btnInfoNames_home.length = 0,btnInfoLevels_home.length = 0;
     $.ajax({
         type: 'post',
         url: '/api/event/alarm_config',
