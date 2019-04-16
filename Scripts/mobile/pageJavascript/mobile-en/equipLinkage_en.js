@@ -1,4 +1,4 @@
-﻿var toastCenterLinkage,toastCenterLinkageSuccess;
+﻿var toastCenterLinkage,toastCenterLinkageSuccess,sceneFlag,removeSceneControl = [],equiplinkageStr = [];
 function equipLinkage_en() {
     switchToolbar("configTool");
     $(".subnavbarTabel>a").unbind();
@@ -22,6 +22,10 @@ function equipLinkage_en() {
     initAddList_en();//联动设置
     toastCenterLinkage = myApp.toast.create({text: "operation failed", position: 'center', closeTimeout: 2000, });
     toastCenterLinkageSuccess = myApp.toast.create({text: "Successful operation", position: 'center', closeTimeout: 2000, });
+        //初始化场景名称
+    sceneFlag = true;
+    window.localStorage.sceneName = "";
+    equiplinkageStr.length = removeSceneControl.length = 0;
 }
 //左侧添加菜单
 function transformReportingObstaciesMenu1(){

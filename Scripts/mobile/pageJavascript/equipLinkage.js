@@ -1,4 +1,4 @@
-﻿var toastCenterLinkage,toastCenterLinkageSuccess;
+﻿var toastCenterLinkage,toastCenterLinkageSuccess,sceneFlag,removeSceneControl = [],equiplinkageStr = [];
 function equipLinkage() {
     switchToolbar("configTool");
     $(".subnavbarTabel>a").unbind();
@@ -22,6 +22,11 @@ function equipLinkage() {
     initAddList();//联动设置
     toastCenterLinkage = myApp.toast.create({text: "操作失败", position: 'center', closeTimeout: 2000, });
     toastCenterLinkageSuccess = myApp.toast.create({text: "操作成功", position: 'center', closeTimeout: 2000, });
+
+    //初始化场景名称
+    sceneFlag = true;
+    window.localStorage.sceneName = "";
+    equiplinkageStr.length = removeSceneControl.length = 0;
 }
 //左侧添加菜单
 function transformReportingObstaciesMenu1(){
@@ -361,7 +366,7 @@ var html = '<div class="popup popup-aboutuser">'+
     '</div>';
     //console.log(dt,equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index)
     myApp.router.navigate("/equipLinkageModify/?"+equipName+"&"+cType+"&"+cSpot+"&"+delayTime+"&"+linkageEquip+"&"+linkageOpt+"&"+optCode+"&"+remarks+"&"+ID+"&"+index+"");
-//  link_popupAlert(html);
+    //link_popupAlert(html);
     setTimeout(function(){
     	link_listInit_equip("equipTiggerName",listAdd.map(item => {return item.label;}),equipName,index); //触发设备
 	    link_listInit_equip("equipTigger_Link",linkageEquips.map(item => {return item.label;}),linkageEquip,index); //联动设备
@@ -503,7 +508,6 @@ function deleteLinkage(dt) {
      myApp.dialog.confirm("是否删除该项","提示",function(){
        myApp.popup.close();
        // equipLinkPublicAjax({id: $(dt).parent().siblings().attr("trid")}, "/api/GWServiceWebAPI/deleteLinkage", 14);
-
         $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/deleteLinkage",{id: val})).done(function(n){
             if(n.HttpData.code == 200)
               {
@@ -513,8 +517,6 @@ function deleteLinkage(dt) {
         }).fail(function(e){
             toastCenterLinkage.open();
         });
-
-
    });
 }
 //动态创建弹窗
@@ -651,7 +653,6 @@ function getObject(arrayObject,className,index){
 }
 
 //初始化场景设置
-
 function initSceneList() {
     var sceneDataList = [],controlEquipList,setList,equipList;
     $("#equipLinkage_edit ul").html("");
@@ -675,87 +676,19 @@ function initSceneList() {
             sceneDataList = setList.filter(item => {
               return item.set_type === "J"
             }).map(item => { 
-                  // var valueString = item.value,eqset_no=[],setParm_no=[],html=htmlHeader=htmlContent=htmlFooter="";
-                  // if(valueString)
-                  //  valueString.indexOf("+") !=-1?eqset_no = valueString.split("+"):eqset_no.push(valueString);
-                  // if(eqset_no.length>0)
-                  // {
-                  //   for(var i=0;i<eqset_no.length;i++)
-                  //   { 
-                  //     var equip_no_flg = true;
-                  //     if(eqset_no[i].indexOf(",") != -1)
-                  //       { equip_no_flg = true;}
-                  //     else
-                  //       {equip_no_flg = false;}
-
-
-                  //     // htmlContent += '<div class="row childrenEquipControl" combination="'+eqset_no[i]+'">'+
-                  //     //       '<div class="leftTaskName col-60">'+
-                  //     //         '<b>'+(i+1)+'.</b>'+
-                  //     //         '<a href="#">'+(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))+'</a>:<strong>'+(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))+'</strong>'+
-                  //     //       '</div>'+
-                  //     //       '<div class="rightBtnModul col-40 row no-gap">'+
-                  //     //           '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项前面插入\',\'before\')"><i class="iconfont icon-f7_top_jt"></i></a>'+
-                  //     //           '<a href="#" class="col-33" onclick="sceneAlert(this,\'该项后面插入\',\'after\')"><i class="iconfont icon-f7_bottom_jt"></i></a>'+
-                  //     //           '<a href="#" class="col-33" onclick="currentControl(this)"><i class="iconfont icon-f7_delete"></i></a>'+
-                  //     //       '</div>'+
-                  //     // '</div>';                 
-                  //     }
-                  // }
-
-                      htmlHeader +=`<li class="swipeout bottomBorderLine">
-                          <div class="item-content swipeout-content schedule-content row no-gap" onclick="scanelEdit(this,1)" equip_no="${item.equip_no}" set_no="${item.set_no}" combination="${item.value}">
-                              <a href="#" class="item-link item-content">
-                                <div class="item-inner">
-                                  <div class="item-title">${item.set_nm} </div>
-                                </div>
-                            </a>    
+              htmlHeader +=`<li class="swipeout bottomBorderLine">
+                    <div class="item-content swipeout-content schedule-content row no-gap" onclick="scanelEdit(this,1)" equip_no="${item.equip_no}" set_no="${item.set_no}" combination="${item.value}">
+                        <a href="#" class="item-link item-content">
+                          <div class="item-inner">
+                            <div class="item-title">${item.set_nm} </div>
                           </div>
-                          <div class="swipeout-actions-right">
-                            <a href="#" class="delBtn" onclick="deleteScene(this,${item.equip_no},${item.set_no})">删除</a>
-                          </div>
-                        </li>`;
-
-
-                       // htmlContent +=`<li class="swipeout bottomBorderLine">
-                       //      <div class="item-content swipeout-content schedule-content row no-gap" onclick="scanelEdit(this,1)" equipcomb="${eqset_no[i]}">
-                       //          <div class="item-inner">
-                       //            <div class="item-title">${i+1} ${(equip_no_flg?filterFun(equipList,eqset_no[i].split(",")[0],null):(eqset_no[i]?"间隔操作":""))} <strong>${(equip_no_flg?filterFun(setList,eqset_no[i].split(",")[0],eqset_no[i].split(",")[1]):(eqset_no[i]?"延时间隔"+eqset_no[i]+"毫秒":""))}</strong></div>
-                       //            <div class="item-after"><i class="iconfont icon-f7_top_jt"></i></div>
-                       //          </div>
-                       //      </div>
-                       //      <div class="swipeout-actions-right">
-                       //        <a href="#" class="delBtn" onclick="deleteScene(this)" style="">删除</a>
-                       //      </div>
-                       //    </li> `;
-
-
-                    // htmlHeader = '<li class="accordion-item bottomBorderLine"><a href="#" class="item-content item-link">'+
-                    //     '<div class="item-inner">'+
-                    //       '<div class="item-title">'+item.set_nm+'</div>'+
-                    //     '</div></a>'+
-                    //   '<div class="accordion-item-content">'+
-                    //     '<div class="block">'+
-                    //        '<ul class="sceneList">'+
-                    //         '<li class="row">'+
-                    //            '<div class="sceneHeader row">'+
-                    //             '<span class="col-25">场景名称</span>'+
-                    //             '<span class="col-75"><input type="text" value="'+item.set_nm+'"/></span>'+
-                    //            '</div>'+
-                    //            '<div class="sceneContent row">'+
-                    //             '<span class="col-25">'+
-                    //                 '<label>场景控制项</label>'+
-                    //             '</span>'+
-                    //             '<span class="col-75">';
-                    // htmlFooter = '</span>'+
-                    //            '</div>'+
-                    //         '</li>'+
-                    //       '</ul>'+
-                    //     '</div>'+
-                    //     '<div class="sceneBtn"><a href="#" class="addSceneControl" onclick="sceneAlert(this,\'增加控制项\',\'append\')" dataArgs='+JSON.stringify(controlEquipList)+'>新增控制</a><a href="#" class="saveScene" onclick="submitScene(this,'+item.equip_no+','+item.set_no+')" >保存场景</a><a href="#" class="delScene" onclick="deleteScene('+item.equip_no+','+item.set_no+')">删除场景</a></div>'+
-                    //   '</div>'+
-                    // '</li>';
-                    return item;
+                      </a>    
+                    </div>
+                    <div class="swipeout-actions-right">
+                      <a href="#" class="delBtn" onclick="deleteScene(this,${item.equip_no},${item.set_no})">删除</a>
+                    </div>
+                  </li>`;
+              return item;
             });
             $("#equipLinkage_edit>ul").append(htmlHeader);
      }
@@ -765,16 +698,12 @@ function initSceneList() {
 }
 //场景URL
 function scanelEdit(that,status){
+    window.localStorage.sceneName = "";
     if(status == 1)
       myApp.router.navigate("/scheduleModify/?title=场景编辑&index=1&table=equipLinkage_edit_modify&equip_no="+$(that).attr("equip_no")+"&set_no="+$(that).attr("set_no")+"&combination="+$(that).attr("combination")+"&currentTxt="+$(that).find(".item-title").text()); 
     else
       myApp.router.navigate("/scheduleModify/?title=场景编辑&index=2&table=equipLinkage_edit_modify"); 
 }
-
-
-
-
-
 
 //删除场景
 function deleteScene(dt,equipNo,setNo) {

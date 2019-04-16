@@ -41,13 +41,9 @@ function scheduleModify_en() {
          break;
          case "equipLinkage_edit_modify":
              $(".equipLinkage_edit_modify").removeClass("displayNone").siblings().addClass("displayNone");
+             if (window.localStorage.sceneName) msgArray[msgArray.length - 1] = "currentTxt=" + window.localStorage.sceneName;
              initSceneList_view_en();
          break;
-         // case "equipLinkage_edit_modify_child":
-         //     $(".equipLinkage_edit_modify_child").removeClass("displayNone").siblings().addClass("displayNone");
-         //     scenalControlPro_init_en();
-         //     equiplinkageStr="";
-         // break;
         default: 
 
         break;
@@ -489,80 +485,79 @@ function newlyBuildSpeAlmReport_view_en() {
             cssClass: "startTime",
             headerPlaceholder: "End date",
             toolbarCloseText: "Confirm",
-            // value: [new Date()],
         })
     }
-    // listInit("Spe_userName", schedule_public_username);
 }
 // 场景编辑
 var sceneData = [],scaneEquipData = [];
 function initSceneList_view_en() {
-    var controlEquipList,setList,equipList;
+    var controlEquipList, setList, equipList;
     $(".equipLinkage_edit_modify>ul").html("");
-    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList",{
-            data:{findEquip: false},
-            async:false
-        }),$.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList",{
-            data:{},
-            async:false
-    })).done(function(n,l){
-        let rt = n.HttpData,equipRt = l.HttpData;
-        if (n.HttpData.code ==200 && l.HttpData.code ==200) {
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getSetparmList", {
+        data: {
+            findEquip: false
+        },
+        async: false
+    }), $.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/getEquipList", {
+        data: {},
+        async: false
+    })).done(function(n, l) {
+        let rt = n.HttpData,
+            equipRt = l.HttpData;
+        if (n.HttpData.code == 200 && l.HttpData.code == 200) {
             myApp.dialog.close();
-            sceneData = rt.data,scaneEquipData = equipRt.data;
-            setList = rt.data, equipList = equipRt.data; 
+            sceneData = rt.data, scaneEquipData = equipRt.data;
+            setList = rt.data, equipList = equipRt.data;
             // 场景名称
-             $("#equipLinkage_input").val(isArray_en("currentTxt",msgArray));
-             //选择设备
-             controlEquipList = setList.filter(item => {
-              return (item.equip_no == isArray_en("equip_no",msgArray) && item.set_nm.trim() == isArray_en("currentTxt",msgArray).trim());
-             }).map(item => {return item});
-           // 场景控制项目
-              var valueString = (controlEquipList.length>0?controlEquipList[0].value.toString().trim():""),valueArray = [];
-              if(valueString)
-               valueString.indexOf("+") !=-1?valueArray = valueString.split("+"):valueArray.push(valueString);
-              if(equiplinkageStr.length>0)//添加新增控制项
-              {
-                let firstMsg = equiplinkageStr.shift();
-                if(firstMsg == "last")
-                    equiplinkageStr.forEach(function(item,index){
-                        valueArray.push(equiplinkageStr[index]);
-                    });
-                else
-                {
-                     equiplinkageStr.unshift(parseInt(firstMsg),0);
-                     Array.prototype.splice.apply(valueArray, equiplinkageStr); 
-                }
-              }
-              if(valueArray.length>0)
-              {
-                var htmlContent = "";
-                for(var i=0;i<valueArray.length;i++)
-                { 
-                  var equip_no_flg = true;
-                  if(valueArray[i].indexOf(",") != -1)
-                    { equip_no_flg = true;}
-                  else
-                    {equip_no_flg = false;}
+            $("#equipLinkage_input").val(isArray_en("currentTxt", msgArray));
+            //选择设备
+            controlEquipList = setList.filter(item => {
+                return (item.equip_no == isArray_en("equip_no", msgArray) && item.set_nm.trim() == isArray_en("currentTxt", msgArray).trim());
+            }).map(item => {
+                return item
+            });
 
-                   htmlContent +=`<li class="swipeout bottomBorderLine" equipcomb="${valueArray[i]}">
+            // 场景控制项
+            if(sceneFlag){
+                var valueString = (controlEquipList.length > 0 ? controlEquipList[0].value.toString().trim() : ""),
+                    valueArray = [];
+                if (valueString) valueString.indexOf("+") != -1 ? valueArray = valueString.split("+") : valueArray.push(valueString);
+                equiplinkageStr = valueArray.concat(equiplinkageStr);
+                sceneFlag = false;            
+            }
+            //移除删除场景控制项
+            if(removeSceneControl.length>0)
+            removeSceneControl.forEach(function(item,index){
+               if(equiplinkageStr.indexOf(item) != -1)
+                equiplinkageStr.splice(equiplinkageStr.indexOf(item),1);
+            }); 
+            if (equiplinkageStr.length > 0) {
+                var htmlContent = "";
+                for (var i = 0; i < equiplinkageStr.length; i++) {
+                    var equip_no_flg = true,
+                        ValueFlag;
+                    try {
+                        ValueFlag = equiplinkageStr[i].indexOf(",");
+                        ValueFlag != -1?equip_no_flg = true:equip_no_flg = false;
+                    } catch (e) {}
+
+                    htmlContent += `<li class="swipeout " equipcomb="${equiplinkageStr[i]}">
                         <div class="item-content swipeout-content schedule-content row no-gap" >
                             <div class="item-inner">
-                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun_en(equipList,valueArray[i].split(",")[0],null):(valueArray[i]?"Interval operation":""))}: <strong>${(equip_no_flg?filterFun_en(setList,valueArray[i].split(",")[0],valueArray[i].split(",")[1]):(valueArray[i]?"Delay interval"+valueArray[i]+"Millisecond":""))}</strong></div>
-                              <div class="item-after" onclick="scenalControlPro_en(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
+                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,equiplinkageStr[i].split(",")[0],null):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Interval operation":"间隔操作"):""))}: <strong>${(equip_no_flg?filterFun(setList,equiplinkageStr[i].split(",")[0],equiplinkageStr[i].split(",")[1]):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Delay interval":"延迟间隔")+equiplinkageStr[i]+(window.localStorage.languageList == 1?"Millisecond":"毫秒"):""))}</strong></div>
+                              <div class="item-after" onclick="scenalControlPro(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
                             </div>
                         </div>
                         <div class="swipeout-actions-right">
-                          <a href="#" class="delBtn" onclick="currentControl_en(this)" style="">Delete</a>
+                          <a href="#" class="delBtn" onclick="currentControl(this)" style="">${window.localStorage.languageList == 1?"Delete":"删除"}</a>
                         </div>
                       </li> `;
-                  }
-                $(".equipLinkage_edit_modify>ul").append(htmlContent);       
-                 equiplinkageStr.length=0;              
-              }
-     }
-    }).fail(function(e){
-         myApp.dialog.close();
+                }
+                $(".equipLinkage_edit_modify>ul").append(htmlContent);
+            }
+        }
+    }).fail(function(e) {
+        myApp.dialog.close();
     });
 }
 
@@ -610,66 +605,89 @@ function submitScene_en(dt) {
 }
 //添加场景
 function addScene_en() {
-    //场景名
+    //场景名是否重复
     if (sceneData.some(item => {
-    return item.set_nm === $("#equipLinkage_input").val();
-    })) {
-     scheduleModifyInputTooip.open();
-     return false;}
-    if($("#equipLinkage_input").val().trim() == "") 
-    {
-        myApp.dialog.alert("Scenario name cannot be empty","Tips");
+            return item.set_nm === $("#equipLinkage_input").val();
+        })) {
+        scheduleModifyInputTooip.open();
         return false;
     }
-     //场景设备号和设置号
-    
-    var equipNo="",set_no=[],str = "";
+
+    //场景设备号和设置号
+    var equipNo = "",
+        set_no = [],
+        str = "";
     if (scaneEquipData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll').length > 0) {
-      equipNo = scaneEquipData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll')[0].equip_no;
+        equipNo = scaneEquipData.filter(equip => equip.communication_drv === 'GWChangJing.NET.dll')[0].equip_no;
     }
-    if(sceneData.length>0)
-    {
-       var setParmList = sceneData.filter(equip => equip.equip_no === equipNo);
-        if(setParmList.length>0)
-        {
-            setParmList.forEach(function(item,index){
-             set_no.push(item.set_no);
+    if (sceneData.length > 0) {
+        var setParmList = sceneData.filter(equip => equip.equip_no === equipNo);
+        if (setParmList.length > 0) {
+            setParmList.forEach(function(item, index) {
+                set_no.push(item.set_no);
             });
         }
     }
     //控制项
-      $(".equipLinkage_edit_modify ul li").each(function(item){
-        str += ($(this).attr("equipcomb")+"+");
-    });  
-      try{str = str.substr(0,str.length-1);} catch(e){}
+    $(".equipLinkage_edit_modify ul li").each(function(item) {
+        str += ($(this).attr("equipcomb") + "+");
+    });
+    try {
+        str = str.substr(0, str.length - 1);
+    } catch (e) {}
+    var sceneSetNo = set_no.length > 0 ? (Math.max.apply(null, set_no) + 1) : 1;
     let reqData = {
-      title: $("#equipLinkage_input").val(),
-      equipNo: equipNo,
-      setNo: set_no.length>0?(Math.max.apply(null, set_no) + 1):1,
-      value: str,
+        title: $("#equipLinkage_input").val(),
+        equipNo: equipNo,
+        setNo: sceneSetNo,
+        value: str,
     }
-    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/addScene",{
-    data:reqData,
-    async:false
-        })).done(function(n){
-        scheduleModifySuccessTooip.open();
-     initSceneList_en();
-    }).fail(function(e){});
+    $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/addScene", {
+        data: reqData,
+        async: false
+    })).done(function(n) {
+        //更新
+        if ($(".equipLinkage_edit_modify ul li").length > 0) {
+            var dataStr="";
+            $(".equipLinkage_edit_modify ul li").each(function(item) {
+                dataStr += ($(this).attr("equipcomb") + "+");
+            });
+            console.log(dataStr);
+            try {
+                dataStr = dataStr.substr(0, dataStr.length - 1);
+            } catch (e) {}
+            let reqData = {
+                equipNo: equipNo,
+                setNo: sceneSetNo,
+                sceneName: $("#equipLinkage_input").val(),
+                dataStr: dataStr
+            };
+            $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/updateScene", {
+                data: reqData,
+                async: false
+            })).done(function(n) {
+                initSceneList_en();
+                scheduleModifySuccessTooip.open();
+            }).fail(function(e) {});
+        }
+    }).fail(function(e) {});
 }
 
 //新增控制
 function scenalControlPro_en(dt){
+    //场景名是否为空
+    if ($("#equipLinkage_input").val().trim() == "") {
+        myApp.dialog.alert(window.localStorage.languageList == 1 ? 'Please add the scene name first!' : '请先添加场景名称!', window.localStorage.languageList == 1 ? 'Tips' : '提示');
+        return false;
+    }
 
- submitScene_en(dt);
-  if(indexAll == 1)
-  {
-    let val =  $(dt).attr("index");
-    myApp.router.navigate("/mobile-en/scheduleModifyChild_en/?"+val); 
-  }
-  else
-  {
-    myApp.router.navigate("/mobile-en/scheduleModifyChild_en/?last"); 
-  }
+    window.localStorage.sceneName = $("#equipLinkage_input").val();
+    if (indexAll == 1) {
+        let val = $(dt).attr("index");
+        myApp.router.navigate("/mobile-en/scheduleModifyChild_en/?" + val);
+    } else {
+        myApp.router.navigate("/mobile-en/scheduleModifyChild_en/?last");
+    }
 }
 //新增控制初始化
 

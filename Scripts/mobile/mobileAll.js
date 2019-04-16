@@ -193,7 +193,7 @@ function initLoads() {
     }
 }
 
-var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages, equiplinkageStr = [];
+var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages;
 //连接服务器
 function InitEnsure() {
     var ajaxs = $.ajax({

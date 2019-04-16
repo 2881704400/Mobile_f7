@@ -230,7 +230,7 @@ function getJurisdictionData() {
                             case "HomeSystemMenu":
                                 commonlyUsedFun("sysFourMenu", "25", sysFourMenu);
                                 break;
-                            case "homeNewlyBuild":
+                            case "homeNewlyBuild1":
                                 //加载newlyBuild脚本
                                  initPageJS('newlyBuild', '/Scripts/mobile/');
 
@@ -298,7 +298,7 @@ function functionalModule(className,htmlStr) {
                     </ol>
             </li>`;
             break;
-        case "homeNewlyBuild":
+        case "homeNewlyBuild1":
             html = `<li class="homeNewlyBuild"></li>`;
             break;
         default:
