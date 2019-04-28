@@ -38,11 +38,13 @@ function transformReportingObstaciesMenu1(){
 var linkage_init, setparm_init;
 var listAdd = [],linkageEquips = [];
 function initAddList() {
+       
     $("#equipLinkage_set ul").html("");
     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getEquipList"),AlarmCenterContext.post("/api/GWServiceWebAPI/getSetparmList",{findEquip: false}),AlarmCenterContext.post("/api/GWServiceWebAPI/getLinkageList")).done(function(n,l,h){
         let nObject = n.HttpData,lObject = l.HttpData,hObject = h.HttpData;
         if(nObject.code == 200 && lObject.code == 200 && hObject.code == 200)
         {
+
                 linkageEquips = nObject.data.filter((equip, index) => {
                 if (lObject.data.some(parm => {
                             return equip.equip_no === parm.equip_no
@@ -68,8 +70,10 @@ function initAddList() {
                 setparm_init = lObject; linkage_init = hObject;
                 equipLinkList();
         }
+        myApp.dialog.close();
     }).fail(function(e){
       toastCenterLinkage.open();
+      myApp.dialog.close();
     });
 
 }
@@ -136,6 +140,7 @@ function equipLinkList() {
                                     yc_yxp_nos+=item.iequip_no+",";
             }
         });
+
         if(equip_ycp_nos.length>0){
         equip_ycp_nos=equip_ycp_nos.substring(0,equip_ycp_nos.length-1);
         yc_ycp_nos=yc_ycp_nos.substring(0,yc_ycp_nos.length-1);
@@ -144,6 +149,7 @@ function equipLinkList() {
         equip_yxp_nos=equip_yxp_nos.substring(0,equip_yxp_nos.length-1);
         yc_yxp_nos=yc_yxp_nos.substring(0,yc_yxp_nos.length-1);
         }
+
         if(ycpData_table != "ycp" && yxpData_table != "yxp")
         {
              $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/get_DataForListStr",{
@@ -163,19 +169,24 @@ function equipLinkList() {
                  {
 
                  }
+                 
              }).fail(function(e){
-
+                
              });
         }
         else if(ycpData_table != "ycp")
-        {
+        { 
             $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_DataForListStr",{"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos})).done(function(n){
+
               if(n.HttpData.code == 200)
               {
-                 ycpData_table_7 = data.HttpData;notEqualToYCP();
-              }
-            }).fail(function(e){
+                 ycpData_table_7 = data;
 
+                 notEqualToYCP();
+              }
+             
+            }).fail(function(e){
+                
             });
 
             // equipLinkPublicAjax({"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 7);              
@@ -185,10 +196,12 @@ function equipLinkList() {
             $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/get_DataForListStr",{"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos})).done(function(n){
               if(n.HttpData.code == 200)
               {
-                    yxpData_table_8 = data.HttpData;notEqualToYXP();
+                    yxpData_table_8 = data;
+                    notEqualToYXP();
               }
+              
             }).fail(function(e){
-
+              
             });
              // equipLinkPublicAjax({"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 8);              
         }                             
@@ -209,30 +222,33 @@ function notEqualToYCPYXP() {
 }
 //不等于ycp
 function notEqualToYCP() {
-    let ycpRt = ycpData_table_7;
-    if (ycpRt.code === 200) {
-        let ycpData = ycpRt.data,yxpData = null;
-        publicFun(ycpData, yxpData);
-    }
+
+    let ycpRt = ycpData_table_7;  
+
+    let ycpData = ycpRt,yxpData = null;
+
+    publicFun(ycpData, yxpData);
+
 }
 //不等于yxp
 function notEqualToYXP() {
     let yxpRt = yxpData_table_8;
-    if (yxpRt.code === 200) {
-        let ycpData = null,yxpData = yxpRt.data;
+
+        let ycpData = null,yxpData = yxpRt;
         publicFun(ycpData, yxpData);
-    }
 }
 var equipLinkage_public_list = [];
 function publicFun(ycpData, yxpData) {
     var html = "";
     equipLinkage_public_list = linkage_init.data.map(row => {
+
         let result = {}
-        result.id = row.ID
-        result.originalData = row
-        result.delayTime = row.delay
-        result.optCode = row.value
-        result.remarks = row.ProcDesc
+        result.id =  row.ID;
+        result.originalData = row;
+        result.delayTime = row.delay;
+        result.optCode = row.value;
+        result.remarks = row.ProcDesc;
+
         linkageEquips.forEach(item => {
             if (row.oequip_no === item.value) {
                 result.linkageEquip = item.label
@@ -268,10 +284,9 @@ function publicFun(ycpData, yxpData) {
         } else {
             result.cCurren = "无"
         }
-        // html += '<tr onclick=\'newlyBuildLinkage("'+result.equipName+'","'+result.cType+'","'+result.cCurren+'",'+result.delayTime+',"'+result.linkageEquip+'","'+result.linkageOpt+'","'+result.optCode+'","'+result.remarks+'",'+result.id+',1)\' TrID='+result.id+'>' + '<td>' + result.equipName + '</td>' + '<td>' + result.cType + '</td>' + '<td>' + result.cCurren + '</td>' + '<td>' + result.delayTime + '</td>' + '<td>' + result.linkageEquip + '</td>' + '<td>' + (result.linkageOpt ? result.linkageOpt : '空') + '</td>' + '<td>' + (result.optCode ? result.optCode : '空') + '</td>' + '<td>' + result.remarks + '</td>' + '</tr>';
 
         html += `<li class="swipeout bottomBorderLine">
-          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage(this,'${result.equipName}','${result.cType}','${result.cCurren}','${result.delayTime}','${result.linkageEquip}','${result.linkageOpt}','${result.optCode}','${result.remarks}',${result.id},1)" TrID="${result.id}">
+          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage(this,1)" TrID="${result.id}" TrRow = '${JSON.stringify(result)}'>
             <div class="col-33">${result.equipName}</div>
             <div class="col-33">${result.linkageEquip}</div> 
             <div class="col-33">${result.remarks}</div> 
@@ -283,13 +298,15 @@ function publicFun(ycpData, yxpData) {
 
         return result;
     })
-    myApp.dialog.close();
+    
     $("#equipLinkage_set ul").html(html);
 }
 //联动设置添加
 var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[],dtParent;
-function newlyBuildLinkage(dt,equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index){
-    dtParent = dt;
+function newlyBuildLinkage(dt,index){
+dtParent = dt; 
+var result = $(dtParent).attr("TrRow")?JSON.parse($(dtParent).attr("TrRow")):{id:"",equipName:"",cType:"",cCurren:"",delayTime:0,linkageEquip:"",linkageOpt:"",remarks:""};
+
 var html = '<div class="popup popup-aboutuser">'+
       '<h1>设备联动</h1>'+
       '<div class="popupContent list inline-labels no-hairlines-md">'+
@@ -298,7 +315,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发设备</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="选择触发设备" value = "'+(equipName !=" "?equipName:"")+'"  class="equipTiggerName" id="equipTiggerName" >'+
+                    '<input type="text" placeholder="选择触发设备" value = "'+(result.equipName?result.equipName:"")+'"  class="equipTiggerName" id="equipTiggerName" >'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -307,7 +324,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发类型</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="选择触发类型" value = "'+(cType !=" "?cType:"")+'"  class="equipTiggerType" id="equipTiggerType" >'+
+                    '<input type="text" placeholder="选择触发类型" value = "'+(result.cType?result.cType:"")+'"  class="equipTiggerType" id="equipTiggerType" >'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -316,7 +333,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">触发点</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="选择触发点" value = "'+(cSpot !=" "?cSpot:"")+'"  class="equipTiggerSpot" id="equipTiggerSpot" >'+
+                    '<input type="text" placeholder="选择触发点" value = "'+(result.cCurren?result.cCurren:"")+'"  class="equipTiggerSpot" id="equipTiggerSpot" >'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -325,7 +342,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">延时(ms)</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="number" placeholder="输入延迟时间" value = "'+(delayTime !=" "?delayTime:0)+'" class="equipTiggerTime" id="equipTiggerTime">'+
+                    '<input type="number" placeholder="输入延迟时间" value = "'+(result.delayTime?result.delayTime:0)+'" class="equipTiggerTime" id="equipTiggerTime">'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -334,7 +351,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">联动设备</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="选择联动设备" value = "'+(linkageEquip !=" "?linkageEquip:"")+'" class="equipTigger_Link" id="equipTigger_Link">'+
+                    '<input type="text" placeholder="选择联动设备" value = "'+(result.linkageEquip?result.linkageEquip:"")+'" class="equipTigger_Link" id="equipTigger_Link">'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -343,7 +360,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">联动命令</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="选择联动命令" value = "'+(linkageOpt !=" "?linkageOpt:"")+'" class="equipTiggerCom" id="equipTiggerCom">'+
+                    '<input type="text" placeholder="选择联动命令" value = "'+(result.linkageOpt?result.linkageOpt:"")+'" class="equipTiggerCom" id="equipTiggerCom">'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -352,7 +369,7 @@ var html = '<div class="popup popup-aboutuser">'+
                 '<div class="item-inner">'+
                   '<div class="item-title item-label">备注信息</div>'+
                   '<div class="item-input-wrap">'+
-                    '<input type="text" placeholder="输入备注信息" value = "'+(remarks !=" "?remarks:"")+'" class="equipTiggerInfo" id="equipTiggerInfo">'+
+                    '<input type="text" placeholder="输入备注信息" value = "'+(result.remarks?result.remarks:"")+'" class="equipTiggerInfo" id="equipTiggerInfo">'+
                     '<span class="input-clear-button"></span>'+
                   '</div>'+
                 '</div>'+
@@ -361,19 +378,15 @@ var html = '<div class="popup popup-aboutuser">'+
       '</div>'+
        '<div class="popupBtb row">'+
         '<a class="link popup-close col-50 button" href="#">返回</a>'+
-        '<a class="link popupOpenBtn col-50 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+ID+'>确认</a>'+
+        '<a class="link popupOpenBtn col-50 button" href="#" onclick="addLinkage(this,'+index+')" dataID='+result.id+'>确认</a>'+
       '</div>'+
     '</div>';
-    //console.log(dt,equipName,cType,cSpot,delayTime,linkageEquip,linkageOpt,optCode,remarks,ID,index)
-    myApp.router.navigate("/equipLinkageModify/?"+equipName+"&"+cType+"&"+cSpot+"&"+delayTime+"&"+linkageEquip+"&"+linkageOpt+"&"+optCode+"&"+remarks+"&"+ID+"&"+index+"");
-    //link_popupAlert(html);
+    myApp.router.navigate("/equipLinkageModify/?"+result.equipName+"&"+result.cType+"&"+result.cCurren+"&"+result.delayTime+"&"+result.linkageEquip+"&"+result.linkageOpt+"&"+result.optCode+"&"+result.remarks+"&"+result.id+"&"+index+"");
     setTimeout(function(){
-    	link_listInit_equip("equipTiggerName",listAdd.map(item => {return item.label;}),equipName,index); //触发设备
-	    link_listInit_equip("equipTigger_Link",linkageEquips.map(item => {return item.label;}),linkageEquip,index); //联动设备
+    	link_listInit_equip("equipTiggerName",listAdd.map(item => {return item.label;}),result.equipName,index); //触发设备
+	    link_listInit_equip("equipTigger_Link",linkageEquips.map(item => {return item.label;}),result.linkageEquip,index); //联动设备
 	   try{link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === $("#equipTiggerName").val()) {return equip;}})[0].value;}
 	   catch(e){link_listInit_no ="";}
-	   // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
-	   // equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value}, "/api/real/get_setparm", 11);
 	   if(link_listInit_no)
 	        $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
 	          if(n.HttpData.code == 200 && l.HttpData.code == 200)
@@ -381,7 +394,6 @@ var html = '<div class="popup popup-aboutuser">'+
 	                ycpData_table_9=n.HttpData;yxpData_table_10 = l.HttpData;writeContent();
 	          }
 	        }).fail(function(e){});
-	
 	
 	    $.when(AlarmCenterContext.post("/api/real/get_setparm",{equip_nos: linkageEquips.filter((item,index) => {if(item.label == $("#equipTigger_Link").val()) return item; else return [{value:""}];})[0].value})).done(function(n,l){
 	      if(n.HttpData.code == 200)
@@ -396,7 +408,7 @@ var html = '<div class="popup popup-aboutuser">'+
 }
 //确认
 function updateEquipLink(dt){
-   // alert($("#equipTiggerName").val());
+
 }
 //列表联动
 function writeContent(){
@@ -460,13 +472,14 @@ function addLinkage(dt,index) { //index = 1 更新，index = 2 插入
         equipLink_cNo = equipLink_spot[0].children.filter((item,index) =>{if(item.label == $(".equipTiggerSpot").val()) return item;})[0].value;
       }catch(e){}
       if(!link_listInit_no) {toastCenterLinkage.open();return false;}
+
       var reqData = {
         id: $(dt).attr("dataID") || 1,
         equipNo: link_listInit_no,
-        cType: equipLink_cType.length>0?equipLink_cType[0].value:"",
+        cType: equipLink_cType.length>0?equipLink_cType[0].value:"''",
         cNo: equipLink_cNo?equipLink_cNo:0,
         delay: $(".equipTiggerTime").val(),
-        linkEquipNo: equipLink_linkEquipNo.length>0?equipLink_linkEquipNo[0].value:"",
+        linkEquipNo: equipLink_linkEquipNo.length>0?equipLink_linkEquipNo[0].value:"''",
         linkNo: equipLink_linkNo.length>0&&equipLink_linkNo?equipLink_linkNo[0].set_no:"null",
         optCode: '""',
         remarks: $(".equipTiggerInfo").val() || ""
@@ -665,7 +678,7 @@ function initSceneList() {
     })).done(function(n,l){
         let rt = n.HttpData,equipRt = l.HttpData;
         if (n.HttpData.code ==200 && l.HttpData.code ==200) {
-            myApp.dialog.close();
+            
             setList = rt.data, equipList = equipRt.data; 
             //可控设备
             controlEquipList = setList.filter(item => {
@@ -691,9 +704,10 @@ function initSceneList() {
               return item;
             });
             $("#equipLinkage_edit>ul").append(htmlHeader);
+             myApp.dialog.close();
      }
     }).fail(function(e){
-         myApp.dialog.close();
+          myApp.dialog.close();
     });
 }
 //场景URL

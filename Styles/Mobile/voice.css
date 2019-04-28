@@ -1,11 +1,11 @@
-.popup.popup-voices {
+/*.popup.popup-voices {
 	top: 0px !important;
 	height: 100% !important;
 	width: 100%;
 	left: 0;
 	margin: 0;
 }
-
+*/
 .popup-voices {
 	background: rgba(51, 51, 51, 0.70);
 }

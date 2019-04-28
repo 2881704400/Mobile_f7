@@ -304,14 +304,18 @@ function loadNameMobile() {
                     InitEnsure();
                     AppShows();
                     onHomePage();
-                    //查询表中用户选择的语言
+                    //查询表中用户选择的语言 
                     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
                         var result = n.HttpData.data;
-                        if (result.length > 0 && result[0].status != "0" && n.HttpData.code == 200) {
-                            window.localStorage.languageList = 1;
-                        } else {
-                            window.localStorage.languageList = 0;
+                        if (result != null && n.HttpData.code == 200 && result.length>0) {
+                            result[0].languageType != "0"?window.localStorage.languageList = 1:window.localStorage.languageList = 0; // 0 中文 - 1英文
+                            result[0].voiceType != "0"?window.localStorage.voiceType =1: window.localStorage.voiceType =0; //0 讯飞 - 1微软
                         }
+                        else
+                        {
+                            window.localStorage.languageList =0; window.localStorage.voiceType =0; 
+                        }
+
                         tranformMenu(window.localStorage.languageList);
                     }).fail(function(e) {});
                     $(".voiceDivs,.toolbar").removeClass("displayNone");
@@ -740,25 +744,46 @@ function modifyZnUs() {
     } else {
         $(".voice-arrow-dialog").text("按下说话");
     }
-    getLanguageChoice(window.localStorage.languageList);
+    getLanguageChoice(window.localStorage.languageList,window.localStorage.voiceType);
 }
 //切换语音
-function getLanguageChoice(val) {
-    switch (val) {
-        case "1": //讯飞英文
-            try {
-                myJavaFun.SetAIUILanguage("english");
-            } catch (ex) {}
-            break;
-        case "0": //讯飞中文
-            try {
-                myJavaFun.SetAIUILanguage("mandarin");
-            } catch (ex) {}
-            break;
-            break;
-        default:
-            break;
-    }
+function getLanguageChoice(languageList,voicetype) {
+
+    //查询表中用户选择的语言 
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
+        var result = n.HttpData.data;
+        if (result != null && n.HttpData.code == 200 && result.length>0) {
+           if(result[0].Reserve1)
+           {
+              var keys = result[0].Reserve1.split("-")[voicetype],lanType = languageList+"-"+voicetype;
+                 try {myJavaFun.SetKey(window.localStorage.voiceType,keys);} catch (ex) {} //设置 KEY
+                switch (lanType) {
+                    case "1-0": //英文-讯飞
+                        try {myJavaFun.SetAIUILanguage("english");} catch (ex) {}
+                        // alert("英文-讯飞");
+                        break;
+                    case "0-0": //中文-讯飞
+                        try {myJavaFun.SetAIUILanguage("mandarin");} catch (ex) {}
+                        // alert("中文-讯飞");
+                        break;
+                    case "0-1": //中文-微软
+                      try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
+                        // alert("中文-微软");
+                    break;
+                    case "1-1": //英文-微软
+                      try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
+                        // alert("英文-微软");
+                    break;
+                    default:break;
+                }
+           }
+        }
+        else
+        {
+           myApp.dialog.alert(window.localStorage.languageList == 1?"Initialize voice":"请初始化语音",window.localStorage.languageList == 1?"Tips":"提示");
+        }
+    }).fail(function(e) {});
+
 }
 function voiceCloseFun() {
     try {

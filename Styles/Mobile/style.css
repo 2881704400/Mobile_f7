@@ -137,11 +137,13 @@ html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
 	height: 24px;
 	display: block !important;
+	    z-index: 200;
 }
 
 html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
 	height: 20px;
+	    z-index: 200;
 }
 
 html.with-statusbar.device-android .panel,
@@ -153,11 +155,13 @@ html.with-statusbar.md:not(.device-android) .panel {
 html.with-statusbar.device-ios .popup,
 html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup {
 	top: 0px !important;
+	right: 0;bottom: 0;left: 0;
 	height: 100% !important;
 }
 
 html.with-statusbar.device-android .popup,
 html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
 	top: 0px !important;
+	right: 0;bottom: 0;left: 0;
 	height: 100% !important;
 }

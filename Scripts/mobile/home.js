@@ -168,7 +168,7 @@ function snashotCount(btnInfoLevels_home) {
                     for (var i = 0; i < resultDataArr.length; i++) {
                         $(".statisticsTable a:eq(" + i + ")").attr("href", "/snapShotDetail/?" + btnInfoNames_home[i] + '&' + btnInfoLevels_home[i]).find("p").text(resultDataArr[i]);
                     }
-                }
+                } 
             }
         });
     }
@@ -243,7 +243,7 @@ function getJurisdictionData() {
             });
         }
     }).fail(function(e) {
-        // myApp.router.navigate("/home/"); 
+        // myApp.router.navigate("/home/");
     });
 }
 

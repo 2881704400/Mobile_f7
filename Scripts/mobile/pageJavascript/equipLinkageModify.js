@@ -48,57 +48,6 @@ function equipLinkageModify() {
 		addLinkage(this, index);
 	});
 	
-	/*function _equipTiggerNameChange(picker, values, displayValues){
-		console.log(picker, values, displayValues)
-		if(picker.cols[0].replaceValues){
-        }
-        
-        link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === country) {return equip;}})[0].value;
-                    // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
-                       if(link_listInit_no)
-                            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
-                              if(n.HttpData.code == 200 && l.HttpData.code == 200)
-                              {
-                                    ycpData_table_9=n.HttpData;yxpData_table_10 = l.HttpData;writeContent();
-                              }
-                            }).fail(function(e){});
-                    $(".equipTiggerType,.equipTiggerSpot").val("");
-        
-	}
-	//触发设备选择
-	createPickerModel("equipTiggerName",listAdd.map(item => {return item.label;}),null,_equipTiggerNameChange,null);
-	
-	function _equipTiggerTypeChange(picker, values, displayValues){
-		console.log(picker, values, displayValues)
-		if(picker.cols[0].replaceValues){
-        }
-	}
-	//触发类型选择
-	createPickerModel("equipTiggerType",equipTiggerType.map(item => {return item.label;}),null,_equipTiggerTypeChange,null);
-	
-	function _equipTiggerSpotChange(picker, values, displayValues){
-		console.log(picker, values, displayValues)
-		if(picker.cols[0].replaceValues){
-        }
-	}
-	//触发点选择
-	createPickerModel("equipTiggerSpot",getType[0].children.map(item =>{return item.label}),null,_equipTiggerSpotChange,null);
-	
-	function _equipTiggerLinkChange(picker, values, displayValues){
-		console.log(picker, values, displayValues)
-		if(picker.cols[0].replaceValues){
-        }
-	}
-	//联动设备选择
-	createPickerModel("equipTigger_Link",linkageEquips.map(item => {return item.label;}),null,_equipTiggerLinkChange,null);
-	
-	function _equipTiggerComChange(picker, values, displayValues){
-		console.log(picker, values, displayValues)
-		if(picker.cols[0].replaceValues){
-        }
-	}
-	//联动命令选择
-	createPickerModel("equipTiggerCom",equipTiggerCommand.map(item=>{return item.set_nm}),null,_equipTiggerComChange,null);*/
 }
 
 function createPickerModel(id, values, _opened, _change, _closed) {

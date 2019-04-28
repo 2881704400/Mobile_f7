@@ -2,20 +2,15 @@
 
     //语音初始化
     $("#voiceList").find("option").each(function () {
-        if ($(this).attr("value") == window.localStorage.voiceList) {
+        if ($(this).attr("value") == window.localStorage.voiceType) {
             $(this).attr("selected", true);
              $("#voiceListName>.item-after").html($(this).html());
-        } 
-        else if(window.localStorage.voiceList == undefined)
-        {
-             $("#voiceList").find("option:eq(0)").attr("selected", true);
-              $("#voiceListName>.item-after").html($(this).html());
-        }
+        }    
     });
     //语言初始化
     $("#languageList").find("option:eq(1)").attr("selected", true);
     $("#languageListName>.item-after").html("English");
-    // modifyZnUs();
+
     //用户
     $(".userClassName p").html(window.localStorage.userName);
     myApp.navbar.hide('.navbar');
@@ -49,8 +44,15 @@
 
 
 function onVoiceList_en() {
-    window.localStorage.voiceList = $("#voiceList").find("option:selected").attr("value");
-    // getLanguageChoice($("#voiceList").find("option:selected").attr("data-value"));
+    window.localStorage.voiceType = $("#voiceList").find("option:selected").attr("value");
+    var selValue= 1;
+    var keysValue = "5c258342-d64f4e3f41f34ebc8368527df54c0425";//讯飞-微软
+      $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertLanguageStatus?userName="+window.localStorage.userName+"&languageType="+selValue+"&voiceType="+window.localStorage.voiceType+"&Reserve1="+keysValue+"&Reserve2="+keysValue+"&Reserve3="+keysValue)).done(function(n){
+         var result = n.HttpData.data;
+         if (result && n.HttpData.code == 200) {
+          
+         } 
+     }).fail(function(e){ });   
 
 }
 
@@ -59,18 +61,21 @@ function selectLanguage_en() {
 }
 
 function confirmFunction_en(){
-    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertLanguageStatus?userName="+window.localStorage.userName+"&status="+$("#languageList").find("option:selected").attr("value"))).done(function(n){
+  var selValue= 0;//1为英文 0为中文
+  var keysValue = "5c258342-d64f4e3f41f34ebc8368527df54c0425";//讯飞-微软
+   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertLanguageStatus?userName="+window.localStorage.userName+"&languageType="+selValue+"&voiceType="+window.localStorage.voiceType+"&Reserve1="+keysValue+"&Reserve2="+keysValue+"&Reserve3="+keysValue)).done(function(n){
       var result = n.HttpData.data; 
-      if (result && n.HttpData.code == 200 && $("#languageList").find("option:selected").attr("value") == 0) {
-         tranformMenu($("#languageList").find("option:selected").attr("value"));
+      if (result && n.HttpData.code == 200) {
+         tranformMenu(selValue);
          myApp.router.navigate("/setPage/"); 
       } 
       else
       {
-         tranformMenu($("#languageList").find("option:selected").attr("value"));myApp.router.navigate("/mobile-en/setPage_en/"); 
+         tranformMenu(selValue);
+         myApp.router.navigate("/mobile-en/setPage_en/"); 
       }
      window.localStorage.languageList = 0;
-   }).fail(function(e){tranformMenu($("#languageList").find("option:selected").attr("value"));myApp.router.navigate("/mobile-en/setPage_en/");  });    
+   }).fail(function(e){tranformMenu(selValue);myApp.router.navigate("/mobile-en/setPage_en/");  });    
 }
 
 function cancelFunction_en(){
