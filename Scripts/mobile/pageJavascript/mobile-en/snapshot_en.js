@@ -1,13 +1,17 @@
-﻿var event_Level_list,btnInfoNames = [],btnInfoLevels = [],timeInterval;
+﻿var event_Level_list, btnInfoNames = [],
+    btnInfoLevels = [],
+    timeInterval;
+
 function snapshot_en() {
     switchToolbar("snapshotTool");
     var snapashot_ptr = $$('.snapashot-page-content');
     snapashot_ptr.on("ptr:refresh", refreshpg);
-    myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
+    myApp.dialog.progress('<a style="font-size: 1rem">Loding...</a>');
     initData();
 }
 //获取事件的报警配置
 function initData() {
+    btnInfoNames.length = 0, btnInfoLevels.length = 0;
     $.ajax({
         type: 'post',
         url: '/api/event/alarm_config',
@@ -60,20 +64,20 @@ function getRealTimeEventCount() {
                     var resultData = dt.HttpData.data;
                     var resultDataArr = resultData.toString().split(",");
                     var strData = "";
-                    var iconData="";
+                    var iconData = "";
                     for (var i = 0; i < resultDataArr.length; i++) {
-                    	if(i==0){
-                    		iconData="icon-web-cuowu";
-                    	}else if(i==1){
-                    		iconData="icon-web-jingshimian";
-                    	}else if(i==2){
-                    		iconData="icon-web-xinxiinfo21";
-                    	}else if(i==3){
-                    		iconData="icon-web-shezhi";
-                    	}else if(i==4){
-                    		iconData="icon-web-assets";
-                    	}
-                        strData += '<li>' + '<a href="/mobile-en/snapShotDetail_en/?' + judgeSnapshotName(btnInfoNames[i]) + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '	<div class="item-media"><i class="iconfont ' + iconData + '"></i></div>' + '	<div class="item-inner" id="snapShotDetail_0">' + '		<div class="item-title">' + judgeSnapshotName(btnInfoNames[i]) + '</div>' + '		<div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '	</div>' + '</a>' + '</li>';
+                        if (i == 0) {
+                            iconData = "icon-web-cuowu";
+                        } else if (i == 1) {
+                            iconData = "icon-web-jingshimian";
+                        } else if (i == 2) {
+                            iconData = "icon-web-xinxiinfo21";
+                        } else if (i == 3) {
+                            iconData = "icon-web-shezhi";
+                        } else if (i == 4) {
+                            iconData = "icon-web-assets";
+                        }
+                        strData += '<li>' + '<a href="/mobile-en/snapShotDetail_en/?' + judgeSnapshotName(btnInfoNames[i]) + '&' + btnInfoLevels[i] + '" class="item-link item-content">' + '   <div class="item-media"><i class="iconfont ' + iconData + '"></i></div>' + '    <div class="item-inner" id="snapShotDetail_0">' + '     <div class="item-title">' + judgeSnapshotName(btnInfoNames[i]) + '</div>' + '       <div class="item-after"><span class="badge">' + resultDataArr[i] + '</span></div>' + '  </div>' + '</a>' + '</li>';
                     }
                     $("#snapshotMenuListId").html(strData);
                     myApp.dialog.close();
@@ -89,29 +93,48 @@ function refreshpg(e) {
         // 加载完毕需要重置
         myApp.ptr.done();
         myApp.toast.create({
-            text: '数据加载成功!',
+            text: 'Successful data loading!',
             position: 'center',
             closeTimeout: 500,
         }).open();
     }, 2000);
 }
 
-function judgeSnapshotName(val){
+function judgeSnapshotName(val) {
     var result = "";
-     switch(val)
-     {
-        case "故障": result =window.localStorage.languageList == 1?"Errors":"故障";break;
-        case "警告": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
-        case "信息": result =window.localStorage.languageList == 1?"Informations":"信息";break;
-        case "设置": result =window.localStorage.languageList == 1?"Settings":"设置";break;
-        case "资产": result =window.localStorage.languageList == 1?"Assets":"资产";break;
-
-        case "Errors": result =window.localStorage.languageList == 1?"Errors":"故障";break;
-        case "Warnings": result =window.localStorage.languageList == 1?"Warnings":"警告";break;
-        case "Informations": result =window.localStorage.languageList == 1?"Informations":"信息";break;
-        case "Settings": result =window.localStorage.languageList == 1?"Settings":"设置";break;
-        case "Assets": result =window.localStorage.languageList == 1?"Assets":"资产";break;        
-        default: break;
-     }
-     return result;
+    switch (val) {
+        case "故障":
+            result = window.localStorage.languageList == 1 ? "Errors" : "故障";
+            break;
+        case "警告":
+            result = window.localStorage.languageList == 1 ? "Warnings" : "警告";
+            break;
+        case "信息":
+            result = window.localStorage.languageList == 1 ? "Informations" : "信息";
+            break;
+        case "设置":
+            result = window.localStorage.languageList == 1 ? "Settings" : "设置";
+            break;
+        case "资产":
+            result = window.localStorage.languageList == 1 ? "Assets" : "资产";
+            break;
+        case "Errors":
+            result = window.localStorage.languageList == 1 ? "Errors" : "故障";
+            break;
+        case "Warnings":
+            result = window.localStorage.languageList == 1 ? "Warnings" : "警告";
+            break;
+        case "Informations":
+            result = window.localStorage.languageList == 1 ? "Informations" : "信息";
+            break;
+        case "Settings":
+            result = window.localStorage.languageList == 1 ? "Settings" : "设置";
+            break;
+        case "Assets":
+            result = window.localStorage.languageList == 1 ? "Assets" : "资产";
+            break;
+        default:
+            break;
+    }
+    return result;
 }

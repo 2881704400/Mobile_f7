@@ -177,9 +177,7 @@ function equipLinkList_en() {
               }
             }).fail(function(e){
 
-            });
-
-            // equipLinkPublicAjax({"tType": ycpData_table_type,"equip_nos": equip_ycp_nos,"yc_nos": yc_ycp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 7);              
+            });           
         }  
         else if(yxpData_table != "yxp")
         {
@@ -191,7 +189,6 @@ function equipLinkList_en() {
             }).fail(function(e){
 
             });
-             // equipLinkPublicAjax({"tType": yxpData_table_type,"equip_nos": equip_yxp_nos,"yc_nos": yc_yxp_nos}, "/api/GWServiceWebAPI/get_DataForListStr", 8);              
         }                             
         else
         {
@@ -227,7 +224,7 @@ function notEqualToYXP_en() {
 var equipLinkage_public_list = [];
 function publicFun_en(ycpData, yxpData) {
     var html = "";
-    equipLinkage_public_list = linkage_init.data.map(row => {
+    equipLinkage_public_list = linkage_init.data.map((row,index) => {
         let result = {}
         result.id =  row.ID;
         result.originalData = row;
@@ -270,7 +267,7 @@ function publicFun_en(ycpData, yxpData) {
             result.cCurren = "nothing"
         }
         html += `<li class="swipeout bottomBorderLine">
-          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage_en(this,1)" TrID="${result.id}" TrRow = '${JSON.stringify(result)}'>
+          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage_en(this,1)" TrID="${result.id}" TrRow = '${index}'>
             <div class="col-33">${result.equipName}</div>
             <div class="col-33">${result.linkageEquip}</div> 
             <div class="col-33">${result.remarks}</div> 
@@ -290,7 +287,7 @@ var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[],d
 function newlyBuildLinkage_en(dt,index){
 
 dtParent = dt; 
-var result = $(dtParent).attr("TrRow")?JSON.parse($(dtParent).attr("TrRow")):{id:"",equipName:"",cType:"",cCurren:"",delayTime:0,linkageEquip:"",linkageOpt:"",remarks:""};
+var result = $(dtParent).attr("TrRow")?equipLinkage_public_list[$(dtParent).attr("TrRow")]:{id:"",equipName:"",cType:"",cCurren:"",delayTime:0,linkageEquip:"",linkageOpt:"",remarks:""};
 
 var html = '<div class="popup popup-aboutuser">'+
       '<h1>Equipment linkage</h1>'+
@@ -392,7 +389,6 @@ var html = '<div class="popup popup-aboutuser">'+
 }
 //确认
 function updateEquipLink_en(dt){
-   // alert($("#equipTiggerName").val());
 }
 //列表联动
 function writeContent_en(){
@@ -501,8 +497,6 @@ function deleteLinkage_en(dt) {
     let val = parseInt($(dt).parent().siblings().attr("trid"));
      myApp.dialog.confirm("Whether to delete the item","Tips",function(){
        myApp.popup.close();
-       // equipLinkPublicAjax({id: $(dt).parent().siblings().attr("trid")}, "/api/GWServiceWebAPI/deleteLinkage", 14);
-
         $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/deleteLinkage",{id: val})).done(function(n){
             if(n.HttpData.code == 200)
               {
@@ -538,7 +532,6 @@ function link_listInit_equip_en(id,equipArray,equipNameValue,equipNameType){
 	            switch(id){
 	                case "equipTiggerName": 
 	                    link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === country) {return equip;}})[0].value;
-	                    // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
 	                       if(link_listInit_no)
 	                            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
 	                              if(n.HttpData.code == 200 && l.HttpData.code == 200)
@@ -550,7 +543,6 @@ function link_listInit_equip_en(id,equipArray,equipNameValue,equipNameType){
 	                break;
 	                case "equipTigger_Link": 
 	                    $(".equipTiggerCom").val("");
-	                    // equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value}, "/api/real/get_setparm", 11);
 	                    $.when(AlarmCenterContext.post("/api/real/get_setparm",{equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value})).done(function(n,l){
 	                      if(n.HttpData.code == 200)
 	                      {
@@ -571,7 +563,6 @@ function link_listInit_equip_en(id,equipArray,equipNameValue,equipNameType){
 	            switch(id){
 	                case "equipTiggerName": 
 	                    link_listInit_no = listAdd.filter((equip, index) => {if ( equip.label === country) {return equip;}})[0].value;
-	                    // link_listInit_no?equipLinkPublicAjax({equip_nos: link_listInit_no}, "/api/GWServiceWebAPI/getYcp", 9):"";
 	                       if(link_listInit_no)
 	                            $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getYcp",{equip_nos: link_listInit_no}),AlarmCenterContext.post("/api/GWServiceWebAPI/getYxp",{equip_nos: link_listInit_no})).done(function(n,l){
 	                              if(n.HttpData.code == 200 && l.HttpData.code == 200)
@@ -583,7 +574,6 @@ function link_listInit_equip_en(id,equipArray,equipNameValue,equipNameType){
 	                break;
 	                case "equipTigger_Link": 
 	                    $(".equipTiggerCom").val("");
-	                    // equipLinkPublicAjax({equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value}, "/api/real/get_setparm", 11);
 	                    $.when(AlarmCenterContext.post("/api/real/get_setparm",{equip_nos: linkageEquips.filter((item,index) => {if(item.label == country) return item;})[0].value})).done(function(n,l){
 	                      if(n.HttpData.code == 200)
 	                      {
@@ -597,7 +587,6 @@ function link_listInit_equip_en(id,equipArray,equipNameValue,equipNameType){
 	       }],
 	    }); 
 	}
-   
 }
 //触发类型 
 var link_listInit_type;
@@ -650,7 +639,6 @@ function getObject_en(arrayObject,className,index){
 }
 
 //初始化场景设置
-
 function initSceneList_en() {
     var sceneDataList = [],controlEquipList,setList,equipList;
     $("#equipLinkage_edit ul").html("");
@@ -704,11 +692,6 @@ function scanelEdit_en(that,status){
     else
       myApp.router.navigate("/mobile-en/scheduleModify_en/?title=Scene editing&index=2&table=equipLinkage_edit_modify"); 
 }
-
-
-
-
-
 
 //删除场景
 function deleteScene_en(dt,equipNo,setNo) {

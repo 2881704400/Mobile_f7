@@ -6,6 +6,8 @@ function onHomePage() {
     getAppStatusBarHeight();
     //切换中英文右上角链接
     tranformMenu(window.localStorage.languageList);
+
+
 }
 //响应App绑定函数-获取状态栏高度
 function getStatusBarHeight(height, ScreenHeight) {

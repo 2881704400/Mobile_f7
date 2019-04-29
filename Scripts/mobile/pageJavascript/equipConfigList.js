@@ -21,7 +21,6 @@ function getEquipList(){
 							'</li>';
 					$("#equipConfigList .eq-list ul").append(html)
 				}
-				
 			}
 		}else{
 			var html='<li style="text-align:center;">'+

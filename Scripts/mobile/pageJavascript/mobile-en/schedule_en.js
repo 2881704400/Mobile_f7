@@ -59,7 +59,6 @@ function requestUser_en() {
                 let ackLevelUser = arrayLike[i].AckLevel.toString().trim() == "" ? null : arrayLike[i].AckLevel;
                 html += `<li class="swipeout bottomBorderLine" >
                           <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildUser_en('${arrayLike[i].Administrator}','${telphoneUser}','${mobileTelUser}','${emailUser}','${ackLevelUser}',1)">
-
                             <div class="col-50">
                                 <span>${arrayLike[i].Administrator}</span>
                               
@@ -135,12 +134,10 @@ function publicAjax_en(jsonString, url, index) {
             scheduleAlert.open();
         }
     }
-
     function _error(e) {
         scheduleAlert.open();
     }
 }
-
 //设备分组
 var that_parent, equipArray = new Array();
 
@@ -190,9 +187,7 @@ function requestEquipGroup_en() {
         }
         $("#schedule_equip ul").append(html);
     }
-
     function _error(e) {
-        // console.log(e);
     }
 }
 // 设备html
@@ -241,7 +236,6 @@ function equipAlert_en(dt, index) {
             $(dt).parents("div.col-50").prev().find("span").removeClass("displayNone").siblings().addClass("displayNone");
             break;
         case 4:
-            // updateEquip(dt, "", 2);
             var NewLineVal, NewLineArray = [];
             $("#schedule_equip").find("li").each(function(index) {
                 NewLineArray.push($(this).find("div.equipGroupInput span").attr("group_no"));
@@ -263,7 +257,6 @@ function getMaxNo_en() {
     if (equipArray.length == 0) return 1;
     else return Math.max.apply(null, equipArray) + 1;
 }
-
 //管理范围
 function requestAlmReport_en(almGroupObject) {
     var jsonData = {
@@ -300,10 +293,7 @@ function requestAlmReport_en(almGroupObject) {
         }
         $("#schedule_administartor ul").append(html);
     }
-
-    function _error(e) {
-        // console.log(e);
-    }
+    function _error(e) {}
 }
 // 设备html
 function newlyBuildAlmReport_en(that, status) {
@@ -312,7 +302,6 @@ function newlyBuildAlmReport_en(that, status) {
 }
 //返回对应设备号的设备名称
 function getEquipName_en(equipObject, equipno) {
-    // console.log(equipObject);
     var equipName = "";
     equipObject.forEach(function(ele, index) {
         if (ele.group_no == equipno) {
@@ -343,7 +332,6 @@ function requestEGAlmReport_en() {
         "error": equip_error,
     };
     $.fn.axpost(equipData);
-
     function equip_success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code;
@@ -352,7 +340,6 @@ function requestEGAlmReport_en() {
             requestEGAReport = arrayLike;
         }
     }
-
     function equip_error(e) {}
 }
 //设备删除
@@ -398,7 +385,6 @@ function almReportList_en(parentTaht, that) {
     $(parentTaht).attr("equipcomb", equipcombParentString);
     updateEquip($(parentTaht).next().find("i.icon-f7_modify"), $(parentTaht).text(), 1);
 }
-
 //周排表
 var jsondate = [];
 
@@ -443,9 +429,7 @@ function requestWeekAlmReport_en() {
         }
         $("#schedule_specificDate ul").append(html);
     }
-
     function _error(e) {
-        // console.log(e);
     }
 }
 //周排表html
@@ -466,7 +450,6 @@ function delWeekAlmReport_en(that) {
         publicAjax_en(deleteJson, "/api/GWServiceWebAPI/deleteEquipGroup", 4);
     });
 }
-// ********************************************************************************
 //特定排表
 var spe_array = [];
 
@@ -480,7 +463,6 @@ function requestSpeAlmReport_en() {
         "error": _error,
     };
     $.fn.axpost(jsonData);
-
     function _success(data) {
         let arrayLike = data.HttpData.data;
         let code = data.HttpData.code,
@@ -511,7 +493,6 @@ function requestSpeAlmReport_en() {
     }
 
     function _error(e) {
-        // console.log(e);
     }
 }
 //特定排表删除
@@ -532,7 +513,7 @@ function newlyBuildSpeAlmReport_en(tThatParent, status) {
     if (status == 1) myApp.router.navigate("/mobile-en/scheduleModify_en/?title=Specific Scheduling Modifications&index=1&table=schedule_weeklytable&username=" + $(tThatParent).find("div:eq(0)").text() + "&stime=" + $(tThatParent).find("div:eq(1)").text() + "&etime=" + $(tThatParent).find("div:eq(2)").text() + "&dataid=" + $(tThatParent).attr("dataid"));
     else myApp.router.navigate("/mobile-en/scheduleModify_en/?title=Specific Scheduling Modifications&index=2&table=schedule_weeklytable");
 }
-//switchMenu_en
+
 function switchMenu_en(dt) {
     let idObj = $(dt).attr("href")
     $(idObj).removeClass("displayNone").siblings("section").addClass("displayNone");

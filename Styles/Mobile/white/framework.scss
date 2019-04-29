@@ -27,7 +27,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
 .displayNone{display: none;}
 .view{
     // 搜索
-    .searchbar-inner{padding: 0 1rem;background: #{$situationBgc};}    
+    .searchbar-inner{padding: 0;background: #{$situationBgc};}    
     /*内容区*/ 
     .ios .page,.md .page,.page{background: #{$situationContainerBgc};}
     .page-content{

@@ -66,12 +66,10 @@ function ConnectService() {
         complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
             if (status == 'timeout') { //超时
                 ajaxVar.abort();
-                //console.log("超时");
                 XMLHttpRequest = null;
             }
         },
         error: function() {
-            // console.log("连接服务器错误");
         }
     });
 }
@@ -165,7 +163,7 @@ function videoListClickMap(jsonStringParent, jsonStringChild, dll) {
         try {
             myJavaFun.HikYunVideoShow(jsonString);
         } catch (ex) {
-            alert('请更新APP客户端或者使用APP客户端打开！');
+            alert('Please update the APP client or open it using the APP client!');
         }
     }
     if (dll == 'Hik8700.NET.dll') {
@@ -175,17 +173,16 @@ function videoListClickMap(jsonStringParent, jsonStringChild, dll) {
         try {
             myJavaFun.Hik8700VideoShow(json);
         } catch (ex) {
-            alert('请更新APP客户端或者使用APP客户端打开！');
+            alert('Please update the APP client or open it using the APP client!');
         }
     } else {
         var equip = jsonStringParent;
         var video = jsonStringChild;
         var json = '{"equip":' + equip + ',"video":' + video + '}';
-        // console.log(json);
         try {
             myJavaFun.VideoShow(json);
         } catch (ex) {
-            alert('请更新APP客户端或者使用APP客户端打开！');
+            alert('Please update the APP client or open it using the APP client!');
         }
     }
 }

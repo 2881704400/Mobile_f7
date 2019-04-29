@@ -11,7 +11,7 @@ $(function() {
         $(".view-main").css({
             filter: 'blur(8px)'
         })
-        //打开语音时，初始化界面内容
+        //打开语音时，初始化界面内容 
         $(".voice-container").html('<div class="pannel-chat-info">' + ' <div class="chart-content">' + initAlert() + '  </div>' + '</div>');
         modifyZnUs();
         //移除监听
@@ -27,6 +27,7 @@ $(function() {
         });
     });
 
+
     //记录选择
     try {
         myJavaFun.VoiceOpen();
@@ -34,7 +35,6 @@ $(function() {
 });
 
 function changeContentBoxBg() {
-
     isVoices = false;
     document.getElementById("videoContentBtnId").addEventListener('touchstart', onTouchStart);
     document.getElementById("videoContentBtnId").addEventListener('touchend', onTouchEnd);
@@ -72,7 +72,7 @@ function onTouchEnd(e) {
    {
         orderFlag = false;
         $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html(initIdentifying());
-        //移除监听
+        //移除监听 
         document.getElementById("videoContentBtnId").removeEventListener('touchstart', onTouchStart);
         document.getElementById("videoContentBtnId").removeEventListener('touchend', onTouchEnd);
         setTimeout(function() {
@@ -125,8 +125,7 @@ function callbackVoiceXFData(dt) {
             changeContentBoxBg();
             return;
         }
-        var _url = "/api/Voice/voice_string";
-        var _data = {
+        var _url = "/api/Voice/voice_string",_data = {
             data_string: dt,
             userName: window.localStorage.userName
         };
@@ -160,6 +159,12 @@ function callbackVoiceXFData(dt) {
                     }, 1000);
                 }
             } else {
+                    result = result.replace("未识别语音,内容","");
+                    result = result.replace("已处理语音,内容", "");
+                    result = result.replace("---", "");
+                    result = result.replace("。", "");
+                   $(".voice-container").children(".pannel-chat-info:last-child").find('.chart-content').html("<span>"+ result + "</span>");
+
                 $(".voice-container").append('<div class="pannel-chat-info">' + '<div class="chart-content">' + '<span>' + voiceString + (window.localStorage.languageList == "0" ? "指令异常，执行失败！</span>" : " Instruction exception, execution failure!") + ' </div>' + '</div>');
                 $('.voice-container').scrollTop($('.voice-container')[0].scrollHeight);
                 changeContentBoxBg();

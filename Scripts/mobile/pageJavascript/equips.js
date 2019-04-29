@@ -7,7 +7,6 @@ function equips() {
     //获取所有设备的状态
     var $ptrContent = $$('.equipPageContent');
     $ptrContent.on('ptr:refresh', function(e) {
-        // Emulate 2s loading
         setTimeout(function() {
             allEquipSatatus();
             // 加载完毕需要重置

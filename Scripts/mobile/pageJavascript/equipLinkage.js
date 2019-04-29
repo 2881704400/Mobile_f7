@@ -240,8 +240,7 @@ function notEqualToYXP() {
 var equipLinkage_public_list = [];
 function publicFun(ycpData, yxpData) {
     var html = "";
-    equipLinkage_public_list = linkage_init.data.map(row => {
-
+    equipLinkage_public_list = linkage_init.data.map((row,index) => {
         let result = {}
         result.id =  row.ID;
         result.originalData = row;
@@ -286,7 +285,7 @@ function publicFun(ycpData, yxpData) {
         }
 
         html += `<li class="swipeout bottomBorderLine">
-          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage(this,1)" TrID="${result.id}" TrRow = '${JSON.stringify(result)}'>
+          <div class="item-content swipeout-content schedule-content row no-gap" onclick="newlyBuildLinkage(this,1)" TrID="${result.id}" TrRow = '${index}'>
             <div class="col-33">${result.equipName}</div>
             <div class="col-33">${result.linkageEquip}</div> 
             <div class="col-33">${result.remarks}</div> 
@@ -298,14 +297,13 @@ function publicFun(ycpData, yxpData) {
 
         return result;
     })
-    
     $("#equipLinkage_set ul").html(html);
 }
 //联动设置添加
 var equipTiggerType=[],equipTiggerSpot=[],equipTiggerLink=[],equipTiggerCom=[],dtParent;
 function newlyBuildLinkage(dt,index){
 dtParent = dt; 
-var result = $(dtParent).attr("TrRow")?JSON.parse($(dtParent).attr("TrRow")):{id:"",equipName:"",cType:"",cCurren:"",delayTime:0,linkageEquip:"",linkageOpt:"",remarks:""};
+var result = $(dtParent).attr("TrRow")?equipLinkage_public_list[$(dtParent).attr("TrRow")]:{id:"",equipName:"",cType:"",cCurren:"",delayTime:0,linkageEquip:"",linkageOpt:"",remarks:""};
 
 var html = '<div class="popup popup-aboutuser">'+
       '<h1>设备联动</h1>'+

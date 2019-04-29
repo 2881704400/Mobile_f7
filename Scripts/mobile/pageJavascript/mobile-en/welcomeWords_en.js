@@ -1,9 +1,6 @@
 ﻿var welcome_getcolor, welcome_objoriginal = new Object();
 
 function welcomeWords_en() {
-   
-    //	getFocusValue();
-    /*获取文件夹中背景图片信息*/
     var url1 = WORDcommand.backgroundImage.url,
         fileName1 = ".png|.jpg|.JPG",
         _urlChild1 = "/api/Other/GetFileStructure",
@@ -273,7 +270,6 @@ function getKeyboardScreenHeight2(KeyboardHieght, ScreenHeight) {
     var heightRate = KeyboardHieght / ScreenHeight;
     var parentHeight = document.body.clientHeight;
     heightRate = heightRate * parentHeight - 50;
-    //	$(".welcomeInput").text(heightRate);
     if (heightRate > 0) {
         $(".welcome-Word-control-boxs").css("bottom", heightRate + "px");
         $(".welcome-Word-control-tabs").css("height", heightRate + "px");
@@ -282,7 +278,6 @@ function getKeyboardScreenHeight2(KeyboardHieght, ScreenHeight) {
 
 function getFocusValue() {
     if (typeof(myJavaFun) != "undefined") {
-        //App绑定函数-获取键盘高度
         if (typeof myJavaFun.getKeyboardHeight2 === "function") {
             myJavaFun.getKeyboardHeight2();
         }
@@ -294,7 +289,6 @@ function welcome_activeSave(that, number) {
     //内容
     welcome_objoriginal.Text = $(".welcomeInput").val();
     var welcomeVal = welcome_tramsformData(welcome_objoriginal.Text);
-
     //字体大小
     welcome_objoriginal.FontSize = $('#controlrangeSliderValueId').html();
     //字体颜色
@@ -305,7 +299,6 @@ function welcome_activeSave(that, number) {
     } else {
         welcome_objoriginal.FontColor = welcome_getcolor.toString();
     }
-    //welcome_objoriginal.FontColor = welcome_colorRGB2Hex(welcome_getcolor);
     //字体类型
     welcome_objoriginal.FontFamily = $("#fontFamily").find("option:selected").attr("data-font");
     //粗细-常规，粗体
@@ -341,33 +334,14 @@ function welcome_activeSave(that, number) {
     welcome_objoriginal.BackgroundImg = fileNameURL;
     //是否居中
     welcome_objoriginal.center = "positionClass";
-    var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Pragma\" content=\"no-cache\">" + "<meta http-equiv=\"Cache-control\" content=\"no-cache\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;width: 100%;height: 100%;display: flex;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;    text-align: center;background: url(" + fileNameURL.replace("url(","").replace(")","") + ") no-repeat center center/100%;\" class=\"a123\">" + "<span style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; justify-content: " + welcome_objoriginal.CanvasLeft + "; align-items: " + welcome_objoriginal.CanvasTop + "; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
-   console.log(allHTML);
-
-   $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertWelcomeSpeech?JSONContent="+allHTML+"&BGImage="+fileName+"&Type="+number+"&siginalVal="+JSON.stringify(welcome_objoriginal))).done(function(n,l){
-	var dt = n.HttpData.data;
-	if(dt && n.HttpData.code == 200) {alertMsgSuccess.open();} else alertMsgError.open();
-	}).fail(function(e){});
-
-
-
-
-
-    // var ajaxVar = $.ajax({
-    //     type: "POST",
-    //     url: "/GWService.asmx/ExecuteSQL",
-    //     timeout: 5000,
-    //     data: {
-    //         sql: "insert into WelcomingSpeech(JSONContent,BGImage,Type,siginalVal) values('" + allHTML + "','" + fileName + "','" + number + "','" + JSON.stringify(welcome_objoriginal) + "')",
-    //         userName: window.localStorage.userName,
-    //     },
-    //     success: function(data) {
-    //         var dt = $(data).find('int').text(); //返回受影响行数
-    //         if (dt == 1) {
-    //             alertMsgSuccess.open();
-    //         } else alertMsgError.open();
-    //     }
-    // });
+    var allHTML = "<html>" + "<head>" + "<meta charset=\"utf-8\">" + "<meta http-equiv=\"Expires\" content=\"0\">" + "<meta http-equiv=\"Cache\" content=\"no-cache\">" + "<title>欢迎词</title>" + "<style type=\"text/css\">" + "*{margin: 0;padding: 0;}" + "html,body{width: 100%;height: 100%;position: relative;overflow: hidden;}" + ".a123 span{  font-family:" + welcome_objoriginal.FontFamily + ";position: absolute;white-space: pre;width: 100%;height: 100%;display: flex;}" + ".positionClass{width: 100% !important;left: 0% !important;display: inline-block;text-align: center;padding: 11px;transform: translateX(-50%);transform: translateY(-50%);}" + "</style>" + "</head>" + "<body>" + "<div style=\"width: 100%;height: 100%;    text-align: center;background: url(" + fileNameURL.replace("url(", "").replace(")", "") + ") no-repeat center center/100%;\" class=\"a123\">" + "<span style=\"font-size: " + welcome_objoriginal.FontSize + "px;color: " + welcome_objoriginal.FontColor + "; justify-content: " + welcome_objoriginal.CanvasLeft + "; align-items: " + welcome_objoriginal.CanvasTop + "; font-weight: " + welcome_objoriginal.FontWeight + "; font-style: " + welcome_objoriginal.FontStyle + "; \">" + welcomeVal + "</span>" + "</div>" + "</body>" + "</html>";
+    console.log(allHTML);
+    $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/insertWelcomeSpeech?JSONContent=" + allHTML + "&BGImage=" + fileName + "&Type=" + number + "&siginalVal=" + JSON.stringify(welcome_objoriginal))).done(function(n, l) {
+        var dt = n.HttpData.data;
+        if (dt && n.HttpData.code == 200) {
+            alertMsgSuccess.open();
+        } else alertMsgError.open();
+    }).fail(function(e) {});
 }
 //slide初始化通用事件
 function welcome_bannerList(class1, class2, number3, number4) {

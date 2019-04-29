@@ -1,4 +1,6 @@
-var userAdmin = [],chatList,snapshotDetailArrs = [];
+var userAdmin = [],
+    chatList, snapshotDetailArrs = [];
+
 function snapShotDetail_en() {
     switchToolbar("snapshotTool");
     //获取父页面参数
@@ -76,11 +78,11 @@ function loadMessage() {
                         var isSureSpan = "";
                         if (result[i].bConfirmed == false) {
                             isSureSpan = "<span class='span-color-notsure sure-flag'>Unconfirmed</span>";
-                            strData += '<li class="accordion-item">' + '<a href="#" class="item-link item-content">' + '	<div class="item-inner">' + '		<div class="item-title-row">' + '			<div class="item-subtitle">' + formatDate(result[i].Time) + '</div>' + '			<div class="item-after">' + isSureSpan + '</div>' + '		</div>' + '		<div class="item-text item-title fontweight-normal">' + result[i].EventMsg + '</div>' + '	</div>' + '</a>' + '<div class="accordion-item-content content-container">' + '<div class="content-container-block">' + '<p>Time:' + formatDate(result[i].Time) + '</p>' + '<p>Event:' + textareaEventMsg + '</p>' + '<p>Processing Opinions:<textarea class="advice-textarea" placeholder="Please enter your comments."></textarea></p>' + '<p>Whether to send short messages:&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' + '<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="max-height:300px;overflow-y: auto;display:block"></div></p>' + "<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">Confirm</a></p>" + '</div></div>' + '</li>';
+                            strData += '<li class="accordion-item">' + '<a href="#" class="item-link item-content">' + '    <div class="item-inner">' + '       <div class="item-title-row">' + '           <div class="item-subtitle">' + formatDate(result[i].Time) + '</div>' + '            <div class="item-after">' + isSureSpan + '</div>' + '       </div>' + '     <div class="item-text item-title fontweight-normal">' + result[i].EventMsg + '</div>' + '   </div>' + '</a>' + '<div class="accordion-item-content content-container">' + '<div class="content-container-block">' + '<p>Time:' + formatDate(result[i].Time) + '</p>' + '<p>Event:' + textareaEventMsg + '</p>' + '<p>Processing Opinions:<textarea class="advice-textarea" placeholder="Please enter your comments."></textarea></p>' + '<p>Whether to send short messages:&nbsp;&nbsp;<label class="toggle toggle-init color-blue" onclick="onProcsCheckBox(' + countNum + ')">' + '<input type="checkbox" class="isProcsInput"><span class="toggle-icon"></span></label><div class="procsContent list-block" style="max-height:300px;overflow-y: auto;display:block"></div></p>' + "<p><a href='#' class=\"button button-big button-fill color-blue\" onclick='OnSureMessage(\"" + countNum + "\",\"" + result[i].Time + "\")' values='" + result[i] + "' title=\"" + result[i].User_Confirmed + formatDate(result[i].Dt_Confirmed) + "\">Confirm</a></p>" + '</div></div>' + '</li>';
                             countNum++;
                         } else {
                             isSureSpan = "<span class='span-color-sure sure-flag'>Confirmed</span>";
-                            strSureData += '<li class="accordion-item">' + '<a href="#" class="item-link item-content">' + '	<div class="item-inner">' + '		<div class="item-title-row">' + '			<div class="item-subtitle">' + formatDate(result[i].Time) + '</div>' + '			<div class="item-after">' + isSureSpan + '</div>' + '		</div>' + '		<div class="item-text item-title fontweight-normal">' + result[i].EventMsg + '</div>' + '	</div>' + '</a>' + '<div class="accordion-item-content content-container">' + '<div class="content-container-block">' + '<p>Time：' + formatDate(result[i].Time) + '</p>' + '<p>Event：' + textareaEventMsg + '</p>' + '<p>Handling opinions：' + textareaAdviceMsg + '</p>' + "<p>Confirming person：" + result[i].User_Confirmed + '</p><p>Confirmation time:' + formatDate(result[i].Dt_Confirmed) + "</p>" + '</div></div>' + '</li>';
+                            strSureData += '<li class="accordion-item">' + '<a href="#" class="item-link item-content">' + '    <div class="item-inner">' + '       <div class="item-title-row">' + '           <div class="item-subtitle">' + formatDate(result[i].Time) + '</div>' + '            <div class="item-after">' + isSureSpan + '</div>' + '       </div>' + '     <div class="item-text item-title fontweight-normal">' + result[i].EventMsg + '</div>' + '   </div>' + '</a>' + '<div class="accordion-item-content content-container">' + '<div class="content-container-block">' + '<p>Time：' + formatDate(result[i].Time) + '</p>' + '<p>Event：' + textareaEventMsg + '</p>' + '<p>Handling opinions：' + textareaAdviceMsg + '</p>' + "<p>Confirming person：" + result[i].User_Confirmed + '</p><p>Confirmation time:' + formatDate(result[i].Dt_Confirmed) + "</p>" + '</div></div>' + '</li>';
                         }
                     }
                     $("#snapShotDetailListId").html(strData + strSureData);
@@ -98,7 +100,7 @@ function loadMessage() {
     });
 }
 //选择是否发送短信
-function onProcsCheckBox(countNum) { //console.log(countNum)
+function onProcsCheckBox(countNum) { 
     if (!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
         if (!$("#snapShotDetailListId li").eq(countNum).find(".procsContent ul").find("li").length) {
             var newRow = "<ul>";
@@ -115,7 +117,6 @@ function onProcsCheckBox(countNum) { //console.log(countNum)
 }
 
 function OnSureMessage(countNum, strTime) {
-    /*阻止事件冒泡*/
     event.stopPropagation();
     var checkValArr = []; //短信联系人选中值
     var strAdviceMsg = $("#snapShotDetailListId li").eq(countNum).find('.advice-textarea').val(); //处理意见值

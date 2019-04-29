@@ -1,6 +1,9 @@
 function ycAndyx_en() {
-
-    var urlstr = myApp.views.main.history,leng = urlstr.length,url = urlstr[leng - 1].split("#")[1],equip_no = url.split("&")[0],name = url.split("&")[1];
+    var urlstr = myApp.views.main.history,
+        leng = urlstr.length,
+        url = urlstr[leng - 1].split("#")[1],
+        equip_no = url.split("&")[0],
+        name = url.split("&")[1];
     $("#titleStats").text(name);
     realShows_en(equip_no, name);
     var searchbar = myApp.searchbar.create({
@@ -8,7 +11,6 @@ function ycAndyx_en() {
         searchContainer: ".tab",
         searchIn: '.item-title',
     });
-    
 }
 
 function refresh_en(txt) {
@@ -360,6 +362,7 @@ function onSetCommand_en(str_1, str_2, str_3, str_4, dt) {
     var _url = service + "/SetupsCommand";
     var _dataSet = "equip_no=" + encodeURIComponent(str_1) + "&&main_instruction=" + encodeURIComponent(str_2) + "&&minor_instruction=" + encodeURIComponent(str_3) + "&&value=" + encodeURIComponent(vals) + "&&user_name=" + encodeURIComponent(userName);
     JQajaxo("post", _url, true, _dataSet, _successfSet);
+
     function _successfSet(data) {
         var resultJs = $(data).children("string").text();
         if (resultJs != "false") {

@@ -174,6 +174,8 @@ var myApp = new Framework7({
             } catch (e) {}
             $("#voiceContainer").addClass("voiceContainer");
             window.localStorage.languageList == 1 ? $(".right a.icon-only").attr("href", "/mobile-en/setPage_en/") : $(".right a.icon-only").attr("href", "/setPage/");
+            //初始化
+            IosToggle();
         },
         popupOpen: function(popup) {},
         init: function() {}
@@ -878,7 +880,6 @@ var hubConn, hubProxy, signalR = {
         this.hubConn.stop()
         // 开始连接signalr
         this.hubConn.start().done(() => {
-            // console.log('start!')
             this.hubProxy.invoke('Connect')
             this.hubProxy.invoke('ListenEquipAll', window.localStorage.ac_appkey, window.localStorage.ac_infokey)
             this.hubProxy.invoke('StartListen', equipNo, window.localStorage.ac_appkey, window.localStorage.ac_infokey)
@@ -887,7 +888,7 @@ var hubConn, hubProxy, signalR = {
         })
     },
 }
-//中英文目录切换
+//中英文目录切换 
 function tranformMenu(val) {
     let obj;
     val == 1 ? obj = selLanguageEN : obj = selLanguageZH;
@@ -920,4 +921,36 @@ function tranformAlert(title, tooip, confirmBtn, cancelBtn, confirmEvent, cancel
             }
         }]
     }).open();
+}
+
+//底层留白问题
+function IosToggle(){
+    var u = navigator.userAgent, app = navigator.appVersion
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    $(document).ready(function(){
+        $("input").unbind("blur").blur(function(){
+
+            if (isIOS) {
+                blurAdjust()
+            }
+        });
+    });
+    // 解决苹果不回弹页面 
+    function blurAdjust(e){
+        setTimeout(()=>{
+            if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA'){
+                return
+            }
+            let result = 'pc';
+            if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+                    result = 'ios'
+            }else if(/(Android)/i.test(navigator.userAgent)) {  //判断Android
+                    result = 'android'
+            }
+            
+            if( result = 'ios' ){
+                document.activeElement.scrollIntoViewIfNeeded(true);
+            }
+        },100)
+    }
 }

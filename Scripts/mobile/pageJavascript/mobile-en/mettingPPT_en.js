@@ -37,16 +37,23 @@ $.extend({
     }
 })
 // 文件结构处理
-var stringFile, UsbDriveTips = myApp.toast.create({text: "No Inverse Corresponding Equipment for Detection.", position: 'center', closeTimeout: 2000, });
+var stringFile, UsbDriveTips = myApp.toast.create({
+    text: "No Inverse Corresponding Equipment for Detection.",
+    position: 'center',
+    closeTimeout: 2000,
+});
 
 function fileStuctureChild_en(url, objectList) {
     $(objectList).next().html("");
-    $.when(AlarmCenterContext.post("/api/Other/GetFileStructure",{filePath: url,fileName: "",})).done(function(n){
+    $.when(AlarmCenterContext.post("/api/Other/GetFileStructure", {
+        filePath: url,
+        fileName: "",
+    })).done(function(n) {
         $(".modalDiv").addClass("displayNone");
-        var result = n.HttpData, contentHtml = "";
+        var result = n.HttpData,
+            contentHtml = "";
         if (result != "false" && result != "null") {
             stringFile = JSON.parse(result);
-            //继续查询每项列表下的子目录
             for (var i = 0; i < stringFile.length; i++) {
                 if ($.trim(stringFile[i]).split("\\")[2] != "") //排除 D:\PPT\ 格式文件夹
                 {
@@ -63,8 +70,8 @@ function fileStuctureChild_en(url, objectList) {
                 }
             }
         }
-    }).fail(function(e){
-         UsbDriveTips.open();
+    }).fail(function(e) {
+        UsbDriveTips.open();
     });
 }
 //文件夹 true
@@ -86,7 +93,6 @@ function getSubstrNmae(name) {
 // 菜单
 function opeChildFile(that) {
     $(that).next().html("");
-    // 右边图标
     if ($(that).hasClass("isSingle")) {
         $(that).removeClass("isSingle");
         $(that).find("b").removeClass("icon-bottomDire").addClass("icon-rightDire");
@@ -140,7 +146,6 @@ function openFileCommand_en(dt, equip_no, main_instruction, minor_instruction, v
             {
                 var setTimeout = setInterval(function() {
                     $.when(AlarmCenterContext.pptConfig($(dt).attr("set_equip"))).done(function(n) {
-                      
                         var result = n.HttpData;
                         if (result.PageCount != -1) {
                             window.localStorage.sessionFilename = result.Session; //data[1];
