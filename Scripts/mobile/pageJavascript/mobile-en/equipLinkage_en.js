@@ -495,7 +495,10 @@ function addLinkage_en(dt,index) { //index = 1 更新，index = 2 插入
 //删除
 function deleteLinkage_en(dt) {
     let val = parseInt($(dt).parent().siblings().attr("trid"));
-     myApp.dialog.confirm("Whether to delete the item","Tips",function(){
+
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+
+     myApp_en.dialog.confirm("Whether to delete the item","Tips",function(){
        myApp.popup.close();
         $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/deleteLinkage",{id: val})).done(function(n){
             if(n.HttpData.code == 200)
@@ -695,8 +698,8 @@ function scanelEdit_en(that,status){
 
 //删除场景
 function deleteScene_en(dt,equipNo,setNo) {
-
-    myApp.dialog.confirm("Whether to delete the current scenario","Tips",function(){
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete the current scenario","Tips",function(){
       let reqData = {equipNo: equipNo, setNo: setNo}
       $.when($.fn.XmlRequset.httpPost("/api/GWServiceWebAPI/deleteScene",{
                 data:reqData,
@@ -709,7 +712,7 @@ function deleteScene_en(dt,equipNo,setNo) {
 }
 //新增场景控制
 function sceneControl_en(dt,txtTitle){
- myApp.dialog.prompt(txtTitle,"Tips", function (name) {
+ myApp_em.dialog.prompt(txtTitle,"Tips", function (name) {
        addScene(name);
     });   
 }

@@ -47,7 +47,8 @@ function selectEvent() {
         times: start + "," + end
     }
     if (!timeStr) {
-        myApp.dialog.alert('Please select the query date', "Tips");
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+         myApp_en.dialog.alert('Please select the query date', "Tips");
         return;
     } else {
         getEventEquip(data);
@@ -60,7 +61,8 @@ function loadEvent(data) {}
 
 function getEventEquip(data) {
     if (!data.equip_no_list) {
-        myApp.dialog.alert('Please select the inquiry device', "Tips");
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+        myApp_en.dialog.alert('Please select the inquiry device', "Tips");
         return;
     }
     $.when(AlarmCenterContext.getEquipEvent()).done(function(e) {
@@ -69,7 +71,8 @@ function getEventEquip(data) {
 
 function getEventSet(data) {
     if (!data.equip_no_list) {
-        myApp.dialog.alert('Please select the inquiry device', "Tips");
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+        myApp_en.dialog.alert('Please select the inquiry device', "Tips");
         return;
     }
     $.when(AlarmCenterContext.getSetEvent()).done(function(e) {
@@ -102,10 +105,12 @@ function getData() {
 }
 
 function getEvent() {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
     if ($("#timePicker").val() == "") {
-        myApp.dialog.alert('Please select the start date', "Tips");
+
+        myApp_en.dialog.alert('Please select the start date', "Tips");
     } else if ($("#timePicker2").val() == "") {
-        myApp.dialog.alert('Please select the end date', "Tips");
+        myApp_en.dialog.alert('Please select the end date', "Tips");
     } else {
         $(".tabListQuery a.tab-link-active").click();
     }

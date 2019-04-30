@@ -85,7 +85,9 @@ function newlyBuildUser_en(userName, telphone, telmobile, emailValue, ackLevel, 
 }
 //人员表删除
 function delUser_en(that, userName) {
-    myApp.dialog.confirm("Whether to delete the person", "Tips", function() {
+
+    var myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp1.dialog.confirm("Whether to delete the person", "Tips", function() {
         var dt = $(that).parent().parent(),
             deleteJson = {
                 getDataTable: "Administrator",
@@ -197,7 +199,7 @@ function activeLinkEquipGroup_en(that, status) {
 }
 //设备删除
 function delEquip_en(that) {
-    myApp.dialog.confirm("Whether to delete the group", "Tips", function() {
+    myApp_em.dialog.confirm("Whether to delete the group", "Tips", function() {
         let dt = $(that).parent().siblings();
         var deleteJson = {
             getDataTable: "EquipGroup",
@@ -344,7 +346,8 @@ function requestEGAlmReport_en() {
 }
 //设备删除
 function delAlmReport_en(that) {
-    myApp.dialog.confirm("Whether to delete this administrative scope", "Tips", function() {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete this administrative scope", "Tips", function() {
         let dt = $(that).parent().siblings();
         var deleteJson = {
             getDataTable: "AlmReport",
@@ -357,7 +360,8 @@ function delAlmReport_en(that) {
 }
 //弹窗输入
 function almReportAlert_en(dt, index) {
-    myApp.dialog.prompt('', 'New device group name', function(equipName) {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.prompt('', 'New device group name', function(equipName) {
         if (!equipName) myApp.toast.create({
             text: 'The device group name cannot be empty',
             position: 'center',
@@ -439,7 +443,8 @@ function newlyBuildWeekAlmReport_en(tThatParent, status) {
 }
 //周排表删除
 function delWeekAlmReport_en(that) {
-    myApp.dialog.confirm("Whether to delete the weekly schedule", "Tips", function() {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete the weekly schedule", "Tips", function() {
         var dt = $(that).parent().siblings();
         var deleteJson = {
             getDataTable: "WeekAlmReport",
@@ -497,7 +502,8 @@ function requestSpeAlmReport_en() {
 }
 //特定排表删除
 function delSpeAlmReport_en(that) {
-    myApp.dialog.confirm("Whether to delete this particular schedule", "Tips", function() {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete this particular schedule", "Tips", function() {
         var dt = $(that).parent().siblings();
         let deleteJson = {
             getDataTable: "SpeAlmReport",
@@ -618,5 +624,6 @@ function padLeftZero_en(str) {
 };
 //删除当前控制项
 function scheduleDelControl_en() {
-    myApp.dialog.confirm("Whether to delete the item", "Tips", function() {});
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete the item", "Tips", function() {});
 }

@@ -19,7 +19,7 @@ function schedule() {
             closeTimeout: 2000,
         })
     };
-    //顶部菜单切换
+    //顶部菜单切换 
     $(".subnavbarTabel>a").unbind();
     $(".subnavbarTabel>a").bind("click", function() {
         $(this).addClass("selectScheduleMenu").siblings().removeClass("selectScheduleMenu");
@@ -86,6 +86,7 @@ function newlyBuildUser(userName, telphone, telmobile, emailValue, ackLevel, sta
 }
 //人员表删除
 function delUser(that, userName) {
+    
     myApp.dialog.confirm("是否删除该人员", "提示", function() {
         var dt = $(that).parent().parent(),
             deleteJson = {
@@ -140,7 +141,6 @@ function publicAjax(jsonString, url, index) {
         scheduleAlert.open();
     }
 }
-
 //设备分组
 var that_parent, equipArray = new Array();
 
@@ -263,7 +263,6 @@ function getMaxNo() {
     if (equipArray.length == 0) return 1;
     else return Math.max.apply(null, equipArray) + 1;
 }
-
 //管理范围
 function requestAlmReport(almGroupObject) {
     var jsonData = {
@@ -349,6 +348,7 @@ function requestEGAlmReport() {
             requestEGAReport = arrayLike;
         }
     }
+
     function equip_error(e) {}
 }
 //设备删除
@@ -394,7 +394,6 @@ function almReportList(parentTaht, that) {
     $(parentTaht).attr("equipcomb", equipcombParentString);
     updateEquip($(parentTaht).next().find("i.icon-f7_modify"), $(parentTaht).text(), 1);
 }
-
 //周排表
 var jsondate = [];
 

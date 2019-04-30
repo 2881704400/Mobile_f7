@@ -454,7 +454,6 @@ function newlyBuildSpeAlmReport_view_en() {
 // 场景编辑
 var sceneData = [],
     scaneEquipData = [];
-
 function initSceneList_view_en() {
     var controlEquipList, setList, equipList;
     $(".equipLinkage_edit_modify>ul").html("");
@@ -505,12 +504,12 @@ function initSceneList_view_en() {
                     htmlContent += `<li class="swipeout " equipcomb="${equiplinkageStr[i]}">
                         <div class="item-content swipeout-content schedule-content row no-gap" >
                             <div class="item-inner">
-                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun(equipList,equiplinkageStr[i].split(",")[0],null):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Interval operation":"间隔操作"):""))}: <strong>${(equip_no_flg?filterFun(setList,equiplinkageStr[i].split(",")[0],equiplinkageStr[i].split(",")[1]):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Delay interval":"延迟间隔")+equiplinkageStr[i]+(window.localStorage.languageList == 1?"Millisecond":"毫秒"):""))}</strong></div>
-                              <div class="item-after" onclick="scenalControlPro(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
+                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun_en(equipList,equiplinkageStr[i].split(",")[0],null):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Interval operation":"间隔操作"):""))}: <strong>${(equip_no_flg?filterFun_en(setList,equiplinkageStr[i].split(",")[0],equiplinkageStr[i].split(",")[1]):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Delay interval":"延迟间隔")+equiplinkageStr[i]+(window.localStorage.languageList == 1?"Millisecond":"毫秒"):""))}</strong></div>
+                              <div class="item-after" onclick="scenalControlPro_en(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
                             </div>
                         </div>
                         <div class="swipeout-actions-right">
-                          <a href="#" class="delBtn" onclick="currentControl(this)" style="">${window.localStorage.languageList == 1?"Delete":"删除"}</a>
+                          <a href="#" class="delBtn" onclick="currentControl_en(this)" style="">${window.localStorage.languageList == 1?"Delete":"删除"}</a>
                         </div>
                       </li> `;
                 }
@@ -635,7 +634,8 @@ function addScene_en() {
 function scenalControlPro_en(dt) {
     //场景名是否为空
     if ($("#equipLinkage_input").val().trim() == "") {
-        myApp.dialog.alert(window.localStorage.languageList == 1 ? 'Please add the scene name first!' : '请先添加场景名称!', window.localStorage.languageList == 1 ? 'Tips' : '提示');
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+        myApp_en.dialog.alert(window.localStorage.languageList == 1 ? 'Please add the scene name first!' : '请先添加场景名称!', window.localStorage.languageList == 1 ? 'Tips' : '提示');
         return false;
     }
     window.localStorage.sceneName = $("#equipLinkage_input").val();
@@ -673,7 +673,8 @@ function scenalControlPro_init_en() {
 }
 //删除当前控制项
 function currentControl_en(dt) {
-    myApp.dialog.confirm("Whether to delete the current control", "Tips", function() {
+    let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+    myApp_en.dialog.confirm("Whether to delete the current control", "Tips", function() {
         $(dt).parent().parent().remove();
         // 序列化每项序号
         $(".equipLinkage_edit_modify>ul li").each(function(index) {

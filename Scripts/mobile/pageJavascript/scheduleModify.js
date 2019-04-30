@@ -671,7 +671,7 @@ function scenalControlPro(dt) {
         myApp.router.navigate("/scheduleModifyChild/?last");
     }
 }
-//新增控制初始化
+//新增控制初始化  900
 function scenalControlPro_init() {
     var controlEquipList, setList, equipList;
     $(".equipLinkage_edit_modify_child_equip").html("");
@@ -696,8 +696,10 @@ function scenalControlPro_init() {
         myApp.dialog.close();
     });
 }
-//删除当前控制项
+//删除当前控制项 
 function currentControl(dt) {
+
+
     myApp.dialog.confirm(window.localStorage.languageList == 1 ? "Whether to delete the current control" : "是否删除当前项", window.localStorage.languageList == 1 ? "Tips" : "提示", function() {
         var that  = $(dt).parent().parent();
         that.remove();

@@ -75,7 +75,6 @@ function loadMessage() {
 						}
 
 						var textareaAdviceMsg = "";
-						// console.log(result[i].Proc_advice_Msg);
 						if(result[i].Proc_advice_Msg && result[i].Proc_advice_Msg.length > 200) {
 							textareaAdviceMsg = "<textarea>" + result[i].Proc_advice_Msg + "</textarea>";
 						} else {
@@ -144,21 +143,11 @@ function loadMessage() {
 }
 
 //选择是否发送短信
-function onProcsCheckBox(countNum) { //console.log(countNum)
+function onProcsCheckBox(countNum) {
 	if(!$("#snapShotDetailListId li").eq(countNum).find('.isProcsInput').is(':checked')) {
 		if(!$("#snapShotDetailListId li").eq(countNum).find(".procsContent ul").find("li").length) {
 			var newRow = "<ul>";
-			//console.log(userAdmin)
 			for(var i = 0; i < userAdmin.length; i++) {
-				/*newRow += '<li>' +
-					'  <label class="item-radio item-content">' +
-					'    <input type="radio" name="demo-radio" value="Movies"/>' +
-					'    <i class="icon icon-radio"></i>' +
-					'    <div class="item-inner">' +
-					'      <div class="item-title">' + userAdmin[i].Administrator + (userAdmin[i].MobileTel == null ? "" : userAdmin[i].MobileTel + '</div>' +
-						'    </div>' +
-						'  </label>' +
-						'</li>'; */
 				newRow += '<li><label class="item-checkbox item-content">' +
 					'    <input type="checkbox" name="my-checkbox"  value="' + userAdmin[i].MobileTel + '"/>' +
 					'    <i class="icon icon-checkbox"></i>' +
@@ -168,7 +157,6 @@ function onProcsCheckBox(countNum) { //console.log(countNum)
 					'  </label></li>';
 			}
 			newRow += "</ul>";
-			//console.log(newRow)
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").html(newRow);
 			$("#snapShotDetailListId li").eq(countNum).find(".procsContent").show();
 		}
@@ -244,7 +232,6 @@ function formatDate(time) {
 }
 
 function refreshpg(e) {
-	//console.log(e)
 	setTimeout(function() {
 		loadMessage();
 		// 加载完毕需要重置

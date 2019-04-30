@@ -1,4 +1,5 @@
 ﻿//移动端js主入口
+
 var myApp = new Framework7({
     root: '#app',
     name: 'My App',
@@ -8,8 +9,8 @@ var myApp = new Framework7({
         swipeOnlyClose: true,
     },
     dialog: {
-        buttonOk: window.localStorage.languageList == 1 ? 'confirm' : '确认',
-        buttonCancel: window.localStorage.languageList == 1 ? 'cancel' : '取消',
+        buttonOk: '确认',
+        buttonCancel: '取消',
     },
     statusbar: {
         enabled: true,
@@ -181,6 +182,7 @@ var myApp = new Framework7({
         init: function() {}
     },
 });
+
 var mainView = myApp.views.create('.view-main'); //web接口地址
 var service = "/GWService.asmx",
     $$ = Framework7.$;
@@ -189,12 +191,10 @@ initLoads();
 function initLoads() {
     myApp.dialog.progress();
     loadNameMobile();
-    //如果没有语音记录则默认为讯飞
     if (!window.localStorage.voiceList) {
         window.localStorage.voiceList = "1";
     }
 }
-
 var IsAdministrator, getWebUser, GWAddinModule, GWEquipPages;
 //连接服务器
 function InitEnsure() {
@@ -227,7 +227,6 @@ function InitEnsure() {
         }
     });
 }
-
 //重连服务器
 function initEnsureChonglian(fun) {
     var _url = service + "/GetName2SFService";
@@ -243,7 +242,6 @@ function initEnsureChonglian(fun) {
     }
     JQajaxo("post", _url, true, _data, _success);
 }
-
 //解析
 function getValueByKey(str, key) {
     var urlSearchSplit = str.split('&');
@@ -255,7 +253,6 @@ function getValueByKey(str, key) {
     }
     return '';
 }
-
 //载入界面
 function loadNameMobile() {
     if (location.search) {
@@ -309,15 +306,13 @@ function loadNameMobile() {
                     //查询表中用户选择的语言 
                     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
                         var result = n.HttpData.data;
-                        if (result != null && n.HttpData.code == 200 && result.length>0) {
-                            result[0].languageType != "0"?window.localStorage.languageList = 1:window.localStorage.languageList = 0; // 0 中文 - 1英文
-                            result[0].voiceType != "0"?window.localStorage.voiceType =1: window.localStorage.voiceType =0; //0 讯飞 - 1微软
+                        if (result != null && n.HttpData.code == 200 && result.length > 0) {
+                            result[0].languageType != "0" ? window.localStorage.languageList = 1 : window.localStorage.languageList = 0; // 0 中文 - 1英文
+                            result[0].voiceType != "0" ? window.localStorage.voiceType = 1 : window.localStorage.voiceType = 0; //0 讯飞 - 1微软
+                        } else {
+                            window.localStorage.languageList = 0;
+                            window.localStorage.voiceType = 0;
                         }
-                        else
-                        {
-                            window.localStorage.languageList =0; window.localStorage.voiceType =0; 
-                        }
-
                         tranformMenu(window.localStorage.languageList);
                     }).fail(function(e) {});
                     $(".voiceDivs,.toolbar").removeClass("displayNone");
@@ -328,13 +323,11 @@ function loadNameMobile() {
         });
     }, 100);
 }
-
 //app显示
 function AppShows() {
     $("#appCacheClearLi").show();
     $("#appRichScan").show();
 }
-
 //清空缓存
 function onAppCacheClear() {
     myApp.dialog.create({
@@ -364,7 +357,6 @@ function AppCacheClearCallback(dt) {
         }).open();
     }
 }
-
 //注销事件
 function onUserLogout() {
     myApp.dialog.create({
@@ -383,19 +375,26 @@ function onUserLogout() {
         }]
     }).open();
 }
-
 //关于事件
 function onAbout() {
     var _url = "/api/server/version";
+
     function _success(data) {
         var version = data.HttpData.data;
         var versionNameHTML = '';
         if (window.localStorage.versionName != "" && window.localStorage.versionName != null) {
             versionNameHTML = (window.localStorage.languageList == 1 ? "<br/>App Edition：v" : "<br/>App版本：v") + window.localStorage.versionName;
         }
+        var ApplicationVersion = "1.0";
+        try{
+               ApplicationVersion = myJavaFuntion.GetAppVersion();
+        }
+        catch(e){
+
+        }
         myApp.dialog.create({
-            title: window.localStorage.languageList == 1 ? "" : "关于",
-            text: (window.localStorage.languageList == 1 ? "App Edition：v" : "API版本：v") + version + versionNameHTML,
+            title: window.localStorage.languageList == 1 ? "About" : "关于",
+            text: "<br>"+(window.localStorage.languageList == 1 ? "App Edition：v" : "API版本：v") + version + versionNameHTML+"<br><br>"+(window.localStorage.languageList == 1 ? "Application version：v" : "应用版本：v") + ApplicationVersion,
             buttons: [{
                 text: window.localStorage.languageList == 1 ? "Confirm" : "确定"
             }]
@@ -414,7 +413,6 @@ function backss() {
         mainView.router.back()
     }
 }
-
 //执行子界面方法
 function initPageJS(dt, ext) { //ext扩展界面地址
     if ($("#" + dt + "_id").length == 0) {
@@ -438,7 +436,6 @@ function evil(fn) {
     var Fn = Function; //一个变量指向Function，防止有些前端编译工具报错
     return new Fn('return ' + fn)();
 }
-
 var alertMsgSuccess = myApp.notification.create({
         title: '系统提示',
         titleRightText: '',
@@ -453,7 +450,6 @@ var alertMsgSuccess = myApp.notification.create({
         text: '操作失败或没有该命令配置',
         closeTimeout: 1000,
     });
-
 //判断当前设备是否可查看
 function Browse_Equip_List(equips) {
     var equipBool = false;
@@ -470,7 +466,6 @@ function Browse_Equip_List(equips) {
     }
     return equipBool;
 }
-
 //判断当前设备是否可查看(子集)
 function Browse_SpecialEquip_List(equips, num) {
     var equipBool = false;
@@ -493,7 +488,6 @@ function Browse_SpecialEquip_List(equips, num) {
     }
     return equipBool;
 }
-
 //判断当前设备是否可控制
 function Control_Equip_List(equips) {
     var equipBool = false;
@@ -510,7 +504,6 @@ function Control_Equip_List(equips) {
     }
     return equipBool;
 }
-
 //判断当前设备是否可控制（子集）
 function Control_SetItem_List(equips, num) {
     var equipBool = false;
@@ -533,7 +526,6 @@ function Control_SetItem_List(equips, num) {
     }
     return equipBool;
 }
-
 //退出登陆
 function exitLogin() {
     try {
@@ -543,12 +535,10 @@ function exitLogin() {
         else myApp.dialog.alert("退出登陆异常");
     }
 }
-
 //切换底部工具栏
 function switchToolbar(id) {
     $("#" + id).addClass("active").siblings().removeClass("active");
 }
-
 //语音信息提示
 function voiceTooip(txt) {
     return myApp.toast.create({
@@ -557,7 +547,6 @@ function voiceTooip(txt) {
         closeTimeout: 3000,
     });
 }
-
 //下拉列表初始化
 function listInit(id, value) {
     myApp.picker.create({
@@ -568,9 +557,9 @@ function listInit(id, value) {
         }]
     });
 }
-
 //动态创建弹窗
 var popup;
+
 function popupAlert(html) {
     popup = myApp.popup.create({
         content: html,
@@ -579,7 +568,6 @@ function popupAlert(html) {
         }
     }).open();
 }
-
 //封装ajax
 function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
     var ajaxs = $.ajax({
@@ -616,7 +604,6 @@ function JQajaxo(_type, _url, _asycn, _data, _success, _error) {
         }
     });
 }
-
 //发送命令
 function get_no_val(that, set_equip, set_no, values) {
     $.when(AlarmCenterContext.get("/api/GWServiceWebAPI/getSetParmRadioList", {
@@ -636,9 +623,8 @@ function get_no_val(that, set_equip, set_no, values) {
 }
 
 function get_no_set(dt, values) {
-
     //动画
-    if($(dt).hasClass("homeBtn")) { 
+    if ($(dt).hasClass("homeBtn")) {
         $(dt).find("i").addClass("startAnimation");
         setTimeout(function() {
             $(dt).find("i").removeClass("startAnimation");
@@ -666,6 +652,7 @@ function get_no_set(dt, values) {
         alertMsgError.open();
     });
 }
+
 function onSetCommand_return(dt, equip_no, main_instr, mino_instr, valueset) {
     $.ajax({
         type: "POST",
@@ -746,47 +733,55 @@ function modifyZnUs() {
     } else {
         $(".voice-arrow-dialog").text("按下说话");
     }
-    getLanguageChoice(window.localStorage.languageList,window.localStorage.voiceType);
+    getLanguageChoice(window.localStorage.languageList, window.localStorage.voiceType);
 }
 //切换语音
-function getLanguageChoice(languageList,voicetype) {
-
+function getLanguageChoice(languageList, voicetype) {
     //查询表中用户选择的语言 
     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
         var result = n.HttpData.data;
-        if (result != null && n.HttpData.code == 200 && result.length>0) {
-           if(result[0].Reserve1)
-           {
-              var keys = result[0].Reserve1.split("-")[voicetype],lanType = languageList+"-"+voicetype;
-                 try {myJavaFun.SetKey(window.localStorage.voiceType,keys);} catch (ex) {} //设置 KEY
+        if (result != null && n.HttpData.code == 200 && result.length > 0) {
+            if (result[0].Reserve1) {
+                var keys = result[0].Reserve1.split("-")[voicetype],
+                    lanType = languageList + "-" + voicetype;
+                try {
+                    myJavaFun.SetKey(window.localStorage.voiceType, keys);
+                } catch (ex) {} //设置 KEY
                 switch (lanType) {
                     case "1-0": //英文-讯飞
-                        try {myJavaFun.SetAIUILanguage("english");} catch (ex) {}
+                        try {
+                            myJavaFun.SetAIUILanguage("english");
+                        } catch (ex) {}
                         // alert("英文-讯飞");
                         break;
                     case "0-0": //中文-讯飞
-                        try {myJavaFun.SetAIUILanguage("mandarin");} catch (ex) {}
+                        try {
+                            myJavaFun.SetAIUILanguage("mandarin");
+                        } catch (ex) {}
                         // alert("中文-讯飞");
                         break;
                     case "0-1": //中文-微软
-                      try {myJavaFun.SetVoiceMSLanguage("zh-CN");} catch (ex) {}
+                        try {
+                            myJavaFun.SetVoiceMSLanguage("zh-CN");
+                        } catch (ex) {}
                         // alert("中文-微软");
-                    break;
+                        break;
                     case "1-1": //英文-微软
-                      try {myJavaFun.SetVoiceMSLanguage("en-US");} catch (ex) {}
+                        try {
+                            myJavaFun.SetVoiceMSLanguage("en-US");
+                        } catch (ex) {}
                         // alert("英文-微软");
-                    break;
-                    default:break;
+                        break;
+                    default:
+                        break;
                 }
-           }
-        }
-        else
-        {
-           myApp.dialog.alert(window.localStorage.languageList == 1?"Initialize voice":"请初始化语音",window.localStorage.languageList == 1?"Tips":"提示");
+            }
+        } else {
+            myApp.dialog.alert(window.localStorage.languageList == 1 ? "Initialize voice" : "请初始化语音", window.localStorage.languageList == 1 ? "Tips" : "提示");
         }
     }).fail(function(e) {});
-
 }
+
 function voiceCloseFun() {
     try {
         myJavaFun.BackVoiceUI();
@@ -870,11 +865,9 @@ var hubConn, hubProxy, signalR = {
             hubConn.stop();
         })
         // 高频连接触发
-        hubConn.connectionSlow((err) => {
-        })
+        hubConn.connectionSlow((err) => {})
         // 收到signalr消息触发
-        hubConn.received((err) => {
-        })
+        hubConn.received((err) => {})
     },
     connectHub: function(equipNo) {
         this.hubConn.stop()
@@ -922,35 +915,33 @@ function tranformAlert(title, tooip, confirmBtn, cancelBtn, confirmEvent, cancel
         }]
     }).open();
 }
-
 //底层留白问题
-function IosToggle(){
-    var u = navigator.userAgent, app = navigator.appVersion
+function IosToggle() {
+    var u = navigator.userAgent,
+        app = navigator.appVersion
     var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    $(document).ready(function(){
-        $("input").unbind("blur").blur(function(){
-
+    $(document).ready(function() {
+        $("input").unbind("blur").blur(function() {
             if (isIOS) {
                 blurAdjust()
             }
         });
     });
     // 解决苹果不回弹页面 
-    function blurAdjust(e){
-        setTimeout(()=>{
-            if(document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA'){
+    function blurAdjust(e) {
+        setTimeout(() => {
+            if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
                 return
             }
             let result = 'pc';
-            if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
-                    result = 'ios'
-            }else if(/(Android)/i.test(navigator.userAgent)) {  //判断Android
-                    result = 'android'
+            if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+                result = 'ios'
+            } else if (/(Android)/i.test(navigator.userAgent)) {  //判断Android
+                result = 'android'
             }
-            
-            if( result = 'ios' ){
+            if (result = 'ios') {
                 document.activeElement.scrollIntoViewIfNeeded(true);
             }
-        },100)
+        }, 100)
     }
 }

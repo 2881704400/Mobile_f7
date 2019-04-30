@@ -19,7 +19,7 @@ function scheduleModifyChild_en() {
         urlLengthChild = chatObjectChild.length - 1;
     scheduleModifyChildpositionList = chatObjectChild[urlLengthChild].split("?")[1];
 }
-//确认控制项目
+//确认控制项目 
 function comfirmScaneControl_en() {
     if (!$(".equipLinkage_edit_modify_childSecond").hasClass("displayNone")) {
         var selVal = $(".equipLinkage_edit_modify_child_equip").find("option:selected").attr("combination");
@@ -27,7 +27,8 @@ function comfirmScaneControl_en() {
     } else {
         let str = $(".equipLinkage_edit_modify_child_time").val();
         if (!str) {
-            myApp.dialog.alert(window.localStorage.languageList == 1 ? "Please enter the correct time" : "Please enter the correct time");
+            let myApp_en = new Framework7({dialog: {buttonOk: 'confirm', buttonCancel: 'cancel', }, statusbar: {enabled: true, overlay: true, iosOverlaysWebView: true, }, });
+            myApp_en.dialog.alert(window.localStorage.languageList == 1 ? "Please enter the correct time" : "Please enter the correct time");
             return false;
         } else scheduleModifyChildpositionList == "last" ? equiplinkageStr.push(str) : equiplinkageStr.splice(parseInt(scheduleModifyChildpositionList), 0, str);
     }

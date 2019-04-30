@@ -27,7 +27,6 @@ function getEquipList(){
 			$("#equipConfigList_en .eq-list ul").append(html);
 		}
 	});
-
 }
 function selectEquip(value,dom){
 	var check=$(dom).find("input").prop("checked");
