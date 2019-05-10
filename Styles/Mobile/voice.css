@@ -145,7 +145,7 @@
 	color: rgb(102, 102, 102);
 	font-size: 1rem;
 	letter-spacing: 1px;
-	font-family: Source Han Sans Bold;
+	font-family: "-webkit-pictograph";
 	border-bottom-right-radius: 12px;
 	border-top-right-radius: 12px;
 	border-bottom-left-radius: 2px;
@@ -162,9 +162,7 @@
 
 .popup-voices .voice-container .pannel-chat-info .chart-content span {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	/*text-align: justify*/
+	text-align: justify;
 }
 
 .stay-right {

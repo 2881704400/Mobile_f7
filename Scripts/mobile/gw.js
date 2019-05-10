@@ -2,7 +2,7 @@
 var hubConn,hubProxy,AlarmCenterContext = {
 
     projectName: "AlarmCenter",
-    //单个设备实时状态
+    //单个设备实时状态 
     getYCStatus: function (equipno, ycno) {
         return this.get("/api/DataCenter/YCStatus?equipno="+equipno+"&ycno="+ycno);
     },
@@ -74,7 +74,7 @@ var hubConn,hubProxy,AlarmCenterContext = {
  	setSetConfig:function(data){
     	return this.post("/api/real/get_setparm",{equip_nos:data });
     },
-    //配置表
+    //配置表 
     setYcConfigSingle:function(equipNo,ycpNo){
     	return this.post("/api/real/get_ycp_single",{equip_no:equipNo,ycp_no:ycpNo });
     },
@@ -96,7 +96,7 @@ var hubConn,hubProxy,AlarmCenterContext = {
     updSetConfig:function(data){
     	return this.post("/api/real/update_setparm",{update:data});
     },
-    //PPT
+    //PPT 
      pptConfig:function(equip){
         return this.get("/api/PPT/GetCurrenSession?equip="+equip,{});
     },   
@@ -202,7 +202,7 @@ var hubConn,hubProxy,AlarmCenterContext = {
             url: url,
             data: data,
             type: "GET",
-            // headers: headers,
+            // headers: headers, 
             // contentType: "application/json; charset=UTF-8",
             dataType: "JSON",
             headers: {

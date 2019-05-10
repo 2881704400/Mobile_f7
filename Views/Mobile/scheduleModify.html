@@ -18,7 +18,6 @@
         </div>
     </div>
     <div class="page-content scheduleModifyPageContent">
-
         <div class="scheduleModifyContainer scheduleModifyContainer_user list displayNone">
           <ul>
             <li>
@@ -81,7 +80,6 @@
           <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
           <button class="comfirmModify" onclick="updateEquip(this)">保存</button>
         </div>  
-
        <!-- 管理范围 -->
         <div class="scheduleModifyContainer scheduleModifyContainer_administartor list displayNone" >
            <ul>
@@ -113,7 +111,6 @@
           <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
           <button class="comfirmModify" onclick="updateAlmReport(this)">保存</button>
         </div>  
-
          <!-- 周排表 -->
         <div class="scheduleModifyContainer scheduleModifyContainer_specificDate list displayNone">
            <ul>
@@ -172,7 +169,6 @@
           <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
           <button class="comfirmModify" onclick="updateWeekAlmReport(this)">保存</button>
         </div>  
-
         <!-- 特定排表 -->
         <div class="scheduleModifyContainer scheduleModifyContainer_weeklytable list displayNone" >
            <ul>
@@ -212,8 +208,6 @@
           <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
           <button class="comfirmModify" onclick="updateSpeAlmReport(this)">保存</button>
         </div>  
-
-
         <!-- 场景编辑 -->
         <div class="scheduleModifyContainer equipLinkage_edit_modify list displayNone" >
            <div class="equipLinkage_edit_header">
@@ -223,60 +217,13 @@
                </div>
                <div class="row">
                   <label class="col-50">场景控制项</label>
-                   <span class="col-50"><a href="#" onclick="scenalControlPro(this)">添加</a></span>
+                   <span class="col-50"><a href="#" onclick="scenalControlPro(this)" index="last">添加</a></span>
                </div>               
            </div>
            <ul></ul>
           <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
           <button class="comfirmModify" onclick="submitScene(this)">保存</button>
         </div>  
-
-        <!-- 场景控制项目 -->
-<!--         <div class="scheduleModifyContainer equipLinkage_edit_modify_child list displayNone" >
-           <ul>
-              <li class="row equipLinkage_edit_modify_childFirst bottomBorderLine">
-                    <div class="col-50 selectedIcorlor" div_attribute="equipLinkage_edit_modify_childSecond">
-                      <i class="iconfont icon-selectUD"></i> 控制设备
-                    </div>
-                    <div class="col-50" div_attribute="equipLinkage_edit_modify_childThree">
-                      <i class="iconfont icon-selectUD"></i> 设置延迟
-                    </div>
-              </li>
-              <li class="equipLinkage_edit_modify_childSecond">
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">选择控制设备</div>
-                    <div class="item-input-wrap">
-                    <select name="gender" class="equipLinkage_edit_modify_child_equip">
-                      <option value="0" selected>每天</option>
-                      <option value="2">星期一</option>
-                      <option value="3">星期二</option>
-                      <option value="4">星期三</option>
-                      <option value="5">星期四</option>
-                      <option value="6">星期五</option>
-                      <option value="7">星期六</option>
-                      <option value="1">星期日</option>
-                    </select>
-                  </div>
-                  </div>
-                </div>
-              </li>
-              <li class="equipLinkage_edit_modify_childThree displayNone">
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">时长(ms):</div>
-                    <div class="item-input-wrap">
-                      <input type="number" placeholder="输入毫秒数"   class="equipLinkage_edit_modify_child_time" />
-                    </div>
-                  </div>
-                </div>
-              </li>
-           </ul>
-          <button class="comfirmModify comfirmCancel color-red" onclick="myApp.router.back();">取消</button>
-          <button class="comfirmModify" onclick="comfirmScaneControl()">确认</button>
-        </div>  -->
-
-
     </div>
 </div>
 

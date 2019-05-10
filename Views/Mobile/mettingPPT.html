@@ -10,18 +10,16 @@
             <div class="center sliding title">
                 PPT
             </div>
+            <div class="right">
+                
+            </div>
         </div>
     </div>
     <div class="page-content tabs-animated-wrap mettingPPTContent">
-        <div class="pptActive">
-            <h3 class="listTitle bottomBorderLine" style="font-size: 1rem;">
-                最后打开文件
-            </h3>
-        </div>
         <div id="Filelist">
             <h3 class="listTitle bottomBorderLine">
                 文件列表
-                <label>
+                <!-- <label> 
                     <span class="selectUD" dataset="1">
                         <i class="iconfont icon-selectUD">
                         </i>
@@ -34,10 +32,28 @@
                     </span>
                 </label>
                 <em class="iconfont icon-refresh">
-                </em>
+                </em> -->
             </h3>
-            <ul>
-            </ul>
+            <div class="row pptFileSelectContent">
+                <div class="col-50" dataset = "1">
+                    <p>PowerPoint</p>
+                    <label>4项</label>
+                    <i class="iconfont icon-file"></i>
+                </div>
+                <div class="col-50" dataset = "2">
+                    <p>移动存储</p>
+                    <label>4项</label>
+                    <i class="iconfont icon-file"></i>
+                </div>
+            </div>
+<!--             <ul>
+            </ul> -->
+        </div>
+
+        <div class="pptActive">
+            <h3 class="listTitle bottomBorderLine" style="font-size: 1rem;">
+                最后打开文件
+            </h3>
         </div>
         <div class="displayNone modalDiv">
             <span class="preloader preloader-white">

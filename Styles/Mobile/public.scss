@@ -41,7 +41,7 @@ $btnFontColor: #DEF0F9;
 $btnWhiteFontColor: #FFFFFF;
 
 
-//统计栏属性
+//统计栏属性 
 $statsTitle: #afb5bc;
 $statsBgc: #fff;
 $statsFontColor: #333;
@@ -56,13 +56,13 @@ $bzColor: #0ed1e6;
 $unclickBorderRadius: 6px;
 $unclickBorderColor: #ddd;
 
-// 首页配置按钮
-$homeConfigBtnBg: rgba(160,153,153,0.3);
+// 首页配置按钮 
+$homeConfigBtnBg: rgba(10, 10, 10, 0.3);
 $homeConfigBtnColor: #463d3d;
 
-$homeBtnBorderRadius: 20%;
+$homeBtnBorderRadius: 10%;
 
-// 统一table样式
+// 统一table样式 
 $tableHeaderFontSize: 1rem;
 $tableHeaderFontColor: #666;
 $tableTitle: antiquewhite;
@@ -74,7 +74,7 @@ $tableTbodySingleLineColor: #fff;
 $tableBorderBottom: #eee;
 
 //input样式
-$inputBorderColor: #eee; 
+$inputBorderColor: #eae3e3; 
 
 // tab切换属性
 $tabSelected: #4177e6;
@@ -82,9 +82,14 @@ $tabBackground: #5087f9;
 $tabFontColor: white;
 
 // popup弹框
-$popupBackground: #F2F3F5;
+$popupBackground: #ffffff;
 $popupContentBackground: white;
 $popupBackTitle: #666;
+$popupHeaderBoxShadow: rgba(0,0,0,0.20);
+
+$popupbtnColor: white;
+$popupbtnBgColor: #2D2E30;
+$popupbtnBoxShadow: rgba(0,0,0,0.40);
 
 $preBg: rgb(255,255,255);
 $bg:rgb(242,243,245);
@@ -92,3 +97,5 @@ $titColor:rgb(173,173,173);
 $valueColor:rgb(69,158,241);
 $lineBg:rgb(234,234,234);
 $activeBg:rgb(62,124,251);
+
+$homeBtnBorderRadius: 15%;

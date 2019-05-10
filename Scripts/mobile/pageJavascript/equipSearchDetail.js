@@ -1,6 +1,6 @@
 function equipSearchDetail() {
 	switchToolbar("configTool");
-	//获取父页面参数
+	//获取父页面参数 zgbk sx 
 	var chatObject = myApp.views.main.history,
 		urlLength = chatObject.length - 1;
 	var chatValue = chatObject[urlLength].split("?")[1].split("&");
@@ -28,9 +28,9 @@ function equipSearchDetail() {
 					'				</div>' +
 					'			</li>' +
 					'<li class="item-content item-input">' +
-					'				<div class="item-inner">' +
+					'				<div class="item-inner" >' +
 					'					<div class="item-title item-label">设备事件</div>' +
-					'					<div class="item-input-wrap">' +
+					'					<div class="item-input-wrap" style="padding-top: 10px;">' +
 					'						<textareareadonly>"' + event + '"</textarea>' +
 					'					</div>' +
 					'				</div>' +

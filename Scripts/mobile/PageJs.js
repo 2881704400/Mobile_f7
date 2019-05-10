@@ -107,7 +107,13 @@ $(document).on("page:beforein", ".page[data-page='equipLinkageModify']", functio
 $(document).on("page:beforein", ".page[data-page='scheduleModifyChild']", function (e) {
     initPageJS('scheduleModifyChild', '/Scripts/mobile/pageJavascript/');
 });
-
+//场景修改
+$(document).on("page:beforein", ".page[data-page='sceneEdit']", function (e) {
+    initPageJS('sceneEdit', '/Scripts/mobile/pageJavascript/');
+});
+$(document).on("page:beforein", ".page[data-page='sceneEditModify']", function (e) {
+    initPageJS('sceneEditModify', '/Scripts/mobile/pageJavascript/');
+});
 
 // 英文版本
 
@@ -213,6 +219,13 @@ $(document).on("page:beforein", ".page[data-page='scheduleModifyChild_en']", fun
     initPageJS('scheduleModifyChild_en', '/Scripts/mobile/pageJavascript/mobile-en/');
 });
 
+//场景修改 
+$(document).on("page:beforein", ".page[data-page='sceneEdit_en']", function (e) {
+    initPageJS('sceneEdit_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+});
+$(document).on("page:beforein", ".page[data-page='sceneEditModify_en']", function (e) {
+    initPageJS('sceneEditModify_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+});
 // test
 $(document).on("page:beforein", ".page[data-page='test']", function (e) {
     initPageJS('test', '/Scripts/mobile/pageJavascript/');

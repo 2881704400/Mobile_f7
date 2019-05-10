@@ -9,7 +9,7 @@ $allFontColor: #666;
 // header头部属性
 $headerFontSize: 1.4rem;
 $headerBgc: #fff;
-$headerBoxShadow: #eee;
+$headerBoxShadow: rgba(0,0,0,0.2);
 
 // 全局背景色,字体颜色,内容背景颜色
 $situationBgc: #F2F3F5;
@@ -40,7 +40,7 @@ $btnFontColor: #DEF0F9;
 
 //统计栏属性
 
-$statsBgc: #fff;
+$statsBgc: rgba(255,255,255,0.5);
 $statsFontColor: #333;
 $statsBorderColor: #f0f4f7;
 $selectedColor: #FD971F;
@@ -73,7 +73,28 @@ $tabFontColor: white;
 $popupBackground: rgba(255,255,255,0.5);
 
 
-// 首页按钮
-$homebtnColor: #333;
-$homebtnBg: #cfd7dc;
+
+// 首页配置按钮
+$homeConfigBtnBg: rgba(10, 10, 10, 0.3);
+$homeConfigIColor: #fff;
+$homeConfigBtnColor: #463d3d;
+
+$homeBtnBorderRadius: 15%;
+
+// popup弹框
+$popupBackground: #ffffff;
+$popupContentBackground: white;
+$popupBackTitle: #666;
+$popupHeaderBoxShadow: rgba(0,0,0,0.20);
+
+$popupbtnColor: white;
+$popupbtnBgColor: #2D2E30;
+$popupbtnBoxShadow: rgba(0,0,0,0.40);
+
+$preBg: rgb(255,255,255);
+$bg:rgb(242,243,245);
+$titColor:rgb(173,173,173);
+$valueColor:rgb(69,158,241);
+$lineBg:rgb(234,234,234);
+$activeBg:rgb(62,124,251);
 

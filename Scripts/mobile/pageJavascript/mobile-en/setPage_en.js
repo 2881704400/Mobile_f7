@@ -1,4 +1,10 @@
 ﻿function setPage_en() {
+        try{
+               myJavaFun.GetAppVersion();
+        }
+        catch(e){
+
+        }    
     //语音初始化
     $("#voiceList").find("option").each(function() {
         if ($(this).attr("value") == window.localStorage.voiceType) {
@@ -11,7 +17,7 @@
     $("#languageListName>.item-after").html("English");
     //用户
     $(".userClassName p").html(window.localStorage.userName);
-    myApp.navbar.hide('.navbar');
+    // myApp.navbar.hide('.navbar');
     //切换背景
     var toggle = myApp.toggle.create({
         el: '.toggle',

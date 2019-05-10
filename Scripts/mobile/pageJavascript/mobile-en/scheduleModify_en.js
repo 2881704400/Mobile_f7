@@ -504,7 +504,7 @@ function initSceneList_view_en() {
                     htmlContent += `<li class="swipeout " equipcomb="${equiplinkageStr[i]}">
                         <div class="item-content swipeout-content schedule-content row no-gap" >
                             <div class="item-inner">
-                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun_en(equipList,equiplinkageStr[i].split(",")[0],null):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Interval operation":"间隔操作"):""))}: <strong>${(equip_no_flg?filterFun_en(setList,equiplinkageStr[i].split(",")[0],equiplinkageStr[i].split(",")[1]):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Delay interval":"延迟间隔")+equiplinkageStr[i]+(window.localStorage.languageList == 1?"Millisecond":"毫秒"):""))}</strong></div>
+                              <div class="item-title">${i+1}、${(equip_no_flg?filterFun_en(equipList,equiplinkageStr[i].split(",")[0],null):(equiplinkageStr[i]?(window.localStorage.languageList == 1?"Interval operation":"间隔操作"):""))}: <strong>${(equip_no_flg?filterFun_en(setList,equiplinkageStr[i].split(",")[0],equiplinkageStr[i].split(",")[1]):(equiplinkageStr[i]?(window.localStorage.languageList == 1?" ":"延迟间隔")+equiplinkageStr[i]+(window.localStorage.languageList == 1?" ms":" ms"):""))}</strong></div>
                               <div class="item-after" onclick="scenalControlPro_en(this)" index="${i}"><i class="iconfont icon-f7_top_jt"></i></div>
                             </div>
                         </div>

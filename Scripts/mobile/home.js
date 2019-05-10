@@ -7,6 +7,14 @@ function onHomePage() {
     //切换中英文右上角链接
     tranformMenu(window.localStorage.languageList);
 
+    // $("#snapshotTool").click(function(){
+    //      $(this).find("i").addClass("displayNone");
+    //      $(this).find("img").removeClass("displayNone").attr("src","/Image/home3.gif");
+    // });
+    // $("#homeTool,#equipsTool,#configTool").click(function(){
+    //     $("#snapshotTool").find("img").addClass("displayNone").attr("src","");
+    //     $("#snapshotTool").find("i").removeClass("displayNone");
+    // });
 
 }
 //响应App绑定函数-获取状态栏高度
@@ -188,7 +196,6 @@ function getJurisdictionData() {
         if (result.code == 200) {
             $.ajax({
                 type: "post",
-                // dataType: "json",
                 url: service + "/UserPermissions",
                 data: "userName=" + window.localStorage.userName,
                 success: function(usersDt) {
@@ -213,15 +220,16 @@ function getJurisdictionData() {
                         html += functionalModule(item,"");
                     });
                     $("#homeContents>ul").append(html);
-                    // 实现内容添加
+                    // 实现内容添加 
                     JurisdictionArray.forEach(function(item, index) {
                         switch (item) {
                             case "HomeSnapShot":
                                 snashotData();
                                 break;
                             case "HomeShortcutFunction":
-                                commonlyUsedFun("pptPattern_container ol", "50", pptPattern);
-                                commonlyUsedFun("jjPattern_container ol", "50", jjPattern);
+                                $(".videoPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1?jjPattern[7].title_en:jjPattern[7].title);
+                                $(".pptPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1?pptPattern[5].title_en:pptPattern[5].title);
+                                 myApp.swiper.create('.HomeShortcutFunction-swiper' , {spaceBetween: 10, slidesPerView: 1.2 });
                                 break;
                             case "HomeButton":
                                 VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);
@@ -245,7 +253,7 @@ function getJurisdictionData() {
             });
         }
     }).fail(function(e) {
-        // myApp.router.navigate("/home/");
+        // myApp.router.navigate("/home/");  
     });
 }
 
@@ -263,29 +271,41 @@ function functionalModule(className,htmlStr) {
             break;
         case "HomeShortcutFunction":
             html = `<li class="row HomeShortcutFunction">
-                      <div class="pptPattern_container col-50">
-                            <h3>
-                                <span>PPT</span>
-                                <label>${window.localStorage.languageList == 1?"PPT Slide Play":"ppt幻灯片播放"}</label>
-                            </h3>
-                            <ol class="row"></ol>
-                      </div>
-                      <div class="jjPattern_container col-50">
-                             <h3>
-                                <span>${window.localStorage.languageList == 1?"explain":"讲解"}</span>
-                                <label>${window.localStorage.languageList == 1?"Video Explanation":"视频讲解"}</label>
-                             </h3>
-                             <ol class="row"></ol>
-                      </div>                                      
+                 <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="1.5" class="swiper-container swiper-init HomeShortcutFunction-swiper">
+                  <div class="swiper-wrapper">
+
+                    <div class="swiper-slide" onclick="videoExplain()">
+                       <div class="videoPatternHeader row">
+                          <span class="col-100">
+                             <h3>${window.localStorage.languageList == 1?"Video Explanation":"视频讲解"}</h3>
+                             ${window.localStorage.languageList == 1?"Remote control":"遥控器"}
+                          </span>
+                          <a><i class="iconfont icon-f7_icon_hf"></i></a>
+                       </div>
+                       <p>${window.localStorage.languageList == 1?"Current file":"当前文件"}: <label>敢为平台演示.mp4</label></p>
+                    </div>
+
+                    <div class="swiper-slide" onclick="pptPlay()">
+                       <div class="pptPatternHeader row">
+                          <span class="col-100">
+                             <h3>${window.localStorage.languageList == 1?"PPT Paly":"PPT播放"}</h3>
+                             ${window.localStorage.languageList == 1?"Remote control":"遥控器"}
+                          </span>
+                           <a><i class="iconfont icon-f7_ppt"></i></a>
+                       </div>
+                       <p>${window.localStorage.languageList == 1?"Current file":"当前文件"}: <label>敢为平台演示.pptx</label></p>
+                    </div>
+
+                  </div>
+                </div>                                  
             </li>`;
             break;
         case "HomeButton":
             html = `<li class="row HomeButton">
-
-                      <div class="swiper-containerTrailer KOvm_container swiper-init swiper-container" data-space-between="50" >
-                        <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm swiper-pagination"></div>
-                        <div class="swiper-wrapper" style="margin-bottom: 5%;"></div>
-                      </div>
+              <div class="swiper-containerTrailer KOvm_container swiper-init swiper-container" data-space-between="50" >
+                <div class="swiper-paginationTrailer swiper-paginationTrailer-KOvm swiper-pagination"></div>
+                <div class="swiper-wrapper" style="margin-bottom: 5%;"></div>
+              </div>
             </li>`;
             break;
         case "HomeCommonlyused":
@@ -308,4 +328,75 @@ function functionalModule(className,htmlStr) {
             break;
     }
     return html;
+}
+
+
+//视频讲解
+function videoExplain(){
+     var htmlContent = `<div class="popoverVideoExplain">
+     <div class="row">
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[0].equipNo}" set_no="${jjPattern[0].setNo}" onclick="get_no_set(this,null)" >
+               <i class="${jjPattern[0].icon}"></i>
+            <p>${window.localStorage.languageList == 1 ?jjPattern[0].name_en:jjPattern[0].name}</p>
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[2].equipNo}" set_no="${jjPattern[2].setNo}" onclick="get_no_set(this,null)" >
+               <i class="${jjPattern[2].icon}"></i>
+               <p>${window.localStorage.languageList == 1 ?jjPattern[2].name_en:jjPattern[2].name}</p>
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[3].equipNo}" set_no="${jjPattern[3].setNo}" onclick="get_no_set(this,null)" >
+               <i class="${jjPattern[3].icon}"></i>
+            <p>${window.localStorage.languageList == 1 ?jjPattern[3].name_en:jjPattern[3].name}</p>
+         </a>                                 
+     </div>
+     <div class="row">
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[4].equipNo}" set_no="${jjPattern[4].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?jjPattern[4].name_en:jjPattern[4].name}
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[5].equipNo}" set_no="${jjPattern[5].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?jjPattern[5].name_en:jjPattern[5].name}
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[6].equipNo}" set_no="${jjPattern[6].setNo}" onclick="JumpPage(this)" >
+            ${window.localStorage.languageList == 1 ?jjPattern[6].name_en:jjPattern[6].name}
+         </a>  
+     </div>
+     <a href="#" class="popoverVideoExplain"  set_equip="${jjPattern[1].equipNo}" set_no="${jjPattern[1].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?jjPattern[1].name_en:jjPattern[1].name}
+      </a>  </div>
+    `;
+    ststemSet(window.localStorage.languageList == 1?"Video Explanation":"视频讲解","sceneBtnControl",htmlContent);  
+}
+//ppt播放 
+function pptPlay(){
+     var htmlContent = `<div class="popoverVideoExplain">
+     <div class="row">
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${pptPattern[0].equipNo}" set_no="${pptPattern[0].setNo}" onclick="get_no_set(this,null)" >
+               <i class="${pptPattern[0].icon}"></i>
+            <p>${window.localStorage.languageList == 1 ?pptPattern[0].name_en:pptPattern[0].name}</p>
+         </a>                                
+     </div>
+     <div class="row">
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${pptPattern[2].equipNo}" set_no="${pptPattern[2].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?pptPattern[2].name_en:pptPattern[2].name}
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${pptPattern[3].equipNo}" set_no="${pptPattern[3].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?pptPattern[3].name_en:pptPattern[3].name}
+         </a>
+         <a href="#" class="popoverVideoExplain col-33"  set_equip="${pptPattern[4].equipNo}" set_no="${pptPattern[4].setNo}" onclick="JumpPage(this)" >
+            ${window.localStorage.languageList == 1 ?pptPattern[4].name_en:pptPattern[4].name}
+         </a>  
+     </div>
+     <a href="#" class="popoverVideoExplain"  set_equip="${pptPattern[1].equipNo}" set_no="${pptPattern[1].setNo}" onclick="get_no_set(this,null)" >
+            ${window.localStorage.languageList == 1 ?pptPattern[1].name_en:pptPattern[1].name}
+      </a>  </div>
+    `;
+    ststemSet(window.localStorage.languageList == 1?"PPT Paly":"PPT播放","sceneBtnControl",htmlContent);  
+}
+//设置跳页
+function JumpPage(dt){
+  myApp.dialog.prompt(window.localStorage.languageList == 1 ?"Please enter a jump page":"请输入跳转页",window.localStorage.languageList == 1 ?"Tips":"提示", function (name) {
+     if(parseFloat(name).toString() == "NaN")
+        myApp.dialog.alert(window.localStorage.languageList == 1 ?"Please enter a number":"请输入数字");
+     else
+       get_no_set(dt,name);
+  });
 }

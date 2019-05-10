@@ -376,7 +376,8 @@ var KOvm = [{
 ];
 
 //首页PPT
-var pptPattern = [{
+var pptPattern = [
+{
     name: '打开PPT',
     name_en: 'Open PPT',
     color: '#9cd5ea,#1892bd',
@@ -408,7 +409,21 @@ var pptPattern = [{
     equipNo: '4001',
     setNo: '3',
     value: null,
-}, ];
+}, 
+{
+    name: '跳页',
+    name_en: 'Page skip',
+    color: '#9cd5ea,#1892bd',
+    icon: '#9cd5ea,#1892bd',
+    equipNo: '300',
+    setNo: '10',
+    value: null,
+},
+{
+    title: "默认文档.pptx",
+    title_en: "Default document.pptx",
+}
+];
 
 //讲解模式
 var jjPattern = [{
@@ -443,7 +458,39 @@ var jjPattern = [{
     equipNo: '1007',
     setNo: '4',
     value: null,
-}, ];
+}, 
+{
+    name: '上一页',
+    name_en: 'Previous page',
+    color: '#e4c586,#e89e08',
+    icon: 'iconfont icon-f7_j_x',
+    equipNo: '300',
+    setNo: '10',
+    value: null,
+}, 
+{
+    name: '下一页',
+    name_en: 'Next page',
+    color: '#e4c586,#e89e08',
+    icon: 'iconfont icon-f7_j_x',
+    equipNo: '300',
+    setNo: '10',
+    value: null,
+}, 
+{
+    name: '跳页',
+    name_en: 'Page skip',
+    color: '#e4c586,#e89e08',
+    icon: 'iconfont icon-f7_j_x',
+    equipNo: '300',
+    setNo: '10',
+    value: null,
+}, 
+{
+    title: "敢为平台演示.mp4",
+    title_en: "Dare to Demonstrate for Platform.mp4",
+}
+];
 // 欢迎词
 var WORDcommand = {
     "backgroundImage": {
@@ -529,11 +576,18 @@ var selLanguageZH = [{
         "name": "报警排表",
         "url": "/schedule/",
         "id": "scheduleTool",
-    }, {
+    }, 
+    {
         "name": "设备联动",
         "url": "/equipLinkage/",
         "id": "equipLinkageTool",
-    }, {
+    }, 
+    {
+        "name": "场景编辑",
+        "url": "/sceneEdit/",
+        "id": "sceneEditTool",
+    },     
+    {
         "name": "语音界面",
         "voiceheader": "语音控制",
         "voicecontainer": "请告诉我，您想要进行的操作.",
@@ -577,7 +631,13 @@ var selLanguageZH = [{
         "name": "Equipment linkage",
         "url": "/mobile-en/equipLinkage_en/",
         "id": "equipLinkageTool",
-    }, {
+    }, 
+    {
+        "name": "Scene editing",
+        "url": "/mobile-en/sceneEdit_en/",
+        "id": "sceneEditTool",
+    }, 
+    {
         "name": "Voice view",
         "voiceheader": "Voice control",
         "voicecontainer": "Please tell me what you want to do.",

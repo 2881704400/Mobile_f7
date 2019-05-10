@@ -3,7 +3,7 @@
 @import 'public.scss';
 // 报警排表
 .scheduleContainer{
-    height: 99%;top: 1%;position: relative;
+    height: 100%;position: relative;
     &>.subnavbarTabel{
     	height: 36px;line-height: 36px;
     	&>a{font-size: #{$tableHeaderFontSize};border-right: 0;height: 100%;white-space: nowrap;text-align: center;}
@@ -60,7 +60,7 @@
     height: 99%;top: 1%;position: relative;
     &>.subnavbarTabel{
         height: 40px;line-height: 40px;overflow: hidden;
-        &>a{font-size: #{$tableHeaderFontSize}*1.1; height: 100%;white-space: nowrap;text-align: center;}
+        &>a{font-size: #{$tableHeaderFontSize}*1.1;color: #a8a9a9;height: 100%;white-space: nowrap;text-align: center;}
     }
     &>.equipLinkageContent{
         position: absolute;top: 40px;left: 0;right: 0;bottom: 0;
@@ -190,7 +190,7 @@
 
 .equipAlertHeader{padding: 10px;&>label{margin: 0px 5px;}}
 .equipAlertContent{&>div{line-height: 40px;padding: 10px;} select,input{font-size: 0.8rem;height: 40px;line-height: 40px;text-indent: 10px;border: 1px solid #{$inputBorderColor};}}
-.bottomBorderLine:after{content:"";width: 100%;height: 1px;display: inline-block; position: absolute;bottom: 0;left: 0;border-bottom: 1px solid #888;transform: scaleY(0.2);}
+.bottomBorderLine:after{content:"";width: 100%;height: 1px;display: inline-block; position: absolute;bottom: 0;left: 0;border-bottom: 1px solid #{$inputBorderColor};transform: scaleY(0.2);}
 .linkColor{color: #{$tabSelected}!important;}
 //选中菜单颜色
 .selectScheduleMenu{font-size: 12px;border-bottom: 1px solid #{$tabSelected};}

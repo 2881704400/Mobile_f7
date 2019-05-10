@@ -15,7 +15,7 @@ function scheduleModifyChild() {
     var chatObjectChild = myApp.views.main.history,
     urlLengthChild = chatObjectChild.length - 1;
     scheduleModifyChildpositionList = chatObjectChild[urlLengthChild].split("?")[1];
-
+    console.log(chatObjectChild);
 
 }
 //确认控制项目

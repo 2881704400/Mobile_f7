@@ -4,7 +4,7 @@ function equipConfigList_en(){
 		el:'#search',
 		searchContainer:'.eq-list',
 		searchIn:'.eq-list a'
-	})
+	});
 	getEquipList();
 }
 function getEquipList(){

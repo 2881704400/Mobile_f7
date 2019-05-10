@@ -36,7 +36,7 @@ $.extend({
         window.localStorage.dataURL = $(that).attr("data-url");
     }
 })
-// 文件结构处理
+// 文件结构处理 
 var stringFile, UsbDriveTips = myApp.toast.create({
     text: "No Inverse Corresponding Equipment for Detection.",
     position: 'center',
@@ -55,7 +55,7 @@ function fileStuctureChild_en(url, objectList) {
         if (result != "false" && result != "null") {
             stringFile = JSON.parse(result);
             for (var i = 0; i < stringFile.length; i++) {
-                if ($.trim(stringFile[i]).split("\\")[2] != "") //排除 D:\PPT\ 格式文件夹
+                if ($.trim(stringFile[i]).split("\\")[2] != "") //排除 D:\PPT\ 格式文件夹 
                 {
                     if (isStucture(stringFile[i]) && stringFile[i] != "") //如果为文件夹
                     {

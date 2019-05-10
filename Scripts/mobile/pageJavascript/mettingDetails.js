@@ -212,7 +212,6 @@ function requestAjax(j, k) {
 //================================================初始化历史记录==========================================================
 function historyInit() {
     if (window.localStorage.pptUsername == window.localStorage.HistorypptUsername) {
-        alert(window.localStorage.savePage);
         $.ajax({
             type: "POST",
             url: "/GWService.asmx/SetupsCommand",

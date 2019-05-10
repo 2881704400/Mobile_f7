@@ -27,7 +27,8 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
 .displayNone{display: none;}
 .view{
     //搜索
-    .searchbar-inner{padding: 0;background: #{$situationBgc};}
+    .searchbar-inner{background: #{$situationBgc};padding: 0 20px;}   
+    .searchbar-input-wrap{height: 100%;input{border-radius: 0;background-color: #{$situationBgc}!important;}} 
     /*内容区*/ 
     .ios .page,.md .page,.page{background: #{$situationContainerBgc};}
     .page-content{
@@ -36,13 +37,14 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
             &>ul.charts-block{
                 &>li{
                     background: #{$statsBgc};
-                    .functionMenu{&>dd{ li{.homeBtn{p{color: #{$situationFontColor};}} } } }
-                    .commonlyUsed,.sysFourMenu{li{a{p{color: #{$situationFontColor};} } } }
+                    .homeBtn{
+                        p{color: #{$homeConfigBtnColor};}
+                        i{color: #{$homeConfigIconColor};border-radius: #{$homeBtnBorderRadius}; background: #{$homeConfigBtnBg};} 
+                    } 
                     .pptPattern_container,.jjPattern_container{h3{label{color: #fff;} } }                                                
                 }
                 .statisticsTable{ 
-                    background: #{$statsBgc};
-                    a{color: #{$situationFontColor};}
+                    a{color: #{$homeConfigBtnColor};}
                 }
             }
         }
@@ -62,7 +64,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
     }
     /*顶部导航栏*/
     .navbar{
-        background-color: #{$headerBgc};    
+        background-color: #{$headerBgc}; 
         &>.navbar-inner{ 
             .left{
                 i{font-size: 1.5rem;color: #{$toolbarFontColor};}
@@ -82,8 +84,7 @@ html.device-ios.device-iphone-x .statusbar{height: 20px;}
             }
         }
     }
-    .navbar:after{height: 0px;};
-    
+    .navbar:after{height: 0px;}
     /*底部菜单*/
     .view-menu-toolbar{
         a.link{font-size: 12px;height: 50px!important;line-height: 25px!important;cursor: pointer;}
@@ -158,12 +159,12 @@ html.with-statusbar.device-ios .popup, html.with-statusbar.ios:not(.device-ios):
 
 html.device-android .statusbar,
 html.md:not(.device-ios):not(.device-android) .statusbar {
-    background: #{$toolbarBgc} !important;
+    background: #{$headerBgc} !important;
 }
 
 html.device-ios .statusbar,
 html.ios:not(.device-ios):not(.device-android) .statusbar {
-    background: #{$toolbarBgc};
+    background: #{$headerBgc};
 }
 
 //实时快照
@@ -186,7 +187,14 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 #ycAndyx .toolbar .toolbar-inner>a.tab-link, #ycAndyx_en .toolbar .toolbar-inner>a.tab-link{color: #{$situationFontColor};}
 #set li{ background:  #{$situationContainerBgc};}
 // 设置页
-.setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul,.smart-select-page div.page-content ul{background: #{$situationContainerBgc}; }
+.setPageContainer>div.userClassName,.setPageContainer>div.simple-list ul,.smart-select-page div.page-content ul{
+    background: transparent;
+    li{background: #{$situationContainerBgc};position: relative;} 
+    li .item-inner:after{height: 0;}
+    li:nth-child(1){margin: 10px 0;}
+    li:nth-child(2){margin-bottom: 10px;}
+ }
+.setPageContainer>div.simple-list ul:after,.setPageContainer>div.simple-list ul:before{height: 0;}
 .setPageContainer a.item-content, .setPageContainer a>div.item-content,.setPageContainer>div.userClassName i,.smart-select-page div.page-content ul div.item-title{color: #{$situationFontColor};}
 .smart-select-page div.page-content ul:before{height: 0;}
 .setPageContainer>div.userClassName p{color: #{$situationFontColor};}
@@ -200,8 +208,8 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
  .event-search-box{
     background: #{$situationContainerBgc};
     .half-select-box label,.half-select-box-bottom label,.half-select-box-input input,.half-select-box-bottom input,.half-select-box-bottom input:last-child{color: #{$situationFontColor};}
+    }
  }
-}
 .equipSearchDetailContent.page-content{background: #{$situationBgc}; .eventDetailList{color:  #{$situationFontColor};background: #{$situationContainerBgc}; input{color:  #{$situationFontColor};}} }
 
 //系统配置
@@ -233,12 +241,66 @@ html.ios:not(.device-ios):not(.device-android) .statusbar {
 .dialog-progress .dialog-title a{color: #007aff;}
 
 //实时视频
-#Video_content_ref  div.accordion-list{     height: 99%; position: relative; top: 1%;margin: 0;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
-
+#Video_content_ref  div.accordion-list{height: 99%; position: relative; top: 1%;margin: 0;ul{color: #{$situationFontColor};background: #{$situationContainerBgc};}}
 
 // PPT
 .pptActive,#Filelist{    margin: 10px 0;color: #{$situationFontColor};background: #{$situationContainerBgc};}
 .mettingDetailsContent{color: #{$situationFontColor};background: #{$situationBgc};}
+.listTitle{color: #{$situationFontColor};}
+.pptActive>a, .pptSelect>a{background: #{$situationBgc};}
+.pptFileSelectContent{
+   &>div{
+    background: #{$situationBgc};
+    p{color: #{$situationFontColor};}
+   }
+}
 // 欢迎词
 .welcomeWordContents{color: #{$situationFontColor};background: #{$situationBgc};}
 .welcome-Word-control-boxs{color: #{$situationFontColor};background: #{$situationContainerBgc};}
+
+
+//popover
+.popup-public{
+  .publicHeader{
+    color:  #{$situationFontColor};
+    background: #{$headerBgc};box-shadow: 0 3px 6px 0 rgba(0,0,0,0.20);
+    span{color:  #{$situationFontColor};}
+  }
+  &>section{
+   background: #{$situationBgc}; 
+   .powerPointHtmlH3{color: #{$situationFontColor};}
+   .powerPointHtmlUl{
+     li{ color:  #{$situationFontColor}; background: #{$statsBgc};}
+   }
+   // &>.popoverSystemMenu{
+   //     &>a{color: #{$situationFontColor};background: #{$popupbtnBgColor}; box-shadow: 0 4px 16px 0 #{$popupbtnBoxShadow};}
+   // }
+   // &>.popoverSceneBtn{
+   //      &>a{
+   //        background: #{$popupBackground};
+   //        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.1);
+   //        p{
+   //          color: #2D2E30;
+   //        }
+   //      }
+   //   }
+   &>.popoverVideoExplain{
+      &>a{
+        color: #{$allFontColor};
+        background: #ff2d55;
+      }
+     &>div:nth-child(1){
+      a{
+        background: #{$statsBgc};
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.1);
+      }
+     }
+     &>div:nth-child(2){
+      a{
+        background: #{$statsBgc};
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.1);
+      }
+     }     
+   }  
+  }
+}

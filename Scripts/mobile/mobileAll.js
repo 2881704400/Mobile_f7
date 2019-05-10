@@ -89,10 +89,28 @@ var myApp = new Framework7({
     }, {
         path: '/sysConfigEdict/',
         url: 'sysConfigEdict.html',
-    }, {
+    }, 
+    {
         path: '/scheduleModifyChild/',
         url: 'scheduleModifyChild.html',
-    }, {
+    }, 
+    {
+        path: '/sceneEdit/',
+        url: 'sceneEdit.html',
+    }, 
+    {
+        path: '/sceneEditModify/',
+        url: 'sceneEditModify.html',
+    }, 
+    {
+        path: '/mobile-en/sceneEdit_en/',
+        url: 'mobile-en/sceneEdit_en.html',
+    }, 
+    {
+        path: '/mobile-en/sceneEditModify_en/',
+        url: 'mobile-en/sceneEditModify_en.html',
+    },                 
+    {
         path: '/mobile-en/home_en/',
         url: 'mobile-en/home_en.html',
     }, {
@@ -274,7 +292,7 @@ function loadNameMobile() {
             window.localStorage.terminal = '', window.localStorage.ac_appkey = '', window.localStorage.ac_infokey = '', window.localStorage.service_url = '';
         }
     } else {
-        myJavaFuntion.GetCookie();
+       try{ myJavaFuntion.GetCookie();}catch(e){}
     }
     setTimeout(function() {
         $.ajax({
@@ -376,6 +394,7 @@ function onUserLogout() {
     }).open();
 }
 //关于事件
+var ApplicationVersion = "1.0";
 function onAbout() {
     var _url = "/api/server/version";
 
@@ -384,13 +403,6 @@ function onAbout() {
         var versionNameHTML = '';
         if (window.localStorage.versionName != "" && window.localStorage.versionName != null) {
             versionNameHTML = (window.localStorage.languageList == 1 ? "<br/>App Edition：v" : "<br/>App版本：v") + window.localStorage.versionName;
-        }
-        var ApplicationVersion = "1.0";
-        try{
-               ApplicationVersion = myJavaFuntion.GetAppVersion();
-        }
-        catch(e){
-
         }
         myApp.dialog.create({
             title: window.localStorage.languageList == 1 ? "About" : "关于",
@@ -402,6 +414,7 @@ function onAbout() {
     }
     JQajaxo("get", _url, true, "", _success);
 }
+function BackAppVersion(version){  ApplicationVersion = version;}
 
 function backss() {
     var mainView = myApp.addView('.view-main');
@@ -624,7 +637,7 @@ function get_no_val(that, set_equip, set_no, values) {
 
 function get_no_set(dt, values) {
     //动画
-    if ($(dt).hasClass("homeBtn")) {
+    if ($(dt).hasClass("homeBtn") || $(dt).hasClass("popoverVideoExplain")) {
         $(dt).find("i").addClass("startAnimation");
         setTimeout(function() {
             $(dt).find("i").removeClass("startAnimation");
@@ -699,7 +712,7 @@ function videoControlDirction(EquipNum, main_instruction, direction) {
             onSetCommand_return("", EquipNum, main_instruction, "0", "false");
             break;
         case "top_start":
-            // get_no("", EquipNum, 17, "");
+            // get_no("", EquipNum, 17, ""); 
             onSetCommand_return("", EquipNum, main_instruction, "1", "true");
             break;
         case "top_stop":
@@ -730,8 +743,10 @@ function videoControlDirction(EquipNum, main_instruction, direction) {
 function modifyZnUs() {
     if (window.localStorage.languageList == "1") {
         $(".voice-arrow-dialog").text("Press to speak");
+        $(".voice-header span").text("Voice control");
     } else {
         $(".voice-arrow-dialog").text("按下说话");
+        $(".voice-header span").text("语音控制");
     }
     getLanguageChoice(window.localStorage.languageList, window.localStorage.voiceType);
 }
@@ -828,7 +843,7 @@ var hubConn, hubProxy, signalR = {
                 }
             } catch (e) {}
         });
-        // 监听设备状态
+        // 监听设备状态 
         hubProxy.on('sendEquipSingle', data => {
             // console.log('equip-------------------', data)
             try {
@@ -944,4 +959,17 @@ function IosToggle() {
             }
         }, 100)
     }
+}
+//弹窗模板
+function ststemSet(title,id,html){
+    myApp.request.get("plug/popoverTemplate.html", "", function (data) {
+        var popoverHTML=data;
+        popover  = myApp.popover.create({
+            targetEl: "#"+id,
+            content: popoverHTML,
+        }).open();
+        $(".publicHeader-back").unbind().bind("click",function(){ try{toastBottom.close();} catch(e){}});
+        $(".publicHeader span").html(title);
+        $(".popup-public section").html(html);
+    });
 }

@@ -296,7 +296,7 @@ function welcome_activeSave(that, number) {
     } else {
         welcome_objoriginal.FontColor = welcome_getcolor.toString();
     }
-    //welcome_objoriginal.FontColor = welcome_colorRGB2Hex(welcome_getcolor);
+    //welcome_objoriginal.FontColor = welcome_colorRGB2Hex(welcome_getcolor); 
     //字体类型
     welcome_objoriginal.FontFamily = $("#fontFamily").find("option:selected").attr("data-font");
     //粗细-常规，粗体
@@ -307,7 +307,7 @@ function welcome_activeSave(that, number) {
     welcome_objoriginal.textAlign = $("#alignControlId i").eq(0).hasClass("control-active-color") ? "0" : ($("#alignControlId i").eq(1).hasClass("control-active-color") ? "1" : "2");
     //对齐-上下
     welcome_objoriginal.textValign = $("#alignControlId i").eq(3).hasClass("control-active-color") ? "1" : "0";
-    //左对齐值
+    //左对齐值 
     if (welcome_objoriginal.textAlign == 0) {
         welcome_objoriginal.CanvasLeft = "flex-start";
     } else if (welcome_objoriginal.textAlign == 1) {
@@ -315,7 +315,7 @@ function welcome_activeSave(that, number) {
     } else if (welcome_objoriginal.textAlign == 2) {
         welcome_objoriginal.CanvasLeft = "flex-end";
     }
-    //垂直对齐值
+    //垂直对齐值 
     if (welcome_objoriginal.textValign == 0) {
         welcome_objoriginal.CanvasTop = "flex-start";
     } else if (welcome_objoriginal.textValign == 1) {
