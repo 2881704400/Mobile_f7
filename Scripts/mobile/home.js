@@ -6,16 +6,6 @@ function onHomePage() {
     getAppStatusBarHeight();
     //切换中英文右上角链接
     tranformMenu(window.localStorage.languageList);
-
-    // $("#snapshotTool").click(function(){
-    //      $(this).find("i").addClass("displayNone");
-    //      $(this).find("img").removeClass("displayNone").attr("src","/Image/home3.gif");
-    // });
-    // $("#homeTool,#equipsTool,#configTool").click(function(){
-    //     $("#snapshotTool").find("img").addClass("displayNone").attr("src","");
-    //     $("#snapshotTool").find("i").removeClass("displayNone");
-    // });
-
 }
 //响应App绑定函数-获取状态栏高度
 function getStatusBarHeight(height, ScreenHeight) {
@@ -26,6 +16,7 @@ function getStatusBarHeight(height, ScreenHeight) {
         $(".md .statusbar").height(heightRate + "px");
     }
 }
+
 function getAppStatusBarHeight() {
     if (typeof(myJavaFun) != "undefined") {
         //App绑定函数-获取键盘高度
@@ -123,9 +114,11 @@ function commonlyUsedFun(className, classListName, jsonString) {
     $("." + className).append(htmlTrailerChild);
 }
 //实时快照 
-var event_Level_list_home, btnInfoNames_home = [],btnInfoLevels_home = [];
+var event_Level_list_home, btnInfoNames_home = [],
+    btnInfoLevels_home = [];
+
 function snashotData() {
-    btnInfoNames_home.length = 0,btnInfoLevels_home.length = 0;
+    btnInfoNames_home.length = 0, btnInfoLevels_home.length = 0;
     $.ajax({
         type: 'post',
         url: '/api/event/alarm_config',
@@ -133,7 +126,7 @@ function snashotData() {
             Authorization: window.localStorage.ac_appkey + '-' + window.localStorage.ac_infokey //签名由getkey接口获取
         },
         data: {},
-        success: function(dt) {  
+        success: function(dt) {
             if (dt.HttpStatus == 200 && dt.HttpData.data) {
                 var resultData = dt.HttpData.data;
                 var strData = "";
@@ -155,6 +148,7 @@ function snashotData() {
         }
     });
 }
+
 function snashotCount(btnInfoLevels_home) {
     var strBtnInfoLevels = "";
     for (var i = 0; i < btnInfoLevels_home.length; i++) {
@@ -178,7 +172,7 @@ function snashotCount(btnInfoLevels_home) {
                     for (var i = 0; i < resultDataArr.length; i++) {
                         $(".statisticsTable a:eq(" + i + ")").attr("href", "/snapShotDetail/?" + btnInfoNames_home[i] + '&' + btnInfoLevels_home[i]).find("p").text(resultDataArr[i]);
                     }
-                } 
+                }
             }
         });
     }
@@ -192,32 +186,33 @@ function getJurisdictionData() {
         async: false
     })).done(function(n) {
         let result = n.HttpData;
-        var JurisdictionFunArray = result.data.filter((item,index)=> {if(item.ClassName.indexOf("AlarmCenter.APP.Home")>-1) return item;});
+        var JurisdictionFunArray = result.data.filter((item, index) => {
+            if (item.ClassName.indexOf("AlarmCenter.APP.Home") > -1) return item;
+        });
         if (result.code == 200) {
             $.ajax({
                 type: "post",
                 url: service + "/UserPermissions",
                 data: "userName=" + window.localStorage.userName,
                 success: function(usersDt) {
-                    myApp.dialog.close(); 
-                     
+                    myApp.dialog.close();
                     $("#homeContents>ul").html("");
                     getWebUser = $(usersDt).children("UserItem");
-                    let resultControl = $(usersDt).find("RoleItem").find("AddinModule_List").find("int"),JurisdictionArrayList = [];
-    
-                    if($(usersDt).find("IsAdministrator").text() == "true")
-                       JurisdictionArray=["HomeSnapShot","HomeButton","HomeCommonlyused","HomeShortcutFunction","HomeSystemMenu","homeNewlyBuild"];
-                    else 
-                     {
-                        resultControl.each(function( index_p,item_p) {JurisdictionArrayList.push($(item_p).text()); });
-                        let Juris = JurisdictionFunArray.filter((item,index)=>JurisdictionArrayList.some(item_ch=>item_ch.toString() == item.ID.toString()));
-                         Juris.forEach((item,index)=>{
-                           JurisdictionArray.push(item.ClassName.replace("AlarmCenter.APP.Home.",""));
-                         });
-                     }  
+                    let resultControl = $(usersDt).find("RoleItem").find("AddinModule_List").find("int"),
+                        JurisdictionArrayList = [];
+                    if ($(usersDt).find("IsAdministrator").text() == "true") JurisdictionArray = ["HomeSnapShot", "HomeButton", "HomeCommonlyused", "HomeShortcutFunction", "HomeSystemMenu", "homeNewlyBuild"];
+                    else {
+                        resultControl.each(function(index_p, item_p) {
+                            JurisdictionArrayList.push($(item_p).text());
+                        });
+                        let Juris = JurisdictionFunArray.filter((item, index) => JurisdictionArrayList.some(item_ch => item_ch.toString() == item.ID.toString()));
+                        Juris.forEach((item, index) => {
+                            JurisdictionArray.push(item.ClassName.replace("AlarmCenter.APP.Home.", ""));
+                        });
+                    }
                     var html = "";
                     JurisdictionArray.forEach(function(item, index) {
-                        html += functionalModule(item,"");
+                        html += functionalModule(item, "");
                     });
                     $("#homeContents>ul").append(html);
                     // 实现内容添加 
@@ -227,9 +222,12 @@ function getJurisdictionData() {
                                 snashotData();
                                 break;
                             case "HomeShortcutFunction":
-                                $(".videoPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1?jjPattern[7].title_en:jjPattern[7].title);
-                                $(".pptPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1?pptPattern[5].title_en:pptPattern[5].title);
-                                 myApp.swiper.create('.HomeShortcutFunction-swiper' , {spaceBetween: 10, slidesPerView: 1.2 });
+                                $(".videoPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1 ? jjPattern[7].title_en : jjPattern[7].title);
+                                $(".pptPatternHeader").parent().find("p label").html(window.localStorage.languageList == 1 ? pptPattern[5].title_en : pptPattern[5].title);
+                                myApp.swiper.create('.HomeShortcutFunction-swiper', {
+                                    spaceBetween: 10,
+                                    slidesPerView: 1.2
+                                });
                                 break;
                             case "HomeButton":
                                 VideoBaner("KOvm_container", "swiper-paginationTrailer-KOvm", KOvm);
@@ -242,8 +240,7 @@ function getJurisdictionData() {
                                 break;
                             case "homeNewlyBuild1":
                                 //加载newlyBuild脚本
-                                 initPageJS('newlyBuild', '/Scripts/mobile/');
-
+                                initPageJS('newlyBuild', '/Scripts/mobile/');
                                 break;
                             default:
                                 break;
@@ -257,7 +254,7 @@ function getJurisdictionData() {
     });
 }
 
-function functionalModule(className,htmlStr) {
+function functionalModule(className, htmlStr) {
     var html = "";
     switch (className) {
         case "HomeSnapShot":
@@ -329,11 +326,9 @@ function functionalModule(className,htmlStr) {
     }
     return html;
 }
-
-
 //视频讲解
-function videoExplain(){
-     var htmlContent = `<div class="popoverVideoExplain">
+function videoExplain() {
+    var htmlContent = `<div class="popoverVideoExplain">
      <div class="row">
          <a href="#" class="popoverVideoExplain col-33"  set_equip="${jjPattern[0].equipNo}" set_no="${jjPattern[0].setNo}" onclick="get_no_set(this,null)" >
                <i class="${jjPattern[0].icon}"></i>
@@ -363,11 +358,11 @@ function videoExplain(){
             ${window.localStorage.languageList == 1 ?jjPattern[1].name_en:jjPattern[1].name}
       </a>  </div>
     `;
-    ststemSet(window.localStorage.languageList == 1?"Video Explanation":"视频讲解","sceneBtnControl",htmlContent);  
+    ststemSet(window.localStorage.languageList == 1 ? "Video Explanation" : "视频讲解", "sceneBtnControl", htmlContent);
 }
 //ppt播放 
-function pptPlay(){
-     var htmlContent = `<div class="popoverVideoExplain">
+function pptPlay() {
+    var htmlContent = `<div class="popoverVideoExplain">
      <div class="row">
          <a href="#" class="popoverVideoExplain col-33"  set_equip="${pptPattern[0].equipNo}" set_no="${pptPattern[0].setNo}" onclick="get_no_set(this,null)" >
                <i class="${pptPattern[0].icon}"></i>
@@ -389,14 +384,12 @@ function pptPlay(){
             ${window.localStorage.languageList == 1 ?pptPattern[1].name_en:pptPattern[1].name}
       </a>  </div>
     `;
-    ststemSet(window.localStorage.languageList == 1?"PPT Paly":"PPT播放","sceneBtnControl",htmlContent);  
+    ststemSet(window.localStorage.languageList == 1 ? "PPT Paly" : "PPT播放", "sceneBtnControl", htmlContent);
 }
 //设置跳页
-function JumpPage(dt){
-  myApp.dialog.prompt(window.localStorage.languageList == 1 ?"Please enter a jump page":"请输入跳转页",window.localStorage.languageList == 1 ?"Tips":"提示", function (name) {
-     if(parseFloat(name).toString() == "NaN")
-        myApp.dialog.alert(window.localStorage.languageList == 1 ?"Please enter a number":"请输入数字");
-     else
-       get_no_set(dt,name);
-  });
+function JumpPage(dt) {
+    myApp.dialog.prompt(window.localStorage.languageList == 1 ? "Please enter a jump page" : "请输入跳转页", window.localStorage.languageList == 1 ? "Tips" : "提示", function(name) {
+        if (parseFloat(name).toString() == "NaN") myApp.dialog.alert(window.localStorage.languageList == 1 ? "Please enter a number" : "请输入数字");
+        else get_no_set(dt, name);
+    });
 }

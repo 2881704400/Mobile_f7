@@ -450,17 +450,17 @@ function evil(fn) {
     return new Fn('return ' + fn)();
 }
 var alertMsgSuccess = myApp.notification.create({
-        title: '系统提示',
+        title: window.localStorage.languageList == 1 ?'Tips':'系统提示',
         titleRightText: '',
         subtitle: '<br />',
-        text: '操作成功',
+        text: window.localStorage.languageList == 1 ?'Successful operation':'操作成功',
         closeTimeout: 2000,
     }),
     alertMsgError = myApp.notification.create({
-        title: '系统提示',
+        title: window.localStorage.languageList == 1 ?'Tips':'系统提示',
         titleRightText: '',
         subtitle: '<br />',
-        text: '操作失败或没有该命令配置',
+        text: window.localStorage.languageList == 1 ?'operation failed':'操作失败或没有该命令配置',
         closeTimeout: 1000,
     });
 //判断当前设备是否可查看
