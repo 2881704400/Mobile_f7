@@ -321,6 +321,7 @@ function loadNameMobile() {
                     InitEnsure();
                     AppShows();
                     onHomePage();
+
                     //查询表中用户选择的语言 
                     $.when(AlarmCenterContext.post("/api/GWServiceWebAPI/getLanguageStatus?userName=" + window.localStorage.userName)).done(function(n) {
                         var result = n.HttpData.data;
@@ -337,6 +338,7 @@ function loadNameMobile() {
                 } else {
                     myJavaFuntion.OpenLocalUrl("login");
                 }
+          
             }
         });
     }, 100);
@@ -465,6 +467,7 @@ var alertMsgSuccess = myApp.notification.create({
     });
 //判断当前设备是否可查看
 function Browse_Equip_List(equips) {
+
     var equipBool = false;
     if (getWebUser.find("IsAdministrator").text() != "true") {
         getWebUser.find("RoleItem").each(function() {

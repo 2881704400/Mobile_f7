@@ -3,6 +3,7 @@
 function equips() {
     switchToolbar("equipsTool");
     myApp.dialog.progress('<a style="font-size: 1rem">加载中...</a>');
+          
     allEquipSatatus();
     //获取所有设备的状态
     var $ptrContent = $$('.equipPageContent');
@@ -32,6 +33,7 @@ function equips() {
         searchContainer: '.equip-list',
         searchIn: '.item-title',
     });
+
 }
 var AllEquipStat;
 
