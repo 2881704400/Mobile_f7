@@ -2,8 +2,6 @@
 .selectTab{color: #2d8cf0 !important;}
 .HomeButton_title a{position: relative;}
 .HomeButton_title a:nth-child(1):after{content: "";width: 1px;height: 50%;position: absolute;right: 0;top: 25%;border-right: 1px solid rgb(224, 203, 178);}
-
-
 /*content*/
 .selectBtb{ overflow: hidden;}
 .selectBtb p{color: white;position: relative;z-index: 1;}

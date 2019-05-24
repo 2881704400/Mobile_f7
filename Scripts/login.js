@@ -175,14 +175,12 @@ function getServerKey() {
 			userpwd: md5($('#inputPassword').val())
 		},
 		success: function(dt) {
-			//console.log(dt);
 			$('.loading-text').html('获取登录结果…');
 			if(dt.HttpStatus == 200) {
 				var dts = dt.HttpData;
 				if(dts.code == 200) {
 					var getkeys = dts.data;
 					window.localStorage.userName = $('#inputName').val();
-					//window.localStorage.userPwd = Encrypt($('#inputPassword').val());
 					window.localStorage.ac_appkey = getkeys.appkey;
 					window.localStorage.ac_infokey = getkeys.infokey;
 					window.localStorage.terminal = terminal + ".Web";

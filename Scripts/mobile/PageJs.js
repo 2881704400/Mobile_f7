@@ -5,114 +5,114 @@ $(document).on("page:beforein", ".page[data-page='home']", function (e) {
 });
 //实时快照
 $(document).on("page:beforein", ".page[data-page='snapshot']", function (e) {
-    initPageJS('snapshot', '/Scripts/mobile/pageJavascript/');
+    initPageJS('snapshot', '/Scripts/mobile/js/');
 });
 
 //实时快照详情页
 $(document).on("page:beforein", ".page[data-page='snapShotDetail']", function (e) {
-    initPageJS('snapShotDetail', '/Scripts/mobile/pageJavascript/');
+    initPageJS('snapShotDetail', '/Scripts/mobile/js/');
 });
 
 //语音
 $(document).on("page:beforein", ".page[data-page='voice']", function (e) {
-    initPageJS('voice', '/Scripts/mobile/pageJavascript/');
+    initPageJS('voice', '/Scripts/mobile/js/');
 });
 
 //设备列表
 $(document).on("page:beforein", ".page[data-page='equips']", function (e) {
-    initPageJS('equips', '/Scripts/mobile/pageJavascript/');
+    initPageJS('equips', '/Scripts/mobile/js/');
 });
 //配置列表加载页面
 $(document).on("page:beforein", ".page[data-page='equipConfigList']", function (e) {
 	
-    initPageJS('equipConfigList', '/Scripts/mobile/pageJavascript/');
+    initPageJS('equipConfigList', '/Scripts/mobile/js/');
 	
 });
 /*配置页面*/
 $(document).on("page:beforein", ".page[data-page='sysConfigEdict']", function (e) {
 	
-    initPageJS('sysConfigEdict', '/Scripts/mobile/pageJavascript/');
+    initPageJS('sysConfigEdict', '/Scripts/mobile/js/');
 	
 });
 //配置导航
 $(document).on("page:beforein", ".page[data-page='systemConfig']", function (e) {
 	
-    initPageJS('systemConfig', '/Scripts/mobile/pageJavascript/');
+    initPageJS('systemConfig', '/Scripts/mobile/js/');
 	
 });
 
 //事件查询
 $(document).on("page:beforein", ".page[data-page='eventSearch']", function (e) {
-    initPageJS('eventSearch', '/Scripts/mobile/pageJavascript/');
+    initPageJS('eventSearch', '/Scripts/mobile/js/');
 });
 
 //事件查询-详情
 $(document).on("page:beforein", ".page[data-page='equipSearchDetail']", function (e) {
-    initPageJS('equipSearchDetail', '/Scripts/mobile/pageJavascript/');
+    initPageJS('equipSearchDetail', '/Scripts/mobile/js/');
 });
 
 //报警排表
 $(document).on("page:beforein", ".page[data-page='schedule']", function (e) {
-    initPageJS('schedule', '/Scripts/mobile/pageJavascript/');
+    initPageJS('schedule', '/Scripts/mobile/js/');
 });
 
 //设备联动
 $(document).on("page:beforein", ".page[data-page='equipLinkage']", function (e) {
-    initPageJS('equipLinkage', '/Scripts/mobile/pageJavascript/');
+    initPageJS('equipLinkage', '/Scripts/mobile/js/');
 });
 
 
 // 个人信息
 $(document).on("page:beforein", ".page[data-page='UserInfor']", function (e) {
-    initPageJS('UserInfor', '/Scripts/mobile/pageJavascript/');
+    initPageJS('UserInfor', '/Scripts/mobile/js/');
 });
 
 
 // 设置
 $(document).on("page:beforein", ".page[data-page='setPage']", function (e) {
-    initPageJS('setPage', '/Scripts/mobile/pageJavascript/');
+    initPageJS('setPage', '/Scripts/mobile/js/');
 });
 // 遥测和遥信
 $(document).on("page:beforein", ".page[data-page='ycAndyx']", function (e) {
-    initPageJS('ycAndyx', '/Scripts/mobile/pageJavascript/');
+    initPageJS('ycAndyx', '/Scripts/mobile/js/');
 });
 
 // 视频列表
 $(document).on("page:beforein", ".page[data-page='Video']", function (e) {
-    initPageJS('Video', '/Scripts/mobile/pageJavascript/');
+    initPageJS('Video', '/Scripts/mobile/js/');
 });
 //地图视频
 $(document).on("page:beforein", ".page[data-page='videoControl']", function (e) {
-    initPageJS('videoControl', '/Scripts/mobile/pageJavascript/');
+    initPageJS('videoControl', '/Scripts/mobile/js/');
 });
 // PPT
-$(document).on("page:beforein", ".page[data-page='mettingPPT']", function (e) {
-    initPageJS('mettingPPT', '/Scripts/mobile/pageJavascript/');
+$(document).on("page:beforein", ".page[data-page='pptSelection']", function (e) {
+    initPageJS('pptSelection', '/Scripts/mobile/js/');
 });
-$(document).on("page:beforein", ".page[data-page='mettingDetails']", function (e) {
-    initPageJS('mettingDetails', '/Scripts/mobile/pageJavascript/');
+$(document).on("page:beforein", ".page[data-page='pptDetails']", function (e) {
+    initPageJS('pptDetails', '/Scripts/mobile/js/');
 });
 // 欢迎词
 $(document).on("page:beforein", ".page[data-page='welcomeWords']", function (e) {
-    initPageJS('welcomeWords', '/Scripts/mobile/pageJavascript/');
+    initPageJS('welcomeWords', '/Scripts/mobile/js/');
 });
 // 报警排表内容修改
 $(document).on("page:beforein", ".page[data-page='scheduleModify']", function (e) {
-    initPageJS('scheduleModify', '/Scripts/mobile/pageJavascript/');
+    initPageJS('scheduleModify', '/Scripts/mobile/js/');
 });
 // 设备联动内容修改
 $(document).on("page:beforein", ".page[data-page='equipLinkageModify']", function (e) {
-    initPageJS('equipLinkageModify', '/Scripts/mobile/pageJavascript/');
+    initPageJS('equipLinkageModify', '/Scripts/mobile/js/');
 });
 $(document).on("page:beforein", ".page[data-page='scheduleModifyChild']", function (e) {
-    initPageJS('scheduleModifyChild', '/Scripts/mobile/pageJavascript/');
+    initPageJS('scheduleModifyChild', '/Scripts/mobile/js/');
 });
 //场景修改
 $(document).on("page:beforein", ".page[data-page='sceneEdit']", function (e) {
-    initPageJS('sceneEdit', '/Scripts/mobile/pageJavascript/');
+    initPageJS('sceneEdit', '/Scripts/mobile/js/');
 });
 $(document).on("page:beforein", ".page[data-page='sceneEditModify']", function (e) {
-    initPageJS('sceneEditModify', '/Scripts/mobile/pageJavascript/');
+    initPageJS('sceneEditModify', '/Scripts/mobile/js/');
 });
 
 // 英文版本
@@ -123,110 +123,110 @@ $(document).on("page:beforein", ".page[data-page='home_en']", function (e) {
 });
 //实时快照
 $(document).on("page:beforein", ".page[data-page='snapshot_en']", function (e) {
-    initPageJS('snapshot_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('snapshot_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //实时快照详情页
 $(document).on("page:beforein", ".page[data-page='snapShotDetail_en']", function (e) {
-    initPageJS('snapShotDetail_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('snapShotDetail_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //设备列表
 $(document).on("page:beforein", ".page[data-page='equips_en']", function (e) {
-    initPageJS('equips_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('equips_en', '/Scripts/mobile/js/mobile-en/');
 });
 //配置列表加载页面
 $(document).on("page:beforein", ".page[data-page='equipConfigList_en']", function (e) {
     
-    initPageJS('equipConfigList_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('equipConfigList_en', '/Scripts/mobile/js/mobile-en/');
     
 });
 /*配置页面*/
 $(document).on("page:beforein", ".page[data-page='sysConfigEdict_en']", function (e) {
     
-    initPageJS('sysConfigEdict_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('sysConfigEdict_en', '/Scripts/mobile/js/mobile-en/');
     
 });
 //配置导航
 $(document).on("page:beforein", ".page[data-page='systemConfig_en']", function (e) {
     
-    initPageJS('systemConfig_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('systemConfig_en', '/Scripts/mobile/js/mobile-en/');
     
 });
 
 //事件查询
 $(document).on("page:beforein", ".page[data-page='eventSearch_en']", function (e) {
-    initPageJS('eventSearch_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('eventSearch_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //事件查询-详情
 $(document).on("page:beforein", ".page[data-page='equipSearchDetail_en']", function (e) {
-    initPageJS('equipSearchDetail_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('equipSearchDetail_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //报警排表
 $(document).on("page:beforein", ".page[data-page='schedule_en']", function (e) {
-    initPageJS('schedule_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('schedule_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //设备联动
 $(document).on("page:beforein", ".page[data-page='equipLinkage_en']", function (e) {
-    initPageJS('equipLinkage_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('equipLinkage_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 // 个人信息
 $(document).on("page:beforein", ".page[data-page='UserInfor_en']", function (e) {
-    initPageJS('UserInfor_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('UserInfor_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 // 设置
 $(document).on("page:beforein", ".page[data-page='setPage_en']", function (e) {
-    initPageJS('setPage_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('setPage_en', '/Scripts/mobile/js/mobile-en/');
 });
 // 遥测和遥信
 $(document).on("page:beforein", ".page[data-page='ycAndyx_en']", function (e) {
-    initPageJS('ycAndyx_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('ycAndyx_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 // 视频列表
 $(document).on("page:beforein", ".page[data-page='Video_en']", function (e) {
-    initPageJS('Video_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('Video_en', '/Scripts/mobile/js/mobile-en/');
 });
 //地图视频
 $(document).on("page:beforein", ".page[data-page='videoControl_en']", function (e) {
-    initPageJS('videoControl_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('videoControl_en', '/Scripts/mobile/js/mobile-en/');
 });
 // PPT
-$(document).on("page:beforein", ".page[data-page='mettingPPT_en']", function (e) {
-    initPageJS('mettingPPT_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+$(document).on("page:beforein", ".page[data-page='pptSelection_en']", function (e) {
+    initPageJS('pptSelection_en', '/Scripts/mobile/js/mobile-en/');
 });
-$(document).on("page:beforein", ".page[data-page='mettingDetails_en']", function (e) {
-    initPageJS('mettingDetails_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+$(document).on("page:beforein", ".page[data-page='pptDetails_en']", function (e) {
+    initPageJS('pptDetails_en', '/Scripts/mobile/js/mobile-en/');
 });
 // 欢迎词
 $(document).on("page:beforein", ".page[data-page='welcomeWords_en']", function (e) {
-    initPageJS('welcomeWords_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('welcomeWords_en', '/Scripts/mobile/js/mobile-en/');
 });
 // 报警排表内容修改
 $(document).on("page:beforein", ".page[data-page='scheduleModify_en']", function (e) {
-    initPageJS('scheduleModify_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('scheduleModify_en', '/Scripts/mobile/js/mobile-en/');
 });
 // 设备联动内容修改
 $(document).on("page:beforein", ".page[data-page='equipLinkageModify_en']", function (e) {
-    initPageJS('equipLinkageModify_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('equipLinkageModify_en', '/Scripts/mobile/js/mobile-en/');
 });
 $(document).on("page:beforein", ".page[data-page='scheduleModifyChild_en']", function (e) {
-    initPageJS('scheduleModifyChild_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('scheduleModifyChild_en', '/Scripts/mobile/js/mobile-en/');
 });
 
 //场景修改 
 $(document).on("page:beforein", ".page[data-page='sceneEdit_en']", function (e) {
-    initPageJS('sceneEdit_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('sceneEdit_en', '/Scripts/mobile/js/mobile-en/');
 });
 $(document).on("page:beforein", ".page[data-page='sceneEditModify_en']", function (e) {
-    initPageJS('sceneEditModify_en', '/Scripts/mobile/pageJavascript/mobile-en/');
+    initPageJS('sceneEditModify_en', '/Scripts/mobile/js/mobile-en/');
 });
 // test
 $(document).on("page:beforein", ".page[data-page='test']", function (e) {
-    initPageJS('test', '/Scripts/mobile/pageJavascript/');
+    initPageJS('test', '/Scripts/mobile/js/');
 });

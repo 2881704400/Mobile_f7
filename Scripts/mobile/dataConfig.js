@@ -71,8 +71,8 @@ var commonlyUsed = [{
 }, {
     name: 'PPT',
     name_en: 'PPT',
-    href_zh: '/mettingPPT/',
-    href_en: '/mobile-en/mettingPPT_en/',
+    href_zh: '/pptSelection/',
+    href_en: '/mobile-en/pptSelection_en/',
     color: '#c695e6,#5d3477',
     icon: 'iconfont icon-f7_ppt',
     equipNo: '',

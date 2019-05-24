@@ -72,11 +72,11 @@ var myApp = new Framework7({
         path: '/welcomeWords/',
         url: 'welcomeWords.html',
     }, {
-        path: '/mettingPPT/',
-        url: 'mettingPPT.html',
+        path: '/pptSelection/',
+        url: 'pptSelection.html',
     }, {
-        path: '/mettingDetails/',
-        url: 'mettingDetails.html',
+        path: '/pptDetails/',
+        url: 'pptDetails.html',
     }, {
         path: '/scheduleModify/',
         url: 'scheduleModify.html',
@@ -162,11 +162,11 @@ var myApp = new Framework7({
         path: '/mobile-en/welcomeWords_en/',
         url: 'mobile-en/welcomeWords_en.html',
     }, {
-        path: '/mobile-en/mettingPPT_en/',
-        url: 'mobile-en/mettingPPT_en.html',
+        path: '/mobile-en/pptSelection_en/',
+        url: 'mobile-en/pptSelection_en.html',
     }, {
-        path: '/mobile-en/mettingDetails_en/',
-        url: 'mobile-en/mettingDetails_en.html',
+        path: '/mobile-en/pptDetails_en/',
+        url: 'mobile-en/pptDetails_en.html',
     }, {
         path: '/mobile-en/scheduleModify_en/',
         url: 'mobile-en/scheduleModify_en.html',
